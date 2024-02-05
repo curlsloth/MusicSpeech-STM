@@ -12,8 +12,7 @@
 clear all;
 clc;
 %% parameters
-cd '../../';
-addpath(genpath(pwd));% dir for customized script
+addpath(genpath('code/'));% dir for customized script
 
 % 1. get file info from the current corpus
 thisCorpus = 'LibriVox'; 
