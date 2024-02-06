@@ -1,19 +1,23 @@
 function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 %% Read me
 % 01/2024 YL
+% This function takes in corpus: LibriVox, TIMIT, EUROM, SpeechClarity,
+% IRMAS, GarlandEncyclopedia, Albouy2020Science, CDs
+% Type: 'speech' 'music'
+% 
 % This function looks into the corpus of a certain type
 % goes through all the audio recordings with specific extensions
 % and collects all necessary file info for later STM analysis
 % 
 % This function takes in:
 %   type: string, corpus type: 'speech' or 'music'
-%   corpus: string, corpus name
+%   corpus: string, corpus name (see the beginning of README)
 % 
 % This function outputs:
 %   myfilelist: cell, containing path, folder name, and filename of the
 %           audio recordings in the current corpus
 %   curfiles: data structure, containing all file info necessary for STM
-%           analysis
+%           analysis (will be passed to my_stmAna.m)
 % 
 %%
 % from audio file (waveform) to MS (modulation spectrum)
@@ -21,24 +25,26 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
     P.addRequired('type'); % 'speech', 'music'
     P.addRequired('corpus');
     P.addOptional('debug', 0);
-    P.addOptional('axisOff',0);
+%     P.addOptional('axisOff',0);
     P.addOptional('winLength',4); % window length
     parse(P, type, corpus, varargin{:});    
     
     debug = P.Results.debug;
     wlen = P.Results.winLength;
-    wl = num2str(wlen);
+    wl = num2str(wlen);    
     
-    curfiles.tempMatName = {};
-    curfiles.filename = {};
-    curfiles.TotalLeng = {};
-    curfiles.TotalSamples = {};
-    curfiles.fs = {};
-    curfiles.filepath = {};
-    curfiles.langOrinstru = {};
-    curfiles.VoiceOrNot = {};
-    curfiles.type = type;
-    curfiles.curcorpus = corpus;
+    % curfiles: data structure, stores basic info for each audio file in a corpus
+    % This data structure will be passed into the my_stmAna.m and provide info for STM analysis
+    curfiles.filepath = {}; % path to access each audio file in the corpus
+    curfiles.tempMatName = {}; % path to save the STM matrix for each audio file
+    curfiles.filename = {}; % file name of each audio file in this corpus
+    curfiles.TotalLeng = {}; % total length (sec) of each audio file
+    curfiles.TotalSamples = {}; % total sample (sample) of each audio file
+    curfiles.fs = {}; % sampling rate of each audio file
+    curfiles.langOrinstru = {}; % language or instrumental component of the audio file
+    curfiles.VoiceOrNot = {}; % whether the audio file contains voice or not
+    curfiles.type = type; % type of the current corpus ('speech' or 'music'), should be the same for all audio files in one corpus
+    curfiles.curcorpus = corpus; % corpus name, should be the same for all audio files in one corpus
 %% set paths and parameters
     savepath = [pwd '/results/MATs/' type '_mat_' wl '_' corpus]; % save all the created MAT files
     if ~isfolder(savepath)
@@ -84,14 +90,15 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
             extensions = {'.mp3', '.WAV', '.wav', '.m4a'};% possible extensions of audio recordings
     end
 %% get file info
-    myfilelist = {};
+    myfilelist = {}; % just for a quick sanity check (whether the audio file and folder matches reasonably)
     tStart = tic;
     for i = 1:n
         if contains(dirAll.name(i),extensions)
             tempFileName = [dirAll.folder{i},'/',dirAll.name{i}];
-            myfilelist{end+1,1} = tempFileName;
-            myfilelist{end,2} = dirAll.folder{i};
-            myfilelist{end,3} = dirAll.name{i};
+            myfilelist{end+1,1} = tempFileName; % 1st col of myfilelist: path to the current audio file
+            thisfolderpath = dirAll.folder{i}; 
+            myfilelist{end,2} = extractAfter(thisfolderpath, 'Corp'); % 2nd col of myfilelist: folder name of the current audio file, e.g.: /LibriVox/eng
+            myfilelist{end,3} = dirAll.name{i}; % 3rd col of myfilelist: name of the current audio file
             curfiles.filename{end+1} = dirAll.name{i}(1:end-4);
 
             switch corpus
