@@ -134,6 +134,8 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
             Params.expdur = (endPoint-startPoint0+1)/fs; % the length of total analyzed data
             Params.maxsil = max(sil_L_a); % the length of the longest silence of the analyzed excerpts (in sec), should be smaller than 1
             Params.totalLengCur = wlen*(n_exps-1); % total length of the signal used for analysis (in sec, should not exceed 120s)
+            Params.x_axis = x_axis;
+            Params.y_axis = y_axis;
 
             save([tempMatName '_MS2024.mat'], 'indMS'); % save the averaged MAT file of the MS results
         end
@@ -141,8 +143,8 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
     tEnd = toc(tStart); % total time
     sprintf('Total loop time: %.3f sec',tEnd)
 %% save survey results to folder
-    save([savepath '/x_' type '_' wl '_' curFileName '.mat'], 'x_axis'); 
-    save([savepath '/y_' type '_' wl '_' curFileName '.mat'], 'y_axis');
+%     save([savepath '/x_' type '_' wl '_' curFileName '.mat'], 'x_axis'); 
+%     save([savepath '/y_' type '_' wl '_' curFileName '.mat'], 'y_axis');
 %     Params = cell2table(Params,'VariableNames',{'filename','langOrInstru', 'VoiceOrNot','startPoint','endPoint','SamplingRate','analyzedLength','silenceLength', 'usedLength'});
 %     writetable(Params, [svypath '/' type 'Survey2024_' wl '_' curfile '.xlsx'], 'WriteMode','Append');
     save([paramspath '/' curFileName '_Params.mat'], 'Params');

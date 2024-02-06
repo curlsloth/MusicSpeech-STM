@@ -16,7 +16,7 @@ addpath(genpath('code/'));% dir for customized script
 
 % 1. get file info from the current corpus
 thisCorpus = 'LibriVox'; 
-debug = 1; 
+debug = 0; 
 
 [myfilelist, curfiles] = my_files('speech', thisCorpus); % corpus level info
 if size(myfilelist,1) ~= length(curfiles.filename)
