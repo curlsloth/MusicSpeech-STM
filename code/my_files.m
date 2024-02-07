@@ -95,11 +95,11 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
     for i = 1:n
         if contains(dirAll.name(i),extensions)
             tempFileName = [dirAll.folder{i},'/',dirAll.name{i}];
-            myfilelist{end+1,1} = tempFileName; % 1st col of myfilelist: path to the current audio file
-            thisfolderpath = dirAll.folder{i}; 
-            myfilelist{end,2} = extractAfter(thisfolderpath, 'Corp'); % 2nd col of myfilelist: folder name of the current audio file, e.g.: /LibriVox/eng
-            myfilelist{end,3} = dirAll.name{i}; % 3rd col of myfilelist: name of the current audio file
-            curfiles.filename{end+1} = dirAll.name{i}(1:end-4);
+%             myfilelist{end+1,1} = tempFileName; % 1st col of myfilelist: path to the current audio file
+%             thisfolderpath = dirAll.folder{i}; 
+%             myfilelist{end,2} = extractAfter(thisfolderpath, 'Corp'); % 2nd col of myfilelist: folder name of the current audio file, e.g.: /LibriVox/eng
+%             myfilelist{end,3} = dirAll.name{i}; % 3rd col of myfilelist: name of the current audio file
+%             curfiles.filename{end+1} = dirAll.name{i}(1:end-4);
 
             switch corpus
                 case 'TIMIT' %TIMIT multiple audio files have the same name, so use the folderName_audioName
@@ -117,12 +117,20 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                 otherwise
                     tempMatName = [savepath '/' dirAll.name{i}(1:end-4)]; % part of the mat file name
             end
-            curfiles.tempMatName{end+1} = tempMatName;
+%             curfiles.tempMatName{end+1} = tempMatName;
 
             if isempty(dir([tempMatName '*_MS2024.mat'])) % skip the files that have been analyzed
                 if debug 
                     i 
                 end % debug
+                myfilelist{end+1,1} = tempFileName; % 1st col of myfilelist: path to the current audio file
+                thisfolderpath = dirAll.folder{i}; 
+                myfilelist{end,2} = extractAfter(thisfolderpath, 'Corp'); % 2nd col of myfilelist: folder name of the current audio file, e.g.: /LibriVox/eng
+                myfilelist{end,3} = dirAll.name{i}; % 3rd col of myfilelist: name of the current audio file
+
+                curfiles.filename{end+1} = dirAll.name{i}(1:end-4);
+                curfiles.tempMatName{end+1} = tempMatName;
+
                 tic; % start timing for the main part of processing
 
                 % Modify here to cope with more corpora
