@@ -46,7 +46,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
     curfiles.type = type; % type of the current corpus ('speech' or 'music'), should be the same for all audio files in one corpus
     curfiles.curcorpus = corpus; % corpus name, should be the same for all audio files in one corpus
 %% set paths and parameters
-    savepath = [pwd '/results/MATs/' type '_mat_' wl '_' corpus]; % save all the created MAT files
+    savepath = [pwd '/results/MATs/' type '_mat_wl' wl '_' corpus]; % save all the created MAT files
     if ~isfolder(savepath)
         mkdir(savepath);
     end
@@ -70,8 +70,8 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 
     % survey all files 
     n = height(dirAll);
-    % n = 8000; % test
 
+    % filter the list of files based on extensions
     switch corpus
         case 'EUROM'
             corp={'N'; 'S'; 'P'}; % 1st letter of the extension, use only recordings of numbers, sentences and passages
@@ -121,7 +121,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 
             if isempty(dir([tempMatName '*_MS2024.mat'])) % skip the files that have been analyzed
                 if debug 
-                    i 
+                    disp(i) 
                 end % debug
                 myfilelist{end+1,1} = tempFileName; % 1st col of myfilelist: path to the current audio file
                 thisfolderpath = dirAll.folder{i}; 
