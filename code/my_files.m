@@ -107,11 +107,10 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                     tempMatName = [savepath '/' dirAll.folder{i}(folder_pos+1:end) '_' dirAll.name{i}(1:end-4)];
                 case 'IRMAS'
                     tempMatName = [];
-%                     tempTxt = '';
-                    if contains(dirAll.name{i},'.txt')
-                        tempTxt = textread([dirAll.folder(i),'/',dirAll(i).name],'%s');
+                    if contains(dirAll.name(i),'.txt')
+                        tempTxt = textread([dirAll.folder{i},'/',dirAll.name{i}],'%s');
                         if length(tempTxt)<10 % if it has more than 10 words, then it's probably not correspond to audio file
-                             tempWavName = [dirAll.folder(i),'/',dirAll(i).name];
+                             tempWavName = [dirAll.folder{i},'/',dirAll.name{i}];
                              tempWavName = [tempWavName(1:end-4),'.wav'];
                              tempMatName = [savepath '/' dirAll.name{i}(1:end-4)]; % part of the mat file name
                         end
