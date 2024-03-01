@@ -15,10 +15,10 @@ clc;
 addpath(genpath('code/'));% dir for customized script
 
 % 1. get file info from the current corpus
-thisCorpus = 'SpeechClarity'; 
+thisCorpus = 'IRMAS'; 
 debug = 0; 
 
-[myfilelist, curfiles] = my_files('speech', thisCorpus); % corpus level info
+[myfilelist, curfiles] = my_files('music', thisCorpus); % corpus level info
 if size(myfilelist,1) ~= length(curfiles.filename)
     error('File counts not matching!');
 end
@@ -31,7 +31,7 @@ else
 end
 
 % for fileID = 1:Nfiles
-for fileID = 1:20
+for fileID = 1:500
 
 
     [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, thisCorpus, fileID); % audio file level

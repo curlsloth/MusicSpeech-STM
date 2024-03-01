@@ -106,7 +106,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                     folder_pos = find(dirAll.folder{i}=='/', 1, 'last');
                     tempMatName = [savepath '/' dirAll.folder{i}(folder_pos+1:end) '_' dirAll.name{i}(1:end-4)];
                 case 'IRMAS'
-                    if contains(dirAll(i).name,'.txt')
+                    if contains(dirAll.name(i),'.txt')
                         tempTxt = textread([dirAll(i).folder,'/',dirAll(i).name],'%s');
                         if length(tempTxt)<10 % if it has more than 10 words, then it's probably not correspond to audio file
                              tempWavName = [dirAll(i).folder,'/',dirAll(i).name];
@@ -139,8 +139,8 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         lang = 'eng';
                     case 'LibriVox'
                         lang = dirAll.folder{i}(end-2:end);% get the language
-                    case 'UK'
-                        lang = 'engUK';
+                    case 'SpeechClarity'
+                        lang = 'engBritish';
                     case 'EUROM'
                         ind_lang = find(contains(nationality, dirAll.name{i}(end-1)));% use the matched position to indicate the language
                         lang = langs{ind_lang};
