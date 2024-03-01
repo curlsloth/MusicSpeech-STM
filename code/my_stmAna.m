@@ -66,7 +66,11 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
 %% main analysis: audio - TF - MS
     tStart = tic;
     
-    indMS = [];  
+    indMS = [];
+    indMS_all = [];
+    Params = [];
+    x_axis = [];
+    y_axis = [];
     if TotalLeng >= wlen
         startPoint0 = 1;
         if strcmp(curcorpus, 'LibriVox')
@@ -139,11 +143,6 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
 
             save([tempMatName '_MS2024.mat'], 'indMS'); % save the averaged MAT file of the MS results
             save([paramspath '/' curFileName '_Params.mat'], 'Params');
-        else % if there's no excerpt having silence < 1s will have non-empty outputSTM, return nothing
-            indMS_all = [];
-            Params = [];
-            x_axis = [];
-            y_axis = [];
         end
     end
     tEnd = toc(tStart); % total time

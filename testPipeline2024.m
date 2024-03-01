@@ -15,7 +15,7 @@ clc;
 addpath(genpath('code/'));% dir for customized script
 
 % 1. get file info from the current corpus
-thisCorpus = 'EUROM'; 
+thisCorpus = 'SpeechClarity'; 
 debug = 0; 
 
 [myfilelist, curfiles] = my_files('speech', thisCorpus); % corpus level info
@@ -31,7 +31,8 @@ else
 end
 
 % for fileID = 1:Nfiles
-for fileID = 1:3
+for fileID = 1:20
+
 
     [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, thisCorpus, fileID); % audio file level
 
