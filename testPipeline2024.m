@@ -15,7 +15,7 @@ clc;
 addpath(genpath('code/'));% dir for customized script
 
 % 1. get file info from the current corpus
-thisCorpus = 'LibriVox'; 
+thisCorpus = 'EUROM'; 
 debug = 0; 
 
 [myfilelist, curfiles] = my_files('speech', thisCorpus); % corpus level info
@@ -30,7 +30,9 @@ else
     Nfiles = size(myfilelist,1);
 end
 
-for fileID = 1:Nfiles
+% for fileID = 1:Nfiles
+for fileID = 1:3
+
     [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, thisCorpus, fileID); % audio file level
 
 % 3. if debug, generate a quick overview of the averaged normalized STM of the current corpus

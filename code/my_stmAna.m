@@ -138,6 +138,12 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
             Params.y_axis = y_axis;
 
             save([tempMatName '_MS2024.mat'], 'indMS'); % save the averaged MAT file of the MS results
+            save([paramspath '/' curFileName '_Params.mat'], 'Params');
+        else % if there's no excerpt having silence < 1s will have non-empty outputSTM, return nothing
+            indMS_all = [];
+            Params = [];
+            x_axis = [];
+            y_axis = [];
         end
     end
     tEnd = toc(tStart); % total time
@@ -147,7 +153,7 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
 %     save([savepath '/y_' type '_' wl '_' curFileName '.mat'], 'y_axis');
 %     Params = cell2table(Params,'VariableNames',{'filename','langOrInstru', 'VoiceOrNot','startPoint','endPoint','SamplingRate','analyzedLength','silenceLength', 'usedLength'});
 %     writetable(Params, [svypath '/' type 'Survey2024_' wl '_' curfile '.xlsx'], 'WriteMode','Append');
-    save([paramspath '/' curFileName '_Params.mat'], 'Params');
+    
     
 %% generic STM analysis for 1 audio excerpt 
 function outputSTM = stm_audio(audio_excpt, silenceThresh, fs)
