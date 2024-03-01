@@ -106,12 +106,14 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                     folder_pos = find(dirAll.folder{i}=='/', 1, 'last');
                     tempMatName = [savepath '/' dirAll.folder{i}(folder_pos+1:end) '_' dirAll.name{i}(1:end-4)];
                 case 'IRMAS'
-                    if contains(dirAll(i).name,'.txt')
-                        tempTxt = textread([dirAll(i).folder,'/',dirAll(i).name],'%s');
+                    tempMatName = [];
+                    tempTxt = '';
+                    if contains(dirAll.name(i),'.txt')
+                        tempTxt = textread([dirAll.folder(i),'/',dirAll(i).name],'%s');
                         if length(tempTxt)<10 % if it has more than 10 words, then it's probably not correspond to audio file
-                             tempWavName = [dirAll(i).folder,'/',dirAll(i).name];
+                             tempWavName = [dirAll.folder(i),'/',dirAll(i).name];
                              tempWavName = [tempWavName(1:end-4),'.wav'];
-                             tempMatName = [savepath '/' dirAll(i).name(1:end-4)]; % part of the mat file name
+                             tempMatName = [savepath '/' dirAll.name{i}(1:end-4)]; % part of the mat file name
                         end
                     end
                 otherwise
@@ -119,7 +121,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
             end
 %             curfiles.tempMatName{end+1} = tempMatName;
 
-            if isempty(dir([tempMatName '*_MS2024.mat'])) % skip the files that have been analyzed
+            if isempty(dir([tempMatName '*_MS2024.mat'])) && ~isempty(tempMatName) % skip the files that have been analyzed & skip the files with empty tempMatName
                 if debug 
                     disp(i) 
                 end % debug
@@ -139,8 +141,8 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         lang = 'eng';
                     case 'LibriVox'
                         lang = dirAll.folder{i}(end-2:end);% get the language
-                    case 'UK'
-                        lang = 'engUK';
+                    case 'SpeechClarity'
+                        lang = 'engBritish';
                     case 'EUROM'
                         ind_lang = find(contains(nationality, dirAll.name{i}(end-1)));% use the matched position to indicate the language
                         lang = langs{ind_lang};

@@ -30,8 +30,8 @@ else
     Nfiles = size(myfilelist,1);
 end
 
-% for fileID = 1:Nfiles
-for fileID = 1:500
+for fileID = 1:Nfiles
+% for fileID = 1:500
 
 
     [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, thisCorpus, fileID); % audio file level
