@@ -95,26 +95,11 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
     for i = 1:n
         if contains(dirAll.name(i),extensions)
             tempFileName = [dirAll.folder{i},'/',dirAll.name{i}];
-%             myfilelist{end+1,1} = tempFileName; % 1st col of myfilelist: path to the current audio file
-%             thisfolderpath = dirAll.folder{i}; 
-%             myfilelist{end,2} = extractAfter(thisfolderpath, 'Corp'); % 2nd col of myfilelist: folder name of the current audio file, e.g.: /LibriVox/eng
-%             myfilelist{end,3} = dirAll.name{i}; % 3rd col of myfilelist: name of the current audio file
-%             curfiles.filename{end+1} = dirAll.name{i}(1:end-4);
 
             switch corpus
                 case 'TIMIT' %TIMIT multiple audio files have the same name, so use the folderName_audioName
                     folder_pos = find(dirAll.folder{i}=='/', 1, 'last');
                     tempMatName = [savepath '/' dirAll.folder{i}(folder_pos+1:end) '_' dirAll.name{i}(1:end-4)];
-                case 'IRMAS'
-                    tempMatName = [];
-                    if contains(dirAll.name(i),'.txt')
-                        tempTxt = textread([dirAll.folder{i},'/',dirAll.name{i}],'%s');
-                        if length(tempTxt)<10 % if it has more than 10 words, then it's probably not correspond to audio file
-                             tempWavName = [dirAll.folder{i},'/',dirAll.name{i}];
-                             tempWavName = [tempWavName(1:end-4),'.wav'];
-                             tempMatName = [savepath '/' dirAll.name{i}(1:end-4)]; % part of the mat file name
-                        end
-                    end
                 otherwise
                     tempMatName = [savepath '/' dirAll.name{i}(1:end-4)]; % part of the mat file name
             end
@@ -175,6 +160,13 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                     case 'music'
                         switch corpus
                             case 'IRMAS'
+                                txtLabels = contains(dirAll.name, [dirAll.name{i}(1:end-4),'.txt']); % search for txt (labels) for the current recording
+                                if sum(txtLabels) == 1 % should exists and ONLY exists 1 txt for each recording
+                                    indLabels = find(txtLabels); % if true, get the index in the dirAll table
+                                    tempTxt = textread([dirAll.folder{indLabels},'/',dirAll.name{indLabels}],'%s'); % load and collect the labels
+                                else % if none or more than 1 txt exist
+                                    tempTxt = string('Error with IRMAS labels!! Check data!'); % record the potential error
+                                end
                                 curfiles.langOrinstru{end+1} = strjoin(tempTxt,',');  % the instruments involved
                                 curfiles.VoiceOrNot{end+1} = sum(contains(tempTxt,'voi')) > 0; % if the recording has human voice
                             otherwise
