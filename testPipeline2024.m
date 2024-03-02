@@ -23,7 +23,7 @@ if size(myfilelist,1) ~= length(curfiles.filename)
     error('File counts not matching!');
 end
 
-% 2. go through each file in the corpus
+%% 2. go through each file in the corpus
 if debug
     Nfiles = 1; % test
 else
