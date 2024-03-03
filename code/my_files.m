@@ -2,7 +2,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 %% Read me
 % 01/2024 YL
 % This function takes in corpus: LibriVox, TIMIT, EUROM, SpeechClarity,
-% IRMAS, GarlandEncyclopedia, Albouy2020Science, CDs
+% IRMAS, GarlandEncyclopedia, Albouy2020Science, CD
 % Type: 'speech' 'music'
 % 
 % This function looks into the corpus of a certain type
