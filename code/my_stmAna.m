@@ -147,7 +147,7 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
         end
     end
     tEnd = toc(tStart); % total time
-    sprintf('Total loop time: %.3f sec',tEnd)
+    disp(['Total loop time: ', num2str(tEnd, '%.3f'), ' sec']);
 %% save survey results to folder
 %     save([savepath '/x_' type '_' wl '_' curFileName '.mat'], 'x_axis'); 
 %     save([savepath '/y_' type '_' wl '_' curFileName '.mat'], 'y_axis');
