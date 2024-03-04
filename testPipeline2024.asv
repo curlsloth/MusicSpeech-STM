@@ -15,7 +15,7 @@ clc;
 addpath(genpath('code/'));% dir for customized script
 
 % 1. get file info from the current corpus
-thisCorpus = 'CD'; 
+thisCorpus = 'T'; 
 debug = 0; 
 
 [myfilelist, curfiles] = my_files('music', thisCorpus); % corpus level info

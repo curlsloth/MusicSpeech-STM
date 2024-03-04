@@ -15,10 +15,10 @@ clc;
 addpath(genpath('code/'));% dir for customized script
 
 % 1. get file info from the current corpus
-thisCorpus = 'CD'; 
+thisCorpus = 'TAT-Vol2'; 
 debug = 0; 
 
-[myfilelist, curfiles] = my_files('music', thisCorpus); % corpus level info
+[myfilelist, curfiles] = my_files('speech', thisCorpus); % corpus level info
 if size(myfilelist,1) ~= length(curfiles.filename)
     error('File counts not matching!');
 end

@@ -127,6 +127,8 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         lang = dirAll.folder{i}(end-2:end);% get the language
                     case 'SpeechClarity'
                         lang = 'engBritish';
+                    case 'TAT-Vol2'
+                        lang = 'taiwanese';
                     case 'EUROM'
                         ind_lang = find(contains(nationality, dirAll.name{i}(end-1)));% use the matched position to indicate the language
                         lang = langs{ind_lang};
