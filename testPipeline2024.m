@@ -15,7 +15,7 @@ clc;
 addpath(genpath('code/'));% dir for customized script
 
 % 1. get file info from the current corpus
-thisCorpus = 'TAT-Vol2'; 
+thisCorpus = 'LibriSpeech'; 
 debug = 0; 
 
 [myfilelist, curfiles] = my_files('speech', thisCorpus); % corpus level info
@@ -30,8 +30,8 @@ else
     Nfiles = size(myfilelist,1);
 end
 
-parfor fileID = 1:Nfiles
-% parfor fileID = 1:500
+% parfor fileID = 1:Nfiles
+parfor fileID = 1:500
 
 
     [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, thisCorpus, fileID); % audio file level

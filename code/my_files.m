@@ -1,8 +1,19 @@
 function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 %% Read me
 % 01/2024 YL
-% This function takes in corpus: LibriVox, TIMIT, EUROM, SpeechClarity,
-% IRMAS, GarlandEncyclopedia, Albouy2020Science, CD
+% This function takes in corpus: 
+% *** speech ***
+% LibriVox
+% LibriSpeech
+% TIMIT
+% EUROM
+% SpeechClarity
+% TAT-Vol2
+% *** music ***
+% IRMAS
+% GarlandEncyclopedia
+% Albouy2020Science
+% CD
 % Type: 'speech' 'music'
 % 
 % This function looks into the corpus of a certain type
@@ -87,7 +98,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                 end
             end
         otherwise
-            extensions = {'.mp3', '.WAV', '.wav', '.m4a'};% possible extensions of audio recordings
+            extensions = {'.mp3', '.WAV', '.wav', '.m4a', '.flac'};% possible extensions of audio recordings
     end
 %% get file info
     myfilelist = {}; % just for a quick sanity check (whether the audio file and folder matches reasonably)
@@ -125,6 +136,8 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         lang = 'eng';
                     case 'LibriVox'
                         lang = dirAll.folder{i}(end-2:end);% get the language
+                    case 'LibriSpeech'
+                        lang = 'eng';
                     case 'SpeechClarity'
                         lang = 'engBritish';
                     case 'TAT-Vol2'
