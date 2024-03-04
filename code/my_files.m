@@ -9,6 +9,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 % EUROM
 % SpeechClarity
 % TAT-Vol2
+% Buckeye
 % *** music ***
 % IRMAS
 % GarlandEncyclopedia
@@ -137,6 +138,8 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                     case 'LibriVox'
                         lang = dirAll.folder{i}(end-2:end);% get the language
                     case 'LibriSpeech'
+                        lang = 'eng';
+                    case 'Buckeye'
                         lang = 'eng';
                     case 'SpeechClarity'
                         lang = 'engBritish';

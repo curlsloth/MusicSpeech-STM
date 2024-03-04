@@ -63,6 +63,7 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
     fs = curfiles.fs{fileID}; 
     TotalSamples = curfiles.TotalSamples{fileID};
     tempMatName = curfiles.tempMatName{fileID}; % to save the averaged MS (indMS)
+    disp(curFilePath) % display the file path in the command window
 %% main analysis: audio - TF - MS
     tStart = tic;
     
@@ -82,8 +83,8 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
         
         % process each audio recording by excerpts of 4s
         while (startPoint + wlen*fs - 1 <= TotalSamples && n_exps <= max_exps)
-            startPoint % debug
-            n_exps % debug
+%             startPoint % debug
+%             n_exps % debug
             endPoint = startPoint + wlen*fs -1; % endPoint of the current excerpt
             sample = [startPoint, endPoint];
         
