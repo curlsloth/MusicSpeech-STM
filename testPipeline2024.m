@@ -15,7 +15,7 @@ clc;
 addpath(genpath('code/'));% dir for customized script
 
 % 1. get file info from the current corpus
-thisCorpus = 'thchs30'; 
+thisCorpus = 'MediaSpeech/TR'; 
 debug = 0; 
 
 [myfilelist, curfiles] = my_files('speech', thisCorpus); % corpus level info
