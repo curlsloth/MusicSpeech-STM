@@ -63,6 +63,16 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
     fs = curfiles.fs{fileID}; 
     TotalSamples = curfiles.TotalSamples{fileID};
     tempMatName = curfiles.tempMatName{fileID}; % to save the averaged MS (indMS)
+    matSaveName = [tempMatName '_MS2024.mat'];
+    if isfile(matSaveName)
+        disp(['**skip** ',curFilePath])
+        indMS = [];
+        indMS_all = [];
+        Params = [];
+        x_axis = [];
+        y_axis = [];
+        return
+    end
     disp(curFilePath) % display the file path in the command window
 %% main analysis: audio - TF - MS
     tStart = tic;
@@ -142,7 +152,7 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
             Params.x_axis = x_axis;
             Params.y_axis = y_axis;
 
-            save([tempMatName '_MS2024.mat'], 'indMS'); % save the averaged MAT file of the MS results
+            save(matSaveName, 'indMS'); % save the averaged MAT file of the MS results
             save([paramspath '/' curFileName '_Params.mat'], 'Params');
         end
     end

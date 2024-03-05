@@ -117,7 +117,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
             end
 %             curfiles.tempMatName{end+1} = tempMatName;
 
-            if isempty(dir([tempMatName '*_MS2024.mat'])) && ~isempty(tempMatName) % skip the files that have been analyzed & skip the files with empty tempMatName
+%             if isempty(dir([tempMatName '*_MS2024.mat'])) && ~isempty(tempMatName) % skip the files that have been analyzed & skip the files with empty tempMatName
                 if debug 
                     disp(i) 
                 end % debug
@@ -192,7 +192,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                                 curfiles.VoiceOrNot{end+1} = NaN; % need hand labeling for voice existence
                         end
                 end             
-            end
+%             end
         end
     end
     tEnd = toc(tStart); % total time
