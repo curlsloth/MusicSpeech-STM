@@ -73,14 +73,6 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
         y_axis = [];
         return
     end
-
-    if ~isfolder(savepath)
-        mkdir(savepath);
-    end
-    if ~isfolder(paramspath)
-        mkdir(paramspath);
-    end
-
     disp(curFilePath) % display the file path in the command window
 %% main analysis: audio - TF - MS
     tStart = tic;
