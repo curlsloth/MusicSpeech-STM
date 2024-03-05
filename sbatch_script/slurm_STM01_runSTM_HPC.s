@@ -7,7 +7,8 @@
 #SBATCH --time=00:05:00
 #SBATCH --output=HPC/slurm/output_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
-#SBATCH --mail-type=FAIL
+#SBATCH --mail-type=ARRAY_TASKS
+#SBATCH --mail-type=END
 
 
 module purge
