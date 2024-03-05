@@ -10,6 +10,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 % SpeechClarity
 % TAT-Vol2
 % Buckeye
+% TTS_Javanese
 % *** music ***
 % IRMAS
 % GarlandEncyclopedia
@@ -105,7 +106,8 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
     myfilelist = {}; % just for a quick sanity check (whether the audio file and folder matches reasonably)
     tStart = tic;
     for i = 1:n
-        if contains(dirAll.name(i),extensions)
+        [~,~,ext] = fileparts(dirAll.name(i));
+        if contains(ext,extensions)
             tempFileName = [dirAll.folder{i},'/',dirAll.name{i}];
 
             switch corpus
@@ -145,6 +147,10 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         lang = 'engBritish';
                     case 'TAT-Vol2'
                         lang = 'taiwanese';
+                    case 'TTS_Javanese'
+                        lang = 'javanese';
+                    case 'thchs30'
+                        lang = 'mandarin';
                     case 'EUROM'
                         ind_lang = find(contains(nationality, dirAll.name{i}(end-1)));% use the matched position to indicate the language
                         lang = langs{ind_lang};
