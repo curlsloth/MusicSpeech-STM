@@ -59,19 +59,19 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
     curfiles.type = type; % type of the current corpus ('speech' or 'music'), should be the same for all audio files in one corpus
     curfiles.curcorpus = corpus; % corpus name, should be the same for all audio files in one corpus
 %% set paths and parameters
-    savepath = [pwd '/results/MATs/' type '_mat_wl' wl '_' corpus]; % save all the created MAT files
+    savepath = ['results/MATs/' type '_mat_wl' wl '_' corpus]; % save all the created MAT files
     if ~isfolder(savepath)
         mkdir(savepath);
     end
     curfiles.savepath = savepath;
     
-    paramspath = [pwd '/results/Survey/' type '_params_' corpus]; % save path for survey result
+    paramspath = ['results/Survey/' type '_params_' corpus]; % save path for survey result
     if ~isfolder(paramspath)
         mkdir(paramspath);
     end
     curfiles.paramspath = paramspath;
 
-    tempP = genpath([pwd,'/data/' type 'Corp/' corpus]);
+    tempP = genpath(['data/' type 'Corp/' corpus]);
     tempPP = strsplit(tempP,':');
     
     % find out all the audio files in all subfolders
@@ -83,6 +83,10 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 
     % survey all files 
     n = height(dirAll);
+
+    for i = 1:n
+        dirAll.folder{i} = erase(dirAll.folder{i},[pwd,'/']); % make it as relative path
+    end
 
     % filter the list of files based on extensions
     switch corpus
@@ -154,6 +158,26 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                     case 'EUROM'
                         ind_lang = find(contains(nationality, dirAll.name{i}(end-1)));% use the matched position to indicate the language
                         lang = langs{ind_lang};
+                    case 'BibleTTS/akuapem-twi'
+                        lang = 'akuapem';
+                    case 'BibleTTS/asante-twi'
+                        lang = 'asante';
+                    case 'BibleTTS/ewe'
+                        lang = 'ewe';
+                    case 'BibleTTS/hausa'
+                        lang = 'hausa';
+                    case 'BibleTTS/lingala'
+                        lang = 'lingala';
+                    case 'BibleTTS/yoruba'
+                        lang = 'yoruba';
+                    case 'MediaSpeech/AR'
+                        lang = 'arabic';
+                    case 'MediaSpeech/ES'
+                        lang = 'spanish';
+                    case 'MediaSpeech/FR'
+                        lang = 'franch';
+                    case 'MediaSpeech/TR'
+                        lang = 'turkish';
                 end
 
                 switch corpus
