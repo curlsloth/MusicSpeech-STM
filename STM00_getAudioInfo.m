@@ -1,7 +1,12 @@
 % list corpra
 
 speechCorpus = {
-    'BibleTTS';
+    'BibleTTS/akuapem-twi';
+    'BibleTTS/asante-twi'
+    'BibleTTS/ewe'
+    'BibleTTS/hausa'
+    'BibleTTS/lingala'
+    'BibleTTS/yoruba'
     'Buckeye';
     'EUROM';
     'LibriSpeech';
