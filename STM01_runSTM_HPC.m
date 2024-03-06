@@ -5,7 +5,7 @@ function [] = STM01_runSTM_HPC(curfiles_path, thisCorpus, fileID)
     addpath(genpath('code/'));% dir for customized script
     load(curfiles_path,'curfiles');
     [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
-    disp('Success STM!')
+    disp('Successful STM!')
     toc
 
 end
