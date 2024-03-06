@@ -59,9 +59,6 @@ for n = 1:height(total_table)
     % generate sbatch script
     sbatch_name = ['slurm_STM01_',strrep(total_table.name{n},'/','-'),'.s'];
     slurm_output_path = ['HPC_slurm/',strrep(total_table.name{n},'/','-')];
-    if ~isfolder(slurm_output_path)
-        mkdir(slurm_output_path);
-    end
 
     array_size = num2str(floor((length(curfiles.filename)-1)/100));
     if array_size > 2000
@@ -73,7 +70,7 @@ for n = 1:height(total_table)
     sbatch_lines(end+1) = ['#SBATCH --job-name=',strrep(total_table.name{n},'/','-')];
     sbatch_lines(end+1) = "#SBATCH --nodes=1";
     sbatch_lines(end+1) = "#SBATCH --cpus-per-task=4";
-    sbatch_lines(end+1) = "#SBATCH --mem=4GB";
+    sbatch_lines(end+1) = "#SBATCH --mem=8GB";
     sbatch_lines(end+1) = "#SBATCH --time=00:30:00";
     sbatch_lines(end+1) = ['#SBATCH --output=',slurm_output_path,'/slurm_%A_%a.out'];
     sbatch_lines(end+1) = "#SBATCH --mail-user=ac8888@nyu.edu";

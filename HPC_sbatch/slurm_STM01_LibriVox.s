@@ -3,7 +3,7 @@
 #SBATCH --job-name=LibriVox
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=4GB
+#SBATCH --mem=8GB
 #SBATCH --time=00:30:00
 #SBATCH --output=HPC_slurm/LibriVox/slurm_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
