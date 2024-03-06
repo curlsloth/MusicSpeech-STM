@@ -226,6 +226,6 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
         end
     end
     tEnd = toc(tStart); % total time
-    sprintf('Total loop time: %.3f sec',tEnd)
+    disp(['Total loop time: ', num2str(tEnd, '%.3f'), ' sec']);
 
 end
