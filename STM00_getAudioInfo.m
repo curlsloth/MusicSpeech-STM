@@ -43,9 +43,16 @@ addpath(genpath('code/'));% dir for customized script
 
 
 for n = 1:height(total_table)
-    [~, curfiles] = my_files(total_table.type{n}, total_table.name{n}); % corpus level info
+
     save_filename = ['STM_output/corpMetaData/',strrep(total_table.name{n},'/','-')]; % if there's a subfolder, replace / by -
-    save(save_filename,'curfiles')
+    
+    % only run the analyses if it hasn't been done
+    if ~isfile([save_filename,'.mat']) 
+        [~, curfiles] = my_files(total_table.type{n}, total_table.name{n}); % corpus level info
+        save(save_filename,'curfiles')
+    else
+        load(save_filename)
+    end
 
     % generate sbatch script
     sbatch_name = ['slurm_STM01_',strrep(total_table.name{n},'/','-'),'.s'];
