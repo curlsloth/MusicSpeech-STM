@@ -60,11 +60,13 @@ for n = 1:height(total_table)
     sbatch_name = ['slurm_STM01_',strrep(total_table.name{n},'/','-'),'.s'];
     slurm_output_path = ['HPC_slurm/',strrep(total_table.name{n},'/','-')];
 
-    % remove the slurm output folder to make it clean
-    if isfolder(slurm_output_path)
-        rmdir(slurm_output_path);
+    
+    if isfolder(slurm_output_path) 
+        delete([slurm_output_path,'/*']); % remove the slurm output folder to make it clean
+    else
+        mkdir(slurm_output_path); % recreate a slurm output folder to make it clean
     end
-    mkdir(slurm_output_path); % recreate a slurm output folder to make it clean
+    
 
     array_size = num2str(floor((length(curfiles.filename)-1)/100));
     if array_size > 2000
