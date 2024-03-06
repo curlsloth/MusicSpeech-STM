@@ -59,13 +59,13 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
     curfiles.type = type; % type of the current corpus ('speech' or 'music'), should be the same for all audio files in one corpus
     curfiles.curcorpus = corpus; % corpus name, should be the same for all audio files in one corpus
 %% set paths and parameters
-    savepath = ['results/MATs/' type '_mat_wl' wl '_' corpus]; % save all the created MAT files
+    savepath = ['STM_output/MATs/' type '_mat_wl' wl '_' corpus]; % save all the created MAT files
     if ~isfolder(savepath)
         mkdir(savepath);
     end
     curfiles.savepath = savepath;
     
-    paramspath = ['results/Survey/' type '_params_' corpus]; % save path for survey result
+    paramspath = ['STM_output/Survey/' type '_params_' corpus]; % save path for survey result
     if ~isfolder(paramspath)
         mkdir(paramspath);
     end
