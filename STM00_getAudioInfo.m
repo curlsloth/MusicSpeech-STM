@@ -1,19 +1,27 @@
 % list corpra
 
-speechCorpus = {'MediaSpeech/TR';
-    'TAT-Vol2';
-    'LibriVox';
-    'LibriSpeech';
-    'TIMIT';
+speechCorpus = {
+    'BibleTTS';
+    'Buckeye';
     'EUROM';
+    'LibriSpeech';
+    'LibriVox';
+    'MediaSpeech/AR';
+    'MediaSpeech/ES';
+    'MediaSpeech/FR';
+    'MediaSpeech/TR';
     'SpeechClarity';
     'TAT-Vol2';
-    'Buckeye';
-    'TTS_Javanese'};
+    'thchs30';
+    'TIMIT';
+    'TTS_Javanese';
+    };
 
-musicCorpus = {'GarlandEncyclopedia';
+musicCorpus = {
     'Albouy2020Science';
-    'CD'};
+    'CD';
+    'GarlandEncyclopedia';
+    };
 
 % make table
 speech_table = table(speechCorpus,'VariableNames',"name");
