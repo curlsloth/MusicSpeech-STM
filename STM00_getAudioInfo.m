@@ -81,7 +81,7 @@ for n = 1:height(total_table)
     sbatch_lines(end+1) = "module load libsndfile/intel/1.0.31";
     sbatch_lines(end+1) = "";
     sbatch_lines(end+1) = "# MATLAB command with input arguments";
-    sbatch_lines(end+1) = ['matlab -nodisplay -r "slurm_reset(''',slurm_output_path,'''); STM01_runSTM_HPC(''',save_filename,'.mat'',''', total_table.name{n},''', $SLURM_ARRAY_TASK_ID); exit;"'];
+    sbatch_lines(end+1) = ['matlab -nodisplay -r "STM01_runSTM_HPC(''',save_filename,'.mat'',''', total_table.name{n},''', $SLURM_ARRAY_TASK_ID); exit;"'];
     sbatch_lines(end+1) = ['# Run this: sbatch --array=0-',num2str(floor((length(curfiles.filename)-1)/100)),' HPC_sbatch/',sbatch_name];
     writelines(sbatch_lines',['HPC_sbatch/',sbatch_name])
 end
