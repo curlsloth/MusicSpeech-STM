@@ -17,11 +17,14 @@ speechCorpus = {
     'MediaSpeech/ES';
     'MediaSpeech/FR';
     'MediaSpeech/TR';
+    'primewords_chinese';
+    'room_reader';
     'SpeechClarity';
     'TAT-Vol2';
     'thchs30';
     'TIMIT';
     'TTS_Javanese';
+    'zeroth_korean';
     };
 
 musicCorpus = {
@@ -77,7 +80,7 @@ for n = 1:height(total_table)
     sbatch_lines(end+1) = "#SBATCH --mail-type=END";
     sbatch_lines(end+1) = "";
     sbatch_lines(end+1) = "module purge";
-    sbatch_lines(end+1) = "module load matlab/2022b";
+    sbatch_lines(end+1) = "module load matlab/2023b";
     sbatch_lines(end+1) = "module load libsndfile/intel/1.0.31";
     sbatch_lines(end+1) = "";
     sbatch_lines(end+1) = "# MATLAB command with input arguments";

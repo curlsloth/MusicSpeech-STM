@@ -11,6 +11,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 % TAT-Vol2
 % Buckeye
 % TTS_Javanese
+% primewords_chinese
 % *** music ***
 % IRMAS
 % GarlandEncyclopedia
@@ -139,25 +140,6 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 
                 % Modify here to cope with more corpora
                 switch corpus
-                    case 'TIMIT'
-                        lang = 'eng';
-                    case 'LibriVox'
-                        lang = dirAll.folder{i}(end-2:end);% get the language
-                    case 'LibriSpeech'
-                        lang = 'eng';
-                    case 'Buckeye'
-                        lang = 'eng';
-                    case 'SpeechClarity'
-                        lang = 'engBritish';
-                    case 'TAT-Vol2'
-                        lang = 'taiwanese';
-                    case 'TTS_Javanese'
-                        lang = 'javanese';
-                    case 'thchs30'
-                        lang = 'mandarin';
-                    case 'EUROM'
-                        ind_lang = find(contains(nationality, dirAll.name{i}(end-1)));% use the matched position to indicate the language
-                        lang = langs{ind_lang};
                     case 'BibleTTS/akuapem-twi'
                         lang = 'akuapem';
                     case 'BibleTTS/asante-twi'
@@ -170,6 +152,15 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         lang = 'lingala';
                     case 'BibleTTS/yoruba'
                         lang = 'yoruba';
+                    case 'Buckeye'
+                        lang = 'eng-US';
+                    case 'EUROM'
+                        ind_lang = find(contains(nationality, dirAll.name{i}(end-1)));% use the matched position to indicate the language
+                        lang = langs{ind_lang};
+                    case 'LibriSpeech'
+                        lang = 'eng-US';
+                    case 'LibriVox'
+                        lang = dirAll.folder{i}(end-2:end);% get the language
                     case 'MediaSpeech/AR'
                         lang = 'arabic';
                     case 'MediaSpeech/ES'
@@ -178,6 +169,22 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         lang = 'franch';
                     case 'MediaSpeech/TR'
                         lang = 'turkish';
+                    case 'primewords_chinese'
+                        lang = 'mandarin';
+                    case 'room_reader'
+                        lang = 'eng-mixed';
+                    case 'SpeechClarity'
+                        lang = 'eng-UK';
+                    case 'TAT-Vol2'
+                        lang = 'taiwanese';
+                    case 'thchs30'
+                        lang = 'mandarin';
+                    case 'TIMIT'
+                        lang = 'eng-US';
+                    case 'TTS_Javanese'
+                        lang = 'javanese';
+                    case 'zeroth_korean'
+                        lang = 'korean';
                 end
 
                 switch corpus
