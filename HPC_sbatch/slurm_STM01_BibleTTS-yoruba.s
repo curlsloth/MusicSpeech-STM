@@ -14,5 +14,5 @@ module load matlab/2022b
 module load libsndfile/intel/1.0.31
 
 # MATLAB command with input arguments
-matlab -nodisplay -r "STM01_runSTM_HPC('STM_output/corpMetaData/BibleTTS-yoruba.mat','BibleTTS/yoruba', $SLURM_ARRAY_TASK_ID); exit;"
+matlab -nodisplay -r "slurm_reset('HPC_slurm/BibleTTS-yoruba'); STM01_runSTM_HPC('STM_output/corpMetaData/BibleTTS-yoruba.mat','BibleTTS/yoruba', $SLURM_ARRAY_TASK_ID); exit;"
 # Run this: sbatch --array=0-75 HPC_sbatch/slurm_STM01_BibleTTS-yoruba.s
