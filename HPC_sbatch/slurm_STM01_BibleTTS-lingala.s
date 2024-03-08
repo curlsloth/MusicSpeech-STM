@@ -10,7 +10,7 @@
 #SBATCH --mail-type=END
 
 module purge
-module load matlab/2022b
+module load matlab/2023b
 module load libsndfile/intel/1.0.31
 
 # MATLAB command with input arguments
