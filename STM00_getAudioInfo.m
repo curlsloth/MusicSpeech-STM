@@ -17,6 +17,80 @@ speechCorpus = {
     'MediaSpeech/ES';
     'MediaSpeech/FR';
     'MediaSpeech/TR';
+    'MozillaCommonVoice/ab';
+    'MozillaCommonVoice/ar';
+    'MozillaCommonVoice/ba';
+    'MozillaCommonVoice/be';
+    'MozillaCommonVoice/bg';
+    'MozillaCommonVoice/bn';
+    'MozillaCommonVoice/br';
+    'MozillaCommonVoice/ca';
+    'MozillaCommonVoice/ckb';
+    'MozillaCommonVoice/cnh';
+    'MozillaCommonVoice/cs';
+    'MozillaCommonVoice/cv';
+    'MozillaCommonVoice/cy';
+    'MozillaCommonVoice/da';
+    'MozillaCommonVoice/de';
+    'MozillaCommonVoice/dv';
+    'MozillaCommonVoice/el';
+    'MozillaCommonVoice/en';
+    'MozillaCommonVoice/eo';
+    'MozillaCommonVoice/es';
+    'MozillaCommonVoice/et';
+    'MozillaCommonVoice/eu';
+    'MozillaCommonVoice/fa';
+    'MozillaCommonVoice/fi';
+    'MozillaCommonVoice/fr';
+    'MozillaCommonVoice/fy-NL';
+    'MozillaCommonVoice/ga-IE';
+    'MozillaCommonVoice/gl';
+    'MozillaCommonVoice/gn';
+    'MozillaCommonVoice/hi';
+    'MozillaCommonVoice/hu';
+    'MozillaCommonVoice/hy-AM';
+    'MozillaCommonVoice/id';
+    'MozillaCommonVoice/ig';
+    'MozillaCommonVoice/it';
+    'MozillaCommonVoice/ja';
+    'MozillaCommonVoice/ka';
+    'MozillaCommonVoice/kab';
+    'MozillaCommonVoice/kk';
+    'MozillaCommonVoice/kmr';
+    'MozillaCommonVoice/ky';
+    'MozillaCommonVoice/lg';
+    'MozillaCommonVoice/lt';
+    'MozillaCommonVoice/ltg';
+    'MozillaCommonVoice/lv';
+    'MozillaCommonVoice/mhr';
+    'MozillaCommonVoice/ml';
+    'MozillaCommonVoice/mn';
+    'MozillaCommonVoice/mt';
+    'MozillaCommonVoice/nan-tw';
+    'MozillaCommonVoice/nl';
+    'MozillaCommonVoice/oc';
+    'MozillaCommonVoice/or';
+    'MozillaCommonVoice/pl';
+    'MozillaCommonVoice/pt';
+    'MozillaCommonVoice/ro';
+    'MozillaCommonVoice/ru';
+    'MozillaCommonVoice/rw';
+    'MozillaCommonVoice/sr';
+    'MozillaCommonVoice/sv-SE';
+    'MozillaCommonVoice/sw';
+    'MozillaCommonVoice/ta';
+    'MozillaCommonVoice/th';
+    'MozillaCommonVoice/tr';
+    'MozillaCommonVoice/tt';
+    'MozillaCommonVoice/ug';
+    'MozillaCommonVoice/uk';
+    'MozillaCommonVoice/ur';
+    'MozillaCommonVoice/uz';
+    'MozillaCommonVoice/vi';
+    'MozillaCommonVoice/yo';
+    'MozillaCommonVoice/yue';
+    'MozillaCommonVoice/zh-CN';
+    'MozillaCommonVoice/zh-TW';
     'primewords_chinese';
     'room_reader';
     'SpeechClarity';
@@ -64,7 +138,7 @@ for n = 1:height(total_table)
     slurm_output_path = ['HPC_slurm/',strrep(total_table.name{n},'/','-')];
 
     if ~isfolder(slurm_output_path) 
-        mkdir(slurm_output_path); % recreate a slurm output folder to make it clean
+        mkdir(slurm_output_path); % create a slurm output folder to make it clean
         disp(['make folder: ', slurm_output_path])
     end
 

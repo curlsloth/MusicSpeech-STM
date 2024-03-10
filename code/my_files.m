@@ -141,50 +141,202 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                 % Modify here to cope with more corpora
                 switch corpus
                     case 'BibleTTS/akuapem-twi'
-                        lang = 'akuapem';
+                        lang = 'Akuapem';
                     case 'BibleTTS/asante-twi'
-                        lang = 'asante';
+                        lang = 'Asante';
                     case 'BibleTTS/ewe'
-                        lang = 'ewe';
+                        lang = 'Ewe';
                     case 'BibleTTS/hausa'
-                        lang = 'hausa';
+                        lang = 'Hausa';
                     case 'BibleTTS/lingala'
-                        lang = 'lingala';
+                        lang = 'Lingala';
                     case 'BibleTTS/yoruba'
-                        lang = 'yoruba';
+                        lang = 'Yoruba';
                     case 'Buckeye'
-                        lang = 'eng-US';
+                        lang = 'English-US';
                     case 'EUROM'
                         ind_lang = find(contains(nationality, dirAll.name{i}(end-1)));% use the matched position to indicate the language
                         lang = langs{ind_lang};
                     case 'LibriSpeech'
-                        lang = 'eng-US';
+                        lang = 'English-US';
                     case 'LibriVox'
                         lang = dirAll.folder{i}(end-2:end);% get the language
                     case 'MediaSpeech/AR'
-                        lang = 'arabic';
+                        lang = 'Arabic';
                     case 'MediaSpeech/ES'
-                        lang = 'spanish';
+                        lang = 'Spanish';
                     case 'MediaSpeech/FR'
-                        lang = 'franch';
+                        lang = 'French';
                     case 'MediaSpeech/TR'
-                        lang = 'turkish';
+                        lang = 'Turkish';
+                    case 'MozillaCommonVoice/ab'
+                        lang = 'Abkhaz';
+                    case 'MozillaCommonVoice/ar'
+                        lang = 'Arabic';
+                    case 'MozillaCommonVoice/ba'
+                        lang = 'Bashkir';
+                    case 'MozillaCommonVoice/be'
+                        lang = 'Belarusian';
+                    case 'MozillaCommonVoice/bg'
+                        lang = 'Bulgarian';
+                    case 'MozillaCommonVoice/bn'
+                        lang = 'Bengali';
+                    case 'MozillaCommonVoice/br'
+                        lang = 'Breton';
+                    case 'MozillaCommonVoice/ca'
+                        lang = 'Catalan';
+                    case 'MozillaCommonVoice/ckb'
+                        lang = 'Central Kurdish';
+                    case 'MozillaCommonVoice/cnh'
+                        lang = 'Hakha Chin';
+                    case 'MozillaCommonVoice/cs'
+                        lang = 'Czech';
+                    case 'MozillaCommonVoice/cv'
+                        lang = 'Chuvash';
+                    case 'MozillaCommonVoice/cy'
+                        lang = 'Welsh';
+                    case 'MozillaCommonVoice/da'
+                        lang = 'Danish';
+                    case 'MozillaCommonVoice/de'
+                        lang = 'German';
+                    case 'MozillaCommonVoice/dv'
+                        lang = 'Dhivehi';
+                    case 'MozillaCommonVoice/el'
+                        lang = 'Greek';
+                    case 'MozillaCommonVoice/en'
+                        lang = 'English-mixed';
+                    case 'MozillaCommonVoice/eo'
+                        lang = 'Esperanto';
+                    case 'MozillaCommonVoice/es'
+                        lang = 'Spanish';
+                    case 'MozillaCommonVoice/et'
+                        lang = 'Estonian';
+                    case 'MozillaCommonVoice/eu'
+                        lang = 'Basque';
+                    case 'MozillaCommonVoice/fa'
+                        lang = 'Persian';
+                    case 'MozillaCommonVoice/fi'
+                        lang = 'Finnish';
+                    case 'MozillaCommonVoice/fr'
+                        lang = 'French';
+                    case 'MozillaCommonVoice/fy-NL'
+                        lang = 'Frisian';
+                    case 'MozillaCommonVoice/ga-IE'
+                        lang = 'Irish';
+                    case 'MozillaCommonVoice/gl'
+                        lang = 'Galician';
+                    case 'MozillaCommonVoice/gn'
+                        lang = 'Guarani';
+                    case 'MozillaCommonVoice/hi'
+                        lang = 'Hindi';
+                    case 'MozillaCommonVoice/hu'
+                        lang = 'Hungarian';
+                    case 'MozillaCommonVoice/hy-AM'
+                        lang = 'Armenian';
+                    case 'MozillaCommonVoice/id'
+                        lang = 'Indonesian';
+                    case 'MozillaCommonVoice/ig'
+                        lang = 'Igbo';
+                    case 'MozillaCommonVoice/it'
+                        lang = 'Italian';
+                    case 'MozillaCommonVoice/ja'
+                        lang = 'Japanese';
+                    case 'MozillaCommonVoice/ka'
+                        lang = 'Georgian';
+                    case 'MozillaCommonVoice/kab'
+                        lang = 'Kabyle';
+                    case 'MozillaCommonVoice/kk'
+                        lang = 'Kazakh';
+                    case 'MozillaCommonVoice/kmr'
+                        lang = 'Kurmanji Kurdish';
+                    case 'MozillaCommonVoice/ky'
+                        lang = 'Kyrgyz';
+                    case 'MozillaCommonVoice/lg'
+                        lang = 'Luganda';
+                    case 'MozillaCommonVoice/lt'
+                        lang = 'Lithuanian';
+                    case 'MozillaCommonVoice/ltg'
+                        lang = 'Latgalian';
+                    case 'MozillaCommonVoice/lv'
+                        lang = 'Latvian';
+                    case 'MozillaCommonVoice/mhr'
+                        lang = 'Meadow Mari';
+                    case 'MozillaCommonVoice/ml'
+                        lang = 'Malayalam';
+                    case 'MozillaCommonVoice/mn'
+                        lang = 'Mongolian';
+                    case 'MozillaCommonVoice/mt'
+                        lang = 'Maltese';
+                    case 'MozillaCommonVoice/nan-tw'
+                        lang = 'Taiwanese';
+                    case 'MozillaCommonVoice/nl'
+                        lang = 'Dutch';
+                    case 'MozillaCommonVoice/oc'
+                        lang = 'Occitan';
+                    case 'MozillaCommonVoice/or'
+                        lang = 'Odia';
+                    case 'MozillaCommonVoice/pl'
+                        lang = 'Polish';
+                    case 'MozillaCommonVoice/pt'
+                        lang = 'Portuguese';
+                    case 'MozillaCommonVoice/ro'
+                        lang = 'Romanian';
+                    case 'MozillaCommonVoice/ru'
+                        lang = 'Russian';
+                    case 'MozillaCommonVoice/rw'
+                        lang = 'Kinyarwanda';
+                    case 'MozillaCommonVoice/sr'
+                        lang = 'Serbian';
+                    case 'MozillaCommonVoice/sv-SE'
+                        lang = 'Swedish';
+                    case 'MozillaCommonVoice/sw'
+                        lang = 'Swahili';
+                    case 'MozillaCommonVoice/ta'
+                        lang = 'Tamil';
+                    case 'MozillaCommonVoice/th'
+                        lang = 'Thai';
+                    case 'MozillaCommonVoice/tr'
+                        lang = 'Turkish';
+                    case 'MozillaCommonVoice/tt'
+                        lang = 'Tatar';
+                    case 'MozillaCommonVoice/ug'
+                        lang = 'Uyghur';
+                    case 'MozillaCommonVoice/uk'
+                        lang = 'Ukrainian';
+                    case 'MozillaCommonVoice/ur'
+                        lang = 'Urdu';
+                    case 'MozillaCommonVoice/uz'
+                        lang = 'Uzbek';
+                    case 'MozillaCommonVoice/vi'
+                        lang = 'Vietnamese';
+                    case 'MozillaCommonVoice/yo'
+                        lang = 'Yoruba';
+                    case 'MozillaCommonVoice/yue'
+                        lang = 'Cantonese';
+                    case 'MozillaCommonVoice/zh-CN'
+                        lang = 'Mandarin-China';
+                    case 'MozillaCommonVoice/zh-TW'
+                        lang = 'Mandarin-Taiwan';
+                    % tok (Toki Pona) is not a natural language; 
+                    % zh-HK (Chinese, Hong Kong) can be a mixture of
+                    % Cantonese and Mandarin.
+                    % Both are not included in the analysis
                     case 'primewords_chinese'
-                        lang = 'mandarin';
+                        lang = 'Mandarin-China';
                     case 'room_reader'
-                        lang = 'eng-mixed';
+                        lang = 'English-mixed';
                     case 'SpeechClarity'
-                        lang = 'eng-UK';
+                        lang = 'English-UK';
                     case 'TAT-Vol2'
-                        lang = 'taiwanese';
+                        lang = 'Taiwanese';
                     case 'thchs30'
-                        lang = 'mandarin';
+                        lang = 'Mandarin-China';
                     case 'TIMIT'
-                        lang = 'eng-US';
+                        lang = 'English-US';
                     case 'TTS_Javanese'
-                        lang = 'javanese';
+                        lang = 'Javanese';
                     case 'zeroth_korean'
-                        lang = 'korean';
+                        lang = 'Korean';
                 end
 
                 switch corpus
