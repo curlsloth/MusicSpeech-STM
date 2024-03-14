@@ -160,8 +160,8 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
             Params.x_axis = x_axis;
             Params.y_axis = y_axis;
 
-            save(matSaveName, 'indMS'); % save the averaged MAT file of the MS results
-            save([paramspath '/' curFileName '_Params.mat'], 'Params');
+            save(matSaveName, 'indMS', '-v7'); % save the averaged MAT file of the MS results
+            save([paramspath '/' curFileName '_Params.mat'], 'Params', '-v7');
         end
     end
     tEnd = toc(tStart); % total time
