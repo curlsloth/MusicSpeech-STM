@@ -1,7 +1,7 @@
 function [] = STM01_runSTM_HPC(curfiles_path, thisCorpus, array_in)
 
     tic
-    % run with MATLAB R2022b on NYU HPC 
+    % run with MATLAB R2023b on NYU HPC 
     addpath(genpath('code/'));% dir for customized script
 
     load(curfiles_path,'curfiles');
@@ -13,3 +13,5 @@ function [] = STM01_runSTM_HPC(curfiles_path, thisCorpus, array_in)
     toc
 
 end
+
+% CD audio files cannot be run on HPC. Not sure why
