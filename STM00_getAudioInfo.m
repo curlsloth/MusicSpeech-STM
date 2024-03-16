@@ -105,6 +105,7 @@ musicCorpus = {
     'Albouy2020Science';
     'CD';
     'GarlandEncyclopedia';
+    'IRMAS'
     };
 
 % make table

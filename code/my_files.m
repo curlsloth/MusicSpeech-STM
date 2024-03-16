@@ -366,21 +366,29 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         curfiles.langOrinstru{end+1} = lang;
                         curfiles.VoiceOrNot{end+1} = true; % containing voice
                     case 'music'
-                        switch corpus
-                            case 'IRMAS'
-                                txtLabels = contains(dirAll.name, [dirAll.name{i}(1:end-4),'.txt']); % search for txt (labels) for the current recording
-                                if sum(txtLabels) == 1 % should exists and ONLY exists 1 txt for each recording
-                                    indLabels = find(txtLabels); % if true, get the index in the dirAll table
-                                    tempTxt = textread([dirAll.folder{indLabels},'/',dirAll.name{indLabels}],'%s'); % load and collect the labels
-                                else % if none or more than 1 txt exist
-                                    tempTxt = string('Error with IRMAS labels!! Check data!'); % record the potential error
-                                end
-                                curfiles.langOrinstru{end+1} = strjoin(tempTxt,',');  % the instruments involved
-                                curfiles.VoiceOrNot{end+1} = sum(contains(tempTxt,'voi')) > 0; % if the recording has human voice
-                            otherwise
-                                curfiles.langOrinstru{end+1} = 'nonIRMAS';
-                                curfiles.VoiceOrNot{end+1} = NaN; % need hand labeling for voice existence
-                        end
+                        % label the instruments and voice later in python
+                        curfiles.langOrinstru{end+1} = NaN;
+                        curfiles.VoiceOrNot{end+1} = NaN;
+                        
+                        % switch corpus
+                        %     case 'IRMAS'
+                        %         txtLabels = contains(dirAll.name, [dirAll.name{i}(1:end-4),'.txt']); % search for txt (labels) for the current recording
+                        %         if sum(txtLabels) == 1 % should exists and ONLY exists 1 txt for each recording
+                        %             indLabels = find(txtLabels); % if true, get the index in the dirAll table
+                        %             tempTxt = textread([dirAll.folder{indLabels},'/',dirAll.name{indLabels}],'%s'); % load and collect the labels
+                        %         elseif contains(dirAll.name{i}, '[')
+                        %             matches = regexp(dirAll.name{i}, '\[(.*?)\]', 'tokens');
+                        %             curfiles.langOrinstru{end+1} = matches{1}{1}; % the 1st bracket is the instrument
+                        %             curfiles.VoiceOrNot{end+1} = contains(dirAll.name{i}, 'voi');
+                        %         else % if none or more than 1 txt exist
+                        %             tempTxt = "Error with IRMAS labels!! Check data!"; % record the potential error
+                        %         end
+                        %         curfiles.langOrinstru{end+1} = strjoin(tempTxt,',');  % the instruments involved
+                        %         curfiles.VoiceOrNot{end+1} = sum(contains(tempTxt,'voi')) > 0; % if the recording has human voice
+                        %     otherwise
+                        %         curfiles.langOrinstru{end+1} = 'nonIRMAS';
+                        %         curfiles.VoiceOrNot{end+1} = NaN; % need hand labeling for voice existence
+                        % end
                 end             
 %             end
         end

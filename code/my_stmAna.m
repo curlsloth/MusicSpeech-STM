@@ -145,10 +145,10 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
                     Params.VoiOrNot = true; % containing voice
                 case 'music'
                     switch curcorpus
-                        case 'IRMAS'
-                            Params.VoiOrNot = sum(contains(curfiles.langOrinstru{fileID},'voi')) > 0; % if the recording has human voice
-                        otherwise
-                            Params.VoiOrNot = NaN; % need hand labeling for voice existence
+                        % case 'IRMAS'
+                        %     Params.VoiOrNot = sum(contains(curfiles.langOrinstru{fileID},'voi')) > 0; % if the recording has human voice
+                        % otherwise
+                        Params.VoiOrNot = NaN; % need hand labeling for voice existence
                     end
             end
             Params.startPoint = startPoint0;
