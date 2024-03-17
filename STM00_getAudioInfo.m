@@ -105,7 +105,8 @@ musicCorpus = {
     'Albouy2020Science';
     'CD';
     'GarlandEncyclopedia';
-    'IRMAS'
+    'IRMAS';
+    'ismir04_genre'
     };
 
 % make table

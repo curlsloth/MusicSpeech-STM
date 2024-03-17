@@ -17,6 +17,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
 % GarlandEncyclopedia
 % Albouy2020Science
 % CD
+% ismir04_genre
 % Type: 'speech' 'music'
 % 
 % This function looks into the corpus of a certain type
@@ -114,7 +115,7 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
         [~,~,ext] = fileparts(dirAll.name(i));
         if contains(ext,extensions)
             tempFileName = [dirAll.folder{i},'/',dirAll.name{i}];
-
+            % disp(tempFileName)
             switch corpus
                 case 'TIMIT' %TIMIT multiple audio files have the same name, so use the folderName_audioName
                     folder_pos = find(dirAll.folder{i}=='/', 1, 'last');
