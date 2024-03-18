@@ -106,7 +106,9 @@ musicCorpus = {
     'CD';
     'GarlandEncyclopedia';
     'IRMAS';
-    'ismir04_genre'
+    'ismir04_genre';
+    'MagnaTagATune';
+    'Homburg'
     };
 
 % make table
