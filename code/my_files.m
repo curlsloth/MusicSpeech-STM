@@ -351,11 +351,15 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         TotalLeng = length(signal)/fs; % get the total length of the raw signal (in sec)
                         TotalSamples = length(signal); % get the total length of the raw signal (in audio samples)
                     otherwise
-                        infoRaw = audioinfo(tempFileName); % get the basic info without loading the whole file
-                        fclose('all');
-                        fs = infoRaw.SampleRate; % get the original sampling rate
-                        TotalLeng = infoRaw.Duration; % get the total length of the raw signal (in sec)
-                        TotalSamples = infoRaw.TotalSamples; % get the total length of the raw signal (in audio samples)
+                        try
+                            infoRaw = audioinfo(tempFileName); % get the basic info without loading the whole file
+                            fclose('all');
+                            fs = infoRaw.SampleRate; % get the original sampling rate
+                            TotalLeng = infoRaw.Duration; % get the total length of the raw signal (in sec)
+                            TotalSamples = infoRaw.TotalSamples; % get the total length of the raw signal (in audio samples)
+                        catch
+                            disp(tempFileName)
+                        end
                 end
                 curfiles.TotalLeng{end+1} = TotalLeng;
                 curfiles.TotalSamples{end+1} = TotalSamples;

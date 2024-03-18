@@ -108,7 +108,9 @@ musicCorpus = {
     'IRMAS';
     'ismir04_genre';
     'MagnaTagATune';
-    'Homburg'
+    'Homburg';
+    'fma_large';
+    'MTG-Jamendo'
     };
 
 % make table
