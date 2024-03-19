@@ -118,7 +118,12 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
             end     
             
             % STM analysis (only excerpts having silence < 1s will have non-empty outputSTM)
-            outputSTM = stm_audio(sig_excpt, silenceThresh, fs);
+            try
+                outputSTM = stm_audio(sig_excpt, silenceThresh, fs);
+            catch
+                disp('error of stm_audio() in the while loop')
+            end
+
             if ~isempty(outputSTM)
                 MS_excpt = outputSTM.MS;
                 indMS(:,:,n_exps) = MS_excpt.orig_MS; % get all the MS info
