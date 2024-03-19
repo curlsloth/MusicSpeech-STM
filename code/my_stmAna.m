@@ -118,21 +118,18 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
             end     
             
             % STM analysis (only excerpts having silence < 1s will have non-empty outputSTM)
-            try
+            if max(size(sig_excpt))/fs == 4 % check whether the signal length is 4 seconds
                 outputSTM = stm_audio(sig_excpt, silenceThresh, fs);
-            catch
-                disp('error of stm_audio() in the while loop')
-            end
-
-            if ~isempty(outputSTM)
-                MS_excpt = outputSTM.MS;
-                indMS(:,:,n_exps) = MS_excpt.orig_MS; % get all the MS info
-                x_axis = MS_excpt.x_axis;
-                y_axis = MS_excpt.y_axis;
-                sil_L = outputSTM.sil_L;
-                sil_L_a = [sil_L_a, max(sil_L)/fs];% get all the lengths of silent gaps in the analyzed excepts
-                n_exps = n_exps + 1;
-                clear MS sig_excpt sil_L;
+                if ~isempty(outputSTM)
+                    MS_excpt = outputSTM.MS;
+                    indMS(:,:,n_exps) = MS_excpt.orig_MS; % get all the MS info
+                    x_axis = MS_excpt.x_axis;
+                    y_axis = MS_excpt.y_axis;
+                    sil_L = outputSTM.sil_L;
+                    sil_L_a = [sil_L_a, max(sil_L)/fs];% get all the lengths of silent gaps in the analyzed excepts
+                    n_exps = n_exps + 1;
+                    clear MS sig_excpt sil_L;
+                end
             end
             startPoint = startPoint + wlen*fs; % start point of the next excerpt, still using the original fs to do the separation
         end

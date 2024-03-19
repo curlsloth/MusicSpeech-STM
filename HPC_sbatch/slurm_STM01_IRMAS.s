@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=8GB
-#SBATCH --time=00:40:00
+#SBATCH --time=01:20:00
 #SBATCH --output=HPC_slurm/IRMAS/slurm_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
 #SBATCH --mail-type=END
