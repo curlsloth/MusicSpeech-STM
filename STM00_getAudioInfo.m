@@ -113,6 +113,10 @@ musicCorpus = {
     'MTG-Jamendo'
     };
 
+envCorpus = {
+    'SONYC'
+    };
+
 % make table
 speech_table = table(speechCorpus,'VariableNames',"name");
 speech_table.type = repmat({'speech'}, length(speechCorpus), 1);
@@ -120,7 +124,10 @@ speech_table.type = repmat({'speech'}, length(speechCorpus), 1);
 music_table = table(musicCorpus,'VariableNames',"name");
 music_table.type = repmat({'music'}, length(musicCorpus), 1);
 
-total_table = [speech_table;music_table];
+env_table = table(envCorpus,'VariableNames',"name");
+env_table.type = repmat({'env'}, length(envCorpus), 1);
+
+total_table = [speech_table;music_table;env_table];
 
 % run script in a loop
 
@@ -153,6 +160,8 @@ for n = 1:height(total_table)
             request_time = "#SBATCH --time=00:40:00";
         case 'music'
             request_time = "#SBATCH --time=01:20:00";
+        case 'env'
+            request_time = "#SBATCH --time=00:40:00";
     end
 
     array_size = num2str(floor((length(curfiles.filename)-1)/100));

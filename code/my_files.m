@@ -374,6 +374,9 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                         % label the instruments and voice later in python
                         curfiles.langOrinstru{end+1} = NaN;
                         curfiles.VoiceOrNot{end+1} = NaN;
+                    case 'env'
+                        curfiles.langOrinstru{end+1} = NaN;
+                        curfiles.VoiceOrNot{end+1} = NaN;
                         
                         % switch corpus
                         %     case 'IRMAS'
