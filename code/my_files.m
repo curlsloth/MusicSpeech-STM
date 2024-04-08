@@ -158,6 +158,8 @@ function [myfilelist, curfiles] = my_files(type, corpus, varargin)
                     case 'EUROM'
                         ind_lang = find(contains(nationality, dirAll.name{i}(end-1)));% use the matched position to indicate the language
                         lang = langs{ind_lang};
+                    case 'HiltonMoser2022_speech'
+                        lang = '??';
                     case 'LibriSpeech'
                         lang = 'English-US';
                     case 'LibriVox'

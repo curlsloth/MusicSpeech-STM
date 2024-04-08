@@ -11,6 +11,7 @@ speechCorpus = {
     'BibleTTS/yoruba'
     'Buckeye';
     'EUROM';
+    'HiltonMoser2022_speech';
     'LibriSpeech';
     'LibriVox';
     'MediaSpeech/AR';
@@ -105,12 +106,14 @@ musicCorpus = {
     'Albouy2020Science';
     'CD';
     'GarlandEncyclopedia';
+    'HiltonMoser2022_song';
     'IRMAS';
     'ismir04_genre';
     'MagnaTagATune';
     'Homburg';
     'fma_large';
-    'MTG-Jamendo'
+    'MTG-Jamendo';
+    'NHS2';
     };
 
 envCorpus = {
