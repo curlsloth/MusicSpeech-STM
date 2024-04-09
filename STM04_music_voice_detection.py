@@ -9,10 +9,10 @@ Install demucs: python3 -m pip install -U git+https://github.com/adefossez/demuc
 """
 
 import demucs.api
-import soundfile as sf
-import torchaudio
+# import soundfile as sf
+import torchaudio as ta
 import torch
-import scipy.io as sio
+# import scipy.io as sio
 import tensorflow as tf
 import scipy
 import numpy as np
@@ -20,10 +20,11 @@ import csv
 import pandas as pd
 import time
 import sys
+import os
 
 # import matplotlib.pyplot as plt
-from IPython.display import Audio
-from scipy.io import wavfile
+# from IPython.display import Audio
+# from scipy.io import wavfile
 
 
 
@@ -51,19 +52,19 @@ def ensure_sample_rate(original_sample_rate, waveform, desired_sample_rate=16000
     return desired_sample_rate, waveform
 
 def estimate_voice(df_meta, n_row):
-    # st = time.time()
+    st = time.time()
     path = 'yamnet/tensorFlow2/yamnet/1'
     model = tf.saved_model.load(path, tags=None, options=None)
     
-    class_map_path = model.class_map_path().numpy()
-    class_names = class_names_from_csv(class_map_path)
+    # class_map_path = model.class_map_path().numpy()
+    # class_names = class_names_from_csv(class_map_path)
     
     filename = df_meta['filepath'].iloc[n_row]
     frame_offset = df_meta['startPoint'].iloc[n_row]-1
     num_frame = df_meta['endPoint'].iloc[n_row]-frame_offset+1
-    y_tensor, sr = torchaudio.load(filename, frame_offset=frame_offset, num_frames=num_frame)
+    y_tensor, sr = ta.load(filename, frame_offset=frame_offset, num_frames=num_frame)
     if y_tensor.shape[0]==1: # if the audio is mono, duplicate the channel
-        y_tensor = torch.stack((y_tensor, y_tensor), dim=0)
+        y_tensor = torch.cat((y_tensor, y_tensor), dim=0) # don't use torch.stack
     separator = demucs.api.Separator()
     origin, separated = separator.separate_tensor(wav=y_tensor, sr=sr) # demucs.api.Separator() by default will make sure the sampling rate is at 44.1 kHz
     _, waveform = ensure_sample_rate(44100, np.array(separated['vocals'].mean(axis=0))) # convert to sr=16000
@@ -73,25 +74,44 @@ def estimate_voice(df_meta, n_row):
     voice = np.any((class_timeseries >= 0) & (class_timeseries <= 35)) # whether the label of any time-frame belongs to any voice labels
     # infered_class = class_names[scores_np.mean(axis=0).argmax()]
     # voice = infered_class in class_names[0:35] # whether 
-    # # get the execution time
-    # et = time.time()
-    # print('Execution time:', et - st, 'seconds')
-    return voice
+    # get the execution time
+    et = time.time()
+    print('Execution time:', et - st, 'seconds')
+    return voice, filename
 
 if __name__ == "__main__":
     # Check if the correct number of arguments are provided
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         print("Usage: python script.py arg1 arg2")
         sys.exit(1)
 
     # Extract command-line arguments
-    df_meta = sys.argv[1]
-    init_num = sys.argv[2]*100
+    path = sys.argv[1]
+    df_meta_filename = sys.argv[2]
+    init_num = int(sys.argv[3])*100
+    
+    df_meta = pd.read_csv(os.path.join(path,df_meta_filename), index_col=0)
 
     # Call your function or perform any desired operations
-    for n in range(init_num, init_num+100):
-        estimate_voice(df_meta, n)
-        
-        ## how to save the file? How to show the outcome?
-        
-    print("Result:", result)
+    for n_row in range(init_num, init_num+100):
+        savefile_path = os.path.join(path, 'vocal_music_demucs', df_meta_filename[:-4])
+        savefile_name = os.path.join(savefile_path, 'row'+str(n_row)+'.csv')
+        if not os.path.exists(savefile_path): # make a folder is there's no folder
+            os.makedirs(savefile_path)
+
+        if os.path.exists(savefile_name):
+            print("SKIPPING: "+savefile_name)
+        else:
+            try:
+                voice, filename = estimate_voice(df_meta, n_row)
+                # Write data to the CSV file
+                with open(savefile_name, mode='w', newline='') as file:
+                    writer = csv.writer(file)
+                    writer.writerow([filename, voice])
+                print(savefile_name)
+            except Exception as e:
+                # Print the error message
+                print("***** ERROR in n_row="+str(n_row)+ f": {e}")
+                
+    print("Demucs voice recognition done!")
+    sys.exit(0)
