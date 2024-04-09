@@ -5,7 +5,11 @@ Created on Mon Apr  8 23:35:14 2024
 
 @author: andrewchang
 
+This script uses demucs to separate the music audio, and then uses YAMNet to detect voice.
+
 Install demucs: python3 -m pip install -U git+https://github.com/adefossez/demucs#egg=demucs
+Run this: python STM04_music_voice_detection.py [path to meta file] [.csv meta file] [array_input]
+
 """
 
 import demucs.api
