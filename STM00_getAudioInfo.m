@@ -134,7 +134,7 @@ total_table = [speech_table;music_table;env_table];
 
 % run script in a loop
 
-addpath(genpath('code/'));% dir for customized script
+addpath(genpath('MATLAB_functions/'));% dir for customized script
 
 
 for n = 1:height(total_table)

@@ -2,7 +2,7 @@ function [] = STM01_runSTM_HPC(curfiles_path, thisCorpus, array_in)
 
     tic
     % run with MATLAB R2023b on NYU HPC 
-    addpath(genpath('code/'));% dir for customized script
+    addpath(genpath('MATLAB_functions/'));% dir for customized script
 
     load(curfiles_path,'curfiles');
     loop_end = min((array_in*100+100), length(curfiles.filename)); % 100 more files or till the end of files
