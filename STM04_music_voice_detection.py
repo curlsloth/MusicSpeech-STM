@@ -57,7 +57,7 @@ def ensure_sample_rate(original_sample_rate, waveform, desired_sample_rate=16000
 
 def estimate_voice(df_meta, n_row):
     st = time.time()
-    path = 'yamnet/tensorFlow2/yamnet/1'
+    path = 'yamnet/1'
     model = tf.saved_model.load(path, tags=None, options=None)
     
     # class_map_path = model.class_map_path().numpy()
