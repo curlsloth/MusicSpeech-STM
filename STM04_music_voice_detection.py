@@ -6,6 +6,7 @@ Created on Mon Apr  8 23:35:14 2024
 @author: andrewchang
 
 This script uses demucs to separate the music audio, and then uses YAMNet to detect voice.
+It process 100 rows of the meta data file, starting from 
 
 Install demucs: python3 -m pip install -U git+https://github.com/adefossez/demucs#egg=demucs
 Run this: python STM04_music_voice_detection.py [path to meta file] [.csv meta file] [array_input]
@@ -97,7 +98,7 @@ if __name__ == "__main__":
     df_meta = pd.read_csv(os.path.join(path,df_meta_filename), index_col=0)
 
     # Call your function or perform any desired operations
-    for n_row in range(init_num, init_num+100):
+    for n_row in range(init_num, min(init_num+100,len(df_meta))):
         savefile_path = os.path.join(path, 'vocal_music_demucs', df_meta_filename[:-4])
         savefile_name = os.path.join(savefile_path, 'row'+str(n_row)+'.csv')
         if not os.path.exists(savefile_path): # make a folder is there's no folder
