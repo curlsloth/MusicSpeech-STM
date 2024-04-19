@@ -10,6 +10,7 @@ import scipy.io
 import numpy as np
 import time
 import pandas as pd
+import glob
 
 
 def preproSTM(data, xmin, xmax, ymin, ymax):
@@ -18,10 +19,9 @@ def preproSTM(data, xmin, xmax, ymin, ymax):
     return np.float32((data_small_db - data_small_db.min()) / (data_small_db.max() - data_small_db.min()))
 
 
-def stack_STM(metaData):
+def stack_STM(df):
     stm_stacked_list = []
-    df = pd.read_csv(metaData,index_col=0)    
-    
+
     # hard-coded parameters. Use the code below to modify it
     # xrange = [-20, 20]
     # yrange = [0,7]
@@ -38,10 +38,22 @@ def stack_STM(metaData):
             print('indMS size wrong: '+str(data.shape)+mat_file)
     return np.vstack(stm_stacked_list)
 
+def categorize_file(path):
+    if 'data/musicCorp/' in path:
+        return 'music'
+    elif 'data/speechCorp/' in path:
+        return 'speech'
+    elif 'data/envCorp/' in path:
+        return 'env'
 
-t_start = time.time()
-stm_stacked = stack_STM('metaTables/metaData_BibleTTS-hausa.csv')
-print('time elapsed: '+str(time.time()-t_start)+' seconds')
+metaData_name_list = glob.glob('metaTables/*.csv')
+for metaData_name in metaData_name_list:
+    t_start = time.time()
+    print(metaData_name)
+    df = pd.read_csv(metaData_name,index_col=0)   
+    df['corpus_type'] = df['filepath'].apply(categorize_file)
+    stm_stacked = stack_STM(df)
+    print('time elapsed: '+str(time.time()-t_start)+' seconds')
 
 # %% plot 2D STM
 # import matplotlib.pyplot as plt
