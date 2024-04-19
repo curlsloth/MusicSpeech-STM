@@ -34,6 +34,7 @@ def make_meta_file(corpus, corpus_type):
         df = df.applymap(lambda x: x[0] if isinstance(x, (list, np.ndarray)) else x)
         df = df.applymap(lambda x: x[0] if isinstance(x, (list, np.ndarray)) else x)
         df['corpus'] = corpus
+        df['corpus_type'] = corpus_type
         df['mat_filename'] = params_file.replace('/Survey/','/MATs/').replace('_params_','_mat_wl4_').replace('_Params.mat', '_MS2024.mat')
         df_list.append(df)
     
