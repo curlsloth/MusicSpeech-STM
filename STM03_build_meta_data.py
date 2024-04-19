@@ -129,6 +129,16 @@ def make_meta_file(corpus, corpus_type):
         split_names = df_all['filepath'].str.split('/') # Split the 'name' column by "-"
         df_all['speaker/artist'] = 'TIMIT_'+split_names.str[-2] # Extract the first part of the split result
         df_all['gender'] = df_all['speaker/artist'].str[6]
+        def transform_paths(row):
+            mat_path = row['mat_filename']
+            file_path = row['filepath']
+            # Extract relevant parts from the paths
+            speaker_id = file_path.split('/')[-2]
+            file_name = mat_path.split('/')[-1]
+            # Construct the new mat path
+            new_mat_path = f"STM_output/MATs/speech_mat_wl4_TIMIT/{speaker_id}_{file_name}"
+            return new_mat_path
+        df_all['mat_filename'] = df_all.apply(transform_paths, axis=1)
     elif 'TTS_Javanese' in corpus:
         df_all['speaker/artist'] = df_all['filename'].str[:9] 
         df_all['gender'] = df_all['filename'].str[2]
