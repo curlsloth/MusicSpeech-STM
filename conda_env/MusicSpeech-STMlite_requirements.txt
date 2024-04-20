@@ -1,9 +1,8 @@
-keras>=3
+python<12
 pandas
 jupyter
 spyder
 scipy
-python
 numpy
 h5py
 gstreamer
@@ -14,3 +13,7 @@ scikit-learn
 seaborn
 bayesian-optimization
 time
+tensorflow
+pytorch
+shap
+librosa
