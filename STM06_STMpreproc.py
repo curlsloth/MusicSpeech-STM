@@ -11,7 +11,7 @@ import numpy as np
 import time
 import pandas as pd
 import glob
-
+import random
 
 def preproSTM(data, xmin, xmax, ymin, ymax):
     # select the middle range, dB transformation, normalize to [0,1], make it as float 32
@@ -31,29 +31,73 @@ def stack_STM(df):
     ymax=112
 
     for mat_file in df['mat_filename']:
-        data = scipy.io.loadmat(mat_file)['indMS']
-        if data.shape == (150, 500):
-            stm_stacked_list.append(preproSTM(data, xmin, xmax, ymin, ymax).flatten())
-        else:
-            print('indMS size wrong: '+str(data.shape)+mat_file)
+        try:
+            data = scipy.io.loadmat(mat_file)['indMS']
+            if data.shape == (150, 500):
+                stm_stacked_list.append(preproSTM(data, xmin, xmax, ymin, ymax).flatten())
+            else:
+                print('indMS size wrong: '+str(data.shape)+mat_file)
+        except Exception as e:
+            print("An error occurred:", e)
+                
     return np.vstack(stm_stacked_list)
 
-def categorize_file(path):
-    if 'data/musicCorp/' in path:
-        return 'music'
-    elif 'data/speechCorp/' in path:
-        return 'speech'
-    elif 'data/envCorp/' in path:
-        return 'env'
+# %% generate augmented dataset of the environmental sound
 
+
+def generate_aug_envSTM(stm_stacked, n_aug, n_sample_max):
+    """
+    Parameters
+    ----------
+    n_aug : int
+        number of augmented data
+    n_sample_max : int
+        the number of random sampled env STM data, between [2, n_sample_max]
+    """
+    
+    stm_new_list = []
+    for n_seed in range(n_aug):
+        # Set the seed for reproducibility
+        random.seed(n_seed)
+        
+        # Generate a random number between 2 and n_sample_max, which is the number of samples in this iteration
+        n_sample = random.randint(2,n_sample_max)
+            
+        # Generate random numbers between 1 and 100
+        numbers = [random.randint(0,len(stm_stacked)-1) for _ in range(n_sample)]
+        
+        # Generate random positive weights that sum up to 1
+        weights = [random.random() for _ in range(n_sample)]
+        weights = [weight / sum(weights) for weight in weights]
+        
+        for n in range(n_sample):
+            if n == 0:
+                stm_new = stm_stacked[numbers[n]]*weights[n]
+            else:
+                stm_new += stm_stacked[numbers[n]]*weights[n]
+        stm_new = (stm_new - stm_new.min()) / (stm_new.max() - stm_new.min()) # make sure it is between 0 and 1
+        stm_new_list.append(stm_new)
+        
+    return np.vstack(stm_new_list)
+
+df = pd.read_csv('/Users/andrewchang/NYU_research/MusicSpeech-STM/metaTables/metaData_SONYC.csv',index_col=0)   
+
+n_aug = 100000 # number of augmented incidence
+n_sample_max = 5 # the number of random sampled env STM data, between [2, n_sample_max]
+
+stm_stacked_aug = generate_aug_envSTM(stack_STM(df), n_aug, n_sample_max)
+np.save('STM_output/corpSTMnpy/SONYC_augmented_STMall.npy', stm_stacked_aug)
+
+# %% stack all the output
 metaData_name_list = glob.glob('metaTables/*.csv')
 for metaData_name in metaData_name_list:
     t_start = time.time()
     print(metaData_name)
     df = pd.read_csv(metaData_name,index_col=0)   
-    df['corpus_type'] = df['filepath'].apply(categorize_file)
-    stm_stacked = stack_STM(df)
+    corpus_name = metaData_name[20:-4]
+    np.save('STM_output/corpSTMnpy/'+corpus_name+'_STMall.npy', stack_STM(df))
     print('time elapsed: '+str(time.time()-t_start)+' seconds')
+    
 
 # %% plot 2D STM
 # import matplotlib.pyplot as plt
