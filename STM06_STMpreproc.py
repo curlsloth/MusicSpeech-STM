@@ -42,9 +42,6 @@ def stack_STM(df):
                 
     return np.vstack(stm_stacked_list)
 
-# %% generate augmented dataset of the environmental sound
-
-
 def generate_aug_envSTM(stm_stacked, n_aug, n_sample_max):
     """
     Parameters
@@ -79,6 +76,8 @@ def generate_aug_envSTM(stm_stacked, n_aug, n_sample_max):
         stm_new_list.append(stm_new)
         
     return np.vstack(stm_new_list)
+
+# %% generate augmented dataset of the environmental sound
 
 df = pd.read_csv('/Users/andrewchang/NYU_research/MusicSpeech-STM/metaTables/metaData_SONYC.csv',index_col=0)   
 
