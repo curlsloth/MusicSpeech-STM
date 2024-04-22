@@ -141,10 +141,10 @@ for corp in corpus_list_all:
     
 perplexity_list = [15, 50, 100, 200, 500, 1000]
 prep_index = sys.argv[1]
-if prep_index > len(perplexity_list)+1:
+if prep_index > len(perplexity_list):
     print("the array value cannot be greater than "+str(len(perplexity_list)+1))
     sys.exit(1)
-elif prep_index == len(perplexity_list)+1:
+elif prep_index == len(perplexity_list):
     pipeline = make_pipeline(StandardScaler(),IncrementalPCA())
     pipeline.fit(STM_all)
     dump(pipeline, 'model/allSTM_pca-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
