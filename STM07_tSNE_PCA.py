@@ -6,9 +6,10 @@ Created on Sun Apr 21 08:25:58 2024
 @author: andrewchang
 """
 import numpy as np
-from sklearn.manifold import TSNE
-from sklearn.decomposition import PCA
-from joblib import dump, load
+# from sklearn.manifold import TSNE
+from sklearn.decomposition import IncrementalPCA
+from sklearn.preprocessing import StandardScaler
+from joblib import dump
 import datetime
 
 corpus_speech_list = ['BibleTTS/akuapem-twi',
@@ -135,8 +136,12 @@ for corp in corpus_list_all:
         STM_all = np.vstack((STM_all, np.load(filename)))
     print(filename)
     
-tsne = TSNE(n_components=2, random_state=23, verbose=1, n_jobs=-1).fit(STM_all)
-dump(tsne, 'model/allSTM_tsne_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
-pca = PCA(random_state=23).fit(STM_all)
-dump(pca, 'model/allSTM_pca_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+# tsne = TSNE(n_components=2, random_state=23, verbose=1, n_jobs=-1).fit(STM_all)
+# dump(tsne, 'model/allSTM_tsne_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+
+scaler = StandardScaler()
+scaler.fit(STM_all)
+STM_all_pca = scaler.transform(STM_all)
+pca = IncrementalPCA(batch_size=1000).fit(STM_all_pca)
+dump(pca, 'model/allSTM_incremental-pca_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
 
