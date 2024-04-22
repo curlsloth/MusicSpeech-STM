@@ -151,7 +151,7 @@ for n = 1:height(total_table)
 
     % generate sbatch script
     sbatch_name = ['slurm_STM01_',strrep(total_table.name{n},'/','-'),'.s'];
-    slurm_output_path = ['HPC_slurm/',strrep(total_table.name{n},'/','-')];
+    slurm_output_path = ['HPC_slurm/STM01/',strrep(total_table.name{n},'/','-')];
 
     if ~isfolder(slurm_output_path) 
         mkdir(slurm_output_path); % create a slurm output folder to make it clean
@@ -189,6 +189,6 @@ for n = 1:height(total_table)
     sbatch_lines(end+1) = "";
     sbatch_lines(end+1) = "# MATLAB command with input arguments";
     sbatch_lines(end+1) = ['matlab -nodisplay -r "STM01_runSTM_HPC(''',save_filename,'.mat'',''', total_table.name{n},''', $SLURM_ARRAY_TASK_ID); exit;"'];
-    sbatch_lines(end+1) = ['# Run this: sbatch --array=0-',num2str(floor((length(curfiles.filename)-1)/100)),' HPC_sbatch/',sbatch_name];
-    writelines(sbatch_lines',['HPC_sbatch/',sbatch_name])
+    sbatch_lines(end+1) = ['# Run this: sbatch --array=0-',num2str(floor((length(curfiles.filename)-1)/100)),' HPC_sbatch/STM01/',sbatch_name];
+    writelines(sbatch_lines',['HPC_sbatch/STM01/',sbatch_name])
 end

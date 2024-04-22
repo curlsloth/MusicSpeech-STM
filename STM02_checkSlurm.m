@@ -1,4 +1,4 @@
-listing = dir('HPC_slurm/**/*.out');
+listing = dir('HPC_slurm/STM01/**/*.out');
 
 % Specify the date and time range
 start_date = datetime('2024-03-19 11:00:00');
