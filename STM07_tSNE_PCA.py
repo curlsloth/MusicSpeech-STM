@@ -139,22 +139,17 @@ for corp in corpus_list_all:
         STM_all = np.vstack((STM_all, np.load(filename)))
     print(filename)
     
-perplexity_list = [15, 50, 100, 200, 500, 1000]
-prep_index = sys.argv[1]
-if prep_index > len(perplexity_list):
-    print("the array value cannot be greater than "+str(len(perplexity_list)+1))
-    sys.exit(1)
-elif prep_index == len(perplexity_list):
+# %% run code
+perplexity = int(sys.argv[1])
+if perplexity == 0:
     pipeline = make_pipeline(StandardScaler(),IncrementalPCA())
     pipeline.fit(STM_all)
     dump(pipeline, 'model/allSTM_pca-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
 else:
-    perplexity = perplexity_list[prep_index]
     tsne = TSNE(n_components=2, 
                 random_state=23, 
                 perplexity=perplexity,
                 verbose=1, 
                 n_jobs=-1).fit(STM_all)
     dump(tsne, 'model/allSTM_tsne_preplexity'+str(perplexity)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
-
 
