@@ -5,11 +5,11 @@
 #SBATCH --cpus-per-task=20
 #SBATCH --mem=80GB
 #SBATCH --time=10:00:00
-#SBATCH --output=HPC_slurm/STM07/STM07_%A.out
+#SBATCH --output=HPC_slurm/STM07/STM07_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
 #SBATCH --mail-type=END
 
 module purge
 
-~/STM_singularity/run-MusicSpeech-STMhpc.bash python STM07_tSNE_PCA.py
-# Run this: sbatch HPC_sbatch/STM07/slurm_STM07.s
+~/STM_singularity/run-MusicSpeech-STMhpc.bash python STM07_tSNE_PCA.py $SLURM_ARRAY_TASK_ID
+# Run this: sbatch --array=0-7 HPC_sbatch/STM07/slurm_STM07.s

@@ -6,11 +6,14 @@ Created on Sun Apr 21 08:25:58 2024
 @author: andrewchang
 """
 import numpy as np
-# from sklearn.manifold import TSNE
+from sklearn.manifold import TSNE
 from sklearn.decomposition import IncrementalPCA
 from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
 from joblib import dump
 import datetime
+import sys
+
 
 corpus_speech_list = ['BibleTTS/akuapem-twi',
     'BibleTTS/asante-twi',
@@ -136,12 +139,22 @@ for corp in corpus_list_all:
         STM_all = np.vstack((STM_all, np.load(filename)))
     print(filename)
     
-# tsne = TSNE(n_components=2, random_state=23, verbose=1, n_jobs=-1).fit(STM_all)
-# dump(tsne, 'model/allSTM_tsne_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+perplexity_list = [15, 50, 100, 200, 500, 1000]
+prep_index = sys.argv[1]
+if prep_index > len(perplexity_list)+1:
+    print("the array value cannot be greater than "+str(len(perplexity_list)+1))
+    sys.exit(1)
+elif prep_index == len(perplexity_list)+1:
+    pipeline = make_pipeline(StandardScaler(),IncrementalPCA())
+    pipeline.fit(STM_all)
+    dump(pipeline, 'model/allSTM_pca-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+else:
+    perplexity = perplexity_list[prep_index]
+    tsne = TSNE(n_components=2, 
+                random_state=23, 
+                perplexity=perplexity,
+                verbose=1, 
+                n_jobs=-1).fit(STM_all)
+    dump(tsne, 'model/allSTM_tsne_preplexity'+str(perplexity)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
 
-scaler = StandardScaler()
-scaler.fit(STM_all)
-STM_all_pca = scaler.transform(STM_all)
-pca = IncrementalPCA(batch_size=1000).fit(STM_all_pca)
-dump(pca, 'model/allSTM_incremental-pca_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
 
