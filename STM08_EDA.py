@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sun Apr 21 08:25:58 2024
+Created on Mon Apr 22 21:19:01 2024
 
 @author: andrewchang
 """
+
 import numpy as np
+import pandas as pd
 from sklearn.manifold import TSNE
 from sklearn.decomposition import IncrementalPCA
 from sklearn.preprocessing import StandardScaler
@@ -25,7 +27,6 @@ corpus_speech_list = ['BibleTTS/akuapem-twi',
     'EUROM',
     'HiltonMoser2022_speech',
     'LibriSpeech',
-    # 'LibriVox',
     'MediaSpeech/AR',
     'MediaSpeech/ES',
     'MediaSpeech/FR',
@@ -127,29 +128,64 @@ corpus_music_list = [
     'MagnaTagATune'
 ]
 
-corpus_env_list = ['SONYC', 'SONYC_augmented']
 
-corpus_list_all = corpus_speech_list+corpus_music_list+corpus_env_list 
+# sort the corpora lists to make sure the order is replicable
+corpus_speech_list.sort()
+corpus_music_list.sort()
 
-for corp in corpus_list_all:
-    filename = 'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
-    if 'STM_all' not in locals():
-        STM_all = np.load(filename)
-    else:
-        STM_all = np.vstack((STM_all, np.load(filename)))
-    print(filename)
+speech_corp_list = []
+for corp in corpus_speech_list:
+    metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
+    speech_corp_list.append(pd.read_csv(metafile,index_col=0))
+speech_corp_df = pd.concat(speech_corp_list, ignore_index=True)
     
-# %% run code
-perplexity = int(sys.argv[1])
-if perplexity == 0:
-    pipeline = make_pipeline(StandardScaler(),IncrementalPCA())
-    pipeline.fit(STM_all)
-    dump(pipeline, 'model/allSTM_pca-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
-else:
-    tsne = TSNE(n_components=2, 
-                random_state=23, 
-                perplexity=perplexity,
-                verbose=1, 
-                n_jobs=-1).fit(STM_all)
-    dump(tsne, 'model/allSTM_tsne_perplexity'+str(perplexity)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+music_corp_list = []
+for corp in corpus_music_list:
+    metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
+    df = pd.read_csv(metafile,index_col=0)
+    if 'demucs_voice' in df.columns:
+        df['VoiOrNot'] = df['demucs_voice']
+        df.drop(columns='demucs_voice', inplace=True)
+    if 'genre' in df.columns:
+        df['genre_1'] = df['genre'] 
+        df.drop(columns='genre', inplace=True)
+    if 'Genre' in df.columns:
+        df['genre_1'] = df['Genre'] 
+        df.drop(columns='Genre', inplace=True)
+    music_corp_list.append(df)
+music_corp_df = pd.concat(music_corp_list, ignore_index=True)
+
+speech_corp_df['gender'].replace({
+    'm':'male',
+    'M':'male',
+    'f':'female',
+    'F':'female',
+    'other':np.nan,
+    'O':np.nan},
+    inplace=True)
+
+
+speech_corp_df['totalLengCur'].sum()
+music_corp_df['totalLengCur'].sum()
+
+sum(speech_corp_df['gender']=='male')/len(speech_corp_df)
+sum(speech_corp_df['gender']=='female')/len(speech_corp_df)
+sum(speech_corp_df['gender'].isna())/len(speech_corp_df)
+
+languages = speech_corp_df['LangOrInstru'].unique()
+languages.sort()
+
+genre_columns = pd.concat([music_corp_df['genre_1'], music_corp_df['genre_2'], music_corp_df['genre_3']], axis=0)
+genre_columns.replace({
+    np.nan:'unlabeled',
+    'Hiphop':'Hip-Hop',
+    'hiphop':'Hip-Hop',
+    'International':'World',
+    'Soul-RnB':'Soul_RnB',
+    'metal_punk': 'rock'
+    },
+    inplace=True)
+genre_columns = genre_columns.apply(lambda x: x.title())
+genres = genre_columns.unique()
+genres.sort()
 

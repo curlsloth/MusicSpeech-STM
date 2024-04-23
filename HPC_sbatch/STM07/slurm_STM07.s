@@ -3,7 +3,7 @@
 #SBATCH --job-name=STM07
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=20
-#SBATCH --mem=80GB
+#SBATCH --mem=200GB
 #SBATCH --time=10:00:00
 #SBATCH --output=HPC_slurm/STM07/STM07_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
