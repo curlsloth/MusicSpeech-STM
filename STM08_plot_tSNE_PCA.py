@@ -12,10 +12,16 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import IncrementalPCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
-from joblib import dump
+from joblib import dump, load
 import datetime
 import sys
+import seaborn as sns
+import matplotlib.pyplot as plt
 
+plt.rcParams['figure.dpi'] = 300
+plt.rcParams['savefig.dpi'] = 300
+
+# %% corpus data cleaning
 
 corpus_speech_list = ['BibleTTS/akuapem-twi',
     'BibleTTS/asante-twi',
@@ -128,10 +134,13 @@ corpus_music_list = [
     'MagnaTagATune'
 ]
 
+corpus_env_list = ['SONYC', 'SONYC_augmented']
+
 
 # sort the corpora lists to make sure the order is replicable
 corpus_speech_list.sort()
 corpus_music_list.sort()
+corpus_env_list.sort()
 
 speech_corp_list = []
 for corp in corpus_speech_list:
@@ -154,6 +163,8 @@ for corp in corpus_music_list:
         df.drop(columns='Genre', inplace=True)
     music_corp_list.append(df)
 music_corp_df = pd.concat(music_corp_list, ignore_index=True)
+
+df_SONYC = pd.read_csv('metaTables/metaData_SONYC.csv',index_col=0)
 
 speech_corp_df['gender'].replace({
     'm':'male',
@@ -189,17 +200,57 @@ genre_columns = genre_columns.apply(lambda x: x.title())
 genres = genre_columns.unique()
 genres.sort()
 
-# %% try t-SNE
 
-from joblib import load
+all_corp_df = pd.concat([speech_corp_df, music_corp_df, df_SONYC])
+
+# %% plot PCA
+
 pipeline = load('model/allSTM_pca-pipeline_2024-04-22_08-43.joblib')
 pca = pipeline['incrementalpca']
 
-import matplotlib.pyplot as plt
 
 plt.plot(list(range(1,len(pca.explained_variance_ratio_[:5000])+1)), np.cumsum(pca.explained_variance_ratio_[:5000]))
 plt.show()
 
-for corp in corpus_speech_list+corpus_music_list :
-    filename = 'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
-    x = tsne.transform(np.load(filename))
+# %% load t-SNE and preprocessing
+
+tsne_folder = 'model/tsne/perplexity200_2024-04-24_07-23/'
+
+tsne = load(tsne_folder+'tsne_model.joblib')
+df_tsne = pd.DataFrame()
+df_tsne['tSNE-1'] = tsne.embedding_[:,0]
+df_tsne['tSNE-2'] = tsne.embedding_[:,1]
+df_tsne['category'] = pd.concat([all_corp_df['corpus_type'], 
+                                 pd.Series(['env_aug'] * (len(tsne.embedding_) - len(all_corp_df)))], ignore_index=True)
+song_mask = (all_corp_df['corpus_type'] == 'music') & (all_corp_df['VoiOrNot'].isin([True, 1]))
+song_mask = pd.concat([song_mask, pd.Series([False]* (len(tsne.embedding_) - len(all_corp_df)))])
+song_mask = song_mask.reset_index(drop=True)
+df_tsne.loc[song_mask, 'category'] = 'song'
+
+
+# %% plot kernal 
+df_tsne_filtered = df_tsne[(df_tsne['tSNE-1'].between(-60,60)) & (df_tsne['tSNE-2'].between(-60,60))]
+
+with plt.style.context('seaborn-v0_8-notebook'):
+    plt.rcParams['figure.dpi'] = 300
+    plt.rcParams['savefig.dpi'] = 300
+
+    fig = plt.figure(figsize=(10,10))
+    ax = fig.add_subplot(1, 1, 1)
+    
+    kde = sns.kdeplot(
+        x="tSNE-1", 
+        y="tSNE-2",
+        data=df_tsne_filtered,
+        ax=ax,
+        hue="category", 
+        fill=False,
+        levels=10,
+        alpha=0.5,
+        threshold=0
+        # bw_adjust=0.1,
+    )
+    ax.set_xlim(-60, 60)
+    ax.set_ylim(-60, 60)
+    plt.show()
+    fig.savefig(tsne_folder+'kdeplot_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.png')
