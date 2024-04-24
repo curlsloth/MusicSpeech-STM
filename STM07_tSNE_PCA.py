@@ -13,6 +13,7 @@ from sklearn.pipeline import make_pipeline
 from joblib import dump
 import datetime
 import sys
+import os 
 
 
 corpus_speech_list = ['BibleTTS/akuapem-twi',
@@ -129,6 +130,11 @@ corpus_music_list = [
 
 corpus_env_list = ['SONYC', 'SONYC_augmented']
 
+# sort the corpora lists to make sure the order is replicable
+corpus_speech_list.sort()
+corpus_music_list.sort()
+corpus_env_list.sort()
+
 corpus_list_all = corpus_speech_list+corpus_music_list+corpus_env_list 
 
 for corp in corpus_list_all:
@@ -150,6 +156,9 @@ else:
                 random_state=23, 
                 perplexity=perplexity,
                 verbose=1, 
-                n_jobs=-1).fit(STM_all)
-    dump(tsne, 'model/allSTM_tsne_perplexity'+str(perplexity)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
-
+                n_jobs=-1)
+    STM_tsne = tsne.fit_transform(STM_all)
+    path = 'model/tsne/perplexity'+str(perplexity)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+    os.mkdir(path)
+    dump(tsne, path+'/tsne_model.joblib') 
+    dump(STM_tsne, path+'/tsne_data.joblib') 

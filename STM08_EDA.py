@@ -189,3 +189,17 @@ genre_columns = genre_columns.apply(lambda x: x.title())
 genres = genre_columns.unique()
 genres.sort()
 
+# %% try t-SNE
+
+from joblib import load
+pipeline = load('model/allSTM_pca-pipeline_2024-04-22_08-43.joblib')
+pca = pipeline['incrementalpca']
+
+import matplotlib.pyplot as plt
+
+plt.plot(list(range(1,len(pca.explained_variance_ratio_[:5000])+1)), np.cumsum(pca.explained_variance_ratio_[:5000]))
+plt.show()
+
+for corp in corpus_speech_list+corpus_music_list :
+    filename = 'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
+    x = tsne.transform(np.load(filename))
