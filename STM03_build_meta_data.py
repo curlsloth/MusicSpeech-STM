@@ -31,8 +31,8 @@ def make_meta_file(corpus, corpus_type):
         structure_dict = {field: data_dict['Params'][field][0] for field in data_dict['Params'].dtype.names}
         df = pd.DataFrame(structure_dict)
         df.drop(columns=['x_axis','y_axis'], inplace=True)
-        df = df.applymap(lambda x: x[0] if isinstance(x, (list, np.ndarray)) else x)
-        df = df.applymap(lambda x: x[0] if isinstance(x, (list, np.ndarray)) else x)
+        df = df.map(lambda x: x[0] if isinstance(x, (list, np.ndarray)) else x)
+        df = df.map(lambda x: x[0] if isinstance(x, (list, np.ndarray)) else x)
         df['corpus'] = corpus
         df['corpus_type'] = corpus_type
         df['mat_filename'] = params_file.replace('/Survey/','/MATs/').replace('_params_','_mat_wl4_').replace('_Params.mat', '_MS2024.mat')
@@ -420,7 +420,7 @@ def make_meta_file(corpus, corpus_type):
         mean_by_group = pd.DataFrame(np.sum(df_annot_MusicSpeech.groupby('audio_filename').mean()>=0.5, axis=1)>0, columns=['exclude'])
         files_drop = list(mean_by_group[mean_by_group['exclude'] == True].index)
         df_all = df_all[~df_all['filename'].isin(files_drop)]
-        df_all['speaker/artist'] = np.nan
+        df_all['speaker/artist'] = 'SONYC_'+df_all['filename'].str[:2]
         df_all['gender'] = np.nan
         df_all['genre'] = np.nan
         df_all['VoiOrNot'] = 0
