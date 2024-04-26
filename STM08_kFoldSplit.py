@@ -299,8 +299,11 @@ df_SONYC['10fold_labels'] = GKF(n_splits = 10,
 print("Total length of environmental recordings: "+ str(round(df_SONYC['totalLengCur'].sum()/(60*60),2))+" hours")
 print("Number of environmental recordings: "+ str(len(df_SONYC)))
 
-# %% combine
-speech_corp_df[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/speech_10folds_speakerGroupFold.csv' ,index=False)
-music_corp_df[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/music_10folds_speakerGroupFold.csv' ,index=False)
-df_SONYC[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/env_10folds_speakerGroupFold.csv' ,index=False)
+# %% save split files
+speech_row_split = round(len(speech_corp_df)/2)
+speech_corp_df[['mat_filename','corpus_type','10fold_labels']][:speech_row_split].to_csv('train_test_split/speech1_10folds_speakerGroupFold.csv')
+speech_corp_df[['mat_filename','corpus_type','10fold_labels']][speech_row_split:].to_csv('train_test_split/speech2_10folds_speakerGroupFold.csv')
+
+music_corp_df[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/music_10folds_speakerGroupFold.csv')
+df_SONYC[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/env_10folds_speakerGroupFold.csv')
 
