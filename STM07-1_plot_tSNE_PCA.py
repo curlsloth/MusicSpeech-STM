@@ -13,11 +13,12 @@ import datetime
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-speech_corp_df = pd.read_csv('train_test_split/speech_10folds_speakerGroupFold.csv')
-music_corp_df = pd.read_csv('train_test_split/music_10folds_speakerGroupFold.csv')
-df_SONYC = pd.read_csv('train_test_split/env_10folds_speakerGroupFold.csv')
+speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
+speech_corp_df2 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
+music_corp_df = pd.read_csv('train_test_split/music_10folds_speakerGroupFold.csv',index_col=0)
+df_SONYC = pd.read_csv('train_test_split/env_10folds_speakerGroupFold.csv',index_col=0)
 
-all_corp_df = pd.concat([speech_corp_df, music_corp_df, df_SONYC], ignore_index=True)
+all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SONYC], ignore_index=True)
 
 # %% plot PCA
 
