@@ -13,9 +13,9 @@ import pandas as pd
 import glob
 import random
 
-def preproSTM(data, xmin, xmax, ymin, ymax):
+def preproSTM(data, xmin, xmax, ymin, ymax, x_ds_factor, y_ds_factor):
     # select the middle range, dB transformation, normalize to [0,1], make it as float 32
-    data_small_db = 10 * np.log10(data[ymin:ymax+1, xmin:xmax+1]) # power dB
+    data_small_db = 10 * np.log10(data[ymin:ymax+1:y_ds_factor, xmin:xmax+1:x_ds_factor]) # power dB
     return np.float32((data_small_db - data_small_db.min()) / (data_small_db.max() - data_small_db.min()))
 
 
@@ -23,18 +23,21 @@ def stack_STM(df):
     stm_stacked_list = []
 
     # hard-coded parameters. Use the code below to modify it
-    # xrange = [-20, 20]
-    # yrange = [0,7]
-    xmin=170
-    xmax=330
+    # xrange = [-15, 15]
+    # yrange = [0,7.2]
+    xmin=190
+    xmax=310
     ymin=75
-    ymax=112
+    ymax=114
+    # downsampling factor per axis
+    x_ds_factor=1
+    y_ds_factor=2
 
     for mat_file in df['mat_filename']:
         try:
             data = scipy.io.loadmat(mat_file)['indMS']
             if data.shape == (150, 500):
-                stm_stacked_list.append(preproSTM(data, xmin, xmax, ymin, ymax).flatten())
+                stm_stacked_list.append(preproSTM(data, xmin, xmax, ymin, ymax, x_ds_factor, y_ds_factor).flatten())
             else:
                 print('indMS size wrong: '+str(data.shape)+mat_file)
         except Exception as e:
@@ -113,12 +116,15 @@ for metaData_name in metaData_name_list:
 # x_axis = survey_data['Params'][0]['x_axis'][0][0]
 # y_axis = survey_data['Params'][0]['y_axis'][0][0]
 
-# xrange = [-20, 20]
-# yrange = [0,7]
+# xrange = [-15, 15]
+# yrange = [0,7.2]
+
+# x_ds_factor = 1
+# y_ds_factor = 2
 
 # xmin = np.argmin(np.abs(x_axis - xrange[0]))
 # xmax = np.argmin(np.abs(x_axis - xrange[1]))
 # ymin = np.argmin(np.abs(y_axis - yrange[0]))
 # ymax = np.argmin(np.abs(y_axis - yrange[1]))
-# x_axis_small = x_axis[xmin:xmax+1]
-# y_axis_small = y_axis[ymin:ymax+1]
+# x_axis_small = x_axis[xmin:xmax+1:x_ds_factor]
+# y_axis_small = y_axis[ymin:ymax+1:y_ds_factor]
