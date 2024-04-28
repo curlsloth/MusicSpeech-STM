@@ -55,7 +55,7 @@ def generate_aug_envSTM(stm_stacked, n_aug, n_sample_max, labels):
         the number of random sampled env STM data, between [2, n_sample_max]
     """
     
-    stm_stacked = stm_stacked[labels<9,:] # exclude the evaluation set
+    stm_stacked = stm_stacked[labels<8,:] # exclude the validation and testing sets
     
     stm_new_list = []
     for n_seed in range(n_aug):
