@@ -31,7 +31,7 @@ all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SON
 
 # %% load t-SNE and preprocessing
 
-tsne_folder = 'model/tsne/perplexity100_2024-04-27_10-26/'
+tsne_folder = 'model/tsne/perplexity90_2024-04-28_14-30/'
 
 
 tsne = load(tsne_folder+'tsne_model.joblib')
