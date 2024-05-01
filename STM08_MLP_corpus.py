@@ -271,9 +271,9 @@ class MyHyperModel(kt.HyperModel):
 
 tuner = kt.BayesianOptimization(
     hypermodel=MyHyperModel(),
-    objective="val_AUC",
-    max_trials=3,
-    executions_per_trial=2,
+    objective="val_auc",
+    max_trials=100,
+    executions_per_trial=25,
     seed=23,
     overwrite=True,
     directory="model/MLP_corpora_categories/",
@@ -288,7 +288,8 @@ with strategy.scope():
         validation_data=val_dataset,
         callbacks=[
             keras.callbacks.EarlyStopping(
-                monitor="val_AUC", 
+                monitor="val_auc", 
+                mode="max",
                 patience=5,
                 verbose=1,
                 ),
@@ -298,7 +299,8 @@ with strategy.scope():
                 ),
             keras.callbacks.ModelCheckpoint(
                 filepath = checkpoint_dir+"/best_performance.keras",
-                monitor="val_AUC",
+                monitor="val_auc",
+                mode="max",
                 verbose=1,
                 save_best_only=True,
                 save_weights_only=False,
