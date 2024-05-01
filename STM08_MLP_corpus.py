@@ -229,7 +229,7 @@ class MyHyperModel(kt.HyperModel):
                     # Tune number of units separately.
                     units=hp.Int(f"units_{i}", min_value=16, max_value=512, step=16),
                     activation=hp.Choice("activation", ["relu"]),
-                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-10, max_value=0.1, sampling="log")                    )
+                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-8, max_value=1e-1, sampling="log")                    )
                     )
                 )
             model.add(
@@ -252,7 +252,7 @@ class MyHyperModel(kt.HyperModel):
             label_weights=None,
             from_logits=False,
         )
-        learning_rate = hp.Float("lr", min_value=1e-10, max_value=1e-2, sampling="log")
+        learning_rate = hp.Float("lr", min_value=1e-8, max_value=1e-2, sampling="log")
         
         model.compile(
             optimizer=keras.optimizers.Adam(learning_rate=learning_rate),
@@ -272,9 +272,12 @@ class MyHyperModel(kt.HyperModel):
 tuner = kt.BayesianOptimization(
     hypermodel=MyHyperModel(),
     objective="val_auc",
+    num_initial_points=100,
     max_trials=100,
     executions_per_trial=25,
     seed=23,
+    max_retries_per_trial=0,
+    max_consecutive_failed_trials=3,
     overwrite=True,
     directory="model/MLP_corpora_categories/",
     project_name="MLP_"+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M"),
@@ -297,16 +300,5 @@ with strategy.scope():
                 filepath=checkpoint_dir + "/ckpt-{epoch}.keras",
                 save_freq="epoch",
                 ),
-            keras.callbacks.ModelCheckpoint(
-                filepath = checkpoint_dir+"/best_performance.keras",
-                monitor="val_auc",
-                mode="max",
-                verbose=1,
-                save_best_only=True,
-                save_weights_only=False,
-                mode="auto",
-                save_freq="epoch",
-                initial_value_threshold=None,
-                )
             ]
         )
