@@ -247,7 +247,7 @@ class MyHyperModel(kt.HyperModel):
             name=None,
             dtype=None,
             thresholds=None,
-            multi_label=True,
+            multi_label=False, # only set to True when dealing with music genres
             num_labels=5,
             label_weights=None,
             from_logits=False,
