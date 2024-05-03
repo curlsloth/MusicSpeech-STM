@@ -325,18 +325,19 @@ if __name__ == "__main__":
         print("Usage: python script.py arg1")
         sys.exit(1)
     
-    clf_type = sys.argv[1]
     X_train, X_val, X_test, y_train, y_val, y_test = prepData()
+
+    clf_type = sys.argv[1]
     
-    if clf_type=='linearSVC':
+    if clf_type=='0':
         run_linearSVC(X_train, X_val, y_train, y_val)
-    elif clf_type=='rbfSVC':
+    elif clf_type=='1':
         run_rbfSVC(X_train, X_val, y_train, y_val)
-    elif clf_type=='LogReg':
+    elif clf_type=='2':
         run_LogReg(X_train, X_val, y_train, y_val)  
-    elif clf_type=='RFC':
+    elif clf_type=='3':
         run_RFC(X_train, X_val, y_train, y_val)
     else:
-        print("choose a classifer names: [linearSVC, rbfSVC, LogReg, RFC]")
+        print("choose a classifer names: {0: linearSVC, 1: rbfSVC, 2: LogReg, 3: RFC]")
     
     print("All Done!")
