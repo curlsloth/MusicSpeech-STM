@@ -626,7 +626,7 @@ if __name__ == "__main__":
     elif clf_type=='6':
         run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test)
     else:
-        print("choose a classifer: {0: linearSVC, 1: rbfSVC, 2: LogReg, 3: RFC, 4: SGDClinearSVC, 5: SGDClogReg]")
+        print("choose a classifer: {0: linearSVC, 1: rbfSVC, 2: LogReg, 3: RFC, 4: SGDClinearSVC, 5: SGDClogReg, 6: SGDCrbfSVC]")
 
     print("All Done!")
     
