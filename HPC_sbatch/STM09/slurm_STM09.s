@@ -12,4 +12,4 @@
 module purge
 
 ~/STM_singularity/run-MusicSpeech-STMhpc.bash python STM08_MLP_corpus.py $SLURM_ARRAY_TASK_ID
-# Run this: sbatch --array0-3 HPC_sbatch/STM09/slurm_STM09.s
+# Run this: sbatch --array=0-3 HPC_sbatch/STM09/slurm_STM09.s
