@@ -227,7 +227,7 @@ def run_SGDClinearSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     bo_SGDClinearSVC = BayesianOptimization(
         bo_tune_SGDClinearSVC,
         pbounds={
-            "alpha_power": (-6, 6),
+            "alpha_power": (-8, 3),
             },
         random_state=23
         )
