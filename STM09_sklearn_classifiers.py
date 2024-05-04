@@ -221,7 +221,7 @@ def run_SGDClinearSVC(X_train, X_val, X_test, y_train, y_val, y_test):
         params = params_SGDClinearSVC(alpha_power)
         clf = make_pipeline(StandardScaler(), SGDClassifier(**params))
         clf.fit(X_train, y_train)
-        y_val_encoded = OneHotEncoder(sparse_output=False).fit_transform(y_val)
+        y_val_encoded = OneHotEncoder(sparse_output=False).fit_transform(pd.DataFrame(y_val))
         return roc_auc_score(y_val_encoded, clf.decision_function(X_val), multi_class='ovr')
     
     bo_SGDClinearSVC = BayesianOptimization(
@@ -279,7 +279,7 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
         params_rbf = params_RBFSampler(gamma, n_components)
         clf = make_pipeline(StandardScaler(), RBFSampler(**params_rbf), SGDClassifier(**params))
         clf.fit(X_train, y_train)
-        y_val_encoded = OneHotEncoder(sparse_output=False).fit_transform(y_val)
+        y_val_encoded = OneHotEncoder(sparse_output=False).fit_transform(pd.DataFrame(y_val))
         return roc_auc_score(y_val_encoded, clf.decision_function(X_val), multi_class='ovr')
     
     bo_SGDCrbfSVC = BayesianOptimization(
@@ -332,8 +332,7 @@ def run_SGDClogReg(X_train, X_val, X_test, y_train, y_val, y_test):
         params = params_SGDClogReg(alpha_power, l1_ratio)
         clf = make_pipeline(StandardScaler(), SGDClassifier(**params))
         clf.fit(X_train, y_train)
-        y_val_encoded = OneHotEncoder(sparse_output=False).fit_transform(y_val)
-        return roc_auc_score(y_val_encoded, clf.decision_function(X_val), multi_class='ovr')
+        return roc_auc_score(y_val, clf.predict_proba(X_val), multi_class='ovr')
     
     bo_SGDClogReg = BayesianOptimization(
         bo_tune_SGDClogReg,
@@ -592,7 +591,7 @@ def print_performances(clf, X_test, y_test, use_prob):
     if use_prob==True:
         auc = roc_auc_score(y_test, clf.predict_proba(X_test), multi_class='ovr')
     else:
-        y_test_encoded = OneHotEncoder(sparse_output=False).fit_transform(y_test)
+        y_test_encoded = OneHotEncoder(sparse_output=False).fit_transform(pd.DataFrame(y_val))
         auc = roc_auc_score(y_test_encoded, clf.decision_function(X_test), multi_class='ovr')
     print(classification_report(y_test, y_test_pred))
     print("Confusion matrix")
