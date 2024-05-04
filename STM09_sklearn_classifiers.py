@@ -265,18 +265,18 @@ def params_SGDCrbfSVC(alpha_power):
         }
     return params
 
-def params_RBFSampler(gamma, n_components):
+def params_RBFSampler(gamma_power, n_components):
     params_rbf = {
-        "gamma":gamma,
+        "gamma":10**gamma_power,
         "n_components":int(n_components),
         "random_state":23,
         }
     return params_rbf
 
 def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
-    def bo_tune_SGDCrbfSVC(alpha_power, gamma, n_components):
+    def bo_tune_SGDCrbfSVC(alpha_power, gamma_power, n_components):
         params = params_SGDClinearSVC(alpha_power)
-        params_rbf = params_RBFSampler(gamma, n_components)
+        params_rbf = params_RBFSampler(gamma_power, n_components)
         clf = make_pipeline(StandardScaler(), RBFSampler(**params_rbf), SGDClassifier(**params))
         clf.fit(X_train, y_train)
         y_val_encoded = OneHotEncoder(sparse_output=False).fit_transform(pd.DataFrame(y_val))
@@ -286,7 +286,7 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
         bo_tune_SGDCrbfSVC,
         pbounds={
             "alpha_power": (-6, 6),
-            "gamma": (10e-2, 10e2),
+            "gamma_power": (-3, 3),
             "n_components": (100, 2000)
             },
         random_state=23
@@ -303,7 +303,7 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     X = pd.concat([X_train, X_val], ignore_index=True)
     y = pd.concat([y_train, y_val], ignore_index=True)
     params = params_SGDCrbfSVC(best_param_dict['alpha_power'])
-    params_rbf = params_RBFSampler(best_param_dict['gamma'], best_param_dict['n_components'])
+    params_rbf = params_RBFSampler(best_param_dict['gamma_power'], best_param_dict['n_components'])
     clf = make_pipeline(StandardScaler(), RBFSampler(**params_rbf), SGDClassifier(**params))
     clf.fit(X, y)
     dump(clf, jogger_path+'clf.joblib')
@@ -538,7 +538,7 @@ def run_RFC(X_train, X_val, X_test, y_train, y_val, y_test):
             "max_depth": (3, 50),
             "min_samples_leaf": (1, 5),
             "min_samples_split": (2, 10),
-            "max_samples": (10e-5,1)
+            "max_samples": (1e-4,1)
             },
         random_state=23
         )
