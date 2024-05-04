@@ -286,7 +286,7 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
         bo_tune_SGDCrbfSVC,
         pbounds={
             "alpha_power": (-6, 6),
-            "gamma_power": (-3, 3),
+            "gamma_power": (-6, 1),
             "n_components": (100, 2000)
             },
         random_state=23
@@ -337,7 +337,7 @@ def run_SGDClogReg(X_train, X_val, X_test, y_train, y_val, y_test):
     bo_SGDClogReg = BayesianOptimization(
         bo_tune_SGDClogReg,
         pbounds={
-            "alpha_power": (-6, 6),
+            "alpha_power": (-6, 1),
             "l1_ratio": (0, 1)
             },
         random_state=23
