@@ -13,6 +13,7 @@ from sklearn.linear_model import SGDClassifier, LogisticRegression
 from sklearn.svm import LinearSVC, SVC
 X, y = load_iris(return_X_y=True)
 from sklearn.linear_model import RidgeClassifierCV
+from sklearn.model_selection import train_test_split
 # clf = LinearSVC().fit(X, y)
 # clf = LogisticRegression(solver="liblinear", multi_class="ovr").fit(X, y)
 clf = SVC(probability=True).fit(X, y)
@@ -30,5 +31,7 @@ iris = load_iris()
 X = pd.DataFrame(iris.data)
 y = pd.DataFrame(iris.target)
 
-X_train, X_val, y_train, y_val = train_test_split(X, y,
-    test_size=0.2, shuffle = True, random_state = 123)
+X_train, X_test, y_train, y_test = train_test_split(X, y, shuffle = True, test_size=0.2, random_state=1)
+
+X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, shuffle = True, test_size=0.25, random_state=1) # 0.25 x 0.8 = 0.2
+

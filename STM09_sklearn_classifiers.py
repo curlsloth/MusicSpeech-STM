@@ -10,7 +10,9 @@ import numpy as np
 import pandas as pd
 import datetime
 import sys
-
+import os
+import json
+from joblib import dump
 
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
@@ -18,16 +20,15 @@ from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
-from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_auc_score, classification_report, confusion_matrix
 
 from bayes_opt import BayesianOptimization
 from bayes_opt.logger import JSONLogger
 from bayes_opt.event import Events
 
 
-
+# %% prepData
 def prepData():
-    # %% load STM data
     corpus_speech_list = ['BibleTTS/akuapem-twi',
         'BibleTTS/asante-twi',
         'BibleTTS/ewe',
@@ -149,6 +150,7 @@ def prepData():
     
     corpus_list_all = corpus_speech_list+corpus_music_list+corpus_env_list 
     
+    # %% load STM data
     for corp in corpus_list_all:
         filename = 'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
         if 'STM_all' not in locals():
@@ -199,17 +201,22 @@ def prepData():
     return X_train, X_val, X_test, y_train, y_val, y_test
 
 # %% linearSVC
-def run_linearSVC(X_train, X_val, y_train, y_val):
+
+def params_linearSVC(C_power):
+    params = {
+        "kernel":"linear",
+        "C":10**C_power,
+        "probability":True,
+        "class_weight":"balanced",
+        "decision_function_shape":"ovr",
+        "random_state":23,
+        "verbose":1
+        }
+    return params
+
+def run_linearSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     def bo_tune_linearSVC(C_power):
-        params = {
-            "kernel":"linear",
-            "C":10**C_power,
-            "probability":True,
-            "class_weight":"balanced",
-            "decision_function_shape":"ovr",
-            "random_state":23,
-            "verbose":1
-            }
+        params = params_linearSVC(C_power)
         clf = make_pipeline(StandardScaler(), SVC(**params))
         clf.fit(X_train, y_train)
         return roc_auc_score(y_val, clf.predict_proba(X_val), multi_class='ovr')
@@ -221,23 +228,44 @@ def run_linearSVC(X_train, X_val, y_train, y_val):
             },
         random_state=23
         )
-    logger = JSONLogger(path='model/sklearn_corpora_categories/linearSVM/logs_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.json')
+    jogger_path = 'model/sklearn_corpora_categories/linearSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    os.mkdir(jogger_path)
+    jogger_file=jogger_path+'logs.json'
+    logger = JSONLogger(path=jogger_file)
     bo_linearSVC.subscribe(Events.OPTIMIZATION_STEP, logger)
     bo_linearSVC.maximize(n_iter=200, init_points=25)
+    best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
+    
+    # fit the model again with best parameters and combined X_train X_val data
+    X = pd.concat([X_train, X_val], ignore_index=True)
+    y = pd.concat([y_train, y_val], ignore_index=True)
+    params = params_linearSVC(best_param_dict['C_power'])
+    clf = make_pipeline(StandardScaler(), SVC(**params))
+    clf.fit(X, y)
+    dump(clf, jogger_path+'clf.joblib')
+    
+    # print test performances
+    print_performances(clf, X_test, y_test)
+
 
 # %% rbfSVC
-def run_rbfSVC(X_train, X_val, y_train, y_val):
+
+def params_rbfSVC(C_power, gamma_power):
+    params = {
+        "kernel":"rbf",
+        "C":10**C_power,
+        "gamma":10**gamma_power,
+        "probability":True,
+        "class_weight":"balanced",
+        "decision_function_shape":"ovr",
+        "random_state":23,
+        "verbose":1
+        }
+    return params
+
+def run_rbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     def bo_tune_rbfSVC(C_power, gamma_power):
-        params = {
-            "kernel":"rbf",
-            "C":10**C_power,
-            "gamma":10**gamma_power,
-            "probability":True,
-            "class_weight":"balanced",
-            "decision_function_shape":"ovr",
-            "random_state":23,
-            "verbose":1
-            }
+        params = params_rbfSVC(C_power, gamma_power)
         clf = make_pipeline(StandardScaler(), SVC(**params))
         clf.fit(X_train, y_train)
         return roc_auc_score(y_val, clf.predict_proba(X_val), multi_class='ovr')
@@ -250,24 +278,44 @@ def run_rbfSVC(X_train, X_val, y_train, y_val):
             },
         random_state=23
         )
-    logger = JSONLogger(path='model/sklearn_corpora_categories/rbfSVM/logs_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.json')
+    jogger_path = 'model/sklearn_corpora_categories/rbfSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    os.mkdir(jogger_path)
+    jogger_file=jogger_path+'logs.json'
+    logger = JSONLogger(path=jogger_file)
     bo_rbfSVC.subscribe(Events.OPTIMIZATION_STEP, logger)
     bo_rbfSVC.maximize(n_iter=200, init_points=25)
+    best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
+
+    # fit the model again with best parameters and combined X_train X_val data
+    X = pd.concat([X_train, X_val], ignore_index=True)
+    y = pd.concat([y_train, y_val], ignore_index=True)
+    params = params_rbfSVC(best_param_dict['C_power'], best_param_dict['gamma_power'])
+    clf = make_pipeline(StandardScaler(), SVC(**params))
+    clf.fit(X, y)
+    dump(clf, jogger_path+'clf.joblib')
+    
+    # print test performances
+    print_performances(clf, X_test, y_test)
 
 # %% Logistic Regression
-def run_LogReg(X_train, X_val, y_train, y_val):
+
+def params_LogReg(C_power, l1_ratio):
+    params = {
+        "penalty":"elasticnet",
+        "C":10**C_power,
+        "l1_ratio":l1_ratio,
+        "solver":"saga",
+        "n_jobs":-1,
+        "class_weight":"balanced",
+        "multi_class":"ovr",
+        "random_state":23,
+        "verbose":1
+        }
+    return params
+
+def run_LogReg(X_train, X_val, X_test, y_train, y_val, y_test):
     def bo_tune_LogReg(C_power, l1_ratio):
-        params = {
-            "penalty":"elasticnet",
-            "C":10**C_power,
-            "l1_ratio":l1_ratio,
-            "solver":"saga",
-            "n_jobs":-1,
-            "class_weight":"balanced",
-            "multi_class":"ovr",
-            "random_state":23,
-            "verbose":1
-            }
+        params = params_LogReg(C_power, l1_ratio)
         clf = make_pipeline(StandardScaler(), LogisticRegression(**params))
         clf.fit(X_train, y_train)
         return roc_auc_score(y_val, clf.predict_proba(X_val), multi_class='ovr')
@@ -280,25 +328,44 @@ def run_LogReg(X_train, X_val, y_train, y_val):
             },
         random_state=23
         )
-    logger = JSONLogger(path='model/sklearn_corpora_categories/logReg/logs_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.json')
+    jogger_path = 'model/sklearn_corpora_categories/logReg/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    os.mkdir(jogger_path)
+    jogger_file=jogger_path+'logs.json'
+    logger = JSONLogger(path=jogger_file)
     bo_LogReg.subscribe(Events.OPTIMIZATION_STEP, logger)
     bo_LogReg.maximize(n_iter=200, init_points=25)
+    best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
+
+    # fit the model again with best parameters and combined X_train X_val data
+    X = pd.concat([X_train, X_val], ignore_index=True)
+    y = pd.concat([y_train, y_val], ignore_index=True)
+    params = params_LogReg(best_param_dict['C_power'], best_param_dict['l1_ratio'])
+    clf = make_pipeline(StandardScaler(), LogisticRegression(**params))
+    clf.fit(X, y)
+    dump(clf, jogger_path+'clf.joblib')
+    
+    # print test performances
+    print_performances(clf, X_test, y_test)
 
 # %% Random Forest Classifier
 
-def run_RFC(X_train, X_val, y_train, y_val):
+def params_RFC(n_estimators, max_depth, min_samples_leaf, min_samples_split, max_samples):
+    params = {
+        "n_estimators":int(n_estimators),
+        "max_depth":int(max_depth),
+        "min_samples_leaf":int(min_samples_leaf),
+        "min_samples_split":int(min_samples_split),
+        "max_samples":max_samples,
+        "n_jobs":-1,
+        "class_weight":"balanced",
+        "random_state":23,
+        "verbose":1
+        }
+    return params
+
+def run_RFC(X_train, X_val, X_test, y_train, y_val, y_test):
     def bo_tune_RFC(n_estimators, max_depth, min_samples_leaf, min_samples_split, max_samples):
-        params = {
-            "n_estimators":int(n_estimators),
-            "max_depth":int(max_depth),
-            "min_samples_leaf":int(min_samples_leaf),
-            "min_samples_split":int(min_samples_split),
-            "max_samples":max_samples,
-            "n_jobs":-1,
-            "class_weight":"balanced",
-            "random_state":23,
-            "verbose":1
-            }
+        params = params_RFC(n_estimators, max_depth, min_samples_leaf, min_samples_split, max_samples)
         clf = make_pipeline(StandardScaler(), RandomForestClassifier(**params))
         clf.fit(X_train, y_train)
         return roc_auc_score(y_val, clf.predict_proba(X_val), multi_class='ovr')
@@ -314,9 +381,58 @@ def run_RFC(X_train, X_val, y_train, y_val):
             },
         random_state=23
         )
-    logger = JSONLogger(path='model/sklearn_corpora_categories/randomForest/logs_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.json')
+    jogger_path = 'model/sklearn_corpora_categories/randomForest/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    os.mkdir(jogger_path)
+    jogger_file=jogger_path+'logs.json'
+    logger = JSONLogger(path=jogger_file)
     bo_RFC.subscribe(Events.OPTIMIZATION_STEP, logger)
     bo_RFC.maximize(n_iter=100, init_points=25)
+    best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
+    
+    # fit the model again with best parameters and combined X_train X_val data
+    X = pd.concat([X_train, X_val], ignore_index=True)
+    y = pd.concat([y_train, y_val], ignore_index=True)
+    params = params_RFC(best_param_dict['n_estimators'], 
+                        best_param_dict['max_depth'], 
+                        best_param_dict['min_samples_leaf'], 
+                        best_param_dict['min_samples_split'], 
+                        best_param_dict['max_samples'])
+    clf = make_pipeline(StandardScaler(), RandomForestClassifier(**params))
+    clf.fit(X, y)
+    dump(clf, jogger_path+'clf.joblib')
+    
+    # print test performances
+    print_performances(clf, X_test, y_test)
+
+# %% return the best parameters
+def get_best_params(json_path):
+    list_bayesOpt = [json_path]
+    opt_best_df = pd.DataFrame()
+    for jsonFile in list_bayesOpt:
+        with open(jsonFile) as f:
+            optList = []
+            for jsonObj in f:
+                optDict = json.loads(jsonObj)
+                optList.append(optDict)
+            
+            opt_df = pd.DataFrame(optList)
+            opt_df = pd.concat([opt_df.drop(['params','datetime'], axis=1), opt_df['params'].apply(pd.Series), opt_df['datetime'].apply(pd.Series)], axis=1)
+            opt_best_df = pd.concat([opt_best_df,opt_df.sort_values('target',ascending=False).iloc[:10]])
+    
+    opt_best_df = opt_best_df.sort_values(['target', 'delta'],ascending=[False, True]) # Highest AUC, lowest training time
+    print(opt_best_df)
+    return dict(opt_best_df.iloc[0])
+
+# %% print test performances
+def print_performances(clf, X_test, y_test):
+    y_test_pred = clf.predict(X_test)
+    cm = confusion_matrix(y_test, y_test_pred, normalize='true')
+    auc = roc_auc_score(y_test, clf.predict_proba(X_test), multi_class='ovr')
+    print(classification_report(y_test, y_test_pred))
+    print("Confusion matrix")
+    print(cm)
+    print("ROC AUC: "+str(auc))
+
 
 # %% main
 if __name__ == "__main__":
@@ -330,14 +446,15 @@ if __name__ == "__main__":
     clf_type = sys.argv[1]
     
     if clf_type=='0':
-        run_linearSVC(X_train, X_val, y_train, y_val)
+        run_linearSVC(X_train, X_val, X_test, y_train, y_val, y_test)
     elif clf_type=='1':
-        run_rbfSVC(X_train, X_val, y_train, y_val)
+        run_rbfSVC(X_train, X_val, X_test, y_train, y_val, y_test)
     elif clf_type=='2':
-        run_LogReg(X_train, X_val, y_train, y_val)  
+        run_LogReg(X_train, X_val, X_test, y_train, y_val, y_test) 
     elif clf_type=='3':
-        run_RFC(X_train, X_val, y_train, y_val)
+        run_RFC(X_train, X_val, X_test, y_train, y_val, y_test)
     else:
-        print("choose a classifer names: {0: linearSVC, 1: rbfSVC, 2: LogReg, 3: RFC]")
-    
+        print("choose a classifer: {0: linearSVC, 1: rbfSVC, 2: LogReg, 3: RFC]")
+
     print("All Done!")
+    
