@@ -591,7 +591,7 @@ def print_performances(clf, X_test, y_test, use_prob, save_path):
     if use_prob==True:
         auc = roc_auc_score(y_test, clf.predict_proba(X_test), multi_class='ovr')
     else:
-        y_test_encoded = OneHotEncoder(sparse_output=False).fit_transform(pd.DataFrame(y_val))
+        y_test_encoded = OneHotEncoder(sparse_output=False).fit_transform(pd.DataFrame(y_test))
         auc = roc_auc_score(y_test_encoded, clf.decision_function(X_test), multi_class='ovr')
     
     with open(save_path+'test_performance.txt', 'w') as f:
