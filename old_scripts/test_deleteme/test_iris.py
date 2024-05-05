@@ -15,13 +15,17 @@ X, y = load_iris(return_X_y=True)
 from sklearn.linear_model import RidgeClassifierCV
 from sklearn.model_selection import train_test_split
 import numpy as np
+from sklearn.metrics import roc_auc_score, classification_report, confusion_matrix
+
 # clf = LinearSVC().fit(X, y)
 # clf = LogisticRegression(solver="liblinear", multi_class="ovr").fit(X, y)
 clf = SVC(probability=True).fit(X, y)
+y_pred = clf.predict(X)
 
 # roc_auc_score(y, clf.decision_function(X), multi_class='ovr')
 roc_auc_score(y, clf.predict_proba(X), multi_class='ovr')
 
+cm = confusion_matrix(y, y_pred, normalize='true')
 
 import pandas as pd
 

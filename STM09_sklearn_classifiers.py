@@ -236,19 +236,19 @@ def run_SGDClinearSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
     bo_SGDClinearSVC.subscribe(Events.OPTIMIZATION_STEP, logger)
-    bo_SGDClinearSVC.maximize(n_iter=200, init_points=25)
+    bo_SGDClinearSVC.maximize(n_iter=50, init_points=10)
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
     
     # fit the model again with best parameters and combined X_train X_val data
-    X = pd.concat([X_train, X_val], ignore_index=True)
-    y = pd.concat([y_train, y_val], ignore_index=True)
+    X = np.concatenate((X_train, X_val), axis=0)
+    y = np.concatenate((y_train, y_val), axis=0)
     params = params_SGDClinearSVC(best_param_dict['alpha_power'])
     clf = make_pipeline(StandardScaler(), SGDClassifier(**params))
     clf.fit(X, y)
     dump(clf, jogger_path+'clf.joblib')
     
     # print test performances
-    print_performances(clf, X_test, y_test, use_prob=False)
+    print_performances(clf, X_test, y_test, use_prob=False, save_path=jogger_path)
 
 # %% SGDClassifier (rbf SVC)
 
@@ -285,7 +285,7 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     bo_SGDCrbfSVC = BayesianOptimization(
         bo_tune_SGDCrbfSVC,
         pbounds={
-            "alpha_power": (-6, 6),
+            "alpha_power": (-8, 3),
             "gamma_power": (-6, 1),
             "n_components": (100, 2000)
             },
@@ -296,12 +296,12 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
     bo_SGDCrbfSVC.subscribe(Events.OPTIMIZATION_STEP, logger)
-    bo_SGDCrbfSVC.maximize(n_iter=200, init_points=25)
+    bo_SGDCrbfSVC.maximize(n_iter=100, init_points=20)
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
     
     # fit the model again with best parameters and combined X_train X_val data
-    X = pd.concat([X_train, X_val], ignore_index=True)
-    y = pd.concat([y_train, y_val], ignore_index=True)
+    X = np.concatenate((X_train, X_val), axis=0)
+    y = np.concatenate((y_train, y_val), axis=0)
     params = params_SGDCrbfSVC(best_param_dict['alpha_power'])
     params_rbf = params_RBFSampler(best_param_dict['gamma_power'], best_param_dict['n_components'])
     clf = make_pipeline(StandardScaler(), RBFSampler(**params_rbf), SGDClassifier(**params))
@@ -309,7 +309,7 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     dump(clf, jogger_path+'clf.joblib')
     
     # print test performances
-    print_performances(clf, X_test, y_test, use_prob=False)
+    print_performances(clf, X_test, y_test, use_prob=False, save_path=jogger_path)
 
 # %% SGDClassifier (Logistic Regression)
 
@@ -347,19 +347,19 @@ def run_SGDClogReg(X_train, X_val, X_test, y_train, y_val, y_test):
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
     bo_SGDClogReg.subscribe(Events.OPTIMIZATION_STEP, logger)
-    bo_SGDClogReg.maximize(n_iter=200, init_points=25)
+    bo_SGDClogReg.maximize(n_iter=100, init_points=15)
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
     
     # fit the model again with best parameters and combined X_train X_val data
-    X = pd.concat([X_train, X_val], ignore_index=True)
-    y = pd.concat([y_train, y_val], ignore_index=True)
+    X = np.concatenate((X_train, X_val), axis=0)
+    y = np.concatenate((y_train, y_val), axis=0)
     params = params_SGDClogReg(best_param_dict['alpha_power'], best_param_dict['l1_ratio'])
     clf = make_pipeline(StandardScaler(), SGDClassifier(**params))
     clf.fit(X, y)
     dump(clf, jogger_path+'clf.joblib')
     
     # print test performances
-    print_performances(clf, X_test, y_test, use_prob=True)
+    print_performances(clf, X_test, y_test, use_prob=True, save_path=jogger_path)
 
 # %% linearSVC
 
@@ -398,15 +398,15 @@ def run_linearSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
     
     # fit the model again with best parameters and combined X_train X_val data
-    X = pd.concat([X_train, X_val], ignore_index=True)
-    y = pd.concat([y_train, y_val], ignore_index=True)
+    X = np.concatenate((X_train, X_val), axis=0)
+    y = np.concatenate((y_train, y_val), axis=0)
     params = params_linearSVC(best_param_dict['C_power'])
     clf = make_pipeline(StandardScaler(), SVC(**params))
     clf.fit(X, y)
     dump(clf, jogger_path+'clf.joblib')
     
     # print test performances
-    print_performances(clf, X_test, y_test, use_prob=True)
+    print_performances(clf, X_test, y_test, use_prob=True, save_path=jogger_path)
 
 
 # %% rbfSVC
@@ -448,15 +448,15 @@ def run_rbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
 
     # fit the model again with best parameters and combined X_train X_val data
-    X = pd.concat([X_train, X_val], ignore_index=True)
-    y = pd.concat([y_train, y_val], ignore_index=True)
+    X = np.concatenate((X_train, X_val), axis=0)
+    y = np.concatenate((y_train, y_val), axis=0)
     params = params_rbfSVC(best_param_dict['C_power'], best_param_dict['gamma_power'])
     clf = make_pipeline(StandardScaler(), SVC(**params))
     clf.fit(X, y)
     dump(clf, jogger_path+'clf.joblib')
     
     # print test performances
-    print_performances(clf, X_test, y_test, use_prob=True)
+    print_performances(clf, X_test, y_test, use_prob=True, save_path=jogger_path)
 
 # %% Logistic Regression
 
@@ -498,15 +498,15 @@ def run_LogReg(X_train, X_val, X_test, y_train, y_val, y_test):
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
 
     # fit the model again with best parameters and combined X_train X_val data
-    X = pd.concat([X_train, X_val], ignore_index=True)
-    y = pd.concat([y_train, y_val], ignore_index=True)
+    X = np.concatenate((X_train, X_val), axis=0)
+    y = np.concatenate((y_train, y_val), axis=0)
     params = params_LogReg(best_param_dict['C_power'], best_param_dict['l1_ratio'])
     clf = make_pipeline(StandardScaler(), LogisticRegression(**params))
     clf.fit(X, y)
     dump(clf, jogger_path+'clf.joblib')
     
     # print test performances
-    print_performances(clf, X_test, y_test, use_prob=True)
+    print_performances(clf, X_test, y_test, use_prob=True, save_path=jogger_path)
 
 # %% Random Forest Classifier
 
@@ -535,10 +535,10 @@ def run_RFC(X_train, X_val, X_test, y_train, y_val, y_test):
         bo_tune_RFC,
         pbounds={
             "n_estimators": (100,1000),
-            "max_depth": (3, 50),
+            "max_depth": (8, 50),
             "min_samples_leaf": (1, 5),
             "min_samples_split": (2, 10),
-            "max_samples": (1e-4,1)
+            "max_samples": (1e-3,1)
             },
         random_state=23
         )
@@ -551,8 +551,8 @@ def run_RFC(X_train, X_val, X_test, y_train, y_val, y_test):
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
     
     # fit the model again with best parameters and combined X_train X_val data
-    X = pd.concat([X_train, X_val], ignore_index=True)
-    y = pd.concat([y_train, y_val], ignore_index=True)
+    X = np.concatenate((X_train, X_val), axis=0)
+    y = np.concatenate((y_train, y_val), axis=0)
     params = params_RFC(best_param_dict['n_estimators'], 
                         best_param_dict['max_depth'], 
                         best_param_dict['min_samples_leaf'], 
@@ -563,7 +563,7 @@ def run_RFC(X_train, X_val, X_test, y_train, y_val, y_test):
     dump(clf, jogger_path+'clf.joblib')
     
     # print test performances
-    print_performances(clf, X_test, y_test, use_prob=True)
+    print_performances(clf, X_test, y_test, use_prob=True, save_path=jogger_path)
 
 # %% return the best parameters
 def get_best_params(json_path):
@@ -585,7 +585,7 @@ def get_best_params(json_path):
     return dict(opt_best_df.iloc[0])
 
 # %% print test performances
-def print_performances(clf, X_test, y_test, use_prob):
+def print_performances(clf, X_test, y_test, use_prob, save_path):
     y_test_pred = clf.predict(X_test)
     cm = confusion_matrix(y_test, y_test_pred, normalize='true')
     if use_prob==True:
@@ -593,10 +593,12 @@ def print_performances(clf, X_test, y_test, use_prob):
     else:
         y_test_encoded = OneHotEncoder(sparse_output=False).fit_transform(pd.DataFrame(y_val))
         auc = roc_auc_score(y_test_encoded, clf.decision_function(X_test), multi_class='ovr')
-    print(classification_report(y_test, y_test_pred))
-    print("Confusion matrix")
-    print(cm)
-    print("ROC AUC: "+str(auc))
+    
+    with open(save_path+'test_performance.txt', 'w') as f:
+        print(classification_report(y_test, y_test_pred), file=f)
+        print("Confusion matrix", file=f)
+        print(cm, file=f)
+        print("ROC AUC: "+str(auc), file=f)
 
 
 # %% main
