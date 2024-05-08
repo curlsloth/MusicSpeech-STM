@@ -268,22 +268,24 @@ class MyHyperModel(kt.HyperModel):
             **kwargs,
         )
 
-tuner = kt.BayesianOptimization(
-    hypermodel=MyHyperModel(),
-    objective="val_auc",
-    num_initial_points=100,
-    max_trials=400,
-    executions_per_trial=3,
-    seed=23,
-    max_retries_per_trial=0,
-    max_consecutive_failed_trials=3,
-    overwrite=True,
-    directory="model/MLP_corpora_categories/",
-    project_name="MLP_"+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M"),
-)
-tuner.search_space_summary()
+
 
 with strategy.scope():
+    tuner = kt.BayesianOptimization(
+        hypermodel=MyHyperModel(),
+        objective="val_auc",
+        num_initial_points=100,
+        max_trials=400,
+        executions_per_trial=3,
+        seed=23,
+        max_retries_per_trial=0,
+        max_consecutive_failed_trials=3,
+        overwrite=True,
+        directory="model/MLP_corpora_categories/",
+        project_name="MLP_"+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M"),
+    )
+    tuner.search_space_summary()
+    
     tuner.search(
         train_dataset, 
         epochs=2, 

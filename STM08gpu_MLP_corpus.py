@@ -209,19 +209,12 @@ def prepData():
 # print(f"***Validating label ratio:\n{100*y_valid.value_counts()/len(y_valid)}\n")
 # print(f"***Testing label ratio:\n{100*y_test.value_counts()/len(y_test)}\n")
 
-# %% build model
-
-# Create a MirroredStrategy.
-strategy = tf.distribute.MirroredStrategy()
-print('Number of devices: {}'.format(strategy.num_replicas_in_sync))
 
 
-# Prepare data
+# %% Prepare data
 train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData()
 
-
-
-
+# %% build model
 class hyperModel_drop(kt.HyperModel):
 
     def build(self, hp):
@@ -310,7 +303,10 @@ class hyperModel_LN(kt.HyperModel):
         learning_rate = hp.Float("lr", min_value=1e-8, max_value=1e-2, sampling="log")
         
         model.compile(
-            optimizer=keras.optimizers.Adam(learning_rate=learning_rate),
+            optimizer=keras.optimizers.Adam(
+                learning_rate=learning_rate,
+                gradient_accumulation_steps=8
+                ),
             loss="categorical_focal_crossentropy",
             metrics=[multi_label_ROC_AUC, 'f1_score'],
         )
@@ -339,23 +335,27 @@ time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 checkpoint_dir = directory+"/ckpt/"+time_stamp
 if not os.path.exists(checkpoint_dir):
     os.makedirs(checkpoint_dir)
-
-tuner = kt.BayesianOptimization(
-    hypermodel=hm,
-    objective="val_auc",
-    num_initial_points=100,
-    max_trials=400,
-    executions_per_trial=3,
-    seed=23,
-    max_retries_per_trial=0,
-    max_consecutive_failed_trials=3,
-    overwrite=True,
-    directory=directory,
-    project_name="MLP_"+time_stamp,
-)
-tuner.search_space_summary()
+    
+# Create a MirroredStrategy.
+strategy = tf.distribute.MirroredStrategy()
+print('Number of devices: {}'.format(strategy.num_replicas_in_sync))
 
 with strategy.scope():
+    tuner = kt.BayesianOptimization(
+        hypermodel=hm,
+        objective="val_auc",
+        num_initial_points=100,
+        max_trials=400,
+        executions_per_trial=3,
+        seed=23,
+        max_retries_per_trial=0,
+        max_consecutive_failed_trials=3,
+        overwrite=True,
+        directory=directory,
+        project_name="MLP_"+time_stamp,
+        )
+    tuner.search_space_summary()
+    
     tuner.search(
         train_dataset, 
         epochs=2, 
