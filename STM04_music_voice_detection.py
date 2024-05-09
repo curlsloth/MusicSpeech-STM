@@ -73,7 +73,7 @@ def estimate_voice(df_meta, n_row):
     separator = demucs.api.Separator()
     origin, separated = separator.separate_tensor(wav=y_tensor, sr=sr) # demucs.api.Separator() by default will make sure the sampling rate is at 44.1 kHz
     _, waveform = ensure_sample_rate(44100, np.array(separated['vocals'].mean(axis=0))) # convert to sr=16000
-    scores, _, _ = model(np.array(separated['vocals'].mean(axis=0))) # use YAMNET to score the audio waveform
+    scores, _, _ = model(waveform) # use YAMNET to score the audio waveform
     scores_np = scores.numpy()
     class_timeseries = scores_np.argmax(axis=1) # the max likelihood category per time-frame
     voice = np.any((class_timeseries >= 0) & (class_timeseries <= 35)) # whether the label of any time-frame belongs to any voice labels
@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
     # Call your function or perform any desired operations
     for n_row in range(init_num, min(init_num+100,len(df_meta))):
-        savefile_path = os.path.join(path, 'vocal_music_demucs', df_meta_filename[:-4])
+        savefile_path = os.path.join(path, 'vocal_music_demucs_16k', df_meta_filename[:-4])
         savefile_name = os.path.join(savefile_path, 'row'+str(n_row)+'.csv')
         if not os.path.exists(savefile_path): # make a folder is there's no folder
             os.makedirs(savefile_path)
