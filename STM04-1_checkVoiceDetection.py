@@ -65,9 +65,9 @@ def check_slurm(corpus_name, start_time, end_time):
     
     
 # update the original meta file
-def update_meta_file(corpus_name):
+def update_meta_file(corpus_name, reset_demucs=False):
     corpus = 'metaData_'+corpus_name
-    demucs_output_directory = 'metaTables/vocal_music_demucs/'
+    demucs_output_directory = 'metaTables/vocal_music_demucs_16k/'
     demucs_output_file_list = os.listdir(os.path.join(demucs_output_directory,corpus))
     
     file_list = []
@@ -77,8 +77,11 @@ def update_meta_file(corpus_name):
     
     df_demucs_total = pd.concat(file_list, ignore_index=True)
     df_meta = pd.read_csv('metaTables/'+corpus+'.csv',index_col=0)
+    if reset_demucs:
+        df_meta.drop(columns=['demucs_voice'], inplace=True)
+        
     if 'demucs_voice' not in df_meta.columns:
-        df_metaData_demucs = pd.read_csv('metaTables/'+corpus+'.csv',index_col=0).merge(df_demucs_total)
+        df_metaData_demucs = df_meta.merge(df_demucs_total, on='filepath')
         df_metaData_demucs.to_csv('metaTables/'+corpus+'.csv')
         print('metaTables/'+corpus+'.csv file updated with demucs voice data')
 
@@ -90,7 +93,10 @@ def update_meta_file(corpus_name):
 # corpus_name = 'MagnaTagATune'
 corpus_name = 'MTG-Jamendo'
 
-start_time = datetime.datetime(2024, 4, 15, 15, 0)
-end_time = datetime.datetime(2024, 4, 15, 23, 0)
+start_time = datetime.datetime(2024, 5, 9, 9, 0)
+end_time = datetime.datetime(2024, 5, 9, 23, 0)
 check_slurm(corpus_name, start_time, end_time)
-update_meta_file(corpus_name)
+
+change_meta_file = True
+if change_meta_file:
+    update_meta_file(corpus_name, reset_demucs=True)
