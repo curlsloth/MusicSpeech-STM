@@ -188,9 +188,11 @@ def prepData():
     test_dataset = tf.data.Dataset.from_tensor_slices((STM_all[test_ind,:], y[test_ind,:]))
     
     # shuffle and then batch
-    train_dataset = train_dataset.shuffle(buffer_size=sum(train_ind), seed=23).batch(32)
-    val_dataset = val_dataset.shuffle(buffer_size=sum(val_ind), seed=23).batch(32)
-    test_dataset = test_dataset.shuffle(buffer_size=sum(test_ind), seed=23).batch(32)
+    batch_size = 128
+
+    train_dataset = train_dataset.shuffle(buffer_size=sum(train_ind), seed=23).batch(batch_size)
+    val_dataset = val_dataset.shuffle(buffer_size=sum(val_ind), seed=23).batch(batch_size)
+    test_dataset = test_dataset.shuffle(buffer_size=sum(test_ind), seed=23).batch(batch_size)
     
     n_feat = STM_all.shape[1]
     n_target = len(target.unique())
@@ -345,7 +347,7 @@ with strategy.scope():
         hypermodel=hm,
         objective="val_auc",
         num_initial_points=100,
-        max_trials=400,
+        max_trials=200,
         executions_per_trial=3,
         seed=23,
         max_retries_per_trial=0,
