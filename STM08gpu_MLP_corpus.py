@@ -14,7 +14,7 @@ import datetime
 import os
 import tensorflow as tf
 import sys
-
+import gc
 
 os.environ["KERAS_BACKEND"] = "tensorflow"
 
@@ -220,7 +220,8 @@ train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData()
 class hyperModel_drop(kt.HyperModel):
 
     def build(self, hp):
-        
+        tf.keras.backend.clear_session()
+        gc.collect()
         model = keras.Sequential()
         model.add(keras.Input(shape=(n_feat,)))
         
@@ -231,7 +232,7 @@ class hyperModel_drop(kt.HyperModel):
                     # Tune number of units separately.
                     units=hp.Int(f"units_{i}", min_value=16, max_value=512, step=16),
                     activation=hp.Choice("activation", ["relu"]),
-                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-8, max_value=1e-1, sampling="log")                    )
+                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-8, max_value=1e-1, sampling="log"))
                     )
                 )
             model.add(
@@ -273,7 +274,8 @@ class hyperModel_drop(kt.HyperModel):
 class hyperModel_LN(kt.HyperModel):
 
     def build(self, hp):
-        
+        tf.keras.backend.clear_session()
+        gc.collect()
         model = keras.Sequential()
         model.add(keras.Input(shape=(n_feat,)))
         
@@ -284,7 +286,7 @@ class hyperModel_LN(kt.HyperModel):
                     # Tune number of units separately.
                     units=hp.Int(f"units_{i}", min_value=16, max_value=512, step=16),
                     activation=hp.Choice("activation", ["relu"]),
-                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-8, max_value=1e-1, sampling="log")                    )
+                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-8, max_value=1e-1, sampling="log"))
                     )
                 )
             model.add(layers.LayerNormalization())
