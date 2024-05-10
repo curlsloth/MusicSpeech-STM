@@ -81,9 +81,16 @@ def update_meta_file(corpus_name, reset_demucs=False):
         df_meta.drop(columns=['demucs_voice'], inplace=True)
         
     if 'demucs_voice' not in df_meta.columns:
-        df_metaData_demucs = df_meta.merge(df_demucs_total, on='filepath')
-        df_metaData_demucs.to_csv('metaTables/'+corpus+'.csv')
-        print('metaTables/'+corpus+'.csv file updated with demucs voice data')
+        if (len(df_meta) == len(df_demucs_total)) and (set(df_meta['filepath']) == set(df_demucs_total['filepath'])):
+            df_metaData_demucs = df_meta.merge(df_demucs_total)
+            df_metaData_demucs.to_csv('metaTables/'+corpus+'.csv')
+            print('metaTables/'+corpus+'.csv file updated with demucs voice data')
+        else:
+            print("df_meta: "+str(len(df_meta))+" rows")
+            print("df_demucs_total: "+str(len(df_demucs_total))+" rows")
+            print(sum(df_demucs_total.duplicated()))
+            missing = df_meta[~df_meta['filepath'].isin(df_demucs_total['filepath'])]['filepath'].tolist()
+            print(missing)
 
 
 # %% run the functions
@@ -99,4 +106,4 @@ check_slurm(corpus_name, start_time, end_time)
 
 change_meta_file = True
 if change_meta_file:
-    update_meta_file(corpus_name, reset_demucs=True)
+    update_meta_file(corpus_name, reset_demucs=False)

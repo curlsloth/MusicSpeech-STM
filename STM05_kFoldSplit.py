@@ -296,14 +296,14 @@ print("Total length of environmental recordings: "+ str(round(df_SONYC['totalLen
 print("Number of environmental recordings: "+ str(len(df_SONYC)))
 
 # %% save split files
-<<<<<<< HEAD
-save_split_files = False
-=======
-speech_row_split = round(len(speech_corp_df)/2)
-speech_corp_df[['mat_filename','corpus_type','10fold_labels']][:speech_row_split].to_csv('train_test_split/speech1_10folds_speakerGroupFold.csv')
-speech_corp_df[['mat_filename','corpus_type','10fold_labels']][speech_row_split:].to_csv('train_test_split/speech2_10folds_speakerGroupFold.csv')
->>>>>>> parent of e45ba8e (prevent accidentally overwrite split files)
 
-music_corp_df[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/music_10folds_speakerGroupFold.csv')
-df_SONYC[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/env_10folds_speakerGroupFold.csv')
+save_split_files = True
+
+if save_split_files:
+    speech_row_split = round(len(speech_corp_df)/2)
+    speech_corp_df[['mat_filename','corpus_type','10fold_labels']][:speech_row_split].to_csv('train_test_split/speech1_10folds_speakerGroupFold.csv')
+    speech_corp_df[['mat_filename','corpus_type','10fold_labels']][speech_row_split:].to_csv('train_test_split/speech2_10folds_speakerGroupFold.csv')
+
+    music_corp_df[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/music_10folds_speakerGroupFold.csv')
+    df_SONYC[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/env_10folds_speakerGroupFold.csv')
 
