@@ -6,7 +6,7 @@ Created on Sun Apr 21 08:25:58 2024
 @author: andrewchang
 """
 import numpy as np
-from sklearn.manifold import TSNE
+from sklearn.manifold import TSNE, MDS
 from sklearn.decomposition import IncrementalPCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
@@ -150,7 +150,17 @@ perplexity = int(sys.argv[1])
 if perplexity == 0:
     pipeline = make_pipeline(StandardScaler(),IncrementalPCA())
     pipeline.fit(STM_all)
-    dump(pipeline, 'model/allSTM_pca-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+    dump(pipeline, 'model/PCA/allSTM_pca-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+    
+    mds = MDS(
+        n_components=2, 
+        random_state=23, 
+        n_jobs=-1,
+        verbose=1,
+        )
+    pipeline_MDS = make_pipeline(StandardScaler(), mds)
+    pipeline_MDS.fit_transform(STM_all)
+    dump(pipeline_MDS, 'model/MDS/allSTM_MDS-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
 else:
     tsne = TSNE(n_components=2, 
                 random_state=23, 
