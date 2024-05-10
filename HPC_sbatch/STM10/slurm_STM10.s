@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=STM09
+#SBATCH --job-name=STM10
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=20GB
