@@ -30,6 +30,7 @@ def check_slurm(corpus_name, start_time, end_time):
     
     # Target string to search for
     target_string = "Demucs voice recognition done!"
+    error_string = "***** ERROR in n_row"
     
     # List all files in the directory
     file_list = os.listdir(directory)
@@ -50,6 +51,8 @@ def check_slurm(corpus_name, start_time, end_time):
     for file in filtered_files:
         file_path = os.path.join(directory, file)
         if not check_string_in_file(file_path, target_string):
+            files_without_string.append(file)
+        elif check_string_in_file(file_path, error_string):
             files_without_string.append(file)
     
     # Print files that don't contain the target string
