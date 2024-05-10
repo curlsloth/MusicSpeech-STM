@@ -227,7 +227,7 @@ def run_SGDClinearSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     bo_SGDClinearSVC = BayesianOptimization(
         bo_tune_SGDClinearSVC,
         pbounds={
-            "alpha_power": (-8, 3),
+            "alpha_power": (-5, -3),
             },
         random_state=23
         )
@@ -236,7 +236,7 @@ def run_SGDClinearSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
     bo_SGDClinearSVC.subscribe(Events.OPTIMIZATION_STEP, logger)
-    bo_SGDClinearSVC.maximize(n_iter=50, init_points=10)
+    bo_SGDClinearSVC.maximize(n_iter=27, init_points=3)
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
     
     # fit the model again with best parameters and combined X_train X_val data
@@ -268,7 +268,7 @@ def params_SGDCrbfSVC(alpha_power):
 def params_RBFSampler(gamma_power, n_components):
     params_rbf = {
         "gamma":10**gamma_power,
-        "n_components":int(n_components),
+        "n_components":int(n_components)*100,
         "random_state":23,
         }
     return params_rbf
@@ -285,9 +285,9 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     bo_SGDCrbfSVC = BayesianOptimization(
         bo_tune_SGDCrbfSVC,
         pbounds={
-            "alpha_power": (-8, 3),
-            "gamma_power": (-6, 1),
-            "n_components": (100, 2000)
+            "alpha_power": (-10, -6),
+            "gamma_power": (-8, -4),
+            "n_components": (10, 16) # times 100
             },
         random_state=23
         )
@@ -296,7 +296,7 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
     bo_SGDCrbfSVC.subscribe(Events.OPTIMIZATION_STEP, logger)
-    bo_SGDCrbfSVC.maximize(n_iter=100, init_points=20)
+    bo_SGDCrbfSVC.maximize(n_iter=81, init_points=9)
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
     
     # fit the model again with best parameters and combined X_train X_val data
@@ -323,7 +323,8 @@ def params_SGDClogReg(alpha_power, l1_ratio):
         "n_jobs":-1,
         "class_weight":"balanced",
         "random_state":23,
-        "verbose":1
+        "verbose":1,
+        "max_iter":50
         }
     return params
 
@@ -337,7 +338,7 @@ def run_SGDClogReg(X_train, X_val, X_test, y_train, y_val, y_test):
     bo_SGDClogReg = BayesianOptimization(
         bo_tune_SGDClogReg,
         pbounds={
-            "alpha_power": (-6, 1),
+            "alpha_power": (-8, -4),
             "l1_ratio": (0, 1)
             },
         random_state=23
@@ -347,7 +348,7 @@ def run_SGDClogReg(X_train, X_val, X_test, y_train, y_val, y_test):
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
     bo_SGDClogReg.subscribe(Events.OPTIMIZATION_STEP, logger)
-    bo_SGDClogReg.maximize(n_iter=100, init_points=15)
+    bo_SGDClogReg.maximize(n_iter=54, init_points=6)
     best_param_dict = get_best_params(jogger_file) # this is a dict of the best parameters
     
     # fit the model again with best parameters and combined X_train X_val data
