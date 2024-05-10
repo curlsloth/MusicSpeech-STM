@@ -13,41 +13,144 @@ Run this: python STM04_music_voice_detection.py [path to meta file] [.csv meta f
 
 """
 
-import demucs.api
-# import soundfile as sf
-import torchaudio as ta
-import torch
-# import scipy.io as sio
+
 import tensorflow as tf
 import scipy
 import numpy as np
-import csv
 import pandas as pd
 import time
-import sys
-import os
+import librosa
+
 
 # import matplotlib.pyplot as plt
 # from IPython.display import Audio
 # from scipy.io import wavfile
 
-
-
-
-
 # modified from here: https://www.tensorflow.org/hub/tutorials/yamnet
 # Find the name of the class with the top score when mean-aggregated across frames.
-def class_names_from_csv(class_map_csv_text):
-    """Returns list of class names corresponding to score vector."""
-    class_names = []
-    with tf.io.gfile.GFile(class_map_csv_text) as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            class_names.append(row['display_name'])
-    return class_names
+
+# %% corpus lists
+
+corpus_speech_list = ['BibleTTS/akuapem-twi',
+    'BibleTTS/asante-twi',
+    'BibleTTS/ewe',
+    'BibleTTS/hausa',
+    'BibleTTS/lingala',
+    'BibleTTS/yoruba',
+    'Buckeye',
+    'EUROM',
+    'HiltonMoser2022_speech',
+    'LibriSpeech',
+    'MediaSpeech/AR',
+    'MediaSpeech/ES',
+    'MediaSpeech/FR',
+    'MediaSpeech/TR',
+    'MozillaCommonVoice/ab',
+    'MozillaCommonVoice/ar',
+    'MozillaCommonVoice/ba',
+    'MozillaCommonVoice/be',
+    'MozillaCommonVoice/bg',
+    'MozillaCommonVoice/bn',
+    'MozillaCommonVoice/br',
+    'MozillaCommonVoice/ca',
+    'MozillaCommonVoice/ckb',
+    'MozillaCommonVoice/cnh',
+    'MozillaCommonVoice/cs',
+    'MozillaCommonVoice/cv',
+    'MozillaCommonVoice/cy',
+    'MozillaCommonVoice/da',
+    'MozillaCommonVoice/de',
+    'MozillaCommonVoice/dv',
+    'MozillaCommonVoice/el',
+    'MozillaCommonVoice/en',
+    'MozillaCommonVoice/eo',
+    'MozillaCommonVoice/es',
+    'MozillaCommonVoice/et',
+    'MozillaCommonVoice/eu',
+    'MozillaCommonVoice/fa',
+    'MozillaCommonVoice/fi',
+    'MozillaCommonVoice/fr',
+    'MozillaCommonVoice/fy-NL',
+    'MozillaCommonVoice/ga-IE',
+    'MozillaCommonVoice/gl',
+    'MozillaCommonVoice/gn',
+    'MozillaCommonVoice/hi',
+    'MozillaCommonVoice/hu',
+    'MozillaCommonVoice/hy-AM',
+    'MozillaCommonVoice/id',
+    'MozillaCommonVoice/ig',
+    'MozillaCommonVoice/it',
+    'MozillaCommonVoice/ja',
+    'MozillaCommonVoice/ka',
+    'MozillaCommonVoice/kab',
+    'MozillaCommonVoice/kk',
+    'MozillaCommonVoice/kmr',
+    'MozillaCommonVoice/ky',
+    'MozillaCommonVoice/lg',
+    'MozillaCommonVoice/lt',
+    'MozillaCommonVoice/ltg',
+    'MozillaCommonVoice/lv',
+    'MozillaCommonVoice/mhr',
+    'MozillaCommonVoice/ml',
+    'MozillaCommonVoice/mn',
+    'MozillaCommonVoice/mt',
+    'MozillaCommonVoice/nan-tw',
+    'MozillaCommonVoice/nl',
+    'MozillaCommonVoice/oc',
+    'MozillaCommonVoice/or',
+    'MozillaCommonVoice/pl',
+    'MozillaCommonVoice/pt',
+    'MozillaCommonVoice/ro',
+    'MozillaCommonVoice/ru',
+    'MozillaCommonVoice/rw',
+    'MozillaCommonVoice/sr',
+    'MozillaCommonVoice/sv-SE',
+    'MozillaCommonVoice/sw',
+    'MozillaCommonVoice/ta',
+    'MozillaCommonVoice/th',
+    'MozillaCommonVoice/tr',
+    'MozillaCommonVoice/tt',
+    'MozillaCommonVoice/ug',
+    'MozillaCommonVoice/uk',
+    'MozillaCommonVoice/ur',
+    'MozillaCommonVoice/uz',
+    'MozillaCommonVoice/vi',
+    'MozillaCommonVoice/yo',
+    'MozillaCommonVoice/yue',
+    'MozillaCommonVoice/zh-CN',
+    'MozillaCommonVoice/zh-TW',
+    'primewords_chinese',
+    'room_reader',
+    'SpeechClarity',
+    'TAT-Vol2',
+    'thchs30',
+    'TIMIT',
+    'TTS_Javanese',
+    'zeroth_korean'
+]
+
+corpus_music_list = [
+    'IRMAS',
+    'Albouy2020Science',
+    'CD',
+    'GarlandEncyclopedia',
+    'fma_large',
+    'ismir04_genre',
+    'MTG-Jamendo',
+    'HiltonMoser2022_song',
+    'NHS2',
+    'MagnaTagATune'
+]
+
+corpus_env_list = ['SONYC'] # exclude the 'SONYC_augmented' as there's no wave file
 
 
+# sort the corpora lists to make sure the order is replicable
+corpus_speech_list.sort()
+corpus_music_list.sort()
+corpus_env_list.sort()
 
+# %% functions
 # verify and convert a loaded audio is on the proper sample_rate (16K), otherwise it would affect the model's results.
 def ensure_sample_rate(original_sample_rate, waveform, desired_sample_rate=16000):
     """Resample waveform if required."""
@@ -56,65 +159,44 @@ def ensure_sample_rate(original_sample_rate, waveform, desired_sample_rate=16000
         waveform = scipy.signal.resample(waveform, desired_length)
     return desired_sample_rate, waveform
 
-def estimate_voice(df_meta, n_row):
+def run_YAMNet(df_meta):
     st = time.time()
     path = 'yamnet/1'
     model = tf.saved_model.load(path, tags=None, options=None)
     
+    scores_stacked_list = []
+    embeddings_stacked_list = []
+    
     # class_map_path = model.class_map_path().numpy()
     # class_names = class_names_from_csv(class_map_path)
-    
-    filename = df_meta['filepath'].iloc[n_row]
-    frame_offset = df_meta['startPoint'].iloc[n_row]-1
-    num_frame = df_meta['endPoint'].iloc[n_row]-frame_offset+1
-    y_tensor, sr = ta.load(filename, frame_offset=frame_offset, num_frames=num_frame)
-    if y_tensor.shape[0]==2: # if the audio is stereo, make it as mono
-        y_tensor = y_tensor.mean(axis=0) 
-    _, waveform = ensure_sample_rate(sr, np.array(y_tensor)) # convert to sr=16000
-    scores, embeddings, _ = model(np.array(separated['vocals'].mean(axis=0))) # use YAMNET to score the audio waveform
-    scores_np = scores.numpy()
-    class_timeseries = scores_np.argmax(axis=1) # the max likelihood category per time-frame
-    voice = np.any((class_timeseries >= 0) & (class_timeseries <= 35)) # whether the label of any time-frame belongs to any voice labels
-    # infered_class = class_names[scores_np.mean(axis=0).argmax()]
-    # voice = infered_class in class_names[0:35] # whether 
-    # get the execution time
+    for n_row in range(len(df_meta)):
+        try:
+            filename = df_meta['filepath'].iloc[n_row]
+            frame_offset = df_meta['startPoint'].iloc[n_row]-1
+            frame_end = df_meta['endPoint'].iloc[n_row]-1
+            waveform , sr = librosa.load(filename, sr=None, mono=True)
+            waveform = waveform [frame_offset:frame_end]
+            _, waveform = ensure_sample_rate(sr, waveform) # convert to sr=16000
+            scores, embeddings, _ = model(waveform) # use YAMNET to score the audio waveform
+            scores_stacked_list.append(scores.numpy().mean(axis=0))
+            embeddings_stacked_list.append(embeddings.numpy().mean(axis=0))
+        except Exception as e:
+            # Print the error message
+            print("***** ERROR in n_row="+str(n_row)+ f": {e}")
+            
     et = time.time()
     print('Execution time:', et - st, 'seconds')
-    return voice, filename
+    return np.vstack(scores_stacked_list), np.vstack(embeddings_stacked_list)
 
-if __name__ == "__main__":
-    # Check if the correct number of arguments are provided
-    if len(sys.argv) != 4:
-        print("Usage: python script.py arg1 arg2")
-        sys.exit(1)
+# %% run YAMNet
 
-    # Extract command-line arguments
-    path = sys.argv[1]
-    df_meta_filename = sys.argv[2]
-    init_num = int(sys.argv[3])*100
+corpus_list = corpus_speech_list+corpus_music_list+corpus_env_list
+for corp in corpus_list:
+    metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
+    df_meta = pd.read_csv(metafile,index_col=0)
     
-    df_meta = pd.read_csv(os.path.join(path,df_meta_filename), index_col=0)
-
-    # Call your function or perform any desired operations
-    for n_row in range(init_num, min(init_num+100,len(df_meta))):
-        savefile_path = os.path.join(path, 'vocal_music_demucs', df_meta_filename[:-4])
-        savefile_name = os.path.join(savefile_path, 'row'+str(n_row)+'.csv')
-        if not os.path.exists(savefile_path): # make a folder is there's no folder
-            os.makedirs(savefile_path)
-
-        if os.path.exists(savefile_name):
-            print("SKIPPING: "+savefile_name)
-        else:
-            try:
-                voice, filename = estimate_voice(df_meta, n_row)
-                # Write data to the CSV file
-                with open(savefile_name, mode='w', newline='') as file:
-                    writer = csv.writer(file)
-                    writer.writerow([filename, voice])
-                print(savefile_name)
-            except Exception as e:
-                # Print the error message
-                print("***** ERROR in n_row="+str(n_row)+ f": {e}")
-                
-    print("Demucs voice recognition done!")
-    sys.exit(0)
+    scores_data, embeddings_data = run_YAMNet(df_meta)
+    corpus_name = metafile[20:-4]
+    np.save('yamnet_output/scores/'+corpus_name+'_yamnetScores.npy', scores_data)
+    np.save('yamnet_output/embeddings/'+corpus_name+'_yamnetEmbeddings.npy', embeddings_data)
+    

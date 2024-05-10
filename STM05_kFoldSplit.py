@@ -297,7 +297,7 @@ print("Number of environmental recordings: "+ str(len(df_SONYC)))
 
 # %% save split files
 
-save_split_files = True
+save_split_files = False
 
 if save_split_files:
     speech_row_split = round(len(speech_corp_df)/2)
