@@ -95,13 +95,13 @@ def update_meta_file(corpus_name, reset_demucs=False):
 
 # %% run the functions
 
-# corpus_name = 'fma_large'
+corpus_name = 'fma_large'
 # corpus_name = 'ismir04_genre'
 # corpus_name = 'MagnaTagATune'
-corpus_name = 'MTG-Jamendo'
+# corpus_name = 'MTG-Jamendo'
 
-start_time = datetime.datetime(2024, 5, 9, 9, 0)
-end_time = datetime.datetime(2024, 5, 9, 23, 0)
+start_time = datetime.datetime(2024, 5, 10, 0, 0)
+end_time = datetime.datetime(2024, 5, 10, 23, 0)
 check_slurm(corpus_name, start_time, end_time)
 
 change_meta_file = True

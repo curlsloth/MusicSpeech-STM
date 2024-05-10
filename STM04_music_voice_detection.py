@@ -104,19 +104,20 @@ if __name__ == "__main__":
         if not os.path.exists(savefile_path): # make a folder is there's no folder
             os.makedirs(savefile_path)
 
-        if os.path.exists(savefile_name):
-            print("SKIPPING: "+savefile_name)
-        else:
-            try:
-                voice, filename = estimate_voice(df_meta, n_row)
-                # Write data to the CSV file
-                with open(savefile_name, mode='w', newline='') as file:
-                    writer = csv.writer(file)
-                    writer.writerow([filename, voice])
-                print(savefile_name)
-            except Exception as e:
-                # Print the error message
-                print("***** ERROR in n_row="+str(n_row)+ f": {e}")
+        ## this is causing trouble
+        # if os.path.exists(savefile_name):
+        #     print("SKIPPING: "+savefile_name)
+        # else:
+        try:
+            voice, filename = estimate_voice(df_meta, n_row)
+            # Write data to the CSV file
+            with open(savefile_name, mode='w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow([filename, voice])
+            print(savefile_name)
+        except Exception as e:
+            # Print the error message
+            print("***** ERROR in n_row="+str(n_row)+ f": {e}")
                 
     print("Demucs voice recognition done!")
     sys.exit(0)
