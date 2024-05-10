@@ -1,0 +1,195 @@
+/ext3/demucs/lib/python3.9/site-packages/demucs/api.py:27: UserWarning: TorchAudio's global backend is now deprecated. Please enable distpatcher by setting `TORCHAUDIO_USE_BACKEND_DISPATCHER=1`, and specify backend when calling load/info/save function.
+  import torchaudio as ta
+2024-05-10 01:28:23.518277: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-05-10 01:28:23.874854: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-05-10 01:28:23.874898: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-05-10 01:28:23.899854: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-05-10 01:28:23.970582: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-05-10 01:28:24.889257: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38000.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38001.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38002.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38003.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38004.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38005.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38006.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38007.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38008.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38009.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38010.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38011.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38012.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38013.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_fma_large/row38014.csv
+Execution time: 28.648711681365967 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38015.csv
+Execution time: 25.90049123764038 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38016.csv
+Execution time: 26.29586172103882 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38017.csv
+Execution time: 25.8959698677063 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38018.csv
+Execution time: 25.706717252731323 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38019.csv
+Execution time: 27.173309326171875 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38020.csv
+Execution time: 26.165173053741455 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38021.csv
+Execution time: 25.762067079544067 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38022.csv
+Execution time: 26.490575075149536 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38023.csv
+Execution time: 25.89572763442993 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38024.csv
+Execution time: 26.07026433944702 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38025.csv
+Execution time: 26.279850482940674 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38026.csv
+Execution time: 25.848175525665283 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38027.csv
+Execution time: 26.57464098930359 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38028.csv
+Execution time: 25.99027442932129 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38029.csv
+Execution time: 26.481976985931396 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38030.csv
+Execution time: 26.105324745178223 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38031.csv
+Execution time: 26.03036093711853 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38032.csv
+Execution time: 26.95829439163208 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38033.csv
+Execution time: 27.131986141204834 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38034.csv
+Execution time: 26.52578902244568 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38035.csv
+Execution time: 26.525020837783813 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38036.csv
+Execution time: 26.20344114303589 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38037.csv
+Execution time: 25.80471706390381 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38038.csv
+Execution time: 27.296592473983765 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38039.csv
+Execution time: 26.4200918674469 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38040.csv
+Execution time: 27.26481294631958 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38041.csv
+Execution time: 28.21722722053528 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38042.csv
+Execution time: 26.54442071914673 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38043.csv
+Execution time: 27.786759853363037 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38044.csv
+Execution time: 26.76063871383667 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38045.csv
+Execution time: 26.245178937911987 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38046.csv
+Execution time: 26.3612380027771 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38047.csv
+Execution time: 26.06763505935669 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38048.csv
+Execution time: 26.71348237991333 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38049.csv
+Execution time: 26.24733543395996 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38050.csv
+Execution time: 26.09327268600464 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38051.csv
+Execution time: 26.465306758880615 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38052.csv
+Execution time: 26.572514057159424 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38053.csv
+Execution time: 26.881957054138184 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38054.csv
+Execution time: 26.748943090438843 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38055.csv
+Execution time: 25.589296340942383 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38056.csv
+Execution time: 26.965754985809326 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38057.csv
+Execution time: 26.111002445220947 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38058.csv
+Execution time: 25.93114161491394 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38059.csv
+Execution time: 27.322312593460083 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38060.csv
+Execution time: 26.32341432571411 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38061.csv
+Execution time: 25.92849326133728 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38062.csv
+Execution time: 26.747932195663452 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38063.csv
+Execution time: 25.843029737472534 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38064.csv
+Execution time: 25.736817598342896 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38065.csv
+Execution time: 26.811710357666016 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38066.csv
+Execution time: 26.67491364479065 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38067.csv
+Execution time: 26.326270580291748 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38068.csv
+Execution time: 26.407803773880005 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38069.csv
+Execution time: 25.85668396949768 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38070.csv
+Execution time: 27.311029195785522 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38071.csv
+Execution time: 27.02516508102417 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38072.csv
+Execution time: 25.536656379699707 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38073.csv
+Execution time: 25.990307569503784 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38074.csv
+Execution time: 26.079729557037354 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38075.csv
+Execution time: 26.90412425994873 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38076.csv
+Execution time: 26.0191171169281 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38077.csv
+Execution time: 26.728485107421875 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38078.csv
+Execution time: 25.89616346359253 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38079.csv
+Execution time: 26.250028133392334 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38080.csv
+Execution time: 26.926630973815918 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38081.csv
+Execution time: 25.6030433177948 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38082.csv
+Execution time: 26.50625777244568 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38083.csv
+Execution time: 24.95451021194458 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38084.csv
+Execution time: 26.139351844787598 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38085.csv
+Execution time: 26.64956569671631 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38086.csv
+Execution time: 26.50481867790222 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38087.csv
+Execution time: 26.546905279159546 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38088.csv
+Execution time: 27.049609184265137 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38089.csv
+Execution time: 25.24885630607605 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38090.csv
+Execution time: 25.50619411468506 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38091.csv
+Execution time: 26.653377056121826 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38092.csv
+Execution time: 25.861171007156372 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38093.csv
+Execution time: 26.588719844818115 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38094.csv
+Execution time: 25.005457639694214 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38095.csv
+Execution time: 26.648004293441772 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38096.csv
+Execution time: 25.89431643486023 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38097.csv
+Execution time: 27.52361297607422 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38098.csv
+Execution time: 25.2669358253479 seconds
+metaTables/vocal_music_demucs_16k/metaData_fma_large/row38099.csv
+Demucs voice recognition done!
