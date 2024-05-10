@@ -1,0 +1,243 @@
+/vast/ac8888/MusicSpeech-STM/STM09_sklearn_classifiers.py:178: FutureWarning: Downcasting behavior in `replace` is deprecated and will be removed in a future version. To retain the old behavior, explicitly call `result.infer_objects(copy=False)`. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  target.replace({
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 20 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   5 | elapsed:   15.0s remaining:   22.4s
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed:   21.7s finished
+STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-hausa_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-lingala_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-yoruba_STMall.npy
+STM_output/corpSTMnpy/Buckeye_STMall.npy
+STM_output/corpSTMnpy/EUROM_STMall.npy
+STM_output/corpSTMnpy/HiltonMoser2022_speech_STMall.npy
+STM_output/corpSTMnpy/LibriSpeech_STMall.npy
+STM_output/corpSTMnpy/MediaSpeech-AR_STMall.npy
+STM_output/corpSTMnpy/MediaSpeech-ES_STMall.npy
+STM_output/corpSTMnpy/MediaSpeech-FR_STMall.npy
+STM_output/corpSTMnpy/MediaSpeech-TR_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ab_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ar_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ba_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-be_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-bg_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-bn_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-br_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ca_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ckb_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-cnh_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-cs_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-cv_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-cy_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-da_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-de_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-dv_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-el_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-en_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-eo_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-es_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-et_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-eu_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-fa_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-fi_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-fr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-fy-NL_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ga-IE_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-gl_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-gn_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-hi_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-hu_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-hy-AM_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-id_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ig_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-it_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ja_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ka_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-kab_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-kk_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-kmr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ky_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-lg_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-lt_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ltg_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-lv_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-mhr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ml_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-mn_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-mt_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-nan-tw_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-nl_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-oc_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-or_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-pl_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-pt_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ro_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ru_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-rw_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-sr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-sv-SE_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-sw_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ta_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-th_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-tr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-tt_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ug_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-uk_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ur_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-uz_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-vi_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-yo_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-yue_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-zh-CN_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-zh-TW_STMall.npy
+STM_output/corpSTMnpy/SpeechClarity_STMall.npy
+STM_output/corpSTMnpy/TAT-Vol2_STMall.npy
+STM_output/corpSTMnpy/TIMIT_STMall.npy
+STM_output/corpSTMnpy/TTS_Javanese_STMall.npy
+STM_output/corpSTMnpy/primewords_chinese_STMall.npy
+STM_output/corpSTMnpy/room_reader_STMall.npy
+STM_output/corpSTMnpy/thchs30_STMall.npy
+STM_output/corpSTMnpy/zeroth_korean_STMall.npy
+STM_output/corpSTMnpy/Albouy2020Science_STMall.npy
+STM_output/corpSTMnpy/CD_STMall.npy
+STM_output/corpSTMnpy/GarlandEncyclopedia_STMall.npy
+STM_output/corpSTMnpy/HiltonMoser2022_song_STMall.npy
+STM_output/corpSTMnpy/IRMAS_STMall.npy
+STM_output/corpSTMnpy/MTG-Jamendo_STMall.npy
+STM_output/corpSTMnpy/MagnaTagATune_STMall.npy
+STM_output/corpSTMnpy/NHS2_STMall.npy
+STM_output/corpSTMnpy/fma_large_STMall.npy
+STM_output/corpSTMnpy/ismir04_genre_STMall.npy
+STM_output/corpSTMnpy/SONYC_STMall.npy
+STM_output/corpSTMnpy/SONYC_augmented_STMall.npy
+-- Epoch 1
+-- Epoch 1
+-- Epoch 1
+-- Epoch 1
+-- Epoch 1
+Norm: 0.00, NNZs: 1554, Bias: -1.000002, T: 852212, Avg. loss: 0.144525
+Total training time: 2.35 seconds.
+-- Epoch 2
+Norm: 0.00, NNZs: 1554, Bias: -1.000002, T: 852212, Avg. loss: 0.255027
+Total training time: 2.47 seconds.
+-- Epoch 2
+Norm: 0.00, NNZs: 1554, Bias: -1.000002, T: 852212, Avg. loss: 0.187139
+Total training time: 2.51 seconds.
+-- Epoch 2
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 852212, Avg. loss: 0.225686
+Total training time: 2.54 seconds.
+-- Epoch 2
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 852212, Avg. loss: 1.187546
+Total training time: 3.61 seconds.
+-- Epoch 2
+Norm: 0.00, NNZs: 1554, Bias: -1.000001, T: 1704424, Avg. loss: 0.144521
+Total training time: 4.72 seconds.
+-- Epoch 3
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 1704424, Avg. loss: 0.255021
+Total training time: 4.97 seconds.
+-- Epoch 3
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 1704424, Avg. loss: 0.187134
+Total training time: 5.17 seconds.
+-- Epoch 3
+Norm: 0.00, NNZs: 1554, Bias: -1.000001, T: 1704424, Avg. loss: 0.225681
+Total training time: 5.19 seconds.
+-- Epoch 3
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 2556636, Avg. loss: 0.144521
+Total training time: 7.10 seconds.
+-- Epoch 4
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 1704424, Avg. loss: 1.187644
+Total training time: 7.38 seconds.
+-- Epoch 3
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 2556636, Avg. loss: 0.255021
+Total training time: 7.46 seconds.
+-- Epoch 4
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 2556636, Avg. loss: 0.187134
+Total training time: 7.84 seconds.
+-- Epoch 4
+Norm: 0.00, NNZs: 1554, Bias: -1.000001, T: 2556636, Avg. loss: 0.225681
+Total training time: 7.84 seconds.
+-- Epoch 4
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 3408848, Avg. loss: 0.144520
+Total training time: 9.47 seconds.
+-- Epoch 5
+Norm: 0.00, NNZs: 1554, Bias: -1.000001, T: 3408848, Avg. loss: 0.255021
+Total training time: 9.96 seconds.
+-- Epoch 5
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 3408848, Avg. loss: 0.225681
+Total training time: 10.50 seconds.
+-- Epoch 5
+Norm: 0.00, NNZs: 1554, Bias: -1.000001, T: 3408848, Avg. loss: 0.187134
+Total training time: 10.51 seconds.
+-- Epoch 5
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 2556636, Avg. loss: 1.187644
+Total training time: 11.10 seconds.
+-- Epoch 4
+Norm: 0.00, NNZs: 1554, Bias: -1.000001, T: 4261060, Avg. loss: 0.144520
+Total training time: 11.84 seconds.
+-- Epoch 6
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 4261060, Avg. loss: 0.255021
+Total training time: 12.46 seconds.
+-- Epoch 6
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 4261060, Avg. loss: 0.225681
+Total training time: 13.15 seconds.
+-- Epoch 6
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 4261060, Avg. loss: 0.187134
+Total training time: 13.18 seconds.
+-- Epoch 6
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 5113272, Avg. loss: 0.144520
+Total training time: 14.22 seconds.
+Convergence after 6 epochs took 14.22 seconds
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 3408848, Avg. loss: 1.187644
+Total training time: 14.83 seconds.
+-- Epoch 5
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 5113272, Avg. loss: 0.255021
+Total training time: 14.95 seconds.
+Convergence after 6 epochs took 14.95 seconds
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 5113272, Avg. loss: 0.225681
+Total training time: 15.80 seconds.
+Convergence after 6 epochs took 15.80 seconds
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 5113272, Avg. loss: 0.187134
+Total training time: 15.85 seconds.
+Convergence after 6 epochs took 15.85 seconds
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 4261060, Avg. loss: 1.187643
+Total training time: 18.30 seconds.
+-- Epoch 6
+Norm: 0.00, NNZs: 1554, Bias: -1.000000, T: 5113272, Avg. loss: 1.187643
+Total training time: 21.64 seconds.
+Convergence after 6 epochs took 21.64 seconds
+Traceback (most recent call last):
+  File "/vast/ac8888/MusicSpeech-STM/STM09_sklearn_classifiers.py", line 627, in <module>
+    run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test)
+  File "/vast/ac8888/MusicSpeech-STM/STM09_sklearn_classifiers.py", line 299, in run_SGDCrbfSVC
+    bo_SGDCrbfSVC.maximize(n_iter=200, init_points=25)
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/bayes_opt/bayesian_optimization.py", line 310, in maximize
+    self.probe(x_probe, lazy=False)
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/bayes_opt/bayesian_optimization.py", line 208, in probe
+    self._space.probe(params)
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/bayes_opt/target_space.py", line 236, in probe
+    target = self.target_func(**params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/ac8888/MusicSpeech-STM/STM09_sklearn_classifiers.py", line 282, in bo_tune_SGDCrbfSVC
+    y_val_encoded = OneHotEncoder(sparse_output=False).fit_transform(y_val)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/sklearn/utils/_set_output.py", line 295, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/sklearn/base.py", line 1474, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/sklearn/preprocessing/_encoders.py", line 975, in fit
+    self._fit(
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/sklearn/preprocessing/_encoders.py", line 78, in _fit
+    X_list, n_samples, n_features = self._check_X(
+                                    ^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/sklearn/preprocessing/_encoders.py", line 44, in _check_X
+    X_temp = check_array(X, dtype=None, force_all_finite=force_all_finite)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1035, in check_array
+    raise ValueError(msg)
+ValueError: Expected a 2-dimensional container but got <class 'pandas.core.series.Series'> instead. Pass a DataFrame containing a single row (i.e. single sample) or a single column (i.e. single feature) instead.

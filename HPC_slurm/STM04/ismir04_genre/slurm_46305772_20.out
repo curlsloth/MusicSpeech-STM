@@ -1,0 +1,162 @@
+/ext3/demucs/lib/python3.9/site-packages/demucs/api.py:27: UserWarning: TorchAudio's global backend is now deprecated. Please enable distpatcher by setting `TORCHAUDIO_USE_BACKEND_DISPATCHER=1`, and specify backend when calling load/info/save function.
+  import torchaudio as ta
+2024-05-09 09:26:47.990172: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-05-09 09:26:50.378681: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-05-09 09:26:50.378723: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-05-09 09:26:50.438140: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-05-09 09:26:51.229822: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-05-09 09:26:54.806770: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Note: Illegal Audio-MPEG-Header 0x62204865 at offset 1343397.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2000.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2001.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2002.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2003.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2004.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2005.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2006.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2007.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2008.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2009.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2010.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2011.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2012.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2013.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2014.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2015.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2016.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2017.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2018.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2019.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2020.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2021.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2022.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2023.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2024.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2025.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2026.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2027.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2028.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2029.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2030.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2031.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2032.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2033.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2034.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2035.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2036.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2037.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2038.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2039.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2040.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2041.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2042.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2043.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2044.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2045.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2046.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2047.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2048.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2049.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2050.csv
+Execution time: 89.95849657058716 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2051.csv
+Execution time: 81.07916951179504 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2052.csv
+Execution time: 83.08212685585022 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2053.csv
+Execution time: 51.74054551124573 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2054.csv
+Execution time: 85.06735229492188 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2055.csv
+Execution time: 86.16860389709473 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2056.csv
+Execution time: 85.98668479919434 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2057.csv
+Execution time: 61.2586784362793 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2058.csv
+Execution time: 87.05972003936768 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2059.csv
+Execution time: 82.1746244430542 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2060.csv
+Execution time: 70.99069547653198 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2061.csv
+Execution time: 80.21155595779419 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2062.csv
+Execution time: 81.70630359649658 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2063.csv
+Execution time: 85.42018270492554 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2064.csv
+Execution time: 83.75391674041748 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2065.csv
+Execution time: 79.73892307281494 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2066.csv
+Execution time: 87.62396335601807 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2067.csv
+Execution time: 81.6381151676178 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2068.csv
+Execution time: 70.32531595230103 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2069.csv
+Execution time: 83.87896418571472 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2070.csv
+Execution time: 82.09094333648682 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2071.csv
+Execution time: 85.30483722686768 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2072.csv
+Execution time: 72.16886305809021 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2073.csv
+Execution time: 82.56622362136841 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2074.csv
+Execution time: 81.07614850997925 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2075.csv
+Execution time: 44.37059307098389 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2076.csv
+Execution time: 76.08983421325684 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2077.csv
+Execution time: 84.6184310913086 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2078.csv
+Execution time: 80.25542736053467 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2079.csv
+Execution time: 67.10274481773376 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2080.csv
+Execution time: 88.72124147415161 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2081.csv
+Execution time: 85.04289054870605 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2082.csv
+Execution time: 83.64704751968384 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2083.csv
+Execution time: 88.24112176895142 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2084.csv
+Execution time: 80.277174949646 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2085.csv
+Execution time: 80.08393621444702 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2086.csv
+Execution time: 80.45175075531006 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2087.csv
+Execution time: 78.88353776931763 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2088.csv
+Execution time: 81.97844409942627 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2089.csv
+Execution time: 83.52752995491028 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2090.csv
+Execution time: 43.84489369392395 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2091.csv
+Execution time: 80.81058764457703 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2092.csv
+Execution time: 65.51042008399963 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2093.csv
+Execution time: 75.32656288146973 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2094.csv
+Execution time: 82.24415755271912 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2095.csv
+Execution time: 79.01707482337952 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2096.csv
+Execution time: 81.85799169540405 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2097.csv
+Execution time: 82.70281410217285 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2098.csv
+Execution time: 74.4534547328949 seconds
+metaTables/vocal_music_demucs_16k/metaData_ismir04_genre/row2099.csv
+Demucs voice recognition done!

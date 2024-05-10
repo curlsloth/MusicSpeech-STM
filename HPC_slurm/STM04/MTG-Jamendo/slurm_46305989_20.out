@@ -1,0 +1,163 @@
+/ext3/demucs/lib/python3.9/site-packages/demucs/api.py:27: UserWarning: TorchAudio's global backend is now deprecated. Please enable distpatcher by setting `TORCHAUDIO_USE_BACKEND_DISPATCHER=1`, and specify backend when calling load/info/save function.
+  import torchaudio as ta
+2024-05-09 09:28:35.997139: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-05-09 09:28:37.288449: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-05-09 09:28:37.288495: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-05-09 09:28:37.359503: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-05-09 09:28:37.468986: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-05-09 09:28:39.197658: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2000.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2001.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2002.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2003.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2004.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2005.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2006.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2007.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2008.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2009.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2010.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2011.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2012.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2013.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2014.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2015.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2016.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2017.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2018.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2019.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2020.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2021.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2022.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2023.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2024.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2025.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2026.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2027.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2028.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2029.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2030.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2031.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2032.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2033.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2034.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2035.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2036.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2037.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2038.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2039.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2040.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2041.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2042.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2043.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2044.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2045.csv
+SKIPPING: metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2046.csv
+Execution time: 96.46046876907349 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2047.csv
+Execution time: 92.18112993240356 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2048.csv
+Execution time: 94.54845476150513 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2049.csv
+Execution time: 92.69740796089172 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2050.csv
+Execution time: 92.5053505897522 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2051.csv
+Execution time: 94.69046640396118 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2052.csv
+Execution time: 94.94206261634827 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2053.csv
+Execution time: 96.03689503669739 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2054.csv
+Execution time: 94.56349658966064 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2055.csv
+Execution time: 94.65829873085022 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2056.csv
+Execution time: 93.25655221939087 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2057.csv
+Execution time: 92.1218159198761 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2058.csv
+Execution time: 92.14638376235962 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2059.csv
+Execution time: 93.85076069831848 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2060.csv
+Execution time: 90.73952984809875 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2061.csv
+Execution time: 92.30579233169556 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2062.csv
+Execution time: 92.15857124328613 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2063.csv
+Execution time: 100.14837765693665 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2064.csv
+Execution time: 93.73415780067444 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2065.csv
+Execution time: 94.08751273155212 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2066.csv
+Execution time: 94.4167594909668 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2067.csv
+Execution time: 97.02617621421814 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2068.csv
+Execution time: 95.57659959793091 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2069.csv
+Execution time: 96.32091450691223 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2070.csv
+Execution time: 91.69263052940369 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2071.csv
+Execution time: 95.40901112556458 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2072.csv
+Execution time: 99.953289270401 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2073.csv
+Execution time: 92.82810640335083 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2074.csv
+Execution time: 99.27015256881714 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2075.csv
+Execution time: 92.73728823661804 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2076.csv
+Execution time: 43.09898281097412 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2077.csv
+Execution time: 89.55373692512512 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2078.csv
+Execution time: 94.50596380233765 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2079.csv
+Execution time: 95.38302183151245 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2080.csv
+Execution time: 94.09738945960999 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2081.csv
+Execution time: 90.14215922355652 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2082.csv
+Execution time: 89.27918076515198 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2083.csv
+Execution time: 95.81104445457458 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2084.csv
+Execution time: 89.33404493331909 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2085.csv
+Execution time: 93.22821927070618 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2086.csv
+Execution time: 92.08772110939026 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2087.csv
+Execution time: 89.96479797363281 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2088.csv
+Execution time: 97.84283375740051 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2089.csv
+Execution time: 90.40562343597412 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2090.csv
+Execution time: 90.54065322875977 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2091.csv
+Execution time: 96.93335843086243 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2092.csv
+Execution time: 92.1279993057251 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2093.csv
+Execution time: 104.56316328048706 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2094.csv
+Execution time: 92.9193651676178 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2095.csv
+Execution time: 89.24643564224243 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2096.csv
+Execution time: 73.70447874069214 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2097.csv
+Execution time: 90.22788119316101 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2098.csv
+Execution time: 93.81497693061829 seconds
+metaTables/vocal_music_demucs_16k/metaData_MTG-Jamendo/row2099.csv
+Demucs voice recognition done!

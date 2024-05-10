@@ -1,0 +1,28 @@
+/vast/ac8888/MusicSpeech-STM/STM09_sklearn_classifiers.py:178: FutureWarning: Downcasting behavior in `replace` is deprecated and will be removed in a future version. To retain the old behavior, explicitly call `result.infer_objects(copy=False)`. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  target.replace({
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed: 72.9min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed:  3.2min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed: 160.3min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed: 208.2min finished
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/sklearn/linear_model/_stochastic_gradient.py:723: ConvergenceWarning: Maximum number of iteration reached before convergence. Consider increasing max_iter to improve the fit.
+  warnings.warn(
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed: 23.3min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed: 111.1min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed:  2.1min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed: 39.8min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed:  5.1min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed: 105.9min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of   5 | elapsed:  1.8min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 40 concurrent workers.
+slurmstepd: error: *** JOB 46074604 ON cs206 CANCELLED AT 2024-05-05T12:20:33 ***
