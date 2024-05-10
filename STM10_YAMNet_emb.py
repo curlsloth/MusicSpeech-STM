@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 import time
 import librosa
-
+import sys
 
 # import matplotlib.pyplot as plt
 # from IPython.display import Audio
@@ -31,124 +31,127 @@ import librosa
 
 # %% corpus lists
 
-corpus_speech_list = ['BibleTTS/akuapem-twi',
-    'BibleTTS/asante-twi',
-    'BibleTTS/ewe',
-    'BibleTTS/hausa',
-    'BibleTTS/lingala',
-    'BibleTTS/yoruba',
-    'Buckeye',
-    'EUROM',
-    'HiltonMoser2022_speech',
-    'LibriSpeech',
-    'MediaSpeech/AR',
-    'MediaSpeech/ES',
-    'MediaSpeech/FR',
-    'MediaSpeech/TR',
-    'MozillaCommonVoice/ab',
-    'MozillaCommonVoice/ar',
-    'MozillaCommonVoice/ba',
-    'MozillaCommonVoice/be',
-    'MozillaCommonVoice/bg',
-    'MozillaCommonVoice/bn',
-    'MozillaCommonVoice/br',
-    'MozillaCommonVoice/ca',
-    'MozillaCommonVoice/ckb',
-    'MozillaCommonVoice/cnh',
-    'MozillaCommonVoice/cs',
-    'MozillaCommonVoice/cv',
-    'MozillaCommonVoice/cy',
-    'MozillaCommonVoice/da',
-    'MozillaCommonVoice/de',
-    'MozillaCommonVoice/dv',
-    'MozillaCommonVoice/el',
-    'MozillaCommonVoice/en',
-    'MozillaCommonVoice/eo',
-    'MozillaCommonVoice/es',
-    'MozillaCommonVoice/et',
-    'MozillaCommonVoice/eu',
-    'MozillaCommonVoice/fa',
-    'MozillaCommonVoice/fi',
-    'MozillaCommonVoice/fr',
-    'MozillaCommonVoice/fy-NL',
-    'MozillaCommonVoice/ga-IE',
-    'MozillaCommonVoice/gl',
-    'MozillaCommonVoice/gn',
-    'MozillaCommonVoice/hi',
-    'MozillaCommonVoice/hu',
-    'MozillaCommonVoice/hy-AM',
-    'MozillaCommonVoice/id',
-    'MozillaCommonVoice/ig',
-    'MozillaCommonVoice/it',
-    'MozillaCommonVoice/ja',
-    'MozillaCommonVoice/ka',
-    'MozillaCommonVoice/kab',
-    'MozillaCommonVoice/kk',
-    'MozillaCommonVoice/kmr',
-    'MozillaCommonVoice/ky',
-    'MozillaCommonVoice/lg',
-    'MozillaCommonVoice/lt',
-    'MozillaCommonVoice/ltg',
-    'MozillaCommonVoice/lv',
-    'MozillaCommonVoice/mhr',
-    'MozillaCommonVoice/ml',
-    'MozillaCommonVoice/mn',
-    'MozillaCommonVoice/mt',
-    'MozillaCommonVoice/nan-tw',
-    'MozillaCommonVoice/nl',
-    'MozillaCommonVoice/oc',
-    'MozillaCommonVoice/or',
-    'MozillaCommonVoice/pl',
-    'MozillaCommonVoice/pt',
-    'MozillaCommonVoice/ro',
-    'MozillaCommonVoice/ru',
-    'MozillaCommonVoice/rw',
-    'MozillaCommonVoice/sr',
-    'MozillaCommonVoice/sv-SE',
-    'MozillaCommonVoice/sw',
-    'MozillaCommonVoice/ta',
-    'MozillaCommonVoice/th',
-    'MozillaCommonVoice/tr',
-    'MozillaCommonVoice/tt',
-    'MozillaCommonVoice/ug',
-    'MozillaCommonVoice/uk',
-    'MozillaCommonVoice/ur',
-    'MozillaCommonVoice/uz',
-    'MozillaCommonVoice/vi',
-    'MozillaCommonVoice/yo',
-    'MozillaCommonVoice/yue',
-    'MozillaCommonVoice/zh-CN',
-    'MozillaCommonVoice/zh-TW',
-    'primewords_chinese',
-    'room_reader',
-    'SpeechClarity',
-    'TAT-Vol2',
-    'thchs30',
-    'TIMIT',
-    'TTS_Javanese',
-    'zeroth_korean'
-]
-
-corpus_music_list = [
-    'IRMAS',
-    'Albouy2020Science',
-    'CD',
-    'GarlandEncyclopedia',
-    'fma_large',
-    'ismir04_genre',
-    'MTG-Jamendo',
-    'HiltonMoser2022_song',
-    'NHS2',
-    'MagnaTagATune'
-]
-
-corpus_env_list = ['SONYC'] # exclude the 'SONYC_augmented' as there's no wave file
-
-
-# sort the corpora lists to make sure the order is replicable
-corpus_speech_list.sort()
-corpus_music_list.sort()
-corpus_env_list.sort()
+def prep_corp_lists():
+    corpus_speech_list = ['BibleTTS/akuapem-twi',
+        'BibleTTS/asante-twi',
+        'BibleTTS/ewe',
+        'BibleTTS/hausa',
+        'BibleTTS/lingala',
+        'BibleTTS/yoruba',
+        'Buckeye',
+        'EUROM',
+        'HiltonMoser2022_speech',
+        'LibriSpeech',
+        'MediaSpeech/AR',
+        'MediaSpeech/ES',
+        'MediaSpeech/FR',
+        'MediaSpeech/TR',
+        'MozillaCommonVoice/ab',
+        'MozillaCommonVoice/ar',
+        'MozillaCommonVoice/ba',
+        'MozillaCommonVoice/be',
+        'MozillaCommonVoice/bg',
+        'MozillaCommonVoice/bn',
+        'MozillaCommonVoice/br',
+        'MozillaCommonVoice/ca',
+        'MozillaCommonVoice/ckb',
+        'MozillaCommonVoice/cnh',
+        'MozillaCommonVoice/cs',
+        'MozillaCommonVoice/cv',
+        'MozillaCommonVoice/cy',
+        'MozillaCommonVoice/da',
+        'MozillaCommonVoice/de',
+        'MozillaCommonVoice/dv',
+        'MozillaCommonVoice/el',
+        'MozillaCommonVoice/en',
+        'MozillaCommonVoice/eo',
+        'MozillaCommonVoice/es',
+        'MozillaCommonVoice/et',
+        'MozillaCommonVoice/eu',
+        'MozillaCommonVoice/fa',
+        'MozillaCommonVoice/fi',
+        'MozillaCommonVoice/fr',
+        'MozillaCommonVoice/fy-NL',
+        'MozillaCommonVoice/ga-IE',
+        'MozillaCommonVoice/gl',
+        'MozillaCommonVoice/gn',
+        'MozillaCommonVoice/hi',
+        'MozillaCommonVoice/hu',
+        'MozillaCommonVoice/hy-AM',
+        'MozillaCommonVoice/id',
+        'MozillaCommonVoice/ig',
+        'MozillaCommonVoice/it',
+        'MozillaCommonVoice/ja',
+        'MozillaCommonVoice/ka',
+        'MozillaCommonVoice/kab',
+        'MozillaCommonVoice/kk',
+        'MozillaCommonVoice/kmr',
+        'MozillaCommonVoice/ky',
+        'MozillaCommonVoice/lg',
+        'MozillaCommonVoice/lt',
+        'MozillaCommonVoice/ltg',
+        'MozillaCommonVoice/lv',
+        'MozillaCommonVoice/mhr',
+        'MozillaCommonVoice/ml',
+        'MozillaCommonVoice/mn',
+        'MozillaCommonVoice/mt',
+        'MozillaCommonVoice/nan-tw',
+        'MozillaCommonVoice/nl',
+        'MozillaCommonVoice/oc',
+        'MozillaCommonVoice/or',
+        'MozillaCommonVoice/pl',
+        'MozillaCommonVoice/pt',
+        'MozillaCommonVoice/ro',
+        'MozillaCommonVoice/ru',
+        'MozillaCommonVoice/rw',
+        'MozillaCommonVoice/sr',
+        'MozillaCommonVoice/sv-SE',
+        'MozillaCommonVoice/sw',
+        'MozillaCommonVoice/ta',
+        'MozillaCommonVoice/th',
+        'MozillaCommonVoice/tr',
+        'MozillaCommonVoice/tt',
+        'MozillaCommonVoice/ug',
+        'MozillaCommonVoice/uk',
+        'MozillaCommonVoice/ur',
+        'MozillaCommonVoice/uz',
+        'MozillaCommonVoice/vi',
+        'MozillaCommonVoice/yo',
+        'MozillaCommonVoice/yue',
+        'MozillaCommonVoice/zh-CN',
+        'MozillaCommonVoice/zh-TW',
+        'primewords_chinese',
+        'room_reader',
+        'SpeechClarity',
+        'TAT-Vol2',
+        'thchs30',
+        'TIMIT',
+        'TTS_Javanese',
+        'zeroth_korean'
+    ]
+    
+    corpus_music_list = [
+        'IRMAS',
+        'Albouy2020Science',
+        'CD',
+        'GarlandEncyclopedia',
+        'fma_large',
+        'ismir04_genre',
+        'MTG-Jamendo',
+        'HiltonMoser2022_song',
+        'NHS2',
+        'MagnaTagATune'
+    ]
+    
+    corpus_env_list = ['SONYC'] # exclude the 'SONYC_augmented' as there's no wave file
+    
+    
+    # sort the corpora lists to make sure the order is replicable
+    corpus_speech_list.sort()
+    corpus_music_list.sort()
+    corpus_env_list.sort()
+    
+    return corpus_speech_list+corpus_music_list+corpus_env_list
 
 # %% functions
 # verify and convert a loaded audio is on the proper sample_rate (16K), otherwise it would affect the model's results.
@@ -190,8 +193,18 @@ def run_YAMNet(df_meta):
 
 # %% run YAMNet
 
-corpus_list = corpus_speech_list+corpus_music_list+corpus_env_list
-for corp in corpus_list:
+if __name__ == "__main__":
+    # Check if the correct number of arguments are provided
+    if len(sys.argv) != 2:
+        print("Usage: python script.py arg1")
+        sys.exit(1)
+
+    # Extract command-line arguments
+    n = int(sys.argv[1])
+
+    corpus_list = prep_corp_lists()
+
+    corp = corpus_list[n]
     metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
     df_meta = pd.read_csv(metafile,index_col=0)
     
