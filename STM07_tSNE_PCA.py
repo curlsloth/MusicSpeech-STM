@@ -159,8 +159,11 @@ if perplexity == 0:
         verbose=1,
         )
     pipeline_MDS = make_pipeline(StandardScaler(), mds)
-    pipeline_MDS.fit_transform(STM_all)
-    dump(pipeline_MDS, 'model/MDS/allSTM_MDS-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+    STM_MDS = pipeline_MDS.fit_transform(STM_all)
+    path = 'model/MDS/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+    os.mkdir(path)
+    dump(pipeline_MDS, path+'/allSTM_MDS-pipeline.joblib') 
+    dump(STM_MDS, path+'/allSTM_MDS-data.joblib') 
 else:
     tsne = TSNE(n_components=2, 
                 random_state=23, 
