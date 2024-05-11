@@ -1,0 +1,1818 @@
+2024-05-10 23:33:03.135615: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-05-10 23:33:05.964443: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6572656e at offset 4259749.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x596f726b at offset 4800421.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x61726420 at offset 843684.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x20686561 at offset 3416014.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6a6f766e at offset 5734309.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 3768435.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x2e636f6d at offset 2633843.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x20526179 at offset 5513124.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x456e676c at offset 6594469.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 5980111.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6f6a6f76 at offset 4399012.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x7320436f at offset 1965989.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x61204b61 at offset 1687461.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x2053656d at offset 1433509.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 7913459.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 3956686.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x4b6f6b6f at offset 3940261.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x62204865 at offset 1974181.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x64610000 at offset 909221.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6b616c6f at offset 3948452.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x74726963 at offset 2138021.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x7a6f0000 at offset 3596197.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6120546f at offset 1671077.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x6c696e20 at offset 1613733.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x4f535045 at offset 5193637.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6e204d63 at offset 2596772.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6e656361 at offset 3915684.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Note: Illegal Audio-MPEG-Header 0x636b2031 at offset 958487.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x7264204d at offset 1687461.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6861656c at offset 2801572.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 745459.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Note: Illegal Audio-MPEG-Header 0x6f2c2041 at offset 122831.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6963616e at offset 1081253.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x6368696e at offset 8781732.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6e697373 at offset 7200805.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x204d6343 at offset 2908069.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 3244019.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 4153294.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 3203059.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x20456c69 at offset 2195364.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x52696368 at offset 2891684.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6f730000 at offset 7757732.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+[src/libmpg123/layer3.c:INT123_do_layer3():1948] error: dequantization failed!
+Note: Illegal Audio-MPEG-Header 0x656d626c at offset 516004.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6f2c2041 at offset 5849039.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x7461736d at offset 4300709.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+[src/libmpg123/layer3.c:INT123_do_layer3():1948] error: dequantization failed!
+Note: Illegal Audio-MPEG-Header 0x20506174 at offset 3899301.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x79204c61 at offset 4243364.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x74726963 at offset 3194789.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 1597427.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x74726963 at offset 2596773.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x65204a61 at offset 8060837.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Note: Illegal Audio-MPEG-Header 0x62204865 at offset 458661.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6e746173 at offset 2850724.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6861656c at offset 4775844.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 3330163.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x6d626c65 at offset 1146789.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x68757220 at offset 2727844.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x72696361 at offset 2441124.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 4710351.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x75657300 at offset 2244559.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6e204d63 at offset 3579812.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x61726420 at offset 3456932.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 6029299.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x62204865 at offset 2260901.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x6d626c65 at offset 5169061.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x69636865 at offset 3473317.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 7368819.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x65636172 at offset 3604389.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x72696361 at offset 2596772.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Note: Illegal Audio-MPEG-Header 0x63650000 at offset 3358629.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 3071951.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 4489331.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x526f7373 at offset 6635429.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x69636865 at offset 2047909.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x204c6172 at offset 2670501.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x7365204d at offset 1744932.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x74204869 at offset 5234597.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6b656420 at offset 3956644.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 7135219.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 4382835.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x2053742e at offset 6078373.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 2105294.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x7264204d at offset 974757.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x62204865 at offset 4210597.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x2e636f6d at offset 4706419.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 5800051.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6c650000 at offset 1269669.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x46696c6c at offset 9183141.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x63650000 at offset 5906341.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x20535452 at offset 5832612.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x70696120 at offset 5095332.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Note: Illegal Audio-MPEG-Header 0x456e676c at offset 622501.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 3547086.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x62204865 at offset 2416549.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 1974259.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x69616d73 at offset 5660581.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x616c6c00 at offset 2973646.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 1834959.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x6d000000 at offset 4620197.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6b657420 at offset 2064292.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6e652042 at offset 3358629.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6f6a6f76 at offset 4480932.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x73206f66 at offset 5570469.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x00000000 at offset 3678159.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x75736963 at offset 1105871.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+Note: Illegal Audio-MPEG-Header 0x4c617468 at offset 19390373.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+Note: Illegal Audio-MPEG-Header 0x6572656e at offset 3686309.
+Note: Trying to resync...
+Note: Hit end of (available) data during resync.
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+/vast/ac8888/MusicSpeech-STM/STM10_YAMNet_emb.py:169: UserWarning: PySoundFile failed. Trying audioread instead.
+  waveform , sr = librosa.load(filename, sr=None, mono=True)
+/ext3/miniconda3/envs/MusicSpeech-STMhpc/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
