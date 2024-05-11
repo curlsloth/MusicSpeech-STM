@@ -220,24 +220,24 @@ train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData()
 class hyperModel_drop(kt.HyperModel):
 
     def build(self, hp):
-        tf.keras.backend.clear_session()
+        # tf.keras.backend.clear_session()
         gc.collect()
         model = keras.Sequential()
         model.add(keras.Input(shape=(n_feat,)))
         
         # Tune the number of layers.
-        for i in range(hp.Int("num_layers", 1, 8)):
+        for i in range(hp.Int("num_layers", 1, 4)):
             model.add(
                 layers.Dense(
                     # Tune number of units separately.
-                    units=hp.Int(f"units_{i}", min_value=16, max_value=512, step=16),
+                    units=hp.Int(f"units_{i}", min_value=200, max_value=600, step=50),
                     activation=hp.Choice("activation", ["relu"]),
-                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-8, max_value=1e-1, sampling="log"))
+                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-12, max_value=1e-6, sampling="log"))
                     )
                 )
             model.add(
                 layers.Dropout(
-                    rate=hp.Float(f"drop_{i}", min_value=0, max_value=0.5, sampling="linear")
+                    rate=hp.Float(f"drop_{i}", min_value=0, max_value=0.1, sampling="linear")
                     )
                 )
     
@@ -254,7 +254,7 @@ class hyperModel_drop(kt.HyperModel):
             label_weights=None,
             from_logits=False,
         )
-        learning_rate = hp.Float("lr", min_value=1e-8, max_value=1e-2, sampling="log")
+        learning_rate = hp.Float("lr", min_value=1e-7, max_value=1e-4, sampling="log")
         
         model.compile(
             optimizer=keras.optimizers.Adam(learning_rate=learning_rate),
@@ -274,19 +274,19 @@ class hyperModel_drop(kt.HyperModel):
 class hyperModel_LN(kt.HyperModel):
 
     def build(self, hp):
-        tf.keras.backend.clear_session()
+        # tf.keras.backend.clear_session()
         gc.collect()
         model = keras.Sequential()
         model.add(keras.Input(shape=(n_feat,)))
         
         # Tune the number of layers.
-        for i in range(hp.Int("num_layers", 1, 8)):
+        for i in range(hp.Int("num_layers", 1, 4)):
             model.add(
                 layers.Dense(
                     # Tune number of units separately.
-                    units=hp.Int(f"units_{i}", min_value=16, max_value=512, step=16),
+                    units=hp.Int(f"units_{i}", min_value=200, max_value=600, step=50),
                     activation=hp.Choice("activation", ["relu"]),
-                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-8, max_value=1e-1, sampling="log"))
+                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-12, max_value=1e-6, sampling="log"))
                     )
                 )
             model.add(layers.LayerNormalization())
@@ -304,7 +304,7 @@ class hyperModel_LN(kt.HyperModel):
             label_weights=None,
             from_logits=False,
         )
-        learning_rate = hp.Float("lr", min_value=1e-8, max_value=1e-2, sampling="log")
+        learning_rate = hp.Float("lr", min_value=1e-7, max_value=1e-4, sampling="log")
         
         model.compile(
             optimizer=keras.optimizers.Adam(
@@ -348,8 +348,8 @@ with strategy.scope():
     tuner = kt.BayesianOptimization(
         hypermodel=hm,
         objective="val_auc",
-        num_initial_points=100,
-        max_trials=200,
+        num_initial_points=10,
+        max_trials=40,
         executions_per_trial=3,
         seed=23,
         max_retries_per_trial=0,
