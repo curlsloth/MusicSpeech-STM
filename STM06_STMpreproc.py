@@ -12,6 +12,7 @@ import time
 import pandas as pd
 import glob
 import random
+import os
 
 def preproSTM(data, xmin, xmax, ymin, ymax, x_ds_factor, y_ds_factor):
     # select the middle range, dB transformation, normalize to [0,1], make it as float 32
@@ -99,8 +100,10 @@ for metaData_name in metaData_name_list:
     print(metaData_name)
     df = pd.read_csv(metaData_name,index_col=0)   
     corpus_name = metaData_name[20:-4]
-    np.save('STM_output/corpSTMnpy/'+corpus_name+'_STMall.npy', stack_STM(df))
-    print('time elapsed: '+str(time.time()-t_start)+' seconds')
+    savename = 'STM_output/corpSTMnpy/'+corpus_name+'_STMall.npy'
+    if not os.path.isfile(savename):
+        np.save(savename, stack_STM(df))
+        print('time elapsed: '+str(time.time()-t_start)+' seconds')
     
 
 # %% plot 2D STM
