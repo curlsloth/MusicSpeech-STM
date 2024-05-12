@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=STM08-gpu
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=47
+#SBATCH --cpus-per-task=30
 #SBATCH --gres=gpu:0
 #SBATCH --mem=360GB
 #SBATCH --time=24:00:00
@@ -14,3 +14,4 @@ module purge
 
 ~/STM_singularity/run-MusicSpeech-STMhpc_GPU.bash python STM08gpu_MLP_corpus.py $SLURM_ARRAY_TASK_ID
 # Run this: sbatch --array=0-1 HPC_sbatch/STM08/slurm_STM08gpu.s
+# don't request for too many CPUs as it will use too much memory
