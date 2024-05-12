@@ -148,22 +148,24 @@ for corp in corpus_list_all:
 # %% run code
 perplexity = int(sys.argv[1])
 if perplexity == 0:
+    # PCA
     pipeline = make_pipeline(StandardScaler(),IncrementalPCA())
     pipeline.fit(STM_all)
     dump(pipeline, 'model/PCA/allSTM_pca-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
     
-    mds = MDS(
-        n_components=2, 
-        random_state=23, 
-        n_jobs=-1,
-        verbose=1,
-        )
-    pipeline_MDS = make_pipeline(StandardScaler(), mds)
-    STM_MDS = pipeline_MDS.fit_transform(STM_all)
-    path = 'model/MDS/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
-    os.mkdir(path)
-    dump(pipeline_MDS, path+'/allSTM_MDS-pipeline.joblib') 
-    dump(STM_MDS, path+'/allSTM_MDS-data.joblib') 
+    # MDS (too big)
+    # mds = MDS(
+    #     n_components=2, 
+    #     random_state=23, 
+    #     n_jobs=-1,
+    #     verbose=1,
+    #     )
+    # pipeline_MDS = make_pipeline(StandardScaler(), mds)
+    # STM_MDS = pipeline_MDS.fit_transform(STM_all)
+    # path = 'model/MDS/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+    # os.mkdir(path)
+    # dump(pipeline_MDS, path+'/allSTM_MDS-pipeline.joblib') 
+    # dump(STM_MDS, path+'/allSTM_MDS-data.joblib') 
 else:
     tsne = TSNE(n_components=2, 
                 random_state=23, 
