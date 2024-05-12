@@ -85,13 +85,15 @@ def generate_aug_envSTM(stm_stacked, n_aug, n_sample_max, labels):
 
 # %% generate augmented dataset of the environmental sound
 
-df = pd.read_csv('train_test_split/env_10folds_speakerGroupFold.csv',index_col=0)   
-
-n_aug = 100000 # number of augmented incidence
-n_sample_max = 5 # the number of random sampled env STM data, between [2, n_sample_max]
-
-stm_stacked_aug = generate_aug_envSTM(stack_STM(df), n_aug, n_sample_max, labels=df['10fold_labels'])
-np.save('STM_output/corpSTMnpy/SONYC_augmented_STMall.npy', stm_stacked_aug)
+run_aug = False
+if run_aug:
+    df = pd.read_csv('train_test_split/env_10folds_speakerGroupFold.csv',index_col=0)   
+    
+    n_aug = 100000 # number of augmented incidence
+    n_sample_max = 5 # the number of random sampled env STM data, between [2, n_sample_max]
+    
+    stm_stacked_aug = generate_aug_envSTM(stack_STM(df), n_aug, n_sample_max, labels=df['10fold_labels'])
+    np.save('STM_output/corpSTMnpy/SONYC_augmented_STMall.npy', stm_stacked_aug)
 
 # %% stack all the output
 metaData_name_list = glob.glob('metaTables/*.csv')
