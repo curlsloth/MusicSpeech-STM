@@ -599,6 +599,7 @@ for corpus in corpus_speech_list:
     else:
         print(corpus)
         df_all = make_meta_file(corpus, corpus_type='speech')
+        df_all.drop_duplicates(subset='filepath', inplace=True, ignore_index=True)
         df_all.to_csv(savename)
         
 # %% run music corpora  
@@ -609,6 +610,7 @@ for corpus in corpus_music_list:
     else:
         print(corpus)
         df_all = make_meta_file(corpus, corpus_type='music')
+        df_all.drop_duplicates(subset='filepath', inplace=True, ignore_index=True)
         df_all.to_csv(savename)
       
 # %% run environmental sound corpora 
@@ -618,6 +620,7 @@ if os.path.isfile(savename):
     print('**skipping: '+corpus)
 else:
     df_all = make_meta_file(corpus, corpus_type='env')
+    df_all.drop_duplicates(subset='filepath', inplace=True, ignore_index=True)
     df_all.to_csv(savename)
     
 
