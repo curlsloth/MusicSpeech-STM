@@ -339,41 +339,57 @@ time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 checkpoint_dir = directory+"/ckpt/"+time_stamp
 if not os.path.exists(checkpoint_dir):
     os.makedirs(checkpoint_dir)
-    
-# Create a MirroredStrategy.
-strategy = tf.distribute.MirroredStrategy()
-print('Number of devices: {}'.format(strategy.num_replicas_in_sync))
 
-with strategy.scope():
-    tuner = kt.BayesianOptimization(
-        hypermodel=hm,
-        objective="val_auc",
-        num_initial_points=10,
-        max_trials=40,
-        executions_per_trial=3,
-        seed=23,
-        max_retries_per_trial=0,
-        max_consecutive_failed_trials=3,
-        overwrite=True,
-        directory=directory,
-        project_name="MLP_"+time_stamp,
-        )
-    tuner.search_space_summary()
+## Disable GPU (not enough usage)
+# Create a MirroredStrategy.
+# strategy = tf.distribute.MirroredStrategy()
+# print('Number of devices: {}'.format(strategy.num_replicas_in_sync))
+
+# with strategy.scope():
     
-    tuner.search(
-        train_dataset, 
-        epochs=2, 
-        validation_data=val_dataset,
-        callbacks=[
-            keras.callbacks.EarlyStopping(
-                monitor="val_auc", 
-                mode="max",
-                patience=5,
-                verbose=1,
-                ),
-            keras.callbacks.ModelCheckpoint(
-                filepath=checkpoint_dir + "/ckpt-{epoch}.keras",
-                save_freq="epoch",
-                ),
-            ]
-        )
+    
+tuner = kt.BayesianOptimization(
+    hypermodel=hm,
+    objective="val_auc",
+    num_initial_points=10,
+    max_trials=40,
+    executions_per_trial=3,
+    seed=23,
+    max_retries_per_trial=0,
+    max_consecutive_failed_trials=3,
+    overwrite=True,
+    directory=directory,
+    project_name="MLP_"+time_stamp,
+    )
+tuner.search_space_summary()
+
+tuner.search(
+    train_dataset, 
+    epochs=2, 
+    validation_data=val_dataset,
+    callbacks=[
+        keras.callbacks.EarlyStopping(
+            monitor="val_auc", 
+            mode="max",
+            patience=5,
+            verbose=1,
+            ),
+        keras.callbacks.ModelCheckpoint(
+            filepath=checkpoint_dir + "/ckpt-{epoch}.keras",
+            save_freq="epoch",
+            ),
+        ]
+    )
+
+
+# %% retrain the best model
+retrain_dataset = train_dataset.concatenate(val_dataset)
+
+n_best_model = 3
+best_hps = tuner.get_best_hyperparameters(n_best_model)
+for n in range(n_best_model):
+    best_model = hm.build_model(best_hps[n])
+    best_model.fit(dataset = retrain_dataset, validation_data=test_dataset)
+    
+    saving_path = directory+"/"+"MLP_"+time_stamp+"/best_model"+str(n)+".keras"
+    best_model.save(saving_path)
