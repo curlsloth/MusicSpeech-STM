@@ -8,9 +8,9 @@ import scipy
 import numpy as np
 import pandas as pd
 import time
-# import librosa
+import librosa
 import sys
-import soundfile as sf
+import audioread
 
 # import matplotlib.pyplot as plt
 # from IPython.display import Audio
@@ -168,7 +168,7 @@ def run_YAMNet(corp):
     for n_row in range(len(df_meta)):
         try:
             filename = df_meta['filepath'].iloc[n_row]
-            frame_start = df_meta['startPoint'].iloc[n_row]-1
+            frame_offset = df_meta['startPoint'].iloc[n_row]-1
             frame_end = df_meta['endPoint'].iloc[n_row]-1
             if corp=='EUROM':
                 with open(filename, 'rb') as fid:
@@ -176,9 +176,10 @@ def run_YAMNet(corp):
                 waveform = waveform/max(abs(waveform))
                 sr = 20000
             else:
-                waveform , sr = sf.read(filename, start=frame_start, stop=frame_end+1, always_2d=True)
-                waveform = waveform.mean(axis=1)
-
+                waveform , sr = librosa.load(filename, sr=None, mono=True)
+                
+            print("loading success: "+filename)                
+            waveform = waveform[frame_offset:frame_end]
             _, waveform = ensure_sample_rate(sr, waveform) # convert to sr=16000
             scores, embeddings, _ = model(waveform) # use YAMNET to score the audio waveform
             scores_stacked_list.append(scores.numpy().mean(axis=0))
