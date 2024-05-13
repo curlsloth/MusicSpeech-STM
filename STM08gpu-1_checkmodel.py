@@ -21,24 +21,24 @@ import gc
 class hyperModel_drop(kt.HyperModel):
 
     def build(self, hp):
-        tf.keras.backend.clear_session()
+        # tf.keras.backend.clear_session()
         gc.collect()
         model = keras.Sequential()
         model.add(keras.Input(shape=(n_feat,)))
         
         # Tune the number of layers.
-        for i in range(hp.Int("num_layers", 1, 8)):
+        for i in range(hp.Int("num_layers", 1, 4)):
             model.add(
                 layers.Dense(
                     # Tune number of units separately.
-                    units=hp.Int(f"units_{i}", min_value=16, max_value=512, step=16),
+                    units=hp.Int(f"units_{i}", min_value=200, max_value=600, step=50),
                     activation=hp.Choice("activation", ["relu"]),
-                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-8, max_value=1e-1, sampling="log"))
+                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-12, max_value=1e-6, sampling="log"))
                     )
                 )
             model.add(
                 layers.Dropout(
-                    rate=hp.Float(f"drop_{i}", min_value=0, max_value=0.5, sampling="linear")
+                    rate=hp.Float(f"drop_{i}", min_value=0, max_value=0.1, sampling="linear")
                     )
                 )
     
@@ -55,7 +55,7 @@ class hyperModel_drop(kt.HyperModel):
             label_weights=None,
             from_logits=False,
         )
-        learning_rate = hp.Float("lr", min_value=1e-8, max_value=1e-2, sampling="log")
+        learning_rate = hp.Float("lr", min_value=1e-7, max_value=1e-4, sampling="log")
         
         model.compile(
             optimizer=keras.optimizers.Adam(learning_rate=learning_rate),
@@ -75,19 +75,19 @@ class hyperModel_drop(kt.HyperModel):
 class hyperModel_LN(kt.HyperModel):
 
     def build(self, hp):
-        tf.keras.backend.clear_session()
+        # tf.keras.backend.clear_session()
         gc.collect()
         model = keras.Sequential()
         model.add(keras.Input(shape=(n_feat,)))
         
         # Tune the number of layers.
-        for i in range(hp.Int("num_layers", 1, 8)):
+        for i in range(hp.Int("num_layers", 1, 4)):
             model.add(
                 layers.Dense(
                     # Tune number of units separately.
-                    units=hp.Int(f"units_{i}", min_value=16, max_value=512, step=16),
+                    units=hp.Int(f"units_{i}", min_value=200, max_value=600, step=50),
                     activation=hp.Choice("activation", ["relu"]),
-                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-8, max_value=1e-1, sampling="log"))
+                    kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-12, max_value=1e-6, sampling="log"))
                     )
                 )
             model.add(layers.LayerNormalization())
@@ -105,7 +105,7 @@ class hyperModel_LN(kt.HyperModel):
             label_weights=None,
             from_logits=False,
         )
-        learning_rate = hp.Float("lr", min_value=1e-8, max_value=1e-2, sampling="log")
+        learning_rate = hp.Float("lr", min_value=1e-7, max_value=1e-4, sampling="log")
         
         model.compile(
             optimizer=keras.optimizers.Adam(
@@ -124,21 +124,22 @@ class hyperModel_LN(kt.HyperModel):
             validation_data=validation_data,
             **kwargs,
         )
-
 # %%
 objective = kt.Objective("val_auc", "max")
 
 oracle = kt.Oracle(objective = objective)
 n_feat = 2420
-n_target=5
+n_target = 5
 
 
 tuner = kt.Tuner(
     oracle = oracle,
     hypermodel=hyperModel_drop(),
-    directory="model/MLP_corpora_categories/old/Dropout",
-    project_name="MLP_2024-05-06_03-51"
+    directory="model/MLP_corpora_categories/LayerNormalization",
+    project_name="MLP_2024-05-12_12-03"
     )
 
 best_model_list = tuner.get_best_models(num_models=5)
 tuner.results_summary(num_trials=5)
+best_hp = tuner.get_best_hyperparameters()[0]
+model = tuner.hypermodel.build(best_hp)

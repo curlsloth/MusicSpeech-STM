@@ -383,6 +383,9 @@ tuner.search(
 
 
 # %% retrain the best model
+tf.keras.backend.clear_session()
+gc.collect()
+
 retrain_dataset = train_dataset.concatenate(val_dataset)
 
 n_best_model = 3
