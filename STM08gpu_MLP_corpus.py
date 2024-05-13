@@ -188,7 +188,7 @@ def prepData():
     test_dataset = tf.data.Dataset.from_tensor_slices((STM_all[test_ind,:], y[test_ind,:]))
     
     # shuffle and then batch
-    batch_size = 128
+    batch_size = 256
 
     train_dataset = train_dataset.shuffle(buffer_size=sum(train_ind), seed=23).batch(batch_size)
     val_dataset = val_dataset.shuffle(buffer_size=sum(val_ind), seed=23).batch(batch_size)
