@@ -151,13 +151,16 @@ def ensure_sample_rate(original_sample_rate, waveform, desired_sample_rate=16000
         waveform = scipy.signal.resample(waveform, desired_length)
     return desired_sample_rate, waveform
 
-def run_YAMNet(df_meta):
+def run_YAMNet(corp):
     st = time.time()
     path = 'yamnet/1'
     model = tf.saved_model.load(path, tags=None, options=None)
     
     scores_stacked_list = []
     embeddings_stacked_list = []
+    
+    metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
+    df_meta = pd.read_csv(metafile,index_col=0)
     
     # class_map_path = model.class_map_path().numpy()
     # class_names = class_names_from_csv(class_map_path)
@@ -166,7 +169,13 @@ def run_YAMNet(df_meta):
             filename = df_meta['filepath'].iloc[n_row]
             frame_offset = df_meta['startPoint'].iloc[n_row]-1
             frame_end = df_meta['endPoint'].iloc[n_row]-1
-            waveform , sr = librosa.load(filename, sr=None, mono=True)
+            if corp=='EUROM':
+                with open(filename, 'rb') as fid:
+                    waveform = np.fromfile(fid, dtype=np.int16)
+                waveform = waveform/max(abs(waveform))
+                sr = 20000
+            else:
+                waveform , sr = librosa.load(filename, sr=None, mono=True)
             waveform = waveform [frame_offset:frame_end]
             _, waveform = ensure_sample_rate(sr, waveform) # convert to sr=16000
             scores, embeddings, _ = model(waveform) # use YAMNET to score the audio waveform
@@ -194,11 +203,8 @@ if __name__ == "__main__":
     corpus_list = prep_corp_lists()
 
     corp = corpus_list[n]
-    metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
-    df_meta = pd.read_csv(metafile,index_col=0)
     
-    scores_data, embeddings_data = run_YAMNet(df_meta)
-    corpus_name = metafile[20:-4]
-    np.save('yamnet_output/scores/'+corpus_name+'_yamnetScores.npy', scores_data)
-    np.save('yamnet_output/embeddings/'+corpus_name+'_yamnetEmbeddings.npy', embeddings_data)
+    scores_data, embeddings_data = run_YAMNet(corp)
+    np.save('yamnet_output/scores/'+corp.replace('/', '-')+'_yamnetScores.npy', scores_data)
+    np.save('yamnet_output/embeddings/'+corp.replace('/', '-')+'_yamnetEmbeddings.npy', embeddings_data)
     
