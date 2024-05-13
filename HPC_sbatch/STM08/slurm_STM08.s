@@ -11,5 +11,5 @@
 
 module purge
 
-~/STM_singularity/run-MusicSpeech-STMhpc.bash python STM08_MLP_corpus.py
+~/STM_singularity/run-MusicSpeech-STMhpc.bash python STM08_MLP_STM_corpus.py
 # Run this: sbatch --time=12:00:00 HPC_sbatch/STM08/slurm_STM08.s
