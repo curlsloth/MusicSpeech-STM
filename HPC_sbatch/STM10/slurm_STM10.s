@@ -2,9 +2,9 @@
 
 #SBATCH --job-name=STM10
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=20GB
-#SBATCH --time=05:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=5GB
+#SBATCH --time=8:00:00
 #SBATCH --output=HPC_slurm/STM10/STM10_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
 #SBATCH --mail-type=END
