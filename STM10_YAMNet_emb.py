@@ -176,7 +176,7 @@ def run_YAMNet(corp):
                 waveform = waveform/max(abs(waveform))
                 sr = 20000
             else:
-                waveform , sr = sf.read(filename, start=frame_start, stop=frame_end+1)
+                waveform , sr = sf.read(filename, start=frame_start, stop=frame_end+1, always_2d=True)
                 waveform = waveform.mean(axis=1)
 
             _, waveform = ensure_sample_rate(sr, waveform) # convert to sr=16000
