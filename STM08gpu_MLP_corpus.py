@@ -391,7 +391,7 @@ retrain_dataset = train_dataset.concatenate(val_dataset)
 n_best_model = 3
 best_hps = tuner.get_best_hyperparameters(n_best_model)
 for n in range(n_best_model):
-    best_model = hm.build_model(best_hps[n])
+    best_model = hm.build(best_hps[n])
     best_model.fit(dataset = retrain_dataset)
     
     saving_path = directory+"/"+"MLP_"+time_stamp+"/best_model"+str(n)+".keras"
