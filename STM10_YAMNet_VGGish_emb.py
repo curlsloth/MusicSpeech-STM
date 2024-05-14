@@ -173,7 +173,7 @@ def run_models(corp):
         try:
             filename = df_meta['filepath'].iloc[n_row]
             frame_offset = df_meta['startPoint'].iloc[n_row]-1 # matlab index starts at 1
-            frame_end = df_meta['endPoint'].iloc[n_row]-1
+            frame_end = df_meta['endPoint'].iloc[n_row]
             if corp=='EUROM':
                 with open(filename, 'rb') as fid:
                     waveform = np.fromfile(fid, dtype=np.int16)
