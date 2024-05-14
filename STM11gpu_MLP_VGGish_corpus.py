@@ -143,7 +143,7 @@ def prepData():
     corpus_list_all = corpus_speech_list+corpus_music_list+corpus_env_list 
     
     for corp in corpus_list_all:
-        filename = 'yamnet_output/embeddings/'+corp.replace('/', '-')+'_yamnetEmbeddings.npy'
+        filename = 'vggish_output/embeddings/'+corp.replace('/', '-')+'_vggishEmbeddings.npy'
         if 'emb_all' not in locals():
             emb_all = np.load(filename)
         else:
@@ -325,10 +325,10 @@ class hyperModel_LN(kt.HyperModel):
 
 if sys.argv[1]=='0':
     hm = hyperModel_drop()
-    directory = "model/YAMNet/MLP_corpora_categories/Dropout"
+    directory = "model/VGGish/MLP_corpora_categories/Dropout"
 elif sys.argv[1]=='1':
     hm = hyperModel_LN()
-    directory = "model/YAMNet/MLP_corpora_categories/LayerNormalization"
+    directory = "model/VGGish/MLP_corpora_categories/LayerNormalization"
     
 time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 

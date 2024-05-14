@@ -12,5 +12,5 @@
 module purge
 module load libsndfile/intel/1.0.31
 
-~/STM_singularity/run-MusicSpeech-STMhpc.bash python STM10_YAMNet_emb.py $SLURM_ARRAY_TASK_ID
+~/STM_singularity/run-MusicSpeech-STMhpc.bash python STM10_YAMNet_VGGish_emb.py $SLURM_ARRAY_TASK_ID
 # Run this: sbatch --array=0-106 HPC_sbatch/STM10/slurm_STM10.s
