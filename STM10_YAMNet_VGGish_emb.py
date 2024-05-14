@@ -152,13 +152,17 @@ def ensure_sample_rate(original_sample_rate, waveform, desired_sample_rate=16000
         waveform = scipy.signal.resample(waveform, desired_length)
     return desired_sample_rate, waveform
 
-def run_YAMNet(corp):
+def run_models(corp):
     st = time.time()
-    path = 'yamnet/1'
-    model = tf.saved_model.load(path, tags=None, options=None)
+    YAMNet_path = 'yamnet/1'
+    YAMNet_model = tf.saved_model.load(YAMNet_path, tags=None, options=None)
     
-    scores_stacked_list = []
-    embeddings_stacked_list = []
+    VGGish_path = 'vggish'
+    VGGish_model = tf.saved_model.load(VGGish_path, tags=None, options=None)
+    
+    scores_yamnet_stacked_list = []
+    embeddings_yamnet_stacked_list = []
+    embeddings_vggish_stacked_list = []
     
     metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
     df_meta = pd.read_csv(metafile,index_col=0)
@@ -187,16 +191,23 @@ def run_YAMNet(corp):
                 waveform = waveform[frame_offset:frame_end]
                 
             _, waveform = ensure_sample_rate(sr, waveform) # convert to sr=16000
-            scores, embeddings, _ = model(waveform) # use YAMNET to score the audio waveform
-            scores_stacked_list.append(scores.numpy().mean(axis=0))
-            embeddings_stacked_list.append(embeddings.numpy().mean(axis=0))
+            
+            # YAMNet
+            scores_yamnet, embeddings_yamnet, _ = YAMNet_model(waveform) # use YAMNET to score the audio waveform
+            scores_yamnet_stacked_list.append(scores_yamnet.numpy().mean(axis=0))
+            embeddings_yamnet_stacked_list.append(embeddings_yamnet.numpy().mean(axis=0))
+            
+            # VGGish
+            embeddings_vggish = VGGish_model(waveform)
+            embeddings_vggish_stacked_list.append(embeddings_vggish.numpy().mean(axis=0))
+            
         except Exception as e:
             # Print the error message
             print("***** ERROR in n_row="+str(n_row)+ f": {e}")
             
     et = time.time()
     print('Execution time:', et - st, 'seconds')
-    return np.vstack(scores_stacked_list), np.vstack(embeddings_stacked_list)
+    return np.vstack(scores_yamnet_stacked_list), np.vstack(embeddings_yamnet_stacked_list), np.vstack(embeddings_vggish_stacked_list)
 
 # %% run YAMNet
 
@@ -213,7 +224,7 @@ if __name__ == "__main__":
 
     corp = corpus_list[n]
     
-    scores_data, embeddings_data = run_YAMNet(corp)
-    np.save('yamnet_output/scores/'+corp.replace('/', '-')+'_yamnetScores.npy', scores_data)
-    np.save('yamnet_output/embeddings/'+corp.replace('/', '-')+'_yamnetEmbeddings.npy', embeddings_data)
-    
+    scores_yamnet_data, embeddings_yamnet_data, embeddings_vggish_data = run_models(corp)
+    np.save('yamnet_output/scores/'+corp.replace('/', '-')+'_yamnetScores.npy', scores_yamnet_data)
+    np.save('yamnet_output/embeddings/'+corp.replace('/', '-')+'_yamnetEmbeddings.npy', embeddings_yamnet_data)
+    np.save('vggish_output/embeddings/'+corp.replace('/', '-')+'_vggishEmbeddings.npy', embeddings_vggish_data)
