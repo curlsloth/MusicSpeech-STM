@@ -294,6 +294,8 @@ df_SONYC['10fold_labels'] = GKF(n_splits = 10,
 
 print("Total length of environmental recordings: "+ str(round(df_SONYC['totalLengCur'].sum()/(60*60),2))+" hours")
 print("Number of environmental recordings: "+ str(len(df_SONYC)))
+print("Number of recording sites: "+ str(len(df_SONYC['speaker/artist'].unique())))
+
 
 # %% save split files
 

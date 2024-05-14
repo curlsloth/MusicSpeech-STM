@@ -10,6 +10,7 @@ import pandas as pd
 import time
 import librosa
 import sys
+import soundfile as sf
 
 # import matplotlib.pyplot as plt
 # from IPython.display import Audio
@@ -167,18 +168,24 @@ def run_YAMNet(corp):
     for n_row in range(len(df_meta)):
         try:
             filename = df_meta['filepath'].iloc[n_row]
-            frame_offset = df_meta['startPoint'].iloc[n_row]-1
+            frame_offset = df_meta['startPoint'].iloc[n_row]-1 # matlab index starts at 1
             frame_end = df_meta['endPoint'].iloc[n_row]-1
             if corp=='EUROM':
                 with open(filename, 'rb') as fid:
                     waveform = np.fromfile(fid, dtype=np.int16)
                 waveform = waveform/max(abs(waveform))
                 sr = 20000
+            elif corp=='MTG-Jamendo': # this corpus is really big, have to use sf to load
+                waveform , sr = sf.read(filename, frames=frame_end-frame_offset, start=frame_offset, stop=None, always_2d=True)
+                waveform = waveform.mean(axis=1)
             else:
                 waveform , sr = librosa.load(filename, sr=None, mono=True)
                 
-            print("loading success: "+filename)                
-            waveform = waveform[frame_offset:frame_end]
+            print("loading success: "+filename)  
+            
+            if not corp=='MTG-Jamendo': # skip it if is 'MTG-Jamendo'
+                waveform = waveform[frame_offset:frame_end]
+                
             _, waveform = ensure_sample_rate(sr, waveform) # convert to sr=16000
             scores, embeddings, _ = model(waveform) # use YAMNET to score the audio waveform
             scores_stacked_list.append(scores.numpy().mean(axis=0))
