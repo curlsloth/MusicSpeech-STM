@@ -80,6 +80,6 @@ def check_slurm(start_time, end_time):
     else:
         print("All files generated between "+str(start_time)+" and "+str(end_time)+" contain the string 'Demucs voice recognition done!'")
     
-start_time = datetime.datetime(2024, 5, 14, 0, 0)
-end_time = datetime.datetime(2024, 5, 14, 23, 0)
+start_time = datetime.datetime(2024, 5, 15, 0, 0)
+end_time = datetime.datetime(2024, 5, 15, 23, 0)
 check_slurm(start_time, end_time)

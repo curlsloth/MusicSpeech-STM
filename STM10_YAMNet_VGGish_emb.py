@@ -192,6 +192,10 @@ def run_models(corp):
                 
             _, waveform = ensure_sample_rate(sr, waveform) # convert to sr=16000
             
+            if (corp=='fma_large') and (n_row in [16606, 58863]): # these 2 files are broken! Use 0 to replace them.
+                print("***** using zeros to replace the corrupted audio file: n_row="+str(n_row))
+                waveform = np.zeros(16000*4)
+            
             # YAMNet
             scores_yamnet, embeddings_yamnet, _ = YAMNet_model(waveform) # use YAMNET to score the audio waveform
             scores_yamnet_stacked_list.append(scores_yamnet.numpy().mean(axis=0))
