@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=30
 #SBATCH --gres=gpu:0
 #SBATCH --mem=360GB
-#SBATCH --time=24:00:00
+#SBATCH --time=12:00:00
 #SBATCH --output=HPC_slurm/STM08/STM08-gpu_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
 #SBATCH --mail-type=END
