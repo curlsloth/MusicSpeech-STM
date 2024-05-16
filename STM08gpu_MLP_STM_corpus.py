@@ -162,8 +162,16 @@ def prepData():
     
     # %% split data
     
-    target = pd.concat([all_corp_df['corpus_type'], pd.Series(['env'] * SONYC_aug_len)], 
-                       ignore_index=True)
+    # add augmented enviromental sounds
+    addAug = False
+    if addAug:
+        target = pd.concat([all_corp_df['corpus_type'], pd.Series(['env'] * SONYC_aug_len)], 
+                           ignore_index=True)
+        data_split = pd.concat([all_corp_df['10fold_labels'], pd.Series([1] * SONYC_aug_len)],
+                               ignore_index=True)
+    else:
+        target = all_corp_df['corpus_type']
+        data_split =all_corp_df['10fold_labels']
     
     target.replace({
         'speech: non-tonal':0,
@@ -176,8 +184,6 @@ def prepData():
     
     y = keras.utils.to_categorical(target, num_classes=5)
     
-    data_split = pd.concat([all_corp_df['10fold_labels'], pd.Series([1] * SONYC_aug_len)],
-                           ignore_index=True)
     
     train_ind = data_split<8
     val_ind = data_split==8
