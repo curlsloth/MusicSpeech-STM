@@ -357,11 +357,11 @@ elif sys.argv[1]=='1':
 elif sys.argv[1]=='2':
     hm = hyperModel_drop()
     directory = "model/MLP_corpora_categories/Dropout/macroF1"
-    objective="val_macro_f1_score"
+    objective = kt.Objective("val_macro_f1_score", direction="max")
 elif sys.argv[1]=='3':
     hm = hyperModel_LN()
     directory = "model/MLP_corpora_categories/LayerNormalization/macroF1"
-    objective="val_macro_f1_score"
+    objective = kt.Objective("val_macro_f1_score", direction="max")
     
 time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 
@@ -376,7 +376,8 @@ if not os.path.exists(checkpoint_dir):
 # print('Number of devices: {}'.format(strategy.num_replicas_in_sync))
 
 # with strategy.scope():
-    
+
+
     
 tuner = kt.BayesianOptimization(
     hypermodel=hm,
