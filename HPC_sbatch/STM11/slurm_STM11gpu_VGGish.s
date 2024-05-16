@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=30
 #SBATCH --gres=gpu:0
-#SBATCH --mem=360GB
+#SBATCH --mem=50GB
 #SBATCH --time=24:00:00
 #SBATCH --output=HPC_slurm/STM11/STM11-VGG_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
