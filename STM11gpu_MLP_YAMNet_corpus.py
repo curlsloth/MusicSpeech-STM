@@ -240,7 +240,7 @@ class hyperModel_drop(kt.HyperModel):
     
         model.add(layers.Dense(n_target, activation="softmax"))
         
-        multi_label_ROC_AUC = keras.metrics.AUC(
+        ROC_AUC = keras.metrics.AUC(
             num_thresholds=200,
             curve="ROC",
             summation_method="interpolation",
@@ -251,12 +251,18 @@ class hyperModel_drop(kt.HyperModel):
             label_weights=None,
             from_logits=False,
         )
+        
+        macroF1 = keras.metrics.F1Score(average="macro", threshold=None, name="macro_f1_score", dtype=None)
+        
         learning_rate = hp.Float("lr", min_value=1e-7, max_value=1e-4, sampling="log")
         
         model.compile(
-            optimizer=keras.optimizers.Adam(learning_rate=learning_rate),
+            optimizer=keras.optimizers.Adam(
+                learning_rate=learning_rate,
+                gradient_accumulation_steps=8
+                ),
             loss="categorical_focal_crossentropy",
-            metrics=[multi_label_ROC_AUC, 'f1_score'],
+            metrics=[ROC_AUC, macroF1],
         )
         return model
     
@@ -290,7 +296,7 @@ class hyperModel_LN(kt.HyperModel):
     
         model.add(layers.Dense(n_target, activation="softmax"))
         
-        multi_label_ROC_AUC = keras.metrics.AUC(
+        ROC_AUC = keras.metrics.AUC(
             num_thresholds=200,
             curve="ROC",
             summation_method="interpolation",
@@ -301,6 +307,9 @@ class hyperModel_LN(kt.HyperModel):
             label_weights=None,
             from_logits=False,
         )
+        
+        macroF1 = keras.metrics.F1Score(average="macro", threshold=None, name="macro_f1_score", dtype=None)
+        
         learning_rate = hp.Float("lr", min_value=1e-7, max_value=1e-4, sampling="log")
         
         model.compile(
@@ -309,7 +318,7 @@ class hyperModel_LN(kt.HyperModel):
                 gradient_accumulation_steps=8
                 ),
             loss="categorical_focal_crossentropy",
-            metrics=[multi_label_ROC_AUC, 'f1_score'],
+            metrics=[ROC_AUC, macroF1],
         )
         return model
     
@@ -322,13 +331,23 @@ class hyperModel_LN(kt.HyperModel):
         )
 
 # %% set the tuner
-
+    
 if sys.argv[1]=='0':
     hm = hyperModel_drop()
     directory = "model/YAMNet/MLP_corpora_categories/Dropout"
+    objective="val_auc"
 elif sys.argv[1]=='1':
     hm = hyperModel_LN()
     directory = "model/YAMNet/MLP_corpora_categories/LayerNormalization"
+    objective="val_auc"
+elif sys.argv[1]=='2':
+    hm = hyperModel_drop()
+    directory = "model/YAMNet/MLP_corpora_categories/Dropout/macroF1"
+    objective="val_macro_f1_score"
+elif sys.argv[1]=='3':
+    hm = hyperModel_LN()
+    directory = "model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1"
+    objective="val_macro_f1_score"
     
 time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 
@@ -347,7 +366,7 @@ if not os.path.exists(checkpoint_dir):
     
 tuner = kt.BayesianOptimization(
     hypermodel=hm,
-    objective="val_auc",
+    objective=objective,
     num_initial_points=10,
     max_trials=40,
     executions_per_trial=3,
@@ -366,7 +385,7 @@ tuner.search(
     validation_data=val_dataset,
     callbacks=[
         keras.callbacks.EarlyStopping(
-            monitor="val_auc", 
+            monitor=objective, 
             mode="max",
             patience=5,
             verbose=1,

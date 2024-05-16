@@ -218,5 +218,29 @@ def prepData():
 # %% Prepare data
 _, _, test_dataset, n_feat, n_target = prepData()
 
-loaded_model = keras.saving.load_model("model/MLP_corpora_categories/Dropout/MLP_2024-05-14_19-00/best_model0.keras")
+model = keras.saving.load_model("model/MLP_corpora_categories/Dropout/MLP_2024-05-14_19-00/best_model0.keras")
 
+model.compile(metrics=['auc','f1_score','accuracy','precision','recall', 'binary_accuracy'])
+
+evaluation = model.evaluate(test_dataset)
+
+# %%
+from sklearn.metrics import classification_report
+y_pred = model.predict(test_dataset)
+
+y_pred_argmax = list(np.argmax(y_pred, axis=1))
+
+
+def extract_target(x, y):
+    return y
+
+# Apply the extraction function to the dataset
+y_dataset = test_dataset.map(lambda x, y: extract_target(x, y))
+
+# Iterate over the y dataset to see the extracted y values
+y_true = []
+for yi in y_dataset:
+    y_true+= list(np.argmax(yi.numpy(), axis=1))
+
+
+print(classification_report(y_true, y_pred_argmax))
