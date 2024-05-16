@@ -218,26 +218,5 @@ def prepData():
 # %% Prepare data
 _, _, test_dataset, n_feat, n_target = prepData()
 
-
-
 loaded_model = keras.saving.load_model("model/MLP_corpora_categories/Dropout/MLP_2024-05-14_19-00/best_model0.keras")
 
-loaded_model.save_weights("model/MLP_corpora_categories/Dropout/MLP_2024-05-14_19-00/best_model0.weights.h5")
-
-
-keras.utils.plot_model(
-    loaded_model,
-    to_file="model.png",
-    show_shapes=True,
-    show_dtype=False,
-    show_layer_names=False,
-    rankdir="LR",
-    expand_nested=False,
-    dpi=300,
-    show_layer_activations=True,
-    show_trainable=False,
-)
-
-# %%
-import visualkeras
-visualkeras.layered_view(loaded_model).show() # display using your system viewer
