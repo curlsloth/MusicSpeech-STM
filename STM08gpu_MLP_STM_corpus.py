@@ -18,8 +18,10 @@ import gc
 
 os.environ["KERAS_BACKEND"] = "tensorflow"
 
+
+
 # %% prepData
-def prepData():
+def prepData(addAug = False):
     # % load STM data
     corpus_speech_list = ['BibleTTS/akuapem-twi',
         'BibleTTS/asante-twi',
@@ -133,7 +135,10 @@ def prepData():
         'MagnaTagATune'
     ]
     
-    corpus_env_list = ['SONYC', 'SONYC_augmented']
+    if addAug:
+        corpus_env_list = ['SONYC', 'SONYC_augmented']
+    else:
+        corpus_env_list = ['SONYC']
     
     # sort the corpora lists to make sure the order is replicable
     corpus_speech_list.sort()
@@ -171,7 +176,7 @@ def prepData():
                                ignore_index=True)
     else:
         target = all_corp_df['corpus_type']
-        data_split =all_corp_df['10fold_labels']
+        data_split = all_corp_df['10fold_labels']
     
     target.replace({
         'speech: non-tonal':0,
@@ -220,7 +225,7 @@ def prepData():
 
 
 # %% Prepare data
-train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData()
+train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False)
 
 # %% build model
 class hyperModel_drop(kt.HyperModel):
