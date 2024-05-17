@@ -21,7 +21,7 @@ os.environ["KERAS_BACKEND"] = "tensorflow"
 
 
 # %% prepData
-def prepData(addAug = False):
+def prepData(addAug = False, ds_nontonal_speech = False):
     # % load STM data
     corpus_speech_list = ['BibleTTS/akuapem-twi',
         'BibleTTS/asante-twi',
@@ -157,7 +157,9 @@ def prepData(addAug = False):
                 SONYC_aug_len = np.load(filename).shape[0]
         print(filename)
         
-    # %% load meta data
+        
+        
+    # % load meta data
     speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
     speech_corp_df2 = pd.read_csv('train_test_split/speech2_10folds_speakerGroupFold.csv',index_col=0)
     music_corp_df = pd.read_csv('train_test_split/music_10folds_speakerGroupFold.csv',index_col=0)
@@ -165,10 +167,11 @@ def prepData(addAug = False):
     
     all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SONYC], ignore_index=True)
     
-    # %% split data
+    
+    
+    
     
     # add augmented enviromental sounds
-    addAug = False
     if addAug:
         target = pd.concat([all_corp_df['corpus_type'], pd.Series(['env'] * SONYC_aug_len)], 
                            ignore_index=True)
@@ -190,9 +193,38 @@ def prepData(addAug = False):
     y = keras.utils.to_categorical(target, num_classes=5)
     
     
+    if ds_nontonal_speech: # whether to downsample the nontonal_speech category
+        # Number of rows to sample for target == 0
+        num_samples = 100000
+
+        # Get indices of rows where target == 0
+        indices_target_0 = target.index[target == 0].to_numpy()
+
+        # Check if there are enough rows to sample
+        if len(indices_target_0) < num_samples:
+            raise ValueError(f"There are not enough rows with target == 0 to sample {num_samples} rows.")
+
+        # Randomly sample indices from the rows where target == 0
+        np.random.seed(23)
+        sampled_indices = np.random.choice(indices_target_0, size=num_samples, replace=False)
+
+        # Create a mask for the entire array, starting with selecting all rows
+        mask = np.ones(len(target), dtype=bool)
+
+        # Set the mask to False for rows where target == 0 but not in sampled_indices
+        mask[indices_target_0] = False
+        mask[sampled_indices] = True
+
+        # Apply the mask to the NumPy array
+        STM_all = STM_all[mask,:]
+        data_split = data_split[mask]
+       
+        
+    # % split data
     train_ind = data_split<8
     val_ind = data_split==8
     test_ind = data_split==9
+    
     
     train_dataset = tf.data.Dataset.from_tensor_slices((STM_all[train_ind,:], y[train_ind,:]))
     val_dataset = tf.data.Dataset.from_tensor_slices((STM_all[val_ind,:], y[val_ind,:]))
@@ -204,6 +236,8 @@ def prepData(addAug = False):
     train_dataset = train_dataset.shuffle(buffer_size=sum(train_ind), seed=23).batch(batch_size)
     val_dataset = val_dataset.shuffle(buffer_size=sum(val_ind), seed=23).batch(batch_size)
     test_dataset = test_dataset.shuffle(buffer_size=sum(test_ind), seed=23).batch(batch_size)
+    
+    
     
     n_feat = STM_all.shape[1]
     n_target = len(target.unique())
@@ -224,10 +258,12 @@ def prepData(addAug = False):
 
 
 
-# %% Prepare data
-train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False)
+
 
 # %% build model
+n_feat = 2420
+n_target = 5
+
 class hyperModel_drop(kt.HyperModel):
 
     def build(self, hp):
@@ -347,27 +383,56 @@ class hyperModel_LN(kt.HyperModel):
 # %% set the tuner
 
 if sys.argv[1]=='0':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = False)
     hm = hyperModel_drop()
     directory = "model/STM/MLP_corpora_categories/Dropout/ROC-AUC"
     objective="val_auc"
     early_stop = "val_auc"
 elif sys.argv[1]=='1':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = False)
     hm = hyperModel_LN()
-    directory = "model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC""
+    directory = "model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC"
     objective="val_auc"
     early_stop = "val_auc"
 elif sys.argv[1]=='2':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = False)
     hm = hyperModel_drop()
     directory = "model/STM/MLP_corpora_categories/Dropout/macroF1"
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
 elif sys.argv[1]=='3':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = False)
     hm = hyperModel_LN()
     directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1"
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
+elif sys.argv[1]=='4': # downsample nontonal speech
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = True)
+    hm = hyperModel_drop()
+    directory = "model/STM/MLP_corpora_categories/Dropout/ROC-AUC/downsample"
+    objective="val_auc"
+    early_stop = "val_auc"
+elif sys.argv[1]=='5': # downsample nontonal speech
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = True)
+    hm = hyperModel_LN()
+    directory = "model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample"
+    objective="val_auc"
+    early_stop = "val_auc"
+elif sys.argv[1]=='6': # downsample nontonal speech
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = True)
+    hm = hyperModel_drop()
+    directory = "model/STM/MLP_corpora_categories/Dropout/macroF1/downsample"
+    objective = kt.Objective("val_macro_f1_score", direction="max")
+    early_stop = "val_f1_score"
+elif sys.argv[1]=='7': # downsample nontonal speech
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = True)
+    hm = hyperModel_LN()
+    directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1/downsample"
+    objective = kt.Objective("val_macro_f1_score", direction="max")
+    early_stop = "val_f1_score"
     
 time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+
 
 # Prepare a directory to store all the checkpoints.
 checkpoint_dir = directory+"/ckpt/"+time_stamp
@@ -387,7 +452,7 @@ tuner = kt.BayesianOptimization(
     hypermodel=hm,
     objective=objective,
     num_initial_points=10,
-    max_trials=40,
+    max_trials=60,
     executions_per_trial=3,
     seed=23,
     max_retries_per_trial=0,
