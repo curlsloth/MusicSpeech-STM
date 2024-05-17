@@ -383,18 +383,18 @@ tuner.search(
     train_dataset, 
     epochs=2, 
     validation_data=val_dataset,
-    callbacks=[
-        keras.callbacks.EarlyStopping(
-            monitor=objective, 
-            mode="max",
-            patience=5,
-            verbose=1,
-            ),
-        keras.callbacks.ModelCheckpoint(
-            filepath=checkpoint_dir + "/ckpt-{epoch}.keras",
-            save_freq="epoch",
-            ),
-        ]
+    # callbacks=[
+    #     keras.callbacks.EarlyStopping(
+    #         monitor=objective, 
+    #         mode="max",
+    #         patience=5,
+    #         verbose=1,
+    #         ),
+    #     keras.callbacks.ModelCheckpoint(
+    #         filepath=checkpoint_dir + "/ckpt-{epoch}.keras",
+    #         save_freq="epoch",
+    #         ),
+    #     ]
     )
 
 

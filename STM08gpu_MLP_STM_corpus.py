@@ -350,18 +350,22 @@ if sys.argv[1]=='0':
     hm = hyperModel_drop()
     directory = "model/MLP_corpora_categories/Dropout"
     objective="val_auc"
+    early_stop = "val_auc"
 elif sys.argv[1]=='1':
     hm = hyperModel_LN()
     directory = "model/MLP_corpora_categories/LayerNormalization"
     objective="val_auc"
+    early_stop = "val_auc"
 elif sys.argv[1]=='2':
     hm = hyperModel_drop()
     directory = "model/MLP_corpora_categories/Dropout/macroF1"
     objective = kt.Objective("val_macro_f1_score", direction="max")
+    early_stop = "val_f1_score"
 elif sys.argv[1]=='3':
     hm = hyperModel_LN()
     directory = "model/MLP_corpora_categories/LayerNormalization/macroF1"
     objective = kt.Objective("val_macro_f1_score", direction="max")
+    early_stop = "val_f1_score"
     
 time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 
@@ -398,18 +402,18 @@ tuner.search(
     train_dataset, 
     epochs=2, 
     validation_data=val_dataset,
-    callbacks=[
-        keras.callbacks.EarlyStopping(
-            monitor=objective, 
-            mode="max",
-            patience=5,
-            verbose=1,
-            ),
-        keras.callbacks.ModelCheckpoint(
-            filepath=checkpoint_dir + "/ckpt-{epoch}.keras",
-            save_freq="epoch",
-            ),
-        ]
+    # callbacks=[
+    #     keras.callbacks.EarlyStopping(
+    #         monitor=objective, 
+    #         mode="max",
+    #         patience=5,
+    #         verbose=1,
+    #         ),
+    #     keras.callbacks.ModelCheckpoint(
+    #         filepath=checkpoint_dir + "/ckpt-{epoch}.keras",
+    #         save_freq="epoch",
+    #         ),
+    #     ]
     )
 
 
