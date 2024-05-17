@@ -334,11 +334,11 @@ class hyperModel_LN(kt.HyperModel):
     
 if sys.argv[1]=='0':
     hm = hyperModel_drop()
-    directory = "model/YAMNet/MLP_corpora_categories/Dropout"
+    directory = "model/YAMNet/MLP_corpora_categories/Dropout/ROC-AUC"
     objective="val_auc"
 elif sys.argv[1]=='1':
     hm = hyperModel_LN()
-    directory = "model/YAMNet/MLP_corpora_categories/LayerNormalization"
+    directory = "model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC"
     objective="val_auc"
 elif sys.argv[1]=='2':
     hm = hyperModel_drop()

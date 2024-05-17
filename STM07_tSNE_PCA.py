@@ -151,7 +151,7 @@ if perplexity == 0:
     # PCA
     pipeline = make_pipeline(StandardScaler(),IncrementalPCA())
     pipeline.fit(STM_all)
-    dump(pipeline, 'model/PCA/allSTM_pca-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+    dump(pipeline, 'model/STM/PCA/allSTM_pca-pipeline_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
     
     # MDS (too big)
     # mds = MDS(
@@ -173,7 +173,7 @@ else:
                 verbose=1, 
                 n_jobs=-1)
     STM_tsne = tsne.fit_transform(STM_all)
-    path = 'model/tsne/perplexity'+str(perplexity)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+    path = 'model/STM/tsne/perplexity'+str(perplexity)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
     os.mkdir(path)
     dump(tsne, path+'/tsne_model.joblib') 
     dump(STM_tsne, path+'/tsne_data.joblib') 

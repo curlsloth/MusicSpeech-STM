@@ -231,7 +231,7 @@ def run_SGDClinearSVC(X_train, X_val, X_test, y_train, y_val, y_test):
             },
         random_state=23
         )
-    jogger_path = 'model/sklearn_corpora_categories/SGDClinearSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    jogger_path = 'model/STM/sklearn_corpora_categories/SGDClinearSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
     os.makedirs(jogger_path)
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
@@ -291,7 +291,7 @@ def run_SGDCrbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
             },
         random_state=23
         )
-    jogger_path = 'model/sklearn_corpora_categories/SGDCrbfSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    jogger_path = 'model/STM/sklearn_corpora_categories/SGDCrbfSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
     os.makedirs(jogger_path)
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
@@ -343,7 +343,7 @@ def run_SGDClogReg(X_train, X_val, X_test, y_train, y_val, y_test):
             },
         random_state=23
         )
-    jogger_path = 'model/sklearn_corpora_categories/SGDClogReg/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    jogger_path = 'model/STM/sklearn_corpora_categories/SGDClogReg/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
     os.makedirs(jogger_path)
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
@@ -390,7 +390,7 @@ def run_linearSVC(X_train, X_val, X_test, y_train, y_val, y_test):
             },
         random_state=23
         )
-    jogger_path = 'model/sklearn_corpora_categories/linearSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    jogger_path = 'model/STM/sklearn_corpora_categories/linearSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
     os.makedirs(jogger_path)
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
@@ -440,7 +440,7 @@ def run_rbfSVC(X_train, X_val, X_test, y_train, y_val, y_test):
             },
         random_state=23
         )
-    jogger_path = 'model/sklearn_corpora_categories/rbfSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    jogger_path = 'model/STM/sklearn_corpora_categories/rbfSVM/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
     os.makedirs(jogger_path)
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
@@ -490,7 +490,7 @@ def run_LogReg(X_train, X_val, X_test, y_train, y_val, y_test):
             },
         random_state=23
         )
-    jogger_path = 'model/sklearn_corpora_categories/logReg/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    jogger_path = 'model/STM/sklearn_corpora_categories/logReg/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
     os.makedirs(jogger_path)
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)
@@ -543,7 +543,7 @@ def run_RFC(X_train, X_val, X_test, y_train, y_val, y_test):
             },
         random_state=23
         )
-    jogger_path = 'model/sklearn_corpora_categories/randomForest/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
+    jogger_path = 'model/STM/sklearn_corpora_categories/randomForest/'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'/'
     os.makedirs(jogger_path)
     jogger_file=jogger_path+'logs.json'
     logger = JSONLogger(path=jogger_file)

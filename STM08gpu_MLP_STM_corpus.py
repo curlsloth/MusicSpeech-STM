@@ -348,22 +348,22 @@ class hyperModel_LN(kt.HyperModel):
 
 if sys.argv[1]=='0':
     hm = hyperModel_drop()
-    directory = "model/MLP_corpora_categories/Dropout"
+    directory = "model/STM/MLP_corpora_categories/Dropout/ROC-AUC"
     objective="val_auc"
     early_stop = "val_auc"
 elif sys.argv[1]=='1':
     hm = hyperModel_LN()
-    directory = "model/MLP_corpora_categories/LayerNormalization"
+    directory = "model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC""
     objective="val_auc"
     early_stop = "val_auc"
 elif sys.argv[1]=='2':
     hm = hyperModel_drop()
-    directory = "model/MLP_corpora_categories/Dropout/macroF1"
+    directory = "model/STM/MLP_corpora_categories/Dropout/macroF1"
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
 elif sys.argv[1]=='3':
     hm = hyperModel_LN()
-    directory = "model/MLP_corpora_categories/LayerNormalization/macroF1"
+    directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1"
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
     
