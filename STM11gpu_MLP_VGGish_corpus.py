@@ -19,7 +19,7 @@ import gc
 os.environ["KERAS_BACKEND"] = "tensorflow"
 
 # %% prepData
-def prepData():
+def prepData(ds_nontonal_speech = False):
     # % load STM data
     corpus_speech_list = ['BibleTTS/akuapem-twi',
         'BibleTTS/asante-twi',
@@ -150,7 +150,7 @@ def prepData():
             emb_all = np.vstack((emb_all, np.load(filename)))
         print(filename)
         
-    # %% load meta data
+    # % load meta data
     speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
     speech_corp_df2 = pd.read_csv('train_test_split/speech2_10folds_speakerGroupFold.csv',index_col=0)
     music_corp_df = pd.read_csv('train_test_split/music_10folds_speakerGroupFold.csv',index_col=0)
@@ -158,7 +158,7 @@ def prepData():
     
     all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SONYC], ignore_index=True)
     
-    # %% split data
+    
     
     target = all_corp_df['corpus_type']
     
@@ -174,8 +174,43 @@ def prepData():
     y = keras.utils.to_categorical(target, num_classes=5)
     
     data_split = all_corp_df['10fold_labels']
-
     
+    
+    
+    
+    if ds_nontonal_speech: # whether to downsample the nontonal_speech category
+        # Number of rows to sample for target == 0
+        num_samples = 100000
+
+        # Get indices of rows where target == 0
+        indices_target_0 = target.index[target == 0].to_numpy()
+
+        # Check if there are enough rows to sample
+        if len(indices_target_0) < num_samples:
+            raise ValueError(f"There are not enough rows with target == 0 to sample {num_samples} rows.")
+
+        # Randomly sample indices from the rows where target == 0
+        np.random.seed(23)
+        sampled_indices = np.random.choice(indices_target_0, size=num_samples, replace=False)
+
+        # Create a mask for the entire array, starting with selecting all rows
+        mask = np.ones(len(target), dtype=bool)
+
+        # Set the mask to False for rows where target == 0 but not in sampled_indices
+        mask[indices_target_0] = False
+        mask[sampled_indices] = True
+
+        # Apply the mask to the NumPy array
+        emb_all = emb_all[mask,:]
+        data_split = data_split[mask]
+        y = y[mask,:]
+        
+        
+        
+        
+    
+    # % split data
+
     train_ind = data_split<8
     val_ind = data_split==8
     test_ind = data_split==9
@@ -210,10 +245,10 @@ def prepData():
 
 
 
-# %% Prepare data
-train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData()
-
 # %% build model
+n_feat = 128
+n_target = 5
+
 class hyperModel_drop(kt.HyperModel):
 
     def build(self, hp):
@@ -333,20 +368,44 @@ class hyperModel_LN(kt.HyperModel):
 # %% set the tuner
 
 if sys.argv[1]=='0':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False)
     hm = hyperModel_drop()
     directory = "model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC"
     objective="val_auc"
 elif sys.argv[1]=='1':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False)
     hm = hyperModel_LN()
     directory = "model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC"
     objective="val_auc"
 elif sys.argv[1]=='2':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False)
     hm = hyperModel_drop()
     directory = "model/VGGish/MLP_corpora_categories/Dropout/macroF1"
     objective=kt.Objective("val_macro_f1_score", direction="max")
 elif sys.argv[1]=='3':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False)
     hm = hyperModel_LN()
     directory = "model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1"
+    objective=kt.Objective("val_macro_f1_score", direction="max")
+elif sys.argv[1]=='4':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True)
+    hm = hyperModel_drop()
+    directory = "model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/downsample"
+    objective="val_auc"
+elif sys.argv[1]=='5':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True)
+    hm = hyperModel_LN()
+    directory = "model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample"
+    objective="val_auc"
+elif sys.argv[1]=='6':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True)
+    hm = hyperModel_drop()
+    directory = "model/VGGish/MLP_corpora_categories/Dropout/macroF1/downsample"
+    objective=kt.Objective("val_macro_f1_score", direction="max")
+elif sys.argv[1]=='7':
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True)
+    hm = hyperModel_LN()
+    directory = "model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1/downsample"
     objective=kt.Objective("val_macro_f1_score", direction="max")
     
 time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
