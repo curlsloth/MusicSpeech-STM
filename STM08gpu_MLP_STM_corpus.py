@@ -218,6 +218,7 @@ def prepData(addAug = False, ds_nontonal_speech = False):
         # Apply the mask to the NumPy array
         STM_all = STM_all[mask,:]
         data_split = data_split[mask]
+        y = y[mask,:]
        
         
     # % split data
