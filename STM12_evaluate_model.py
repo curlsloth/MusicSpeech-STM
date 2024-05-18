@@ -359,6 +359,8 @@ df_eval = pd.concat([
     eval_VGG_LN_F1_ds,eval_VGG_LN_AUC_ds,
     ], ignore_index=True)
 
+df_eval.to_csv("model/MLP_summary.csv", index=False)
+
 # %%
 # from sklearn.metrics import classification_report
 # y_pred = model.predict(test_dataset)
