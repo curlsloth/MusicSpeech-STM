@@ -208,10 +208,10 @@ test_dataset_YAM, n_feat_YAM, n_target = prepData(feat_type='YAM')
 
 # %% Load models
 
-model_STM_dropout_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/MLP_2024-05-16_21-13/best_model0.keras")
-model_STM_dropout_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-05-16_20-04/best_model0.keras")
-model_STM_LN_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-05-16_21-21/best_model0.keras")
-model_STM_LN_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-05-16_20-03/best_model0.keras")
+model_STM_dropout_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/MLP_2024-05-17_14-42/best_model0.keras")
+model_STM_dropout_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-05-17_14-42/best_model0.keras")
+model_STM_LN_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-05-17_14-42/best_model0.keras")
+model_STM_LN_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-05-17_14-42/best_model0.keras")
 
 model_VGG_dropout_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/MLP_2024-05-17_05-16/best_model0.keras")
 model_VGG_dropout_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-05-16_08-35/best_model0.keras")
