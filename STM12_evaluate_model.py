@@ -266,15 +266,18 @@ model_YAM_LN_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categorie
 model_YAM_LN_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_22-45/best_model0.keras")
 
 # %% run evaluations
+
 def eval_model(model, test_dataset):
-    macroF1 = keras.metrics.F1Score(average="macro", threshold=None, name="macro_f1_score", dtype=None)
-    model.compile(metrics=['auc','f1_score', macroF1,'accuracy'])
+    # search the max F1 score across thresholds
+    macroF1_list = []
+    for threshold in range(5,100,5):
+        macroF1_list.append(keras.metrics.F1Score(average="macro", threshold=threshold/100, name="macro_f1_score_"+str(threshold), dtype=None))
+    
+    model.compile(metrics=['auc','accuracy']+macroF1_list)
     evaluation = model.evaluate(test_dataset)
-    # Extract tensor values and flatten the list
-    tensor_values = evaluation[2].numpy()
-    flat_data = evaluation[:2] + tensor_values.tolist() + evaluation[3:]
+    flat_data = evaluation[:2] + [max(evaluation[3:])] + [evaluation[2]]
     # Define column names
-    columns = ['loss', 'ROC-AUC', 'f1: speech (nontonal)', 'f1: speech (tonal)', 'f1: music (vocal)', 'f1: music (nonvocal)', 'f1: environmental sound', 'macro_f1', 'accuracy']
+    columns = ['loss', 'ROC-AUC', 'max_macro_f1', 'accuracy']
     # Create DataFrame
     df = pd.DataFrame([flat_data], columns=columns)
     return df
@@ -343,21 +346,22 @@ eval_VGG_LN_AUC_ds = eval_model(model_VGG_LN_AUC_ds, test_dataset_VGG_ds)
 eval_VGG_LN_AUC_ds['model'] = 'VGG_LN_AUC_ds'
 
 
-
 df_eval = pd.concat([
     eval_STM_dropout_F1,eval_STM_dropout_AUC,
-    eval_YAM_dropout_F1,eval_YAM_dropout_AUC,
-    eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
     eval_STM_LN_F1,eval_STM_LN_AUC,
+    eval_YAM_dropout_F1,eval_YAM_dropout_AUC,
     eval_YAM_LN_F1,eval_YAM_LN_AUC,
+    eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
     eval_VGG_LN_F1,eval_VGG_LN_AUC,
     eval_STM_dropout_F1_ds,eval_STM_dropout_AUC_ds,
-    eval_YAM_dropout_F1_ds,eval_YAM_dropout_AUC_ds,
-    eval_VGG_dropout_F1_ds,eval_VGG_dropout_AUC_ds,
     eval_STM_LN_F1_ds,eval_STM_LN_AUC_ds,
+    eval_YAM_dropout_F1_ds,eval_YAM_dropout_AUC_ds,
     eval_YAM_LN_F1_ds,eval_YAM_LN_AUC_ds,
+    eval_VGG_dropout_F1_ds,eval_VGG_dropout_AUC_ds,
     eval_VGG_LN_F1_ds,eval_VGG_LN_AUC_ds,
     ], ignore_index=True)
+
+
 
 df_eval.to_csv("model/MLP_summary.csv", index=False)
 
