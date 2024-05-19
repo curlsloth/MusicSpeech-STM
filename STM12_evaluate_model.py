@@ -273,11 +273,14 @@ def eval_model(model, test_dataset):
     for threshold in range(5,100,5):
         macroF1_list.append(keras.metrics.F1Score(average="macro", threshold=threshold/100, name="macro_f1_score_"+str(threshold), dtype=None))
     
-    model.compile(metrics=['auc','accuracy']+macroF1_list)
+    ROCAUC = keras.metrics.AUC(curve="ROC", name="ROC-AUC")
+    PRAUC = keras.metrics.AUC(curve="PR", name="PR-AUC")
+    
+    model.compile(metrics=[ROCAUC, PRAUC,'accuracy']+macroF1_list)
     evaluation = model.evaluate(test_dataset)
-    flat_data = evaluation[:2] + [max(evaluation[3:])] + [evaluation[2]]
+    flat_data = evaluation[:3] + [max(evaluation[4:])] + [evaluation[3]]
     # Define column names
-    columns = ['loss', 'ROC-AUC', 'max_macro_f1', 'accuracy']
+    columns = ['loss', 'ROC-AUC', 'PR-AUC', 'max_macro_f1', 'accuracy']
     # Create DataFrame
     df = pd.DataFrame([flat_data], columns=columns)
     return df
