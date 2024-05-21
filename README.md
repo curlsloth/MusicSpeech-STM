@@ -1,6 +1,6 @@
 # MusicSpeech-STM
 
-This repo contains the Python and MATLAB scripts of the paper submitted to NeurIPS 2024.
+This repo contains the Python and MATLAB scripts for the paper submitted to NeurIPS 2024.
 
 The scripts are numbered in the order they were executed. The Python packages and environments can be found under `./conda_env`.
 
