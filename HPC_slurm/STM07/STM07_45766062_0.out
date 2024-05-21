@@ -1,8 +1,0 @@
-/home/ac8888/STM_singularity/run-MusicSpeech-STMhpc.bash: line 23: 2471594 Killed                  singularity exec --overlay /home/ac8888/STM_singularity/overlay-15GB-500K.ext3:ro /scratch/work/public/singularity/cuda12.1.1-cudnn8.9.0-devel-ubuntu22.04.2.sif /bin/bash -c "
-unset -f which
-source /opt/apps/lmod/lmod/init/sh
-source /ext3/env.sh
-conda activate MusicSpeech-STMhpc
-${args}
-"
-slurmstepd: error: Detected 1 oom_kill event in StepId=45766062.batch. Some of the step tasks have been OOM Killed.
