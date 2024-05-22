@@ -3,7 +3,6 @@
 """
 Created on Tue May 14 14:13:11 2024
 
-@author: andrewchang
 """
 
 st = time.time()

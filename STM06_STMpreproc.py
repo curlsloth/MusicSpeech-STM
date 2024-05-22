@@ -3,7 +3,6 @@
 """
 Created on Thu Apr 18 21:49:01 2024
 
-@author: andrewchang
 """
 
 import scipy.io

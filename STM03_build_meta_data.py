@@ -3,7 +3,6 @@
 """
 Created on Tue Apr 16 09:38:13 2024
 
-@author: andrewchang
 """
 
 # %% import libraries

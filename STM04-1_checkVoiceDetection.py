@@ -3,7 +3,6 @@
 """
 Created on Mon Apr 15 09:39:07 2024
 
-@author: andrewchang
 """
 
 # %% import modules and set corpus name

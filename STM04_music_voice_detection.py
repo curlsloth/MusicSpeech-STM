@@ -3,8 +3,6 @@
 """
 Created on Mon Apr  8 23:35:14 2024
 
-@author: andrewchang
-
 This script uses demucs to separate the music audio, and then uses YAMNet to detect voice.
 It process 100 rows of the meta data file, starting from 
 

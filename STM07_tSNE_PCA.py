@@ -3,7 +3,6 @@
 """
 Created on Sun Apr 21 08:25:58 2024
 
-@author: andrewchang
 """
 import numpy as np
 from sklearn.manifold import TSNE, MDS

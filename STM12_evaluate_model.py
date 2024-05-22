@@ -3,7 +3,6 @@
 """
 Created on Wed May 15 15:49:24 2024
 
-@author: andrewchang
 """
 
 
