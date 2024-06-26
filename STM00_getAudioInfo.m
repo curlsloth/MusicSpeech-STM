@@ -117,7 +117,8 @@ musicCorpus = {
     };
 
 envCorpus = {
-    'SONYC'
+    'SONYC';
+    'MacaulayLibrary'
     };
 
 % make table

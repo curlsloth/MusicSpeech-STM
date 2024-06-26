@@ -94,6 +94,8 @@ function [indMS, indMS_all, Params, x_axis, y_axis] = my_stmAna(curfiles, curcor
         startPoint0 = 1;
         if strcmp(curcorpus, 'LibriVox')
             startPoint0 = 1+fs*30; % for Librivox, excluding the first 30s of the copyright statement
+        elseif strcmp(curcorpus, 'MacaulayLibrary')
+            startPoint0 = 1+fs*5.5; % for MacaulayLibrary, excluding the first 5.5s of the annotation statement
         elseif strcmp(curcorpus, 'GarlandEncyclopedia')
             if contains(curFilePath,["Haste", "Brush", "Tihadanaren", "Qurba"])
                 startPoint0 = 1+fs*10; % skip the speech in the beginning
