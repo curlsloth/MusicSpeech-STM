@@ -1,8 +1,8 @@
 listing = dir('HPC_slurm/STM01/**/*.out');
 
 % Specify the date and time range
-start_date = datetime('2024-03-19 11:00:00');
-end_date = datetime('2024-03-19 23:59:59');
+start_date = datetime('2024-06-27 7:00:00');
+end_date = datetime('2024-06-27 23:59:59');
 
 for nOut = 1:length(listing)
     if (datetime(listing(nOut).date) > start_date) && (datetime(listing(nOut).date) < end_date)
