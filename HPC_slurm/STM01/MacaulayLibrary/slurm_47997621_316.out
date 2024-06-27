@@ -1,0 +1,91 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+data/envCorp/MacaulayLibrary/613118098.wav
+Total loop time: 27.249 sec
+data/envCorp/MacaulayLibrary/613121448.wav
+Total loop time: 0.886 sec
+data/envCorp/MacaulayLibrary/613131796.wav
+Total loop time: 0.900 sec
+data/envCorp/MacaulayLibrary/613137813.wav
+Total loop time: 8.146 sec
+data/envCorp/MacaulayLibrary/613145507.wav
+Total loop time: 15.444 sec
+data/envCorp/MacaulayLibrary/613152600.wav
+Total loop time: 23.674 sec
+data/envCorp/MacaulayLibrary/613152618.wav
+Total loop time: 9.022 sec
+data/envCorp/MacaulayLibrary/613154554.wav
+Total loop time: 9.817 sec
+data/envCorp/MacaulayLibrary/613160373.m4a
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:35.127: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:36.068: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:36.988: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:37.902: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:38.856: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:39.755: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:40.635: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:41.499: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:42.356: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:43.212: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:44.079: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:44.933: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:45.781: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:46.607: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:47.444: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:48.262: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:49.095: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:49.908: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 16.148 sec
+data/envCorp/MacaulayLibrary/613160961.wav
+Total loop time: 5.599 sec
+data/envCorp/MacaulayLibrary/613163035.m4a
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:56.401: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:57.222: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:58.041: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:58.857: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2603930): GStreamer-CRITICAL **: 10:09:59.659: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 4.129 sec
+data/envCorp/MacaulayLibrary/613170162.m4a
+{Error using audioread>readaudio
+The file type is not supported
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

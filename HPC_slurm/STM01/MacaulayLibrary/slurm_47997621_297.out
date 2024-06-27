@@ -1,0 +1,110 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+data/envCorp/MacaulayLibrary/608511798.wav
+Total loop time: 3.760 sec
+data/envCorp/MacaulayLibrary/608511807.wav
+Total loop time: 3.760 sec
+data/envCorp/MacaulayLibrary/608512524.wav
+Total loop time: 4.439 sec
+data/envCorp/MacaulayLibrary/608512590.wav
+Total loop time: 13.483 sec
+data/envCorp/MacaulayLibrary/608512651.wav
+Total loop time: 11.149 sec
+data/envCorp/MacaulayLibrary/608514360.wav
+Total loop time: 9.504 sec
+data/envCorp/MacaulayLibrary/608514362.wav
+Total loop time: 9.522 sec
+data/envCorp/MacaulayLibrary/608515548.wav
+Total loop time: 4.804 sec
+data/envCorp/MacaulayLibrary/608523281.m4a
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:06.612: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:07.523: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:08.419: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:09.300: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:10.172: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:11.026: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:11.867: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:12.696: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:13.534: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:08:14.357: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 9.110 sec
+data/envCorp/MacaulayLibrary/608524597.wav
+Total loop time: 17.488 sec
+data/envCorp/MacaulayLibrary/608526451.wav
+Total loop time: 1.626 sec
+data/envCorp/MacaulayLibrary/608529074.wav
+Total loop time: 2.412 sec
+data/envCorp/MacaulayLibrary/608529875.wav
+Total loop time: 1.634 sec
+data/envCorp/MacaulayLibrary/608532636.wav
+Total loop time: 7.933 sec
+data/envCorp/MacaulayLibrary/608533181.wav
+Total loop time: 2.401 sec
+data/envCorp/MacaulayLibrary/608533380.wav
+Total loop time: 11.955 sec
+data/envCorp/MacaulayLibrary/608533406.wav
+Total loop time: 9.662 sec
+data/envCorp/MacaulayLibrary/608534079.wav
+Total loop time: 5.666 sec
+data/envCorp/MacaulayLibrary/608534084.wav
+Total loop time: 23.803 sec
+data/envCorp/MacaulayLibrary/608534087.wav
+Total loop time: 14.981 sec
+data/envCorp/MacaulayLibrary/608534218.wav
+Total loop time: 2.427 sec
+data/envCorp/MacaulayLibrary/608534522.wav
+Total loop time: 5.576 sec
+data/envCorp/MacaulayLibrary/608534664.wav
+Total loop time: 0.852 sec
+data/envCorp/MacaulayLibrary/608534762.wav
+Total loop time: 7.101 sec
+data/envCorp/MacaulayLibrary/608534763.wav
+Total loop time: 6.346 sec
+data/envCorp/MacaulayLibrary/608534764.wav
+Total loop time: 9.542 sec
+data/envCorp/MacaulayLibrary/608534810.wav
+Total loop time: 16.605 sec
+data/envCorp/MacaulayLibrary/608536031.wav
+Total loop time: 3.257 sec
+data/envCorp/MacaulayLibrary/608536036.wav
+Total loop time: 10.291 sec
+data/envCorp/MacaulayLibrary/608537324.mp3
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:10:57.003: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:10:57.970: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2494401): GStreamer-CRITICAL **: 10:10:58.936: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 3.905 sec
+data/envCorp/MacaulayLibrary/608539878.mp3
+{Error using audioread>readaudio
+Range requested is greater than the total number of samples in the file.
+TotalSamples is 494592.
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

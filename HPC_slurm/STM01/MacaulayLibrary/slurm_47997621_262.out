@@ -1,0 +1,131 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+data/envCorp/MacaulayLibrary/523986911.wav
+Total loop time: 15.016 sec
+data/envCorp/MacaulayLibrary/523996011.wav
+Total loop time: 3.332 sec
+data/envCorp/MacaulayLibrary/523997.wav
+Total loop time: 24.136 sec
+data/envCorp/MacaulayLibrary/523997041.wav
+Total loop time: 24.248 sec
+data/envCorp/MacaulayLibrary/523998.wav
+Total loop time: 8.190 sec
+data/envCorp/MacaulayLibrary/52401.wav
+Total loop time: 13.020 sec
+data/envCorp/MacaulayLibrary/524014141.wav
+Total loop time: 24.092 sec
+data/envCorp/MacaulayLibrary/524053131.wav
+Total loop time: 7.950 sec
+data/envCorp/MacaulayLibrary/524053151.wav
+Total loop time: 11.158 sec
+data/envCorp/MacaulayLibrary/524053201.wav
+Total loop time: 23.891 sec
+data/envCorp/MacaulayLibrary/524058731.wav
+Total loop time: 23.737 sec
+data/envCorp/MacaulayLibrary/524061501.wav
+Total loop time: 2.386 sec
+data/envCorp/MacaulayLibrary/524083.wav
+Total loop time: 19.415 sec
+data/envCorp/MacaulayLibrary/52413.wav
+Total loop time: 6.316 sec
+data/envCorp/MacaulayLibrary/524136331.wav
+Total loop time: 23.663 sec
+data/envCorp/MacaulayLibrary/524145501.wav
+Total loop time: 0.844 sec
+data/envCorp/MacaulayLibrary/524152.wav
+Total loop time: 7.105 sec
+data/envCorp/MacaulayLibrary/524202.wav
+Total loop time: 18.849 sec
+data/envCorp/MacaulayLibrary/524255281.wav
+Total loop time: 14.743 sec
+data/envCorp/MacaulayLibrary/524260231.wav
+Total loop time: 3.135 sec
+data/envCorp/MacaulayLibrary/524276991.wav
+Total loop time: 23.662 sec
+data/envCorp/MacaulayLibrary/524280501.wav
+Total loop time: 4.826 sec
+data/envCorp/MacaulayLibrary/524285901.wav
+Total loop time: 2.461 sec
+data/envCorp/MacaulayLibrary/524295671.wav
+Total loop time: 1.673 sec
+data/envCorp/MacaulayLibrary/524297621.wav
+Total loop time: 2.474 sec
+data/envCorp/MacaulayLibrary/524297631.wav
+Total loop time: 5.676 sec
+data/envCorp/MacaulayLibrary/524316481.wav
+Total loop time: 23.840 sec
+data/envCorp/MacaulayLibrary/524360731.wav
+Total loop time: 18.853 sec
+data/envCorp/MacaulayLibrary/524398621.wav
+Total loop time: 5.526 sec
+data/envCorp/MacaulayLibrary/524398631.wav
+Total loop time: 12.547 sec
+data/envCorp/MacaulayLibrary/524398641.wav
+Total loop time: 22.281 sec
+data/envCorp/MacaulayLibrary/524398701.wav
+Total loop time: 19.561 sec
+data/envCorp/MacaulayLibrary/524398731.wav
+Total loop time: 5.432 sec
+data/envCorp/MacaulayLibrary/524398741.wav
+Total loop time: 23.689 sec
+data/envCorp/MacaulayLibrary/524398831.wav
+Total loop time: 21.479 sec
+data/envCorp/MacaulayLibrary/524398861.wav
+Total loop time: 23.558 sec
+data/envCorp/MacaulayLibrary/524398871.wav
+Total loop time: 23.392 sec
+data/envCorp/MacaulayLibrary/524427071.wav
+Total loop time: 23.329 sec
+data/envCorp/MacaulayLibrary/524427131.wav
+Total loop time: 17.997 sec
+data/envCorp/MacaulayLibrary/524427221.wav
+Total loop time: 1.609 sec
+data/envCorp/MacaulayLibrary/524487951.wav
+Total loop time: 23.314 sec
+data/envCorp/MacaulayLibrary/524570341.m4a
+Total loop time: 1.210 sec
+data/envCorp/MacaulayLibrary/524675281.wav
+Total loop time: 4.801 sec
+data/envCorp/MacaulayLibrary/524696821.m4a
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:16:57.452: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:16:58.295: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:16:59.122: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:16:59.940: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:17:00.756: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:17:01.574: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:17:02.392: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:17:03.197: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:17:03.994: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1627220): GStreamer-CRITICAL **: 10:17:04.783: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 8.202 sec
+data/envCorp/MacaulayLibrary/524709761.m4a
+{Error using audioread>readaudio
+The file type is not supported
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

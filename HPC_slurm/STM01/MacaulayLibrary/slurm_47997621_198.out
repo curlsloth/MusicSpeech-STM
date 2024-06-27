@@ -1,0 +1,81 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+data/envCorp/MacaulayLibrary/377456381.wav
+Total loop time: 6.944 sec
+data/envCorp/MacaulayLibrary/377456401.wav
+Total loop time: 0.907 sec
+data/envCorp/MacaulayLibrary/377530101.m4a
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:11.461: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:12.526: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:13.546: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:14.385: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:15.205: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 6.179 sec
+data/envCorp/MacaulayLibrary/377618711.wav
+Total loop time: 5.688 sec
+data/envCorp/MacaulayLibrary/377749911.mp3
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:22.778: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:23.709: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:24.660: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:25.609: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:26.569: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:27.503: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 5.766 sec
+data/envCorp/MacaulayLibrary/377764471.wav
+Total loop time: 1.678 sec
+data/envCorp/MacaulayLibrary/377767461.wav
+Total loop time: 1.629 sec
+data/envCorp/MacaulayLibrary/377905491.mp3
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:31.879: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:32.869: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:33.854: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:34.866: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:35.854: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:36.820: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:37.815: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:38.795: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2423347): GStreamer-CRITICAL **: 10:07:39.758: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 8.914 sec
+data/envCorp/MacaulayLibrary/377992431.wav
+Total loop time: 1.637 sec
+data/envCorp/MacaulayLibrary/378067711.m4a
+{Error using audioread>readaudio
+The file type is not supported
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

@@ -1,0 +1,71 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+data/envCorp/MacaulayLibrary/182210.wav
+Total loop time: 17.794 sec
+data/envCorp/MacaulayLibrary/182216.wav
+Total loop time: 10.283 sec
+data/envCorp/MacaulayLibrary/182221.wav
+Total loop time: 23.763 sec
+data/envCorp/MacaulayLibrary/182222.wav
+Total loop time: 3.267 sec
+data/envCorp/MacaulayLibrary/182234.wav
+Total loop time: 7.142 sec
+data/envCorp/MacaulayLibrary/182243.wav
+Total loop time: 24.046 sec
+data/envCorp/MacaulayLibrary/182252.wav
+Total loop time: 19.141 sec
+data/envCorp/MacaulayLibrary/182266.wav
+Total loop time: 23.933 sec
+data/envCorp/MacaulayLibrary/182267.wav
+Total loop time: 23.920 sec
+data/envCorp/MacaulayLibrary/182283.wav
+Total loop time: 15.882 sec
+data/envCorp/MacaulayLibrary/182288.wav
+Total loop time: 23.161 sec
+data/envCorp/MacaulayLibrary/182294.wav
+Total loop time: 11.910 sec
+data/envCorp/MacaulayLibrary/182296.wav
+Total loop time: 9.551 sec
+data/envCorp/MacaulayLibrary/182308.wav
+Total loop time: 18.370 sec
+data/envCorp/MacaulayLibrary/182309.wav
+Total loop time: 20.122 sec
+data/envCorp/MacaulayLibrary/182309861.wav
+Total loop time: 5.747 sec
+data/envCorp/MacaulayLibrary/182321.wav
+Total loop time: 18.278 sec
+data/envCorp/MacaulayLibrary/182331.wav
+Total loop time: 7.993 sec
+data/envCorp/MacaulayLibrary/182332.wav
+Total loop time: 23.774 sec
+data/envCorp/MacaulayLibrary/182334.wav
+Total loop time: 23.907 sec
+data/envCorp/MacaulayLibrary/182349.wav
+Total loop time: 24.018 sec
+data/envCorp/MacaulayLibrary/182351.wav
+Total loop time: 20.667 sec
+data/envCorp/MacaulayLibrary/182357.wav
+Total loop time: 23.909 sec
+data/envCorp/MacaulayLibrary/182359.wav
+Total loop time: 20.046 sec
+data/envCorp/MacaulayLibrary/182365341.m4a
+{Error using audioread>readaudio
+The file type is not supported
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

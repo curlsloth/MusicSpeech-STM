@@ -1,0 +1,99 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+data/envCorp/MacaulayLibrary/223832.wav
+Total loop time: 21.105 sec
+data/envCorp/MacaulayLibrary/223835.wav
+Total loop time: 5.651 sec
+data/envCorp/MacaulayLibrary/223836.wav
+Total loop time: 4.251 sec
+data/envCorp/MacaulayLibrary/223839811.wav
+Total loop time: 5.662 sec
+data/envCorp/MacaulayLibrary/223851301.wav
+Total loop time: 2.876 sec
+data/envCorp/MacaulayLibrary/223863311.wav
+Total loop time: 20.432 sec
+data/envCorp/MacaulayLibrary/223882.wav
+Total loop time: 21.004 sec
+data/envCorp/MacaulayLibrary/223892181.wav
+Total loop time: 7.020 sec
+data/envCorp/MacaulayLibrary/223892221.wav
+Total loop time: 9.154 sec
+data/envCorp/MacaulayLibrary/223892251.wav
+Total loop time: 4.925 sec
+data/envCorp/MacaulayLibrary/223911461.wav
+Total loop time: 4.214 sec
+data/envCorp/MacaulayLibrary/223914521.wav
+Total loop time: 6.323 sec
+data/envCorp/MacaulayLibrary/223918971.wav
+Total loop time: 6.319 sec
+data/envCorp/MacaulayLibrary/223921.wav
+Total loop time: 21.069 sec
+data/envCorp/MacaulayLibrary/223937281.wav
+Total loop time: 19.034 sec
+data/envCorp/MacaulayLibrary/223944311.wav
+Total loop time: 3.571 sec
+data/envCorp/MacaulayLibrary/223991771.wav
+Total loop time: 4.928 sec
+data/envCorp/MacaulayLibrary/223993981.wav
+Total loop time: 3.546 sec
+data/envCorp/MacaulayLibrary/224026301.wav
+Total loop time: 13.504 sec
+data/envCorp/MacaulayLibrary/224026741.wav
+Total loop time: 0.084 sec
+data/envCorp/MacaulayLibrary/224033211.wav
+Total loop time: 4.294 sec
+data/envCorp/MacaulayLibrary/224062391.wav
+Total loop time: 1.459 sec
+data/envCorp/MacaulayLibrary/224067071.wav
+Total loop time: 4.989 sec
+data/envCorp/MacaulayLibrary/224099021.wav
+Total loop time: 8.446 sec
+data/envCorp/MacaulayLibrary/2241.wav
+Total loop time: 8.492 sec
+data/envCorp/MacaulayLibrary/224115181.wav
+Total loop time: 21.178 sec
+data/envCorp/MacaulayLibrary/224115251.wav
+Total loop time: 7.740 sec
+data/envCorp/MacaulayLibrary/224115541.wav
+Total loop time: 4.977 sec
+data/envCorp/MacaulayLibrary/224125391.wav
+Total loop time: 12.671 sec
+data/envCorp/MacaulayLibrary/224128781.wav
+Total loop time: 3.040 sec
+data/envCorp/MacaulayLibrary/224128801.wav
+Total loop time: 0.891 sec
+data/envCorp/MacaulayLibrary/224134721.wav
+Total loop time: 7.720 sec
+data/envCorp/MacaulayLibrary/224134771.wav
+Total loop time: 6.350 sec
+data/envCorp/MacaulayLibrary/224148291.wav
+Total loop time: 2.201 sec
+data/envCorp/MacaulayLibrary/22424141.wav
+Total loop time: 0.785 sec
+data/envCorp/MacaulayLibrary/224346341.wav
+Total loop time: 21.023 sec
+data/envCorp/MacaulayLibrary/224347811.wav
+Total loop time: 8.476 sec
+data/envCorp/MacaulayLibrary/224347831.wav
+Total loop time: 2.900 sec
+data/envCorp/MacaulayLibrary/224406471.m4a
+{Error using audioread>readaudio
+The file type is not supported
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

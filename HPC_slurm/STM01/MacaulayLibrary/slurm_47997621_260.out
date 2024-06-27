@@ -1,0 +1,47 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+data/envCorp/MacaulayLibrary/519172461.wav
+Total loop time: 27.842 sec
+data/envCorp/MacaulayLibrary/519205541.wav
+Total loop time: 14.384 sec
+data/envCorp/MacaulayLibrary/519228241.wav
+Total loop time: 10.265 sec
+data/envCorp/MacaulayLibrary/519317611.wav
+Total loop time: 5.848 sec
+data/envCorp/MacaulayLibrary/519319971.wav
+Total loop time: 0.849 sec
+data/envCorp/MacaulayLibrary/519339031.wav
+Total loop time: 4.899 sec
+data/envCorp/MacaulayLibrary/519347681.wav
+Total loop time: 2.508 sec
+data/envCorp/MacaulayLibrary/519356151.wav
+Total loop time: 24.392 sec
+data/envCorp/MacaulayLibrary/519362711.wav
+Total loop time: 4.106 sec
+data/envCorp/MacaulayLibrary/519384611.wav
+Total loop time: 8.115 sec
+data/envCorp/MacaulayLibrary/519395251.wav
+Total loop time: 3.443 sec
+data/envCorp/MacaulayLibrary/519554141.mp3
+Total loop time: 1.386 sec
+data/envCorp/MacaulayLibrary/519618411.m4a
+{Error using audioread>readaudio
+The file type is not supported
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 
