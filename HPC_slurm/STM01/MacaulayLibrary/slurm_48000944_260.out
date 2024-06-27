@@ -1,0 +1,36 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/519172461.wav
+**skip** data/envCorp/MacaulayLibrary/519205541.wav
+**skip** data/envCorp/MacaulayLibrary/519228241.wav
+**skip** data/envCorp/MacaulayLibrary/519317611.wav
+**skip** data/envCorp/MacaulayLibrary/519319971.wav
+**skip** data/envCorp/MacaulayLibrary/519339031.wav
+**skip** data/envCorp/MacaulayLibrary/519347681.wav
+**skip** data/envCorp/MacaulayLibrary/519356151.wav
+**skip** data/envCorp/MacaulayLibrary/519362711.wav
+**skip** data/envCorp/MacaulayLibrary/519384611.wav
+**skip** data/envCorp/MacaulayLibrary/519395251.wav
+**skip** data/envCorp/MacaulayLibrary/519554141.mp3
+data/envCorp/MacaulayLibrary/519618411.m4a
+{Error using audioread>readaudio
+File could not be read due to an unexpected error. Reason: Unable to pop the
+top most message from the bus
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

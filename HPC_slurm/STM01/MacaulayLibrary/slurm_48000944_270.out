@@ -1,0 +1,91 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/542223631.wav
+**skip** data/envCorp/MacaulayLibrary/542279581.wav
+**skip** data/envCorp/MacaulayLibrary/542279961.wav
+**skip** data/envCorp/MacaulayLibrary/542351551.wav
+**skip** data/envCorp/MacaulayLibrary/542352901.wav
+**skip** data/envCorp/MacaulayLibrary/54240771.wav
+**skip** data/envCorp/MacaulayLibrary/54241161.wav
+**skip** data/envCorp/MacaulayLibrary/542421431.wav
+**skip** data/envCorp/MacaulayLibrary/542436651.wav
+**skip** data/envCorp/MacaulayLibrary/542461021.wav
+**skip** data/envCorp/MacaulayLibrary/542490721.wav
+**skip** data/envCorp/MacaulayLibrary/542519551.wav
+**skip** data/envCorp/MacaulayLibrary/542521541.wav
+**skip** data/envCorp/MacaulayLibrary/542523441.wav
+**skip** data/envCorp/MacaulayLibrary/542523661.wav
+**skip** data/envCorp/MacaulayLibrary/542525751.wav
+data/envCorp/MacaulayLibrary/542593851.mp3
+
+(MATLAB:2616377): GStreamer-CRITICAL **: 11:57:10.214: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2616377): GStreamer-CRITICAL **: 11:57:10.633: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 1.917 sec
+**skip** data/envCorp/MacaulayLibrary/542595031.wav
+**skip** data/envCorp/MacaulayLibrary/542599191.wav
+**skip** data/envCorp/MacaulayLibrary/5426.wav
+**skip** data/envCorp/MacaulayLibrary/542738861.wav
+**skip** data/envCorp/MacaulayLibrary/5429.wav
+**skip** data/envCorp/MacaulayLibrary/542910351.wav
+**skip** data/envCorp/MacaulayLibrary/542910381.wav
+**skip** data/envCorp/MacaulayLibrary/542976871.wav
+**skip** data/envCorp/MacaulayLibrary/5430.wav
+**skip** data/envCorp/MacaulayLibrary/5431.wav
+**skip** data/envCorp/MacaulayLibrary/543111461.wav
+**skip** data/envCorp/MacaulayLibrary/543127231.wav
+**skip** data/envCorp/MacaulayLibrary/543135881.wav
+**skip** data/envCorp/MacaulayLibrary/543144091.wav
+**skip** data/envCorp/MacaulayLibrary/543145531.wav
+**skip** data/envCorp/MacaulayLibrary/543234791.mp3
+**skip** data/envCorp/MacaulayLibrary/543237951.mp3
+**skip** data/envCorp/MacaulayLibrary/543269991.wav
+**skip** data/envCorp/MacaulayLibrary/543305681.wav
+**skip** data/envCorp/MacaulayLibrary/543335021.wav
+**skip** data/envCorp/MacaulayLibrary/543336531.wav
+**skip** data/envCorp/MacaulayLibrary/543338291.mp3
+**skip** data/envCorp/MacaulayLibrary/543339871.wav
+**skip** data/envCorp/MacaulayLibrary/543351101.wav
+**skip** data/envCorp/MacaulayLibrary/543363791.wav
+**skip** data/envCorp/MacaulayLibrary/543468001.wav
+**skip** data/envCorp/MacaulayLibrary/543512681.wav
+**skip** data/envCorp/MacaulayLibrary/543512811.wav
+**skip** data/envCorp/MacaulayLibrary/543514711.wav
+**skip** data/envCorp/MacaulayLibrary/543523521.mp3
+**skip** data/envCorp/MacaulayLibrary/543528951.wav
+**skip** data/envCorp/MacaulayLibrary/543539211.wav
+**skip** data/envCorp/MacaulayLibrary/543623891.wav
+**skip** data/envCorp/MacaulayLibrary/5437.wav
+**skip** data/envCorp/MacaulayLibrary/543795111.wav
+**skip** data/envCorp/MacaulayLibrary/54379551.wav
+**skip** data/envCorp/MacaulayLibrary/543799381.mp3
+**skip** data/envCorp/MacaulayLibrary/54380181.wav
+**skip** data/envCorp/MacaulayLibrary/543804101.mp3
+**skip** data/envCorp/MacaulayLibrary/543867221.wav
+**skip** data/envCorp/MacaulayLibrary/543867231.wav
+**skip** data/envCorp/MacaulayLibrary/543876291.m4a
+**skip** data/envCorp/MacaulayLibrary/543883461.mp3
+**skip** data/envCorp/MacaulayLibrary/543906181.mp3
+**skip** data/envCorp/MacaulayLibrary/543918741.wav
+data/envCorp/MacaulayLibrary/543960501.m4a
+{Error using audioread>readaudio
+File could not be read due to an unexpected error. Reason: Could not decode
+stream.
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

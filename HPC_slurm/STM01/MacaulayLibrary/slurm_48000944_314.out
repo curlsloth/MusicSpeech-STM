@@ -1,0 +1,43 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+[Warning: Unable to load Toolbox Path Cache
+/home/ac8888/.matlab/R2023b/toolbox_cache-23.2.0-3137108227-glnxa64.xml. The
+cache file is not in the correct format. It will be regenerated upon quitting
+MATLAB.] 
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/612601115.wav
+**skip** data/envCorp/MacaulayLibrary/612602744.wav
+**skip** data/envCorp/MacaulayLibrary/612604634.wav
+**skip** data/envCorp/MacaulayLibrary/612608083.wav
+**skip** data/envCorp/MacaulayLibrary/612608096.wav
+**skip** data/envCorp/MacaulayLibrary/612608099.wav
+**skip** data/envCorp/MacaulayLibrary/612608107.wav
+**skip** data/envCorp/MacaulayLibrary/612608235.wav
+**skip** data/envCorp/MacaulayLibrary/612608911.wav
+**skip** data/envCorp/MacaulayLibrary/612612928.mp3
+**skip** data/envCorp/MacaulayLibrary/612621337.wav
+data/envCorp/MacaulayLibrary/612622770.m4a
+
+(MATLAB:3513766): GStreamer-CRITICAL **: 11:58:40.151: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:3513766): GStreamer-CRITICAL **: 11:58:42.102: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+{Error using audioread>readaudio
+Range requested is greater than the total number of samples in the file.
+TotalSamples is 839767.
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

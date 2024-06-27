@@ -1,0 +1,74 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/608753386.m4a
+**skip** data/envCorp/MacaulayLibrary/608753507.wav
+**skip** data/envCorp/MacaulayLibrary/608756044.wav
+**skip** data/envCorp/MacaulayLibrary/608770303.wav
+**skip** data/envCorp/MacaulayLibrary/608773079.wav
+**skip** data/envCorp/MacaulayLibrary/608773097.wav
+data/envCorp/MacaulayLibrary/608773675.wav
+Total loop time: 0.927 sec
+**skip** data/envCorp/MacaulayLibrary/608782182.m4a
+**skip** data/envCorp/MacaulayLibrary/608782905.wav
+**skip** data/envCorp/MacaulayLibrary/608782938.wav
+**skip** data/envCorp/MacaulayLibrary/608784683.wav
+**skip** data/envCorp/MacaulayLibrary/608788957.mp3
+**skip** data/envCorp/MacaulayLibrary/608788958.wav
+**skip** data/envCorp/MacaulayLibrary/608789126.wav
+**skip** data/envCorp/MacaulayLibrary/608792636.wav
+**skip** data/envCorp/MacaulayLibrary/608794314.wav
+**skip** data/envCorp/MacaulayLibrary/608794433.wav
+**skip** data/envCorp/MacaulayLibrary/608794441.wav
+**skip** data/envCorp/MacaulayLibrary/608794856.wav
+**skip** data/envCorp/MacaulayLibrary/608794886.wav
+**skip** data/envCorp/MacaulayLibrary/608794934.wav
+**skip** data/envCorp/MacaulayLibrary/608794938.wav
+**skip** data/envCorp/MacaulayLibrary/608795079.wav
+**skip** data/envCorp/MacaulayLibrary/608795105.wav
+**skip** data/envCorp/MacaulayLibrary/608798755.wav
+**skip** data/envCorp/MacaulayLibrary/6088.wav
+**skip** data/envCorp/MacaulayLibrary/608804559.wav
+**skip** data/envCorp/MacaulayLibrary/608804626.wav
+**skip** data/envCorp/MacaulayLibrary/608810836.wav
+**skip** data/envCorp/MacaulayLibrary/608813691.mp3
+**skip** data/envCorp/MacaulayLibrary/608814378.wav
+**skip** data/envCorp/MacaulayLibrary/608814506.m4a
+**skip** data/envCorp/MacaulayLibrary/608814508.m4a
+**skip** data/envCorp/MacaulayLibrary/608814509.m4a
+**skip** data/envCorp/MacaulayLibrary/608814628.wav
+**skip** data/envCorp/MacaulayLibrary/608848788.wav
+**skip** data/envCorp/MacaulayLibrary/608848789.wav
+**skip** data/envCorp/MacaulayLibrary/608850905.wav
+**skip** data/envCorp/MacaulayLibrary/608857847.wav
+**skip** data/envCorp/MacaulayLibrary/608871442.wav
+**skip** data/envCorp/MacaulayLibrary/608873757.wav
+**skip** data/envCorp/MacaulayLibrary/608877594.wav
+**skip** data/envCorp/MacaulayLibrary/608877616.wav
+**skip** data/envCorp/MacaulayLibrary/608877783.wav
+**skip** data/envCorp/MacaulayLibrary/608884199.wav
+**skip** data/envCorp/MacaulayLibrary/608889877.wav
+**skip** data/envCorp/MacaulayLibrary/608897957.wav
+**skip** data/envCorp/MacaulayLibrary/608902241.wav
+**skip** data/envCorp/MacaulayLibrary/608902415.wav
+**skip** data/envCorp/MacaulayLibrary/608902506.wav
+data/envCorp/MacaulayLibrary/608912016.m4a
+{Error using audioread>readaudio
+The file type is not supported
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

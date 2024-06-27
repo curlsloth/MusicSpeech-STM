@@ -1,0 +1,94 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/374234591.mp3
+**skip** data/envCorp/MacaulayLibrary/374261041.wav
+**skip** data/envCorp/MacaulayLibrary/374261081.wav
+**skip** data/envCorp/MacaulayLibrary/374278191.wav
+**skip** data/envCorp/MacaulayLibrary/37440411.wav
+**skip** data/envCorp/MacaulayLibrary/37445691.wav
+**skip** data/envCorp/MacaulayLibrary/37458241.wav
+**skip** data/envCorp/MacaulayLibrary/374656781.mp3
+**skip** data/envCorp/MacaulayLibrary/374669801.wav
+**skip** data/envCorp/MacaulayLibrary/374669841.wav
+**skip** data/envCorp/MacaulayLibrary/374670051.wav
+**skip** data/envCorp/MacaulayLibrary/374785891.mp3
+**skip** data/envCorp/MacaulayLibrary/374835671.mp3
+**skip** data/envCorp/MacaulayLibrary/374878571.mp3
+**skip** data/envCorp/MacaulayLibrary/374894601.mp3
+**skip** data/envCorp/MacaulayLibrary/374955341.m4a
+**skip** data/envCorp/MacaulayLibrary/374972491.mp3
+**skip** data/envCorp/MacaulayLibrary/375040811.wav
+**skip** data/envCorp/MacaulayLibrary/375042481.wav
+**skip** data/envCorp/MacaulayLibrary/375042651.wav
+**skip** data/envCorp/MacaulayLibrary/375042881.wav
+**skip** data/envCorp/MacaulayLibrary/375043091.wav
+**skip** data/envCorp/MacaulayLibrary/375043261.wav
+**skip** data/envCorp/MacaulayLibrary/375047281.wav
+**skip** data/envCorp/MacaulayLibrary/375052491.wav
+**skip** data/envCorp/MacaulayLibrary/375096001.wav
+**skip** data/envCorp/MacaulayLibrary/375166541.wav
+**skip** data/envCorp/MacaulayLibrary/375171181.wav
+**skip** data/envCorp/MacaulayLibrary/375191061.wav
+**skip** data/envCorp/MacaulayLibrary/375200791.wav
+**skip** data/envCorp/MacaulayLibrary/375483261.wav
+**skip** data/envCorp/MacaulayLibrary/375503001.m4a
+**skip** data/envCorp/MacaulayLibrary/375503011.m4a
+**skip** data/envCorp/MacaulayLibrary/375508541.wav
+**skip** data/envCorp/MacaulayLibrary/375508971.wav
+**skip** data/envCorp/MacaulayLibrary/37554.wav
+**skip** data/envCorp/MacaulayLibrary/375552691.mp3
+**skip** data/envCorp/MacaulayLibrary/375562261.wav
+**skip** data/envCorp/MacaulayLibrary/375577981.wav
+**skip** data/envCorp/MacaulayLibrary/375591311.wav
+**skip** data/envCorp/MacaulayLibrary/375677721.wav
+**skip** data/envCorp/MacaulayLibrary/37568.wav
+**skip** data/envCorp/MacaulayLibrary/375807271.wav
+data/envCorp/MacaulayLibrary/375807311.wav
+Total loop time: 1.152 sec
+**skip** data/envCorp/MacaulayLibrary/375807581.wav
+**skip** data/envCorp/MacaulayLibrary/375807821.wav
+**skip** data/envCorp/MacaulayLibrary/37581951.wav
+**skip** data/envCorp/MacaulayLibrary/375889531.m4a
+**skip** data/envCorp/MacaulayLibrary/375890301.m4a
+**skip** data/envCorp/MacaulayLibrary/375890611.m4a
+**skip** data/envCorp/MacaulayLibrary/375972271.mp3
+**skip** data/envCorp/MacaulayLibrary/37598371.wav
+**skip** data/envCorp/MacaulayLibrary/376041971.wav
+**skip** data/envCorp/MacaulayLibrary/376054781.wav
+**skip** data/envCorp/MacaulayLibrary/376072771.wav
+**skip** data/envCorp/MacaulayLibrary/376078351.mp3
+**skip** data/envCorp/MacaulayLibrary/376081051.mp3
+**skip** data/envCorp/MacaulayLibrary/376081471.mp3
+**skip** data/envCorp/MacaulayLibrary/376122831.mp3
+**skip** data/envCorp/MacaulayLibrary/376123081.mp3
+**skip** data/envCorp/MacaulayLibrary/376123511.mp3
+**skip** data/envCorp/MacaulayLibrary/376123871.mp3
+**skip** data/envCorp/MacaulayLibrary/376125681.wav
+data/envCorp/MacaulayLibrary/376130721.m4a
+
+(MATLAB:1468372): GStreamer-CRITICAL **: 11:57:10.497: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1468372): GStreamer-CRITICAL **: 11:57:12.275: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1468372): GStreamer-CRITICAL **: 11:57:13.095: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+{Error using audioread>readaudio
+Range requested is greater than the total number of samples in the file.
+TotalSamples is 1031430.
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

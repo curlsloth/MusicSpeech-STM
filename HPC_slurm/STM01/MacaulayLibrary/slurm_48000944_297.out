@@ -1,0 +1,54 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/608511798.wav
+**skip** data/envCorp/MacaulayLibrary/608511807.wav
+**skip** data/envCorp/MacaulayLibrary/608512524.wav
+**skip** data/envCorp/MacaulayLibrary/608512590.wav
+**skip** data/envCorp/MacaulayLibrary/608512651.wav
+**skip** data/envCorp/MacaulayLibrary/608514360.wav
+**skip** data/envCorp/MacaulayLibrary/608514362.wav
+**skip** data/envCorp/MacaulayLibrary/608515548.wav
+**skip** data/envCorp/MacaulayLibrary/608523281.m4a
+**skip** data/envCorp/MacaulayLibrary/608524597.wav
+**skip** data/envCorp/MacaulayLibrary/608526451.wav
+**skip** data/envCorp/MacaulayLibrary/608529074.wav
+**skip** data/envCorp/MacaulayLibrary/608529875.wav
+**skip** data/envCorp/MacaulayLibrary/608532636.wav
+**skip** data/envCorp/MacaulayLibrary/608533181.wav
+**skip** data/envCorp/MacaulayLibrary/608533380.wav
+**skip** data/envCorp/MacaulayLibrary/608533406.wav
+**skip** data/envCorp/MacaulayLibrary/608534079.wav
+**skip** data/envCorp/MacaulayLibrary/608534084.wav
+**skip** data/envCorp/MacaulayLibrary/608534087.wav
+**skip** data/envCorp/MacaulayLibrary/608534218.wav
+**skip** data/envCorp/MacaulayLibrary/608534522.wav
+**skip** data/envCorp/MacaulayLibrary/608534664.wav
+**skip** data/envCorp/MacaulayLibrary/608534762.wav
+**skip** data/envCorp/MacaulayLibrary/608534763.wav
+**skip** data/envCorp/MacaulayLibrary/608534764.wav
+**skip** data/envCorp/MacaulayLibrary/608534810.wav
+**skip** data/envCorp/MacaulayLibrary/608536031.wav
+**skip** data/envCorp/MacaulayLibrary/608536036.wav
+**skip** data/envCorp/MacaulayLibrary/608537324.mp3
+data/envCorp/MacaulayLibrary/608539878.mp3
+{Error using audioread>readaudio
+Range requested is greater than the total number of samples in the file.
+TotalSamples is 494592.
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

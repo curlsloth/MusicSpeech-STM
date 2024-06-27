@@ -1,0 +1,67 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/449556301.mp3
+**skip** data/envCorp/MacaulayLibrary/449556421.mp3
+**skip** data/envCorp/MacaulayLibrary/449556571.mp3
+**skip** data/envCorp/MacaulayLibrary/449557101.mp3
+**skip** data/envCorp/MacaulayLibrary/449575641.wav
+**skip** data/envCorp/MacaulayLibrary/44965.wav
+**skip** data/envCorp/MacaulayLibrary/44966.wav
+**skip** data/envCorp/MacaulayLibrary/44967.wav
+**skip** data/envCorp/MacaulayLibrary/449701351.wav
+**skip** data/envCorp/MacaulayLibrary/449788551.mp3
+**skip** data/envCorp/MacaulayLibrary/449825271.wav
+**skip** data/envCorp/MacaulayLibrary/449825291.wav
+**skip** data/envCorp/MacaulayLibrary/44984.wav
+**skip** data/envCorp/MacaulayLibrary/449878761.wav
+**skip** data/envCorp/MacaulayLibrary/449902921.wav
+**skip** data/envCorp/MacaulayLibrary/449912251.wav
+**skip** data/envCorp/MacaulayLibrary/449932141.wav
+**skip** data/envCorp/MacaulayLibrary/449932151.wav
+**skip** data/envCorp/MacaulayLibrary/449947901.wav
+**skip** data/envCorp/MacaulayLibrary/449968371.wav
+**skip** data/envCorp/MacaulayLibrary/449976001.wav
+**skip** data/envCorp/MacaulayLibrary/44999.wav
+**skip** data/envCorp/MacaulayLibrary/450012901.wav
+**skip** data/envCorp/MacaulayLibrary/450043491.wav
+**skip** data/envCorp/MacaulayLibrary/450064921.mp3
+**skip** data/envCorp/MacaulayLibrary/450249611.wav
+**skip** data/envCorp/MacaulayLibrary/450260281.wav
+**skip** data/envCorp/MacaulayLibrary/450300291.wav
+**skip** data/envCorp/MacaulayLibrary/450300621.wav
+**skip** data/envCorp/MacaulayLibrary/450300691.wav
+**skip** data/envCorp/MacaulayLibrary/450363821.wav
+**skip** data/envCorp/MacaulayLibrary/450385021.wav
+**skip** data/envCorp/MacaulayLibrary/450485611.m4a
+**skip** data/envCorp/MacaulayLibrary/450551651.wav
+**skip** data/envCorp/MacaulayLibrary/450562741.wav
+**skip** data/envCorp/MacaulayLibrary/45065.wav
+**skip** data/envCorp/MacaulayLibrary/450676151.wav
+**skip** data/envCorp/MacaulayLibrary/450753811.mp3
+**skip** data/envCorp/MacaulayLibrary/450757401.mp3
+**skip** data/envCorp/MacaulayLibrary/450762911.wav
+**skip** data/envCorp/MacaulayLibrary/45081.wav
+**skip** data/envCorp/MacaulayLibrary/451019591.mp3
+**skip** data/envCorp/MacaulayLibrary/451027381.mp3
+data/envCorp/MacaulayLibrary/451047071.m4a
+{Error using audioread>readaudio
+File could not be read due to an unexpected error. Reason: Could not decode
+stream.
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

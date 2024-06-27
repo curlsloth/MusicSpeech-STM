@@ -1,0 +1,38 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+[Warning: Unable to load Toolbox Path Cache
+/home/ac8888/.matlab/R2023b/toolbox_cache-23.2.0-3137108227-glnxa64.xml. The
+cache file is not in the correct format. It will be regenerated upon quitting
+MATLAB.] 
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/613118098.wav
+**skip** data/envCorp/MacaulayLibrary/613121448.wav
+**skip** data/envCorp/MacaulayLibrary/613131796.wav
+**skip** data/envCorp/MacaulayLibrary/613137813.wav
+**skip** data/envCorp/MacaulayLibrary/613145507.wav
+**skip** data/envCorp/MacaulayLibrary/613152600.wav
+**skip** data/envCorp/MacaulayLibrary/613152618.wav
+**skip** data/envCorp/MacaulayLibrary/613154554.wav
+**skip** data/envCorp/MacaulayLibrary/613160373.m4a
+**skip** data/envCorp/MacaulayLibrary/613160961.wav
+**skip** data/envCorp/MacaulayLibrary/613163035.m4a
+data/envCorp/MacaulayLibrary/613170162.m4a
+{Error using audioread>readaudio
+The file type is not supported
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

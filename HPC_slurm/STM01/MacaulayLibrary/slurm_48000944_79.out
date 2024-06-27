@@ -1,0 +1,40 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/203954841.mp3
+**skip** data/envCorp/MacaulayLibrary/203954911.mp3
+**skip** data/envCorp/MacaulayLibrary/203954961.mp3
+**skip** data/envCorp/MacaulayLibrary/203955031.mp3
+**skip** data/envCorp/MacaulayLibrary/203955071.mp3
+**skip** data/envCorp/MacaulayLibrary/203955081.mp3
+**skip** data/envCorp/MacaulayLibrary/203955101.mp3
+**skip** data/envCorp/MacaulayLibrary/203955131.mp3
+**skip** data/envCorp/MacaulayLibrary/203955151.mp3
+**skip** data/envCorp/MacaulayLibrary/203955161.mp3
+data/envCorp/MacaulayLibrary/203955261.mp3
+
+(MATLAB:2705522): GStreamer-CRITICAL **: 11:57:15.458: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2705522): GStreamer-CRITICAL **: 11:57:15.520: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:2705522): GStreamer-CRITICAL **: 11:57:17.807: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+{Error using audioread>readaudio
+Range requested is greater than the total number of samples in the file.
+TotalSamples is 1115520.
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 

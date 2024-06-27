@@ -1,0 +1,68 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2023 The MathWorks, Inc.
+                  R2023b (23.2.0.2365128) 64-bit (glnxa64)
+                              August 23, 2023
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+**skip** data/envCorp/MacaulayLibrary/411145871.wav
+**skip** data/envCorp/MacaulayLibrary/411145901.wav
+**skip** data/envCorp/MacaulayLibrary/411145991.wav
+**skip** data/envCorp/MacaulayLibrary/411165641.mp3
+**skip** data/envCorp/MacaulayLibrary/411229741.wav
+**skip** data/envCorp/MacaulayLibrary/411236701.wav
+**skip** data/envCorp/MacaulayLibrary/411238781.wav
+**skip** data/envCorp/MacaulayLibrary/411307931.wav
+**skip** data/envCorp/MacaulayLibrary/411396161.wav
+**skip** data/envCorp/MacaulayLibrary/411444331.wav
+**skip** data/envCorp/MacaulayLibrary/411481121.wav
+**skip** data/envCorp/MacaulayLibrary/411503761.wav
+**skip** data/envCorp/MacaulayLibrary/411503791.wav
+**skip** data/envCorp/MacaulayLibrary/411507161.mp3
+**skip** data/envCorp/MacaulayLibrary/411518821.wav
+**skip** data/envCorp/MacaulayLibrary/411545401.mp3
+**skip** data/envCorp/MacaulayLibrary/411547621.mp3
+**skip** data/envCorp/MacaulayLibrary/411585931.wav
+**skip** data/envCorp/MacaulayLibrary/411620391.mp3
+**skip** data/envCorp/MacaulayLibrary/411663071.wav
+**skip** data/envCorp/MacaulayLibrary/411673311.mp3
+**skip** data/envCorp/MacaulayLibrary/411675661.mp3
+data/envCorp/MacaulayLibrary/411896621.mp3
+
+(MATLAB:1712664): GStreamer-CRITICAL **: 11:57:09.978: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1712664): GStreamer-CRITICAL **: 11:57:10.459: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1712664): GStreamer-CRITICAL **: 11:57:10.690: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1712664): GStreamer-CRITICAL **: 11:57:10.906: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1712664): GStreamer-CRITICAL **: 11:57:11.160: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1712664): GStreamer-CRITICAL **: 11:57:11.376: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+
+(MATLAB:1712664): GStreamer-CRITICAL **: 11:57:11.561: gst_mini_object_unref: assertion 'mini_object != NULL' failed
+Total loop time: 2.913 sec
+**skip** data/envCorp/MacaulayLibrary/411897131.mp3
+**skip** data/envCorp/MacaulayLibrary/411897521.mp3
+**skip** data/envCorp/MacaulayLibrary/411901041.wav
+**skip** data/envCorp/MacaulayLibrary/411923201.mp3
+**skip** data/envCorp/MacaulayLibrary/411923621.mp3
+**skip** data/envCorp/MacaulayLibrary/411971091.m4a
+data/envCorp/MacaulayLibrary/411989581.mp3
+{Error using audioread>readaudio
+Range requested is greater than the total number of samples in the file.
+TotalSamples is 324000.
+
+Error in audioread (line 160)
+    [y, Fs] = readaudio (filename, range, datatype);
+
+Error in my_stmAna (line 124)
+                [sig_excpt,fs]=audioread(curFilePath, sample); % load the current 4s excerpt
+
+Error in STM01_runSTM_HPC (line 10)
+        [~, ~, ~, ~, ~] = my_stmAna(curfiles, thisCorpus, fileID);
+} 
