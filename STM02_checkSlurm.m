@@ -1,7 +1,7 @@
 listing = dir('HPC_slurm/STM01/**/*.out');
 
 % Specify the date and time range
-start_date = datetime('2024-06-27 7:00:00');
+start_date = datetime('2024-06-27 11:30:00');
 end_date = datetime('2024-06-27 23:59:59');
 
 for nOut = 1:length(listing)
