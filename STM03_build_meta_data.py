@@ -409,6 +409,16 @@ def make_meta_file(corpus, corpus_type):
         df_all['VoiOrNot'] = 1
         df_all['speaker/artist'] = df_all['filename']
 
+    # env 
+    elif 'MacaulayLibrary' in corpus:
+        df_annot = pd.read_csv('data/envCorp/MacaulayLibrary/top_4_audio_for_all_bird_species.csv')
+        df_annot['filename'] = df_annot['cat_num'].astype(str) 
+        df_all = df_all.merge(df_annot[['filename','ebird_species_code']], on='filename', how='left')
+        df_all['genre'] = np.nan
+        df_all['gender'] = np.nan
+        df_all['VoiOrNot'] = 0
+        df_all['speaker/artist'] = 'MacaulayLibrary_'+df_all['ebird_species_code']
+        df_all.drop(columns=['filename','ebird_species_code'], inplace=True)
     
     elif 'SONYC' in corpus:
         df_annot = pd.read_csv('data/envCorp/SONYC/annotations.csv')
@@ -590,6 +600,11 @@ corpus_music_list = [
     'MagnaTagATune'
 ]
 
+corpus_env_list = [
+    'SONYC',
+    'MacaulayLibrary',
+]
+
 # %% run speech corpora
 for corpus in corpus_speech_list:
     savename = 'metaTables/metaData_'+corpus.replace('/', '-')+'.csv'
@@ -613,14 +628,14 @@ for corpus in corpus_music_list:
         df_all.to_csv(savename)
       
 # %% run environmental sound corpora 
-corpus = 'SONYC'
-savename = 'metaTables/metaData_'+corpus.replace('/', '-')+'.csv'
-if os.path.isfile(savename):
-    print('**skipping: '+corpus)
-else:
-    df_all = make_meta_file(corpus, corpus_type='env')
-    df_all.drop_duplicates(subset='filepath', inplace=True, ignore_index=True)
-    df_all.to_csv(savename)
+for corpus in corpus_env_list:
+    savename = 'metaTables/metaData_'+corpus.replace('/', '-')+'.csv'
+    if os.path.isfile(savename):
+        print('**skipping: '+corpus)
+    else:
+        df_all = make_meta_file(corpus, corpus_type='env')
+        df_all.drop_duplicates(subset='filepath', inplace=True, ignore_index=True)
+        df_all.to_csv(savename)
     
 
 # %% Detect overlapped genres
