@@ -287,20 +287,25 @@ print(genres)
 
 # %% env sounds
 
+env_corp_list = []
 for corp in corpus_env_list:
     metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
     df = pd.read_csv(metafile,index_col=0)
+    if 'SONYC' in metafile:
+        df['corpus_type']='urban'
+    elif 'Macaulay' in metafile:
+        df['corpus_type']='wildlife'
+    env_corp_list.append(df)
 
-df_SONYC = pd.read_csv('metaTables/metaData_SONYC.csv',index_col=0).reset_index(drop=True)
+env_corp_df = pd.concat(env_corp_list, ignore_index=True)
+env_corp_df['10fold_labels'] = SGKF(n_splits = 10,
+                                    X=env_corp_df,
+                                    y=env_corp_df['corpus_type'],
+                                    groups=env_corp_df['speaker/artist'])
 
-df_SONYC['10fold_labels'] = GKF(n_splits = 10,
-                                 X=df_SONYC,
-                                 y=df_SONYC['corpus_type'],
-                                 groups=df_SONYC['speaker/artist'])
-
-print("Total length of environmental recordings: "+ str(round(df_SONYC['totalLengCur'].sum()/(60*60),2))+" hours")
-print("Number of environmental recordings: "+ str(len(df_SONYC)))
-print("Number of recording sites: "+ str(len(df_SONYC['speaker/artist'].unique())))
+print("Total length of environmental recordings: "+ str(round(env_corp_df['totalLengCur'].sum()/(60*60),2))+" hours")
+print("Number of environmental recordings: "+ str(len(env_corp_df)))
+print("Number of recording sites: "+ str(len(env_corp_df['speaker/artist'].unique())))
 
 
 # %% save split files
@@ -313,5 +318,5 @@ if save_split_files:
     speech_corp_df[['mat_filename','corpus_type','10fold_labels']][speech_row_split:].to_csv('train_test_split/speech2_10folds_speakerGroupFold.csv')
 
     music_corp_df[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/music_10folds_speakerGroupFold.csv')
-    df_SONYC[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/env_10folds_speakerGroupFold.csv')
+    env_corp_df[['mat_filename','corpus_type','10fold_labels']].to_csv('train_test_split/env_10folds_speakerGroupFold.csv')
 
