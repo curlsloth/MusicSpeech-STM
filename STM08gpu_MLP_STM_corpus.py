@@ -124,7 +124,7 @@ def prepData(addAug = False, ds_nontonal_speech = False):
     corpus_music_list = [
         'IRMAS',
         'Albouy2020Science',
-        'CD',
+        # 'CD', # exclude CDs due to open source concern
         'GarlandEncyclopedia',
         'fma_large',
         'ismir04_genre',

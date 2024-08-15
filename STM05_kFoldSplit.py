@@ -113,7 +113,7 @@ corpus_speech_list = ['BibleTTS/akuapem-twi',
 corpus_music_list = [
     'IRMAS',
     'Albouy2020Science',
-    'CD',
+    # 'CD', # exclude CDs due to open source concern
     'GarlandEncyclopedia',
     'fma_large',
     'ismir04_genre',
