@@ -292,9 +292,9 @@ for corp in corpus_env_list:
     metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
     df = pd.read_csv(metafile,index_col=0)
     if 'SONYC' in metafile:
-        df['corpus_type']='urban'
+        df['corpus_type']='env: urban'
     elif 'Macaulay' in metafile:
-        df['corpus_type']='wildlife'
+        df['corpus_type']='env: wildlife'
     env_corp_list.append(df)
 
 env_corp_df = pd.concat(env_corp_list, ignore_index=True)
@@ -310,7 +310,7 @@ print("Number of recording sites: "+ str(len(env_corp_df['speaker/artist'].uniqu
 
 # %% save split files
 
-save_split_files = False
+save_split_files = True
 
 if save_split_files:
     speech_row_split = round(len(speech_corp_df)/2)

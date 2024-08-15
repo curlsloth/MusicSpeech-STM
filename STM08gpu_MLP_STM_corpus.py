@@ -135,9 +135,9 @@ def prepData(addAug = False, ds_nontonal_speech = False):
     ]
     
     if addAug:
-        corpus_env_list = ['SONYC', 'SONYC_augmented']
+        corpus_env_list = ['SONYC', 'MacaulayLibrary', 'SONYC_augmented']
     else:
-        corpus_env_list = ['SONYC']
+        corpus_env_list = ['SONYC', 'MacaulayLibrary']
     
     # sort the corpora lists to make sure the order is replicable
     corpus_speech_list.sort()
@@ -185,7 +185,8 @@ def prepData(addAug = False, ds_nontonal_speech = False):
         'speech: tonal':1,
         'music: vocal':2,
         'music: non-vocal':3,
-        'env':4,
+        'env: urban':4,
+        'env: wildlife':5,
         },
         inplace=True)
     
