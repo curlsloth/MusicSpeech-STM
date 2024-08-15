@@ -127,7 +127,10 @@ corpus_music_list = [
     'MagnaTagATune'
 ]
 
-corpus_env_list = ['SONYC', 'SONYC_augmented']
+corpus_env_list = [
+    'SONYC', 
+    'MacaulayLibrary',
+]
 
 # sort the corpora lists to make sure the order is replicable
 corpus_speech_list.sort()
