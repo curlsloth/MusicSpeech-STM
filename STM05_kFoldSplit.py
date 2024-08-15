@@ -123,7 +123,10 @@ corpus_music_list = [
     'MagnaTagATune'
 ]
 
-corpus_env_list = ['SONYC', 'SONYC_augmented']
+corpus_env_list = [
+    'SONYC', 
+    'MacaulayLibrary',
+]
 
 
 # sort the corpora lists to make sure the order is replicable
@@ -283,6 +286,10 @@ print("Number of genres: "+str(len(genres)))
 print(genres)
 
 # %% env sounds
+
+for corp in corpus_env_list:
+    metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
+    df = pd.read_csv(metafile,index_col=0)
 
 df_SONYC = pd.read_csv('metaTables/metaData_SONYC.csv',index_col=0).reset_index(drop=True)
 
