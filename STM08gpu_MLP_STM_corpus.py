@@ -14,13 +14,51 @@ import os
 import tensorflow as tf
 import sys
 import gc
+import scipy.io
 
 os.environ["KERAS_BACKEND"] = "tensorflow"
 
+def mask_STMmatrix(ablation_params):
+    x_lowcutoff = ablation_params['x_lowcutoff']
+    x_highcutoff = ablation_params['x_highcutoff']
+    y_lowcutoff = ablation_params['y_lowcutoff']
+    y_highcutoff = ablation_params['y_highcutoff']
+    
+    # get the STM axes
+    df = pd.read_csv('metaTables/metaData_BibleTTS-hausa.csv',index_col=0)
+    survey_file = df['mat_filename'][0].replace('MATs','Survey').replace('mat_wl4','params').replace('MS2024','Params')
+    survey_data = scipy.io.loadmat(survey_file)
+    x_axis = survey_data['Params'][0]['x_axis'][0][0]
+    y_axis = survey_data['Params'][0]['y_axis'][0][0]
+    
+    xrange = [-15, 15]
+    yrange = [0,7.2]
+    
+    x_ds_factor = 1
+    y_ds_factor = 2
+    
+    xmin = np.argmin(np.abs(x_axis - xrange[0]))
+    xmax = np.argmin(np.abs(x_axis - xrange[1]))
+    ymin = np.argmin(np.abs(y_axis - yrange[0]))
+    ymax = np.argmin(np.abs(y_axis - yrange[1]))
+    x_axis_small = x_axis[xmin:xmax+1:x_ds_factor]
+    y_axis_small = y_axis[ymin:ymax+1:y_ds_factor]
+    
+    # mask the matrix
+    matrix = np.full((len(y_axis_small), len(x_axis_small)), 0)
+    if x_lowcutoff is not None:
+        matrix[:,np.abs(x_axis_small)<x_lowcutoff]=1
+    if x_highcutoff is not None:
+        matrix[:,np.abs(x_axis_small)>x_highcutoff]=1
+    if y_lowcutoff is not None:
+        matrix[np.abs(y_axis_small)<y_lowcutoff,:]=1
+    if y_highcutoff is not None:
+        matrix[np.abs(y_axis_small)>y_highcutoff,:]=1
+    return matrix
 
 
 # %% prepData
-def prepData(addAug = False, ds_nontonal_speech = False):
+def prepData(addAug=False, ds_nontonal_speech=False, ablation_params=None):
     # % load STM data
     corpus_speech_list = ['BibleTTS/akuapem-twi',
         'BibleTTS/asante-twi',
@@ -156,7 +194,10 @@ def prepData(addAug = False, ds_nontonal_speech = False):
                 SONYC_aug_len = np.load(filename).shape[0]
         print(filename)
         
-        
+    if ablation_params is not None: # use random numbers between 0 and 1 to replace the selected STM region
+        mask_matrix = mask_STMmatrix(ablation_params).flatten()
+        np.random.seed(23)
+        STM_all[:, mask_matrix==1] = np.random.rand(STM_all.shape[0], np.sum(mask_matrix))
         
     # % load meta data
     speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
@@ -384,53 +425,80 @@ class hyperModel_LN(kt.HyperModel):
 # %% set the tuner
 
 if sys.argv[1]=='0':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = False)
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData()
     hm = hyperModel_drop()
     directory = "model/STM/MLP_corpora_categories/Dropout/ROC-AUC"
     objective="val_auc"
     early_stop = "val_auc"
 elif sys.argv[1]=='1':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = False)
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData()
     hm = hyperModel_LN()
     directory = "model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC"
     objective="val_auc"
     early_stop = "val_auc"
 elif sys.argv[1]=='2':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = False)
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData()
     hm = hyperModel_drop()
     directory = "model/STM/MLP_corpora_categories/Dropout/macroF1"
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
 elif sys.argv[1]=='3':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = False)
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData()
     hm = hyperModel_LN()
     directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1"
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
 elif sys.argv[1]=='4': # downsample nontonal speech
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = True)
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech=True)
     hm = hyperModel_drop()
     directory = "model/STM/MLP_corpora_categories/Dropout/ROC-AUC/downsample"
     objective="val_auc"
     early_stop = "val_auc"
 elif sys.argv[1]=='5': # downsample nontonal speech
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = True)
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech=True)
     hm = hyperModel_LN()
     directory = "model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample"
     objective="val_auc"
     early_stop = "val_auc"
 elif sys.argv[1]=='6': # downsample nontonal speech
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = True)
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech=True)
     hm = hyperModel_drop()
     directory = "model/STM/MLP_corpora_categories/Dropout/macroF1/downsample"
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
 elif sys.argv[1]=='7': # downsample nontonal speech
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(addAug = False, ds_nontonal_speech = True)
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech=True)
     hm = hyperModel_LN()
     directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1/downsample"
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
+elif 8<=int(sys.argv[1])<=43:
+    c_index = int(sys.argv[1])-8
+    n_xcut = 6
+    n_ycut = 6
+    cond_shape = (n_xcut, n_ycut)
+    total_models = np.prod(cond_shape)
+        
+    # Calculate the indices for each dimension
+    i1 = (c_index % cond_shape[1])+1 # make the lowest as 1
+    c_index //= cond_shape[1]
+    i0 = c_index+1 # make the lowest as 1
+    
+    ablation_params = {
+        'x_lowcutoff': None,
+        'x_highcutoff': i0,
+        'y_lowcutoff': None,
+        'y_highcutoff': i1,
+        }
+    
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ablation_params = ablation_params)
+    hm = hyperModel_LN()
+    directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1/ablation/xhighcutoff"+str(i0)+"_yhighcutoff"+str(i1)
+    objective = kt.Objective("val_macro_f1_score", direction="max")
+    early_stop = "val_f1_score"
+else:
+    print("Index out of range of models. Nothing executed.")
+    sys.exit(0)
     
 time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 
