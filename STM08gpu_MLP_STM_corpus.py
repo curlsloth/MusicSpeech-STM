@@ -15,8 +15,15 @@ import tensorflow as tf
 import sys
 import gc
 import scipy.io
+import subprocess
+
 
 os.environ["KERAS_BACKEND"] = "tensorflow"
+
+def auto_git_push(path):
+    subprocess.run(['git', 'add', path], check=True)
+    subprocess.run(['git', 'commit', '-m', 'auto_sync: '+path], check=True)
+    subprocess.run(['git', 'push'], check=True)
 
 def mask_STMmatrix(ablation_params):
     x_lowcutoff = ablation_params['x_lowcutoff']
@@ -565,3 +572,5 @@ for n in range(n_best_model):
     
     saving_path = directory+"/"+"MLP_"+time_stamp+"/best_model"+str(n)+".keras"
     best_model.save(saving_path)
+    
+auto_git_push(directory)
