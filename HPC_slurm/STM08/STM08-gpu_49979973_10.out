@@ -1,0 +1,128 @@
+WARNING: Could not find any nv files on this host!
+2024-08-16 11:47:02.663099: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-08-16 11:47:02.790252: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-08-16 11:47:02.790298: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-08-16 11:47:02.806593: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-08-16 11:47:02.843062: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-08-16 11:47:03.657702: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/vast/ac8888/MusicSpeech-STM/STM08gpu_MLP_STM_corpus.py:231: FutureWarning: Downcasting behavior in `replace` is deprecated and will be removed in a future version. To retain the old behavior, explicitly call `result.infer_objects(copy=False)`. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  target.replace({
+STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-hausa_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-lingala_STMall.npy
+STM_output/corpSTMnpy/BibleTTS-yoruba_STMall.npy
+STM_output/corpSTMnpy/Buckeye_STMall.npy
+STM_output/corpSTMnpy/EUROM_STMall.npy
+STM_output/corpSTMnpy/HiltonMoser2022_speech_STMall.npy
+STM_output/corpSTMnpy/LibriSpeech_STMall.npy
+STM_output/corpSTMnpy/MediaSpeech-AR_STMall.npy
+STM_output/corpSTMnpy/MediaSpeech-ES_STMall.npy
+STM_output/corpSTMnpy/MediaSpeech-FR_STMall.npy
+STM_output/corpSTMnpy/MediaSpeech-TR_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ab_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ar_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ba_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-be_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-bg_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-bn_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-br_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ca_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ckb_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-cnh_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-cs_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-cv_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-cy_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-da_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-de_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-dv_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-el_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-en_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-eo_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-es_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-et_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-eu_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-fa_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-fi_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-fr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-fy-NL_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ga-IE_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-gl_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-gn_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-hi_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-hu_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-hy-AM_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-id_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ig_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-it_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ja_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ka_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-kab_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-kk_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-kmr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ky_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-lg_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-lt_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ltg_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-lv_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-mhr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ml_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-mn_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-mt_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-nan-tw_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-nl_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-oc_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-or_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-pl_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-pt_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ro_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ru_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-rw_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-sr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-sv-SE_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-sw_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ta_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-th_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-tr_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-tt_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ug_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-uk_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-ur_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-uz_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-vi_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-yo_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-yue_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-zh-CN_STMall.npy
+STM_output/corpSTMnpy/MozillaCommonVoice-zh-TW_STMall.npy
+STM_output/corpSTMnpy/SpeechClarity_STMall.npy
+STM_output/corpSTMnpy/TAT-Vol2_STMall.npy
+STM_output/corpSTMnpy/TIMIT_STMall.npy
+STM_output/corpSTMnpy/TTS_Javanese_STMall.npy
+STM_output/corpSTMnpy/primewords_chinese_STMall.npy
+STM_output/corpSTMnpy/room_reader_STMall.npy
+STM_output/corpSTMnpy/thchs30_STMall.npy
+STM_output/corpSTMnpy/zeroth_korean_STMall.npy
+STM_output/corpSTMnpy/Albouy2020Science_STMall.npy
+STM_output/corpSTMnpy/GarlandEncyclopedia_STMall.npy
+STM_output/corpSTMnpy/HiltonMoser2022_song_STMall.npy
+STM_output/corpSTMnpy/IRMAS_STMall.npy
+STM_output/corpSTMnpy/MTG-Jamendo_STMall.npy
+STM_output/corpSTMnpy/MagnaTagATune_STMall.npy
+STM_output/corpSTMnpy/NHS2_STMall.npy
+STM_output/corpSTMnpy/fma_large_STMall.npy
+STM_output/corpSTMnpy/ismir04_genre_STMall.npy
+STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy
+STM_output/corpSTMnpy/SONYC_STMall.npy
+Traceback (most recent call last):
+  File "/vast/ac8888/MusicSpeech-STM/STM08gpu_MLP_STM_corpus.py", line 501, in <module>
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ablation_params = ablation_params)
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/ac8888/MusicSpeech-STM/STM08gpu_MLP_STM_corpus.py", line 241, in prepData
+    y = keras.utils.to_categorical(target, num_classes=5)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras/src/utils/numerical_utils.py", line 89, in to_categorical
+    categorical[np.arange(batch_size), x] = 1
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: index 5 is out of bounds for axis 1 with size 5
