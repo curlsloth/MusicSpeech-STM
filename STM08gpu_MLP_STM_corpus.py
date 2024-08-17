@@ -238,7 +238,7 @@ def prepData(addAug=False, ds_nontonal_speech=False, ablation_params=None):
         },
         inplace=True)
     
-    y = keras.utils.to_categorical(target, num_classes=5)
+    y = keras.utils.to_categorical(target, num_classes=len(target.unique()))
     
     
     if ds_nontonal_speech: # whether to downsample the nontonal_speech category
