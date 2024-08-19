@@ -573,4 +573,4 @@ for n in range(n_best_model):
     saving_path = directory+"/"+"MLP_"+time_stamp+"/best_model"+str(n)+".keras"
     best_model.save(saving_path)
     
-auto_git_push(directory)
+# auto_git_push(directory)
