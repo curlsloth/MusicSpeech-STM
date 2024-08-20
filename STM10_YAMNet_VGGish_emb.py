@@ -123,7 +123,7 @@ def prep_corp_lists():
     corpus_music_list = [
         'IRMAS',
         'Albouy2020Science',
-        'CD',
+        # 'CD',
         'GarlandEncyclopedia',
         'fma_large',
         'ismir04_genre',
@@ -133,7 +133,7 @@ def prep_corp_lists():
         'MagnaTagATune'
     ]
     
-    corpus_env_list = ['SONYC'] # exclude the 'SONYC_augmented' as there's no wave file
+    corpus_env_list = ['SONYC', 'MacaulayLibrary'] # exclude the 'SONYC_augmented' as there's no wave file
     
     
     # sort the corpora lists to make sure the order is replicable
