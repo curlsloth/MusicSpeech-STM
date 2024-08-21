@@ -122,7 +122,7 @@ def prepData(ds_nontonal_speech = False):
     corpus_music_list = [
         'IRMAS',
         'Albouy2020Science',
-        'CD',
+        # 'CD',
         'GarlandEncyclopedia',
         'fma_large',
         'ismir04_genre',
@@ -132,7 +132,7 @@ def prepData(ds_nontonal_speech = False):
         'MagnaTagATune'
     ]
     
-    corpus_env_list = ['SONYC'] # no SONYC_augmented
+    corpus_env_list = ['SONYC', 'MacaulayLibrary'] # no SONYC_augmented
     
     # sort the corpora lists to make sure the order is replicable
     corpus_speech_list.sort()
@@ -166,11 +166,12 @@ def prepData(ds_nontonal_speech = False):
         'speech: tonal':1,
         'music: vocal':2,
         'music: non-vocal':3,
-        'env':4,
+        'env: urban':4,
+        'env: wildlife':5,
         },
         inplace=True)
     
-    y = keras.utils.to_categorical(target, num_classes=5)
+    y = keras.utils.to_categorical(target, num_classes=len(target.unique()))
     
     data_split = all_corp_df['10fold_labels']
     
@@ -243,7 +244,7 @@ def prepData(ds_nontonal_speech = False):
 
 # %% build model
 n_feat = 1024
-n_target = 5
+n_target = 6
 
 class hyperModel_drop(kt.HyperModel):
 

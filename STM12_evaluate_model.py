@@ -124,7 +124,7 @@ def prepData(feat_type):
     corpus_music_list = [
         'IRMAS',
         'Albouy2020Science',
-        'CD',
+        # 'CD',
         'GarlandEncyclopedia',
         'fma_large',
         'ismir04_genre',
@@ -134,7 +134,7 @@ def prepData(feat_type):
         'MagnaTagATune'
     ]
     
-    corpus_env_list = ['SONYC']
+    corpus_env_list = ['SONYC', 'MacaulayLibrary']
     
     # sort the corpora lists to make sure the order is replicable
     corpus_speech_list.sort()
@@ -161,7 +161,8 @@ def prepData(feat_type):
         'speech: tonal':1,
         'music: vocal':2,
         'music: non-vocal':3,
-        'env':4,
+        'env: urban':4,
+        'env: wildlife':5,
         },
         inplace=True)
    
