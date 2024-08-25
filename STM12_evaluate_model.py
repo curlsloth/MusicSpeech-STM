@@ -166,7 +166,7 @@ def prepData(feat_type):
         },
         inplace=True)
    
-    y = keras.utils.to_categorical(target, num_classes=5)
+    y = keras.utils.to_categorical(target, num_classes=len(target.unique()))
     
     for corp in corpus_list_all:
         if feat_type=='STM':
@@ -233,37 +233,37 @@ test_dataset_YAM, test_dataset_YAM_ds, n_feat_YAM, n_target = prepData(feat_type
 
 # %% Load models
 
-model_STM_dropout_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/MLP_2024-05-17_14-42/best_model0.keras")
-model_STM_dropout_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-05-17_14-42/best_model0.keras")
-model_STM_LN_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-05-17_14-42/best_model0.keras")
-model_STM_LN_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-05-17_14-42/best_model0.keras")
+model_STM_dropout_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-16_23-57/best_model0.keras")
+model_STM_dropout_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-16_23-57/best_model0.keras")
+model_STM_LN_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-16_23-57/best_model0.keras")
+model_STM_LN_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-16_23-57/best_model0.keras")
 
-model_VGG_dropout_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/MLP_2024-05-17_05-16/best_model0.keras")
-model_VGG_dropout_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-05-16_08-35/best_model0.keras")
-model_VGG_LN_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-05-17_05-16/best_model0.keras")
-model_VGG_LN_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-05-16_08-35/best_model0.keras")
+model_VGG_dropout_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-20_22-39/best_model0.keras")
+model_VGG_dropout_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-20_22-39/best_model0.keras")
+model_VGG_LN_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-20_22-39/best_model0.keras")
+model_VGG_LN_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-20_22-39/best_model0.keras")
 
-model_YAM_dropout_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/macroF1/MLP_2024-05-17_05-17/best_model0.keras")
-model_YAM_dropout_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-05-16_08-23/best_model0.keras")
-model_YAM_LN_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-05-17_05-17/best_model0.keras")
-model_YAM_LN_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-05-16_08-23/best_model0.keras")
+model_YAM_dropout_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-20_22-40/best_model0.keras")
+model_YAM_dropout_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-20_22-40/best_model0.keras")
+model_YAM_LN_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-20_22-40/best_model0.keras")
+model_YAM_LN_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-20_22-40/best_model0.keras")
 
 
 
-model_STM_dropout_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-05-17_14-45/best_model0.keras")
-model_STM_dropout_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-05-17_14-42/best_model0.keras")
-model_STM_LN_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-05-17_14-48/best_model0.keras")
-model_STM_LN_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_14-45/best_model0.keras")
+# model_STM_dropout_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-05-17_14-45/best_model0.keras")
+# model_STM_dropout_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-05-17_14-42/best_model0.keras")
+# model_STM_LN_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-05-17_14-48/best_model0.keras")
+# model_STM_LN_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_14-45/best_model0.keras")
 
-model_VGG_dropout_F1_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-05-17_22-44/best_model0.keras")
-model_VGG_dropout_AUC_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-05-17_22-44/best_model0.keras")
-model_VGG_LN_F1_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-05-17_22-44/best_model0.keras")
-model_VGG_LN_AUC_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_22-44/best_model0.keras")
+# model_VGG_dropout_F1_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-05-17_22-44/best_model0.keras")
+# model_VGG_dropout_AUC_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-05-17_22-44/best_model0.keras")
+# model_VGG_LN_F1_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-05-17_22-44/best_model0.keras")
+# model_VGG_LN_AUC_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_22-44/best_model0.keras")
 
-model_YAM_dropout_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-05-17_22-45/best_model0.keras")
-model_YAM_dropout_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-05-17_22-45/best_model0.keras")
-model_YAM_LN_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-05-17_22-45/best_model0.keras")
-model_YAM_LN_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_22-45/best_model0.keras")
+# model_YAM_dropout_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-05-17_22-45/best_model0.keras")
+# model_YAM_dropout_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-05-17_22-45/best_model0.keras")
+# model_YAM_LN_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-05-17_22-45/best_model0.keras")
+# model_YAM_LN_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_22-45/best_model0.keras")
 
 # %% run evaluations
 
@@ -316,39 +316,6 @@ eval_VGG_LN_F1['model'] = 'VGG_LN_F1'
 eval_VGG_LN_AUC = eval_model(model_VGG_LN_AUC, test_dataset_VGG)
 eval_VGG_LN_AUC['model'] = 'VGG_LN_AUC'
 
-
-# downsampled nontonal speech
-eval_STM_dropout_F1_ds = eval_model(model_STM_dropout_F1_ds, test_dataset_STM_ds)
-eval_STM_dropout_F1_ds['model'] = 'STM_dropout_F1_ds'
-eval_STM_dropout_AUC_ds = eval_model(model_STM_dropout_AUC_ds, test_dataset_STM_ds)
-eval_STM_dropout_AUC_ds['model'] = 'STM_dropout_AUC_ds'
-
-eval_YAM_dropout_F1_ds = eval_model(model_YAM_dropout_F1_ds, test_dataset_YAM_ds)
-eval_YAM_dropout_F1_ds['model'] = 'YAM_dropout_F1_ds'
-eval_YAM_dropout_AUC_ds = eval_model(model_YAM_dropout_AUC_ds, test_dataset_YAM_ds)
-eval_YAM_dropout_AUC_ds['model'] = 'YAM_dropout_AUC_ds'
-
-eval_VGG_dropout_F1_ds = eval_model(model_VGG_dropout_F1_ds, test_dataset_VGG_ds)
-eval_VGG_dropout_F1_ds['model'] = 'VGG_dropout_F1_ds'
-eval_VGG_dropout_AUC_ds = eval_model(model_VGG_dropout_AUC_ds, test_dataset_VGG_ds)
-eval_VGG_dropout_AUC_ds['model'] = 'VGG_dropout_AUC_ds'
-
-eval_STM_LN_F1_ds = eval_model(model_STM_LN_F1_ds, test_dataset_STM_ds)
-eval_STM_LN_F1_ds['model'] = 'STM_LN_F1_ds'
-eval_STM_LN_AUC_ds = eval_model(model_STM_LN_AUC_ds, test_dataset_STM_ds)
-eval_STM_LN_AUC_ds['model'] = 'STM_LN_AUC_ds'
-
-eval_YAM_LN_F1_ds = eval_model(model_YAM_LN_F1_ds, test_dataset_YAM_ds)
-eval_YAM_LN_F1_ds['model'] = 'YAM_LN_F1_ds'
-eval_YAM_LN_AUC_ds = eval_model(model_YAM_LN_AUC_ds, test_dataset_YAM_ds)
-eval_YAM_LN_AUC_ds['model'] = 'YAM_LN_AUC_ds'
-
-eval_VGG_LN_F1_ds = eval_model(model_VGG_LN_F1_ds, test_dataset_VGG_ds)
-eval_VGG_LN_F1_ds['model'] = 'VGG_LN_F1_ds'
-eval_VGG_LN_AUC_ds = eval_model(model_VGG_LN_AUC_ds, test_dataset_VGG_ds)
-eval_VGG_LN_AUC_ds['model'] = 'VGG_LN_AUC_ds'
-
-
 df_eval = pd.concat([
     eval_STM_dropout_F1,eval_STM_dropout_AUC,
     eval_STM_LN_F1,eval_STM_LN_AUC,
@@ -356,17 +323,60 @@ df_eval = pd.concat([
     eval_YAM_LN_F1,eval_YAM_LN_AUC,
     eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
     eval_VGG_LN_F1,eval_VGG_LN_AUC,
-    eval_STM_dropout_F1_ds,eval_STM_dropout_AUC_ds,
-    eval_STM_LN_F1_ds,eval_STM_LN_AUC_ds,
-    eval_YAM_dropout_F1_ds,eval_YAM_dropout_AUC_ds,
-    eval_YAM_LN_F1_ds,eval_YAM_LN_AUC_ds,
-    eval_VGG_dropout_F1_ds,eval_VGG_dropout_AUC_ds,
-    eval_VGG_LN_F1_ds,eval_VGG_LN_AUC_ds,
     ], ignore_index=True)
 
 
+# # downsampled nontonal speech
+# eval_STM_dropout_F1_ds = eval_model(model_STM_dropout_F1_ds, test_dataset_STM_ds)
+# eval_STM_dropout_F1_ds['model'] = 'STM_dropout_F1_ds'
+# eval_STM_dropout_AUC_ds = eval_model(model_STM_dropout_AUC_ds, test_dataset_STM_ds)
+# eval_STM_dropout_AUC_ds['model'] = 'STM_dropout_AUC_ds'
 
-df_eval.to_csv("model/MLP_summary.csv", index=False)
+# eval_YAM_dropout_F1_ds = eval_model(model_YAM_dropout_F1_ds, test_dataset_YAM_ds)
+# eval_YAM_dropout_F1_ds['model'] = 'YAM_dropout_F1_ds'
+# eval_YAM_dropout_AUC_ds = eval_model(model_YAM_dropout_AUC_ds, test_dataset_YAM_ds)
+# eval_YAM_dropout_AUC_ds['model'] = 'YAM_dropout_AUC_ds'
+
+# eval_VGG_dropout_F1_ds = eval_model(model_VGG_dropout_F1_ds, test_dataset_VGG_ds)
+# eval_VGG_dropout_F1_ds['model'] = 'VGG_dropout_F1_ds'
+# eval_VGG_dropout_AUC_ds = eval_model(model_VGG_dropout_AUC_ds, test_dataset_VGG_ds)
+# eval_VGG_dropout_AUC_ds['model'] = 'VGG_dropout_AUC_ds'
+
+# eval_STM_LN_F1_ds = eval_model(model_STM_LN_F1_ds, test_dataset_STM_ds)
+# eval_STM_LN_F1_ds['model'] = 'STM_LN_F1_ds'
+# eval_STM_LN_AUC_ds = eval_model(model_STM_LN_AUC_ds, test_dataset_STM_ds)
+# eval_STM_LN_AUC_ds['model'] = 'STM_LN_AUC_ds'
+
+# eval_YAM_LN_F1_ds = eval_model(model_YAM_LN_F1_ds, test_dataset_YAM_ds)
+# eval_YAM_LN_F1_ds['model'] = 'YAM_LN_F1_ds'
+# eval_YAM_LN_AUC_ds = eval_model(model_YAM_LN_AUC_ds, test_dataset_YAM_ds)
+# eval_YAM_LN_AUC_ds['model'] = 'YAM_LN_AUC_ds'
+
+# eval_VGG_LN_F1_ds = eval_model(model_VGG_LN_F1_ds, test_dataset_VGG_ds)
+# eval_VGG_LN_F1_ds['model'] = 'VGG_LN_F1_ds'
+# eval_VGG_LN_AUC_ds = eval_model(model_VGG_LN_AUC_ds, test_dataset_VGG_ds)
+# eval_VGG_LN_AUC_ds['model'] = 'VGG_LN_AUC_ds'
+
+
+# df_eval = pd.concat([
+#     eval_STM_dropout_F1,eval_STM_dropout_AUC,
+#     eval_STM_LN_F1,eval_STM_LN_AUC,
+#     eval_YAM_dropout_F1,eval_YAM_dropout_AUC,
+#     eval_YAM_LN_F1,eval_YAM_LN_AUC,
+#     eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
+#     eval_VGG_LN_F1,eval_VGG_LN_AUC,
+#     eval_STM_dropout_F1_ds,eval_STM_dropout_AUC_ds,
+#     eval_STM_LN_F1_ds,eval_STM_LN_AUC_ds,
+#     eval_YAM_dropout_F1_ds,eval_YAM_dropout_AUC_ds,
+#     eval_YAM_LN_F1_ds,eval_YAM_LN_AUC_ds,
+#     eval_VGG_dropout_F1_ds,eval_VGG_dropout_AUC_ds,
+#     eval_VGG_LN_F1_ds,eval_VGG_LN_AUC_ds,
+#     ], ignore_index=True)
+
+
+
+
+df_eval.to_csv("model/MLP_summary_20240821.csv", index=False)
 
 # %%
 # from sklearn.metrics import classification_report

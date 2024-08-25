@@ -503,6 +503,30 @@ elif 8<=int(sys.argv[1])<=43:
     directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1/ablation/xhighcutoff"+str(i0)+"_yhighcutoff"+str(i1)
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
+elif 44<=int(sys.argv[1])<=79:
+    c_index = int(sys.argv[1])-44
+    n_xcut = 6
+    n_ycut = 6
+    cond_shape = (n_xcut, n_ycut)
+    total_models = np.prod(cond_shape)
+        
+    # Calculate the indices for each dimension
+    i1 = (c_index % cond_shape[1])+1 # make the lowest as 1
+    c_index //= cond_shape[1]
+    i0 = c_index+1 # make the lowest as 1
+    
+    ablation_params = {
+        'x_lowcutoff': i0,
+        'x_highcutoff': None,
+        'y_lowcutoff': i1,
+        'y_highcutoff': None,
+        }
+    
+    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ablation_params = ablation_params)
+    hm = hyperModel_LN()
+    directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1/ablation/xlowcutoff"+str(i0)+"_ylowcutoff"+str(i1)
+    objective = kt.Objective("val_macro_f1_score", direction="max")
+    early_stop = "val_f1_score"
 else:
     print("Index out of range of models. Nothing executed.")
     sys.exit(0)
