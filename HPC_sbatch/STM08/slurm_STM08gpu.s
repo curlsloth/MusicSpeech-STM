@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=STM08-gpu
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=30
+#SBATCH --cpus-per-task=20
 #SBATCH --gres=gpu:0
 #SBATCH --mem=360GB
 #SBATCH --time=12:00:00
