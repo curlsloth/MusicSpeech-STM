@@ -280,7 +280,7 @@ def prepData(addAug=False, ds_nontonal_speech=False, ablation_params=None):
     test_dataset = tf.data.Dataset.from_tensor_slices((STM_all[test_ind,:], y[test_ind,:]))
     
     # shuffle and then batch
-    batch_size = 256
+    batch_size = 512
 
     train_dataset = train_dataset.shuffle(buffer_size=sum(train_ind), seed=23).batch(batch_size)
     val_dataset = val_dataset.shuffle(buffer_size=sum(val_ind), seed=23).batch(batch_size)
@@ -311,7 +311,7 @@ def prepData(addAug=False, ds_nontonal_speech=False, ablation_params=None):
 
 # %% build model
 n_feat = 2420
-n_target = 5
+n_target = 6
 
 class hyperModel_drop(kt.HyperModel):
 
@@ -479,17 +479,17 @@ elif sys.argv[1]=='7': # downsample nontonal speech
     directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1/downsample"
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
-elif 8<=int(sys.argv[1])<=43:
+elif 8<=int(sys.argv[1])<=56:
     c_index = int(sys.argv[1])-8
-    n_xcut = 6
-    n_ycut = 6
+    n_xcut = 7
+    n_ycut = 7
     cond_shape = (n_xcut, n_ycut)
     total_models = np.prod(cond_shape)
         
     # Calculate the indices for each dimension
-    i1 = (c_index % cond_shape[1])+1 # make the lowest as 1
+    i1 = (c_index % cond_shape[1]) 
     c_index //= cond_shape[1]
-    i0 = c_index+1 # make the lowest as 1
+    i0 = c_index 
     
     ablation_params = {
         'x_lowcutoff': None,
@@ -503,17 +503,17 @@ elif 8<=int(sys.argv[1])<=43:
     directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1/ablation/xhighcutoff"+str(i0)+"_yhighcutoff"+str(i1)
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
-elif 44<=int(sys.argv[1])<=79:
+elif 57<=int(sys.argv[1])<=105:
     c_index = int(sys.argv[1])-44
-    n_xcut = 6
-    n_ycut = 6
+    n_xcut = 7
+    n_ycut = 7
     cond_shape = (n_xcut, n_ycut)
     total_models = np.prod(cond_shape)
         
     # Calculate the indices for each dimension
-    i1 = (c_index % cond_shape[1])+1 # make the lowest as 1
+    i1 = (c_index % cond_shape[1])
     c_index //= cond_shape[1]
-    i0 = c_index+1 # make the lowest as 1
+    i0 = c_index
     
     ablation_params = {
         'x_lowcutoff': i0,

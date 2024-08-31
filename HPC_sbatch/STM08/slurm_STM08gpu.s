@@ -2,9 +2,9 @@
 
 #SBATCH --job-name=STM08-gpu
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=20
+#SBATCH --cpus-per-task=40
 #SBATCH --gres=gpu:0
-#SBATCH --mem=360GB
+#SBATCH --mem=369GB
 #SBATCH --time=12:00:00
 #SBATCH --output=HPC_slurm/STM08/STM08-gpu_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
