@@ -205,7 +205,7 @@ def prepData(addAug=False, ds_nontonal_speech=False, ablation_params=None):
         mask_matrix = mask_STMmatrix(ablation_params).flatten()
         # np.random.seed(23)
         # STM_all[:, mask_matrix==1] = np.random.rand(STM_all.shape[0], np.sum(mask_matrix))
-        STM_all[:, mask_matrix==1] = 0.5
+        STM_all[:, mask_matrix==1] = 0.05
         del mask_matrix
         
     # % load meta data
