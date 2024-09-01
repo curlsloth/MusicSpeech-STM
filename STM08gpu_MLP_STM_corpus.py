@@ -205,6 +205,7 @@ def prepData(addAug=False, ds_nontonal_speech=False, ablation_params=None):
         mask_matrix = mask_STMmatrix(ablation_params).flatten()
         np.random.seed(23)
         STM_all[:, mask_matrix==1] = np.random.rand(STM_all.shape[0], np.sum(mask_matrix))
+        del mask_matrix
         
     # % load meta data
     speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
@@ -280,7 +281,7 @@ def prepData(addAug=False, ds_nontonal_speech=False, ablation_params=None):
     test_dataset = tf.data.Dataset.from_tensor_slices((STM_all[test_ind,:], y[test_ind,:]))
     
     # shuffle and then batch
-    batch_size = 512
+    batch_size = 256
 
     train_dataset = train_dataset.shuffle(buffer_size=sum(train_ind), seed=23).batch(batch_size)
     val_dataset = val_dataset.shuffle(buffer_size=sum(val_ind), seed=23).batch(batch_size)
@@ -552,7 +553,7 @@ tuner = kt.BayesianOptimization(
     hypermodel=hm,
     objective=objective,
     num_initial_points=10,
-    max_trials=60,
+    max_trials=40,
     executions_per_trial=3,
     seed=23,
     max_retries_per_trial=0,
