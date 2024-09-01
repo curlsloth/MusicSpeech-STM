@@ -203,8 +203,9 @@ def prepData(addAug=False, ds_nontonal_speech=False, ablation_params=None):
         
     if ablation_params is not None: # use random numbers between 0 and 1 to replace the selected STM region
         mask_matrix = mask_STMmatrix(ablation_params).flatten()
-        np.random.seed(23)
-        STM_all[:, mask_matrix==1] = np.random.rand(STM_all.shape[0], np.sum(mask_matrix))
+        # np.random.seed(23)
+        # STM_all[:, mask_matrix==1] = np.random.rand(STM_all.shape[0], np.sum(mask_matrix))
+        STM_all[:, mask_matrix==1] = 0.5
         del mask_matrix
         
     # % load meta data
