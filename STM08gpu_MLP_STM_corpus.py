@@ -506,7 +506,7 @@ elif 8<=int(sys.argv[1])<=56:
     objective = kt.Objective("val_macro_f1_score", direction="max")
     early_stop = "val_f1_score"
 elif 57<=int(sys.argv[1])<=105:
-    c_index = int(sys.argv[1])-44
+    c_index = int(sys.argv[1])-57
     n_xcut = 7
     n_ycut = 7
     cond_shape = (n_xcut, n_ycut)
