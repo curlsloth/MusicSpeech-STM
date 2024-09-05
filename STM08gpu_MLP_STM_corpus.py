@@ -54,11 +54,11 @@ def mask_STMmatrix(ablation_params):
     # mask the matrix
     matrix = np.full((len(y_axis_small), len(x_axis_small)), 0)
     if x_lowcutoff is not None:
-        matrix[:,np.abs(x_axis_small)<x_lowcutoff]=1
+        matrix[:,np.abs(x_axis_small)<=x_lowcutoff]=1
     if x_highcutoff is not None:
         matrix[:,np.abs(x_axis_small)>x_highcutoff]=1
     if y_lowcutoff is not None:
-        matrix[np.abs(y_axis_small)<y_lowcutoff,:]=1
+        matrix[np.abs(y_axis_small)<=y_lowcutoff,:]=1
     if y_highcutoff is not None:
         matrix[np.abs(y_axis_small)>y_highcutoff,:]=1
     return matrix
