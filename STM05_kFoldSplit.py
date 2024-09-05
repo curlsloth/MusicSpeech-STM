@@ -310,7 +310,7 @@ print("Number of recording sites: "+ str(len(env_corp_df['speaker/artist'].uniqu
 
 # %% save split files
 
-save_split_files = True
+save_split_files = False
 
 if save_split_files:
     speech_row_split = round(len(speech_corp_df)/2)
