@@ -41,6 +41,15 @@ df_tsne['tSNE-2'] = tsne.embedding_[:,1]
 df_tsne['category'] = pd.concat([all_corp_df['corpus_type'], 
                                  pd.Series(['env_aug'] * (len(tsne.embedding_) - len(all_corp_df)))], ignore_index=True)
 
+df_tsne['category'] = df_tsne['category'].replace({
+    'speech: non-tonal': 'Speech: nontonal',
+    'speech: tonal': 'Speech: tonal',
+    'music: non-vocal': 'Music: nonvocal',
+    'music: vocal': 'Music: vocal',
+    'env: wildlife': 'Env: wildlife',
+    'env: urban': 'Env: urban',
+    })
+
 # %% scatter plot
 with plt.style.context('seaborn-v0_8-notebook'):
     plt.rcParams['figure.dpi'] = 300

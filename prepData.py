@@ -196,7 +196,8 @@ def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None):
         mask_matrix = mask_STMmatrix(ablation_params).flatten()
         # np.random.seed(23)
         # STM_all[:, mask_matrix==1] = np.random.rand(STM_all.shape[0], np.sum(mask_matrix))
-        STM_all[:, mask_matrix==1] = 0.0
+        # STM_all[:, mask_matrix==1] = 0.0 # put the filtered out regions as 0
+        STM_all = STM_all[:,mask_matrix==0] # exclude the filtered out regions (Sept 6)
         del mask_matrix
         
     # % load meta data

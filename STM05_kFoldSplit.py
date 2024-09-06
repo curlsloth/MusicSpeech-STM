@@ -307,6 +307,9 @@ print("Total length of environmental recordings: "+ str(round(env_corp_df['total
 print("Number of environmental recordings: "+ str(len(env_corp_df)))
 print("Number of recording sites: "+ str(len(env_corp_df['speaker/artist'].unique())))
 
+print("Number of urban recordings: "+ str(sum(env_corp_df['corpus_type']=='env: urban')))
+print("Number of wildlife recordings: "+ str(sum(env_corp_df['corpus_type']=='env: wildlife')))
+
 
 # %% save split files
 

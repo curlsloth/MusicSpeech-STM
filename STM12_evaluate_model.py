@@ -14,13 +14,383 @@ import keras_tuner as kt
 import datetime
 import os
 import tensorflow as tf
-import sys
 import gc
+import glob
 
 os.environ["KERAS_BACKEND"] = "tensorflow"
 
+from prepData import prepData_STM, prepData_VGG, prepData_YAM, mask_STMmatrix
+
 # %% prepData
-def prepData(feat_type):
+# def prepData(feat_type):
+#     # % load STM data
+#     corpus_speech_list = ['BibleTTS/akuapem-twi',
+#         'BibleTTS/asante-twi',
+#         'BibleTTS/ewe',
+#         'BibleTTS/hausa',
+#         'BibleTTS/lingala',
+#         'BibleTTS/yoruba',
+#         'Buckeye',
+#         'EUROM',
+#         'HiltonMoser2022_speech',
+#         'LibriSpeech',
+#         # 'LibriVox',
+#         'MediaSpeech/AR',
+#         'MediaSpeech/ES',
+#         'MediaSpeech/FR',
+#         'MediaSpeech/TR',
+#         'MozillaCommonVoice/ab',
+#         'MozillaCommonVoice/ar',
+#         'MozillaCommonVoice/ba',
+#         'MozillaCommonVoice/be',
+#         'MozillaCommonVoice/bg',
+#         'MozillaCommonVoice/bn',
+#         'MozillaCommonVoice/br',
+#         'MozillaCommonVoice/ca',
+#         'MozillaCommonVoice/ckb',
+#         'MozillaCommonVoice/cnh',
+#         'MozillaCommonVoice/cs',
+#         'MozillaCommonVoice/cv',
+#         'MozillaCommonVoice/cy',
+#         'MozillaCommonVoice/da',
+#         'MozillaCommonVoice/de',
+#         'MozillaCommonVoice/dv',
+#         'MozillaCommonVoice/el',
+#         'MozillaCommonVoice/en',
+#         'MozillaCommonVoice/eo',
+#         'MozillaCommonVoice/es',
+#         'MozillaCommonVoice/et',
+#         'MozillaCommonVoice/eu',
+#         'MozillaCommonVoice/fa',
+#         'MozillaCommonVoice/fi',
+#         'MozillaCommonVoice/fr',
+#         'MozillaCommonVoice/fy-NL',
+#         'MozillaCommonVoice/ga-IE',
+#         'MozillaCommonVoice/gl',
+#         'MozillaCommonVoice/gn',
+#         'MozillaCommonVoice/hi',
+#         'MozillaCommonVoice/hu',
+#         'MozillaCommonVoice/hy-AM',
+#         'MozillaCommonVoice/id',
+#         'MozillaCommonVoice/ig',
+#         'MozillaCommonVoice/it',
+#         'MozillaCommonVoice/ja',
+#         'MozillaCommonVoice/ka',
+#         'MozillaCommonVoice/kab',
+#         'MozillaCommonVoice/kk',
+#         'MozillaCommonVoice/kmr',
+#         'MozillaCommonVoice/ky',
+#         'MozillaCommonVoice/lg',
+#         'MozillaCommonVoice/lt',
+#         'MozillaCommonVoice/ltg',
+#         'MozillaCommonVoice/lv',
+#         'MozillaCommonVoice/mhr',
+#         'MozillaCommonVoice/ml',
+#         'MozillaCommonVoice/mn',
+#         'MozillaCommonVoice/mt',
+#         'MozillaCommonVoice/nan-tw',
+#         'MozillaCommonVoice/nl',
+#         'MozillaCommonVoice/oc',
+#         'MozillaCommonVoice/or',
+#         'MozillaCommonVoice/pl',
+#         'MozillaCommonVoice/pt',
+#         'MozillaCommonVoice/ro',
+#         'MozillaCommonVoice/ru',
+#         'MozillaCommonVoice/rw',
+#         'MozillaCommonVoice/sr',
+#         'MozillaCommonVoice/sv-SE',
+#         'MozillaCommonVoice/sw',
+#         'MozillaCommonVoice/ta',
+#         'MozillaCommonVoice/th',
+#         'MozillaCommonVoice/tr',
+#         'MozillaCommonVoice/tt',
+#         'MozillaCommonVoice/ug',
+#         'MozillaCommonVoice/uk',
+#         'MozillaCommonVoice/ur',
+#         'MozillaCommonVoice/uz',
+#         'MozillaCommonVoice/vi',
+#         'MozillaCommonVoice/yo',
+#         'MozillaCommonVoice/yue',
+#         'MozillaCommonVoice/zh-CN',
+#         'MozillaCommonVoice/zh-TW',
+#         'primewords_chinese',
+#         'room_reader',
+#         'SpeechClarity',
+#         'TAT-Vol2',
+#         'thchs30',
+#         'TIMIT',
+#         'TTS_Javanese',
+#         'zeroth_korean'
+#     ]
+    
+#     corpus_music_list = [
+#         'IRMAS',
+#         'Albouy2020Science',
+#         # 'CD',
+#         'GarlandEncyclopedia',
+#         'fma_large',
+#         'ismir04_genre',
+#         'MTG-Jamendo',
+#         'HiltonMoser2022_song',
+#         'NHS2',
+#         'MagnaTagATune'
+#     ]
+    
+#     corpus_env_list = ['SONYC', 'MacaulayLibrary']
+    
+#     # sort the corpora lists to make sure the order is replicable
+#     corpus_speech_list.sort()
+#     corpus_music_list.sort()
+#     corpus_env_list.sort()
+    
+#     corpus_list_all = corpus_speech_list+corpus_music_list+corpus_env_list 
+        
+#     # % load meta data
+#     speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
+#     speech_corp_df2 = pd.read_csv('train_test_split/speech2_10folds_speakerGroupFold.csv',index_col=0)
+#     music_corp_df = pd.read_csv('train_test_split/music_10folds_speakerGroupFold.csv',index_col=0)
+#     df_SONYC = pd.read_csv('train_test_split/env_10folds_speakerGroupFold.csv',index_col=0)
+    
+#     all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SONYC], ignore_index=True)
+    
+#     # % split data
+    
+#     target = all_corp_df['corpus_type']
+#     data_split = all_corp_df['10fold_labels']
+    
+#     target.replace({
+#         'speech: non-tonal':0,
+#         'speech: tonal':1,
+#         'music: vocal':2,
+#         'music: non-vocal':3,
+#         'env: urban':4,
+#         'env: wildlife':5,
+#         },
+#         inplace=True)
+   
+#     y = keras.utils.to_categorical(target, num_classes=len(target.unique()))
+    
+#     for corp in corpus_list_all:
+#         if feat_type=='STM':
+#             filename = 'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
+#         elif feat_type=='VGG':
+#             filename = 'vggish_output/embeddings/'+corp.replace('/', '-')+'_vggishEmbeddings.npy'
+#         elif feat_type=='YAM':
+#             filename = 'yamnet_output/embeddings/'+corp.replace('/', '-')+'_yamnetEmbeddings.npy'
+        
+#         if 'data_all' not in locals():
+#             data_all = np.load(filename)
+#         else:
+#             data_all = np.vstack((data_all, np.load(filename)))
+#         print(filename)
+        
+#     # # process downsampled nontonal speech
+#     # Number of rows to sample for target == 0
+#     num_samples = 100000
+
+#     # Get indices of rows where target == 0
+#     indices_target_0 = target.index[target == 0].to_numpy()
+
+#     # Check if there are enough rows to sample
+#     if len(indices_target_0) < num_samples:
+#         raise ValueError(f"There are not enough rows with target == 0 to sample {num_samples} rows.")
+
+#     # Randomly sample indices from the rows where target == 0
+#     np.random.seed(23)
+#     sampled_indices = np.random.choice(indices_target_0, size=num_samples, replace=False)
+
+#     # Create a mask for the entire array, starting with selecting all rows
+#     mask = np.ones(len(target), dtype=bool)
+
+#     # Set the mask to False for rows where target == 0 but not in sampled_indices
+#     mask[indices_target_0] = False
+#     mask[sampled_indices] = True
+
+#     # Apply the mask to the NumPy array
+#     data_all_ds = data_all[mask,:]
+#     data_split_ds = data_split[mask]
+#     y_ds = y[mask,:]
+    
+    
+#     batch_size = 256
+    
+#     test_ind = data_split==9
+#     test_dataset = tf.data.Dataset.from_tensor_slices((data_all[test_ind,:], y[test_ind,:]))
+#     test_dataset = test_dataset.shuffle(buffer_size=sum(test_ind), seed=23).batch(batch_size)
+    
+#     test_ind_ds = data_split_ds==9
+#     test_dataset_ds = tf.data.Dataset.from_tensor_slices((data_all_ds[test_ind_ds,:], y_ds[test_ind_ds,:]))
+#     test_dataset_ds = test_dataset_ds.shuffle(buffer_size=sum(test_ind_ds), seed=23).batch(batch_size)
+    
+#     n_feat = data_all.shape[1]
+#     n_target = len(target.unique())
+    
+#     return test_dataset, test_dataset_ds, n_feat, n_target
+
+def eval_model(model, test_dataset):
+    # search the max F1 score across thresholds
+    macroF1_list = []
+    for threshold in range(5,100,5):
+        macroF1_list.append(keras.metrics.F1Score(average="macro", threshold=threshold/100, name="macro_f1_score_"+str(threshold), dtype=None))
+    
+    ROCAUC = keras.metrics.AUC(curve="ROC", name="ROC-AUC")
+    PRAUC = keras.metrics.AUC(curve="PR", name="PR-AUC")
+    
+    model.compile(metrics=[ROCAUC, PRAUC,'accuracy']+macroF1_list)
+    evaluation = model.evaluate(test_dataset)
+    flat_data = evaluation[:3] + [max(evaluation[4:])] + [evaluation[3]]
+    # Define column names
+    columns = ['loss', 'ROC-AUC', 'PR-AUC', 'max_macro_f1', 'accuracy']
+    # Create DataFrame
+    df = pd.DataFrame([flat_data], columns=columns)
+    return df
+
+# %% Load data
+_, _, test_dataset_STM, n_feat_STM, n_target = prepData_STM()
+_, _, test_dataset_VGG, n_feat_VGG, n_target = prepData_VGG()
+_, _, test_dataset_YAM, n_feat_YAM, n_target = prepData_YAM()
+
+_, _, test_dataset_STM_ds, n_feat_STM, n_target = prepData_STM(ds_nontonal_speech=True)
+_, _, test_dataset_VGG_ds, n_feat_VGG, n_target = prepData_VGG(ds_nontonal_speech=True)
+_, _, test_dataset_YAM_ds, n_feat_YAM, n_target = prepData_YAM(ds_nontonal_speech=True)
+
+# %% Load models
+
+model_STM_dropout_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-31_22-11/best_model0.keras")
+model_STM_dropout_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-31_22-10/best_model0.keras")
+model_STM_LN_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-31_22-10/best_model0.keras")
+model_STM_LN_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-31_22-11/best_model0.keras")
+
+model_VGG_dropout_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-20_22-39/best_model0.keras")
+model_VGG_dropout_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-20_22-39/best_model0.keras")
+model_VGG_LN_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-20_22-39/best_model0.keras")
+model_VGG_LN_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-20_22-39/best_model0.keras")
+
+model_YAM_dropout_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-20_22-40/best_model0.keras")
+model_YAM_dropout_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-20_22-40/best_model0.keras")
+model_YAM_LN_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-20_22-40/best_model0.keras")
+model_YAM_LN_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-20_22-40/best_model0.keras")
+
+
+
+model_STM_dropout_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-08-31_22-51/best_model0.keras")
+model_STM_dropout_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-08-31_22-10/best_model0.keras")
+model_STM_LN_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-08-31_23-02/best_model0.keras")
+model_STM_LN_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-08-31_22-10/best_model0.keras")
+
+model_VGG_dropout_F1_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-08-20_22-39/best_model0.keras")
+model_VGG_dropout_AUC_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-08-20_22-39/best_model0.keras")
+model_VGG_LN_F1_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-08-20_22-39/best_model0.keras")
+model_VGG_LN_AUC_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-08-20_22-39/best_model0.keras")
+
+model_YAM_dropout_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-08-20_22-40/best_model0.keras")
+model_YAM_dropout_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-08-20_22-40/best_model0.keras")
+model_YAM_LN_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-08-20_22-40/best_model0.keras")
+model_YAM_LN_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-08-20_22-40/best_model0.keras")
+
+
+
+
+# %% run evaluations
+
+# full sample size
+eval_STM_dropout_F1 = eval_model(model_STM_dropout_F1, test_dataset_STM)
+eval_STM_dropout_F1['model'] = 'STM_dropout_F1'
+eval_STM_dropout_AUC = eval_model(model_STM_dropout_AUC, test_dataset_STM)
+eval_STM_dropout_AUC['model'] = 'STM_dropout_AUC'
+
+eval_YAM_dropout_F1 = eval_model(model_YAM_dropout_F1, test_dataset_YAM)
+eval_YAM_dropout_F1['model'] = 'YAM_dropout_F1'
+eval_YAM_dropout_AUC = eval_model(model_YAM_dropout_AUC, test_dataset_YAM)
+eval_YAM_dropout_AUC['model'] = 'YAM_dropout_AUC'
+
+eval_VGG_dropout_F1 = eval_model(model_VGG_dropout_F1, test_dataset_VGG)
+eval_VGG_dropout_F1['model'] = 'VGG_dropout_F1'
+eval_VGG_dropout_AUC = eval_model(model_VGG_dropout_AUC, test_dataset_VGG)
+eval_VGG_dropout_AUC['model'] = 'VGG_dropout_AUC'
+
+eval_STM_LN_F1 = eval_model(model_STM_LN_F1, test_dataset_STM)
+eval_STM_LN_F1['model'] = 'STM_LN_F1'
+eval_STM_LN_AUC = eval_model(model_STM_LN_AUC, test_dataset_STM)
+eval_STM_LN_AUC['model'] = 'STM_LN_AUC'
+
+eval_YAM_LN_F1 = eval_model(model_YAM_LN_F1, test_dataset_YAM)
+eval_YAM_LN_F1['model'] = 'YAM_LN_F1'
+eval_YAM_LN_AUC = eval_model(model_YAM_LN_AUC, test_dataset_YAM)
+eval_YAM_LN_AUC['model'] = 'YAM_LN_AUC'
+
+eval_VGG_LN_F1 = eval_model(model_VGG_LN_F1, test_dataset_VGG)
+eval_VGG_LN_F1['model'] = 'VGG_LN_F1'
+eval_VGG_LN_AUC = eval_model(model_VGG_LN_AUC, test_dataset_VGG)
+eval_VGG_LN_AUC['model'] = 'VGG_LN_AUC'
+
+# df_eval = pd.concat([
+#     eval_STM_dropout_F1,eval_STM_dropout_AUC,
+#     eval_STM_LN_F1,eval_STM_LN_AUC,
+#     eval_YAM_dropout_F1,eval_YAM_dropout_AUC,
+#     eval_YAM_LN_F1,eval_YAM_LN_AUC,
+#     eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
+#     eval_VGG_LN_F1,eval_VGG_LN_AUC,
+#     ], ignore_index=True)
+
+
+# downsampled nontonal speech
+eval_STM_dropout_F1_ds = eval_model(model_STM_dropout_F1_ds, test_dataset_STM_ds)
+eval_STM_dropout_F1_ds['model'] = 'STM_dropout_F1_ds'
+eval_STM_dropout_AUC_ds = eval_model(model_STM_dropout_AUC_ds, test_dataset_STM_ds)
+eval_STM_dropout_AUC_ds['model'] = 'STM_dropout_AUC_ds'
+
+eval_YAM_dropout_F1_ds = eval_model(model_YAM_dropout_F1_ds, test_dataset_YAM_ds)
+eval_YAM_dropout_F1_ds['model'] = 'YAM_dropout_F1_ds'
+eval_YAM_dropout_AUC_ds = eval_model(model_YAM_dropout_AUC_ds, test_dataset_YAM_ds)
+eval_YAM_dropout_AUC_ds['model'] = 'YAM_dropout_AUC_ds'
+
+eval_VGG_dropout_F1_ds = eval_model(model_VGG_dropout_F1_ds, test_dataset_VGG_ds)
+eval_VGG_dropout_F1_ds['model'] = 'VGG_dropout_F1_ds'
+eval_VGG_dropout_AUC_ds = eval_model(model_VGG_dropout_AUC_ds, test_dataset_VGG_ds)
+eval_VGG_dropout_AUC_ds['model'] = 'VGG_dropout_AUC_ds'
+
+eval_STM_LN_F1_ds = eval_model(model_STM_LN_F1_ds, test_dataset_STM_ds)
+eval_STM_LN_F1_ds['model'] = 'STM_LN_F1_ds'
+eval_STM_LN_AUC_ds = eval_model(model_STM_LN_AUC_ds, test_dataset_STM_ds)
+eval_STM_LN_AUC_ds['model'] = 'STM_LN_AUC_ds'
+
+eval_YAM_LN_F1_ds = eval_model(model_YAM_LN_F1_ds, test_dataset_YAM_ds)
+eval_YAM_LN_F1_ds['model'] = 'YAM_LN_F1_ds'
+eval_YAM_LN_AUC_ds = eval_model(model_YAM_LN_AUC_ds, test_dataset_YAM_ds)
+eval_YAM_LN_AUC_ds['model'] = 'YAM_LN_AUC_ds'
+
+eval_VGG_LN_F1_ds = eval_model(model_VGG_LN_F1_ds, test_dataset_VGG_ds)
+eval_VGG_LN_F1_ds['model'] = 'VGG_LN_F1_ds'
+eval_VGG_LN_AUC_ds = eval_model(model_VGG_LN_AUC_ds, test_dataset_VGG_ds)
+eval_VGG_LN_AUC_ds['model'] = 'VGG_LN_AUC_ds'
+
+
+df_eval = pd.concat([
+    eval_STM_dropout_F1,eval_STM_dropout_AUC,
+    eval_STM_LN_F1,eval_STM_LN_AUC,
+    eval_YAM_dropout_F1,eval_YAM_dropout_AUC,
+    eval_YAM_LN_F1,eval_YAM_LN_AUC,
+    eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
+    eval_VGG_LN_F1,eval_VGG_LN_AUC,
+    eval_STM_dropout_F1_ds,eval_STM_dropout_AUC_ds,
+    eval_STM_LN_F1_ds,eval_STM_LN_AUC_ds,
+    eval_YAM_dropout_F1_ds,eval_YAM_dropout_AUC_ds,
+    eval_YAM_LN_F1_ds,eval_YAM_LN_AUC_ds,
+    eval_VGG_dropout_F1_ds,eval_VGG_dropout_AUC_ds,
+    eval_VGG_LN_F1_ds,eval_VGG_LN_AUC_ds,
+    ], ignore_index=True)
+
+
+
+
+df_eval.to_csv("model/MLP_summary_all_20240905.csv", index=False)
+
+
+# %% Load functions for evaluating ablation models
+
+
+def prepData_STM_numpy():
     # % load STM data
     corpus_speech_list = ['BibleTTS/akuapem-twi',
         'BibleTTS/asante-twi',
@@ -124,7 +494,7 @@ def prepData(feat_type):
     corpus_music_list = [
         'IRMAS',
         'Albouy2020Science',
-        # 'CD',
+        # 'CD', # exclude CDs due to open source concern
         'GarlandEncyclopedia',
         'fma_large',
         'ismir04_genre',
@@ -142,6 +512,14 @@ def prepData(feat_type):
     corpus_env_list.sort()
     
     corpus_list_all = corpus_speech_list+corpus_music_list+corpus_env_list 
+    
+    for corp in corpus_list_all:
+        filename = 'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
+        if 'STM_all' not in locals():
+            STM_all = np.load(filename)
+        else:
+            STM_all = np.vstack((STM_all, np.load(filename)))
+        print(filename)
         
     # % load meta data
     speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
@@ -150,9 +528,7 @@ def prepData(feat_type):
     df_SONYC = pd.read_csv('train_test_split/env_10folds_speakerGroupFold.csv',index_col=0)
     
     all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SONYC], ignore_index=True)
-    
-    # % split data
-    
+
     target = all_corp_df['corpus_type']
     data_split = all_corp_df['10fold_labels']
     
@@ -165,236 +541,93 @@ def prepData(feat_type):
         'env: wildlife':5,
         },
         inplace=True)
-   
+    
+    return STM_all, target, data_split
+
+def filter_STM(STM_all, target, data_split, ablation_params):
+    
+    mask_matrix = mask_STMmatrix(ablation_params).flatten()
+    # np.random.seed(23)
+    # STM_all[:, mask_matrix==1] = np.random.rand(STM_all.shape[0], np.sum(mask_matrix))
+    STM_all[:, mask_matrix==1] = 0.0
+    del mask_matrix
+    
     y = keras.utils.to_categorical(target, num_classes=len(target.unique()))
-    
-    for corp in corpus_list_all:
-        if feat_type=='STM':
-            filename = 'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
-        elif feat_type=='VGG':
-            filename = 'vggish_output/embeddings/'+corp.replace('/', '-')+'_vggishEmbeddings.npy'
-        elif feat_type=='YAM':
-            filename = 'yamnet_output/embeddings/'+corp.replace('/', '-')+'_yamnetEmbeddings.npy'
+       
         
-        if 'data_all' not in locals():
-            data_all = np.load(filename)
-        else:
-            data_all = np.vstack((data_all, np.load(filename)))
-        print(filename)
-        
-    # # process downsampled nontonal speech
-    # Number of rows to sample for target == 0
-    num_samples = 100000
-
-    # Get indices of rows where target == 0
-    indices_target_0 = target.index[target == 0].to_numpy()
-
-    # Check if there are enough rows to sample
-    if len(indices_target_0) < num_samples:
-        raise ValueError(f"There are not enough rows with target == 0 to sample {num_samples} rows.")
-
-    # Randomly sample indices from the rows where target == 0
-    np.random.seed(23)
-    sampled_indices = np.random.choice(indices_target_0, size=num_samples, replace=False)
-
-    # Create a mask for the entire array, starting with selecting all rows
-    mask = np.ones(len(target), dtype=bool)
-
-    # Set the mask to False for rows where target == 0 but not in sampled_indices
-    mask[indices_target_0] = False
-    mask[sampled_indices] = True
-
-    # Apply the mask to the NumPy array
-    data_all_ds = data_all[mask,:]
-    data_split_ds = data_split[mask]
-    y_ds = y[mask,:]
-    
-    
-    batch_size = 256
-    
+    # % split data
+    train_ind = data_split<8
+    val_ind = data_split==8
     test_ind = data_split==9
-    test_dataset = tf.data.Dataset.from_tensor_slices((data_all[test_ind,:], y[test_ind,:]))
+    
+    
+    train_dataset = tf.data.Dataset.from_tensor_slices((STM_all[train_ind,:], y[train_ind,:]))
+    val_dataset = tf.data.Dataset.from_tensor_slices((STM_all[val_ind,:], y[val_ind,:]))
+    test_dataset = tf.data.Dataset.from_tensor_slices((STM_all[test_ind,:], y[test_ind,:]))
+    
+    # shuffle and then batch
+    batch_size = 256
+
+    train_dataset = train_dataset.shuffle(buffer_size=sum(train_ind), seed=23).batch(batch_size)
+    val_dataset = val_dataset.shuffle(buffer_size=sum(val_ind), seed=23).batch(batch_size)
     test_dataset = test_dataset.shuffle(buffer_size=sum(test_ind), seed=23).batch(batch_size)
     
-    test_ind_ds = data_split_ds==9
-    test_dataset_ds = tf.data.Dataset.from_tensor_slices((data_all_ds[test_ind_ds,:], y_ds[test_ind_ds,:]))
-    test_dataset_ds = test_dataset_ds.shuffle(buffer_size=sum(test_ind_ds), seed=23).batch(batch_size)
-    
-    n_feat = data_all.shape[1]
+    n_feat = STM_all.shape[1]
     n_target = len(target.unique())
     
-    return test_dataset, test_dataset_ds, n_feat, n_target
+   
+    if len(target) != len(STM_all):
+        print("STM data and meta data mismatched!")
+    elif sum(train_ind)+sum(val_ind)+sum(test_ind) != len(STM_all):
+        print("Data split wrong")
+    else:
+        print("Good to go!")
+        
+    return train_dataset, val_dataset, test_dataset, n_feat, n_target
 
-
-# %% Load data
-test_dataset_STM, test_dataset_STM_ds, n_feat_STM, n_target = prepData(feat_type='STM')
-test_dataset_VGG, test_dataset_VGG_ds, n_feat_VGG, n_target = prepData(feat_type='VGG')
-test_dataset_YAM, test_dataset_YAM_ds, n_feat_YAM, n_target = prepData(feat_type='YAM')
-
-# %% Load models
-
-model_STM_dropout_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-16_23-57/best_model0.keras")
-model_STM_dropout_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-16_23-57/best_model0.keras")
-model_STM_LN_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-16_23-57/best_model0.keras")
-model_STM_LN_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-16_23-57/best_model0.keras")
-
-model_VGG_dropout_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-20_22-39/best_model0.keras")
-model_VGG_dropout_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-20_22-39/best_model0.keras")
-model_VGG_LN_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-20_22-39/best_model0.keras")
-model_VGG_LN_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-20_22-39/best_model0.keras")
-
-model_YAM_dropout_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-20_22-40/best_model0.keras")
-model_YAM_dropout_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-20_22-40/best_model0.keras")
-model_YAM_LN_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-20_22-40/best_model0.keras")
-model_YAM_LN_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-20_22-40/best_model0.keras")
-
-
-
-# model_STM_dropout_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-05-17_14-45/best_model0.keras")
-# model_STM_dropout_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-05-17_14-42/best_model0.keras")
-# model_STM_LN_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-05-17_14-48/best_model0.keras")
-# model_STM_LN_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_14-45/best_model0.keras")
-
-# model_VGG_dropout_F1_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-05-17_22-44/best_model0.keras")
-# model_VGG_dropout_AUC_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-05-17_22-44/best_model0.keras")
-# model_VGG_LN_F1_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-05-17_22-44/best_model0.keras")
-# model_VGG_LN_AUC_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_22-44/best_model0.keras")
-
-# model_YAM_dropout_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-05-17_22-45/best_model0.keras")
-# model_YAM_dropout_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-05-17_22-45/best_model0.keras")
-# model_YAM_LN_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-05-17_22-45/best_model0.keras")
-# model_YAM_LN_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-05-17_22-45/best_model0.keras")
-
-# %% run evaluations
-
-def eval_model(model, test_dataset):
-    # search the max F1 score across thresholds
-    macroF1_list = []
-    for threshold in range(5,100,5):
-        macroF1_list.append(keras.metrics.F1Score(average="macro", threshold=threshold/100, name="macro_f1_score_"+str(threshold), dtype=None))
+def load_ablation_keras(highlow, xcutoff, ycutoff, STM_all, target, data_split):
+    # load model
+    cond = 'x'+highlow+'cutoff'+str(xcutoff)+'_y'+highlow+'cutoff'+str(ycutoff)
+    filename = glob.glob('model/STM/MLP_corpora_categories/LayerNormalization/macroF1/ablation/'+cond+'/**/best_model0.keras')[0]
+    model = keras.saving.load_model(filename)
     
-    ROCAUC = keras.metrics.AUC(curve="ROC", name="ROC-AUC")
-    PRAUC = keras.metrics.AUC(curve="PR", name="PR-AUC")
+    # load data
+    if highlow=='high':
+        ablation_params = {
+            'x_lowcutoff': None,
+            'x_highcutoff': xcutoff,
+            'y_lowcutoff': None,
+            'y_highcutoff': ycutoff,
+            }
+    elif highlow=='low':
+        ablation_params = {
+            'x_lowcutoff': xcutoff,
+            'x_highcutoff': None,
+            'y_lowcutoff': ycutoff,
+            'y_highcutoff': None,
+            }
+    # _, _, test_dataset_STM, n_feat_STM, n_target = prepData_STM(ablation_params=ablation_params)
+    _, _, test_dataset_STM, n_feat_STM, n_target = filter_STM(STM_all, target, data_split, ablation_params)
     
-    model.compile(metrics=[ROCAUC, PRAUC,'accuracy']+macroF1_list)
-    evaluation = model.evaluate(test_dataset)
-    flat_data = evaluation[:3] + [max(evaluation[4:])] + [evaluation[3]]
-    # Define column names
-    columns = ['loss', 'ROC-AUC', 'PR-AUC', 'max_macro_f1', 'accuracy']
-    # Create DataFrame
-    df = pd.DataFrame([flat_data], columns=columns)
+    # run model
+    df = eval_model(model, test_dataset_STM)
+    df['highlow'] = highlow
+    df['xcutoff'] = xcutoff
+    df['ycutoff'] = ycutoff
     return df
 
-# full sample size
-eval_STM_dropout_F1 = eval_model(model_STM_dropout_F1, test_dataset_STM)
-eval_STM_dropout_F1['model'] = 'STM_dropout_F1'
-eval_STM_dropout_AUC = eval_model(model_STM_dropout_AUC, test_dataset_STM)
-eval_STM_dropout_AUC['model'] = 'STM_dropout_AUC'
+# %% ablation models evaluation
+ablation_df_list = []
+STM_all, target, data_split = prepData_STM_numpy() # load the overall data one time
 
-eval_YAM_dropout_F1 = eval_model(model_YAM_dropout_F1, test_dataset_YAM)
-eval_YAM_dropout_F1['model'] = 'YAM_dropout_F1'
-eval_YAM_dropout_AUC = eval_model(model_YAM_dropout_AUC, test_dataset_YAM)
-eval_YAM_dropout_AUC['model'] = 'YAM_dropout_AUC'
+for highlow in ['high','low']:
+    for xcutoff in range(7):
+        for ycutoff in range(7):
+            try:
+                ablation_df_list.append(load_ablation_keras(highlow, xcutoff, ycutoff, STM_all, target, data_split))
+            except:
+                print('error!')
 
-eval_VGG_dropout_F1 = eval_model(model_VGG_dropout_F1, test_dataset_VGG)
-eval_VGG_dropout_F1['model'] = 'VGG_dropout_F1'
-eval_VGG_dropout_AUC = eval_model(model_VGG_dropout_AUC, test_dataset_VGG)
-eval_VGG_dropout_AUC['model'] = 'VGG_dropout_AUC'
+# this name is wrong!!
+pd.concat(ablation_df_list).to_csv("model/MLP_ablation_20240906.csv", index=False)
 
-eval_STM_LN_F1 = eval_model(model_STM_LN_F1, test_dataset_STM)
-eval_STM_LN_F1['model'] = 'STM_LN_F1'
-eval_STM_LN_AUC = eval_model(model_STM_LN_AUC, test_dataset_STM)
-eval_STM_LN_AUC['model'] = 'STM_LN_AUC'
-
-eval_YAM_LN_F1 = eval_model(model_YAM_LN_F1, test_dataset_YAM)
-eval_YAM_LN_F1['model'] = 'YAM_LN_F1'
-eval_YAM_LN_AUC = eval_model(model_YAM_LN_AUC, test_dataset_YAM)
-eval_YAM_LN_AUC['model'] = 'YAM_LN_AUC'
-
-eval_VGG_LN_F1 = eval_model(model_VGG_LN_F1, test_dataset_VGG)
-eval_VGG_LN_F1['model'] = 'VGG_LN_F1'
-eval_VGG_LN_AUC = eval_model(model_VGG_LN_AUC, test_dataset_VGG)
-eval_VGG_LN_AUC['model'] = 'VGG_LN_AUC'
-
-df_eval = pd.concat([
-    eval_STM_dropout_F1,eval_STM_dropout_AUC,
-    eval_STM_LN_F1,eval_STM_LN_AUC,
-    eval_YAM_dropout_F1,eval_YAM_dropout_AUC,
-    eval_YAM_LN_F1,eval_YAM_LN_AUC,
-    eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
-    eval_VGG_LN_F1,eval_VGG_LN_AUC,
-    ], ignore_index=True)
-
-
-# # downsampled nontonal speech
-# eval_STM_dropout_F1_ds = eval_model(model_STM_dropout_F1_ds, test_dataset_STM_ds)
-# eval_STM_dropout_F1_ds['model'] = 'STM_dropout_F1_ds'
-# eval_STM_dropout_AUC_ds = eval_model(model_STM_dropout_AUC_ds, test_dataset_STM_ds)
-# eval_STM_dropout_AUC_ds['model'] = 'STM_dropout_AUC_ds'
-
-# eval_YAM_dropout_F1_ds = eval_model(model_YAM_dropout_F1_ds, test_dataset_YAM_ds)
-# eval_YAM_dropout_F1_ds['model'] = 'YAM_dropout_F1_ds'
-# eval_YAM_dropout_AUC_ds = eval_model(model_YAM_dropout_AUC_ds, test_dataset_YAM_ds)
-# eval_YAM_dropout_AUC_ds['model'] = 'YAM_dropout_AUC_ds'
-
-# eval_VGG_dropout_F1_ds = eval_model(model_VGG_dropout_F1_ds, test_dataset_VGG_ds)
-# eval_VGG_dropout_F1_ds['model'] = 'VGG_dropout_F1_ds'
-# eval_VGG_dropout_AUC_ds = eval_model(model_VGG_dropout_AUC_ds, test_dataset_VGG_ds)
-# eval_VGG_dropout_AUC_ds['model'] = 'VGG_dropout_AUC_ds'
-
-# eval_STM_LN_F1_ds = eval_model(model_STM_LN_F1_ds, test_dataset_STM_ds)
-# eval_STM_LN_F1_ds['model'] = 'STM_LN_F1_ds'
-# eval_STM_LN_AUC_ds = eval_model(model_STM_LN_AUC_ds, test_dataset_STM_ds)
-# eval_STM_LN_AUC_ds['model'] = 'STM_LN_AUC_ds'
-
-# eval_YAM_LN_F1_ds = eval_model(model_YAM_LN_F1_ds, test_dataset_YAM_ds)
-# eval_YAM_LN_F1_ds['model'] = 'YAM_LN_F1_ds'
-# eval_YAM_LN_AUC_ds = eval_model(model_YAM_LN_AUC_ds, test_dataset_YAM_ds)
-# eval_YAM_LN_AUC_ds['model'] = 'YAM_LN_AUC_ds'
-
-# eval_VGG_LN_F1_ds = eval_model(model_VGG_LN_F1_ds, test_dataset_VGG_ds)
-# eval_VGG_LN_F1_ds['model'] = 'VGG_LN_F1_ds'
-# eval_VGG_LN_AUC_ds = eval_model(model_VGG_LN_AUC_ds, test_dataset_VGG_ds)
-# eval_VGG_LN_AUC_ds['model'] = 'VGG_LN_AUC_ds'
-
-
-# df_eval = pd.concat([
-#     eval_STM_dropout_F1,eval_STM_dropout_AUC,
-#     eval_STM_LN_F1,eval_STM_LN_AUC,
-#     eval_YAM_dropout_F1,eval_YAM_dropout_AUC,
-#     eval_YAM_LN_F1,eval_YAM_LN_AUC,
-#     eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
-#     eval_VGG_LN_F1,eval_VGG_LN_AUC,
-#     eval_STM_dropout_F1_ds,eval_STM_dropout_AUC_ds,
-#     eval_STM_LN_F1_ds,eval_STM_LN_AUC_ds,
-#     eval_YAM_dropout_F1_ds,eval_YAM_dropout_AUC_ds,
-#     eval_YAM_LN_F1_ds,eval_YAM_LN_AUC_ds,
-#     eval_VGG_dropout_F1_ds,eval_VGG_dropout_AUC_ds,
-#     eval_VGG_LN_F1_ds,eval_VGG_LN_AUC_ds,
-#     ], ignore_index=True)
-
-
-
-
-df_eval.to_csv("model/MLP_summary_20240821.csv", index=False)
-
-# %%
-# from sklearn.metrics import classification_report
-# y_pred = model.predict(test_dataset)
-
-# y_pred_argmax = list(np.argmax(y_pred, axis=1))
-
-
-# def extract_target(x, y):
-#     return y
-
-# # Apply the extraction function to the dataset
-# y_dataset = test_dataset.map(lambda x, y: extract_target(x, y))
-
-# # Iterate over the y dataset to see the extracted y values
-# y_true = []
-# for yi in y_dataset:
-#     y_true+= list(np.argmax(yi.numpy(), axis=1))
-
-
-# print(classification_report(y_true, y_pred_argmax))
