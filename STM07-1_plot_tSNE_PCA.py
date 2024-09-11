@@ -77,7 +77,8 @@ with plt.style.context('seaborn-v0_8-poster'):
     plt.rcParams['figure.dpi'] = 300
     plt.rcParams['savefig.dpi'] = 300
 
-    fig = plt.figure(figsize=(11,7))
+    # fig = plt.figure(figsize=(11,7))
+    fig = plt.figure(figsize=(7,11))
     ax = fig.add_subplot(1, 1, 1)
     
     kde = sns.kdeplot(

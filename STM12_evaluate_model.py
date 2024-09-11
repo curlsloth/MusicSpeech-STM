@@ -16,6 +16,9 @@ import os
 import tensorflow as tf
 import gc
 import glob
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+
 
 os.environ["KERAS_BACKEND"] = "tensorflow"
 
@@ -549,7 +552,8 @@ def filter_STM(STM_all, target, data_split, ablation_params):
     mask_matrix = mask_STMmatrix(ablation_params).flatten()
     # np.random.seed(23)
     # STM_all[:, mask_matrix==1] = np.random.rand(STM_all.shape[0], np.sum(mask_matrix))
-    STM_all[:, mask_matrix==1] = 0.0
+    # STM_all[:, mask_matrix==1] = 0.0 # put the filtered out regions as 0
+    STM_all = STM_all[:,mask_matrix==0] # exclude the filtered out regions (Sept 6)
     del mask_matrix
     
     y = keras.utils.to_categorical(target, num_classes=len(target.unique()))
@@ -623,11 +627,93 @@ STM_all, target, data_split = prepData_STM_numpy() # load the overall data one t
 for highlow in ['high','low']:
     for xcutoff in range(7):
         for ycutoff in range(7):
-            try:
-                ablation_df_list.append(load_ablation_keras(highlow, xcutoff, ycutoff, STM_all, target, data_split))
-            except:
-                print('error!')
+            ablation_df_list.append(load_ablation_keras(highlow, xcutoff, ycutoff, STM_all, target, data_split))
 
 # this name is wrong!!
-pd.concat(ablation_df_list).to_csv("model/MLP_ablation_20240906.csv", index=False)
+pd.concat(ablation_df_list).to_csv("model/MLP_ablation_20240907.csv", index=False)
 
+# %% plot ablation results
+
+df = pd.read_csv("model/MLP_ablation_20240907.csv")
+table_low_ROCAUC = pd.pivot_table(df[df['highlow']=='low'], values='ROC-AUC', index=['xcutoff'],  columns=['ycutoff'])
+table_high_ROCAUC = pd.pivot_table(df[df['highlow']=='high'], values='ROC-AUC', index=['xcutoff'],  columns=['ycutoff'])
+table_low_F1 = pd.pivot_table(df[df['highlow']=='low'], values='max_macro_f1', index=['xcutoff'],  columns=['ycutoff'])
+table_high_F1 = pd.pivot_table(df[df['highlow']=='high'], values='max_macro_f1', index=['xcutoff'],  columns=['ycutoff'])
+
+
+def show_values(data, ax):
+    for (j, i), val in np.ndenumerate(data):
+        ax.text(i,j,f'{val:.3f}'[1:],ha='center',va='center')
+
+with plt.style.context('seaborn-v0_8-poster'):
+    plt.rcParams['figure.dpi'] = 300
+    plt.rcParams['savefig.dpi'] = 300
+    
+    # Create a figure and a grid of subplots
+    fig, ax = plt.subplots(2, 2, figsize=(13, 12))
+    
+    centers = [0,6,0,6]
+    dx, = np.diff(centers[:2])/(7-1)
+    dy, = -np.diff(centers[2:])/(7-1)
+    extent = [centers[0]-dx/2, centers[1]+dx/2, centers[2]+dy/2, centers[3]-dy/2]
+    
+    # extent = [0, 6, 0, 6]
+    cmap='plasma'
+    
+    # Plot ROC-AUC
+    min_ROCAUC = np.min(pd.concat([table_high_ROCAUC, table_low_ROCAUC]))
+    # min_ROCAUC = 0.92
+    max_ROCAUC = np.max(pd.concat([table_high_ROCAUC, table_low_ROCAUC]))
+    # norm_ROCAUC = mcolors.LogNorm(vmin=min_ROCAUC, vmax=max_ROCAUC, clip=True)
+    
+    im0 = ax[0,0].imshow(table_high_ROCAUC, aspect='equal', origin='lower', extent=extent, cmap=cmap, interpolation=None, vmin=min_ROCAUC, vmax=max_ROCAUC)
+    # im0 = ax[0,0].imshow(table_high_ROCAUC, aspect='equal', origin='lower', extent=extent, cmap=cmap, interpolation=None, norm=norm_ROCAUC)
+    ax[0,0].set_title('ROC-AUC: at or below the cutoffs')
+    ax[0,0].set_xlabel('temporal modulation cutoff (absolute Hz)')
+    ax[0,0].set_ylabel('spectral modulation cutoff (cyc/oct)')
+    show_values(table_high_ROCAUC, ax[0,0])
+    
+    im1 = ax[0,1].imshow(table_low_ROCAUC, aspect='equal', origin='lower', extent=extent, cmap=cmap, interpolation=None, vmin=min_ROCAUC, vmax=max_ROCAUC)
+    # im1 = ax[0,1].imshow(table_low_ROCAUC, aspect='equal', origin='lower', extent=extent, cmap=cmap, interpolation=None, norm=norm_ROCAUC)
+    ax[0,1].set_title('ROC-AUC: greater than the cutoffs')
+    ax[0,1].set_xlabel('temporal modulation cutoff (absolute Hz)')
+    # ax[0,1].set_yticks([])
+    ax[0,1].set_ylabel('spectral modulation cutoff (cyc/oct)')
+    show_values(table_low_ROCAUC, ax[0,1])
+    
+    cbar_rocauc_ax = fig.add_axes([0.9, 0.6, 0.01, 0.3]) 
+    cbar_rocauc = plt.colorbar(im1, cax=cbar_rocauc_ax)
+    cbar_rocauc.set_label('ROC-AUC')
+
+    
+    
+    # Plot F1
+    min_f1 = np.min(pd.concat([table_high_F1, table_low_F1]))
+    max_f1 = np.max(pd.concat([table_high_F1, table_low_F1]))
+    norm_F1 = mcolors.LogNorm(vmin=min_f1, vmax=max_f1)
+    
+    im2 = ax[1,0].imshow(table_high_F1, aspect='equal', origin='lower', extent=extent, cmap=cmap, interpolation=None, vmin=min_f1, vmax=max_f1)
+    # im2 = ax[1,0].imshow(table_high_F1, aspect='equal', origin='lower', extent=extent, cmap=cmap, interpolation=None, norm=norm_F1)
+    ax[1,0].set_title('Max F1: at or below the cutoffs')
+    ax[1,0].set_xlabel('temporal modulation cutoff (absolute Hz)')
+    ax[1,0].set_ylabel('spectral modulation cutoff (cyc/oct)')
+    show_values(table_high_F1, ax[1,0])
+    
+    im3 = ax[1,1].imshow(table_low_F1, aspect='equal', origin='lower', extent=extent, cmap=cmap, interpolation=None, vmin=min_f1, vmax=max_f1)
+    # im3 = ax[1,1].imshow(table_low_F1, aspect='equal', origin='lower', extent=extent, cmap=cmap, interpolation=None, norm=norm_F1)
+    ax[1,1].set_title('Max F1: greater than the cutoffs')
+    ax[1,1].set_xlabel('temporal modulation cutoff (absolute Hz)')
+    # ax[1,1].set_yticks([])
+    ax[1,1].set_ylabel('spectral modulation cutoff (cyc/oct)')
+    show_values(table_low_F1, ax[1,1])
+    
+    cbar_f1_ax = fig.add_axes([0.9, 0.1, 0.01, 0.3]) 
+    cbar_f1 = plt.colorbar(im2, cax=cbar_f1_ax)
+    cbar_f1.set_label('max F1')
+
+    
+    
+    # Adjust layout to make room for the colorbar
+    plt.tight_layout(rect=[0, 0, 0.9, 1])  # Adjust the rect parameter to fit the colorbar
+    plt.show()
+    fig.savefig('ablation_20240907.png')

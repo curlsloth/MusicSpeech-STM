@@ -181,9 +181,39 @@ target.replace({
 mean_STM_list = []
 for t in range(len(target.unique())):
     mean_STM_list.append(np.mean(STM_all[target==t,:], axis = 0).reshape(20,121))
+    
+# %% Cohen's d on STM
+
+def cohenD_STM(d1, d2):
+    mean1 = np.mean(d1, axis=0)
+    mean2 = np.mean(d2, axis=0)
+    len1 = d1.shape[0]
+    len2 = d2.shape[0]
+    s1 = np.std(d1, axis=0, ddof=1)
+    s2 = np.std(d1, axis=0, ddof=1)
+    sp = np.sqrt(((len1-1)*s1**2 + (len2-1)*s2**2)/(len1+len2-2))
+    cohenD =  (mean1-mean2)/sp
+    return cohenD
+    
+cohenD_withinSpeech = cohenD_STM(STM_all[target==0,:], STM_all[target==1,:]).reshape(20,121)
+cohenD_withinMusic = cohenD_STM(STM_all[target==2,:], STM_all[target==3,:]).reshape(20,121)
+cohenD_withinEnv = cohenD_STM(STM_all[target==4,:], STM_all[target==5,:]).reshape(20,121)
+
+cohenD_SpeechMusic = cohenD_STM(STM_all[target.isin([0,1]),:], STM_all[target.isin([2,3]),:]).reshape(20,121)
+cohenD_MusicEnv = cohenD_STM(STM_all[target.isin([2,3]),:], STM_all[target.isin([4,5]),:]).reshape(20,121)
+cohenD_SpeechEnv = cohenD_STM(STM_all[target.isin([0,1]),:], STM_all[target.isin([4,5]),:]).reshape(20,121)
 
 
-# get the STM axes
+# %% do t-test (ver slow!)
+# from scipy.stats import ttest_ind
+# result_withinSpeech = ttest_ind(STM_all[target==0,:], STM_all[target==1,:], axis=0, equal_var=False)
+# result_withinMusic = ttest_ind(STM_all[target==2,:], STM_all[target==3,:], axis=0, equal_var=False)
+# result_withinEnv = ttest_ind(STM_all[target==4,:], STM_all[target==5,:], axis=0, equal_var=False)
+
+# result_withinSpeech = ttest_ind(STM_all[target==0,:], STM_all[target==1,:], axis=0, equal_var=False)
+
+
+# %% get the STM axes
 df = pd.read_csv('metaTables/metaData_BibleTTS-hausa.csv',index_col=0)
 survey_file = df['mat_filename'][0].replace('MATs','Survey').replace('mat_wl4','params').replace('MS2024','Params')
 survey_data = scipy.io.loadmat(survey_file)
@@ -264,3 +294,70 @@ with plt.style.context('seaborn-v0_8-poster'):
     # plt.tight_layout()
     plt.show()
     fig.savefig('categorical_mean_STM20240906.png')
+
+# %% plot STMs Cohen's d
+import matplotlib.pyplot as plt
+import matplotlib
+import matplotlib.colors as mcolors
+
+with plt.style.context('seaborn-v0_8-poster'):
+    plt.rcParams['figure.dpi'] = 300
+    plt.rcParams['savefig.dpi'] = 300
+    
+    # Create a figure and a grid of subplots
+    fig, ax = plt.subplots(2, 3, figsize=(15, 7))
+    extent = [x_axis_small.min(), x_axis_small.max(), y_axis_small.min(), y_axis_small.max()]
+    # norm = mcolors.NoNorm(vmin=np.nanmin([cohenD_withinSpeech, cohenD_withinMusic, cohenD_withinEnv, cohenD_SpeechMusic, cohenD_MusicEnv, cohenD_SpeechEnv]), 
+    #                       vmax=np.nanmax([cohenD_withinSpeech, cohenD_withinMusic, cohenD_withinEnv, cohenD_SpeechMusic, cohenD_MusicEnv, cohenD_SpeechEnv]))
+    # norm = mcolors.NoNorm(vmin=-5, vmax=5)
+    # norm = mcolors.SymLogNorm(linthresh=0.5, vmin=-10.0, vmax=10.0, base=10, clip=True)
+    norm = mcolors.AsinhNorm(linear_width=2, vmin=-5.0, vmax=5.0, clip=True)
+
+    cmap='bwr'
+    
+    # Plot the first image in the top-left subplot
+    im0 = ax[0, 0].imshow(cohenD_withinSpeech, aspect=2.5, origin='lower', extent=extent, norm=norm, cmap=cmap)
+    ax[0, 0].set_title('Speech: nontonal - tonal')
+    # ax[0, 0].set_xlabel('temporal modulation (Hz)')
+    # ax[0, 0].set_ylabel('spectral modulation (cyc/oct)')
+    im1 = ax[1, 0].imshow(cohenD_SpeechMusic, aspect=2.5, origin='lower', extent=extent, norm=norm, cmap=cmap)
+    ax[1, 0].set_title('Speech - Music')
+    ax[1, 0].set_xlabel('temporal modulation (Hz)')
+    ax[1, 0].set_ylabel('spectral modulation (cyc/oct)')
+    
+    im2 = ax[0, 1].imshow(cohenD_withinMusic, aspect=2.5, origin='lower', extent=extent, norm=norm, cmap=cmap)
+    ax[0, 1].set_title('Music: vocal - nonvocal')
+    # ax[0, 1].set_xlabel('temporal modulation (Hz)')
+    # ax[0, 1].set_ylabel('spectral modulation (cyc/oct)')
+    im3 = ax[1, 1].imshow(cohenD_SpeechEnv, aspect=2.5, origin='lower', extent=extent, norm=norm, cmap=cmap)
+    ax[1, 1].set_title('Speech - Env')
+    # ax[1, 1].set_xlabel('temporal modulation (Hz)')
+    # ax[1, 1].set_ylabel('spectral modulation (cyc/oct)')
+    
+    im4 = ax[0, 2].imshow(cohenD_withinEnv, aspect=2.5, origin='lower', extent=extent, norm=norm, cmap=cmap)
+    ax[0, 2].set_title('Env: urban - wildlife')
+    # ax[0, 2].set_xlabel('temporal modulation (Hz)')
+    # ax[0, 2].set_ylabel('spectral modulation (cyc/oct)')
+    im5 = ax[1, 2].imshow(cohenD_MusicEnv, aspect=2.5, origin='lower', extent=extent, norm=norm, cmap=cmap)
+    ax[1, 2].set_title('Music - Env')
+    # ax[1, 2].set_xlabel('temporal modulation (Hz)')
+    # ax[1, 2].set_ylabel('spectral modulation (cyc/oct)')
+    
+    
+    cbar_ax = fig.add_axes([0.9, 0.2, 0.01, 0.6]) 
+    cbar = plt.colorbar(im1, cax=cbar_ax)
+    
+    # Add a single colorbar on the top side
+    # cbar = fig.colorbar(im5, ax=cbar_ax, orientation='horizontal', fraction=0.04, pad=0.2)
+    cbar.set_label("Cohen's d")
+    cbar.set_ticks(ticks=[-5, -1, 0, 1, 5], labels=['-5', '-1', '0', '1', '5'])
+    # cbar.set_ticks([-2.5, -1, 0, 1, 2.5])
+    # cbar.set_ticklabels(['0.1', '0.5', '1'])
+    
+    # Adjust layout to make room for the colorbar
+    plt.tight_layout(rect=[0, 0, 0.9, 1])  # Adjust the rect parameter to fit the colorbar
+    # plt.tight_layout()
+    
+    # plt.tight_layout()
+    plt.show()
+    fig.savefig('categorical_CohenD_STM20240911.png')
