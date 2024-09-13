@@ -24,211 +24,7 @@ os.environ["KERAS_BACKEND"] = "tensorflow"
 
 from prepData import prepData_STM, prepData_VGG, prepData_YAM, mask_STMmatrix
 
-# %% prepData
-# def prepData(feat_type):
-#     # % load STM data
-#     corpus_speech_list = ['BibleTTS/akuapem-twi',
-#         'BibleTTS/asante-twi',
-#         'BibleTTS/ewe',
-#         'BibleTTS/hausa',
-#         'BibleTTS/lingala',
-#         'BibleTTS/yoruba',
-#         'Buckeye',
-#         'EUROM',
-#         'HiltonMoser2022_speech',
-#         'LibriSpeech',
-#         # 'LibriVox',
-#         'MediaSpeech/AR',
-#         'MediaSpeech/ES',
-#         'MediaSpeech/FR',
-#         'MediaSpeech/TR',
-#         'MozillaCommonVoice/ab',
-#         'MozillaCommonVoice/ar',
-#         'MozillaCommonVoice/ba',
-#         'MozillaCommonVoice/be',
-#         'MozillaCommonVoice/bg',
-#         'MozillaCommonVoice/bn',
-#         'MozillaCommonVoice/br',
-#         'MozillaCommonVoice/ca',
-#         'MozillaCommonVoice/ckb',
-#         'MozillaCommonVoice/cnh',
-#         'MozillaCommonVoice/cs',
-#         'MozillaCommonVoice/cv',
-#         'MozillaCommonVoice/cy',
-#         'MozillaCommonVoice/da',
-#         'MozillaCommonVoice/de',
-#         'MozillaCommonVoice/dv',
-#         'MozillaCommonVoice/el',
-#         'MozillaCommonVoice/en',
-#         'MozillaCommonVoice/eo',
-#         'MozillaCommonVoice/es',
-#         'MozillaCommonVoice/et',
-#         'MozillaCommonVoice/eu',
-#         'MozillaCommonVoice/fa',
-#         'MozillaCommonVoice/fi',
-#         'MozillaCommonVoice/fr',
-#         'MozillaCommonVoice/fy-NL',
-#         'MozillaCommonVoice/ga-IE',
-#         'MozillaCommonVoice/gl',
-#         'MozillaCommonVoice/gn',
-#         'MozillaCommonVoice/hi',
-#         'MozillaCommonVoice/hu',
-#         'MozillaCommonVoice/hy-AM',
-#         'MozillaCommonVoice/id',
-#         'MozillaCommonVoice/ig',
-#         'MozillaCommonVoice/it',
-#         'MozillaCommonVoice/ja',
-#         'MozillaCommonVoice/ka',
-#         'MozillaCommonVoice/kab',
-#         'MozillaCommonVoice/kk',
-#         'MozillaCommonVoice/kmr',
-#         'MozillaCommonVoice/ky',
-#         'MozillaCommonVoice/lg',
-#         'MozillaCommonVoice/lt',
-#         'MozillaCommonVoice/ltg',
-#         'MozillaCommonVoice/lv',
-#         'MozillaCommonVoice/mhr',
-#         'MozillaCommonVoice/ml',
-#         'MozillaCommonVoice/mn',
-#         'MozillaCommonVoice/mt',
-#         'MozillaCommonVoice/nan-tw',
-#         'MozillaCommonVoice/nl',
-#         'MozillaCommonVoice/oc',
-#         'MozillaCommonVoice/or',
-#         'MozillaCommonVoice/pl',
-#         'MozillaCommonVoice/pt',
-#         'MozillaCommonVoice/ro',
-#         'MozillaCommonVoice/ru',
-#         'MozillaCommonVoice/rw',
-#         'MozillaCommonVoice/sr',
-#         'MozillaCommonVoice/sv-SE',
-#         'MozillaCommonVoice/sw',
-#         'MozillaCommonVoice/ta',
-#         'MozillaCommonVoice/th',
-#         'MozillaCommonVoice/tr',
-#         'MozillaCommonVoice/tt',
-#         'MozillaCommonVoice/ug',
-#         'MozillaCommonVoice/uk',
-#         'MozillaCommonVoice/ur',
-#         'MozillaCommonVoice/uz',
-#         'MozillaCommonVoice/vi',
-#         'MozillaCommonVoice/yo',
-#         'MozillaCommonVoice/yue',
-#         'MozillaCommonVoice/zh-CN',
-#         'MozillaCommonVoice/zh-TW',
-#         'primewords_chinese',
-#         'room_reader',
-#         'SpeechClarity',
-#         'TAT-Vol2',
-#         'thchs30',
-#         'TIMIT',
-#         'TTS_Javanese',
-#         'zeroth_korean'
-#     ]
-    
-#     corpus_music_list = [
-#         'IRMAS',
-#         'Albouy2020Science',
-#         # 'CD',
-#         'GarlandEncyclopedia',
-#         'fma_large',
-#         'ismir04_genre',
-#         'MTG-Jamendo',
-#         'HiltonMoser2022_song',
-#         'NHS2',
-#         'MagnaTagATune'
-#     ]
-    
-#     corpus_env_list = ['SONYC', 'MacaulayLibrary']
-    
-#     # sort the corpora lists to make sure the order is replicable
-#     corpus_speech_list.sort()
-#     corpus_music_list.sort()
-#     corpus_env_list.sort()
-    
-#     corpus_list_all = corpus_speech_list+corpus_music_list+corpus_env_list 
-        
-#     # % load meta data
-#     speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
-#     speech_corp_df2 = pd.read_csv('train_test_split/speech2_10folds_speakerGroupFold.csv',index_col=0)
-#     music_corp_df = pd.read_csv('train_test_split/music_10folds_speakerGroupFold.csv',index_col=0)
-#     df_SONYC = pd.read_csv('train_test_split/env_10folds_speakerGroupFold.csv',index_col=0)
-    
-#     all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SONYC], ignore_index=True)
-    
-#     # % split data
-    
-#     target = all_corp_df['corpus_type']
-#     data_split = all_corp_df['10fold_labels']
-    
-#     target.replace({
-#         'speech: non-tonal':0,
-#         'speech: tonal':1,
-#         'music: vocal':2,
-#         'music: non-vocal':3,
-#         'env: urban':4,
-#         'env: wildlife':5,
-#         },
-#         inplace=True)
-   
-#     y = keras.utils.to_categorical(target, num_classes=len(target.unique()))
-    
-#     for corp in corpus_list_all:
-#         if feat_type=='STM':
-#             filename = 'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
-#         elif feat_type=='VGG':
-#             filename = 'vggish_output/embeddings/'+corp.replace('/', '-')+'_vggishEmbeddings.npy'
-#         elif feat_type=='YAM':
-#             filename = 'yamnet_output/embeddings/'+corp.replace('/', '-')+'_yamnetEmbeddings.npy'
-        
-#         if 'data_all' not in locals():
-#             data_all = np.load(filename)
-#         else:
-#             data_all = np.vstack((data_all, np.load(filename)))
-#         print(filename)
-        
-#     # # process downsampled nontonal speech
-#     # Number of rows to sample for target == 0
-#     num_samples = 100000
 
-#     # Get indices of rows where target == 0
-#     indices_target_0 = target.index[target == 0].to_numpy()
-
-#     # Check if there are enough rows to sample
-#     if len(indices_target_0) < num_samples:
-#         raise ValueError(f"There are not enough rows with target == 0 to sample {num_samples} rows.")
-
-#     # Randomly sample indices from the rows where target == 0
-#     np.random.seed(23)
-#     sampled_indices = np.random.choice(indices_target_0, size=num_samples, replace=False)
-
-#     # Create a mask for the entire array, starting with selecting all rows
-#     mask = np.ones(len(target), dtype=bool)
-
-#     # Set the mask to False for rows where target == 0 but not in sampled_indices
-#     mask[indices_target_0] = False
-#     mask[sampled_indices] = True
-
-#     # Apply the mask to the NumPy array
-#     data_all_ds = data_all[mask,:]
-#     data_split_ds = data_split[mask]
-#     y_ds = y[mask,:]
-    
-    
-#     batch_size = 256
-    
-#     test_ind = data_split==9
-#     test_dataset = tf.data.Dataset.from_tensor_slices((data_all[test_ind,:], y[test_ind,:]))
-#     test_dataset = test_dataset.shuffle(buffer_size=sum(test_ind), seed=23).batch(batch_size)
-    
-#     test_ind_ds = data_split_ds==9
-#     test_dataset_ds = tf.data.Dataset.from_tensor_slices((data_all_ds[test_ind_ds,:], y_ds[test_ind_ds,:]))
-#     test_dataset_ds = test_dataset_ds.shuffle(buffer_size=sum(test_ind_ds), seed=23).batch(batch_size)
-    
-#     n_feat = data_all.shape[1]
-#     n_target = len(target.unique())
-    
-#     return test_dataset, test_dataset_ds, n_feat, n_target
 
 def eval_model(model, test_dataset):
     # search the max F1 score across thresholds
@@ -241,11 +37,26 @@ def eval_model(model, test_dataset):
     
     model.compile(metrics=[ROCAUC, PRAUC,'accuracy']+macroF1_list)
     evaluation = model.evaluate(test_dataset)
-    flat_data = evaluation[:3] + [max(evaluation[4:])] + [evaluation[3]]
+    max_threshold = (np.argmax(evaluation[4:])+1)*0.05
+    
+    df_f1 = eval_model_classF1(model, test_dataset, max_threshold)
+    
+    flat_data = evaluation[:3] + [max(evaluation[4:])] + [evaluation[3]] +[max_threshold]
     # Define column names
-    columns = ['loss', 'ROC-AUC', 'PR-AUC', 'max_macro_f1', 'accuracy']
+    columns = ['loss', 'ROC-AUC', 'PR-AUC', 'max_macro_f1', 'accuracy', 'max_f1_threshold']
     # Create DataFrame
     df = pd.DataFrame([flat_data], columns=columns)
+    df_all = pd.concat([df, df_f1], axis=1)
+    return df_all
+
+def eval_model_classF1(model, test_dataset, threshold):
+    macroF1_list = []
+    macroF1_list.append(keras.metrics.F1Score(average=None, threshold=threshold))
+    
+    model.compile(metrics=macroF1_list)
+    evaluation = model.evaluate(test_dataset)
+    columns = ['speech: nontonal', 'speech: tonal', 'music: vocal', 'music: nonvocal', 'env: urban', 'env: wildlife']
+    df = pd.DataFrame([list(evaluation[1].numpy())], columns=columns)
     return df
 
 # %% Load data
@@ -387,7 +198,11 @@ df_eval = pd.concat([
 
 
 
-df_eval.to_csv("model/MLP_summary_all_20240905.csv", index=False)
+df_eval.to_csv("model/MLP_summary_all_20240912.csv", index=False)
+
+# %% F1 score for each class
+
+STM_F1_class = eval_model_classF1(model_STM_LN_F1, test_dataset_STM, 0.35)
 
 
 # %% Load functions for evaluating ablation models
