@@ -204,6 +204,7 @@ cohenD_MusicEnv = cohenD_STM(STM_all[target.isin([2,3]),:], STM_all[target.isin(
 cohenD_SpeechEnv = cohenD_STM(STM_all[target.isin([0,1]),:], STM_all[target.isin([4,5]),:]).reshape(20,121)
 
 
+
 # %% do t-test (ver slow!)
 # from scipy.stats import ttest_ind
 # result_withinSpeech = ttest_ind(STM_all[target==0,:], STM_all[target==1,:], axis=0, equal_var=False)
@@ -232,6 +233,39 @@ ymin = np.argmin(np.abs(y_axis - yrange[0]))
 ymax = np.argmin(np.abs(y_axis - yrange[1]))
 x_axis_small = x_axis[xmin:xmax+1:x_ds_factor]
 y_axis_small = y_axis[ymin:ymax+1:y_ds_factor]
+
+
+# %% find max location (buggy!!)
+
+
+
+a = np.argmax(STM_all[target==0,:], axis=1)
+
+a = STM_all[0,:].reshape(20,121)
+
+def normalize_STM(STM_all, x_axis_small, y_axis_small):
+
+    x_normalizer = np.tile(np.sqrt(abs(np.tile(x_axis_small, (len(y_axis_small),1)))).flatten(),(len(STM_all), 1))
+    y_normalizer = np.tile(np.sqrt(abs(np.tile(y_axis_small, (len(x_axis_small),1)).T)).flatten(),(len(STM_all), 1))
+    
+    return STM_all/x_normalizer/y_normalizer
+
+STM_all_norm = normalize_STM(STM_all, x_axis_small, y_axis_small)
+
+from numpy import inf
+STM_all_norm[STM_all_norm==inf]=0
+
+STM_max_loc = np.argmax(STM_all_norm, axis=1)
+
+def mark_peak(STM_max_loc, target, cond):
+    zeros = np.zeros(2420)
+    STM_max_loc = STM_max_loc[target==cond]
+    for n in STM_max_loc:
+        zeros[n]+=1
+    return zeros
+
+max_1 = mark_peak(STM_max_loc, target, 3)
+
 
 # %% plot mean STMs
 import matplotlib.pyplot as plt
