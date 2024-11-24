@@ -228,5 +228,5 @@ if __name__ == "__main__":
     corp = corpus_list[n]
     
     melspec_stacked_data = run_melspec(corp)
-    np.save('melspectrogram_output/scores/'+corp.replace('/', '-')+'_melspectrogram.npy', melspec_stacked_data)
+    np.save('melspectrogram_output/'+corp.replace('/', '-')+'_melspectrogram.npy', melspec_stacked_data)
 

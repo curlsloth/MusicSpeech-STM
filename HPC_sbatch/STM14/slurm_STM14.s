@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=STM14
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=5
+#SBATCH --cpus-per-task=15
 #SBATCH --mem=15GB
 #SBATCH --time=6:00:00
 #SBATCH --output=HPC_slurm/STM14/STM14_%A_%a.out
