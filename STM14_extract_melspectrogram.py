@@ -194,10 +194,10 @@ def run_melspec(corp):
             # use this loop in case an excerpt is longer than 4 seconds
             t=0
             temp_s_list = []
-            expected_len = 16128
+            expected_len = 2016
             while t < len(waveform):
                 try:
-                    s = melspectrogram(y=waveform[t:t+dsr*4], sr=dsr).flatten()
+                    s = melspectrogram(y=waveform[t:t+dsr*4], sr=dsr, n_mels=32, n_fft=2048, hop_length=1024).flatten()
                     if len(s) != expected_len:
                         temp_s_list.append(np.zeros(expected_len))
                         print('*** 4-s loop error:' + filename)
