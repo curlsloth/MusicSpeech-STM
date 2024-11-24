@@ -185,13 +185,24 @@ def run_melspec(corp):
             if not corp=='MTG-Jamendo': # skip it if is 'MTG-Jamendo'
                 waveform = waveform[frame_offset:frame_end]
                 
-            _, waveform = ensure_sample_rate(sr, waveform) # convert to sr=16000 to ensure the same dimension of melspectrogram
+            dsr, waveform = ensure_sample_rate(sr, waveform) # convert to sr=16000 to ensure the same dimension of melspectrogram
             
             if (corp=='fma_large') and (n_row in [16606, 58863]): # these 2 files are broken! Use 0 to replace them.
                 print("***** using zeros to replace the corrupted audio file: n_row="+str(n_row))
                 waveform = np.zeros(16000*4)
             
-            melspec_stacked_list.append(melspectrogram(y=waveform, sr=16000).flatten())
+            # use this loop in case an excerpt is longer than 4 seconds
+            t=0
+            temp_s_list = []
+            while t < len(waveform):
+                try:
+                    temp_s_list.append(melspectrogram(y=waveform[t:t+dsr*4], sr=dsr).flatten())
+                    t += dsr*4
+                except:
+                    temp_s_list = np.zeros(16128)
+                    print('*** 4-s loop error:' + filename)
+            
+            melspec_stacked_list.append(np.mean(np.vstack(temp_s_list),axis=0))
             
         except Exception as e:
             # Print the error message
