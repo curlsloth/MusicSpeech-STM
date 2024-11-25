@@ -22,7 +22,7 @@ import matplotlib.colors as mcolors
 
 os.environ["KERAS_BACKEND"] = "tensorflow"
 
-from prepData import prepData_STM, prepData_VGG, prepData_YAM, mask_STMmatrix
+from prepData import prepData_STM, prepData_VGG, prepData_YAM, prepData_melspectrogram, mask_STMmatrix
 
 
 
@@ -63,10 +63,12 @@ def eval_model_classF1(model, test_dataset, threshold):
 _, _, test_dataset_STM, n_feat_STM, n_target = prepData_STM()
 _, _, test_dataset_VGG, n_feat_VGG, n_target = prepData_VGG()
 _, _, test_dataset_YAM, n_feat_YAM, n_target = prepData_YAM()
+_, _, test_dataset_mel, n_feat_mel, n_target = prepData_melspectrogram()
 
 _, _, test_dataset_STM_ds, n_feat_STM, n_target = prepData_STM(ds_nontonal_speech=True)
 _, _, test_dataset_VGG_ds, n_feat_VGG, n_target = prepData_VGG(ds_nontonal_speech=True)
 _, _, test_dataset_YAM_ds, n_feat_YAM, n_target = prepData_YAM(ds_nontonal_speech=True)
+_, _, test_dataset_mel_ds, n_feat_mel, n_target = prepData_melspectrogram(ds_nontonal_speech=True)
 
 # %% Load models
 
@@ -85,6 +87,12 @@ model_YAM_dropout_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_catego
 model_YAM_LN_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-20_22-40/best_model0.keras")
 model_YAM_LN_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-20_22-40/best_model0.keras")
 
+model_mel_dropout_F1 = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/Dropout/macroF1/MLP_2024-11-24_20-48/best_model0.keras")
+model_mel_dropout_AUC = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-11-24_20-25/best_model0.keras")
+model_mel_LN_F1 = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-11-25_02-17/best_model0.keras")
+model_mel_LN_AUC = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-11-24_20-25/best_model0.keras")
+
+
 
 
 model_STM_dropout_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-08-31_22-51/best_model0.keras")
@@ -102,6 +110,10 @@ model_YAM_dropout_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_cat
 model_YAM_LN_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-08-20_22-40/best_model0.keras")
 model_YAM_LN_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-08-20_22-40/best_model0.keras")
 
+model_mel_dropout_F1_ds = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-11-25_03-54/best_model0.keras")
+model_mel_dropout_AUC_ds = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-11-25_02-45/best_model0.keras")
+model_mel_LN_F1_ds = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-11-25_04-38/best_model0.keras")
+model_mel_LN_AUC_ds = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-11-25_03-11/best_model0.keras")
 
 
 
@@ -123,6 +135,12 @@ eval_VGG_dropout_F1['model'] = 'VGG_dropout_F1'
 eval_VGG_dropout_AUC = eval_model(model_VGG_dropout_AUC, test_dataset_VGG)
 eval_VGG_dropout_AUC['model'] = 'VGG_dropout_AUC'
 
+eval_mel_dropout_F1 = eval_model(model_mel_dropout_F1, test_dataset_mel)
+eval_mel_dropout_F1['model'] = 'mel_dropout_F1'
+eval_mel_dropout_AUC = eval_model(model_mel_dropout_AUC, test_dataset_mel)
+eval_mel_dropout_AUC['model'] = 'mel_dropout_AUC'
+
+
 eval_STM_LN_F1 = eval_model(model_STM_LN_F1, test_dataset_STM)
 eval_STM_LN_F1['model'] = 'STM_LN_F1'
 eval_STM_LN_AUC = eval_model(model_STM_LN_AUC, test_dataset_STM)
@@ -137,6 +155,11 @@ eval_VGG_LN_F1 = eval_model(model_VGG_LN_F1, test_dataset_VGG)
 eval_VGG_LN_F1['model'] = 'VGG_LN_F1'
 eval_VGG_LN_AUC = eval_model(model_VGG_LN_AUC, test_dataset_VGG)
 eval_VGG_LN_AUC['model'] = 'VGG_LN_AUC'
+
+eval_mel_LN_F1 = eval_model(model_mel_LN_F1, test_dataset_mel)
+eval_mel_LN_F1['model'] = 'mel_LN_F1'
+eval_mel_LN_AUC = eval_model(model_mel_LN_AUC, test_dataset_mel)
+eval_mel_LN_AUC['model'] = 'mel_LN_AUC'
 
 # df_eval = pd.concat([
 #     eval_STM_dropout_F1,eval_STM_dropout_AUC,
@@ -164,6 +187,12 @@ eval_VGG_dropout_F1_ds['model'] = 'VGG_dropout_F1_ds'
 eval_VGG_dropout_AUC_ds = eval_model(model_VGG_dropout_AUC_ds, test_dataset_VGG_ds)
 eval_VGG_dropout_AUC_ds['model'] = 'VGG_dropout_AUC_ds'
 
+eval_mel_dropout_F1_ds = eval_model(model_mel_dropout_F1_ds, test_dataset_mel_ds)
+eval_mel_dropout_F1_ds['model'] = 'mel_dropout_F1_ds'
+eval_mel_dropout_AUC_ds = eval_model(model_mel_dropout_AUC_ds, test_dataset_mel_ds)
+eval_mel_dropout_AUC_ds['model'] = 'mel_dropout_AUC_ds'
+
+
 eval_STM_LN_F1_ds = eval_model(model_STM_LN_F1_ds, test_dataset_STM_ds)
 eval_STM_LN_F1_ds['model'] = 'STM_LN_F1_ds'
 eval_STM_LN_AUC_ds = eval_model(model_STM_LN_AUC_ds, test_dataset_STM_ds)
@@ -178,6 +207,11 @@ eval_VGG_LN_F1_ds = eval_model(model_VGG_LN_F1_ds, test_dataset_VGG_ds)
 eval_VGG_LN_F1_ds['model'] = 'VGG_LN_F1_ds'
 eval_VGG_LN_AUC_ds = eval_model(model_VGG_LN_AUC_ds, test_dataset_VGG_ds)
 eval_VGG_LN_AUC_ds['model'] = 'VGG_LN_AUC_ds'
+
+eval_mel_LN_F1_ds = eval_model(model_mel_LN_F1_ds, test_dataset_mel_ds)
+eval_mel_LN_F1_ds['model'] = 'mel_LN_F1_ds'
+eval_mel_LN_AUC_ds = eval_model(model_mel_LN_AUC_ds, test_dataset_mel_ds)
+eval_mel_LN_AUC_ds['model'] = 'mel_LN_AUC_ds'
 
 
 df_eval = pd.concat([
@@ -195,10 +229,18 @@ df_eval = pd.concat([
     eval_VGG_LN_F1_ds,eval_VGG_LN_AUC_ds,
     ], ignore_index=True)
 
+# df_eval.to_csv("model/MLP_summary_all_20240912.csv", index=False)
+
+df_mel_eval = pd.concat([
+    eval_mel_dropout_F1,eval_mel_dropout_AUC,
+    eval_mel_LN_F1,eval_mel_LN_AUC,
+    eval_mel_dropout_F1_ds,eval_mel_dropout_AUC_ds,
+    eval_mel_LN_F1_ds,eval_mel_LN_AUC_ds,
+    ], ignore_index=True)
+
+# df_mel_eval.to_csv("model/MLP_summary_melspectrogram_20241125.csv", index=False)
 
 
-
-df_eval.to_csv("model/MLP_summary_all_20240912.csv", index=False)
 
 # %% F1 score for each class
 
