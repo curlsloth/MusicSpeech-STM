@@ -866,7 +866,7 @@ def prepData_melspectrogram(ds_nontonal_speech = False):
     corpus_list_all = corpus_speech_list+corpus_music_list+corpus_env_list 
     
     for corp in corpus_list_all:
-        filename = 'melspectrogram_output/'+corp.replace('/', '-')+'_melspectrogram.npy'
+        filename = 'melspectrogram_norm_output/'+corp.replace('/', '-')+'_melspectrogram.npy'
         if 'emb_all' not in locals():
             emb_all = np.load(filename)
         else:

@@ -209,7 +209,9 @@ def run_melspec(corp):
                     t += dsr*4
                     print('*** 4-s loop error:' + filename)
             
-            melspec_stacked_list.append(np.mean(np.vstack(temp_s_list),axis=0))
+            mean_s = np.mean(np.vstack(temp_s_list),axis=0)
+            rescaled_s = (mean_s-min(mean_s))/(max(mean_s)-min(mean_s)) # rescale to 0 and 1
+            melspec_stacked_list.append(rescaled_s)
             
         except Exception as e:
             # Print the error message
@@ -235,5 +237,5 @@ if __name__ == "__main__":
     corp = corpus_list[n]
     
     melspec_stacked_data = run_melspec(corp)
-    np.save('melspectrogram_output/'+corp.replace('/', '-')+'_melspectrogram.npy', melspec_stacked_data)
+    np.save('melspectrogram_norm_output/'+corp.replace('/', '-')+'_melspectrogram.npy', melspec_stacked_data)
 
