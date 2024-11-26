@@ -4,8 +4,8 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=30
 #SBATCH --gres=gpu:0
-#SBATCH --mem=369GB
-#SBATCH --time=12:00:00
+#SBATCH --mem=100GB
+#SBATCH --time=6:00:00
 #SBATCH --output=HPC_slurm/STM15/STM15_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
 #SBATCH --mail-type=END
