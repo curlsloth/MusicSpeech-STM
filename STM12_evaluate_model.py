@@ -120,10 +120,16 @@ model_YAM_LN_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categori
 # model_mel_LN_F1_ds = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-11-25_04-38/best_model0.keras")
 # model_mel_LN_AUC_ds = keras.saving.load_model("model/melspectrogram/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-11-25_03-11/best_model0.keras")
 
-model_mel_dropout_F1_ds = keras.saving.load_model("model/melspectrogram_norm/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-11-26_18-47/best_model0.keras")
-model_mel_dropout_AUC_ds = keras.saving.load_model("model/melspectrogram_norm/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-11-26_17-59/best_model0.keras")
-model_mel_LN_F1_ds = keras.saving.load_model("model/melspectrogram_norm/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-11-26_18-51/best_model0.keras")
-model_mel_LN_AUC_ds = keras.saving.load_model("model/melspectrogram_norm/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-11-26_18-38/best_model0.keras")
+# model_mel_dropout_F1_ds = keras.saving.load_model("model/melspectrogram_norm/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-11-26_18-47/best_model0.keras")
+# model_mel_dropout_AUC_ds = keras.saving.load_model("model/melspectrogram_norm/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-11-26_17-59/best_model0.keras")
+# model_mel_LN_F1_ds = keras.saving.load_model("model/melspectrogram_norm/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-11-26_18-51/best_model0.keras")
+# model_mel_LN_AUC_ds = keras.saving.load_model("model/melspectrogram_norm/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-11-26_18-38/best_model0.keras")
+
+model_mel_dropout_F1_ds = keras.saving.load_model("model/melspectrogram_norm_clipnorm/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-11-26_21-32/best_model0.keras")
+model_mel_dropout_AUC_ds = keras.saving.load_model("model/melspectrogram_norm_clipnorm/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-11-26_21-33/best_model0.keras")
+model_mel_LN_F1_ds = keras.saving.load_model("model/melspectrogram_norm_clipnorm/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-11-26_21-32/best_model0.keras")
+model_mel_LN_AUC_ds = keras.saving.load_model("model/melspectrogram_norm_clipnorm/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-11-26_21-32/best_model0.keras")
+
 
 
 

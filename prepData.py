@@ -930,7 +930,8 @@ def prepData_melspectrogram(ds_nontonal_speech = False):
         y = y[mask,:]
         
         
-        
+    # replace nan as the missing audios were replaced by 0 waveform
+    emb_all = np.nan_to_num(emb_all, nan=0.0, copy=False)
         
     
     # % split data
