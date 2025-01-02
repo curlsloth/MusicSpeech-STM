@@ -219,9 +219,9 @@ if __name__ == "__main__":
             'y_highcutoff': i1,
             }
         
-        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ablation_params = ablation_params)
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ablation_params = ablation_params, n_pca=None) # the low-pass will have a much lower number of features so PCA is not necessary
         hm = hyperModel_LN()
-        directory = "model/STM/MLP_corpora_categories/LayerNormalization/macroF1/ablation/xhighcutoff"+str(i0)+"_yhighcutoff"+str(i1)
+        directory = "model/STM/MLP_corpora_categories/PCA/LayerNormalization/macroF1/ablation/xhighcutoff"+str(i0)+"_yhighcutoff"+str(i1)
         objective = kt.Objective("val_macro_f1_score", direction="max")
         early_stop = "val_f1_score"
     elif 57<=int(sys.argv[1])<=105:
