@@ -147,42 +147,42 @@ if __name__ == "__main__":
     if sys.argv[1]=='0':
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False, n_pca=1024)
         hm = hyperModel_drop()
-        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC"
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/Dropout/ROC-AUC"
         objective="val_auc"
     elif sys.argv[1]=='1':
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False, n_pca=1024)
         hm = hyperModel_LN()
-        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC"
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/LayerNormalization/ROC-AUC"
         objective="val_auc"
     elif sys.argv[1]=='2':
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False, n_pca=1024)
         hm = hyperModel_drop()
-        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1"
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/Dropout/macroF1"
         objective=kt.Objective("val_macro_f1_score", direction="max")
     elif sys.argv[1]=='3':
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False, n_pca=1024)
         hm = hyperModel_LN()
-        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1"
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/LayerNormalization/macroF1"
         objective=kt.Objective("val_macro_f1_score", direction="max")
     elif sys.argv[1]=='4':
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True, n_pca=1024)
         hm = hyperModel_drop()
-        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC/downsample"
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/Dropout/ROC-AUC/downsample"
         objective="val_auc"
     elif sys.argv[1]=='5':
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True, n_pca=1024)
         hm = hyperModel_LN()
-        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample"
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/LayerNormalization/ROC-AUC/downsample"
         objective="val_auc"
     elif sys.argv[1]=='6':
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True, n_pca=1024)
         hm = hyperModel_drop()
-        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1/downsample"
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/Dropout/macroF1/downsample"
         objective=kt.Objective("val_macro_f1_score", direction="max")
     elif sys.argv[1]=='7':
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True, n_pca=1024)
         hm = hyperModel_LN()
-        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1/downsample"
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/LayerNormalization/macroF1/downsample"
         objective=kt.Objective("val_macro_f1_score", direction="max")
         
     time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
