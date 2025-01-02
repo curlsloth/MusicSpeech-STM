@@ -274,7 +274,7 @@ def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None, n
     
     # add PCA
     if n_pca is not None:
-        pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_PCA))
+        pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_pca))
     else:
         pipeline = make_pipeline(StandardScaler())
     
@@ -282,7 +282,7 @@ def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None, n
     val_dataset = tf.data.Dataset.from_tensor_slices((pipeline.transform(STM_all[val_ind,:]), y[val_ind,:]))
     test_dataset = tf.data.Dataset.from_tensor_slices((pipeline.transform(STM_all[test_ind,:]), y[test_ind,:]))
     
-    dump(pipeline, 'model/STM/PCA/trainSTM_pca-pipeline_nPCA'+str(n_PCA)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+    dump(pipeline, 'model/STM/PCA/trainSTM_pca-pipeline_nPCA'+str(n_pca)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
     
     # shuffle and then batch
     batch_size = 256
@@ -953,7 +953,7 @@ def prepData_melspectrogram(ds_nontonal_speech=False, n_pca=None):
     
     # add PCA
     if n_pca is not None:
-        pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_PCA))
+        pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_pca))
     else:
         pipeline = make_pipeline(StandardScaler())
     
@@ -961,7 +961,7 @@ def prepData_melspectrogram(ds_nontonal_speech=False, n_pca=None):
     val_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(emb_all[val_ind,:]), y[val_ind,:]))
     test_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(emb_all[test_ind,:]), y[test_ind,:]))
     
-    dump(pipeline, 'model/melspectrogram_norm_nan/PCA/trainSTM_pca-pipeline_nPCA'+str(n_PCA)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+    dump(pipeline, 'model/melspectrogram_norm_nan/PCA/trainSTM_pca-pipeline_nPCA'+str(n_pca)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
     
     
     # shuffle and then batch
