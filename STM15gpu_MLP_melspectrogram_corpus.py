@@ -21,8 +21,8 @@ os.environ["KERAS_BACKEND"] = "tensorflow"
 
 
 # %% build model
-n_feat = 2016
-n_target = 6
+# n_feat = 2016
+# n_target = 6
 
 class hyperModel_drop(kt.HyperModel):
 

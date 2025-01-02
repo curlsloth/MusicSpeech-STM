@@ -17,6 +17,10 @@ import tensorflow as tf
 import sys
 import gc
 import scipy.io
+from joblib import dump
+from sklearn.decomposition import IncrementalPCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
 
 def mask_STMmatrix(ablation_params):
     x_lowcutoff = ablation_params['x_lowcutoff']
@@ -263,15 +267,20 @@ def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None):
         y = y[mask,:]
        
         
-    # % split data
+    # split data
     train_ind = data_split<8
     val_ind = data_split==8
     test_ind = data_split==9
     
+    # add PCA
+    n_PCA = 1024
+    pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_PCA))
     
-    train_dataset = tf.data.Dataset.from_tensor_slices((STM_all[train_ind,:], y[train_ind,:]))
-    val_dataset = tf.data.Dataset.from_tensor_slices((STM_all[val_ind,:], y[val_ind,:]))
-    test_dataset = tf.data.Dataset.from_tensor_slices((STM_all[test_ind,:], y[test_ind,:]))
+    train_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(STM_all[train_ind,:]), y[train_ind,:]))
+    val_dataset = tf.data.Dataset.from_tensor_slices((pipeline.transform(STM_all[val_ind,:]), y[val_ind,:]))
+    test_dataset = tf.data.Dataset.from_tensor_slices((pipeline.transform(STM_all[test_ind,:]), y[test_ind,:]))
+    
+    dump(pipeline, 'model/STM/PCA/trainSTM_pca-pipeline_nPCA'+str(n_PCA)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
     
     # shuffle and then batch
     batch_size = 256
@@ -940,9 +949,16 @@ def prepData_melspectrogram(ds_nontonal_speech = False):
     val_ind = data_split==8
     test_ind = data_split==9
     
-    train_dataset = tf.data.Dataset.from_tensor_slices((emb_all[train_ind,:], y[train_ind,:]))
-    val_dataset = tf.data.Dataset.from_tensor_slices((emb_all[val_ind,:], y[val_ind,:]))
-    test_dataset = tf.data.Dataset.from_tensor_slices((emb_all[test_ind,:], y[test_ind,:]))
+    # add PCA
+    n_PCA = 1024
+    pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_PCA))
+    
+    train_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(emb_all[train_ind,:]), y[train_ind,:]))
+    val_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(emb_all[val_ind,:]), y[val_ind,:]))
+    test_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(emb_all[test_ind,:]), y[test_ind,:]))
+    
+    dump(pipeline, 'model/melspectrogram_norm_nan/PCA/trainSTM_pca-pipeline_nPCA'+str(n_PCA)+'_'+datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")+'.joblib') 
+    
     
     # shuffle and then batch
     batch_size = 256
