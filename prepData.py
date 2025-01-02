@@ -274,8 +274,10 @@ def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None, n
     
     # add PCA
     if n_pca is not None:
+        n_feat = n_pca
         pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_pca))
     else:
+        n_feat = STM_all.shape[1]
         pipeline = make_pipeline(StandardScaler())
     
     train_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(STM_all[train_ind,:]), y[train_ind,:]))
@@ -293,7 +295,6 @@ def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None, n
     
     
     
-    n_feat = STM_all.shape[1]
     n_target = len(target.unique())
     
    
@@ -953,8 +954,10 @@ def prepData_melspectrogram(ds_nontonal_speech=False, n_pca=None):
     
     # add PCA
     if n_pca is not None:
+        n_feat = n_pca
         pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_pca))
     else:
+        n_feat = emb_all.shape[1]
         pipeline = make_pipeline(StandardScaler())
     
     train_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(emb_all[train_ind,:]), y[train_ind,:]))
@@ -971,7 +974,6 @@ def prepData_melspectrogram(ds_nontonal_speech=False, n_pca=None):
     val_dataset = val_dataset.shuffle(buffer_size=sum(val_ind), seed=23).batch(batch_size)
     test_dataset = test_dataset.shuffle(buffer_size=sum(test_ind), seed=23).batch(batch_size)
     
-    n_feat = emb_all.shape[1]
     n_target = len(target.unique())
     
    
