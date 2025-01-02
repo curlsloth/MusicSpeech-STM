@@ -1,0 +1,318 @@
+WARNING: Could not find any nv files on this host!
+2025-01-02 14:23:16.309557: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-01-02 14:23:17.023723: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2025-01-02 14:23:17.023766: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-01-02 14:23:17.041585: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-01-02 14:23:17.151866: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-01-02 14:23:18.614353: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/vast/ac8888/MusicSpeech-STM/prepData.py:899: FutureWarning: Downcasting behavior in `replace` is deprecated and will be removed in a future version. To retain the old behavior, explicitly call `result.infer_objects(copy=False)`. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  target.replace({
+melspectrogram_norm_output/BibleTTS-akuapem-twi_melspectrogram.npy
+melspectrogram_norm_output/BibleTTS-asante-twi_melspectrogram.npy
+melspectrogram_norm_output/BibleTTS-ewe_melspectrogram.npy
+melspectrogram_norm_output/BibleTTS-hausa_melspectrogram.npy
+melspectrogram_norm_output/BibleTTS-lingala_melspectrogram.npy
+melspectrogram_norm_output/BibleTTS-yoruba_melspectrogram.npy
+melspectrogram_norm_output/Buckeye_melspectrogram.npy
+melspectrogram_norm_output/EUROM_melspectrogram.npy
+melspectrogram_norm_output/HiltonMoser2022_speech_melspectrogram.npy
+melspectrogram_norm_output/LibriSpeech_melspectrogram.npy
+melspectrogram_norm_output/MediaSpeech-AR_melspectrogram.npy
+melspectrogram_norm_output/MediaSpeech-ES_melspectrogram.npy
+melspectrogram_norm_output/MediaSpeech-FR_melspectrogram.npy
+melspectrogram_norm_output/MediaSpeech-TR_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ab_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ar_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ba_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-be_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-bg_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-bn_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-br_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ca_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ckb_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-cnh_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-cs_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-cv_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-cy_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-da_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-de_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-dv_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-el_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-en_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-eo_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-es_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-et_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-eu_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-fa_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-fi_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-fr_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-fy-NL_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ga-IE_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-gl_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-gn_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-hi_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-hu_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-hy-AM_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-id_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ig_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-it_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ja_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ka_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-kab_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-kk_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-kmr_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ky_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-lg_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-lt_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ltg_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-lv_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-mhr_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ml_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-mn_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-mt_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-nan-tw_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-nl_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-oc_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-or_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-pl_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-pt_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ro_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ru_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-rw_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-sr_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-sv-SE_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-sw_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ta_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-th_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-tr_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-tt_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ug_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-uk_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-ur_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-uz_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-vi_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-yo_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-yue_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-zh-CN_melspectrogram.npy
+melspectrogram_norm_output/MozillaCommonVoice-zh-TW_melspectrogram.npy
+melspectrogram_norm_output/SpeechClarity_melspectrogram.npy
+melspectrogram_norm_output/TAT-Vol2_melspectrogram.npy
+melspectrogram_norm_output/TIMIT_melspectrogram.npy
+melspectrogram_norm_output/TTS_Javanese_melspectrogram.npy
+melspectrogram_norm_output/primewords_chinese_melspectrogram.npy
+melspectrogram_norm_output/room_reader_melspectrogram.npy
+melspectrogram_norm_output/thchs30_melspectrogram.npy
+melspectrogram_norm_output/zeroth_korean_melspectrogram.npy
+melspectrogram_norm_output/Albouy2020Science_melspectrogram.npy
+melspectrogram_norm_output/GarlandEncyclopedia_melspectrogram.npy
+melspectrogram_norm_output/HiltonMoser2022_song_melspectrogram.npy
+melspectrogram_norm_output/IRMAS_melspectrogram.npy
+melspectrogram_norm_output/MTG-Jamendo_melspectrogram.npy
+melspectrogram_norm_output/MagnaTagATune_melspectrogram.npy
+melspectrogram_norm_output/NHS2_melspectrogram.npy
+melspectrogram_norm_output/fma_large_melspectrogram.npy
+melspectrogram_norm_output/ismir04_genre_melspectrogram.npy
+melspectrogram_norm_output/MacaulayLibrary_melspectrogram.npy
+melspectrogram_norm_output/SONYC_melspectrogram.npy
+Embedding data and meta data mismatched!
+Search space summary
+Default search space size: 6
+num_layers (Int)
+{'default': None, 'conditions': [], 'min_value': 1, 'max_value': 4, 'step': 1, 'sampling': 'linear'}
+units_0 (Int)
+{'default': None, 'conditions': [], 'min_value': 200, 'max_value': 600, 'step': 50, 'sampling': 'linear'}
+activation (Choice)
+{'default': 'relu', 'conditions': [], 'values': ['relu'], 'ordered': False}
+L1_0 (Float)
+{'default': 1e-12, 'conditions': [], 'min_value': 1e-12, 'max_value': 1e-06, 'step': None, 'sampling': 'log'}
+drop_0 (Float)
+{'default': 0.0, 'conditions': [], 'min_value': 0.0, 'max_value': 0.1, 'step': None, 'sampling': 'linear'}
+lr (Float)
+{'default': 1e-07, 'conditions': [], 'min_value': 1e-07, 'max_value': 0.0001, 'step': None, 'sampling': 'log'}
+
+Search: Running Trial #1
+
+Value             |Best Value So Far |Hyperparameter
+4                 |4                 |num_layers
+500               |500               |units_0
+relu              |relu              |activation
+3.0461e-08        |3.0461e-08        |L1_0
+0.06485           |0.06485           |drop_0
+2.1821e-07        |2.1821e-07        |lr
+
+Epoch 1/2
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 274, in _try_run_and_update_trial
+    self._run_and_update_trial(trial, *fit_args, **fit_kwargs)
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 239, in _run_and_update_trial
+    results = self.run_trial(trial, *fit_args, **fit_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/tuner.py", line 314, in run_trial
+    obj_value = self._build_and_fit_model(trial, *args, **copied_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/tuner.py", line 233, in _build_and_fit_model
+    results = self.hypermodel.fit(hp, model, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/ac8888/MusicSpeech-STM/STM15gpu_MLP_melspectrogram_corpus.py", line 81, in fit
+    return model.fit(
+           ^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras/src/utils/traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras/src/layers/input_spec.py", line 227, in assert_input_compatibility
+    raise ValueError(
+ValueError: Exception encountered when calling Sequential.call().
+
+[1mInput 0 of layer "dense" is incompatible with the layer: expected axis -1 of input shape to have value 2016, but received input with shape (None, 1024)[0m
+
+Arguments received by Sequential.call():
+  • inputs=tf.Tensor(shape=(None, 1024), dtype=float32)
+  • training=True
+  • mask=None
+[2K[2KTrial 1 Complete [00h 00m 02s]
+
+Best val_auc So Far: None
+Total elapsed time: 00h 00m 02s
+
+Search: Running Trial #2
+
+Value             |Best Value So Far |Hyperparameter
+3                 |4                 |num_layers
+400               |500               |units_0
+relu              |relu              |activation
+2.9143e-12        |3.0461e-08        |L1_0
+0.057033          |0.06485           |drop_0
+3.8619e-06        |2.1821e-07        |lr
+400               |200               |units_1
+9.38e-11          |1e-12             |L1_1
+0.0682            |0                 |drop_1
+450               |200               |units_2
+1.816e-11         |1e-12             |L1_2
+0.045861          |0                 |drop_2
+350               |200               |units_3
+6.8637e-09        |1e-12             |L1_3
+0.0038552         |0                 |drop_3
+
+Epoch 1/2
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 274, in _try_run_and_update_trial
+    self._run_and_update_trial(trial, *fit_args, **fit_kwargs)
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 239, in _run_and_update_trial
+    results = self.run_trial(trial, *fit_args, **fit_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/tuner.py", line 314, in run_trial
+    obj_value = self._build_and_fit_model(trial, *args, **copied_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/tuner.py", line 233, in _build_and_fit_model
+    results = self.hypermodel.fit(hp, model, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/ac8888/MusicSpeech-STM/STM15gpu_MLP_melspectrogram_corpus.py", line 81, in fit
+    return model.fit(
+           ^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras/src/utils/traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras/src/layers/input_spec.py", line 227, in assert_input_compatibility
+    raise ValueError(
+ValueError: Exception encountered when calling Sequential.call().
+
+[1mInput 0 of layer "dense" is incompatible with the layer: expected axis -1 of input shape to have value 2016, but received input with shape (None, 1024)[0m
+
+Arguments received by Sequential.call():
+  • inputs=tf.Tensor(shape=(None, 1024), dtype=float32)
+  • training=True
+  • mask=None
+[2K[2KTrial 2 Complete [00h 00m 00s]
+
+Best val_auc So Far: None
+Total elapsed time: 00h 00m 02s
+
+Search: Running Trial #3
+
+Value             |Best Value So Far |Hyperparameter
+2                 |4                 |num_layers
+300               |500               |units_0
+relu              |relu              |activation
+1.2914e-10        |3.0461e-08        |L1_0
+0.054816          |0.06485           |drop_0
+1.5873e-07        |2.1821e-07        |lr
+400               |200               |units_1
+2.8914e-11        |1e-12             |L1_1
+0.097835          |0                 |drop_1
+450               |200               |units_2
+3.0329e-07        |1e-12             |L1_2
+0.009034          |0                 |drop_2
+600               |200               |units_3
+1.8005e-12        |1e-12             |L1_3
+0.058076          |0                 |drop_3
+
+Epoch 1/2
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 274, in _try_run_and_update_trial
+    self._run_and_update_trial(trial, *fit_args, **fit_kwargs)
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 239, in _run_and_update_trial
+    results = self.run_trial(trial, *fit_args, **fit_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/tuner.py", line 314, in run_trial
+    obj_value = self._build_and_fit_model(trial, *args, **copied_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/tuner.py", line 233, in _build_and_fit_model
+    results = self.hypermodel.fit(hp, model, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/ac8888/MusicSpeech-STM/STM15gpu_MLP_melspectrogram_corpus.py", line 81, in fit
+    return model.fit(
+           ^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras/src/utils/traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras/src/layers/input_spec.py", line 227, in assert_input_compatibility
+    raise ValueError(
+ValueError: Exception encountered when calling Sequential.call().
+
+[1mInput 0 of layer "dense" is incompatible with the layer: expected axis -1 of input shape to have value 2016, but received input with shape (None, 1024)[0m
+
+Arguments received by Sequential.call():
+  • inputs=tf.Tensor(shape=(None, 1024), dtype=float32)
+  • training=True
+  • mask=None
+Traceback (most recent call last):
+  File "/vast/ac8888/MusicSpeech-STM/STM15gpu_MLP_melspectrogram_corpus.py", line 218, in <module>
+    tuner.search(
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 235, in search
+    self.on_trial_end(trial)
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 339, in on_trial_end
+    self.oracle.end_trial(trial)
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/oracle.py", line 108, in wrapped_func
+    ret_val = func(*args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/oracle.py", line 588, in end_trial
+    self._check_consecutive_failures()
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/oracle.py", line 545, in _check_consecutive_failures
+    raise RuntimeError(
+RuntimeError: Number of consecutive failures exceeded the limit of 3.
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 274, in _try_run_and_update_trial
+    self._run_and_update_trial(trial, *fit_args, **fit_kwargs)
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/base_tuner.py", line 239, in _run_and_update_trial
+    results = self.run_trial(trial, *fit_args, **fit_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/tuner.py", line 314, in run_trial
+    obj_value = self._build_and_fit_model(trial, *args, **copied_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras_tuner/src/engine/tuner.py", line 233, in _build_and_fit_model
+    results = self.hypermodel.fit(hp, model, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/ac8888/MusicSpeech-STM/STM15gpu_MLP_melspectrogram_corpus.py", line 81, in fit
+    return model.fit(
+           ^^^^^^^^^^
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras/src/utils/traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/ext3/miniconda3/envs/MusicSpeech-STMhpc_GPU/lib/python3.11/site-packages/keras/src/layers/input_spec.py", line 227, in assert_input_compatibility
+    raise ValueError(
+ValueError: Exception encountered when calling Sequential.call().
+
+[1mInput 0 of layer "dense" is incompatible with the layer: expected axis -1 of input shape to have value 2016, but received input with shape (None, 1024)[0m
+
+Arguments received by Sequential.call():
+  • inputs=tf.Tensor(shape=(None, 1024), dtype=float32)
+  • training=True
+  • mask=None
+
