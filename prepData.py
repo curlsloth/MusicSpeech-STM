@@ -60,7 +60,7 @@ def mask_STMmatrix(ablation_params):
         matrix[np.abs(y_axis_small)>y_highcutoff,:]=1
     return matrix
 
-def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None):
+def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None, n_pca=None):
     # % load STM data
     corpus_speech_list = ['BibleTTS/akuapem-twi',
         'BibleTTS/asante-twi',
@@ -273,8 +273,10 @@ def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None):
     test_ind = data_split==9
     
     # add PCA
-    n_PCA = 1024
-    pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_PCA))
+    if n_pca is not None:
+        pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_PCA))
+    else:
+        pipeline = make_pipeline(StandardScaler())
     
     train_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(STM_all[train_ind,:]), y[train_ind,:]))
     val_dataset = tf.data.Dataset.from_tensor_slices((pipeline.transform(STM_all[val_ind,:]), y[val_ind,:]))
@@ -751,7 +753,7 @@ def prepData_YAM(ds_nontonal_speech = False):
 
 
 
-def prepData_melspectrogram(ds_nontonal_speech = False):
+def prepData_melspectrogram(ds_nontonal_speech=False, n_pca=None):
     # % load STM data
     corpus_speech_list = ['BibleTTS/akuapem-twi',
         'BibleTTS/asante-twi',
@@ -950,8 +952,10 @@ def prepData_melspectrogram(ds_nontonal_speech = False):
     test_ind = data_split==9
     
     # add PCA
-    n_PCA = 1024
-    pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_PCA))
+    if n_pca is not None:
+        pipeline = make_pipeline(StandardScaler(),IncrementalPCA(n_components=n_PCA))
+    else:
+        pipeline = make_pipeline(StandardScaler())
     
     train_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(emb_all[train_ind,:]), y[train_ind,:]))
     val_dataset = tf.data.Dataset.from_tensor_slices((pipeline.fit_transform(emb_all[val_ind,:]), y[val_ind,:]))

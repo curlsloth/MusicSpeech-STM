@@ -143,108 +143,108 @@ class hyperModel_LN(kt.HyperModel):
         )
 
 # %% set the tuner
+if __name__ == "__main__":
+    if sys.argv[1]=='0':
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False, n_pca=1024)
+        hm = hyperModel_drop()
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC"
+        objective="val_auc"
+    elif sys.argv[1]=='1':
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False, n_pca=1024)
+        hm = hyperModel_LN()
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC"
+        objective="val_auc"
+    elif sys.argv[1]=='2':
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False, n_pca=1024)
+        hm = hyperModel_drop()
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1"
+        objective=kt.Objective("val_macro_f1_score", direction="max")
+    elif sys.argv[1]=='3':
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False, n_pca=1024)
+        hm = hyperModel_LN()
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1"
+        objective=kt.Objective("val_macro_f1_score", direction="max")
+    elif sys.argv[1]=='4':
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True, n_pca=1024)
+        hm = hyperModel_drop()
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC/downsample"
+        objective="val_auc"
+    elif sys.argv[1]=='5':
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True, n_pca=1024)
+        hm = hyperModel_LN()
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample"
+        objective="val_auc"
+    elif sys.argv[1]=='6':
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True, n_pca=1024)
+        hm = hyperModel_drop()
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1/downsample"
+        objective=kt.Objective("val_macro_f1_score", direction="max")
+    elif sys.argv[1]=='7':
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True, n_pca=1024)
+        hm = hyperModel_LN()
+        directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1/downsample"
+        objective=kt.Objective("val_macro_f1_score", direction="max")
+        
+    time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 
-if sys.argv[1]=='0':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False)
-    hm = hyperModel_drop()
-    directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC"
-    objective="val_auc"
-elif sys.argv[1]=='1':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False)
-    hm = hyperModel_LN()
-    directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC"
-    objective="val_auc"
-elif sys.argv[1]=='2':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False)
-    hm = hyperModel_drop()
-    directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1"
-    objective=kt.Objective("val_macro_f1_score", direction="max")
-elif sys.argv[1]=='3':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = False)
-    hm = hyperModel_LN()
-    directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1"
-    objective=kt.Objective("val_macro_f1_score", direction="max")
-elif sys.argv[1]=='4':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True)
-    hm = hyperModel_drop()
-    directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC/downsample"
-    objective="val_auc"
-elif sys.argv[1]=='5':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True)
-    hm = hyperModel_LN()
-    directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample"
-    objective="val_auc"
-elif sys.argv[1]=='6':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True)
-    hm = hyperModel_drop()
-    directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1/downsample"
-    objective=kt.Objective("val_macro_f1_score", direction="max")
-elif sys.argv[1]=='7':
-    train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ds_nontonal_speech = True)
-    hm = hyperModel_LN()
-    directory = "model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1/downsample"
-    objective=kt.Objective("val_macro_f1_score", direction="max")
-    
-time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+    # Prepare a directory to store all the checkpoints.
+    checkpoint_dir = directory+"/ckpt/"+time_stamp
+    if not os.path.exists(checkpoint_dir):
+        os.makedirs(checkpoint_dir)
 
-# Prepare a directory to store all the checkpoints.
-checkpoint_dir = directory+"/ckpt/"+time_stamp
-if not os.path.exists(checkpoint_dir):
-    os.makedirs(checkpoint_dir)
+    ## Disable GPU (not enough usage)
+    # Create a MirroredStrategy.
+    # strategy = tf.distribute.MirroredStrategy()
+    # print('Number of devices: {}'.format(strategy.num_replicas_in_sync))
 
-## Disable GPU (not enough usage)
-# Create a MirroredStrategy.
-# strategy = tf.distribute.MirroredStrategy()
-# print('Number of devices: {}'.format(strategy.num_replicas_in_sync))
+    # with strategy.scope():
+        
+        
+    tuner = kt.BayesianOptimization(
+        hypermodel=hm,
+        objective=objective,
+        num_initial_points=10,
+        max_trials=40,
+        executions_per_trial=3,
+        seed=23,
+        max_retries_per_trial=0,
+        max_consecutive_failed_trials=3,
+        overwrite=True,
+        directory=directory,
+        project_name="MLP_"+time_stamp,
+        )
+    tuner.search_space_summary()
 
-# with strategy.scope():
-    
-    
-tuner = kt.BayesianOptimization(
-    hypermodel=hm,
-    objective=objective,
-    num_initial_points=10,
-    max_trials=40,
-    executions_per_trial=3,
-    seed=23,
-    max_retries_per_trial=0,
-    max_consecutive_failed_trials=3,
-    overwrite=True,
-    directory=directory,
-    project_name="MLP_"+time_stamp,
-    )
-tuner.search_space_summary()
-
-tuner.search(
-    train_dataset, 
-    epochs=2, 
-    validation_data=val_dataset,
-    # callbacks=[
-    #     keras.callbacks.EarlyStopping(
-    #         monitor=objective, 
-    #         mode="max",
-    #         patience=5,
-    #         verbose=1,
-    #         ),
-    #     keras.callbacks.ModelCheckpoint(
-    #         filepath=checkpoint_dir + "/ckpt-{epoch}.keras",
-    #         save_freq="epoch",
-    #         ),
-    #     ]
-    )
+    tuner.search(
+        train_dataset, 
+        epochs=2, 
+        validation_data=val_dataset,
+        # callbacks=[
+        #     keras.callbacks.EarlyStopping(
+        #         monitor=objective, 
+        #         mode="max",
+        #         patience=5,
+        #         verbose=1,
+        #         ),
+        #     keras.callbacks.ModelCheckpoint(
+        #         filepath=checkpoint_dir + "/ckpt-{epoch}.keras",
+        #         save_freq="epoch",
+        #         ),
+        #     ]
+        )
 
 
-# %% retrain the best model
-tf.keras.backend.clear_session()
-gc.collect()
+    # %% retrain the best model
+    tf.keras.backend.clear_session()
+    gc.collect()
 
-retrain_dataset = train_dataset.concatenate(val_dataset)
+    retrain_dataset = train_dataset.concatenate(val_dataset)
 
-n_best_model = 3
-best_hps = tuner.get_best_hyperparameters(n_best_model)
-for n in range(n_best_model):
-    best_model = hm.build(best_hps[n])
-    best_model.fit(retrain_dataset)
-    
-    saving_path = directory+"/"+"MLP_"+time_stamp+"/best_model"+str(n)+".keras"
-    best_model.save(saving_path)
+    n_best_model = 3
+    best_hps = tuner.get_best_hyperparameters(n_best_model)
+    for n in range(n_best_model):
+        best_model = hm.build(best_hps[n])
+        best_model.fit(retrain_dataset)
+        
+        saving_path = directory+"/"+"MLP_"+time_stamp+"/best_model"+str(n)+".keras"
+        best_model.save(saving_path)
