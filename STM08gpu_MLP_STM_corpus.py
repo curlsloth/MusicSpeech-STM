@@ -243,7 +243,7 @@ if __name__ == "__main__":
             'y_highcutoff': None,
             }
         
-        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ablation_params = ablation_params, n_pca=1024)
+        train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ablation_params = ablation_params, n_pca=None)
         hm = hyperModel_LN()
         directory = "model/STM/MLP_corpora_categories/PCA/LayerNormalization/macroF1/ablation/xlowcutoff"+str(i0)+"_ylowcutoff"+str(i1)
         objective = kt.Objective("val_macro_f1_score", direction="max")
