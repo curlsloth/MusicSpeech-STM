@@ -18,6 +18,7 @@ import gc
 import glob
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import warnings
 
 
 os.environ["KERAS_BACKEND"] = "tensorflow"
@@ -72,10 +73,42 @@ _, _, test_dataset_mel_ds, n_feat_mel, n_target = prepData_melspectrogram(ds_non
 
 # %% Load models
 
-model_STM_dropout_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-31_22-11/best_model0.keras")
-model_STM_dropout_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-31_22-10/best_model0.keras")
-model_STM_LN_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-31_22-10/best_model0.keras")
-model_STM_LN_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-31_22-11/best_model0.keras")
+def path_finder(base_path):
+    # Define the base path and the pattern
+    pattern = os.path.join(base_path, 'MLP_*/best_model0.keras')
+
+    # Find all matching paths
+    matching_paths = glob.glob(pattern)
+
+    # Check if there are multiple matches
+    if len(matching_paths) > 1:
+        warnings.warn('Multiple paths found. Using the first one.')
+    elif len(matching_paths) == 0:
+        raise FileNotFoundError('No matching paths found.')
+    else:
+        return matching_paths[0]
+
+
+# no PCA
+# model_STM_dropout_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-31_22-11/best_model0.keras")
+# model_STM_dropout_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-31_22-10/best_model0.keras")
+# model_STM_LN_F1 = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-31_22-10/best_model0.keras")
+# model_STM_LN_AUC = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-31_22-11/best_model0.keras")
+
+# model_mel_dropout_F1 = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1/MLP_2024-11-27_02-11/best_model0.keras")
+# model_mel_dropout_AUC = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-11-27_00-00/best_model0.keras")
+# model_mel_LN_F1 = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-11-27_02-12/best_model0.keras")
+# model_mel_LN_AUC = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-11-27_01-26/best_model0.keras")
+
+model_STM_dropout_F1 = keras.saving.load_model(path_finder("model/STM/MLP_corpora_categories/PCA/Dropout/macroF1"))
+model_STM_dropout_AUC = keras.saving.load_model(path_finder("model/STM/MLP_corpora_categories/PCA/Dropout/ROC-AUC"))
+model_STM_LN_F1 = keras.saving.load_model(path_finder("model/STM/MLP_corpora_categories/PCA/LayerNormalization/macroF1"))
+model_STM_LN_AUC = keras.saving.load_model(path_finder("model/STM/MLP_corpora_categories/PCA/LayerNormalization/ROC-AUC"))
+
+model_mel_dropout_F1 = keras.saving.load_model(path_finder("model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/Dropout/macroF1"))
+model_mel_dropout_AUC = keras.saving.load_model(path_finder("model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/Dropout/ROC-AUC"))
+model_mel_LN_F1 = keras.saving.load_model(path_finder("model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/LayerNormalization/macroF1"))
+model_mel_LN_AUC = keras.saving.load_model(path_finder("model/melspectrogram_norm_nan/MLP_corpora_categories/PCA/LayerNormalization/ROC-AUC"))
 
 model_VGG_dropout_F1 = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/MLP_2024-08-20_22-39/best_model0.keras")
 model_VGG_dropout_AUC = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-08-20_22-39/best_model0.keras")
@@ -87,18 +120,30 @@ model_YAM_dropout_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_catego
 model_YAM_LN_F1 = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-08-20_22-40/best_model0.keras")
 model_YAM_LN_AUC = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-08-20_22-40/best_model0.keras")
 
-model_mel_dropout_F1 = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1/MLP_2024-11-27_02-11/best_model0.keras")
-model_mel_dropout_AUC = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC/MLP_2024-11-27_00-00/best_model0.keras")
-model_mel_LN_F1 = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1/MLP_2024-11-27_02-12/best_model0.keras")
-model_mel_LN_AUC = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC/MLP_2024-11-27_01-26/best_model0.keras")
 
 
 
 
-model_STM_dropout_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-08-31_22-51/best_model0.keras")
-model_STM_dropout_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-08-31_22-10/best_model0.keras")
-model_STM_LN_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-08-31_23-02/best_model0.keras")
-model_STM_LN_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-08-31_22-10/best_model0.keras")
+# no PCA
+# model_STM_dropout_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-08-31_22-51/best_model0.keras")
+# model_STM_dropout_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-08-31_22-10/best_model0.keras")
+# model_STM_LN_F1_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-08-31_23-02/best_model0.keras")
+# model_STM_LN_AUC_ds = keras.saving.load_model("model/STM/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-08-31_22-10/best_model0.keras")
+
+# model_mel_dropout_F1_ds = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-11-27_02-12/best_model0.keras")
+# model_mel_dropout_AUC_ds = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-11-27_02-11/best_model0.keras")
+# model_mel_LN_F1_ds = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-11-27_02-12/best_model0.keras")
+# model_mel_LN_AUC_ds = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-11-27_02-12/best_model0.keras")
+
+model_STM_dropout_F1_ds = keras.saving.load_model(path_finder("model/STM/MLP_corpora_categories/PCA/Dropout/macroF1/downsample"))
+model_STM_dropout_AUC_ds = keras.saving.load_model(path_finder("model/STM/MLP_corpora_categories/PCA/Dropout/ROC-AUC/downsample"))
+model_STM_LN_F1_ds = keras.saving.load_model(path_finder("model/STM/MLP_corpora_categories/PCA/LayerNormalization/macroF1/downsample"))
+model_STM_LN_AUC_ds = keras.saving.load_model(path_finder("model/STM/MLP_corpora_categories/PCA/LayerNormalization/ROC-AUC/downsample"))
+
+model_mel_dropout_F1_ds = keras.saving.load_model(path_finder("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1/downsample"))
+model_mel_dropout_AUC_ds = keras.saving.load_model(path_finder("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC/downsample"))
+model_mel_LN_F1_ds = keras.saving.load_model(path_finder("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1/downsample"))
+model_mel_LN_AUC_ds = keras.saving.load_model(path_finder("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample"))
 
 model_VGG_dropout_F1_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-08-20_22-39/best_model0.keras")
 model_VGG_dropout_AUC_ds = keras.saving.load_model("model/VGGish/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-08-20_22-39/best_model0.keras")
@@ -110,10 +155,7 @@ model_YAM_dropout_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_cat
 model_YAM_LN_F1_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-08-20_22-40/best_model0.keras")
 model_YAM_LN_AUC_ds = keras.saving.load_model("model/YAMNet/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-08-20_22-40/best_model0.keras")
 
-model_mel_dropout_F1_ds = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/macroF1/downsample/MLP_2024-11-27_02-12/best_model0.keras")
-model_mel_dropout_AUC_ds = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/Dropout/ROC-AUC/downsample/MLP_2024-11-27_02-11/best_model0.keras")
-model_mel_LN_F1_ds = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/macroF1/downsample/MLP_2024-11-27_02-12/best_model0.keras")
-model_mel_LN_AUC_ds = keras.saving.load_model("model/melspectrogram_norm_nan/MLP_corpora_categories/LayerNormalization/ROC-AUC/downsample/MLP_2024-11-27_02-12/best_model0.keras")
+
 
 
 
@@ -161,15 +203,6 @@ eval_mel_LN_F1 = eval_model(model_mel_LN_F1, test_dataset_mel)
 eval_mel_LN_F1['model'] = 'mel_LN_F1'
 eval_mel_LN_AUC = eval_model(model_mel_LN_AUC, test_dataset_mel)
 eval_mel_LN_AUC['model'] = 'mel_LN_AUC'
-
-# df_eval = pd.concat([
-#     eval_STM_dropout_F1,eval_STM_dropout_AUC,
-#     eval_STM_LN_F1,eval_STM_LN_AUC,
-#     eval_YAM_dropout_F1,eval_YAM_dropout_AUC,
-#     eval_YAM_LN_F1,eval_YAM_LN_AUC,
-#     eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
-#     eval_VGG_LN_F1,eval_VGG_LN_AUC,
-#     ], ignore_index=True)
 
 
 # downsampled nontonal speech
@@ -222,26 +255,21 @@ df_eval = pd.concat([
     eval_YAM_LN_F1,eval_YAM_LN_AUC,
     eval_VGG_dropout_F1,eval_VGG_dropout_AUC,
     eval_VGG_LN_F1,eval_VGG_LN_AUC,
+    eval_mel_dropout_F1,eval_mel_dropout_AUC,
+    eval_mel_LN_F1,eval_mel_LN_AUC,
     eval_STM_dropout_F1_ds,eval_STM_dropout_AUC_ds,
     eval_STM_LN_F1_ds,eval_STM_LN_AUC_ds,
     eval_YAM_dropout_F1_ds,eval_YAM_dropout_AUC_ds,
     eval_YAM_LN_F1_ds,eval_YAM_LN_AUC_ds,
     eval_VGG_dropout_F1_ds,eval_VGG_dropout_AUC_ds,
     eval_VGG_LN_F1_ds,eval_VGG_LN_AUC_ds,
-    ], ignore_index=True)
-
-# df_eval.to_csv("model/MLP_summary_all_20240912.csv", index=False)
-
-df_mel_eval = pd.concat([
-    eval_mel_dropout_F1,eval_mel_dropout_AUC,
-    eval_mel_LN_F1,eval_mel_LN_AUC,
     eval_mel_dropout_F1_ds,eval_mel_dropout_AUC_ds,
     eval_mel_LN_F1_ds,eval_mel_LN_AUC_ds,
     ], ignore_index=True)
 
-# df_mel_eval.to_csv("model/MLP_summary_melspectrogram_norm_nan_20241127.csv", index=False)
+df_eval.to_csv("model/MLP_summary_all_20250108.csv", index=False)
 
-
+################### not running below yet ####################
 
 # %% F1 score for each class
 
