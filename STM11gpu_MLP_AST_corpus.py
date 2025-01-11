@@ -36,7 +36,7 @@ class hyperModel_drop(kt.HyperModel):
             model.add(
                 layers.Dense(
                     # Tune number of units separately.
-                    units=hp.Int(f"units_{i}", min_value=200, max_value=600, step=50),
+                    units=hp.Int(f"units_{i}", min_value=32, max_value=512, step=32),
                     activation=hp.Choice("activation", ["relu"]),
                     kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-12, max_value=1e-6, sampling="log"))
                     )
@@ -96,7 +96,7 @@ class hyperModel_LN(kt.HyperModel):
             model.add(
                 layers.Dense(
                     # Tune number of units separately.
-                    units=hp.Int(f"units_{i}", min_value=200, max_value=600, step=50),
+                    units=hp.Int(f"units_{i}", min_value=32, max_value=512, step=32),
                     activation=hp.Choice("activation", ["relu"]),
                     kernel_regularizer=keras.regularizers.L1(l1=hp.Float(f"L1_{i}", min_value=1e-12, max_value=1e-6, sampling="log"))
                     )
