@@ -157,17 +157,12 @@ def ensure_sample_rate(original_sample_rate, waveform, desired_sample_rate=16000
         waveform = scipy.signal.resample(waveform, desired_length)
     return desired_sample_rate, waveform
 
-def run_models(corp):
+def run_models(df_meta, start_row): # THIS FUNCTION IS DIFFERENT FROM THE OTHERS!
     st = time.time()
-       
-    embeddings_ast_stacked_list = []
+
+    waveform_list = []
     
-    metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
-    df_meta = pd.read_csv(metafile,index_col=0)
-    
-    # class_map_path = model.class_map_path().numpy()
-    # class_names = class_names_from_csv(class_map_path)
-    for n_row in range(len(df_meta)):
+    for n_row in range(start_row, min(start_row+1000, len(df_meta))): # run 1000 rows at a time, or up to the end of the dataframe
         try:
             filename = df_meta['filepath'].iloc[n_row]
             frame_offset = df_meta['startPoint'].iloc[n_row]-1 # matlab index starts at 1
@@ -193,20 +188,22 @@ def run_models(corp):
             if (corp=='fma_large') and (n_row in [16606, 58863]): # these 2 files are broken! Use 0 to replace them.
                 print("***** using zeros to replace the corrupted audio file: n_row="+str(n_row))
                 waveform = np.zeros(16000*4)
-            
-            inputs = processor(waveform, sampling_rate=16000, return_tensors="pt")
-            with torch.no_grad():
-                outputs = model(**inputs)
-            last_hidden_states = outputs.last_hidden_state # [batch_size, num_frames, hidden_size]
-            embeddings_ast_stacked_list.append(last_hidden_states.squeeze(0).numpy().mean(axis=0))
-            
+
         except Exception as e:
             # Print the error message
             print("***** ERROR in n_row="+str(n_row)+ f": {e}")
-            
+            waveform = np.zeros(16000*4)
+        
+        waveform_list.append(waveform)
+    
+    inputs = processor(waveform_list, sampling_rate=16000, return_tensors="pt")
+    with torch.no_grad():
+        outputs = model(**inputs)
+    last_hidden_states_batch = outputs.last_hidden_state # [batch_size, num_frames, hidden_size]
+
     et = time.time()
     print('Execution time:', et - st, 'seconds')
-    return np.vstack(embeddings_ast_stacked_list)
+    return last_hidden_states_batch.numpy().mean(axis=1).shape
 
 # %% run AST
 
@@ -223,5 +220,15 @@ if __name__ == "__main__":
 
     corp = corpus_list[n]
     
-    embeddings_ast_data = run_models(corp)
+    metafile = 'metaTables/metaData_'+corp.replace('/', '-')+'.csv'
+    df_meta = pd.read_csv(metafile,index_col=0)
+    
+    embeddings_ast_data_list = []
+    
+    # as this script is too slow, the data will be run as batches
+    for start_row in range(0, len(df_meta), 1000): # every 1000 rows as a batch
+        print(start_row) 
+        embeddings_ast_data_list.append(run_models(df_meta, start_row))
+    
+    embeddings_ast_data = np.vstack(embeddings_ast_data_list)
     np.save('ast_output/embeddings/'+corp.replace('/', '-')+'_astEmbeddings.npy', embeddings_ast_data)
