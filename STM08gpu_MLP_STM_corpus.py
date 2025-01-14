@@ -150,6 +150,8 @@ class hyperModel_LN(kt.HyperModel):
 # %% Run the script
 
 if __name__ == "__main__":
+    
+    ablation_model = 'drop' # 'drop' or 'LN'
 
     # % set the tuner
     if sys.argv[1]=='0':
@@ -220,8 +222,12 @@ if __name__ == "__main__":
             }
         
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ablation_params = ablation_params, n_pca=None) # the low-pass will have a much lower number of features so PCA is not necessary
-        hm = hyperModel_LN()
-        directory = "model/STM/MLP_corpora_categories/PCA/LayerNormalization/macroF1/ablation/xhighcutoff"+str(i0)+"_yhighcutoff"+str(i1)
+        if ablation_model == 'drop':
+            hm = hyperModel_drop()
+            directory = "model/STM/MLP_corpora_categories/PCA/Dropout/macroF1/ablation/xhighcutoff"+str(i0)+"_yhighcutoff"+str(i1)
+        elif ablation_model == 'LN':
+            hm = hyperModel_LN()
+            directory = "model/STM/MLP_corpora_categories/PCA/LayerNormalization/macroF1/ablation/xhighcutoff"+str(i0)+"_yhighcutoff"+str(i1)
         objective = kt.Objective("val_macro_f1_score", direction="max")
         early_stop = "val_f1_score"
     elif 57<=int(sys.argv[1])<=105:
@@ -244,8 +250,12 @@ if __name__ == "__main__":
             }
         
         train_dataset, val_dataset, test_dataset, n_feat, n_target = prepData(ablation_params = ablation_params, n_pca=None)
-        hm = hyperModel_LN()
-        directory = "model/STM/MLP_corpora_categories/PCA/LayerNormalization/macroF1/ablation/xlowcutoff"+str(i0)+"_ylowcutoff"+str(i1)
+        if ablation_model == 'drop':
+            hm = hyperModel_drop()
+            directory = "model/STM/MLP_corpora_categories/PCA/Dropout/macroF1/ablation/xlowcutoff"+str(i0)+"_ylowcutoff"+str(i1)
+        elif ablation_model == 'LN':
+            hm = hyperModel_LN()
+            directory = "model/STM/MLP_corpora_categories/PCA/LayerNormalization/macroF1/ablation/xlowcutoff"+str(i0)+"_ylowcutoff"+str(i1)
         objective = kt.Objective("val_macro_f1_score", direction="max")
         early_stop = "val_f1_score"
     else:
