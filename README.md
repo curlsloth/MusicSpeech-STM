@@ -5,7 +5,9 @@ This repository provides the Python and MATLAB scripts accompanying our paper ac
 > **Chang, A.**, Li, Y., Roman, I.R., & Poeppel, D. (2025). Spectrotemporal Modulation: Efficient and Interpretable Feature Representation for Classifying Speech, Music, and Environmental Sounds. *Proceedings of the Annual Conference of the International Speech Communication Association (Interspeech)*, Rotterdam, The Netherlands.
 
 The method and results are described in our paper accepted at Interspeech 2025
+
 📄 [Pending ArXiv link]
+
 🔗 [Pending publisher DOI link]
 
 ## Project Overview
