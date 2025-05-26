@@ -7,7 +7,7 @@ The scripts are numbered in the order they were executed. The Python packages an
 ## Data folder
 Due to file size and copyright protection, the `.model/`, `./data`, `./STM_output`, `./melspectrogram_norm_output`, `./yamnet_output` and `./vggish_output` folder are gitignored.
 
-<details> <summary><strong>Cite this work</strong></summary>
+```bibtex
 @inproceedings{chang2025spectrotemporal,
   author    = {Chang, Andrew and Li, Yike. and Roman, Iran. R. and Poeppel, David},
   title     = {Spectrotemporal Modulation: Efficient and Interpretable Feature Representation for Classifying Speech, Music, and Environmental Sounds},
@@ -16,4 +16,4 @@ Due to file size and copyright protection, the `.model/`, `./data`, `./STM_outpu
   address   = {Rotterdam, The Netherlands},
   publisher = {ISCA}
 }
-</details>
+```
