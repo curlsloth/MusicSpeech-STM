@@ -6,7 +6,7 @@ This repository provides the Python and MATLAB scripts accompanying our paper ac
 
 The method and results are described in our paper accepted at Interspeech 2025
 
-📄 [Pending ArXiv link]
+📄 [ArXiv link](https://doi.org/10.48550/arXiv.2505.23509)
 
 🔗 [Pending publisher DOI link]
 
