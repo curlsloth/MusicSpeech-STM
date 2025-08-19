@@ -2,13 +2,11 @@
 
 This repository provides the Python and MATLAB scripts accompanying our paper accepted at *Interspeech 2025*:
 
-> **Chang, A.**, Li, Y., Roman, I.R., & Poeppel, D. (2025). Spectrotemporal Modulation: Efficient and Interpretable Feature Representation for Classifying Speech, Music, and Environmental Sounds. *Proceedings of the Annual Conference of the International Speech Communication Association (Interspeech)*, Rotterdam, The Netherlands.
-
-The method and results are described in our paper accepted at Interspeech 2025
+> Chang, A., Li, Y., Roman, I.R., Poeppel, D. (2025) Spectrotemporal Modulation: Efficient and Interpretable Feature Representation for Classifying Speech, Music, and Environmental Sounds. *Proc. Interspeech 2025*, 216-220, doi: 10.21437/Interspeech.2025-1021
 
 📄 [ArXiv link](https://doi.org/10.48550/arXiv.2505.23509)
 
-🔗 [Pending publisher DOI link]
+🔗 [ISCA publisher link](https://doi.org/10.21437/Interspeech.2025-1021)
 
 ## Project Overview
 
@@ -26,12 +24,13 @@ The results presented in our paper are fully reproducible using the provided scr
 ## Citation
 
 ```bibtex
-@inproceedings{chang2025spectrotemporal,
-  author    = {Chang, Andrew and Li, Y. and Roman, I. R. and Poeppel, David},
-  title     = {Spectrotemporal Modulation: Efficient and Interpretable Feature Representation for Classifying Speech, Music, and Environmental Sounds},
-  booktitle = {Proceedings of the Annual Conference of the International Speech Communication Association (Interspeech)},
-  year      = {2025},
-  address   = {Rotterdam, The Netherlands},
-  publisher = {ISCA}
+@inproceedings{chang25b_interspeech,
+  title     = {{Spectrotemporal Modulation: Efficient and Interpretable Feature Representation for Classifying Speech, Music, and Environmental Sounds}},
+  author    = {{Andrew Chang and Yike Li and Iran R. Roman and David Poeppel}},
+  year      = {{2025}},
+  booktitle = {{Interspeech 2025}},
+  pages     = {{216--220}},
+  doi       = {{10.21437/Interspeech.2025-1021}},
+  issn      = {{2958-1796}},
 }
 ```
