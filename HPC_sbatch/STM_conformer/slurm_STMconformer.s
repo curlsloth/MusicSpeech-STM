@@ -2,9 +2,9 @@
 
 #SBATCH --job-name=STMconformer
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=30
 #SBATCH --gres=gpu:1
-#SBATCH --mem=20GB
+#SBATCH --mem=200GB
 #SBATCH --time=1:00:00
 #SBATCH --output=HPC_slurm/STM_conformer/STMconformer-gpu_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu

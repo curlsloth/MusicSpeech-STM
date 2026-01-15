@@ -374,7 +374,7 @@ class Trainer:
         self.criterion = nn.CrossEntropyLoss()
         self.optimizer = optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
         self.scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-            self.optimizer, mode='max', factor=0.5, patience=3, verbose=True
+            self.optimizer, mode='max', factor=0.5, patience=3
         )
         
         self.best_val_f1 = 0.0
@@ -460,6 +460,8 @@ class Trainer:
             
             # Learning rate scheduling
             self.scheduler.step(val_f1)
+            current_lr = self.optimizer.param_groups[0]['lr']
+            print(f"Current learning rate: {current_lr:.6f}")
             
             # Save best model
             if val_f1 > self.best_val_f1:
