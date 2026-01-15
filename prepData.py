@@ -186,12 +186,18 @@ def mask_STMmatrix(ablation_params):
         matrix[np.abs(y_axis_small)>y_highcutoff,:]=1
     return matrix
 
-def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None, n_pca=None):
+def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None, n_pca=None, use_sqfs=False):
     # % load STM data
     corpus_list_all = corpora_list(addAug)
     
+    # if using the SQFS system on VAST
+    if use_sqfs:
+        root_folder = '/vast-ac8888/MusicSpeech-STM/'
+    else:
+        root_folder = ''
+    
     for corp in corpus_list_all:
-        filename = 'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
+        filename = root_folder+'STM_output/corpSTMnpy/'+corp.replace('/', '-')+'_STMall.npy'
         if 'STM_all' not in locals():
             STM_all = np.load(filename)
         else:
@@ -209,10 +215,10 @@ def prepData_STM(addAug=False, ds_nontonal_speech=False, ablation_params=None, n
         del mask_matrix
         
     # % load meta data
-    speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
-    speech_corp_df2 = pd.read_csv('train_test_split/speech2_10folds_speakerGroupFold.csv',index_col=0)
-    music_corp_df = pd.read_csv('train_test_split/music_10folds_speakerGroupFold.csv',index_col=0)
-    df_SONYC = pd.read_csv('train_test_split/env_10folds_speakerGroupFold.csv',index_col=0)
+    speech_corp_df1 = pd.read_csv(root_folder+'train_test_split/speech1_10folds_speakerGroupFold.csv',index_col=0)
+    speech_corp_df2 = pd.read_csv(root_folder+'train_test_split/speech2_10folds_speakerGroupFold.csv',index_col=0)
+    music_corp_df = pd.read_csv(root_folder+'train_test_split/music_10folds_speakerGroupFold.csv',index_col=0)
+    df_SONYC = pd.read_csv(root_folder+'train_test_split/env_10folds_speakerGroupFold.csv',index_col=0)
     
     all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SONYC], ignore_index=True)
     

@@ -1,0 +1,60 @@
+
+============================================================
+CONFORMER IMPLEMENTATION TEST SUITE
+============================================================
+============================================================
+Testing Conformer Model Architecture
+============================================================
+✓ Model created successfully
+✓ Total parameters: 1,555,270
+✓ Trainable parameters: 1,555,270
+
+✓ Input shape: torch.Size([4, 20, 121])
+✓ Output shape: torch.Size([4, 6])
+✓ Expected output shape: (4, 6)
+
+✓ Forward pass successful!
+✓ Sample output (logits):
+tensor([-0.1846, -0.0523,  0.0299, -0.1392,  0.1563, -0.0070])
+
+✓ Sample probabilities (should sum to 1):
+tensor([0.1423, 0.1624, 0.1763, 0.1489, 0.2001, 0.1699])
+✓ Sum of probabilities: 1.000000
+
+============================================================
+Testing Data Reshaping
+============================================================
+Original flattened size: 2420
+Target 2D shape: (20, 121)
+
+✓ Created dummy data: (100, 2420)
+✓ Reshaped data: (100, 20, 121)
+✓ Reshape is reversible
+
+✓ Normalized data shape: (100, 20, 121)
+✓ Mean after normalization: 0.000000 (should be ~0)
+✓ Std after normalization: 1.000000 (should be ~1)
+
+============================================================
+Testing GPU Availability
+============================================================
+✓ CUDA is available
+✓ GPU: Quadro RTX 8000
+✓ GPU Memory: 47.76 GB
+✓ Successfully ran forward pass on GPU
+✓ Output device: cuda:0
+
+============================================================
+Testing Batch Processing
+============================================================
+✓ Batch size   1: output shape torch.Size([1, 6])
+✓ Batch size   8: output shape torch.Size([8, 6])
+✓ Batch size  32: output shape torch.Size([32, 6])
+✓ Batch size 128: output shape torch.Size([128, 6])
+
+============================================================
+✓ ALL TESTS PASSED!
+============================================================
+
+You can now run the full training with:
+  python STM08gpu_Conformer_STM_corpus.py 0

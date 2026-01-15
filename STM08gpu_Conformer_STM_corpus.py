@@ -24,11 +24,6 @@ import warnings
 
 warnings.filterwarnings('ignore')
 
-def auto_git_push(path):
-    subprocess.run(['git', 'add', path], check=True)
-    subprocess.run(['git', 'commit', '-m', 'auto_sync: '+path], check=True)
-    subprocess.run(['git', 'push'], check=True)
-
 
 class prepData_STM_Conformer:
     """
@@ -52,10 +47,8 @@ class prepData_STM_Conformer:
         self.n_freq = (self.ymax - self.ymin + 1) // self.y_ds_factor  # 20
         self.n_time = (self.xmax - self.xmin + 1) // self.x_ds_factor  # 121
         
-    def corpora_list(self):
-        """Returns list of all corpora"""
-        corpus_speech_list = [
-            'BibleTTS/akuapem-twi',
+    def corpora_list(self, addAug=False):
+        corpus_speech_list = ['BibleTTS/akuapem-twi',
             'BibleTTS/asante-twi',
             'BibleTTS/ewe',
             'BibleTTS/hausa',
@@ -65,6 +58,7 @@ class prepData_STM_Conformer:
             'EUROM',
             'HiltonMoser2022_speech',
             'LibriSpeech',
+            # 'LibriVox',
             'MediaSpeech/AR',
             'MediaSpeech/ES',
             'MediaSpeech/FR',
@@ -134,46 +128,60 @@ class prepData_STM_Conformer:
             'MozillaCommonVoice/th',
             'MozillaCommonVoice/tr',
             'MozillaCommonVoice/tt',
+            'MozillaCommonVoice/ug',
             'MozillaCommonVoice/uk',
+            'MozillaCommonVoice/ur',
+            'MozillaCommonVoice/uz',
             'MozillaCommonVoice/vi',
             'MozillaCommonVoice/yo',
+            'MozillaCommonVoice/yue',
             'MozillaCommonVoice/zh-CN',
-            'MozillaCommonVoice/zh-HK',
             'MozillaCommonVoice/zh-TW',
-            'NIST2008_SRE',
+            'primewords_chinese',
+            'room_reader',
+            'SpeechClarity',
+            'TAT-Vol2',
+            'thchs30',
             'TIMIT',
-            'VoxCeleb',
+            'TTS_Javanese',
+            'zeroth_korean'
         ]
         
         corpus_music_list = [
-            'Albouy2020Science',
-            'Bach10',
-            'GTZAN',
-            'HiltonMoser2022_music',
             'IRMAS',
-            'MedleyDB',
-            'MusicDelta/Beijing',
-            'MusicDelta/Carnatic',
-            'MusicDelta/Turkish',
-            'MusicDelta/Western',
+            'Albouy2020Science',
+            # 'CD',
+            'GarlandEncyclopedia',
+            'fma_large',
+            'ismir04_genre',
+            'MTG-Jamendo',
+            'HiltonMoser2022_song',
+            'NHS2',
+            'MagnaTagATune'
         ]
         
-        corpus_env_list = [
-            'SONYC',
-        ]
+        if addAug:
+            corpus_env_list = ['SONYC', 'MacaulayLibrary', 'SONYC_augmented']
+        else:
+            corpus_env_list = ['SONYC', 'MacaulayLibrary']
         
-        if self.addAug:
-            corpus_env_list.append('SONYC_augmented')
-            
-        return corpus_speech_list + corpus_music_list + corpus_env_list
+        # sort the corpora lists to make sure the order is replicable
+        corpus_speech_list.sort()
+        corpus_music_list.sort()
+        corpus_env_list.sort()
+        
+        corpus_list_all = corpus_speech_list+corpus_music_list+corpus_env_list 
+        return corpus_list_all
     
     def load_data(self):
         """Load and preprocess STM data"""
         corpus_list_all = self.corpora_list()
         
+        root_folder = '/vast-ac8888/MusicSpeech-STM/'
+        
         STM_all = None
         for corp in corpus_list_all:
-            filename = 'STM_output/corpSTMnpy/' + corp.replace('/', '-') + '_STMall.npy'
+            filename = root_folder + 'STM_output/corpSTMnpy/' + corp.replace('/', '-') + '_STMall.npy'
             if STM_all is None:
                 STM_all = np.load(filename)
             else:
@@ -181,16 +189,16 @@ class prepData_STM_Conformer:
             print(f"Loaded: {filename}, shape: {np.load(filename).shape}")
         
         # Load metadata
-        speech_corp_df1 = pd.read_csv('train_test_split/speech1_10folds_speakerGroupFold.csv', index_col=0)
-        speech_corp_df2 = pd.read_csv('train_test_split/speech2_10folds_speakerGroupFold.csv', index_col=0)
-        music_corp_df = pd.read_csv('train_test_split/music_10folds_speakerGroupFold.csv', index_col=0)
-        df_SONYC = pd.read_csv('train_test_split/env_10folds_speakerGroupFold.csv', index_col=0)
+        speech_corp_df1 = pd.read_csv(root_folder + 'train_test_split/speech1_10folds_speakerGroupFold.csv', index_col=0)
+        speech_corp_df2 = pd.read_csv(root_folder + 'train_test_split/speech2_10folds_speakerGroupFold.csv', index_col=0)
+        music_corp_df = pd.read_csv(root_folder + 'train_test_split/music_10folds_speakerGroupFold.csv', index_col=0)
+        df_SONYC = pd.read_csv(root_folder + 'train_test_split/env_10folds_speakerGroupFold.csv', index_col=0)
         
         all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SONYC], ignore_index=True)
         
         # Handle augmented data
         if self.addAug:
-            SONYC_aug_len = np.load('STM_output/corpSTMnpy/SONYC_augmented_STMall.npy').shape[0]
+            SONYC_aug_len = np.load(root_folder + 'STM_output/corpSTMnpy/SONYC_augmented_STMall.npy').shape[0]
             target = pd.concat([all_corp_df['corpus_type'], pd.Series(['env'] * SONYC_aug_len)], 
                              ignore_index=True)
             data_split = pd.concat([all_corp_df['10fold_labels'], pd.Series([1] * SONYC_aug_len)],
