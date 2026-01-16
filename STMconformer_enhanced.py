@@ -418,7 +418,7 @@ class EnhancedTrainer:
 
 
 # Import data preparation from original script
-from STM08gpu_Conformer_STM_corpus import prepData_STM_Conformer
+from STMconformer_model import prepData_STM_Conformer
 
 
 if __name__ == "__main__":
