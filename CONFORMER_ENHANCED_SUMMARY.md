@@ -40,18 +40,31 @@ SpecAugment(
 
 **Why it helps**: Forces model to be robust to missing spectral/temporal information, reducing overfitting.
 
+**Note**: SpecAugment is applied directly to the input before the model projection, masking regions by setting them to zero.
+
 ---
 
 ### 2. Mixup Augmentation
 ```python
-# Mixes two training samples
+# Mixes two training samples with per-sample or batch-level lambda
 x_mixed = λ * x1 + (1-λ) * x2
-loss = λ * loss(y1) + (1-λ) * loss(y2)
+
+# Loss computed with proper handling for batch/sample-level mixing
+if isinstance(lam, torch.Tensor) and lam.numel() > 1:
+    # Per-sample lambda: compute individual losses and mix
+    loss1 = F.cross_entropy(output, y1, reduction='none')
+    loss2 = F.cross_entropy(output, y2, reduction='none')
+    loss = (lam.squeeze() * loss1 + (1 - lam.squeeze()) * loss2).mean()
+else:
+    # Batch-level lambda: use mixed criterion
+    loss = mixup_criterion(output, y1, y2, lam)
 ```
 
 **Why it helps**: Creates smoother decision boundaries, improves generalization to unseen data.
 
 **Alpha = 0.2**: Moderate mixing strength (good for 6-class problem)
+
+**Implementation note**: The code supports both batch-level and per-sample lambda values with proper broadcasting.
 
 ---
 
@@ -126,13 +139,19 @@ CosineAnnealingWarmRestarts(T_0=10, T_mult=2)
 
 ### 9. Test-Time Augmentation (TTA)
 ```python
-# At inference, average predictions over multiple augmented versions
-for i in range(3):
-    pred_i = model(augment(x))
-final_pred = mean([pred_1, pred_2, pred_3])
+# At inference, average predictions over multiple forward passes
+# Note: Current implementation averages multiple forward passes 
+# without explicit augmentation
+outputs = []
+for _ in range(3):
+    output = model(data)
+    outputs.append(F.softmax(output, dim=1))
+final_pred = torch.stack(outputs).mean(dim=0)
 ```
 
-**Why it helps**: Reduces variance, more robust predictions (typically +0.5-1% improvement).
+**Why it helps**: Reduces variance in predictions, acts as implicit ensemble (typically +0.1-0.3% improvement).
+
+**Note**: Current implementation performs 3 forward passes and averages the softmax probabilities. For true TTA with augmentation, consider adding random crops or minor transformations during the loop.
 
 ---
 
@@ -195,8 +214,9 @@ warmup_epochs = 5
 
 # Augmentation
 mixup_alpha = 0.2
+mixup_probability = 0.5  # 50% chance to apply mixup per sample
 label_smoothing = 0.1
-spec_augment = True
+spec_augment = True  # freq_mask=4, time_mask=15, num_masks=2 each
 ```
 
 ### Why these values?
@@ -274,21 +294,23 @@ print(f"TTA improvement: {(f1_tta - f1_standard)*100:.2f}%")
 - **Training time**: ~2.5-3.5 hours/epoch (slightly slower due to augmentations)
 
 ### Breakdown of Expected Improvements
-| Technique | Expected Gain |
-|-----------|---------------|
-| SpecAugment | +0.2-0.5% |
-| Mixup | +0.2-0.4% |
-| Label Smoothing | +0.1-0.3% |
-| Attention Pooling | +0.1-0.2% |
-| Stochastic Depth | +0.1-0.2% |
-| Enhanced Architecture | +0.1-0.2% |
-| Better LR Schedule | +0.1-0.2% |
-| **Total (without TTA)** | **+0.9-2.0%** |
-| Test-Time Augmentation | +0.3-0.5% |
-| **Grand Total** | **+1.2-2.5%** |
+| Technique | Expected Gain | Implementation Notes |
+|-----------|---------------|----------------------|
+| SpecAugment | +0.2-0.5% | Masking at input level |
+| Mixup | +0.2-0.4% | 50% probability, alpha=0.2 |
+| Label Smoothing | +0.1-0.3% | Smoothing factor 0.1 |
+| Attention Pooling | +0.1-0.2% | 2-layer attention network |
+| Stochastic Depth | +0.1-0.2% | 10% drop probability |
+| Enhanced Architecture | +0.1-0.2% | Residual projection + 3-layer classifier |
+| Better LR Schedule | +0.1-0.2% | Cosine with warmup |
+| **Total (without TTA)** | **+0.9-2.0%** | |
+| Test-Time Augmentation | +0.1-0.3% | 3x forward passes averaged |
+| **Grand Total** | **+1.0-2.3%** | |
 
 **Conservative estimate**: 0.87-0.88 F1  
 **Optimistic estimate**: 0.88-0.89 F1
+
+**Note**: TTA improvement is more modest than initially documented due to averaging forward passes without explicit augmentation.
 
 ---
 
@@ -389,50 +411,97 @@ results = {
 **Solutions**:
 - Disable TTA during validation (only use at final test)
 - Reduce mixup probability from 0.5 to 0.3
-- Use fewer SpecAugment masks (1 instead of 2)
+- Use fewer SpecAugment masks (1 instead of 2 per dimension)
+- Reduce batch_size if memory-bound
 
 ### Issue: Validation F1 not improving
 **Solutions**:
 - Check if warmup is working (LR should increase first 5 epochs)
-- Verify augmentations not too strong
-- Ensure data loading is correct (run test suite)
+- Verify augmentations not too strong (try disabling SpecAugment temporarily)
+- Ensure data loading is correct (check MixupDataset returns 4 values)
+- Train longer (some techniques need 20-30 epochs to show benefits)
 
 ### Issue: CUDA out of memory
 **Solutions**:
 - Reduce batch_size to 64 or 32
-- Disable TTA during training
-- Use gradient accumulation
+- Disable TTA during training/validation
+- Use gradient accumulation (accumulate 2-4 steps before optimizer.step())
+- Reduce d_model from 128 to 96
 
 ### Issue: Results worse than baseline
 **Solutions**:
-- Train longer (some techniques need more epochs)
-- Verify implementation (compare outputs with baseline)
-- Check if augmentations too aggressive (reduce parameters)
+- Train longer (enhanced model needs more epochs due to regularization)
+- Verify implementation (compare layer outputs with baseline)
+- Check if augmentations too aggressive:
+  - Reduce SpecAugment: freq_mask_param=2, time_mask_param=10
+  - Reduce Mixup alpha to 0.1
+  - Reduce label_smoothing to 0.05
+- Ensure proper learning rate schedule (check warmup is working)
+
+### Issue: Mixup causing NaN losses
+**Solutions**:
+- Verify lambda values are in [0, 1]
+- Check that MixupDataset returns proper tensor shapes
+- Ensure y1, y2 are valid class indices [0, 5]
+- Add gradient clipping (already included: max_norm=1.0)
 
 ---
 
 ## Technical Details
 
-### Memory Requirements
-- **Baseline**: ~8 GB GPU memory
-- **Enhanced**: ~10-12 GB GPU memory
-  - +2 GB for Mixup (storing two batches)
-  - +1 GB for augmentation buffers
-  - +1 GB for TTA ensemble
+### Mixup Implementation Details
 
-### Computational Cost
-- **Baseline**: 1.0x
-- **Enhanced**: ~1.15x
-  - SpecAugment: +5% (masking operations)
-  - Mixup: +5% (mixing logic)
-  - Attention Pooling: +2% (vs global average)
-  - TTA: +3x at test time (can be disabled)
+The enhanced implementation supports two modes of Mixup:
 
-### Gradient Flow
-Both implementations use:
-- Gradient clipping (max_norm=1.0)
-- AdamW optimizer
-- BatchNorm/LayerNorm for stability
+1. **Batch-level mixing**: Single lambda for entire batch
+2. **Sample-level mixing**: Different lambda per sample (if provided by DataLoader)
+
+```python
+# The MixupDataset returns lambda as float for batch-level
+# or can be extended to return tensor for sample-level mixing
+
+# Loss computation handles both cases:
+if isinstance(lam, torch.Tensor) and lam.numel() > 1:
+    # Per-sample: compute losses separately and mix
+    loss = (lam * loss1 + (1-lam) * loss2).mean()
+else:
+    # Batch-level: use criterion with mixed targets
+    loss = mixup_criterion(pred, y1, y2, lam)
+```
+
+### Label Smoothing Details
+
+Label smoothing is implemented in the `LabelSmoothingCrossEntropy` class:
+
+```python
+# Converts hard labels to soft distributions
+# target: [0, 0, 1, 0, 0, 0] (one-hot)
+# smoothed: [ε/K, ε/K, 1-ε+ε/K, ε/K, ε/K, ε/K]
+# where ε=0.1, K=6 classes
+
+loss = smoothing * (-log_preds.sum() / n_classes) + (1 - smoothing) * nll_loss
+```
+
+### Learning Rate Schedule
+
+The training uses a two-phase learning rate schedule:
+
+1. **Warmup phase** (epochs 1-5): Linear increase from 0 to `lr`
+2. **Cosine annealing** (epochs 6+): `CosineAnnealingWarmRestarts` with:
+   - T_0 = 10 (restart every 10 epochs)
+   - T_mult = 2 (double the period after each restart)
+   - eta_min = 1e-6 (minimum learning rate)
+
+```python
+# Warmup implementation
+if epoch < warmup_epochs:
+    lr_scale = (epoch + 1) / warmup_epochs
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = lr_scale * base_lr
+
+# Cosine annealing kicks in after warmup
+scheduler.step()  # CosineAnnealingWarmRestarts
+```
 
 ---
 
@@ -498,6 +567,87 @@ Both implementations use:
 
 ---
 
-**Good luck with training! 🚀**
+## Actual Training Results (2026-01-16)
 
-*Expected outcome: Test F1 > 0.87 (vs baseline 0.8636)*
+**Best Val F1**: 0.8181 (Epoch 27)
+**Test F1**: 0.8309 (no TTA)
+**Test F1 with TTA**: 0.8309 (identical - TTA not working)
+
+### Performance vs Baseline
+- Baseline (STM08): Test F1 = 0.8636
+- Enhanced (STM09): Test F1 = 0.8309
+- **Difference**: -0.0327 (-3.3% worse!)
+
+### Why Did It Fail?
+
+**Primary Issues** (Occam's Razor):
+
+1. **Training Instability**: Val F1 oscillated wildly (0.32 → 0.82 → 0.57)
+   - Cause: Too many augmentations applied simultaneously
+   - Solution: Reduce augmentation strength or apply fewer at once
+
+2. **Learning Rate Restarts**: CosineAnnealingWarmRestarts disrupted convergence
+   - Cause: LR jumped back to max every 10 epochs, destroying good solutions
+   - Solution: Use simple CosineAnnealingLR without restarts
+
+3. **Warmup Bug**: LR warmup multiplied decayed LR instead of base LR
+   - Cause: `param_group['lr'] = lr_scale * param_group['lr']` (wrong!)
+   - Solution: Store base LR and scale from that
+
+4. **Over-Regularization**: SpecAugment + Mixup + Label Smoothing + Dropout + Stochastic Depth
+   - Cause: Model never saw clean data clearly
+   - Solution: Use 1-2 techniques, not all 5
+
+5. **TTA Doesn't Actually Augment**: Just runs same input 3 times
+   - Cause: No augmentation applied in TTA loop
+   - Solution: Not a priority (won't help much anyway)
+
+6. **Mixup Loss Complexity**: Complex branching for per-sample vs batch-level lambda
+   - Cause: Overly complex implementation, potential bugs
+   - Solution: Simplify to batch-level only
+
+### Training Curve Analysis
+
+```
+Epoch   Val F1   Notes
+1       0.49     Initial
+6       0.64     Good progress
+7       0.32     COLLAPSE (too aggressive augmentation?)
+10      0.59     LR restart #1
+20      0.52     LR restart #2
+27      0.82     BEST (just before restart #3)
+28      0.57     Restart destroyed progress
+30      0.39     LR restart #3
+50      0.59     Never recovered
+```
+
+**Key Observation**: Model found good solution at epoch 27 (F1=0.82) but LR restart at epoch 30 destroyed it.
+
+---
+
+## Lessons Learned
+
+1. **Occam's Razor**: Simpler is better. Don't combine too many techniques.
+2. **One change at a time**: Should have ablated each improvement individually.
+3. **LR schedules matter**: Restarts can hurt more than help.
+4. **Training stability > Fancy techniques**: A stable baseline beats an unstable "enhancement".
+5. **Always validate incrementally**: Should have tested each feature separately.
+
+## Next Steps
+
+### Immediate Fixes (Priority Order)
+
+1. **Remove LR restarts** - Use simple `CosineAnnealingLR` instead
+2. **Fix warmup bug** - Store and scale base LR correctly
+3. **Reduce augmentation** - Pick **one**: either SpecAugment OR Mixup, not both
+4. **Simplify Mixup** - Remove per-sample lambda complexity
+5. **Reduce regularization** - Remove stochastic depth (redundant with dropout)
+
+### Recommended Minimal Enhancement
+
+Start with **just 2-3 improvements**:
+- Label smoothing (safe, always helps)
+- Attention pooling (modest improvement, stable)
+- Better LR schedule (without restarts)
+
+**Test each individually** before combining!

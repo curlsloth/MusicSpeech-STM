@@ -223,7 +223,8 @@ class MixupDataset(Dataset):
             lam = np.random.beta(self.alpha, self.alpha)
             x = lam * x1 + (1 - lam) * x2
             
-            return x, y1, y2, lam
+            # Return lam as float, will be converted to tensor in training loop
+            return x, y1, y2, float(lam)
         else:
             return x1, y1, y1, 1.0
 
@@ -283,7 +284,39 @@ class EnhancedTrainer:
     
     def mixup_criterion(self, pred, y1, y2, lam):
         """Mixup loss computation"""
-        return lam * self.criterion(pred, y1) + (1 - lam) * self.criterion(pred, y2)
+        # Ensure lam is a scalar or properly broadcast
+        if isinstance(lam, torch.Tensor):
+            if lam.dim() == 0:  # Scalar tensor
+                return lam * self.criterion(pred, y1) + (1 - lam) * self.criterion(pred, y2)
+            else:  # Batch of lambdas - compute per-sample loss then average
+                loss1 = F.cross_entropy(pred, y1, reduction='none')
+                loss2 = F.cross_entropy(pred, y2, reduction='none')
+                # Apply label smoothing manually per sample
+                n_classes = pred.size(-1)
+                log_preds = F.log_softmax(pred, dim=-1)
+                
+                # For each sample in batch, compute smoothed loss
+                batch_losses = []
+                for i in range(pred.size(0)):
+                    l = lam[i] if lam.dim() > 0 else lam
+                    # Get one-hot for both targets
+                    target1_one_hot = F.one_hot(y1[i:i+1], n_classes).float()
+                    target2_one_hot = F.one_hot(y2[i:i+1], n_classes).float()
+                    
+                    # Mix the targets
+                    mixed_target = l * target1_one_hot + (1 - l) * target2_one_hot
+                    
+                    # Apply label smoothing
+                    mixed_target = mixed_target * (1 - self.criterion.smoothing) + self.criterion.smoothing / n_classes
+                    
+                    # Compute cross entropy with soft targets
+                    sample_loss = -(mixed_target * log_preds[i:i+1]).sum()
+                    batch_losses.append(sample_loss)
+                
+                return torch.stack(batch_losses).mean()
+        else:
+            # lam is a Python float
+            return lam * self.criterion(pred, y1) + (1 - lam) * self.criterion(pred, y2)
     
     def train_epoch(self, epoch):
         """Train for one epoch with mixup support"""
@@ -303,9 +336,35 @@ class EnhancedTrainer:
                 y1 = y1.to(self.device)
                 y2 = y2.to(self.device)
                 
+                # Handle lam - convert to tensor on device
+                if isinstance(lam, (list, tuple)):
+                    lam = torch.tensor(lam, device=self.device, dtype=torch.float32)
+                elif isinstance(lam, torch.Tensor):
+                    lam = lam.to(self.device).float()
+                else:
+                    # Single float value - keep as scalar
+                    lam = float(lam)
+                
                 self.optimizer.zero_grad()
                 output = self.model(data)
-                loss = self.mixup_criterion(output, y1, y2, lam)
+                
+                # Compute loss - handle batch dimension properly
+                if isinstance(lam, torch.Tensor) and lam.numel() > 1:
+                    # Multiple lambda values (one per sample in batch)
+                    # Ensure lam is 1D
+                    lam = lam.view(-1)
+                    # Expand for broadcasting
+                    lam = lam.view(-1, 1)
+                    
+                    # Simple approach: compute both losses and mix
+                    loss1 = F.cross_entropy(output, y1, reduction='none')
+                    loss2 = F.cross_entropy(output, y2, reduction='none')
+                    
+                    # Mix the losses
+                    loss = (lam.squeeze() * loss1 + (1 - lam.squeeze()) * loss2).mean()
+                else:
+                    # Single lambda value for whole batch
+                    loss = self.mixup_criterion(output, y1, y2, lam)
             else:
                 data, target = batch_data
                 data, target = data.to(self.device), target.to(self.device)
