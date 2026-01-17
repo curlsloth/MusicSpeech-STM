@@ -170,12 +170,36 @@ Approximately **1.5-2M parameters** (slightly more than Conformer due to rationa
 ### Training
 
 ```bash
-# Standard training
+# Standard training (fresh start)
 python STMkanformer_model.py 0
 
 # With non-tonal speech downsampling
 python STMkanformer_model.py 1
+
+# Resume from cancelled training
+python STMkanformer_model.py 0 --resume model/STM/Kanformer_corpora_categories/standard/ckpt/2025-01-15_14-30
 ```
+
+### Resuming Training
+
+If training is interrupted, you can resume from the last checkpoint:
+
+```bash
+# Find your checkpoint directory (e.g., model/STM/Kanformer_corpora_categories/standard/ckpt/2025-01-15_14-30)
+# Resume training
+python STMkanformer_model.py 0 --resume <path_to_checkpoint_dir>
+```
+
+The script will:
+- Load model weights and optimizer state
+- Resume from the next epoch after the last checkpoint
+- Preserve training history (losses, F1 scores)
+- Continue with the same learning rate schedule
+
+**Checkpoint files**:
+- `latest_checkpoint.pt`: Saved every epoch (for easy resumption)
+- `checkpoint_epoch_X.pt`: Saved every 5 epochs
+- `best_model.pt`: Best validation F1 model (used for final testing)
 
 ### Output
 
@@ -249,6 +273,12 @@ To validate the KAN contribution, run:
    - No assumption that patterns repeat across the grid
 
 ## Troubleshooting
+
+### Resuming After Cancellation
+If training was cancelled:
+1. Locate checkpoint directory: `model/STM/Kanformer_corpora_categories/{standard|downsample}/ckpt/YYYY-MM-DD_HH-MM/`
+2. Check for `latest_checkpoint.pt` or `checkpoint_epoch_X.pt`
+3. Run: `python STMkanformer_model.py <mode> --resume <checkpoint_dir>`
 
 ### Memory Issues
 - Reduce `batch_size` (try 64 or 32)

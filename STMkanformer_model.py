@@ -632,9 +632,48 @@ class KanformerTrainer:
         )
         
         self.best_val_f1 = 0.0
+        self.start_epoch = 0  # For resuming
         self.train_losses = []
         self.val_losses = []
         self.val_f1_scores = []
+    
+    def load_checkpoint(self, checkpoint_path):
+        """Load checkpoint to resume training"""
+        if not os.path.exists(checkpoint_path):
+            print(f"Checkpoint not found: {checkpoint_path}")
+            return False
+        
+        print(f"Loading checkpoint from: {checkpoint_path}")
+        checkpoint = torch.load(checkpoint_path, map_location=self.device)
+        
+        # Load model state
+        self.model.load_state_dict(checkpoint['model_state_dict'])
+        
+        # Load optimizer state if available (backward compatibility)
+        if 'optimizer_state_dict' in checkpoint:
+            self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+            print("✓ Loaded optimizer state")
+        else:
+            print("⚠ Optimizer state not found in checkpoint, using fresh optimizer")
+        
+        self.start_epoch = checkpoint['epoch'] + 1
+        self.best_val_f1 = checkpoint.get('val_f1', 0.0)
+        
+        # Restore training history if available
+        if 'train_losses' in checkpoint:
+            self.train_losses = checkpoint['train_losses']
+        if 'val_losses' in checkpoint:
+            self.val_losses = checkpoint['val_losses']
+        if 'val_f1_scores' in checkpoint:
+            self.val_f1_scores = checkpoint['val_f1_scores']
+        
+        # Update scheduler state if past warmup
+        if self.start_epoch >= self.warmup_epochs:
+            for _ in range(self.start_epoch - self.warmup_epochs):
+                self.scheduler.step()
+        
+        print(f"✓ Resumed from epoch {self.start_epoch}, Best Val F1: {self.best_val_f1:.4f}")
+        return True
         
     def train_epoch(self, epoch):
         """Train for one epoch with warmup"""
@@ -693,7 +732,7 @@ class KanformerTrainer:
         """Full training loop"""
         print(f"\nStarting Kanformer training for {num_epochs} epochs...")
         
-        for epoch in range(num_epochs):
+        for epoch in range(self.start_epoch, num_epochs):
             print(f"\n{'='*60}\nEpoch {epoch+1}/{num_epochs}\n{'='*60}")
             
             train_loss = self.train_epoch(epoch)
@@ -720,15 +759,34 @@ class KanformerTrainer:
                     'model_state_dict': self.model.state_dict(),
                     'optimizer_state_dict': self.optimizer.state_dict(),
                     'val_f1': val_f1,
+                    'train_losses': self.train_losses,
+                    'val_losses': self.val_losses,
+                    'val_f1_scores': self.val_f1_scores,
                 }, os.path.join(checkpoint_dir, 'best_model.pt'))
                 print(f"✓ Saved best model with Val F1: {val_f1:.4f}")
             
+            # Save periodic checkpoint with full state
             if (epoch + 1) % 5 == 0:
                 torch.save({
                     'epoch': epoch,
                     'model_state_dict': self.model.state_dict(),
+                    'optimizer_state_dict': self.optimizer.state_dict(),
                     'val_f1': val_f1,
+                    'train_losses': self.train_losses,
+                    'val_losses': self.val_losses,
+                    'val_f1_scores': self.val_f1_scores,
                 }, os.path.join(checkpoint_dir, f'checkpoint_epoch_{epoch+1}.pt'))
+            
+            # Always save latest checkpoint for easy resumption
+            torch.save({
+                'epoch': epoch,
+                'model_state_dict': self.model.state_dict(),
+                'optimizer_state_dict': self.optimizer.state_dict(),
+                'val_f1': val_f1,
+                'train_losses': self.train_losses,
+                'val_losses': self.val_losses,
+                'val_f1_scores': self.val_f1_scores,
+            }, os.path.join(checkpoint_dir, 'latest_checkpoint.pt'))
         
         print(f"\n{'='*60}\nTraining completed! Best Val F1: {self.best_val_f1:.4f}\n{'='*60}")
 
@@ -745,18 +803,39 @@ if __name__ == "__main__":
         print(f"GPU: {torch.cuda.get_device_name(0)}")
     
     if len(sys.argv) < 2:
-        print("Usage: python STMkanformer_model.py <mode>")
+        print("Usage: python STMkanformer_model.py <mode> [--resume <checkpoint_dir>]")
         print("  0: Standard training")
         print("  1: Downsample non-tonal speech")
+        print("  --resume: Resume from checkpoint directory")
         sys.exit(1)
     
     mode = int(sys.argv[1])
     ds_nontonal_speech = (mode == 1)
+    
+    # Check for resume flag
+    resume_dir = None
+    if '--resume' in sys.argv:
+        resume_idx = sys.argv.index('--resume')
+        if resume_idx + 1 < len(sys.argv):
+            resume_dir = sys.argv[resume_idx + 1]
+            print(f"Resume mode: Will attempt to load from {resume_dir}")
+    
+    # Set directory
     directory = "model/STM/Kanformer_corpora_categories/" + ("downsample" if mode == 1 else "standard")
     
-    time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
-    checkpoint_dir = os.path.join(directory, "ckpt", time_stamp)
-    os.makedirs(checkpoint_dir, exist_ok=True)
+    if resume_dir:
+        # Use provided checkpoint directory
+        checkpoint_dir = resume_dir
+        if not os.path.exists(checkpoint_dir):
+            print(f"Error: Checkpoint directory does not exist: {checkpoint_dir}")
+            sys.exit(1)
+    else:
+        # Create new directory with timestamp
+        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+        checkpoint_dir = os.path.join(directory, "ckpt", time_stamp)
+        os.makedirs(checkpoint_dir, exist_ok=True)
+    
+    print(f"Checkpoint directory: {checkpoint_dir}")
     
     # Prepare data
     data_prep = prepData_STM_Kanformer(ds_nontonal_speech=ds_nontonal_speech)
@@ -785,6 +864,23 @@ if __name__ == "__main__":
     
     # Train
     trainer = KanformerTrainer(model, train_loader, val_loader, test_loader, device, lr=1e-4, weight_decay=1e-4)
+    
+    # Resume from checkpoint if specified
+    if resume_dir:
+        latest_ckpt = os.path.join(checkpoint_dir, 'latest_checkpoint.pt')
+        if os.path.exists(latest_ckpt):
+            trainer.load_checkpoint(latest_ckpt)
+        else:
+            # Try to find the most recent epoch checkpoint
+            ckpt_files = [f for f in os.listdir(checkpoint_dir) if f.startswith('checkpoint_epoch_')]
+            if ckpt_files:
+                epochs = [int(f.split('_')[-1].replace('.pt', '')) for f in ckpt_files]
+                latest_epoch = max(epochs)
+                latest_ckpt = os.path.join(checkpoint_dir, f'checkpoint_epoch_{latest_epoch}.pt')
+                trainer.load_checkpoint(latest_ckpt)
+            else:
+                print("Warning: No checkpoint found to resume from, starting fresh")
+    
     trainer.train(num_epochs=50, checkpoint_dir=checkpoint_dir)
     
     # Test
