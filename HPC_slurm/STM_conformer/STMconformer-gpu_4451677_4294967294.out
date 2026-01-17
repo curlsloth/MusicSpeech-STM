@@ -1,0 +1,3042 @@
+Using device: cuda
+GPU: Quadro RTX 8000
+GPU Memory: 47.76 GB
+Mode: Standard training
+Augmentation: None (baseline improvements only)
+Checkpoint directory: model/STM/Conformer_Enhanced2/standard/none/ckpt/2026-01-16_17-16
+
+============================================================
+Loading and preparing data...
+============================================================
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-hausa_STMall.npy, shape: (29002, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-lingala_STMall.npy, shape: (11219, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-yoruba_STMall.npy, shape: (6629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Buckeye_STMall.npy, shape: (255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/EUROM_STMall.npy, shape: (6623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_speech_STMall.npy, shape: (785, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/LibriSpeech_STMall.npy, shape: (27144, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-AR_STMall.npy, shape: (2505, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-ES_STMall.npy, shape: (2507, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-FR_STMall.npy, shape: (2498, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-TR_STMall.npy, shape: (2512, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ab_STMall.npy, shape: (7558, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ar_STMall.npy, shape: (8080, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ba_STMall.npy, shape: (7964, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-be_STMall.npy, shape: (8595, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bg_STMall.npy, shape: (7130, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bn_STMall.npy, shape: (8149, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-br_STMall.npy, shape: (1454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ca_STMall.npy, shape: (8237, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ckb_STMall.npy, shape: (7490, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cnh_STMall.npy, shape: (656, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cs_STMall.npy, shape: (8622, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cv_STMall.npy, shape: (8755, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cy_STMall.npy, shape: (7640, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-da_STMall.npy, shape: (3878, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-de_STMall.npy, shape: (8979, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-dv_STMall.npy, shape: (9113, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-el_STMall.npy, shape: (6422, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-en_STMall.npy, shape: (8607, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eo_STMall.npy, shape: (9327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-es_STMall.npy, shape: (8742, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-et_STMall.npy, shape: (9653, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eu_STMall.npy, shape: (7983, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fa_STMall.npy, shape: (8629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fi_STMall.npy, shape: (3982, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fr_STMall.npy, shape: (8912, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fy-NL_STMall.npy, shape: (6694, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ga-IE_STMall.npy, shape: (1323, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gl_STMall.npy, shape: (8623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gn_STMall.npy, shape: (1014, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hi_STMall.npy, shape: (5438, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hu_STMall.npy, shape: (8319, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hy-AM_STMall.npy, shape: (6980, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-id_STMall.npy, shape: (8468, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ig_STMall.npy, shape: (9, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-it_STMall.npy, shape: (9083, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ja_STMall.npy, shape: (8606, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ka_STMall.npy, shape: (9409, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kab_STMall.npy, shape: (7172, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kk_STMall.npy, shape: (867, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kmr_STMall.npy, shape: (6603, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ky_STMall.npy, shape: (7998, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lg_STMall.npy, shape: (8169, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lt_STMall.npy, shape: (9073, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ltg_STMall.npy, shape: (2299, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lv_STMall.npy, shape: (7666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mhr_STMall.npy, shape: (8336, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ml_STMall.npy, shape: (813, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mn_STMall.npy, shape: (5968, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mt_STMall.npy, shape: (3632, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nan-tw_STMall.npy, shape: (181, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nl_STMall.npy, shape: (8834, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-oc_STMall.npy, shape: (681, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-or_STMall.npy, shape: (1941, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pl_STMall.npy, shape: (8817, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pt_STMall.npy, shape: (8413, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ro_STMall.npy, shape: (6666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ru_STMall.npy, shape: (9260, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-rw_STMall.npy, shape: (9148, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sr_STMall.npy, shape: (391, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sv-SE_STMall.npy, shape: (8288, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sw_STMall.npy, shape: (9192, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ta_STMall.npy, shape: (9474, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-th_STMall.npy, shape: (8044, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tr_STMall.npy, shape: (7953, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tt_STMall.npy, shape: (7454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ug_STMall.npy, shape: (7899, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uk_STMall.npy, shape: (8819, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ur_STMall.npy, shape: (8970, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uz_STMall.npy, shape: (7911, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-vi_STMall.npy, shape: (1859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yo_STMall.npy, shape: (2511, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yue_STMall.npy, shape: (6156, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-CN_STMall.npy, shape: (8715, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-TW_STMall.npy, shape: (7286, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SpeechClarity_STMall.npy, shape: (555, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TAT-Vol2_STMall.npy, shape: (793, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TIMIT_STMall.npy, shape: (479, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TTS_Javanese_STMall.npy, shape: (3068, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/primewords_chinese_STMall.npy, shape: (47166, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/room_reader_STMall.npy, shape: (146, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/thchs30_STMall.npy, shape: (13327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/zeroth_korean_STMall.npy, shape: (22255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Albouy2020Science_STMall.npy, shape: (123, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/GarlandEncyclopedia_STMall.npy, shape: (296, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_song_STMall.npy, shape: (803, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/IRMAS_STMall.npy, shape: (2838, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MTG-Jamendo_STMall.npy, shape: (55699, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MagnaTagATune_STMall.npy, shape: (25859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/NHS2_STMall.npy, shape: (1007, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/fma_large_STMall.npy, shape: (106257, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/ismir04_genre_STMall.npy, shape: (2185, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy, shape: (34565, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SONYC_STMall.npy, shape: (10798, 2420)
+Total samples: 978378
+Train samples: 770393
+Val samples: 102010
+Test samples: 105975
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
+Train dataset shape: torch.Size([770393, 20, 121])
+Val dataset shape: torch.Size([102010, 20, 121])
+Test dataset shape: torch.Size([105975, 20, 121])
+
+DataLoaders created with batch_size=128
+
+============================================================
+Creating Enhanced Conformer V2...
+============================================================
+Total parameters: 1,563,719
+
+Starting stable training for 50 epochs...
+Warmup epochs: 5
+Base LR: 0.0001
+Mixup: Disabled
+SpecAugment: Disabled
+
+============================================================
+Epoch 1/50
+============================================================
+  Batch 0/6019, Loss: 1.8711
+  Batch 100/6019, Loss: 0.8818
+  Batch 200/6019, Loss: 0.8842
+  Batch 300/6019, Loss: 0.8294
+  Batch 400/6019, Loss: 0.7969
+  Batch 500/6019, Loss: 0.7744
+  Batch 600/6019, Loss: 0.7177
+  Batch 700/6019, Loss: 0.7849
+  Batch 800/6019, Loss: 0.7772
+  Batch 900/6019, Loss: 0.7941
+  Batch 1000/6019, Loss: 0.7226
+  Batch 1100/6019, Loss: 0.7092
+  Batch 1200/6019, Loss: 0.8449
+  Batch 1300/6019, Loss: 0.7121
+  Batch 1400/6019, Loss: 0.6990
+  Batch 1500/6019, Loss: 0.6889
+  Batch 1600/6019, Loss: 0.6507
+  Batch 1700/6019, Loss: 0.7393
+  Batch 1800/6019, Loss: 0.6833
+  Batch 1900/6019, Loss: 0.8172
+  Batch 2000/6019, Loss: 0.7439
+  Batch 2100/6019, Loss: 0.6872
+  Batch 2200/6019, Loss: 0.6586
+  Batch 2300/6019, Loss: 0.7090
+  Batch 2400/6019, Loss: 0.6464
+  Batch 2500/6019, Loss: 0.7792
+  Batch 2600/6019, Loss: 0.6467
+  Batch 2700/6019, Loss: 0.6839
+  Batch 2800/6019, Loss: 0.6515
+  Batch 2900/6019, Loss: 0.7358
+  Batch 3000/6019, Loss: 0.7032
+  Batch 3100/6019, Loss: 0.7030
+  Batch 3200/6019, Loss: 0.7230
+  Batch 3300/6019, Loss: 0.7571
+  Batch 3400/6019, Loss: 0.6738
+  Batch 3500/6019, Loss: 0.6338
+  Batch 3600/6019, Loss: 0.7306
+  Batch 3700/6019, Loss: 0.6616
+  Batch 3800/6019, Loss: 0.6713
+  Batch 3900/6019, Loss: 0.5930
+  Batch 4000/6019, Loss: 0.6059
+  Batch 4100/6019, Loss: 0.6807
+  Batch 4200/6019, Loss: 0.6894
+  Batch 4300/6019, Loss: 0.7038
+  Batch 4400/6019, Loss: 0.6334
+  Batch 4500/6019, Loss: 0.6462
+  Batch 4600/6019, Loss: 0.6838
+  Batch 4700/6019, Loss: 0.7029
+  Batch 4800/6019, Loss: 0.6401
+  Batch 4900/6019, Loss: 0.6322
+  Batch 5000/6019, Loss: 0.6681
+  Batch 5100/6019, Loss: 0.6769
+  Batch 5200/6019, Loss: 0.6830
+  Batch 5300/6019, Loss: 0.5986
+  Batch 5400/6019, Loss: 0.5971
+  Batch 5500/6019, Loss: 0.6691
+  Batch 5600/6019, Loss: 0.6697
+  Batch 5700/6019, Loss: 0.7260
+  Batch 5800/6019, Loss: 0.6283
+  Batch 5900/6019, Loss: 0.6672
+  Batch 6000/6019, Loss: 0.6397
+Train Loss: 0.7167
+Val Loss: 0.3850, Val F1: 0.7558
+Learning rate: 0.000020
+✓ NEW BEST! Saved model with Val F1: 0.7558
+
+============================================================
+Epoch 2/50
+============================================================
+  Batch 0/6019, Loss: 0.7123
+  Batch 100/6019, Loss: 0.6489
+  Batch 200/6019, Loss: 0.6357
+  Batch 300/6019, Loss: 0.6289
+  Batch 400/6019, Loss: 0.6553
+  Batch 500/6019, Loss: 0.6817
+  Batch 600/6019, Loss: 0.7275
+  Batch 700/6019, Loss: 0.6638
+  Batch 800/6019, Loss: 0.7059
+  Batch 900/6019, Loss: 0.6351
+  Batch 1000/6019, Loss: 0.6984
+  Batch 1100/6019, Loss: 0.5659
+  Batch 1200/6019, Loss: 0.6297
+  Batch 1300/6019, Loss: 0.6200
+  Batch 1400/6019, Loss: 0.6317
+  Batch 1500/6019, Loss: 0.6708
+  Batch 1600/6019, Loss: 0.6331
+  Batch 1700/6019, Loss: 0.6164
+  Batch 1800/6019, Loss: 0.6437
+  Batch 1900/6019, Loss: 0.7050
+  Batch 2000/6019, Loss: 0.6388
+  Batch 2100/6019, Loss: 0.6709
+  Batch 2200/6019, Loss: 0.7219
+  Batch 2300/6019, Loss: 0.6647
+  Batch 2400/6019, Loss: 0.6661
+  Batch 2500/6019, Loss: 0.6515
+  Batch 2600/6019, Loss: 0.6616
+  Batch 2700/6019, Loss: 0.6507
+  Batch 2800/6019, Loss: 0.7031
+  Batch 2900/6019, Loss: 0.6922
+  Batch 3000/6019, Loss: 0.6456
+  Batch 3100/6019, Loss: 0.6366
+  Batch 3200/6019, Loss: 0.6294
+  Batch 3300/6019, Loss: 0.6665
+  Batch 3400/6019, Loss: 0.7002
+  Batch 3500/6019, Loss: 0.7541
+  Batch 3600/6019, Loss: 0.6473
+  Batch 3700/6019, Loss: 0.5957
+  Batch 3800/6019, Loss: 0.7003
+  Batch 3900/6019, Loss: 0.5790
+  Batch 4000/6019, Loss: 0.6497
+  Batch 4100/6019, Loss: 0.6217
+  Batch 4200/6019, Loss: 0.6860
+  Batch 4300/6019, Loss: 0.5906
+  Batch 4400/6019, Loss: 0.7011
+  Batch 4500/6019, Loss: 0.7228
+  Batch 4600/6019, Loss: 0.6179
+  Batch 4700/6019, Loss: 0.6469
+  Batch 4800/6019, Loss: 0.6317
+  Batch 4900/6019, Loss: 0.6826
+  Batch 5000/6019, Loss: 0.7181
+  Batch 5100/6019, Loss: 0.7422
+  Batch 5200/6019, Loss: 0.6136
+  Batch 5300/6019, Loss: 0.6500
+  Batch 5400/6019, Loss: 0.6126
+  Batch 5500/6019, Loss: 0.5921
+  Batch 5600/6019, Loss: 0.6220
+  Batch 5700/6019, Loss: 0.6134
+  Batch 5800/6019, Loss: 0.6355
+  Batch 5900/6019, Loss: 0.5989
+  Batch 6000/6019, Loss: 0.6389
+Train Loss: 0.6536
+Val Loss: 0.3515, Val F1: 0.7886
+Learning rate: 0.000040
+✓ NEW BEST! Saved model with Val F1: 0.7886
+
+============================================================
+Epoch 3/50
+============================================================
+  Batch 0/6019, Loss: 0.5904
+  Batch 100/6019, Loss: 0.6018
+  Batch 200/6019, Loss: 0.5875
+  Batch 300/6019, Loss: 0.6201
+  Batch 400/6019, Loss: 0.6100
+  Batch 500/6019, Loss: 0.5786
+  Batch 600/6019, Loss: 0.6762
+  Batch 700/6019, Loss: 0.5973
+  Batch 800/6019, Loss: 0.5783
+  Batch 900/6019, Loss: 0.5667
+  Batch 1000/6019, Loss: 0.6467
+  Batch 1100/6019, Loss: 0.5863
+  Batch 1200/6019, Loss: 0.6922
+  Batch 1300/6019, Loss: 0.6163
+  Batch 1400/6019, Loss: 0.6089
+  Batch 1500/6019, Loss: 0.7506
+  Batch 1600/6019, Loss: 0.6293
+  Batch 1700/6019, Loss: 0.5908
+  Batch 1800/6019, Loss: 0.6338
+  Batch 1900/6019, Loss: 0.5506
+  Batch 2000/6019, Loss: 0.6802
+  Batch 2100/6019, Loss: 0.5993
+  Batch 2200/6019, Loss: 0.6290
+  Batch 2300/6019, Loss: 0.6271
+  Batch 2400/6019, Loss: 0.5838
+  Batch 2500/6019, Loss: 0.6306
+  Batch 2600/6019, Loss: 0.6530
+  Batch 2700/6019, Loss: 0.6182
+  Batch 2800/6019, Loss: 0.6499
+  Batch 2900/6019, Loss: 0.6527
+  Batch 3000/6019, Loss: 0.6445
+  Batch 3100/6019, Loss: 0.5983
+  Batch 3200/6019, Loss: 0.5811
+  Batch 3300/6019, Loss: 0.6647
+  Batch 3400/6019, Loss: 0.6237
+  Batch 3500/6019, Loss: 0.7392
+  Batch 3600/6019, Loss: 0.6472
+  Batch 3700/6019, Loss: 0.5700
+  Batch 3800/6019, Loss: 0.6161
+  Batch 3900/6019, Loss: 0.5938
+  Batch 4000/6019, Loss: 0.7120
+  Batch 4100/6019, Loss: 0.6210
+  Batch 4200/6019, Loss: 0.5897
+  Batch 4300/6019, Loss: 0.6254
+  Batch 4400/6019, Loss: 0.6935
+  Batch 4500/6019, Loss: 0.6243
+  Batch 4600/6019, Loss: 0.6839
+  Batch 4700/6019, Loss: 0.6118
+  Batch 4800/6019, Loss: 0.6254
+  Batch 4900/6019, Loss: 0.6248
+  Batch 5000/6019, Loss: 0.6654
+  Batch 5100/6019, Loss: 0.5983
+  Batch 5200/6019, Loss: 0.6419
+  Batch 5300/6019, Loss: 0.6663
+  Batch 5400/6019, Loss: 0.6159
+  Batch 5500/6019, Loss: 0.6616
+  Batch 5600/6019, Loss: 0.5773
+  Batch 5700/6019, Loss: 0.5987
+  Batch 5800/6019, Loss: 0.5709
+  Batch 5900/6019, Loss: 0.6468
+  Batch 6000/6019, Loss: 0.5875
+Train Loss: 0.6331
+Val Loss: 0.3252, Val F1: 0.8083
+Learning rate: 0.000060
+✓ NEW BEST! Saved model with Val F1: 0.8083
+
+============================================================
+Epoch 4/50
+============================================================
+  Batch 0/6019, Loss: 0.5975
+  Batch 100/6019, Loss: 0.5975
+  Batch 200/6019, Loss: 0.6342
+  Batch 300/6019, Loss: 0.6244
+  Batch 400/6019, Loss: 0.7217
+  Batch 500/6019, Loss: 0.5786
+  Batch 600/6019, Loss: 0.6197
+  Batch 700/6019, Loss: 0.6079
+  Batch 800/6019, Loss: 0.6279
+  Batch 900/6019, Loss: 0.6675
+  Batch 1000/6019, Loss: 0.6077
+  Batch 1100/6019, Loss: 0.6481
+  Batch 1200/6019, Loss: 0.5806
+  Batch 1300/6019, Loss: 0.7122
+  Batch 1400/6019, Loss: 0.5743
+  Batch 1500/6019, Loss: 0.6076
+  Batch 1600/6019, Loss: 0.6021
+  Batch 1700/6019, Loss: 0.5948
+  Batch 1800/6019, Loss: 0.6213
+  Batch 1900/6019, Loss: 0.6609
+  Batch 2000/6019, Loss: 0.6664
+  Batch 2100/6019, Loss: 0.6199
+  Batch 2200/6019, Loss: 0.6087
+  Batch 2300/6019, Loss: 0.6395
+  Batch 2400/6019, Loss: 0.5746
+  Batch 2500/6019, Loss: 0.6746
+  Batch 2600/6019, Loss: 0.5833
+  Batch 2700/6019, Loss: 0.6641
+  Batch 2800/6019, Loss: 0.6418
+  Batch 2900/6019, Loss: 0.5473
+  Batch 3000/6019, Loss: 0.6813
+  Batch 3100/6019, Loss: 0.6520
+  Batch 3200/6019, Loss: 0.6137
+  Batch 3300/6019, Loss: 0.6520
+  Batch 3400/6019, Loss: 0.7014
+  Batch 3500/6019, Loss: 0.6119
+  Batch 3600/6019, Loss: 0.6504
+  Batch 3700/6019, Loss: 0.5776
+  Batch 3800/6019, Loss: 0.6060
+  Batch 3900/6019, Loss: 0.6328
+  Batch 4000/6019, Loss: 0.6063
+  Batch 4100/6019, Loss: 0.6618
+  Batch 4200/6019, Loss: 0.5937
+  Batch 4300/6019, Loss: 0.6518
+  Batch 4400/6019, Loss: 0.5834
+  Batch 4500/6019, Loss: 0.5869
+  Batch 4600/6019, Loss: 0.5923
+  Batch 4700/6019, Loss: 0.6160
+  Batch 4800/6019, Loss: 0.5550
+  Batch 4900/6019, Loss: 0.5932
+  Batch 5000/6019, Loss: 0.6184
+  Batch 5100/6019, Loss: 0.6281
+  Batch 5200/6019, Loss: 0.6752
+  Batch 5300/6019, Loss: 0.5997
+  Batch 5400/6019, Loss: 0.6450
+  Batch 5500/6019, Loss: 0.5670
+  Batch 5600/6019, Loss: 0.6058
+  Batch 5700/6019, Loss: 0.6554
+  Batch 5800/6019, Loss: 0.6181
+  Batch 5900/6019, Loss: 0.5710
+  Batch 6000/6019, Loss: 0.6783
+Train Loss: 0.6207
+Val Loss: 0.3287, Val F1: 0.8127
+Learning rate: 0.000080
+✓ NEW BEST! Saved model with Val F1: 0.8127
+
+============================================================
+Epoch 5/50
+============================================================
+  Batch 0/6019, Loss: 0.6535
+  Batch 100/6019, Loss: 0.5591
+  Batch 200/6019, Loss: 0.6738
+  Batch 300/6019, Loss: 0.5770
+  Batch 400/6019, Loss: 0.6752
+  Batch 500/6019, Loss: 0.6999
+  Batch 600/6019, Loss: 0.6593
+  Batch 700/6019, Loss: 0.5850
+  Batch 800/6019, Loss: 0.6382
+  Batch 900/6019, Loss: 0.6852
+  Batch 1000/6019, Loss: 0.5699
+  Batch 1100/6019, Loss: 0.6610
+  Batch 1200/6019, Loss: 0.5819
+  Batch 1300/6019, Loss: 0.5574
+  Batch 1400/6019, Loss: 0.6682
+  Batch 1500/6019, Loss: 0.6748
+  Batch 1600/6019, Loss: 0.5861
+  Batch 1700/6019, Loss: 0.5958
+  Batch 1800/6019, Loss: 0.5906
+  Batch 1900/6019, Loss: 0.5555
+  Batch 2000/6019, Loss: 0.5791
+  Batch 2100/6019, Loss: 0.5696
+  Batch 2200/6019, Loss: 0.6555
+  Batch 2300/6019, Loss: 0.6173
+  Batch 2400/6019, Loss: 0.6418
+  Batch 2500/6019, Loss: 0.5352
+  Batch 2600/6019, Loss: 0.6954
+  Batch 2700/6019, Loss: 0.6089
+  Batch 2800/6019, Loss: 0.5570
+  Batch 2900/6019, Loss: 0.6419
+  Batch 3000/6019, Loss: 0.6045
+  Batch 3100/6019, Loss: 0.6427
+  Batch 3200/6019, Loss: 0.6121
+  Batch 3300/6019, Loss: 0.6101
+  Batch 3400/6019, Loss: 0.6049
+  Batch 3500/6019, Loss: 0.6170
+  Batch 3600/6019, Loss: 0.6036
+  Batch 3700/6019, Loss: 0.5875
+  Batch 3800/6019, Loss: 0.6049
+  Batch 3900/6019, Loss: 0.6912
+  Batch 4000/6019, Loss: 0.6176
+  Batch 4100/6019, Loss: 0.5988
+  Batch 4200/6019, Loss: 0.5749
+  Batch 4300/6019, Loss: 0.6628
+  Batch 4400/6019, Loss: 0.6237
+  Batch 4500/6019, Loss: 0.6262
+  Batch 4600/6019, Loss: 0.6333
+  Batch 4700/6019, Loss: 0.5788
+  Batch 4800/6019, Loss: 0.5664
+  Batch 4900/6019, Loss: 0.5848
+  Batch 5000/6019, Loss: 0.6022
+  Batch 5100/6019, Loss: 0.6800
+  Batch 5200/6019, Loss: 0.6229
+  Batch 5300/6019, Loss: 0.5421
+  Batch 5400/6019, Loss: 0.5616
+  Batch 5500/6019, Loss: 0.6499
+  Batch 5600/6019, Loss: 0.6165
+  Batch 5700/6019, Loss: 0.5595
+  Batch 5800/6019, Loss: 0.5809
+  Batch 5900/6019, Loss: 0.6068
+  Batch 6000/6019, Loss: 0.6851
+Train Loss: 0.6118
+Val Loss: 0.3182, Val F1: 0.8119
+Learning rate: 0.000100
+  (Best: 0.8127 at epoch 4)
+
+============================================================
+Epoch 6/50
+============================================================
+  Batch 0/6019, Loss: 0.6259
+  Batch 100/6019, Loss: 0.6695
+  Batch 200/6019, Loss: 0.6086
+  Batch 300/6019, Loss: 0.6233
+  Batch 400/6019, Loss: 0.5135
+  Batch 500/6019, Loss: 0.6497
+  Batch 600/6019, Loss: 0.5924
+  Batch 700/6019, Loss: 0.5248
+  Batch 800/6019, Loss: 0.5695
+  Batch 900/6019, Loss: 0.6360
+  Batch 1000/6019, Loss: 0.6442
+  Batch 1100/6019, Loss: 0.6542
+  Batch 1200/6019, Loss: 0.6204
+  Batch 1300/6019, Loss: 0.6731
+  Batch 1400/6019, Loss: 0.5716
+  Batch 1500/6019, Loss: 0.6386
+  Batch 1600/6019, Loss: 0.6493
+  Batch 1700/6019, Loss: 0.5251
+  Batch 1800/6019, Loss: 0.6072
+  Batch 1900/6019, Loss: 0.5800
+  Batch 2000/6019, Loss: 0.5609
+  Batch 2100/6019, Loss: 0.5326
+  Batch 2200/6019, Loss: 0.6405
+  Batch 2300/6019, Loss: 0.5884
+  Batch 2400/6019, Loss: 0.6736
+  Batch 2500/6019, Loss: 0.5879
+  Batch 2600/6019, Loss: 0.5884
+  Batch 2700/6019, Loss: 0.6241
+  Batch 2800/6019, Loss: 0.6284
+  Batch 2900/6019, Loss: 0.6675
+  Batch 3000/6019, Loss: 0.5778
+  Batch 3100/6019, Loss: 0.5798
+  Batch 3200/6019, Loss: 0.5707
+  Batch 3300/6019, Loss: 0.5755
+  Batch 3400/6019, Loss: 0.6392
+  Batch 3500/6019, Loss: 0.5824
+  Batch 3600/6019, Loss: 0.5913
+  Batch 3700/6019, Loss: 0.5299
+  Batch 3800/6019, Loss: 0.6032
+  Batch 3900/6019, Loss: 0.6077
+  Batch 4000/6019, Loss: 0.6105
+  Batch 4100/6019, Loss: 0.5663
+  Batch 4200/6019, Loss: 0.5944
+  Batch 4300/6019, Loss: 0.6150
+  Batch 4400/6019, Loss: 0.6408
+  Batch 4500/6019, Loss: 0.5873
+  Batch 4600/6019, Loss: 0.6085
+  Batch 4700/6019, Loss: 0.5687
+  Batch 4800/6019, Loss: 0.5532
+  Batch 4900/6019, Loss: 0.6005
+  Batch 5000/6019, Loss: 0.5819
+  Batch 5100/6019, Loss: 0.5992
+  Batch 5200/6019, Loss: 0.5872
+  Batch 5300/6019, Loss: 0.5624
+  Batch 5400/6019, Loss: 0.6125
+  Batch 5500/6019, Loss: 0.6637
+  Batch 5600/6019, Loss: 0.6061
+  Batch 5700/6019, Loss: 0.5923
+  Batch 5800/6019, Loss: 0.6448
+  Batch 5900/6019, Loss: 0.5929
+  Batch 6000/6019, Loss: 0.5845
+Train Loss: 0.6030
+Val Loss: 0.3148, Val F1: 0.8022
+Learning rate: 0.000100
+  (Best: 0.8127 at epoch 4)
+
+============================================================
+Epoch 7/50
+============================================================
+  Batch 0/6019, Loss: 0.5945
+  Batch 100/6019, Loss: 0.6317
+  Batch 200/6019, Loss: 0.6119
+  Batch 300/6019, Loss: 0.5328
+  Batch 400/6019, Loss: 0.5797
+  Batch 500/6019, Loss: 0.5827
+  Batch 600/6019, Loss: 0.5903
+  Batch 700/6019, Loss: 0.5545
+  Batch 800/6019, Loss: 0.5586
+  Batch 900/6019, Loss: 0.5752
+  Batch 1000/6019, Loss: 0.6289
+  Batch 1100/6019, Loss: 0.6666
+  Batch 1200/6019, Loss: 0.5651
+  Batch 1300/6019, Loss: 0.6471
+  Batch 1400/6019, Loss: 0.6275
+  Batch 1500/6019, Loss: 0.6373
+  Batch 1600/6019, Loss: 0.5797
+  Batch 1700/6019, Loss: 0.5429
+  Batch 1800/6019, Loss: 0.6874
+  Batch 1900/6019, Loss: 0.5337
+  Batch 2000/6019, Loss: 0.6740
+  Batch 2100/6019, Loss: 0.5701
+  Batch 2200/6019, Loss: 0.5842
+  Batch 2300/6019, Loss: 0.7344
+  Batch 2400/6019, Loss: 0.6094
+  Batch 2500/6019, Loss: 0.6251
+  Batch 2600/6019, Loss: 0.5366
+  Batch 2700/6019, Loss: 0.6021
+  Batch 2800/6019, Loss: 0.6067
+  Batch 2900/6019, Loss: 0.6722
+  Batch 3000/6019, Loss: 0.5919
+  Batch 3100/6019, Loss: 0.6235
+  Batch 3200/6019, Loss: 0.5761
+  Batch 3300/6019, Loss: 0.5282
+  Batch 3400/6019, Loss: 0.5678
+  Batch 3500/6019, Loss: 0.5946
+  Batch 3600/6019, Loss: 0.6282
+  Batch 3700/6019, Loss: 0.6977
+  Batch 3800/6019, Loss: 0.5600
+  Batch 3900/6019, Loss: 0.6215
+  Batch 4000/6019, Loss: 0.5334
+  Batch 4100/6019, Loss: 0.5872
+  Batch 4200/6019, Loss: 0.5764
+  Batch 4300/6019, Loss: 0.6444
+  Batch 4400/6019, Loss: 0.5729
+  Batch 4500/6019, Loss: 0.5300
+  Batch 4600/6019, Loss: 0.6067
+  Batch 4700/6019, Loss: 0.5674
+  Batch 4800/6019, Loss: 0.6594
+  Batch 4900/6019, Loss: 0.6005
+  Batch 5000/6019, Loss: 0.6333
+  Batch 5100/6019, Loss: 0.5659
+  Batch 5200/6019, Loss: 0.6704
+  Batch 5300/6019, Loss: 0.5931
+  Batch 5400/6019, Loss: 0.6538
+  Batch 5500/6019, Loss: 0.6017
+  Batch 5600/6019, Loss: 0.5433
+  Batch 5700/6019, Loss: 0.5944
+  Batch 5800/6019, Loss: 0.5802
+  Batch 5900/6019, Loss: 0.6090
+  Batch 6000/6019, Loss: 0.5797
+Train Loss: 0.5967
+Val Loss: 0.2988, Val F1: 0.8254
+Learning rate: 0.000100
+✓ NEW BEST! Saved model with Val F1: 0.8254
+
+============================================================
+Epoch 8/50
+============================================================
+  Batch 0/6019, Loss: 0.5738
+  Batch 100/6019, Loss: 0.5752
+  Batch 200/6019, Loss: 0.6846
+  Batch 300/6019, Loss: 0.5587
+  Batch 400/6019, Loss: 0.5289
+  Batch 500/6019, Loss: 0.5364
+  Batch 600/6019, Loss: 0.6826
+  Batch 700/6019, Loss: 0.6661
+  Batch 800/6019, Loss: 0.6086
+  Batch 900/6019, Loss: 0.5417
+  Batch 1000/6019, Loss: 0.5451
+  Batch 1100/6019, Loss: 0.6444
+  Batch 1200/6019, Loss: 0.6015
+  Batch 1300/6019, Loss: 0.5974
+  Batch 1400/6019, Loss: 0.5504
+  Batch 1500/6019, Loss: 0.5293
+  Batch 1600/6019, Loss: 0.6161
+  Batch 1700/6019, Loss: 0.6105
+  Batch 1800/6019, Loss: 0.5879
+  Batch 1900/6019, Loss: 0.5953
+  Batch 2000/6019, Loss: 0.5773
+  Batch 2100/6019, Loss: 0.6235
+  Batch 2200/6019, Loss: 0.6140
+  Batch 2300/6019, Loss: 0.5604
+  Batch 2400/6019, Loss: 0.5353
+  Batch 2500/6019, Loss: 0.5443
+  Batch 2600/6019, Loss: 0.5752
+  Batch 2700/6019, Loss: 0.7214
+  Batch 2800/6019, Loss: 0.5894
+  Batch 2900/6019, Loss: 0.5764
+  Batch 3000/6019, Loss: 0.5328
+  Batch 3100/6019, Loss: 0.5736
+  Batch 3200/6019, Loss: 0.5877
+  Batch 3300/6019, Loss: 0.5642
+  Batch 3400/6019, Loss: 0.6031
+  Batch 3500/6019, Loss: 0.5789
+  Batch 3600/6019, Loss: 0.6027
+  Batch 3700/6019, Loss: 0.6279
+  Batch 3800/6019, Loss: 0.6284
+  Batch 3900/6019, Loss: 0.6869
+  Batch 4000/6019, Loss: 0.5594
+  Batch 4100/6019, Loss: 0.6259
+  Batch 4200/6019, Loss: 0.5521
+  Batch 4300/6019, Loss: 0.6020
+  Batch 4400/6019, Loss: 0.5725
+  Batch 4500/6019, Loss: 0.6043
+  Batch 4600/6019, Loss: 0.6434
+  Batch 4700/6019, Loss: 0.5441
+  Batch 4800/6019, Loss: 0.6150
+  Batch 4900/6019, Loss: 0.6535
+  Batch 5000/6019, Loss: 0.5914
+  Batch 5100/6019, Loss: 0.5691
+  Batch 5200/6019, Loss: 0.6012
+  Batch 5300/6019, Loss: 0.5336
+  Batch 5400/6019, Loss: 0.5489
+  Batch 5500/6019, Loss: 0.5796
+  Batch 5600/6019, Loss: 0.5509
+  Batch 5700/6019, Loss: 0.6259
+  Batch 5800/6019, Loss: 0.5572
+  Batch 5900/6019, Loss: 0.5565
+  Batch 6000/6019, Loss: 0.5717
+Train Loss: 0.5917
+Val Loss: 0.2962, Val F1: 0.8255
+Learning rate: 0.000099
+✓ NEW BEST! Saved model with Val F1: 0.8255
+
+============================================================
+Epoch 9/50
+============================================================
+  Batch 0/6019, Loss: 0.5558
+  Batch 100/6019, Loss: 0.5908
+  Batch 200/6019, Loss: 0.5296
+  Batch 300/6019, Loss: 0.6180
+  Batch 400/6019, Loss: 0.6041
+  Batch 500/6019, Loss: 0.5941
+  Batch 600/6019, Loss: 0.5823
+  Batch 700/6019, Loss: 0.6022
+  Batch 800/6019, Loss: 0.5598
+  Batch 900/6019, Loss: 0.5996
+  Batch 1000/6019, Loss: 0.5936
+  Batch 1100/6019, Loss: 0.6266
+  Batch 1200/6019, Loss: 0.6183
+  Batch 1300/6019, Loss: 0.6407
+  Batch 1400/6019, Loss: 0.5633
+  Batch 1500/6019, Loss: 0.5069
+  Batch 1600/6019, Loss: 0.6155
+  Batch 1700/6019, Loss: 0.6432
+  Batch 1800/6019, Loss: 0.5955
+  Batch 1900/6019, Loss: 0.6446
+  Batch 2000/6019, Loss: 0.5521
+  Batch 2100/6019, Loss: 0.6192
+  Batch 2200/6019, Loss: 0.5469
+  Batch 2300/6019, Loss: 0.5749
+  Batch 2400/6019, Loss: 0.6138
+  Batch 2500/6019, Loss: 0.6708
+  Batch 2600/6019, Loss: 0.5588
+  Batch 2700/6019, Loss: 0.5762
+  Batch 2800/6019, Loss: 0.5485
+  Batch 2900/6019, Loss: 0.6303
+  Batch 3000/6019, Loss: 0.5780
+  Batch 3100/6019, Loss: 0.5647
+  Batch 3200/6019, Loss: 0.6077
+  Batch 3300/6019, Loss: 0.5083
+  Batch 3400/6019, Loss: 0.6017
+  Batch 3500/6019, Loss: 0.5647
+  Batch 3600/6019, Loss: 0.6000
+  Batch 3700/6019, Loss: 0.6084
+  Batch 3800/6019, Loss: 0.5906
+  Batch 3900/6019, Loss: 0.5616
+  Batch 4000/6019, Loss: 0.5996
+  Batch 4100/6019, Loss: 0.6239
+  Batch 4200/6019, Loss: 0.5541
+  Batch 4300/6019, Loss: 0.5788
+  Batch 4400/6019, Loss: 0.6137
+  Batch 4500/6019, Loss: 0.6052
+  Batch 4600/6019, Loss: 0.5598
+  Batch 4700/6019, Loss: 0.5362
+  Batch 4800/6019, Loss: 0.5666
+  Batch 4900/6019, Loss: 0.6647
+  Batch 5000/6019, Loss: 0.6373
+  Batch 5100/6019, Loss: 0.6416
+  Batch 5200/6019, Loss: 0.5694
+  Batch 5300/6019, Loss: 0.6328
+  Batch 5400/6019, Loss: 0.5719
+  Batch 5500/6019, Loss: 0.5745
+  Batch 5600/6019, Loss: 0.5437
+  Batch 5700/6019, Loss: 0.5629
+  Batch 5800/6019, Loss: 0.5683
+  Batch 5900/6019, Loss: 0.5884
+  Batch 6000/6019, Loss: 0.6476
+Train Loss: 0.5874
+Val Loss: 0.2862, Val F1: 0.8269
+Learning rate: 0.000098
+✓ NEW BEST! Saved model with Val F1: 0.8269
+
+============================================================
+Epoch 10/50
+============================================================
+  Batch 0/6019, Loss: 0.5897
+  Batch 100/6019, Loss: 0.5603
+  Batch 200/6019, Loss: 0.5595
+  Batch 300/6019, Loss: 0.5073
+  Batch 400/6019, Loss: 0.7165
+  Batch 500/6019, Loss: 0.5639
+  Batch 600/6019, Loss: 0.5232
+  Batch 700/6019, Loss: 0.5754
+  Batch 800/6019, Loss: 0.5978
+  Batch 900/6019, Loss: 0.6099
+  Batch 1000/6019, Loss: 0.5456
+  Batch 1100/6019, Loss: 0.6070
+  Batch 1200/6019, Loss: 0.5727
+  Batch 1300/6019, Loss: 0.5625
+  Batch 1400/6019, Loss: 0.6184
+  Batch 1500/6019, Loss: 0.6135
+  Batch 1600/6019, Loss: 0.5813
+  Batch 1700/6019, Loss: 0.5896
+  Batch 1800/6019, Loss: 0.6255
+  Batch 1900/6019, Loss: 0.5953
+  Batch 2000/6019, Loss: 0.6008
+  Batch 2100/6019, Loss: 0.6388
+  Batch 2200/6019, Loss: 0.5524
+  Batch 2300/6019, Loss: 0.5474
+  Batch 2400/6019, Loss: 0.5514
+  Batch 2500/6019, Loss: 0.5998
+  Batch 2600/6019, Loss: 0.6061
+  Batch 2700/6019, Loss: 0.5720
+  Batch 2800/6019, Loss: 0.5535
+  Batch 2900/6019, Loss: 0.6139
+  Batch 3000/6019, Loss: 0.6097
+  Batch 3100/6019, Loss: 0.6098
+  Batch 3200/6019, Loss: 0.6505
+  Batch 3300/6019, Loss: 0.5266
+  Batch 3400/6019, Loss: 0.5652
+  Batch 3500/6019, Loss: 0.5775
+  Batch 3600/6019, Loss: 0.5273
+  Batch 3700/6019, Loss: 0.5353
+  Batch 3800/6019, Loss: 0.6413
+  Batch 3900/6019, Loss: 0.5452
+  Batch 4000/6019, Loss: 0.5326
+  Batch 4100/6019, Loss: 0.5445
+  Batch 4200/6019, Loss: 0.5066
+  Batch 4300/6019, Loss: 0.6144
+  Batch 4400/6019, Loss: 0.7043
+  Batch 4500/6019, Loss: 0.5537
+  Batch 4600/6019, Loss: 0.5763
+  Batch 4700/6019, Loss: 0.6660
+  Batch 4800/6019, Loss: 0.4962
+  Batch 4900/6019, Loss: 0.5387
+  Batch 5000/6019, Loss: 0.5484
+  Batch 5100/6019, Loss: 0.5584
+  Batch 5200/6019, Loss: 0.5758
+  Batch 5300/6019, Loss: 0.5323
+  Batch 5400/6019, Loss: 0.6254
+  Batch 5500/6019, Loss: 0.6032
+  Batch 5600/6019, Loss: 0.5590
+  Batch 5700/6019, Loss: 0.5726
+  Batch 5800/6019, Loss: 0.5808
+  Batch 5900/6019, Loss: 0.6041
+  Batch 6000/6019, Loss: 0.5735
+Train Loss: 0.5838
+Val Loss: 0.2949, Val F1: 0.8228
+Learning rate: 0.000097
+  (Best: 0.8269 at epoch 9)
+
+============================================================
+Epoch 11/50
+============================================================
+  Batch 0/6019, Loss: 0.5872
+  Batch 100/6019, Loss: 0.5218
+  Batch 200/6019, Loss: 0.5726
+  Batch 300/6019, Loss: 0.5537
+  Batch 400/6019, Loss: 0.6065
+  Batch 500/6019, Loss: 0.5332
+  Batch 600/6019, Loss: 0.5613
+  Batch 700/6019, Loss: 0.6316
+  Batch 800/6019, Loss: 0.5659
+  Batch 900/6019, Loss: 0.5280
+  Batch 1000/6019, Loss: 0.6195
+  Batch 1100/6019, Loss: 0.6031
+  Batch 1200/6019, Loss: 0.5885
+  Batch 1300/6019, Loss: 0.5607
+  Batch 1400/6019, Loss: 0.5485
+  Batch 1500/6019, Loss: 0.6462
+  Batch 1600/6019, Loss: 0.5587
+  Batch 1700/6019, Loss: 0.6043
+  Batch 1800/6019, Loss: 0.5657
+  Batch 1900/6019, Loss: 0.6088
+  Batch 2000/6019, Loss: 0.5751
+  Batch 2100/6019, Loss: 0.6157
+  Batch 2200/6019, Loss: 0.6192
+  Batch 2300/6019, Loss: 0.5808
+  Batch 2400/6019, Loss: 0.5959
+  Batch 2500/6019, Loss: 0.5661
+  Batch 2600/6019, Loss: 0.6358
+  Batch 2700/6019, Loss: 0.5958
+  Batch 2800/6019, Loss: 0.5364
+  Batch 2900/6019, Loss: 0.5950
+  Batch 3000/6019, Loss: 0.6066
+  Batch 3100/6019, Loss: 0.6213
+  Batch 3200/6019, Loss: 0.5753
+  Batch 3300/6019, Loss: 0.5785
+  Batch 3400/6019, Loss: 0.5766
+  Batch 3500/6019, Loss: 0.6679
+  Batch 3600/6019, Loss: 0.6095
+  Batch 3700/6019, Loss: 0.6351
+  Batch 3800/6019, Loss: 0.5763
+  Batch 3900/6019, Loss: 0.5620
+  Batch 4000/6019, Loss: 0.5596
+  Batch 4100/6019, Loss: 0.5461
+  Batch 4200/6019, Loss: 0.6499
+  Batch 4300/6019, Loss: 0.6636
+  Batch 4400/6019, Loss: 0.6827
+  Batch 4500/6019, Loss: 0.6030
+  Batch 4600/6019, Loss: 0.5704
+  Batch 4700/6019, Loss: 0.5869
+  Batch 4800/6019, Loss: 0.6102
+  Batch 4900/6019, Loss: 0.5772
+  Batch 5000/6019, Loss: 0.5506
+  Batch 5100/6019, Loss: 0.5384
+  Batch 5200/6019, Loss: 0.5827
+  Batch 5300/6019, Loss: 0.5673
+  Batch 5400/6019, Loss: 0.5956
+  Batch 5500/6019, Loss: 0.5979
+  Batch 5600/6019, Loss: 0.5774
+  Batch 5700/6019, Loss: 0.5587
+  Batch 5800/6019, Loss: 0.5395
+  Batch 5900/6019, Loss: 0.5513
+  Batch 6000/6019, Loss: 0.5692
+Train Loss: 0.5802
+Val Loss: 0.2903, Val F1: 0.8327
+Learning rate: 0.000096
+✓ NEW BEST! Saved model with Val F1: 0.8327
+
+============================================================
+Epoch 12/50
+============================================================
+  Batch 0/6019, Loss: 0.5837
+  Batch 100/6019, Loss: 0.5408
+  Batch 200/6019, Loss: 0.5984
+  Batch 300/6019, Loss: 0.5836
+  Batch 400/6019, Loss: 0.6315
+  Batch 500/6019, Loss: 0.6032
+  Batch 600/6019, Loss: 0.5695
+  Batch 700/6019, Loss: 0.5703
+  Batch 800/6019, Loss: 0.6590
+  Batch 900/6019, Loss: 0.5402
+  Batch 1000/6019, Loss: 0.5563
+  Batch 1100/6019, Loss: 0.6067
+  Batch 1200/6019, Loss: 0.5173
+  Batch 1300/6019, Loss: 0.5847
+  Batch 1400/6019, Loss: 0.6095
+  Batch 1500/6019, Loss: 0.6245
+  Batch 1600/6019, Loss: 0.5571
+  Batch 1700/6019, Loss: 0.5507
+  Batch 1800/6019, Loss: 0.6009
+  Batch 1900/6019, Loss: 0.6499
+  Batch 2000/6019, Loss: 0.6222
+  Batch 2100/6019, Loss: 0.5689
+  Batch 2200/6019, Loss: 0.5452
+  Batch 2300/6019, Loss: 0.5748
+  Batch 2400/6019, Loss: 0.5742
+  Batch 2500/6019, Loss: 0.6294
+  Batch 2600/6019, Loss: 0.5892
+  Batch 2700/6019, Loss: 0.6643
+  Batch 2800/6019, Loss: 0.5698
+  Batch 2900/6019, Loss: 0.5560
+  Batch 3000/6019, Loss: 0.6280
+  Batch 3100/6019, Loss: 0.5362
+  Batch 3200/6019, Loss: 0.5117
+  Batch 3300/6019, Loss: 0.6141
+  Batch 3400/6019, Loss: 0.6103
+  Batch 3500/6019, Loss: 0.5670
+  Batch 3600/6019, Loss: 0.5430
+  Batch 3700/6019, Loss: 0.6210
+  Batch 3800/6019, Loss: 0.5490
+  Batch 3900/6019, Loss: 0.5798
+  Batch 4000/6019, Loss: 0.5774
+  Batch 4100/6019, Loss: 0.5666
+  Batch 4200/6019, Loss: 0.5116
+  Batch 4300/6019, Loss: 0.5671
+  Batch 4400/6019, Loss: 0.5436
+  Batch 4500/6019, Loss: 0.5679
+  Batch 4600/6019, Loss: 0.5343
+  Batch 4700/6019, Loss: 0.5917
+  Batch 4800/6019, Loss: 0.6174
+  Batch 4900/6019, Loss: 0.5966
+  Batch 5000/6019, Loss: 0.6095
+  Batch 5100/6019, Loss: 0.6154
+  Batch 5200/6019, Loss: 0.5484
+  Batch 5300/6019, Loss: 0.5446
+  Batch 5400/6019, Loss: 0.5614
+  Batch 5500/6019, Loss: 0.6080
+  Batch 5600/6019, Loss: 0.5715
+  Batch 5700/6019, Loss: 0.5567
+  Batch 5800/6019, Loss: 0.5638
+  Batch 5900/6019, Loss: 0.5982
+  Batch 6000/6019, Loss: 0.5631
+Train Loss: 0.5772
+Val Loss: 0.2937, Val F1: 0.8233
+Learning rate: 0.000094
+  (Best: 0.8327 at epoch 11)
+
+============================================================
+Epoch 13/50
+============================================================
+  Batch 0/6019, Loss: 0.5397
+  Batch 100/6019, Loss: 0.5540
+  Batch 200/6019, Loss: 0.6555
+  Batch 300/6019, Loss: 0.5299
+  Batch 400/6019, Loss: 0.5954
+  Batch 500/6019, Loss: 0.5548
+  Batch 600/6019, Loss: 0.5760
+  Batch 700/6019, Loss: 0.6342
+  Batch 800/6019, Loss: 0.5795
+  Batch 900/6019, Loss: 0.5684
+  Batch 1000/6019, Loss: 0.5484
+  Batch 1100/6019, Loss: 0.6152
+  Batch 1200/6019, Loss: 0.5287
+  Batch 1300/6019, Loss: 0.6472
+  Batch 1400/6019, Loss: 0.5342
+  Batch 1500/6019, Loss: 0.6302
+  Batch 1600/6019, Loss: 0.5752
+  Batch 1700/6019, Loss: 0.5220
+  Batch 1800/6019, Loss: 0.5602
+  Batch 1900/6019, Loss: 0.6125
+  Batch 2000/6019, Loss: 0.5575
+  Batch 2100/6019, Loss: 0.5653
+  Batch 2200/6019, Loss: 0.6254
+  Batch 2300/6019, Loss: 0.6168
+  Batch 2400/6019, Loss: 0.5940
+  Batch 2500/6019, Loss: 0.6007
+  Batch 2600/6019, Loss: 0.5237
+  Batch 2700/6019, Loss: 0.5158
+  Batch 2800/6019, Loss: 0.5580
+  Batch 2900/6019, Loss: 0.5393
+  Batch 3000/6019, Loss: 0.5849
+  Batch 3100/6019, Loss: 0.5322
+  Batch 3200/6019, Loss: 0.5586
+  Batch 3300/6019, Loss: 0.5602
+  Batch 3400/6019, Loss: 0.5887
+  Batch 3500/6019, Loss: 0.5728
+  Batch 3600/6019, Loss: 0.5521
+  Batch 3700/6019, Loss: 0.5850
+  Batch 3800/6019, Loss: 0.5705
+  Batch 3900/6019, Loss: 0.5437
+  Batch 4000/6019, Loss: 0.5821
+  Batch 4100/6019, Loss: 0.5828
+  Batch 4200/6019, Loss: 0.5430
+  Batch 4300/6019, Loss: 0.5546
+  Batch 4400/6019, Loss: 0.5414
+  Batch 4500/6019, Loss: 0.6206
+  Batch 4600/6019, Loss: 0.5545
+  Batch 4700/6019, Loss: 0.6028
+  Batch 4800/6019, Loss: 0.6241
+  Batch 4900/6019, Loss: 0.6141
+  Batch 5000/6019, Loss: 0.5698
+  Batch 5100/6019, Loss: 0.6216
+  Batch 5200/6019, Loss: 0.5778
+  Batch 5300/6019, Loss: 0.6349
+  Batch 5400/6019, Loss: 0.5533
+  Batch 5500/6019, Loss: 0.5846
+  Batch 5600/6019, Loss: 0.5915
+  Batch 5700/6019, Loss: 0.6236
+  Batch 5800/6019, Loss: 0.6023
+  Batch 5900/6019, Loss: 0.5464
+  Batch 6000/6019, Loss: 0.5789
+Train Loss: 0.5743
+Val Loss: 0.3047, Val F1: 0.8208
+Learning rate: 0.000092
+  (Best: 0.8327 at epoch 11)
+
+============================================================
+Epoch 14/50
+============================================================
+  Batch 0/6019, Loss: 0.5190
+  Batch 100/6019, Loss: 0.5748
+  Batch 200/6019, Loss: 0.5834
+  Batch 300/6019, Loss: 0.5798
+  Batch 400/6019, Loss: 0.5580
+  Batch 500/6019, Loss: 0.6062
+  Batch 600/6019, Loss: 0.5924
+  Batch 700/6019, Loss: 0.4889
+  Batch 800/6019, Loss: 0.5687
+  Batch 900/6019, Loss: 0.5342
+  Batch 1000/6019, Loss: 0.6155
+  Batch 1100/6019, Loss: 0.5742
+  Batch 1200/6019, Loss: 0.5866
+  Batch 1300/6019, Loss: 0.5956
+  Batch 1400/6019, Loss: 0.5515
+  Batch 1500/6019, Loss: 0.5387
+  Batch 1600/6019, Loss: 0.5647
+  Batch 1700/6019, Loss: 0.6142
+  Batch 1800/6019, Loss: 0.6062
+  Batch 1900/6019, Loss: 0.5311
+  Batch 2000/6019, Loss: 0.5879
+  Batch 2100/6019, Loss: 0.5991
+  Batch 2200/6019, Loss: 0.5962
+  Batch 2300/6019, Loss: 0.6489
+  Batch 2400/6019, Loss: 0.5845
+  Batch 2500/6019, Loss: 0.5744
+  Batch 2600/6019, Loss: 0.6227
+  Batch 2700/6019, Loss: 0.5221
+  Batch 2800/6019, Loss: 0.6114
+  Batch 2900/6019, Loss: 0.5672
+  Batch 3000/6019, Loss: 0.5187
+  Batch 3100/6019, Loss: 0.5723
+  Batch 3200/6019, Loss: 0.5908
+  Batch 3300/6019, Loss: 0.5736
+  Batch 3400/6019, Loss: 0.5081
+  Batch 3500/6019, Loss: 0.5957
+  Batch 3600/6019, Loss: 0.6117
+  Batch 3700/6019, Loss: 0.5270
+  Batch 3800/6019, Loss: 0.5134
+  Batch 3900/6019, Loss: 0.5601
+  Batch 4000/6019, Loss: 0.6240
+  Batch 4100/6019, Loss: 0.5899
+  Batch 4200/6019, Loss: 0.5312
+  Batch 4300/6019, Loss: 0.6250
+  Batch 4400/6019, Loss: 0.6338
+  Batch 4500/6019, Loss: 0.5463
+  Batch 4600/6019, Loss: 0.5797
+  Batch 4700/6019, Loss: 0.6261
+  Batch 4800/6019, Loss: 0.6030
+  Batch 4900/6019, Loss: 0.6080
+  Batch 5000/6019, Loss: 0.5189
+  Batch 5100/6019, Loss: 0.5633
+  Batch 5200/6019, Loss: 0.5155
+  Batch 5300/6019, Loss: 0.5481
+  Batch 5400/6019, Loss: 0.5031
+  Batch 5500/6019, Loss: 0.6143
+  Batch 5600/6019, Loss: 0.5427
+  Batch 5700/6019, Loss: 0.5916
+  Batch 5800/6019, Loss: 0.5350
+  Batch 5900/6019, Loss: 0.5618
+  Batch 6000/6019, Loss: 0.5861
+Train Loss: 0.5711
+Val Loss: 0.2920, Val F1: 0.8372
+Learning rate: 0.000091
+✓ NEW BEST! Saved model with Val F1: 0.8372
+
+============================================================
+Epoch 15/50
+============================================================
+  Batch 0/6019, Loss: 0.5744
+  Batch 100/6019, Loss: 0.6007
+  Batch 200/6019, Loss: 0.5427
+  Batch 300/6019, Loss: 0.5669
+  Batch 400/6019, Loss: 0.5360
+  Batch 500/6019, Loss: 0.5706
+  Batch 600/6019, Loss: 0.6606
+  Batch 700/6019, Loss: 0.5601
+  Batch 800/6019, Loss: 0.5918
+  Batch 900/6019, Loss: 0.6230
+  Batch 1000/6019, Loss: 0.5876
+  Batch 1100/6019, Loss: 0.6292
+  Batch 1200/6019, Loss: 0.5915
+  Batch 1300/6019, Loss: 0.5876
+  Batch 1400/6019, Loss: 0.5611
+  Batch 1500/6019, Loss: 0.5372
+  Batch 1600/6019, Loss: 0.5844
+  Batch 1700/6019, Loss: 0.6368
+  Batch 1800/6019, Loss: 0.5483
+  Batch 1900/6019, Loss: 0.6196
+  Batch 2000/6019, Loss: 0.5699
+  Batch 2100/6019, Loss: 0.6002
+  Batch 2200/6019, Loss: 0.5142
+  Batch 2300/6019, Loss: 0.5043
+  Batch 2400/6019, Loss: 0.5676
+  Batch 2500/6019, Loss: 0.5879
+  Batch 2600/6019, Loss: 0.5926
+  Batch 2700/6019, Loss: 0.5858
+  Batch 2800/6019, Loss: 0.5519
+  Batch 2900/6019, Loss: 0.6301
+  Batch 3000/6019, Loss: 0.6853
+  Batch 3100/6019, Loss: 0.5603
+  Batch 3200/6019, Loss: 0.5625
+  Batch 3300/6019, Loss: 0.5195
+  Batch 3400/6019, Loss: 0.5659
+  Batch 3500/6019, Loss: 0.6213
+  Batch 3600/6019, Loss: 0.5808
+  Batch 3700/6019, Loss: 0.5908
+  Batch 3800/6019, Loss: 0.5452
+  Batch 3900/6019, Loss: 0.5624
+  Batch 4000/6019, Loss: 0.5798
+  Batch 4100/6019, Loss: 0.5910
+  Batch 4200/6019, Loss: 0.5970
+  Batch 4300/6019, Loss: 0.5735
+  Batch 4400/6019, Loss: 0.5342
+  Batch 4500/6019, Loss: 0.6568
+  Batch 4600/6019, Loss: 0.6054
+  Batch 4700/6019, Loss: 0.5226
+  Batch 4800/6019, Loss: 0.5498
+  Batch 4900/6019, Loss: 0.5159
+  Batch 5000/6019, Loss: 0.5696
+  Batch 5100/6019, Loss: 0.6000
+  Batch 5200/6019, Loss: 0.6165
+  Batch 5300/6019, Loss: 0.5537
+  Batch 5400/6019, Loss: 0.5075
+  Batch 5500/6019, Loss: 0.5902
+  Batch 5600/6019, Loss: 0.5925
+  Batch 5700/6019, Loss: 0.5611
+  Batch 5800/6019, Loss: 0.6443
+  Batch 5900/6019, Loss: 0.6382
+  Batch 6000/6019, Loss: 0.5573
+Train Loss: 0.5686
+Val Loss: 0.2969, Val F1: 0.8221
+Learning rate: 0.000088
+  (Best: 0.8372 at epoch 14)
+
+============================================================
+Epoch 16/50
+============================================================
+  Batch 0/6019, Loss: 0.5681
+  Batch 100/6019, Loss: 0.5730
+  Batch 200/6019, Loss: 0.5164
+  Batch 300/6019, Loss: 0.5274
+  Batch 400/6019, Loss: 0.5322
+  Batch 500/6019, Loss: 0.5091
+  Batch 600/6019, Loss: 0.5927
+  Batch 700/6019, Loss: 0.5490
+  Batch 800/6019, Loss: 0.6194
+  Batch 900/6019, Loss: 0.5521
+  Batch 1000/6019, Loss: 0.5401
+  Batch 1100/6019, Loss: 0.5781
+  Batch 1200/6019, Loss: 0.5153
+  Batch 1300/6019, Loss: 0.5419
+  Batch 1400/6019, Loss: 0.5695
+  Batch 1500/6019, Loss: 0.6365
+  Batch 1600/6019, Loss: 0.5181
+  Batch 1700/6019, Loss: 0.5709
+  Batch 1800/6019, Loss: 0.5570
+  Batch 1900/6019, Loss: 0.6261
+  Batch 2000/6019, Loss: 0.5871
+  Batch 2100/6019, Loss: 0.5948
+  Batch 2200/6019, Loss: 0.5209
+  Batch 2300/6019, Loss: 0.5972
+  Batch 2400/6019, Loss: 0.5829
+  Batch 2500/6019, Loss: 0.5178
+  Batch 2600/6019, Loss: 0.5052
+  Batch 2700/6019, Loss: 0.6354
+  Batch 2800/6019, Loss: 0.5748
+  Batch 2900/6019, Loss: 0.5646
+  Batch 3000/6019, Loss: 0.5246
+  Batch 3100/6019, Loss: 0.5242
+  Batch 3200/6019, Loss: 0.5315
+  Batch 3300/6019, Loss: 0.5953
+  Batch 3400/6019, Loss: 0.5410
+  Batch 3500/6019, Loss: 0.5385
+  Batch 3600/6019, Loss: 0.5493
+  Batch 3700/6019, Loss: 0.5944
+  Batch 3800/6019, Loss: 0.5620
+  Batch 3900/6019, Loss: 0.6269
+  Batch 4000/6019, Loss: 0.5700
+  Batch 4100/6019, Loss: 0.5597
+  Batch 4200/6019, Loss: 0.5619
+  Batch 4300/6019, Loss: 0.5890
+  Batch 4400/6019, Loss: 0.5834
+  Batch 4500/6019, Loss: 0.5226
+  Batch 4600/6019, Loss: 0.5792
+  Batch 4700/6019, Loss: 0.5573
+  Batch 4800/6019, Loss: 0.5286
+  Batch 4900/6019, Loss: 0.5765
+  Batch 5000/6019, Loss: 0.6326
+  Batch 5100/6019, Loss: 0.6327
+  Batch 5200/6019, Loss: 0.5764
+  Batch 5300/6019, Loss: 0.5748
+  Batch 5400/6019, Loss: 0.5516
+  Batch 5500/6019, Loss: 0.6216
+  Batch 5600/6019, Loss: 0.5084
+  Batch 5700/6019, Loss: 0.5986
+  Batch 5800/6019, Loss: 0.5096
+  Batch 5900/6019, Loss: 0.5665
+  Batch 6000/6019, Loss: 0.5486
+Train Loss: 0.5656
+Val Loss: 0.2929, Val F1: 0.8227
+Learning rate: 0.000086
+  (Best: 0.8372 at epoch 14)
+
+============================================================
+Epoch 17/50
+============================================================
+  Batch 0/6019, Loss: 0.5510
+  Batch 100/6019, Loss: 0.5520
+  Batch 200/6019, Loss: 0.4950
+  Batch 300/6019, Loss: 0.5725
+  Batch 400/6019, Loss: 0.5294
+  Batch 500/6019, Loss: 0.5291
+  Batch 600/6019, Loss: 0.5387
+  Batch 700/6019, Loss: 0.5620
+  Batch 800/6019, Loss: 0.5071
+  Batch 900/6019, Loss: 0.6206
+  Batch 1000/6019, Loss: 0.5079
+  Batch 1100/6019, Loss: 0.5595
+  Batch 1200/6019, Loss: 0.5409
+  Batch 1300/6019, Loss: 0.5549
+  Batch 1400/6019, Loss: 0.5474
+  Batch 1500/6019, Loss: 0.5526
+  Batch 1600/6019, Loss: 0.5284
+  Batch 1700/6019, Loss: 0.5300
+  Batch 1800/6019, Loss: 0.5163
+  Batch 1900/6019, Loss: 0.5535
+  Batch 2000/6019, Loss: 0.5709
+  Batch 2100/6019, Loss: 0.5016
+  Batch 2200/6019, Loss: 0.5845
+  Batch 2300/6019, Loss: 0.5156
+  Batch 2400/6019, Loss: 0.5855
+  Batch 2500/6019, Loss: 0.5846
+  Batch 2600/6019, Loss: 0.5227
+  Batch 2700/6019, Loss: 0.5786
+  Batch 2800/6019, Loss: 0.5920
+  Batch 2900/6019, Loss: 0.5506
+  Batch 3000/6019, Loss: 0.5290
+  Batch 3100/6019, Loss: 0.6864
+  Batch 3200/6019, Loss: 0.6036
+  Batch 3300/6019, Loss: 0.5091
+  Batch 3400/6019, Loss: 0.5889
+  Batch 3500/6019, Loss: 0.5735
+  Batch 3600/6019, Loss: 0.5883
+  Batch 3700/6019, Loss: 0.5727
+  Batch 3800/6019, Loss: 0.5587
+  Batch 3900/6019, Loss: 0.5475
+  Batch 4000/6019, Loss: 0.6050
+  Batch 4100/6019, Loss: 0.5494
+  Batch 4200/6019, Loss: 0.5267
+  Batch 4300/6019, Loss: 0.6030
+  Batch 4400/6019, Loss: 0.5396
+  Batch 4500/6019, Loss: 0.5520
+  Batch 4600/6019, Loss: 0.6474
+  Batch 4700/6019, Loss: 0.5786
+  Batch 4800/6019, Loss: 0.5582
+  Batch 4900/6019, Loss: 0.5659
+  Batch 5000/6019, Loss: 0.5689
+  Batch 5100/6019, Loss: 0.5920
+  Batch 5200/6019, Loss: 0.5570
+  Batch 5300/6019, Loss: 0.5409
+  Batch 5400/6019, Loss: 0.5604
+  Batch 5500/6019, Loss: 0.6531
+  Batch 5600/6019, Loss: 0.5520
+  Batch 5700/6019, Loss: 0.5654
+  Batch 5800/6019, Loss: 0.5861
+  Batch 5900/6019, Loss: 0.5235
+  Batch 6000/6019, Loss: 0.5582
+Train Loss: 0.5635
+Val Loss: 0.3017, Val F1: 0.8293
+Learning rate: 0.000084
+  (Best: 0.8372 at epoch 14)
+
+============================================================
+Epoch 18/50
+============================================================
+  Batch 0/6019, Loss: 0.5821
+  Batch 100/6019, Loss: 0.6392
+  Batch 200/6019, Loss: 0.5636
+  Batch 300/6019, Loss: 0.5893
+  Batch 400/6019, Loss: 0.5328
+  Batch 500/6019, Loss: 0.5738
+  Batch 600/6019, Loss: 0.5351
+  Batch 700/6019, Loss: 0.6142
+  Batch 800/6019, Loss: 0.5117
+  Batch 900/6019, Loss: 0.5687
+  Batch 1000/6019, Loss: 0.5042
+  Batch 1100/6019, Loss: 0.5898
+  Batch 1200/6019, Loss: 0.5668
+  Batch 1300/6019, Loss: 0.5363
+  Batch 1400/6019, Loss: 0.5271
+  Batch 1500/6019, Loss: 0.6325
+  Batch 1600/6019, Loss: 0.6142
+  Batch 1700/6019, Loss: 0.6121
+  Batch 1800/6019, Loss: 0.5437
+  Batch 1900/6019, Loss: 0.5421
+  Batch 2000/6019, Loss: 0.5566
+  Batch 2100/6019, Loss: 0.5591
+  Batch 2200/6019, Loss: 0.6123
+  Batch 2300/6019, Loss: 0.6120
+  Batch 2400/6019, Loss: 0.5474
+  Batch 2500/6019, Loss: 0.5806
+  Batch 2600/6019, Loss: 0.6006
+  Batch 2700/6019, Loss: 0.5319
+  Batch 2800/6019, Loss: 0.5298
+  Batch 2900/6019, Loss: 0.5433
+  Batch 3000/6019, Loss: 0.5682
+  Batch 3100/6019, Loss: 0.5946
+  Batch 3200/6019, Loss: 0.5062
+  Batch 3300/6019, Loss: 0.5591
+  Batch 3400/6019, Loss: 0.5855
+  Batch 3500/6019, Loss: 0.5848
+  Batch 3600/6019, Loss: 0.5727
+  Batch 3700/6019, Loss: 0.5088
+  Batch 3800/6019, Loss: 0.5551
+  Batch 3900/6019, Loss: 0.6131
+  Batch 4000/6019, Loss: 0.5676
+  Batch 4100/6019, Loss: 0.5244
+  Batch 4200/6019, Loss: 0.5709
+  Batch 4300/6019, Loss: 0.5064
+  Batch 4400/6019, Loss: 0.5803
+  Batch 4500/6019, Loss: 0.5763
+  Batch 4600/6019, Loss: 0.5375
+  Batch 4700/6019, Loss: 0.5749
+  Batch 4800/6019, Loss: 0.5280
+  Batch 4900/6019, Loss: 0.5357
+  Batch 5000/6019, Loss: 0.5973
+  Batch 5100/6019, Loss: 0.5657
+  Batch 5200/6019, Loss: 0.5381
+  Batch 5300/6019, Loss: 0.5332
+  Batch 5400/6019, Loss: 0.5643
+  Batch 5500/6019, Loss: 0.5723
+  Batch 5600/6019, Loss: 0.5368
+  Batch 5700/6019, Loss: 0.5621
+  Batch 5800/6019, Loss: 0.5383
+  Batch 5900/6019, Loss: 0.5933
+  Batch 6000/6019, Loss: 0.5802
+Train Loss: 0.5607
+Val Loss: 0.3074, Val F1: 0.8357
+Learning rate: 0.000081
+  (Best: 0.8372 at epoch 14)
+
+============================================================
+Epoch 19/50
+============================================================
+  Batch 0/6019, Loss: 0.5469
+  Batch 100/6019, Loss: 0.5392
+  Batch 200/6019, Loss: 0.5193
+  Batch 300/6019, Loss: 0.5941
+  Batch 400/6019, Loss: 0.5319
+  Batch 500/6019, Loss: 0.6109
+  Batch 600/6019, Loss: 0.5880
+  Batch 700/6019, Loss: 0.5163
+  Batch 800/6019, Loss: 0.5519
+  Batch 900/6019, Loss: 0.5187
+  Batch 1000/6019, Loss: 0.5454
+  Batch 1100/6019, Loss: 0.5510
+  Batch 1200/6019, Loss: 0.5463
+  Batch 1300/6019, Loss: 0.5788
+  Batch 1400/6019, Loss: 0.5317
+  Batch 1500/6019, Loss: 0.5613
+  Batch 1600/6019, Loss: 0.5255
+  Batch 1700/6019, Loss: 0.5811
+  Batch 1800/6019, Loss: 0.5245
+  Batch 1900/6019, Loss: 0.5982
+  Batch 2000/6019, Loss: 0.5927
+  Batch 2100/6019, Loss: 0.5329
+  Batch 2200/6019, Loss: 0.5438
+  Batch 2300/6019, Loss: 0.5690
+  Batch 2400/6019, Loss: 0.5165
+  Batch 2500/6019, Loss: 0.5427
+  Batch 2600/6019, Loss: 0.5669
+  Batch 2700/6019, Loss: 0.5448
+  Batch 2800/6019, Loss: 0.5923
+  Batch 2900/6019, Loss: 0.5311
+  Batch 3000/6019, Loss: 0.5718
+  Batch 3100/6019, Loss: 0.5564
+  Batch 3200/6019, Loss: 0.5280
+  Batch 3300/6019, Loss: 0.5460
+  Batch 3400/6019, Loss: 0.5292
+  Batch 3500/6019, Loss: 0.5242
+  Batch 3600/6019, Loss: 0.5668
+  Batch 3700/6019, Loss: 0.4815
+  Batch 3800/6019, Loss: 0.5514
+  Batch 3900/6019, Loss: 0.5400
+  Batch 4000/6019, Loss: 0.5912
+  Batch 4100/6019, Loss: 0.6069
+  Batch 4200/6019, Loss: 0.5413
+  Batch 4300/6019, Loss: 0.6061
+  Batch 4400/6019, Loss: 0.5257
+  Batch 4500/6019, Loss: 0.5122
+  Batch 4600/6019, Loss: 0.5973
+  Batch 4700/6019, Loss: 0.5857
+  Batch 4800/6019, Loss: 0.5565
+  Batch 4900/6019, Loss: 0.5566
+  Batch 5000/6019, Loss: 0.5346
+  Batch 5100/6019, Loss: 0.5090
+  Batch 5200/6019, Loss: 0.5128
+  Batch 5300/6019, Loss: 0.5234
+  Batch 5400/6019, Loss: 0.6125
+  Batch 5500/6019, Loss: 0.5946
+  Batch 5600/6019, Loss: 0.5037
+  Batch 5700/6019, Loss: 0.5393
+  Batch 5800/6019, Loss: 0.5199
+  Batch 5900/6019, Loss: 0.5470
+  Batch 6000/6019, Loss: 0.5586
+Train Loss: 0.5584
+Val Loss: 0.2864, Val F1: 0.8497
+Learning rate: 0.000078
+✓ NEW BEST! Saved model with Val F1: 0.8497
+
+============================================================
+Epoch 20/50
+============================================================
+  Batch 0/6019, Loss: 0.5690
+  Batch 100/6019, Loss: 0.5311
+  Batch 200/6019, Loss: 0.5537
+  Batch 300/6019, Loss: 0.5869
+  Batch 400/6019, Loss: 0.5695
+  Batch 500/6019, Loss: 0.5076
+  Batch 600/6019, Loss: 0.5333
+  Batch 700/6019, Loss: 0.5429
+  Batch 800/6019, Loss: 0.5898
+  Batch 900/6019, Loss: 0.5347
+  Batch 1000/6019, Loss: 0.5239
+  Batch 1100/6019, Loss: 0.5479
+  Batch 1200/6019, Loss: 0.5275
+  Batch 1300/6019, Loss: 0.6254
+  Batch 1400/6019, Loss: 0.4819
+  Batch 1500/6019, Loss: 0.5609
+  Batch 1600/6019, Loss: 0.5598
+  Batch 1700/6019, Loss: 0.5317
+  Batch 1800/6019, Loss: 0.5638
+  Batch 1900/6019, Loss: 0.5701
+  Batch 2000/6019, Loss: 0.5601
+  Batch 2100/6019, Loss: 0.5568
+  Batch 2200/6019, Loss: 0.5059
+  Batch 2300/6019, Loss: 0.6343
+  Batch 2400/6019, Loss: 0.5239
+  Batch 2500/6019, Loss: 0.5835
+  Batch 2600/6019, Loss: 0.4974
+  Batch 2700/6019, Loss: 0.5777
+  Batch 2800/6019, Loss: 0.5057
+  Batch 2900/6019, Loss: 0.5361
+  Batch 3000/6019, Loss: 0.5805
+  Batch 3100/6019, Loss: 0.5357
+  Batch 3200/6019, Loss: 0.5820
+  Batch 3300/6019, Loss: 0.5507
+  Batch 3400/6019, Loss: 0.6881
+  Batch 3500/6019, Loss: 0.5334
+  Batch 3600/6019, Loss: 0.5519
+  Batch 3700/6019, Loss: 0.5476
+  Batch 3800/6019, Loss: 0.5534
+  Batch 3900/6019, Loss: 0.5758
+  Batch 4000/6019, Loss: 0.5255
+  Batch 4100/6019, Loss: 0.5322
+  Batch 4200/6019, Loss: 0.5627
+  Batch 4300/6019, Loss: 0.5129
+  Batch 4400/6019, Loss: 0.4996
+  Batch 4500/6019, Loss: 0.5583
+  Batch 4600/6019, Loss: 0.5605
+  Batch 4700/6019, Loss: 0.5579
+  Batch 4800/6019, Loss: 0.5188
+  Batch 4900/6019, Loss: 0.5629
+  Batch 5000/6019, Loss: 0.5205
+  Batch 5100/6019, Loss: 0.5232
+  Batch 5200/6019, Loss: 0.5950
+  Batch 5300/6019, Loss: 0.5589
+  Batch 5400/6019, Loss: 0.5241
+  Batch 5500/6019, Loss: 0.5494
+  Batch 5600/6019, Loss: 0.5808
+  Batch 5700/6019, Loss: 0.5620
+  Batch 5800/6019, Loss: 0.6060
+  Batch 5900/6019, Loss: 0.5325
+  Batch 6000/6019, Loss: 0.6419
+Train Loss: 0.5558
+Val Loss: 0.2929, Val F1: 0.8335
+Learning rate: 0.000075
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 21/50
+============================================================
+  Batch 0/6019, Loss: 0.5837
+  Batch 100/6019, Loss: 0.5522
+  Batch 200/6019, Loss: 0.4907
+  Batch 300/6019, Loss: 0.5215
+  Batch 400/6019, Loss: 0.5645
+  Batch 500/6019, Loss: 0.5833
+  Batch 600/6019, Loss: 0.5554
+  Batch 700/6019, Loss: 0.5625
+  Batch 800/6019, Loss: 0.4834
+  Batch 900/6019, Loss: 0.5024
+  Batch 1000/6019, Loss: 0.5626
+  Batch 1100/6019, Loss: 0.5165
+  Batch 1200/6019, Loss: 0.5566
+  Batch 1300/6019, Loss: 0.5473
+  Batch 1400/6019, Loss: 0.4871
+  Batch 1500/6019, Loss: 0.5434
+  Batch 1600/6019, Loss: 0.5536
+  Batch 1700/6019, Loss: 0.5845
+  Batch 1800/6019, Loss: 0.5298
+  Batch 1900/6019, Loss: 0.5484
+  Batch 2000/6019, Loss: 0.5681
+  Batch 2100/6019, Loss: 0.5445
+  Batch 2200/6019, Loss: 0.5419
+  Batch 2300/6019, Loss: 0.5108
+  Batch 2400/6019, Loss: 0.5826
+  Batch 2500/6019, Loss: 0.5571
+  Batch 2600/6019, Loss: 0.5817
+  Batch 2700/6019, Loss: 0.6392
+  Batch 2800/6019, Loss: 0.5619
+  Batch 2900/6019, Loss: 0.6392
+  Batch 3000/6019, Loss: 0.5895
+  Batch 3100/6019, Loss: 0.5707
+  Batch 3200/6019, Loss: 0.5688
+  Batch 3300/6019, Loss: 0.5797
+  Batch 3400/6019, Loss: 0.5643
+  Batch 3500/6019, Loss: 0.5307
+  Batch 3600/6019, Loss: 0.5569
+  Batch 3700/6019, Loss: 0.5096
+  Batch 3800/6019, Loss: 0.5269
+  Batch 3900/6019, Loss: 0.6111
+  Batch 4000/6019, Loss: 0.5513
+  Batch 4100/6019, Loss: 0.5284
+  Batch 4200/6019, Loss: 0.5308
+  Batch 4300/6019, Loss: 0.5046
+  Batch 4400/6019, Loss: 0.5121
+  Batch 4500/6019, Loss: 0.5099
+  Batch 4600/6019, Loss: 0.5569
+  Batch 4700/6019, Loss: 0.5013
+  Batch 4800/6019, Loss: 0.5324
+  Batch 4900/6019, Loss: 0.5386
+  Batch 5000/6019, Loss: 0.5603
+  Batch 5100/6019, Loss: 0.5874
+  Batch 5200/6019, Loss: 0.5548
+  Batch 5300/6019, Loss: 0.5787
+  Batch 5400/6019, Loss: 0.5230
+  Batch 5500/6019, Loss: 0.5508
+  Batch 5600/6019, Loss: 0.5823
+  Batch 5700/6019, Loss: 0.5535
+  Batch 5800/6019, Loss: 0.5655
+  Batch 5900/6019, Loss: 0.5076
+  Batch 6000/6019, Loss: 0.5347
+Train Loss: 0.5538
+Val Loss: 0.2969, Val F1: 0.8410
+Learning rate: 0.000072
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 22/50
+============================================================
+  Batch 0/6019, Loss: 0.5154
+  Batch 100/6019, Loss: 0.4953
+  Batch 200/6019, Loss: 0.4816
+  Batch 300/6019, Loss: 0.6057
+  Batch 400/6019, Loss: 0.5797
+  Batch 500/6019, Loss: 0.5730
+  Batch 600/6019, Loss: 0.5553
+  Batch 700/6019, Loss: 0.5221
+  Batch 800/6019, Loss: 0.5287
+  Batch 900/6019, Loss: 0.5126
+  Batch 1000/6019, Loss: 0.5454
+  Batch 1100/6019, Loss: 0.5590
+  Batch 1200/6019, Loss: 0.5320
+  Batch 1300/6019, Loss: 0.5605
+  Batch 1400/6019, Loss: 0.5585
+  Batch 1500/6019, Loss: 0.5294
+  Batch 1600/6019, Loss: 0.5417
+  Batch 1700/6019, Loss: 0.5527
+  Batch 1800/6019, Loss: 0.5197
+  Batch 1900/6019, Loss: 0.5181
+  Batch 2000/6019, Loss: 0.5448
+  Batch 2100/6019, Loss: 0.5662
+  Batch 2200/6019, Loss: 0.5607
+  Batch 2300/6019, Loss: 0.5829
+  Batch 2400/6019, Loss: 0.5088
+  Batch 2500/6019, Loss: 0.5163
+  Batch 2600/6019, Loss: 0.5109
+  Batch 2700/6019, Loss: 0.5671
+  Batch 2800/6019, Loss: 0.5740
+  Batch 2900/6019, Loss: 0.5595
+  Batch 3000/6019, Loss: 0.5604
+  Batch 3100/6019, Loss: 0.6429
+  Batch 3200/6019, Loss: 0.5863
+  Batch 3300/6019, Loss: 0.5473
+  Batch 3400/6019, Loss: 0.5679
+  Batch 3500/6019, Loss: 0.5801
+  Batch 3600/6019, Loss: 0.5396
+  Batch 3700/6019, Loss: 0.5447
+  Batch 3800/6019, Loss: 0.5761
+  Batch 3900/6019, Loss: 0.5552
+  Batch 4000/6019, Loss: 0.5810
+  Batch 4100/6019, Loss: 0.5790
+  Batch 4200/6019, Loss: 0.5116
+  Batch 4300/6019, Loss: 0.5547
+  Batch 4400/6019, Loss: 0.5861
+  Batch 4500/6019, Loss: 0.5422
+  Batch 4600/6019, Loss: 0.5625
+  Batch 4700/6019, Loss: 0.6172
+  Batch 4800/6019, Loss: 0.5322
+  Batch 4900/6019, Loss: 0.6058
+  Batch 5000/6019, Loss: 0.5129
+  Batch 5100/6019, Loss: 0.5736
+  Batch 5200/6019, Loss: 0.5343
+  Batch 5300/6019, Loss: 0.6368
+  Batch 5400/6019, Loss: 0.5876
+  Batch 5500/6019, Loss: 0.5114
+  Batch 5600/6019, Loss: 0.5450
+  Batch 5700/6019, Loss: 0.5966
+  Batch 5800/6019, Loss: 0.5251
+  Batch 5900/6019, Loss: 0.5388
+  Batch 6000/6019, Loss: 0.5299
+Train Loss: 0.5516
+Val Loss: 0.3209, Val F1: 0.8260
+Learning rate: 0.000069
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 23/50
+============================================================
+  Batch 0/6019, Loss: 0.6038
+  Batch 100/6019, Loss: 0.5458
+  Batch 200/6019, Loss: 0.5350
+  Batch 300/6019, Loss: 0.5018
+  Batch 400/6019, Loss: 0.5723
+  Batch 500/6019, Loss: 0.5030
+  Batch 600/6019, Loss: 0.5301
+  Batch 700/6019, Loss: 0.6082
+  Batch 800/6019, Loss: 0.5387
+  Batch 900/6019, Loss: 0.5512
+  Batch 1000/6019, Loss: 0.5529
+  Batch 1100/6019, Loss: 0.5618
+  Batch 1200/6019, Loss: 0.5356
+  Batch 1300/6019, Loss: 0.5607
+  Batch 1400/6019, Loss: 0.5275
+  Batch 1500/6019, Loss: 0.5326
+  Batch 1600/6019, Loss: 0.5992
+  Batch 1700/6019, Loss: 0.5428
+  Batch 1800/6019, Loss: 0.5143
+  Batch 1900/6019, Loss: 0.5315
+  Batch 2000/6019, Loss: 0.5487
+  Batch 2100/6019, Loss: 0.5329
+  Batch 2200/6019, Loss: 0.5684
+  Batch 2300/6019, Loss: 0.5474
+  Batch 2400/6019, Loss: 0.5079
+  Batch 2500/6019, Loss: 0.5151
+  Batch 2600/6019, Loss: 0.5023
+  Batch 2700/6019, Loss: 0.5266
+  Batch 2800/6019, Loss: 0.5819
+  Batch 2900/6019, Loss: 0.5834
+  Batch 3000/6019, Loss: 0.5133
+  Batch 3100/6019, Loss: 0.5131
+  Batch 3200/6019, Loss: 0.5250
+  Batch 3300/6019, Loss: 0.5450
+  Batch 3400/6019, Loss: 0.5739
+  Batch 3500/6019, Loss: 0.5935
+  Batch 3600/6019, Loss: 0.5397
+  Batch 3700/6019, Loss: 0.5593
+  Batch 3800/6019, Loss: 0.5046
+  Batch 3900/6019, Loss: 0.5210
+  Batch 4000/6019, Loss: 0.5614
+  Batch 4100/6019, Loss: 0.5406
+  Batch 4200/6019, Loss: 0.5586
+  Batch 4300/6019, Loss: 0.5404
+  Batch 4400/6019, Loss: 0.5545
+  Batch 4500/6019, Loss: 0.5180
+  Batch 4600/6019, Loss: 0.5867
+  Batch 4700/6019, Loss: 0.4982
+  Batch 4800/6019, Loss: 0.5549
+  Batch 4900/6019, Loss: 0.5753
+  Batch 5000/6019, Loss: 0.5432
+  Batch 5100/6019, Loss: 0.6366
+  Batch 5200/6019, Loss: 0.5381
+  Batch 5300/6019, Loss: 0.5154
+  Batch 5400/6019, Loss: 0.5659
+  Batch 5500/6019, Loss: 0.5245
+  Batch 5600/6019, Loss: 0.5153
+  Batch 5700/6019, Loss: 0.6006
+  Batch 5800/6019, Loss: 0.5413
+  Batch 5900/6019, Loss: 0.6025
+  Batch 6000/6019, Loss: 0.5997
+Train Loss: 0.5490
+Val Loss: 0.2969, Val F1: 0.8387
+Learning rate: 0.000066
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 24/50
+============================================================
+  Batch 0/6019, Loss: 0.5023
+  Batch 100/6019, Loss: 0.5588
+  Batch 200/6019, Loss: 0.5076
+  Batch 300/6019, Loss: 0.5174
+  Batch 400/6019, Loss: 0.5196
+  Batch 500/6019, Loss: 0.5178
+  Batch 600/6019, Loss: 0.5320
+  Batch 700/6019, Loss: 0.5569
+  Batch 800/6019, Loss: 0.5503
+  Batch 900/6019, Loss: 0.5348
+  Batch 1000/6019, Loss: 0.5654
+  Batch 1100/6019, Loss: 0.5359
+  Batch 1200/6019, Loss: 0.5249
+  Batch 1300/6019, Loss: 0.5352
+  Batch 1400/6019, Loss: 0.6166
+  Batch 1500/6019, Loss: 0.5380
+  Batch 1600/6019, Loss: 0.4703
+  Batch 1700/6019, Loss: 0.5275
+  Batch 1800/6019, Loss: 0.4859
+  Batch 1900/6019, Loss: 0.5305
+  Batch 2000/6019, Loss: 0.6029
+  Batch 2100/6019, Loss: 0.5144
+  Batch 2200/6019, Loss: 0.4986
+  Batch 2300/6019, Loss: 0.5335
+  Batch 2400/6019, Loss: 0.4979
+  Batch 2500/6019, Loss: 0.5826
+  Batch 2600/6019, Loss: 0.5693
+  Batch 2700/6019, Loss: 0.5213
+  Batch 2800/6019, Loss: 0.5254
+  Batch 2900/6019, Loss: 0.5109
+  Batch 3000/6019, Loss: 0.6127
+  Batch 3100/6019, Loss: 0.5809
+  Batch 3200/6019, Loss: 0.5800
+  Batch 3300/6019, Loss: 0.5747
+  Batch 3400/6019, Loss: 0.5620
+  Batch 3500/6019, Loss: 0.5843
+  Batch 3600/6019, Loss: 0.5657
+  Batch 3700/6019, Loss: 0.5600
+  Batch 3800/6019, Loss: 0.5172
+  Batch 3900/6019, Loss: 0.4915
+  Batch 4000/6019, Loss: 0.5362
+  Batch 4100/6019, Loss: 0.5116
+  Batch 4200/6019, Loss: 0.5256
+  Batch 4300/6019, Loss: 0.5526
+  Batch 4400/6019, Loss: 0.5296
+  Batch 4500/6019, Loss: 0.5352
+  Batch 4600/6019, Loss: 0.5218
+  Batch 4700/6019, Loss: 0.5393
+  Batch 4800/6019, Loss: 0.5198
+  Batch 4900/6019, Loss: 0.5557
+  Batch 5000/6019, Loss: 0.5706
+  Batch 5100/6019, Loss: 0.5474
+  Batch 5200/6019, Loss: 0.5322
+  Batch 5300/6019, Loss: 0.5255
+  Batch 5400/6019, Loss: 0.5722
+  Batch 5500/6019, Loss: 0.6197
+  Batch 5600/6019, Loss: 0.5567
+  Batch 5700/6019, Loss: 0.5917
+  Batch 5800/6019, Loss: 0.5408
+  Batch 5900/6019, Loss: 0.4899
+  Batch 6000/6019, Loss: 0.5834
+Train Loss: 0.5471
+Val Loss: 0.3000, Val F1: 0.8344
+Learning rate: 0.000062
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 25/50
+============================================================
+  Batch 0/6019, Loss: 0.5517
+  Batch 100/6019, Loss: 0.5479
+  Batch 200/6019, Loss: 0.5353
+  Batch 300/6019, Loss: 0.5672
+  Batch 400/6019, Loss: 0.5341
+  Batch 500/6019, Loss: 0.5029
+  Batch 600/6019, Loss: 0.4999
+  Batch 700/6019, Loss: 0.4988
+  Batch 800/6019, Loss: 0.5511
+  Batch 900/6019, Loss: 0.5916
+  Batch 1000/6019, Loss: 0.6155
+  Batch 1100/6019, Loss: 0.5386
+  Batch 1200/6019, Loss: 0.5715
+  Batch 1300/6019, Loss: 0.5220
+  Batch 1400/6019, Loss: 0.5508
+  Batch 1500/6019, Loss: 0.5563
+  Batch 1600/6019, Loss: 0.5328
+  Batch 1700/6019, Loss: 0.5523
+  Batch 1800/6019, Loss: 0.5845
+  Batch 1900/6019, Loss: 0.5593
+  Batch 2000/6019, Loss: 0.5393
+  Batch 2100/6019, Loss: 0.5446
+  Batch 2200/6019, Loss: 0.6052
+  Batch 2300/6019, Loss: 0.5522
+  Batch 2400/6019, Loss: 0.5267
+  Batch 2500/6019, Loss: 0.5237
+  Batch 2600/6019, Loss: 0.5108
+  Batch 2700/6019, Loss: 0.5408
+  Batch 2800/6019, Loss: 0.5171
+  Batch 2900/6019, Loss: 0.5294
+  Batch 3000/6019, Loss: 0.5788
+  Batch 3100/6019, Loss: 0.5726
+  Batch 3200/6019, Loss: 0.5625
+  Batch 3300/6019, Loss: 0.5782
+  Batch 3400/6019, Loss: 0.5308
+  Batch 3500/6019, Loss: 0.5676
+  Batch 3600/6019, Loss: 0.6179
+  Batch 3700/6019, Loss: 0.5357
+  Batch 3800/6019, Loss: 0.5924
+  Batch 3900/6019, Loss: 0.5387
+  Batch 4000/6019, Loss: 0.5351
+  Batch 4100/6019, Loss: 0.5187
+  Batch 4200/6019, Loss: 0.5612
+  Batch 4300/6019, Loss: 0.5249
+  Batch 4400/6019, Loss: 0.5205
+  Batch 4500/6019, Loss: 0.5031
+  Batch 4600/6019, Loss: 0.5405
+  Batch 4700/6019, Loss: 0.5240
+  Batch 4800/6019, Loss: 0.5255
+  Batch 4900/6019, Loss: 0.5082
+  Batch 5000/6019, Loss: 0.5487
+  Batch 5100/6019, Loss: 0.5535
+  Batch 5200/6019, Loss: 0.5871
+  Batch 5300/6019, Loss: 0.5663
+  Batch 5400/6019, Loss: 0.5526
+  Batch 5500/6019, Loss: 0.5316
+  Batch 5600/6019, Loss: 0.5276
+  Batch 5700/6019, Loss: 0.5510
+  Batch 5800/6019, Loss: 0.5222
+  Batch 5900/6019, Loss: 0.6121
+  Batch 6000/6019, Loss: 0.5423
+Train Loss: 0.5450
+Val Loss: 0.3120, Val F1: 0.8286
+Learning rate: 0.000059
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 26/50
+============================================================
+  Batch 0/6019, Loss: 0.4984
+  Batch 100/6019, Loss: 0.5747
+  Batch 200/6019, Loss: 0.4972
+  Batch 300/6019, Loss: 0.5026
+  Batch 400/6019, Loss: 0.6023
+  Batch 500/6019, Loss: 0.5193
+  Batch 600/6019, Loss: 0.5438
+  Batch 700/6019, Loss: 0.5829
+  Batch 800/6019, Loss: 0.5171
+  Batch 900/6019, Loss: 0.5213
+  Batch 1000/6019, Loss: 0.4848
+  Batch 1100/6019, Loss: 0.5819
+  Batch 1200/6019, Loss: 0.5736
+  Batch 1300/6019, Loss: 0.4814
+  Batch 1400/6019, Loss: 0.4956
+  Batch 1500/6019, Loss: 0.5410
+  Batch 1600/6019, Loss: 0.5008
+  Batch 1700/6019, Loss: 0.6070
+  Batch 1800/6019, Loss: 0.5028
+  Batch 1900/6019, Loss: 0.5764
+  Batch 2000/6019, Loss: 0.5087
+  Batch 2100/6019, Loss: 0.5547
+  Batch 2200/6019, Loss: 0.5345
+  Batch 2300/6019, Loss: 0.5260
+  Batch 2400/6019, Loss: 0.5724
+  Batch 2500/6019, Loss: 0.5563
+  Batch 2600/6019, Loss: 0.5742
+  Batch 2700/6019, Loss: 0.5671
+  Batch 2800/6019, Loss: 0.5889
+  Batch 2900/6019, Loss: 0.5418
+  Batch 3000/6019, Loss: 0.5354
+  Batch 3100/6019, Loss: 0.5255
+  Batch 3200/6019, Loss: 0.5770
+  Batch 3300/6019, Loss: 0.5600
+  Batch 3400/6019, Loss: 0.5325
+  Batch 3500/6019, Loss: 0.5304
+  Batch 3600/6019, Loss: 0.5232
+  Batch 3700/6019, Loss: 0.5562
+  Batch 3800/6019, Loss: 0.5598
+  Batch 3900/6019, Loss: 0.5385
+  Batch 4000/6019, Loss: 0.5435
+  Batch 4100/6019, Loss: 0.6015
+  Batch 4200/6019, Loss: 0.4960
+  Batch 4300/6019, Loss: 0.5682
+  Batch 4400/6019, Loss: 0.5828
+  Batch 4500/6019, Loss: 0.5695
+  Batch 4600/6019, Loss: 0.5218
+  Batch 4700/6019, Loss: 0.5496
+  Batch 4800/6019, Loss: 0.5195
+  Batch 4900/6019, Loss: 0.5362
+  Batch 5000/6019, Loss: 0.5222
+  Batch 5100/6019, Loss: 0.5310
+  Batch 5200/6019, Loss: 0.4935
+  Batch 5300/6019, Loss: 0.5459
+  Batch 5400/6019, Loss: 0.5784
+  Batch 5500/6019, Loss: 0.5454
+  Batch 5600/6019, Loss: 0.6049
+  Batch 5700/6019, Loss: 0.5487
+  Batch 5800/6019, Loss: 0.5029
+  Batch 5900/6019, Loss: 0.5300
+  Batch 6000/6019, Loss: 0.5378
+Train Loss: 0.5424
+Val Loss: 0.2957, Val F1: 0.8331
+Learning rate: 0.000056
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 27/50
+============================================================
+  Batch 0/6019, Loss: 0.5508
+  Batch 100/6019, Loss: 0.5914
+  Batch 200/6019, Loss: 0.5478
+  Batch 300/6019, Loss: 0.5514
+  Batch 400/6019, Loss: 0.5406
+  Batch 500/6019, Loss: 0.5512
+  Batch 600/6019, Loss: 0.5400
+  Batch 700/6019, Loss: 0.5385
+  Batch 800/6019, Loss: 0.6048
+  Batch 900/6019, Loss: 0.5310
+  Batch 1000/6019, Loss: 0.5710
+  Batch 1100/6019, Loss: 0.6292
+  Batch 1200/6019, Loss: 0.4971
+  Batch 1300/6019, Loss: 0.5182
+  Batch 1400/6019, Loss: 0.5090
+  Batch 1500/6019, Loss: 0.5342
+  Batch 1600/6019, Loss: 0.5646
+  Batch 1700/6019, Loss: 0.5468
+  Batch 1800/6019, Loss: 0.5602
+  Batch 1900/6019, Loss: 0.5129
+  Batch 2000/6019, Loss: 0.5976
+  Batch 2100/6019, Loss: 0.5438
+  Batch 2200/6019, Loss: 0.5666
+  Batch 2300/6019, Loss: 0.5233
+  Batch 2400/6019, Loss: 0.5555
+  Batch 2500/6019, Loss: 0.5872
+  Batch 2600/6019, Loss: 0.5028
+  Batch 2700/6019, Loss: 0.5075
+  Batch 2800/6019, Loss: 0.5341
+  Batch 2900/6019, Loss: 0.5525
+  Batch 3000/6019, Loss: 0.5602
+  Batch 3100/6019, Loss: 0.6252
+  Batch 3200/6019, Loss: 0.5714
+  Batch 3300/6019, Loss: 0.5361
+  Batch 3400/6019, Loss: 0.6226
+  Batch 3500/6019, Loss: 0.5673
+  Batch 3600/6019, Loss: 0.5463
+  Batch 3700/6019, Loss: 0.5517
+  Batch 3800/6019, Loss: 0.5731
+  Batch 3900/6019, Loss: 0.5480
+  Batch 4000/6019, Loss: 0.5876
+  Batch 4100/6019, Loss: 0.6131
+  Batch 4200/6019, Loss: 0.5269
+  Batch 4300/6019, Loss: 0.5756
+  Batch 4400/6019, Loss: 0.5243
+  Batch 4500/6019, Loss: 0.5045
+  Batch 4600/6019, Loss: 0.5263
+  Batch 4700/6019, Loss: 0.5683
+  Batch 4800/6019, Loss: 0.4754
+  Batch 4900/6019, Loss: 0.5914
+  Batch 5000/6019, Loss: 0.5167
+  Batch 5100/6019, Loss: 0.5533
+  Batch 5200/6019, Loss: 0.5442
+  Batch 5300/6019, Loss: 0.5405
+  Batch 5400/6019, Loss: 0.5528
+  Batch 5500/6019, Loss: 0.4813
+  Batch 5600/6019, Loss: 0.5629
+  Batch 5700/6019, Loss: 0.5271
+  Batch 5800/6019, Loss: 0.5167
+  Batch 5900/6019, Loss: 0.6234
+  Batch 6000/6019, Loss: 0.4932
+Train Loss: 0.5407
+Val Loss: 0.3068, Val F1: 0.8388
+Learning rate: 0.000052
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 28/50
+============================================================
+  Batch 0/6019, Loss: 0.5112
+  Batch 100/6019, Loss: 0.5735
+  Batch 200/6019, Loss: 0.5797
+  Batch 300/6019, Loss: 0.5609
+  Batch 400/6019, Loss: 0.5066
+  Batch 500/6019, Loss: 0.4706
+  Batch 600/6019, Loss: 0.5335
+  Batch 700/6019, Loss: 0.5010
+  Batch 800/6019, Loss: 0.5744
+  Batch 900/6019, Loss: 0.5257
+  Batch 1000/6019, Loss: 0.5139
+  Batch 1100/6019, Loss: 0.5232
+  Batch 1200/6019, Loss: 0.5205
+  Batch 1300/6019, Loss: 0.4965
+  Batch 1400/6019, Loss: 0.5182
+  Batch 1500/6019, Loss: 0.5668
+  Batch 1600/6019, Loss: 0.5367
+  Batch 1700/6019, Loss: 0.5491
+  Batch 1800/6019, Loss: 0.5286
+  Batch 1900/6019, Loss: 0.5877
+  Batch 2000/6019, Loss: 0.5491
+  Batch 2100/6019, Loss: 0.5616
+  Batch 2200/6019, Loss: 0.5213
+  Batch 2300/6019, Loss: 0.5130
+  Batch 2400/6019, Loss: 0.4936
+  Batch 2500/6019, Loss: 0.5290
+  Batch 2600/6019, Loss: 0.5757
+  Batch 2700/6019, Loss: 0.5746
+  Batch 2800/6019, Loss: 0.5545
+  Batch 2900/6019, Loss: 0.5011
+  Batch 3000/6019, Loss: 0.5189
+  Batch 3100/6019, Loss: 0.6151
+  Batch 3200/6019, Loss: 0.5289
+  Batch 3300/6019, Loss: 0.5597
+  Batch 3400/6019, Loss: 0.6029
+  Batch 3500/6019, Loss: 0.5381
+  Batch 3600/6019, Loss: 0.6343
+  Batch 3700/6019, Loss: 0.4943
+  Batch 3800/6019, Loss: 0.5112
+  Batch 3900/6019, Loss: 0.5609
+  Batch 4000/6019, Loss: 0.5297
+  Batch 4100/6019, Loss: 0.6050
+  Batch 4200/6019, Loss: 0.5114
+  Batch 4300/6019, Loss: 0.5851
+  Batch 4400/6019, Loss: 0.5193
+  Batch 4500/6019, Loss: 0.5440
+  Batch 4600/6019, Loss: 0.5599
+  Batch 4700/6019, Loss: 0.5104
+  Batch 4800/6019, Loss: 0.5492
+  Batch 4900/6019, Loss: 0.5612
+  Batch 5000/6019, Loss: 0.6314
+  Batch 5100/6019, Loss: 0.5448
+  Batch 5200/6019, Loss: 0.5260
+  Batch 5300/6019, Loss: 0.5240
+  Batch 5400/6019, Loss: 0.5454
+  Batch 5500/6019, Loss: 0.4978
+  Batch 5600/6019, Loss: 0.5032
+  Batch 5700/6019, Loss: 0.4831
+  Batch 5800/6019, Loss: 0.5221
+  Batch 5900/6019, Loss: 0.5135
+  Batch 6000/6019, Loss: 0.5437
+Train Loss: 0.5387
+Val Loss: 0.2961, Val F1: 0.8343
+Learning rate: 0.000049
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 29/50
+============================================================
+  Batch 0/6019, Loss: 0.4971
+  Batch 100/6019, Loss: 0.5561
+  Batch 200/6019, Loss: 0.5027
+  Batch 300/6019, Loss: 0.5040
+  Batch 400/6019, Loss: 0.5315
+  Batch 500/6019, Loss: 0.5506
+  Batch 600/6019, Loss: 0.5673
+  Batch 700/6019, Loss: 0.5499
+  Batch 800/6019, Loss: 0.6144
+  Batch 900/6019, Loss: 0.5525
+  Batch 1000/6019, Loss: 0.5497
+  Batch 1100/6019, Loss: 0.5683
+  Batch 1200/6019, Loss: 0.5399
+  Batch 1300/6019, Loss: 0.5399
+  Batch 1400/6019, Loss: 0.5213
+  Batch 1500/6019, Loss: 0.5305
+  Batch 1600/6019, Loss: 0.5433
+  Batch 1700/6019, Loss: 0.5142
+  Batch 1800/6019, Loss: 0.5182
+  Batch 1900/6019, Loss: 0.4921
+  Batch 2000/6019, Loss: 0.6020
+  Batch 2100/6019, Loss: 0.5283
+  Batch 2200/6019, Loss: 0.5319
+  Batch 2300/6019, Loss: 0.5636
+  Batch 2400/6019, Loss: 0.5519
+  Batch 2500/6019, Loss: 0.4983
+  Batch 2600/6019, Loss: 0.5673
+  Batch 2700/6019, Loss: 0.5338
+  Batch 2800/6019, Loss: 0.5638
+  Batch 2900/6019, Loss: 0.5907
+  Batch 3000/6019, Loss: 0.6073
+  Batch 3100/6019, Loss: 0.5553
+  Batch 3200/6019, Loss: 0.5981
+  Batch 3300/6019, Loss: 0.5935
+  Batch 3400/6019, Loss: 0.4774
+  Batch 3500/6019, Loss: 0.5515
+  Batch 3600/6019, Loss: 0.5879
+  Batch 3700/6019, Loss: 0.5150
+  Batch 3800/6019, Loss: 0.5206
+  Batch 3900/6019, Loss: 0.5439
+  Batch 4000/6019, Loss: 0.5961
+  Batch 4100/6019, Loss: 0.5660
+  Batch 4200/6019, Loss: 0.4976
+  Batch 4300/6019, Loss: 0.5008
+  Batch 4400/6019, Loss: 0.5924
+  Batch 4500/6019, Loss: 0.5295
+  Batch 4600/6019, Loss: 0.6249
+  Batch 4700/6019, Loss: 0.5299
+  Batch 4800/6019, Loss: 0.5025
+  Batch 4900/6019, Loss: 0.5643
+  Batch 5000/6019, Loss: 0.5649
+  Batch 5100/6019, Loss: 0.5585
+  Batch 5200/6019, Loss: 0.5094
+  Batch 5300/6019, Loss: 0.5360
+  Batch 5400/6019, Loss: 0.5699
+  Batch 5500/6019, Loss: 0.5457
+  Batch 5600/6019, Loss: 0.5763
+  Batch 5700/6019, Loss: 0.4994
+  Batch 5800/6019, Loss: 0.5515
+  Batch 5900/6019, Loss: 0.5195
+  Batch 6000/6019, Loss: 0.5855
+Train Loss: 0.5365
+Val Loss: 0.3060, Val F1: 0.8342
+Learning rate: 0.000045
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 30/50
+============================================================
+  Batch 0/6019, Loss: 0.5179
+  Batch 100/6019, Loss: 0.5311
+  Batch 200/6019, Loss: 0.5475
+  Batch 300/6019, Loss: 0.4970
+  Batch 400/6019, Loss: 0.4836
+  Batch 500/6019, Loss: 0.5294
+  Batch 600/6019, Loss: 0.5111
+  Batch 700/6019, Loss: 0.5117
+  Batch 800/6019, Loss: 0.5191
+  Batch 900/6019, Loss: 0.5117
+  Batch 1000/6019, Loss: 0.5361
+  Batch 1100/6019, Loss: 0.5595
+  Batch 1200/6019, Loss: 0.5777
+  Batch 1300/6019, Loss: 0.5078
+  Batch 1400/6019, Loss: 0.5225
+  Batch 1500/6019, Loss: 0.5081
+  Batch 1600/6019, Loss: 0.4938
+  Batch 1700/6019, Loss: 0.4855
+  Batch 1800/6019, Loss: 0.5307
+  Batch 1900/6019, Loss: 0.5800
+  Batch 2000/6019, Loss: 0.5320
+  Batch 2100/6019, Loss: 0.5678
+  Batch 2200/6019, Loss: 0.4786
+  Batch 2300/6019, Loss: 0.5041
+  Batch 2400/6019, Loss: 0.5448
+  Batch 2500/6019, Loss: 0.5131
+  Batch 2600/6019, Loss: 0.5450
+  Batch 2700/6019, Loss: 0.5354
+  Batch 2800/6019, Loss: 0.5041
+  Batch 2900/6019, Loss: 0.5577
+  Batch 3000/6019, Loss: 0.4830
+  Batch 3100/6019, Loss: 0.5148
+  Batch 3200/6019, Loss: 0.5169
+  Batch 3300/6019, Loss: 0.5325
+  Batch 3400/6019, Loss: 0.5609
+  Batch 3500/6019, Loss: 0.4976
+  Batch 3600/6019, Loss: 0.5194
+  Batch 3700/6019, Loss: 0.5033
+  Batch 3800/6019, Loss: 0.5179
+  Batch 3900/6019, Loss: 0.4976
+  Batch 4000/6019, Loss: 0.5219
+  Batch 4100/6019, Loss: 0.5233
+  Batch 4200/6019, Loss: 0.5331
+  Batch 4300/6019, Loss: 0.5589
+  Batch 4400/6019, Loss: 0.5412
+  Batch 4500/6019, Loss: 0.5587
+  Batch 4600/6019, Loss: 0.5980
+  Batch 4700/6019, Loss: 0.5074
+  Batch 4800/6019, Loss: 0.5716
+  Batch 4900/6019, Loss: 0.5536
+  Batch 5000/6019, Loss: 0.5787
+  Batch 5100/6019, Loss: 0.5370
+  Batch 5200/6019, Loss: 0.5513
+  Batch 5300/6019, Loss: 0.5138
+  Batch 5400/6019, Loss: 0.6050
+  Batch 5500/6019, Loss: 0.5430
+  Batch 5600/6019, Loss: 0.4925
+  Batch 5700/6019, Loss: 0.5092
+  Batch 5800/6019, Loss: 0.4962
+  Batch 5900/6019, Loss: 0.5241
+  Batch 6000/6019, Loss: 0.5014
+Train Loss: 0.5346
+Val Loss: 0.3083, Val F1: 0.8327
+Learning rate: 0.000042
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 31/50
+============================================================
+  Batch 0/6019, Loss: 0.5104
+  Batch 100/6019, Loss: 0.5816
+  Batch 200/6019, Loss: 0.4880
+  Batch 300/6019, Loss: 0.5207
+  Batch 400/6019, Loss: 0.5672
+  Batch 500/6019, Loss: 0.5218
+  Batch 600/6019, Loss: 0.5285
+  Batch 700/6019, Loss: 0.5508
+  Batch 800/6019, Loss: 0.5052
+  Batch 900/6019, Loss: 0.4879
+  Batch 1000/6019, Loss: 0.5639
+  Batch 1100/6019, Loss: 0.4948
+  Batch 1200/6019, Loss: 0.5597
+  Batch 1300/6019, Loss: 0.5137
+  Batch 1400/6019, Loss: 0.5300
+  Batch 1500/6019, Loss: 0.5272
+  Batch 1600/6019, Loss: 0.5269
+  Batch 1700/6019, Loss: 0.5933
+  Batch 1800/6019, Loss: 0.5703
+  Batch 1900/6019, Loss: 0.5876
+  Batch 2000/6019, Loss: 0.5480
+  Batch 2100/6019, Loss: 0.5277
+  Batch 2200/6019, Loss: 0.5341
+  Batch 2300/6019, Loss: 0.5453
+  Batch 2400/6019, Loss: 0.5428
+  Batch 2500/6019, Loss: 0.5411
+  Batch 2600/6019, Loss: 0.5169
+  Batch 2700/6019, Loss: 0.5422
+  Batch 2800/6019, Loss: 0.5116
+  Batch 2900/6019, Loss: 0.4670
+  Batch 3000/6019, Loss: 0.5299
+  Batch 3100/6019, Loss: 0.5079
+  Batch 3200/6019, Loss: 0.5330
+  Batch 3300/6019, Loss: 0.5514
+  Batch 3400/6019, Loss: 0.5235
+  Batch 3500/6019, Loss: 0.5073
+  Batch 3600/6019, Loss: 0.5710
+  Batch 3700/6019, Loss: 0.5162
+  Batch 3800/6019, Loss: 0.4964
+  Batch 3900/6019, Loss: 0.5167
+  Batch 4000/6019, Loss: 0.5172
+  Batch 4100/6019, Loss: 0.5473
+  Batch 4200/6019, Loss: 0.5659
+  Batch 4300/6019, Loss: 0.5441
+  Batch 4400/6019, Loss: 0.5138
+  Batch 4500/6019, Loss: 0.5235
+  Batch 4600/6019, Loss: 0.4982
+  Batch 4700/6019, Loss: 0.5905
+  Batch 4800/6019, Loss: 0.4647
+  Batch 4900/6019, Loss: 0.5237
+  Batch 5000/6019, Loss: 0.4962
+  Batch 5100/6019, Loss: 0.5444
+  Batch 5200/6019, Loss: 0.5152
+  Batch 5300/6019, Loss: 0.5713
+  Batch 5400/6019, Loss: 0.5817
+  Batch 5500/6019, Loss: 0.5303
+  Batch 5600/6019, Loss: 0.5449
+  Batch 5700/6019, Loss: 0.5283
+  Batch 5800/6019, Loss: 0.5424
+  Batch 5900/6019, Loss: 0.5441
+  Batch 6000/6019, Loss: 0.5596
+Train Loss: 0.5327
+Val Loss: 0.3131, Val F1: 0.8236
+Learning rate: 0.000039
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 32/50
+============================================================
+  Batch 0/6019, Loss: 0.5124
+  Batch 100/6019, Loss: 0.5098
+  Batch 200/6019, Loss: 0.5585
+  Batch 300/6019, Loss: 0.5254
+  Batch 400/6019, Loss: 0.5226
+  Batch 500/6019, Loss: 0.5143
+  Batch 600/6019, Loss: 0.4913
+  Batch 700/6019, Loss: 0.5219
+  Batch 800/6019, Loss: 0.4848
+  Batch 900/6019, Loss: 0.5703
+  Batch 1000/6019, Loss: 0.4981
+  Batch 1100/6019, Loss: 0.5101
+  Batch 1200/6019, Loss: 0.5610
+  Batch 1300/6019, Loss: 0.5533
+  Batch 1400/6019, Loss: 0.4759
+  Batch 1500/6019, Loss: 0.5062
+  Batch 1600/6019, Loss: 0.5000
+  Batch 1700/6019, Loss: 0.6026
+  Batch 1800/6019, Loss: 0.5267
+  Batch 1900/6019, Loss: 0.5570
+  Batch 2000/6019, Loss: 0.5577
+  Batch 2100/6019, Loss: 0.5358
+  Batch 2200/6019, Loss: 0.5193
+  Batch 2300/6019, Loss: 0.5279
+  Batch 2400/6019, Loss: 0.5360
+  Batch 2500/6019, Loss: 0.5278
+  Batch 2600/6019, Loss: 0.5103
+  Batch 2700/6019, Loss: 0.5223
+  Batch 2800/6019, Loss: 0.5712
+  Batch 2900/6019, Loss: 0.5352
+  Batch 3000/6019, Loss: 0.5046
+  Batch 3100/6019, Loss: 0.5609
+  Batch 3200/6019, Loss: 0.5000
+  Batch 3300/6019, Loss: 0.5328
+  Batch 3400/6019, Loss: 0.5067
+  Batch 3500/6019, Loss: 0.4555
+  Batch 3600/6019, Loss: 0.5363
+  Batch 3700/6019, Loss: 0.5277
+  Batch 3800/6019, Loss: 0.4931
+  Batch 3900/6019, Loss: 0.5507
+  Batch 4000/6019, Loss: 0.4870
+  Batch 4100/6019, Loss: 0.5152
+  Batch 4200/6019, Loss: 0.5140
+  Batch 4300/6019, Loss: 0.4972
+  Batch 4400/6019, Loss: 0.4761
+  Batch 4500/6019, Loss: 0.5613
+  Batch 4600/6019, Loss: 0.5449
+  Batch 4700/6019, Loss: 0.5366
+  Batch 4800/6019, Loss: 0.5459
+  Batch 4900/6019, Loss: 0.5425
+  Batch 5000/6019, Loss: 0.5615
+  Batch 5100/6019, Loss: 0.5142
+  Batch 5200/6019, Loss: 0.5451
+  Batch 5300/6019, Loss: 0.5171
+  Batch 5400/6019, Loss: 0.4944
+  Batch 5500/6019, Loss: 0.5434
+  Batch 5600/6019, Loss: 0.5199
+  Batch 5700/6019, Loss: 0.5876
+  Batch 5800/6019, Loss: 0.5477
+  Batch 5900/6019, Loss: 0.5081
+  Batch 6000/6019, Loss: 0.5180
+Train Loss: 0.5311
+Val Loss: 0.3091, Val F1: 0.8286
+Learning rate: 0.000035
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 33/50
+============================================================
+  Batch 0/6019, Loss: 0.4951
+  Batch 100/6019, Loss: 0.5059
+  Batch 200/6019, Loss: 0.5856
+  Batch 300/6019, Loss: 0.5269
+  Batch 400/6019, Loss: 0.5263
+  Batch 500/6019, Loss: 0.4797
+  Batch 600/6019, Loss: 0.5162
+  Batch 700/6019, Loss: 0.4870
+  Batch 800/6019, Loss: 0.5891
+  Batch 900/6019, Loss: 0.4957
+  Batch 1000/6019, Loss: 0.5284
+  Batch 1100/6019, Loss: 0.4912
+  Batch 1200/6019, Loss: 0.5294
+  Batch 1300/6019, Loss: 0.4770
+  Batch 1400/6019, Loss: 0.5048
+  Batch 1500/6019, Loss: 0.4784
+  Batch 1600/6019, Loss: 0.5660
+  Batch 1700/6019, Loss: 0.5698
+  Batch 1800/6019, Loss: 0.5354
+  Batch 1900/6019, Loss: 0.5862
+  Batch 2000/6019, Loss: 0.5489
+  Batch 2100/6019, Loss: 0.5121
+  Batch 2200/6019, Loss: 0.4953
+  Batch 2300/6019, Loss: 0.5290
+  Batch 2400/6019, Loss: 0.5470
+  Batch 2500/6019, Loss: 0.4881
+  Batch 2600/6019, Loss: 0.5473
+  Batch 2700/6019, Loss: 0.5008
+  Batch 2800/6019, Loss: 0.5213
+  Batch 2900/6019, Loss: 0.5019
+  Batch 3000/6019, Loss: 0.5519
+  Batch 3100/6019, Loss: 0.4934
+  Batch 3200/6019, Loss: 0.5474
+  Batch 3300/6019, Loss: 0.4934
+  Batch 3400/6019, Loss: 0.5075
+  Batch 3500/6019, Loss: 0.5531
+  Batch 3600/6019, Loss: 0.5514
+  Batch 3700/6019, Loss: 0.5245
+  Batch 3800/6019, Loss: 0.5361
+  Batch 3900/6019, Loss: 0.5496
+  Batch 4000/6019, Loss: 0.4966
+  Batch 4100/6019, Loss: 0.5532
+  Batch 4200/6019, Loss: 0.5301
+  Batch 4300/6019, Loss: 0.4863
+  Batch 4400/6019, Loss: 0.5713
+  Batch 4500/6019, Loss: 0.5099
+  Batch 4600/6019, Loss: 0.4941
+  Batch 4700/6019, Loss: 0.4866
+  Batch 4800/6019, Loss: 0.5065
+  Batch 4900/6019, Loss: 0.5035
+  Batch 5000/6019, Loss: 0.5055
+  Batch 5100/6019, Loss: 0.5126
+  Batch 5200/6019, Loss: 0.5463
+  Batch 5300/6019, Loss: 0.5260
+  Batch 5400/6019, Loss: 0.5782
+  Batch 5500/6019, Loss: 0.5378
+  Batch 5600/6019, Loss: 0.5010
+  Batch 5700/6019, Loss: 0.5553
+  Batch 5800/6019, Loss: 0.4945
+  Batch 5900/6019, Loss: 0.5533
+  Batch 6000/6019, Loss: 0.5615
+Train Loss: 0.5292
+Val Loss: 0.3155, Val F1: 0.8349
+Learning rate: 0.000032
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 34/50
+============================================================
+  Batch 0/6019, Loss: 0.5334
+  Batch 100/6019, Loss: 0.5315
+  Batch 200/6019, Loss: 0.4862
+  Batch 300/6019, Loss: 0.5125
+  Batch 400/6019, Loss: 0.5306
+  Batch 500/6019, Loss: 0.5327
+  Batch 600/6019, Loss: 0.5484
+  Batch 700/6019, Loss: 0.5074
+  Batch 800/6019, Loss: 0.5117
+  Batch 900/6019, Loss: 0.5401
+  Batch 1000/6019, Loss: 0.5227
+  Batch 1100/6019, Loss: 0.4935
+  Batch 1200/6019, Loss: 0.5054
+  Batch 1300/6019, Loss: 0.5091
+  Batch 1400/6019, Loss: 0.5508
+  Batch 1500/6019, Loss: 0.5105
+  Batch 1600/6019, Loss: 0.5200
+  Batch 1700/6019, Loss: 0.5101
+  Batch 1800/6019, Loss: 0.5328
+  Batch 1900/6019, Loss: 0.5411
+  Batch 2000/6019, Loss: 0.5124
+  Batch 2100/6019, Loss: 0.5158
+  Batch 2200/6019, Loss: 0.5002
+  Batch 2300/6019, Loss: 0.5175
+  Batch 2400/6019, Loss: 0.5342
+  Batch 2500/6019, Loss: 0.5894
+  Batch 2600/6019, Loss: 0.5570
+  Batch 2700/6019, Loss: 0.4665
+  Batch 2800/6019, Loss: 0.4905
+  Batch 2900/6019, Loss: 0.5159
+  Batch 3000/6019, Loss: 0.4891
+  Batch 3100/6019, Loss: 0.5627
+  Batch 3200/6019, Loss: 0.5018
+  Batch 3300/6019, Loss: 0.5418
+  Batch 3400/6019, Loss: 0.4729
+  Batch 3500/6019, Loss: 0.5523
+  Batch 3600/6019, Loss: 0.4936
+  Batch 3700/6019, Loss: 0.4970
+  Batch 3800/6019, Loss: 0.5716
+  Batch 3900/6019, Loss: 0.5388
+  Batch 4000/6019, Loss: 0.5156
+  Batch 4100/6019, Loss: 0.5115
+  Batch 4200/6019, Loss: 0.4907
+  Batch 4300/6019, Loss: 0.5409
+  Batch 4400/6019, Loss: 0.5601
+  Batch 4500/6019, Loss: 0.5255
+  Batch 4600/6019, Loss: 0.5719
+  Batch 4700/6019, Loss: 0.5698
+  Batch 4800/6019, Loss: 0.5374
+  Batch 4900/6019, Loss: 0.5731
+  Batch 5000/6019, Loss: 0.5476
+  Batch 5100/6019, Loss: 0.5561
+  Batch 5200/6019, Loss: 0.5067
+  Batch 5300/6019, Loss: 0.5546
+  Batch 5400/6019, Loss: 0.4942
+  Batch 5500/6019, Loss: 0.4944
+  Batch 5600/6019, Loss: 0.4963
+  Batch 5700/6019, Loss: 0.4778
+  Batch 5800/6019, Loss: 0.5299
+  Batch 5900/6019, Loss: 0.5947
+  Batch 6000/6019, Loss: 0.5502
+Train Loss: 0.5275
+Val Loss: 0.3047, Val F1: 0.8353
+Learning rate: 0.000029
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 35/50
+============================================================
+  Batch 0/6019, Loss: 0.5335
+  Batch 100/6019, Loss: 0.6170
+  Batch 200/6019, Loss: 0.5028
+  Batch 300/6019, Loss: 0.4874
+  Batch 400/6019, Loss: 0.5117
+  Batch 500/6019, Loss: 0.5174
+  Batch 600/6019, Loss: 0.5294
+  Batch 700/6019, Loss: 0.5269
+  Batch 800/6019, Loss: 0.5517
+  Batch 900/6019, Loss: 0.5643
+  Batch 1000/6019, Loss: 0.6064
+  Batch 1100/6019, Loss: 0.5150
+  Batch 1200/6019, Loss: 0.4907
+  Batch 1300/6019, Loss: 0.4877
+  Batch 1400/6019, Loss: 0.5361
+  Batch 1500/6019, Loss: 0.5535
+  Batch 1600/6019, Loss: 0.5073
+  Batch 1700/6019, Loss: 0.5100
+  Batch 1800/6019, Loss: 0.5197
+  Batch 1900/6019, Loss: 0.5410
+  Batch 2000/6019, Loss: 0.5271
+  Batch 2100/6019, Loss: 0.4960
+  Batch 2200/6019, Loss: 0.5760
+  Batch 2300/6019, Loss: 0.5312
+  Batch 2400/6019, Loss: 0.5019
+  Batch 2500/6019, Loss: 0.5277
+  Batch 2600/6019, Loss: 0.5083
+  Batch 2700/6019, Loss: 0.5447
+  Batch 2800/6019, Loss: 0.5435
+  Batch 2900/6019, Loss: 0.5234
+  Batch 3000/6019, Loss: 0.5131
+  Batch 3100/6019, Loss: 0.5246
+  Batch 3200/6019, Loss: 0.5180
+  Batch 3300/6019, Loss: 0.5035
+  Batch 3400/6019, Loss: 0.5663
+  Batch 3500/6019, Loss: 0.5300
+  Batch 3600/6019, Loss: 0.5200
+  Batch 3700/6019, Loss: 0.4763
+  Batch 3800/6019, Loss: 0.5339
+  Batch 3900/6019, Loss: 0.5345
+  Batch 4000/6019, Loss: 0.5901
+  Batch 4100/6019, Loss: 0.5187
+  Batch 4200/6019, Loss: 0.5158
+  Batch 4300/6019, Loss: 0.6226
+  Batch 4400/6019, Loss: 0.5034
+  Batch 4500/6019, Loss: 0.5433
+  Batch 4600/6019, Loss: 0.4944
+  Batch 4700/6019, Loss: 0.4785
+  Batch 4800/6019, Loss: 0.6032
+  Batch 4900/6019, Loss: 0.5437
+  Batch 5000/6019, Loss: 0.5239
+  Batch 5100/6019, Loss: 0.5014
+  Batch 5200/6019, Loss: 0.5398
+  Batch 5300/6019, Loss: 0.5396
+  Batch 5400/6019, Loss: 0.5191
+  Batch 5500/6019, Loss: 0.5064
+  Batch 5600/6019, Loss: 0.5380
+  Batch 5700/6019, Loss: 0.5172
+  Batch 5800/6019, Loss: 0.4791
+  Batch 5900/6019, Loss: 0.5384
+  Batch 6000/6019, Loss: 0.4642
+Train Loss: 0.5262
+Val Loss: 0.3168, Val F1: 0.8251
+Learning rate: 0.000026
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 36/50
+============================================================
+  Batch 0/6019, Loss: 0.5378
+  Batch 100/6019, Loss: 0.5087
+  Batch 200/6019, Loss: 0.5300
+  Batch 300/6019, Loss: 0.5249
+  Batch 400/6019, Loss: 0.5043
+  Batch 500/6019, Loss: 0.4901
+  Batch 600/6019, Loss: 0.5525
+  Batch 700/6019, Loss: 0.5072
+  Batch 800/6019, Loss: 0.5496
+  Batch 900/6019, Loss: 0.4921
+  Batch 1000/6019, Loss: 0.4846
+  Batch 1100/6019, Loss: 0.5225
+  Batch 1200/6019, Loss: 0.5226
+  Batch 1300/6019, Loss: 0.4920
+  Batch 1400/6019, Loss: 0.4814
+  Batch 1500/6019, Loss: 0.5078
+  Batch 1600/6019, Loss: 0.5673
+  Batch 1700/6019, Loss: 0.6255
+  Batch 1800/6019, Loss: 0.5413
+  Batch 1900/6019, Loss: 0.4581
+  Batch 2000/6019, Loss: 0.5126
+  Batch 2100/6019, Loss: 0.4670
+  Batch 2200/6019, Loss: 0.5236
+  Batch 2300/6019, Loss: 0.5276
+  Batch 2400/6019, Loss: 0.5432
+  Batch 2500/6019, Loss: 0.5189
+  Batch 2600/6019, Loss: 0.5130
+  Batch 2700/6019, Loss: 0.5015
+  Batch 2800/6019, Loss: 0.5110
+  Batch 2900/6019, Loss: 0.5378
+  Batch 3000/6019, Loss: 0.5684
+  Batch 3100/6019, Loss: 0.5053
+  Batch 3200/6019, Loss: 0.5014
+  Batch 3300/6019, Loss: 0.5079
+  Batch 3400/6019, Loss: 0.4930
+  Batch 3500/6019, Loss: 0.4988
+  Batch 3600/6019, Loss: 0.5545
+  Batch 3700/6019, Loss: 0.5060
+  Batch 3800/6019, Loss: 0.4892
+  Batch 3900/6019, Loss: 0.5759
+  Batch 4000/6019, Loss: 0.5001
+  Batch 4100/6019, Loss: 0.5505
+  Batch 4200/6019, Loss: 0.5822
+  Batch 4300/6019, Loss: 0.5009
+  Batch 4400/6019, Loss: 0.5417
+  Batch 4500/6019, Loss: 0.5235
+  Batch 4600/6019, Loss: 0.5545
+  Batch 4700/6019, Loss: 0.5554
+  Batch 4800/6019, Loss: 0.5363
+  Batch 4900/6019, Loss: 0.5557
+  Batch 5000/6019, Loss: 0.5377
+  Batch 5100/6019, Loss: 0.4926
+  Batch 5200/6019, Loss: 0.5414
+  Batch 5300/6019, Loss: 0.5342
+  Batch 5400/6019, Loss: 0.5289
+  Batch 5500/6019, Loss: 0.5394
+  Batch 5600/6019, Loss: 0.5204
+  Batch 5700/6019, Loss: 0.5322
+  Batch 5800/6019, Loss: 0.5777
+  Batch 5900/6019, Loss: 0.5207
+  Batch 6000/6019, Loss: 0.5305
+Train Loss: 0.5246
+Val Loss: 0.3094, Val F1: 0.8294
+Learning rate: 0.000023
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 37/50
+============================================================
+  Batch 0/6019, Loss: 0.5006
+  Batch 100/6019, Loss: 0.5288
+  Batch 200/6019, Loss: 0.5219
+  Batch 300/6019, Loss: 0.5367
+  Batch 400/6019, Loss: 0.5341
+  Batch 500/6019, Loss: 0.5282
+  Batch 600/6019, Loss: 0.5487
+  Batch 700/6019, Loss: 0.5025
+  Batch 800/6019, Loss: 0.4926
+  Batch 900/6019, Loss: 0.5179
+  Batch 1000/6019, Loss: 0.5355
+  Batch 1100/6019, Loss: 0.5411
+  Batch 1200/6019, Loss: 0.4897
+  Batch 1300/6019, Loss: 0.4846
+  Batch 1400/6019, Loss: 0.4978
+  Batch 1500/6019, Loss: 0.5217
+  Batch 1600/6019, Loss: 0.4868
+  Batch 1700/6019, Loss: 0.5034
+  Batch 1800/6019, Loss: 0.5342
+  Batch 1900/6019, Loss: 0.5302
+  Batch 2000/6019, Loss: 0.4745
+  Batch 2100/6019, Loss: 0.5077
+  Batch 2200/6019, Loss: 0.5061
+  Batch 2300/6019, Loss: 0.5082
+  Batch 2400/6019, Loss: 0.5507
+  Batch 2500/6019, Loss: 0.5539
+  Batch 2600/6019, Loss: 0.5325
+  Batch 2700/6019, Loss: 0.5189
+  Batch 2800/6019, Loss: 0.5298
+  Batch 2900/6019, Loss: 0.4923
+  Batch 3000/6019, Loss: 0.5031
+  Batch 3100/6019, Loss: 0.5751
+  Batch 3200/6019, Loss: 0.5061
+  Batch 3300/6019, Loss: 0.5115
+  Batch 3400/6019, Loss: 0.4961
+  Batch 3500/6019, Loss: 0.5434
+  Batch 3600/6019, Loss: 0.5140
+  Batch 3700/6019, Loss: 0.5169
+  Batch 3800/6019, Loss: 0.4741
+  Batch 3900/6019, Loss: 0.5391
+  Batch 4000/6019, Loss: 0.4879
+  Batch 4100/6019, Loss: 0.5531
+  Batch 4200/6019, Loss: 0.5123
+  Batch 4300/6019, Loss: 0.5310
+  Batch 4400/6019, Loss: 0.5098
+  Batch 4500/6019, Loss: 0.4981
+  Batch 4600/6019, Loss: 0.4784
+  Batch 4700/6019, Loss: 0.5620
+  Batch 4800/6019, Loss: 0.5112
+  Batch 4900/6019, Loss: 0.5048
+  Batch 5000/6019, Loss: 0.5050
+  Batch 5100/6019, Loss: 0.5333
+  Batch 5200/6019, Loss: 0.5797
+  Batch 5300/6019, Loss: 0.5352
+  Batch 5400/6019, Loss: 0.5864
+  Batch 5500/6019, Loss: 0.5786
+  Batch 5600/6019, Loss: 0.5299
+  Batch 5700/6019, Loss: 0.5237
+  Batch 5800/6019, Loss: 0.5480
+  Batch 5900/6019, Loss: 0.5069
+  Batch 6000/6019, Loss: 0.5380
+Train Loss: 0.5230
+Val Loss: 0.3120, Val F1: 0.8367
+Learning rate: 0.000020
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 38/50
+============================================================
+  Batch 0/6019, Loss: 0.5085
+  Batch 100/6019, Loss: 0.4805
+  Batch 200/6019, Loss: 0.5229
+  Batch 300/6019, Loss: 0.4819
+  Batch 400/6019, Loss: 0.5178
+  Batch 500/6019, Loss: 0.5461
+  Batch 600/6019, Loss: 0.5519
+  Batch 700/6019, Loss: 0.5453
+  Batch 800/6019, Loss: 0.5243
+  Batch 900/6019, Loss: 0.5737
+  Batch 1000/6019, Loss: 0.4762
+  Batch 1100/6019, Loss: 0.5214
+  Batch 1200/6019, Loss: 0.4652
+  Batch 1300/6019, Loss: 0.5692
+  Batch 1400/6019, Loss: 0.4773
+  Batch 1500/6019, Loss: 0.4937
+  Batch 1600/6019, Loss: 0.4960
+  Batch 1700/6019, Loss: 0.5328
+  Batch 1800/6019, Loss: 0.5718
+  Batch 1900/6019, Loss: 0.4779
+  Batch 2000/6019, Loss: 0.5016
+  Batch 2100/6019, Loss: 0.5009
+  Batch 2200/6019, Loss: 0.5398
+  Batch 2300/6019, Loss: 0.5250
+  Batch 2400/6019, Loss: 0.5133
+  Batch 2500/6019, Loss: 0.5385
+  Batch 2600/6019, Loss: 0.5470
+  Batch 2700/6019, Loss: 0.4853
+  Batch 2800/6019, Loss: 0.5176
+  Batch 2900/6019, Loss: 0.5529
+  Batch 3000/6019, Loss: 0.5128
+  Batch 3100/6019, Loss: 0.5155
+  Batch 3200/6019, Loss: 0.5020
+  Batch 3300/6019, Loss: 0.5059
+  Batch 3400/6019, Loss: 0.5827
+  Batch 3500/6019, Loss: 0.4629
+  Batch 3600/6019, Loss: 0.5007
+  Batch 3700/6019, Loss: 0.5202
+  Batch 3800/6019, Loss: 0.5349
+  Batch 3900/6019, Loss: 0.5710
+  Batch 4000/6019, Loss: 0.5539
+  Batch 4100/6019, Loss: 0.5342
+  Batch 4200/6019, Loss: 0.5162
+  Batch 4300/6019, Loss: 0.5118
+  Batch 4400/6019, Loss: 0.5153
+  Batch 4500/6019, Loss: 0.5296
+  Batch 4600/6019, Loss: 0.5289
+  Batch 4700/6019, Loss: 0.5140
+  Batch 4800/6019, Loss: 0.5913
+  Batch 4900/6019, Loss: 0.5319
+  Batch 5000/6019, Loss: 0.5228
+  Batch 5100/6019, Loss: 0.4889
+  Batch 5200/6019, Loss: 0.5243
+  Batch 5300/6019, Loss: 0.4877
+  Batch 5400/6019, Loss: 0.5891
+  Batch 5500/6019, Loss: 0.5349
+  Batch 5600/6019, Loss: 0.5028
+  Batch 5700/6019, Loss: 0.4997
+  Batch 5800/6019, Loss: 0.4956
+  Batch 5900/6019, Loss: 0.5035
+  Batch 6000/6019, Loss: 0.5365
+Train Loss: 0.5220
+Val Loss: 0.3184, Val F1: 0.8326
+Learning rate: 0.000017
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 39/50
+============================================================
+  Batch 0/6019, Loss: 0.5102
+  Batch 100/6019, Loss: 0.5497
+  Batch 200/6019, Loss: 0.5021
+  Batch 300/6019, Loss: 0.5441
+  Batch 400/6019, Loss: 0.5093
+  Batch 500/6019, Loss: 0.5709
+  Batch 600/6019, Loss: 0.5159
+  Batch 700/6019, Loss: 0.5070
+  Batch 800/6019, Loss: 0.5485
+  Batch 900/6019, Loss: 0.5092
+  Batch 1000/6019, Loss: 0.5010
+  Batch 1100/6019, Loss: 0.4736
+  Batch 1200/6019, Loss: 0.5148
+  Batch 1300/6019, Loss: 0.5391
+  Batch 1400/6019, Loss: 0.4736
+  Batch 1500/6019, Loss: 0.5290
+  Batch 1600/6019, Loss: 0.5008
+  Batch 1700/6019, Loss: 0.5085
+  Batch 1800/6019, Loss: 0.4801
+  Batch 1900/6019, Loss: 0.4727
+  Batch 2000/6019, Loss: 0.4719
+  Batch 2100/6019, Loss: 0.5408
+  Batch 2200/6019, Loss: 0.5729
+  Batch 2300/6019, Loss: 0.5104
+  Batch 2400/6019, Loss: 0.5114
+  Batch 2500/6019, Loss: 0.5647
+  Batch 2600/6019, Loss: 0.5114
+  Batch 2700/6019, Loss: 0.5220
+  Batch 2800/6019, Loss: 0.5712
+  Batch 2900/6019, Loss: 0.5151
+  Batch 3000/6019, Loss: 0.5089
+  Batch 3100/6019, Loss: 0.5057
+  Batch 3200/6019, Loss: 0.5146
+  Batch 3300/6019, Loss: 0.5688
+  Batch 3400/6019, Loss: 0.5185
+  Batch 3500/6019, Loss: 0.5344
+  Batch 3600/6019, Loss: 0.4579
+  Batch 3700/6019, Loss: 0.5369
+  Batch 3800/6019, Loss: 0.4791
+  Batch 3900/6019, Loss: 0.5659
+  Batch 4000/6019, Loss: 0.5600
+  Batch 4100/6019, Loss: 0.5106
+  Batch 4200/6019, Loss: 0.5150
+  Batch 4300/6019, Loss: 0.5056
+  Batch 4400/6019, Loss: 0.5064
+  Batch 4500/6019, Loss: 0.5572
+  Batch 4600/6019, Loss: 0.5433
+  Batch 4700/6019, Loss: 0.5038
+  Batch 4800/6019, Loss: 0.5080
+  Batch 4900/6019, Loss: 0.5283
+  Batch 5000/6019, Loss: 0.5617
+  Batch 5100/6019, Loss: 0.5688
+  Batch 5200/6019, Loss: 0.5169
+  Batch 5300/6019, Loss: 0.5070
+  Batch 5400/6019, Loss: 0.5227
+  Batch 5500/6019, Loss: 0.4957
+  Batch 5600/6019, Loss: 0.5076
+  Batch 5700/6019, Loss: 0.4902
+  Batch 5800/6019, Loss: 0.5049
+  Batch 5900/6019, Loss: 0.5320
+  Batch 6000/6019, Loss: 0.4746
+Train Loss: 0.5208
+Val Loss: 0.3162, Val F1: 0.8266
+Learning rate: 0.000015
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 40/50
+============================================================
+  Batch 0/6019, Loss: 0.4949
+  Batch 100/6019, Loss: 0.5218
+  Batch 200/6019, Loss: 0.4918
+  Batch 300/6019, Loss: 0.5158
+  Batch 400/6019, Loss: 0.5262
+  Batch 500/6019, Loss: 0.5321
+  Batch 600/6019, Loss: 0.5007
+  Batch 700/6019, Loss: 0.4743
+  Batch 800/6019, Loss: 0.5743
+  Batch 900/6019, Loss: 0.5460
+  Batch 1000/6019, Loss: 0.5296
+  Batch 1100/6019, Loss: 0.5034
+  Batch 1200/6019, Loss: 0.4905
+  Batch 1300/6019, Loss: 0.5173
+  Batch 1400/6019, Loss: 0.5334
+  Batch 1500/6019, Loss: 0.4963
+  Batch 1600/6019, Loss: 0.5095
+  Batch 1700/6019, Loss: 0.5186
+  Batch 1800/6019, Loss: 0.5203
+  Batch 1900/6019, Loss: 0.5183
+  Batch 2000/6019, Loss: 0.4739
+  Batch 2100/6019, Loss: 0.4930
+  Batch 2200/6019, Loss: 0.5094
+  Batch 2300/6019, Loss: 0.5015
+  Batch 2400/6019, Loss: 0.5690
+  Batch 2500/6019, Loss: 0.5236
+  Batch 2600/6019, Loss: 0.4974
+  Batch 2700/6019, Loss: 0.5542
+  Batch 2800/6019, Loss: 0.5060
+  Batch 2900/6019, Loss: 0.5492
+  Batch 3000/6019, Loss: 0.4975
+  Batch 3100/6019, Loss: 0.4807
+  Batch 3200/6019, Loss: 0.5546
+  Batch 3300/6019, Loss: 0.5247
+  Batch 3400/6019, Loss: 0.5190
+  Batch 3500/6019, Loss: 0.5027
+  Batch 3600/6019, Loss: 0.5020
+  Batch 3700/6019, Loss: 0.5405
+  Batch 3800/6019, Loss: 0.5401
+  Batch 3900/6019, Loss: 0.4904
+  Batch 4000/6019, Loss: 0.5285
+  Batch 4100/6019, Loss: 0.4756
+  Batch 4200/6019, Loss: 0.5375
+  Batch 4300/6019, Loss: 0.5408
+  Batch 4400/6019, Loss: 0.4964
+  Batch 4500/6019, Loss: 0.5368
+  Batch 4600/6019, Loss: 0.4950
+  Batch 4700/6019, Loss: 0.5812
+  Batch 4800/6019, Loss: 0.4613
+  Batch 4900/6019, Loss: 0.5100
+  Batch 5000/6019, Loss: 0.5141
+  Batch 5100/6019, Loss: 0.5211
+  Batch 5200/6019, Loss: 0.5656
+  Batch 5300/6019, Loss: 0.4850
+  Batch 5400/6019, Loss: 0.4828
+  Batch 5500/6019, Loss: 0.4701
+  Batch 5600/6019, Loss: 0.5062
+  Batch 5700/6019, Loss: 0.4685
+  Batch 5800/6019, Loss: 0.5051
+  Batch 5900/6019, Loss: 0.4875
+  Batch 6000/6019, Loss: 0.5097
+Train Loss: 0.5195
+Val Loss: 0.3105, Val F1: 0.8370
+Learning rate: 0.000013
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 41/50
+============================================================
+  Batch 0/6019, Loss: 0.5477
+  Batch 100/6019, Loss: 0.5391
+  Batch 200/6019, Loss: 0.5086
+  Batch 300/6019, Loss: 0.4629
+  Batch 400/6019, Loss: 0.5546
+  Batch 500/6019, Loss: 0.4983
+  Batch 600/6019, Loss: 0.5203
+  Batch 700/6019, Loss: 0.5368
+  Batch 800/6019, Loss: 0.4837
+  Batch 900/6019, Loss: 0.5362
+  Batch 1000/6019, Loss: 0.5020
+  Batch 1100/6019, Loss: 0.4897
+  Batch 1200/6019, Loss: 0.5218
+  Batch 1300/6019, Loss: 0.5471
+  Batch 1400/6019, Loss: 0.5348
+  Batch 1500/6019, Loss: 0.4784
+  Batch 1600/6019, Loss: 0.5284
+  Batch 1700/6019, Loss: 0.5723
+  Batch 1800/6019, Loss: 0.4683
+  Batch 1900/6019, Loss: 0.5258
+  Batch 2000/6019, Loss: 0.5048
+  Batch 2100/6019, Loss: 0.5255
+  Batch 2200/6019, Loss: 0.4836
+  Batch 2300/6019, Loss: 0.4701
+  Batch 2400/6019, Loss: 0.5388
+  Batch 2500/6019, Loss: 0.4854
+  Batch 2600/6019, Loss: 0.5020
+  Batch 2700/6019, Loss: 0.5056
+  Batch 2800/6019, Loss: 0.4820
+  Batch 2900/6019, Loss: 0.5034
+  Batch 3000/6019, Loss: 0.5179
+  Batch 3100/6019, Loss: 0.5002
+  Batch 3200/6019, Loss: 0.4954
+  Batch 3300/6019, Loss: 0.5241
+  Batch 3400/6019, Loss: 0.5178
+  Batch 3500/6019, Loss: 0.5337
+  Batch 3600/6019, Loss: 0.4814
+  Batch 3700/6019, Loss: 0.4700
+  Batch 3800/6019, Loss: 0.4962
+  Batch 3900/6019, Loss: 0.4634
+  Batch 4000/6019, Loss: 0.5173
+  Batch 4100/6019, Loss: 0.5239
+  Batch 4200/6019, Loss: 0.4782
+  Batch 4300/6019, Loss: 0.5055
+  Batch 4400/6019, Loss: 0.5346
+  Batch 4500/6019, Loss: 0.5121
+  Batch 4600/6019, Loss: 0.5118
+  Batch 4700/6019, Loss: 0.5086
+  Batch 4800/6019, Loss: 0.4787
+  Batch 4900/6019, Loss: 0.5748
+  Batch 5000/6019, Loss: 0.5723
+  Batch 5100/6019, Loss: 0.6093
+  Batch 5200/6019, Loss: 0.5148
+  Batch 5300/6019, Loss: 0.5085
+  Batch 5400/6019, Loss: 0.5104
+  Batch 5500/6019, Loss: 0.4747
+  Batch 5600/6019, Loss: 0.4772
+  Batch 5700/6019, Loss: 0.5471
+  Batch 5800/6019, Loss: 0.6454
+  Batch 5900/6019, Loss: 0.5047
+  Batch 6000/6019, Loss: 0.5048
+Train Loss: 0.5182
+Val Loss: 0.3180, Val F1: 0.8286
+Learning rate: 0.000010
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 42/50
+============================================================
+  Batch 0/6019, Loss: 0.6121
+  Batch 100/6019, Loss: 0.5305
+  Batch 200/6019, Loss: 0.4618
+  Batch 300/6019, Loss: 0.5133
+  Batch 400/6019, Loss: 0.5179
+  Batch 500/6019, Loss: 0.5857
+  Batch 600/6019, Loss: 0.5474
+  Batch 700/6019, Loss: 0.4984
+  Batch 800/6019, Loss: 0.4737
+  Batch 900/6019, Loss: 0.5410
+  Batch 1000/6019, Loss: 0.5536
+  Batch 1100/6019, Loss: 0.5367
+  Batch 1200/6019, Loss: 0.4837
+  Batch 1300/6019, Loss: 0.5076
+  Batch 1400/6019, Loss: 0.4969
+  Batch 1500/6019, Loss: 0.4895
+  Batch 1600/6019, Loss: 0.5569
+  Batch 1700/6019, Loss: 0.4804
+  Batch 1800/6019, Loss: 0.5489
+  Batch 1900/6019, Loss: 0.4985
+  Batch 2000/6019, Loss: 0.5066
+  Batch 2100/6019, Loss: 0.4804
+  Batch 2200/6019, Loss: 0.5069
+  Batch 2300/6019, Loss: 0.5214
+  Batch 2400/6019, Loss: 0.4998
+  Batch 2500/6019, Loss: 0.4745
+  Batch 2600/6019, Loss: 0.5742
+  Batch 2700/6019, Loss: 0.5427
+  Batch 2800/6019, Loss: 0.5478
+  Batch 2900/6019, Loss: 0.5437
+  Batch 3000/6019, Loss: 0.4816
+  Batch 3100/6019, Loss: 0.5437
+  Batch 3200/6019, Loss: 0.5812
+  Batch 3300/6019, Loss: 0.4788
+  Batch 3400/6019, Loss: 0.4988
+  Batch 3500/6019, Loss: 0.5574
+  Batch 3600/6019, Loss: 0.4477
+  Batch 3700/6019, Loss: 0.5211
+  Batch 3800/6019, Loss: 0.5656
+  Batch 3900/6019, Loss: 0.5606
+  Batch 4000/6019, Loss: 0.4798
+  Batch 4100/6019, Loss: 0.5827
+  Batch 4200/6019, Loss: 0.5101
+  Batch 4300/6019, Loss: 0.5364
+  Batch 4400/6019, Loss: 0.4775
+  Batch 4500/6019, Loss: 0.4936
+  Batch 4600/6019, Loss: 0.4877
+  Batch 4700/6019, Loss: 0.4857
+  Batch 4800/6019, Loss: 0.4827
+  Batch 4900/6019, Loss: 0.5299
+  Batch 5000/6019, Loss: 0.5112
+  Batch 5100/6019, Loss: 0.5205
+  Batch 5200/6019, Loss: 0.5405
+  Batch 5300/6019, Loss: 0.5060
+  Batch 5400/6019, Loss: 0.5154
+  Batch 5500/6019, Loss: 0.5575
+  Batch 5600/6019, Loss: 0.5581
+  Batch 5700/6019, Loss: 0.4834
+  Batch 5800/6019, Loss: 0.5468
+  Batch 5900/6019, Loss: 0.5033
+  Batch 6000/6019, Loss: 0.5030
+Train Loss: 0.5175
+Val Loss: 0.3201, Val F1: 0.8388
+Learning rate: 0.000009
+  (Best: 0.8497 at epoch 19)
+
+============================================================
+Epoch 43/50
+============================================================
+slurmstepd: error: *** JOB 4451677 ON gr001 CANCELLED AT 2026-01-16T21:08:10 ***
