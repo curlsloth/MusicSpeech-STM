@@ -1,129 +1,63 @@
-# Balanced Conformer Model for STM Classification
+# Conformer Balanced Model - Training Summary
 
-## Overview
+## Model Architecture
 
-This is an enhanced version of the base Conformer model (`STMconformer_model.py`) that achieved 0.8636 test macro F1. The balanced version incorporates class weighting strategies to address the severe class imbalance in the training data.
+**Base**: Conformer with SpecAugment and Class Balancing
 
-## Key Improvements
+### Key Components:
+1. **Input Projection**: Conv1d layer to project STM features to d_model=128
+2. **Conformer Blocks**: 4 layers with multi-head attention and depthwise convolution
+3. **Global Pooling**: Adaptive average pooling over time dimension
+4. **Classification Head**: Two-layer MLP with ReLU and dropout
 
-### 1. Class-Weighted Focal Loss
-
-The main enhancement is replacing standard cross-entropy with a **weighted focal loss**:
-
-```python
-WeightedFocalLoss(
-    class_weights=computed_from_training_data,
-    gamma=2.0,
-    label_smoothing=0.1
-)
-```
-
-**Benefits:**
-- **Class Weights**: Automatically computed using scikit-learn's `compute_class_weight` with 'balanced' strategy
-- **Focal Loss**: Focuses training on hard-to-classify examples by down-weighting well-classified samples
-- **Label Smoothing**: Prevents overconfidence and improves generalization (smoothing factor: 0.1)
-
-### 2. SpecAugment Data Augmentation
-
-Added SpecAugment-style masking during training:
-
-```python
-SpecAugment(
-    freq_mask_param=4,      # Mask up to 4 frequency bins
-    time_mask_param=20,     # Mask up to 20 time steps
-    n_freq_masks=1,         # 1 frequency mask per sample
-    n_time_masks=2          # 2 time masks per sample
-)
-```
-
-**Benefits:**
-- Prevents overfitting to specific time-frequency patterns
-- Acts as strong regularization
-- Only applied during training (disabled during evaluation)
-
-### 3. Warmup Learning Rate Schedule
-
-Gradual warmup over 5 epochs:
-
-```python
-if epoch < warmup_epochs:
-    lr_scale = (epoch + 1) / warmup_epochs
-    lr = lr_scale * base_lr
-```
-
-**Benefits:**
-- Stabilizes early training
-- Helps model converge to better local minima
-- Reduces sensitivity to initial learning rate
-
-### 4. Enhanced Monitoring
-
-Added per-class F1 score tracking:
-
-```python
-per_class_f1 = f1_score(targets, predictions, average=None)
-# Tracks F1 for each of 6 classes separately
-```
-
-**Benefits:**
-- Identifies which classes are underperforming
-- Helps diagnose class-specific issues
-- Ensures balanced performance across all categories
-
-## Architecture (Unchanged)
-
-The core Conformer architecture remains identical to the base model:
-
-```
-Input (batch, 20, 121)
-  ↓
-SpecAugment (training only)
-  ↓
-Conv1D Projection → (batch, 128, 121)
-  ↓
-Conformer Blocks (4 layers)
-  - Multi-head Self-Attention (4 heads)
-  - Convolution Module (kernel=31)
-  - Feed-Forward Network (dim=512)
-  ↓
-Global Average Pooling → (batch, 128)
-  ↓
-Classifier Head
-  - Linear(128 → 64)
-  - ReLU + Dropout
-  - Linear(64 → 6)
-  ↓
-Output (batch, 6)
-```
-
-**Parameters:** ~1.55M (same as base model)
+### Model Parameters:
+- Input dimension: 20 (frequency bins)
+- d_model: 128
+- num_heads: 4
+- ffn_dim: 512
+- num_layers: 4
+- depthwise_conv_kernel_size: 31
+- dropout: 0.1
+- **Total parameters**: 1,555,270
 
 ## Training Configuration
 
-### Hyperparameters
-- **Optimizer**: AdamW
-- **Base Learning Rate**: 1e-4
+### Version 1 (Initial)
+- **Class Weights**: Linear inverse frequency (sklearn's 'balanced')
+- **Focal Loss Gamma**: 2.0
+- **SpecAugment**: freq_mask=4, time_mask=20, n_time_masks=2
+- **Label Smoothing**: 0.1
+- **Learning Rate**: 1e-4 with warmup (5 epochs)
 - **Weight Decay**: 1e-5
 - **Batch Size**: 128
 - **Epochs**: 50
-- **Warmup Epochs**: 5
-- **Gradient Clipping**: max_norm=1.0
 
-### Loss Functions
-- **Training**: Weighted Focal Loss (γ=2.0, label_smoothing=0.1)
-- **Validation/Test**: Standard Cross-Entropy (for fair comparison)
+**Result**: Test F1 = 0.8279 (Epoch 40)
 
-### Learning Rate Schedule
-1. **Warmup Phase** (epochs 1-5): Linear warmup from 0 to 1e-4
-2. **Plateau Schedule** (epochs 6+): ReduceLROnPlateau
-   - Monitored metric: Validation macro F1
-   - Factor: 0.5
-   - Patience: 3 epochs
+### Version 2 (Refined - Current)
+**Key Changes**:
+1. **Class Weights Strategy**:
+   - Square root scaling: `w_i = sqrt(N / (n_classes * n_i))`
+   - Weight capping at 3.0 to prevent over-emphasis
+   - Normalization to mean=1.0
+   
+2. **Focal Loss**:
+   - Reduced gamma from 2.0 → 1.5 (less aggressive focusing)
+   
+3. **SpecAugment**:
+   - Reduced freq_mask from 4 → 3
+   - Reduced time_mask from 20 → 15
+   - Reduced n_time_masks from 2 → 1
 
-## Class Distribution (Training Set)
+**Rationale**:
+- Environmental classes (5 & 6) already perform well (F1 > 0.92) with fewer samples
+- Square root scaling provides gentler balancing
+- Weight capping prevents destabilizing over-emphasis on minority classes
+- Reduced augmentation preserves more distinguishable features
 
-The class imbalance that motivated this enhancement:
+## Class Distribution and Weights
 
+### Training Data Distribution:
 | Class | Count | Percentage | Weight |
 |-------|-------|------------|--------|
 | speech:non-tonal | ~500K | ~65% | 0.31 |
@@ -133,7 +67,13 @@ The class imbalance that motivated this enhancement:
 | env:urban | ~15K | ~2% | 10.00 |
 | env:wildlife | ~25K | ~3% | 6.00 |
 
-The weighted focal loss ensures minority classes (tonal speech, urban environments) receive adequate training signal despite having fewer samples.
+### Weights in Version 2:
+- **speech:non-tonal**: 0.31
+- **speech:tonal**: 3.00
+- **music:vocal**: 5.00
+- **music:non-vocal**: 1.00
+- **env:urban**: 10.00
+- **env:wildlife**: 6.00
 
 ## Expected Performance
 

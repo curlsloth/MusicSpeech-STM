@@ -4,13 +4,19 @@
 Enhanced Conformer model with Class Balancing for STM Classification
 
 Improvements over base Conformer:
-1. Class-weighted focal loss for severe imbalance
+1. Class-weighted focal loss for severe imbalance (with sqrt-scaled weights)
 2. Label smoothing for better generalization
 3. SpecAugment-style augmentation during training
 4. Warmup learning rate schedule
 5. Better gradient clipping and regularization
 
-Based on successful base Conformer (Test F1: 0.8636) with added class balancing.
+Based on successful base Conformer (Test F1: 0.8636) with refined class balancing.
+
+Version 2 changes:
+- Square root scaling for class weights (gentler balancing)
+- Weight capping to prevent over-emphasis
+- Reduced focal loss gamma for stability
+- Tuned SpecAugment parameters
 """
 
 import numpy as np
@@ -50,13 +56,15 @@ class SpecAugment(nn.Module):
     """
     SpecAugment-style augmentation for STM features.
     Randomly masks time and frequency regions during training.
+    
+    Version 2: Reduced masking parameters for less aggressive augmentation
     """
-    def __init__(self, freq_mask_param=4, time_mask_param=20, n_freq_masks=1, n_time_masks=2):
+    def __init__(self, freq_mask_param=3, time_mask_param=15, n_freq_masks=1, n_time_masks=1):
         super(SpecAugment, self).__init__()
-        self.freq_mask_param = freq_mask_param
-        self.time_mask_param = time_mask_param
+        self.freq_mask_param = freq_mask_param  # Reduced from 4
+        self.time_mask_param = time_mask_param  # Reduced from 20
         self.n_freq_masks = n_freq_masks
-        self.n_time_masks = n_time_masks
+        self.n_time_masks = n_time_masks  # Reduced from 2
         
     def forward(self, x):
         # x: (batch, freq, time)
@@ -87,18 +95,22 @@ class SpecAugment(nn.Module):
 
 class WeightedFocalLoss(nn.Module):
     """
-    Focal loss with class weights computed from training data.
-    Handles severe class imbalance better than standard cross-entropy.
+    Focal loss with sqrt-scaled class weights for gentler balancing.
+    
+    Version 2 improvements:
+    - Square root scaling of weights
+    - Weight capping at 3.0
+    - Reduced gamma for less aggressive focusing
     
     Args:
-        class_weights: Per-class weights (automatically computed from data)
-        gamma: Focusing parameter (default: 2.0)
+        class_weights: Per-class weights (sqrt-scaled from data)
+        gamma: Focusing parameter (reduced to 1.5)
         label_smoothing: Label smoothing factor (default: 0.1)
     """
-    def __init__(self, class_weights=None, gamma=2.0, label_smoothing=0.1):
+    def __init__(self, class_weights=None, gamma=1.5, label_smoothing=0.1):
         super(WeightedFocalLoss, self).__init__()
         self.class_weights = class_weights
-        self.gamma = gamma
+        self.gamma = gamma  # Reduced from 2.0
         self.label_smoothing = label_smoothing
         
     def forward(self, inputs, targets):
@@ -140,7 +152,7 @@ class BalancedConformerClassifier(nn.Module):
     3. Global average pooling
     4. Classification head
     
-    New: SpecAugment applied during training only
+    Version 2: Less aggressive SpecAugment
     """
     def __init__(self, input_dim, num_classes, d_model=128, num_heads=4, 
                  ffn_dim=512, num_layers=4, depthwise_conv_kernel_size=31, dropout=0.1):
@@ -149,10 +161,10 @@ class BalancedConformerClassifier(nn.Module):
         self.input_dim = input_dim
         self.d_model = d_model
         
-        # SpecAugment for training
+        # SpecAugment for training (less aggressive)
         self.spec_augment = SpecAugment(
-            freq_mask_param=4, time_mask_param=20, 
-            n_freq_masks=1, n_time_masks=2
+            freq_mask_param=3, time_mask_param=15, 
+            n_freq_masks=1, n_time_masks=1
         )
         
         # Input projection: (batch, freq, time) -> (batch, time, d_model)
@@ -218,15 +230,18 @@ class BalancedConformerClassifier(nn.Module):
 
 
 # ============================================================================
-# Enhanced Trainer with Class Balancing
+# Enhanced Trainer with Refined Class Balancing
 # ============================================================================
 
 class BalancedTrainer:
     """
-    Enhanced training manager with:
-    - Class-weighted focal loss
-    - Warmup learning rate schedule
-    - Better monitoring of per-class performance
+    Enhanced training manager with refined class balancing strategy.
+    
+    Version 2 improvements:
+    - Square root scaling for class weights
+    - Weight capping at 3.0
+    - Reduced focal loss gamma (1.5)
+    - Better handling of minority classes
     """
     def __init__(self, model, train_loader, val_loader, test_loader, 
                  device, train_labels, lr=1e-4, weight_decay=1e-5, warmup_epochs=5):
@@ -237,18 +252,35 @@ class BalancedTrainer:
         self.device = device
         self.warmup_epochs = warmup_epochs
         
-        # Compute class weights from training labels
+        # Compute refined class weights with sqrt scaling
         unique_classes = np.unique(train_labels)
-        class_weights = compute_class_weight('balanced', classes=unique_classes, y=train_labels)
-        self.class_weights = torch.FloatTensor(class_weights).to(device)
+        class_counts = np.bincount(train_labels)
         
-        print(f"Class weights: {class_weights}")
-        print(f"Class distribution: {np.bincount(train_labels)}")
+        # Square root scaling: w_i = sqrt(N / (n_classes * n_i))
+        total_samples = len(train_labels)
+        n_classes = len(unique_classes)
         
-        # Weighted focal loss with label smoothing
+        # Compute square root scaled weights
+        sqrt_weights = np.sqrt(total_samples / (n_classes * class_counts))
+        
+        # Cap weights at 3.0 to prevent over-emphasis
+        max_weight = 3.0
+        capped_weights = np.minimum(sqrt_weights, max_weight)
+        
+        # Normalize weights to have mean of 1.0
+        normalized_weights = capped_weights / capped_weights.mean()
+        
+        self.class_weights = torch.FloatTensor(normalized_weights).to(device)
+        
+        print(f"Class distribution: {class_counts}")
+        print(f"Raw sqrt weights: {sqrt_weights}")
+        print(f"Capped weights: {capped_weights}")
+        print(f"Final normalized weights: {normalized_weights}")
+        
+        # Weighted focal loss with reduced gamma
         self.criterion = WeightedFocalLoss(
             class_weights=self.class_weights,
-            gamma=2.0,
+            gamma=1.5,  # Reduced from 2.0
             label_smoothing=0.1
         )
         
