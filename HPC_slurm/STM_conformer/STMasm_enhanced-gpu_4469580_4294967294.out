@@ -1,6 +1,12 @@
 Using device: cuda
-GPU: Quadro RTX 8000
-Checkpoint directory: model/STM/Kanformer_enhanced_corpora_categories/standard/ckpt/2026-01-17_23-04
+GPU: Tesla V100-SXM2-32GB
+GPU Memory: 34.08 GB
+Mode 0: Standard training
+Checkpoint directory: model/STM/ASM_Enhanced_corpora_categories/standard/ckpt/2026-01-18_07-29
+
+============================================================
+Loading and preparing data...
+============================================================
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
@@ -108,27 +114,168 @@ Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/fma_large_STMall.npy,
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/ismir04_genre_STMall.npy, shape: (2185, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy, shape: (34565, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SONYC_STMall.npy, shape: (10798, 2420)
-Total samples: 978378, Train: 770393, Val: 102010, Test: 105975
+Total samples: 978378
+Train samples: 770393
+Val samples: 102010
+Test samples: 105975
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
+Train dataset shape: torch.Size([770393, 20, 121])
+Val dataset shape: torch.Size([102010, 20, 121])
+Test dataset shape: torch.Size([105975, 20, 121])
 
-Class distribution:
-  Class 0:  497475 samples (weight: 0.0657)
-  Class 1:   80258 samples (weight: 0.4074)
-  Class 2:  101893 samples (weight: 0.3209)
-  Class 3:   53538 samples (weight: 0.6107)
-  Class 4:    9580 samples (weight: 3.4128)
-  Class 5:   27649 samples (weight: 1.1825)
-Total parameters: 3,862,492
-Traceback (most recent call last):
-  File "/vast/ac8888/MusicSpeech-STM/STMkanformer_enhanced.py", line 804, in <module>
-    trainer = EnhancedKanformerTrainer(
-        model, train_loader, val_loader, test_loader, device,
-        class_weights=class_weights, lr=1e-4, weight_decay=1e-4
-    )
-  File "/vast/ac8888/MusicSpeech-STM/STMkanformer_enhanced.py", line 574, in __init__
-    self.scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self.optimizer, mode='max', factor=0.5, patience=3, verbose=True
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-TypeError: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verbose'
+DataLoaders created with batch_size=128
+STM grid dimensions: Time=121, Freq=20
+
+============================================================
+Creating Enhanced ASM-RH model...
+============================================================
+Total parameters: 878,790
+Trainable parameters: 878,790
+Class weights: [ 0.25810108  1.59982598  1.260134    2.39827475 13.40280097  4.64388706]
+Class distribution: [497475  80258 101893  53538   9580  27649]
+
+Starting enhanced ASM training for 50 epochs...
+Starting from epoch 1
+
+============================================================
+Epoch 1/50
+============================================================
+  Batch 0/6019, Loss: 1.1679
+  Batch 100/6019, Loss: 0.6936
+  Batch 200/6019, Loss: 0.8063
+  Batch 300/6019, Loss: 0.6550
+  Batch 400/6019, Loss: 0.6209
+  Batch 500/6019, Loss: 0.8079
+  Batch 600/6019, Loss: 0.4551
+  Batch 700/6019, Loss: 0.7270
+  Batch 800/6019, Loss: 0.5239
+  Batch 900/6019, Loss: 0.5310
+  Batch 1000/6019, Loss: 0.5237
+  Batch 1100/6019, Loss: 0.5287
+  Batch 1200/6019, Loss: 0.5584
+  Batch 1300/6019, Loss: 0.5422
+  Batch 1400/6019, Loss: 0.6610
+  Batch 1500/6019, Loss: 0.3739
+  Batch 1600/6019, Loss: 0.4527
+  Batch 1700/6019, Loss: 0.8511
+  Batch 1800/6019, Loss: 0.5114
+  Batch 1900/6019, Loss: 0.5616
+  Batch 2000/6019, Loss: 0.5105
+  Batch 2100/6019, Loss: 0.5668
+  Batch 2200/6019, Loss: 0.4584
+  Batch 2300/6019, Loss: 0.5428
+  Batch 2400/6019, Loss: 0.4491
+  Batch 2500/6019, Loss: 0.4398
+  Batch 2600/6019, Loss: 0.4683
+  Batch 2700/6019, Loss: 0.5382
+  Batch 2800/6019, Loss: 0.4175
+  Batch 2900/6019, Loss: 0.4261
+  Batch 3000/6019, Loss: 0.5236
+  Batch 3100/6019, Loss: 0.4793
+  Batch 3200/6019, Loss: 0.7034
+  Batch 3300/6019, Loss: 0.4590
+  Batch 3400/6019, Loss: 0.5400
+  Batch 3500/6019, Loss: 0.4653
+  Batch 3600/6019, Loss: 0.3985
+  Batch 3700/6019, Loss: 0.3795
+  Batch 3800/6019, Loss: 0.5680
+  Batch 3900/6019, Loss: 0.5307
+  Batch 4000/6019, Loss: 0.4516
+  Batch 4100/6019, Loss: 0.5462
+  Batch 4200/6019, Loss: 0.5317
+  Batch 4300/6019, Loss: 0.6371
+  Batch 4400/6019, Loss: 0.6181
+  Batch 4500/6019, Loss: 0.4631
+  Batch 4600/6019, Loss: 0.4562
+  Batch 4700/6019, Loss: 0.4521
+  Batch 4800/6019, Loss: 0.3965
+  Batch 4900/6019, Loss: 0.4887
+  Batch 5000/6019, Loss: 0.4515
+  Batch 5100/6019, Loss: 0.4035
+  Batch 5200/6019, Loss: 0.4685
+  Batch 5300/6019, Loss: 0.4683
+  Batch 5400/6019, Loss: 0.4548
+  Batch 5500/6019, Loss: 0.4895
+  Batch 5600/6019, Loss: 0.5225
+  Batch 5700/6019, Loss: 0.4461
+  Batch 5800/6019, Loss: 0.4687
+  Batch 5900/6019, Loss: 0.5515
+  Batch 6000/6019, Loss: 0.5204
+Train Loss: 0.5321
+Val Loss: 0.9312, Val Macro F1: 0.5343
+Current learning rate: 0.000200
+✓ Saved best model with Val F1: 0.5343
+
+============================================================
+Epoch 2/50
+============================================================
+  Batch 0/6019, Loss: 0.5108
+  Batch 100/6019, Loss: 0.4102
+  Batch 200/6019, Loss: 0.4970
+  Batch 300/6019, Loss: 0.5127
+  Batch 400/6019, Loss: 0.5347
+  Batch 500/6019, Loss: 0.5082
+  Batch 600/6019, Loss: 0.4659
+  Batch 700/6019, Loss: 0.5450
+  Batch 800/6019, Loss: 0.4818
+  Batch 900/6019, Loss: 0.5212
+  Batch 1000/6019, Loss: 0.4699
+  Batch 1100/6019, Loss: 0.5222
+  Batch 1200/6019, Loss: 0.4845
+  Batch 1300/6019, Loss: 0.5291
+  Batch 1400/6019, Loss: 0.6895
+  Batch 1500/6019, Loss: 0.4549
+  Batch 1600/6019, Loss: 0.4908
+  Batch 1700/6019, Loss: 0.4136
+  Batch 1800/6019, Loss: 0.4822
+  Batch 1900/6019, Loss: 0.5658
+  Batch 2000/6019, Loss: 0.4420
+  Batch 2100/6019, Loss: 0.4603
+  Batch 2200/6019, Loss: 0.5305
+  Batch 2300/6019, Loss: 0.4666
+  Batch 2400/6019, Loss: 0.4995
+  Batch 2500/6019, Loss: 0.5790
+  Batch 2600/6019, Loss: 0.4762
+  Batch 2700/6019, Loss: 0.4487
+  Batch 2800/6019, Loss: 0.4326
+  Batch 2900/6019, Loss: 0.4120
+  Batch 3000/6019, Loss: 0.5094
+  Batch 3100/6019, Loss: 0.6341
+  Batch 3200/6019, Loss: 0.4885
+  Batch 3300/6019, Loss: 0.4600
+  Batch 3400/6019, Loss: 0.4254
+  Batch 3500/6019, Loss: 0.5359
+  Batch 3600/6019, Loss: 0.3667
+  Batch 3700/6019, Loss: 0.4751
+  Batch 3800/6019, Loss: 0.3973
+  Batch 3900/6019, Loss: 0.4240
+  Batch 4000/6019, Loss: 0.6268
+  Batch 4100/6019, Loss: 0.4375
+  Batch 4200/6019, Loss: 0.5434
+  Batch 4300/6019, Loss: 0.3669
+  Batch 4400/6019, Loss: 0.4485
+  Batch 4500/6019, Loss: 0.4218
+  Batch 4600/6019, Loss: 0.5091
+  Batch 4700/6019, Loss: 0.4641
+  Batch 4800/6019, Loss: 0.4352
+  Batch 4900/6019, Loss: 0.4040
+  Batch 5000/6019, Loss: 0.5378
+  Batch 5100/6019, Loss: 0.4503
+  Batch 5200/6019, Loss: 0.4265
+  Batch 5300/6019, Loss: 0.5718
+  Batch 5400/6019, Loss: 0.5084
+  Batch 5500/6019, Loss: 0.6177
+  Batch 5600/6019, Loss: 0.3939
+  Batch 5700/6019, Loss: 0.5327
+  Batch 5800/6019, Loss: 0.3952
+  Batch 5900/6019, Loss: 0.3964
+  Batch 6000/6019, Loss: 0.3395
+Train Loss: 0.4774
+Val Loss: 0.7742, Val Macro F1: 0.6901
+Current learning rate: 0.000400
+✓ Saved best model with Val F1: 0.6901
+
+============================================================
+Epoch 3/50
+============================================================

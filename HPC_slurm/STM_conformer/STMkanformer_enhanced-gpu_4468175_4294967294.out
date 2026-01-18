@@ -124,3 +124,1305 @@ Starting Enhanced Kanformer training for 50 epochs...
 ============================================================
 Epoch 1/50
 ============================================================
+  Batch 0/6019, Loss: 0.3552, Grad Norm: 2.2262
+  Batch 100/6019, Loss: 0.0920, Grad Norm: 0.4998
+  Batch 200/6019, Loss: 0.1134, Grad Norm: 0.7280
+  Batch 300/6019, Loss: 0.0957, Grad Norm: 1.2307
+  Batch 400/6019, Loss: 0.1243, Grad Norm: 1.3858
+  Batch 500/6019, Loss: 0.0779, Grad Norm: 0.4629
+  Batch 600/6019, Loss: 0.0599, Grad Norm: 0.7208
+  Batch 700/6019, Loss: 0.0560, Grad Norm: 0.3940
+  Batch 800/6019, Loss: 0.0566, Grad Norm: 0.4424
+  Batch 900/6019, Loss: 0.0954, Grad Norm: 0.8560
+  Batch 1000/6019, Loss: 0.0432, Grad Norm: 0.3247
+  Batch 1100/6019, Loss: 0.1406, Grad Norm: 2.9923
+  Batch 1200/6019, Loss: 0.0571, Grad Norm: 0.7693
+  Batch 1300/6019, Loss: 0.0744, Grad Norm: 1.1639
+  Batch 1400/6019, Loss: 0.0513, Grad Norm: 1.7255
+  Batch 1500/6019, Loss: 0.0431, Grad Norm: 0.3511
+  Batch 1600/6019, Loss: 0.0705, Grad Norm: 0.6124
+  Batch 1700/6019, Loss: 0.0555, Grad Norm: 0.5456
+  Batch 1800/6019, Loss: 0.0584, Grad Norm: 0.6540
+  Batch 1900/6019, Loss: 0.0604, Grad Norm: 0.5479
+  Batch 2000/6019, Loss: 0.0865, Grad Norm: 0.9700
+  Batch 2100/6019, Loss: 0.0426, Grad Norm: 0.6894
+  Batch 2200/6019, Loss: 0.0393, Grad Norm: 0.6094
+  Batch 2300/6019, Loss: 0.0538, Grad Norm: 4.5307
+  Batch 2400/6019, Loss: 0.0683, Grad Norm: 1.1397
+  Batch 2500/6019, Loss: 0.0473, Grad Norm: 0.8426
+  Batch 2600/6019, Loss: 0.0476, Grad Norm: 0.8904
+  Batch 2700/6019, Loss: 0.0414, Grad Norm: 1.2035
+  Batch 2800/6019, Loss: 0.0629, Grad Norm: 2.3550
+  Batch 2900/6019, Loss: 0.0434, Grad Norm: 0.6232
+  Batch 3000/6019, Loss: 0.0723, Grad Norm: 2.4783
+  Batch 3100/6019, Loss: 0.0812, Grad Norm: 4.0372
+  Batch 3200/6019, Loss: 0.0438, Grad Norm: 1.0056
+  Batch 3300/6019, Loss: 0.0507, Grad Norm: 3.5658
+  Batch 3400/6019, Loss: 0.0535, Grad Norm: 0.7202
+  Batch 3500/6019, Loss: 0.0571, Grad Norm: 0.5618
+  Batch 3600/6019, Loss: 0.0547, Grad Norm: 1.5547
+  Batch 3700/6019, Loss: 0.0473, Grad Norm: 0.4157
+  Batch 3800/6019, Loss: 0.0596, Grad Norm: 0.5988
+  Batch 3900/6019, Loss: 0.0514, Grad Norm: 1.1803
+  Batch 4000/6019, Loss: 0.0396, Grad Norm: 0.5073
+  Batch 4100/6019, Loss: 0.0402, Grad Norm: 0.5416
+  Batch 4200/6019, Loss: 0.0428, Grad Norm: 0.6094
+  Batch 4300/6019, Loss: 0.0553, Grad Norm: 0.5672
+  Batch 4400/6019, Loss: 0.0555, Grad Norm: 1.5315
+  Batch 4500/6019, Loss: 0.0425, Grad Norm: 0.6057
+  Batch 4600/6019, Loss: 0.0393, Grad Norm: 0.7037
+  Batch 4700/6019, Loss: 0.0511, Grad Norm: 0.8167
+  Batch 4800/6019, Loss: 0.0899, Grad Norm: 2.1458
+  Batch 4900/6019, Loss: 0.0401, Grad Norm: 0.7554
+  Batch 5000/6019, Loss: 0.0541, Grad Norm: 3.9678
+  Batch 5100/6019, Loss: 0.0413, Grad Norm: 0.5630
+  Batch 5200/6019, Loss: 0.0398, Grad Norm: 0.5327
+  Batch 5300/6019, Loss: 0.0659, Grad Norm: 2.2498
+  Batch 5400/6019, Loss: 0.0522, Grad Norm: 2.3229
+  Batch 5500/6019, Loss: 0.0647, Grad Norm: 4.1371
+  Batch 5600/6019, Loss: 0.0395, Grad Norm: 0.8843
+  Batch 5700/6019, Loss: 0.0473, Grad Norm: 1.0319
+  Batch 5800/6019, Loss: 0.0418, Grad Norm: 0.5359
+  Batch 5900/6019, Loss: 0.0417, Grad Norm: 1.4841
+  Batch 6000/6019, Loss: 0.0462, Grad Norm: 1.9745
+Train Loss: 0.0583
+Val Loss: 0.0473, Val Macro F1: 0.7749
+Learning rate: 0.000100
+✓ Saved best model with Val F1: 0.7749
+
+============================================================
+Epoch 2/50
+============================================================
+  Batch 0/6019, Loss: 0.0306, Grad Norm: 0.6464
+  Batch 100/6019, Loss: 0.0979, Grad Norm: 55.5065
+  Batch 200/6019, Loss: 0.0686, Grad Norm: 2.0801
+  Batch 300/6019, Loss: 0.0506, Grad Norm: 0.8738
+  Batch 400/6019, Loss: 0.0621, Grad Norm: 0.9358
+  Batch 500/6019, Loss: 0.0600, Grad Norm: 2.3336
+  Batch 600/6019, Loss: 0.0424, Grad Norm: 1.2026
+  Batch 700/6019, Loss: 0.0442, Grad Norm: 0.6828
+  Batch 800/6019, Loss: 0.0349, Grad Norm: 1.1185
+  Batch 900/6019, Loss: 0.0451, Grad Norm: 0.6170
+  Batch 1000/6019, Loss: 0.0454, Grad Norm: 1.3317
+  Batch 1100/6019, Loss: 0.0610, Grad Norm: 1.1741
+  Batch 1200/6019, Loss: 0.0388, Grad Norm: 1.5764
+  Batch 1300/6019, Loss: 0.0323, Grad Norm: 0.3925
+  Batch 1400/6019, Loss: 0.0368, Grad Norm: 1.1498
+  Batch 1500/6019, Loss: 0.0327, Grad Norm: 0.4061
+  Batch 1600/6019, Loss: 0.0283, Grad Norm: 0.6856
+  Batch 1700/6019, Loss: 0.0338, Grad Norm: 0.4139
+  Batch 1800/6019, Loss: 0.0332, Grad Norm: 0.6072
+  Batch 1900/6019, Loss: 0.0444, Grad Norm: 0.8340
+  Batch 2000/6019, Loss: 0.0315, Grad Norm: 0.6028
+  Batch 2100/6019, Loss: 0.0429, Grad Norm: 0.7167
+  Batch 2200/6019, Loss: 0.0371, Grad Norm: 2.3041
+  Batch 2300/6019, Loss: 0.0729, Grad Norm: 1.5894
+  Batch 2400/6019, Loss: 0.0493, Grad Norm: 0.9087
+  Batch 2500/6019, Loss: 0.0433, Grad Norm: 0.8038
+  Batch 2600/6019, Loss: 0.0585, Grad Norm: 2.3493
+  Batch 2700/6019, Loss: 0.0389, Grad Norm: 2.1091
+  Batch 2800/6019, Loss: 0.0356, Grad Norm: 0.8923
+  Batch 2900/6019, Loss: 0.0441, Grad Norm: 0.6054
+  Batch 3000/6019, Loss: 0.0663, Grad Norm: 1.3421
+  Batch 3100/6019, Loss: 0.0638, Grad Norm: 4.4391
+  Batch 3200/6019, Loss: 0.0580, Grad Norm: 1.1976
+  Batch 3300/6019, Loss: 0.0395, Grad Norm: 4.7220
+  Batch 3400/6019, Loss: 0.0490, Grad Norm: 0.9214
+  Batch 3500/6019, Loss: 0.0328, Grad Norm: 2.2295
+  Batch 3600/6019, Loss: 0.0415, Grad Norm: 1.1036
+  Batch 3700/6019, Loss: 0.0386, Grad Norm: 1.4798
+  Batch 3800/6019, Loss: 0.0643, Grad Norm: 4.5318
+  Batch 3900/6019, Loss: 0.0420, Grad Norm: 4.5132
+  Batch 4000/6019, Loss: 0.0404, Grad Norm: 0.9379
+  Batch 4100/6019, Loss: 0.0492, Grad Norm: 7.1689
+  Batch 4200/6019, Loss: 0.0579, Grad Norm: 1.6772
+  Batch 4300/6019, Loss: 0.0528, Grad Norm: 1.0468
+  Batch 4400/6019, Loss: 0.0515, Grad Norm: 1.3443
+  Batch 4500/6019, Loss: 0.0470, Grad Norm: 0.9660
+  Batch 4600/6019, Loss: 0.0306, Grad Norm: 0.6498
+  Batch 4700/6019, Loss: 0.0411, Grad Norm: 0.7491
+  Batch 4800/6019, Loss: 0.0270, Grad Norm: 0.4714
+  Batch 4900/6019, Loss: 0.0376, Grad Norm: 0.8971
+  Batch 5000/6019, Loss: 0.0502, Grad Norm: 1.6731
+  Batch 5100/6019, Loss: 0.0309, Grad Norm: 0.8276
+  Batch 5200/6019, Loss: 0.0349, Grad Norm: 2.5062
+  Batch 5300/6019, Loss: 0.0361, Grad Norm: 1.9095
+  Batch 5400/6019, Loss: 0.0417, Grad Norm: 0.9821
+  Batch 5500/6019, Loss: 0.0481, Grad Norm: 1.7013
+  Batch 5600/6019, Loss: 0.0434, Grad Norm: 0.9635
+  Batch 5700/6019, Loss: 0.0588, Grad Norm: 0.8222
+  Batch 5800/6019, Loss: 0.0390, Grad Norm: 0.6308
+  Batch 5900/6019, Loss: 0.0486, Grad Norm: 2.2418
+  Batch 6000/6019, Loss: 0.0563, Grad Norm: 2.5781
+Train Loss: 0.0475
+Val Loss: 0.0474, Val Macro F1: 0.7600
+Learning rate: 0.000100
+
+============================================================
+Epoch 3/50
+============================================================
+  Batch 0/6019, Loss: 0.0344, Grad Norm: 0.6187
+  Batch 100/6019, Loss: 0.0393, Grad Norm: 0.4744
+  Batch 200/6019, Loss: 0.0463, Grad Norm: 1.6612
+  Batch 300/6019, Loss: 0.0425, Grad Norm: 2.0289
+  Batch 400/6019, Loss: 0.0402, Grad Norm: 1.9252
+  Batch 500/6019, Loss: 0.0473, Grad Norm: 1.5764
+  Batch 600/6019, Loss: 0.0579, Grad Norm: 6.8630
+  Batch 700/6019, Loss: 0.0306, Grad Norm: 0.7113
+  Batch 800/6019, Loss: 0.0565, Grad Norm: 3.1188
+  Batch 900/6019, Loss: 0.0427, Grad Norm: 1.8268
+  Batch 1000/6019, Loss: 0.0380, Grad Norm: 7.5335
+  Batch 1100/6019, Loss: 0.0725, Grad Norm: 13.6162
+  Batch 1200/6019, Loss: 0.0508, Grad Norm: 1.9628
+  Batch 1300/6019, Loss: 0.0469, Grad Norm: 5.4478
+  Batch 1400/6019, Loss: 0.0386, Grad Norm: 1.5225
+  Batch 1500/6019, Loss: 0.0334, Grad Norm: 0.8110
+  Batch 1600/6019, Loss: 0.0444, Grad Norm: 1.0754
+  Batch 1700/6019, Loss: 0.0329, Grad Norm: 0.8404
+  Batch 1800/6019, Loss: 0.0343, Grad Norm: 0.8147
+  Batch 1900/6019, Loss: 0.0315, Grad Norm: 1.2089
+  Batch 2000/6019, Loss: 0.0424, Grad Norm: 3.1505
+  Batch 2100/6019, Loss: 0.0503, Grad Norm: 1.8439
+  Batch 2200/6019, Loss: 0.0483, Grad Norm: 2.9713
+  Batch 2300/6019, Loss: 0.0556, Grad Norm: 3.2162
+  Batch 2400/6019, Loss: 0.0468, Grad Norm: 1.4134
+  Batch 2500/6019, Loss: 0.0346, Grad Norm: 1.0876
+  Batch 2600/6019, Loss: 0.0342, Grad Norm: 1.1236
+  Batch 2700/6019, Loss: 0.0380, Grad Norm: 1.1848
+  Batch 2800/6019, Loss: 0.0370, Grad Norm: 1.3499
+  Batch 2900/6019, Loss: 0.0403, Grad Norm: 3.7333
+  Batch 3000/6019, Loss: 0.0499, Grad Norm: 2.9933
+  Batch 3100/6019, Loss: 0.0314, Grad Norm: 2.5407
+  Batch 3200/6019, Loss: 0.0504, Grad Norm: 1.2332
+  Batch 3300/6019, Loss: 0.0937, Grad Norm: 3.2854
+  Batch 3400/6019, Loss: 0.0370, Grad Norm: 14.0272
+  Batch 3500/6019, Loss: 0.0406, Grad Norm: 1.7948
+  Batch 3600/6019, Loss: 0.0541, Grad Norm: 2.8124
+  Batch 3700/6019, Loss: 0.0773, Grad Norm: 1.6643
+  Batch 3800/6019, Loss: 0.0507, Grad Norm: 1.9283
+  Batch 3900/6019, Loss: 0.0686, Grad Norm: 11.3915
+  Batch 4000/6019, Loss: 0.0464, Grad Norm: 1.5044
+  Batch 4100/6019, Loss: 0.0424, Grad Norm: 2.8835
+  Batch 4200/6019, Loss: 0.0327, Grad Norm: 1.2861
+  Batch 4300/6019, Loss: 0.0420, Grad Norm: 2.7813
+  Batch 4400/6019, Loss: 0.0421, Grad Norm: 4.3373
+  Batch 4500/6019, Loss: 0.0436, Grad Norm: 1.5463
+  Batch 4600/6019, Loss: 0.0485, Grad Norm: 2.4026
+  Batch 4700/6019, Loss: 0.0443, Grad Norm: 0.7345
+  Batch 4800/6019, Loss: 0.0440, Grad Norm: 4.6828
+  Batch 4900/6019, Loss: 0.0749, Grad Norm: 3.1141
+  Batch 5000/6019, Loss: 0.0433, Grad Norm: 4.5911
+  Batch 5100/6019, Loss: 0.0446, Grad Norm: 1.1442
+  Batch 5200/6019, Loss: 0.0469, Grad Norm: 1.9831
+  Batch 5300/6019, Loss: 0.0448, Grad Norm: 3.3387
+  Batch 5400/6019, Loss: 0.0275, Grad Norm: 1.8839
+  Batch 5500/6019, Loss: 0.0349, Grad Norm: 0.8738
+  Batch 5600/6019, Loss: 0.0425, Grad Norm: 1.1543
+  Batch 5700/6019, Loss: 0.0411, Grad Norm: 2.5423
+  Batch 5800/6019, Loss: 0.0355, Grad Norm: 4.8004
+  Batch 5900/6019, Loss: 0.0416, Grad Norm: 0.7818
+  Batch 6000/6019, Loss: 0.0333, Grad Norm: 1.2273
+Train Loss: 0.0459
+Val Loss: 0.0491, Val Macro F1: 0.7819
+Learning rate: 0.000100
+✓ Saved best model with Val F1: 0.7819
+
+============================================================
+Epoch 4/50
+============================================================
+  Batch 0/6019, Loss: 0.0462, Grad Norm: 7.2650
+  Batch 100/6019, Loss: 0.0414, Grad Norm: 5.5984
+  Batch 200/6019, Loss: 0.0419, Grad Norm: 31.4344
+  Batch 300/6019, Loss: 0.0527, Grad Norm: 19.6562
+  Batch 400/6019, Loss: 0.0449, Grad Norm: 59.2949
+  Batch 500/6019, Loss: 0.0717, Grad Norm: 3.2917
+  Batch 600/6019, Loss: 0.0714, Grad Norm: 3.4215
+  Batch 700/6019, Loss: 0.0286, Grad Norm: 1.5415
+  Batch 800/6019, Loss: 0.0528, Grad Norm: 14.8048
+  Batch 900/6019, Loss: 0.0326, Grad Norm: 8.6516
+  Batch 1000/6019, Loss: 0.0338, Grad Norm: 1.9569
+  Batch 1100/6019, Loss: 0.0394, Grad Norm: 7.6988
+  Batch 1200/6019, Loss: 0.0540, Grad Norm: 10.1807
+  Batch 1300/6019, Loss: 0.0332, Grad Norm: 27.5231
+  Batch 1400/6019, Loss: 0.0266, Grad Norm: 2.2772
+  Batch 1500/6019, Loss: 0.0340, Grad Norm: 1.1878
+  Batch 1600/6019, Loss: 0.0494, Grad Norm: 3.4965
+  Batch 1700/6019, Loss: 0.0379, Grad Norm: 3.0813
+  Batch 1800/6019, Loss: 0.0370, Grad Norm: 1.1024
+  Batch 1900/6019, Loss: 0.0732, Grad Norm: 15.2404
+  Batch 2000/6019, Loss: 0.0484, Grad Norm: 3.5469
+  Batch 2100/6019, Loss: 0.0648, Grad Norm: 37.0228
+  Batch 2200/6019, Loss: 0.0373, Grad Norm: 0.9819
+  Batch 2300/6019, Loss: 0.0470, Grad Norm: 2.4042
+  Batch 2400/6019, Loss: 0.0768, Grad Norm: 5.0811
+  Batch 2500/6019, Loss: 0.0565, Grad Norm: 7.2178
+  Batch 2600/6019, Loss: 0.0485, Grad Norm: 2.3046
+  Batch 2700/6019, Loss: 0.0620, Grad Norm: 4.6490
+  Batch 2800/6019, Loss: 0.0313, Grad Norm: 2.9830
+  Batch 2900/6019, Loss: 0.0338, Grad Norm: 1.5803
+  Batch 3000/6019, Loss: 0.0613, Grad Norm: 10.3952
+  Batch 3100/6019, Loss: 0.0391, Grad Norm: 2.6712
+  Batch 3200/6019, Loss: 0.0354, Grad Norm: 1.4721
+  Batch 3300/6019, Loss: 0.0371, Grad Norm: 2.3723
+  Batch 3400/6019, Loss: 0.0496, Grad Norm: 3.9244
+  Batch 3500/6019, Loss: 0.0321, Grad Norm: 1.4157
+  Batch 3600/6019, Loss: 0.0371, Grad Norm: 4.2283
+  Batch 3700/6019, Loss: 0.0476, Grad Norm: 11.4939
+  Batch 3800/6019, Loss: 0.0500, Grad Norm: 9.3274
+  Batch 3900/6019, Loss: 0.0346, Grad Norm: 0.9914
+  Batch 4000/6019, Loss: 0.0517, Grad Norm: 1.2114
+  Batch 4100/6019, Loss: 0.0343, Grad Norm: 1.1229
+  Batch 4200/6019, Loss: 0.0530, Grad Norm: 0.8643
+  Batch 4300/6019, Loss: 0.0377, Grad Norm: 1.5862
+  Batch 4400/6019, Loss: 0.0389, Grad Norm: 0.9776
+  Batch 4500/6019, Loss: 0.0545, Grad Norm: 1.5050
+  Batch 4600/6019, Loss: 0.0509, Grad Norm: 2.4428
+  Batch 4700/6019, Loss: 0.0326, Grad Norm: 6.0988
+  Batch 4800/6019, Loss: 0.0471, Grad Norm: 3.3078
+  Batch 4900/6019, Loss: 0.0684, Grad Norm: 2.5317
+  Batch 5000/6019, Loss: 0.0410, Grad Norm: 1.5185
+  Batch 5100/6019, Loss: 0.0555, Grad Norm: 2.5112
+  Batch 5200/6019, Loss: 0.0769, Grad Norm: 68.5105
+  Batch 5300/6019, Loss: 0.0582, Grad Norm: 2.3270
+  Batch 5400/6019, Loss: 0.0590, Grad Norm: 7.1326
+  Batch 5500/6019, Loss: 0.0325, Grad Norm: 1.9198
+  Batch 5600/6019, Loss: 0.0450, Grad Norm: 6.8760
+  Batch 5700/6019, Loss: 0.0423, Grad Norm: 2.0920
+  Batch 5800/6019, Loss: 0.0379, Grad Norm: 1.7463
+  Batch 5900/6019, Loss: 0.0520, Grad Norm: 1.6823
+  Batch 6000/6019, Loss: 0.0551, Grad Norm: 6.5138
+Train Loss: 0.0453
+Val Loss: 0.0473, Val Macro F1: 0.7838
+Learning rate: 0.000100
+✓ Saved best model with Val F1: 0.7838
+
+============================================================
+Epoch 5/50
+============================================================
+  Batch 0/6019, Loss: 0.0579, Grad Norm: 14.5915
+  Batch 100/6019, Loss: 0.0426, Grad Norm: 4.9301
+  Batch 200/6019, Loss: 0.0442, Grad Norm: 4.5191
+  Batch 300/6019, Loss: 0.0388, Grad Norm: 10.4486
+  Batch 400/6019, Loss: 0.0395, Grad Norm: 2.4350
+  Batch 500/6019, Loss: 0.0587, Grad Norm: 16.4610
+  Batch 600/6019, Loss: 0.0370, Grad Norm: 12.2041
+  Batch 700/6019, Loss: 0.0717, Grad Norm: 2.1422
+  Batch 800/6019, Loss: 0.0774, Grad Norm: 32.0980
+  Batch 900/6019, Loss: 0.0332, Grad Norm: 6.3099
+  Batch 1000/6019, Loss: 0.0510, Grad Norm: 3.3298
+  Batch 1100/6019, Loss: 0.0464, Grad Norm: 2.3382
+  Batch 1200/6019, Loss: 0.0448, Grad Norm: 6.1848
+  Batch 1300/6019, Loss: 0.0428, Grad Norm: 8.7477
+  Batch 1400/6019, Loss: 0.0519, Grad Norm: 13.6709
+  Batch 1500/6019, Loss: 0.0337, Grad Norm: 3.9436
+  Batch 1600/6019, Loss: 0.0560, Grad Norm: 9.0324
+  Batch 1700/6019, Loss: 0.0339, Grad Norm: 1.5103
+  Batch 1800/6019, Loss: 0.0568, Grad Norm: 9.9522
+  Batch 1900/6019, Loss: 0.0345, Grad Norm: 4.6858
+  Batch 2000/6019, Loss: 0.0365, Grad Norm: 0.8280
+  Batch 2100/6019, Loss: 0.0518, Grad Norm: 109.1852
+  Batch 2200/6019, Loss: 0.0510, Grad Norm: 3.1651
+  Batch 2300/6019, Loss: 0.0497, Grad Norm: 5.5122
+  Batch 2400/6019, Loss: 0.0412, Grad Norm: 4.6514
+  Batch 2500/6019, Loss: 0.0540, Grad Norm: 1.7758
+  Batch 2600/6019, Loss: 0.0497, Grad Norm: 2.6986
+  Batch 2700/6019, Loss: 0.0474, Grad Norm: 32.9917
+  Batch 2800/6019, Loss: 0.0465, Grad Norm: 5.8676
+  Batch 2900/6019, Loss: 0.0441, Grad Norm: 7.4137
+  Batch 3000/6019, Loss: 0.0637, Grad Norm: 2.3989
+  Batch 3100/6019, Loss: 0.0266, Grad Norm: 1.7887
+  Batch 3200/6019, Loss: 0.0445, Grad Norm: 995.6414
+  Batch 3300/6019, Loss: 0.0373, Grad Norm: 14.1961
+  Batch 3400/6019, Loss: 0.0458, Grad Norm: 7.1257
+  Batch 3500/6019, Loss: 0.0415, Grad Norm: 4.9942
+  Batch 3600/6019, Loss: 0.0695, Grad Norm: 17.9889
+  Batch 3700/6019, Loss: 0.0393, Grad Norm: 4.5394
+  Batch 3800/6019, Loss: 0.0435, Grad Norm: 2.6802
+  Batch 3900/6019, Loss: 0.0480, Grad Norm: 10.6384
+  Batch 4000/6019, Loss: 0.0451, Grad Norm: 9.2381
+  Batch 4100/6019, Loss: 0.0383, Grad Norm: 6.1999
+  Batch 4200/6019, Loss: 0.0829, Grad Norm: 24.6289
+  Batch 4300/6019, Loss: 0.0408, Grad Norm: 2.7551
+  Batch 4400/6019, Loss: 0.0541, Grad Norm: 4.5893
+  Batch 4500/6019, Loss: 0.0342, Grad Norm: 6.7807
+  Batch 4600/6019, Loss: 0.0338, Grad Norm: 12.2094
+  Batch 4700/6019, Loss: 0.0376, Grad Norm: 7.2128
+  Batch 4800/6019, Loss: 0.0592, Grad Norm: 10.6516
+  Batch 4900/6019, Loss: 0.0387, Grad Norm: 4.6158
+  Batch 5000/6019, Loss: 0.0518, Grad Norm: 6.0651
+  Batch 5100/6019, Loss: 0.0424, Grad Norm: 21.6431
+  Batch 5200/6019, Loss: 0.0539, Grad Norm: 2.7693
+  Batch 5300/6019, Loss: 0.0370, Grad Norm: 5.3798
+  Batch 5400/6019, Loss: 0.0431, Grad Norm: 10.0958
+  Batch 5500/6019, Loss: 0.0358, Grad Norm: 4.1234
+  Batch 5600/6019, Loss: 0.0441, Grad Norm: 43.1900
+  Batch 5700/6019, Loss: 0.0317, Grad Norm: 4.1467
+  Batch 5800/6019, Loss: 0.0442, Grad Norm: 5.0849
+  Batch 5900/6019, Loss: 0.0372, Grad Norm: 21.4097
+  Batch 6000/6019, Loss: 0.0304, Grad Norm: 1.9637
+Train Loss: 0.0454
+Val Loss: 0.0449, Val Macro F1: 0.7935
+Learning rate: 0.000100
+✓ Saved best model with Val F1: 0.7935
+✓ Saved checkpoint at epoch 5
+
+============================================================
+Epoch 6/50
+============================================================
+  Batch 0/6019, Loss: 0.0431, Grad Norm: 4.9519
+  Batch 100/6019, Loss: 0.0265, Grad Norm: 3.5827
+  Batch 200/6019, Loss: 0.0456, Grad Norm: 28.9097
+  Batch 300/6019, Loss: 0.0651, Grad Norm: 62.7546
+  Batch 400/6019, Loss: 0.0447, Grad Norm: 38.1616
+  Batch 500/6019, Loss: 0.0384, Grad Norm: 31.4067
+  Batch 600/6019, Loss: 0.0445, Grad Norm: 76.4202
+  Batch 700/6019, Loss: 0.0353, Grad Norm: 11.1157
+  Batch 800/6019, Loss: 0.0333, Grad Norm: 10.2313
+  Batch 900/6019, Loss: 0.0364, Grad Norm: 52.3315
+  Batch 1000/6019, Loss: 0.0468, Grad Norm: 16.5502
+  Batch 1100/6019, Loss: 0.0346, Grad Norm: 5.7738
+  Batch 1200/6019, Loss: 0.0465, Grad Norm: 6.4484
+  Batch 1300/6019, Loss: 0.0254, Grad Norm: 4.7378
+  Batch 1400/6019, Loss: 0.0472, Grad Norm: 2.2249
+  Batch 1500/6019, Loss: 0.0846, Grad Norm: 20.4100
+  Batch 1600/6019, Loss: 0.0518, Grad Norm: 12.4033
+  Batch 1700/6019, Loss: 0.0550, Grad Norm: 6.4681
+  Batch 1800/6019, Loss: 0.0581, Grad Norm: 16.0818
+  Batch 1900/6019, Loss: 0.0618, Grad Norm: 4.2637
+  Batch 2000/6019, Loss: 0.0445, Grad Norm: 4.5940
+  Batch 2100/6019, Loss: 0.0394, Grad Norm: 3.1644
+  Batch 2200/6019, Loss: 0.0318, Grad Norm: 4.2234
+  Batch 2300/6019, Loss: 0.0599, Grad Norm: 6.5385
+  Batch 2400/6019, Loss: 0.0462, Grad Norm: 6.9239
+  Batch 2500/6019, Loss: 0.0975, Grad Norm: 40.5110
+  Batch 2600/6019, Loss: 0.0339, Grad Norm: 10.5304
+  Batch 2700/6019, Loss: 0.0483, Grad Norm: 5.7021
+  Batch 2800/6019, Loss: 0.0507, Grad Norm: 7.6026
+  Batch 2900/6019, Loss: 0.0299, Grad Norm: 4.5792
+  Batch 3000/6019, Loss: 0.0397, Grad Norm: 83.3456
+  Batch 3100/6019, Loss: 0.0604, Grad Norm: 3.6856
+  Batch 3200/6019, Loss: 0.0757, Grad Norm: 93.9587
+  Batch 3300/6019, Loss: 0.0426, Grad Norm: 6.9813
+  Batch 3400/6019, Loss: 0.0396, Grad Norm: 34.4051
+  Batch 3500/6019, Loss: 0.0408, Grad Norm: 24.0746
+  Batch 3600/6019, Loss: 0.0507, Grad Norm: 8.0860
+  Batch 3700/6019, Loss: 0.0453, Grad Norm: 15.4262
+  Batch 3800/6019, Loss: 0.0411, Grad Norm: 3.4178
+  Batch 3900/6019, Loss: 0.0424, Grad Norm: 21.5364
+  Batch 4000/6019, Loss: 0.0354, Grad Norm: 2.6892
+  Batch 4100/6019, Loss: 0.0433, Grad Norm: 3.3873
+  Batch 4200/6019, Loss: 0.0591, Grad Norm: 2.4340
+  Batch 4300/6019, Loss: 0.0436, Grad Norm: 4.3886
+  Batch 4400/6019, Loss: 0.0403, Grad Norm: 15.1569
+  Batch 4500/6019, Loss: 0.0310, Grad Norm: 2.4023
+  Batch 4600/6019, Loss: 0.0398, Grad Norm: 8.9849
+  Batch 4700/6019, Loss: 0.0440, Grad Norm: 4.9232
+  Batch 4800/6019, Loss: 0.0346, Grad Norm: 3.9397
+  Batch 4900/6019, Loss: 0.0348, Grad Norm: 10.0417
+  Batch 5000/6019, Loss: 0.0401, Grad Norm: 6.9555
+  Batch 5100/6019, Loss: 0.0626, Grad Norm: 5.7609
+  Batch 5200/6019, Loss: 0.0796, Grad Norm: 4.5406
+  Batch 5300/6019, Loss: 0.0419, Grad Norm: 5.7693
+  Batch 5400/6019, Loss: 0.0517, Grad Norm: 3.7130
+  Batch 5500/6019, Loss: 0.0593, Grad Norm: 23.2804
+  Batch 5600/6019, Loss: 0.0530, Grad Norm: 13.8369
+  Batch 5700/6019, Loss: 0.0449, Grad Norm: 4.8568
+  Batch 5800/6019, Loss: 0.0364, Grad Norm: 8.7321
+  Batch 5900/6019, Loss: 0.0838, Grad Norm: 6.3016
+  Batch 6000/6019, Loss: 0.0570, Grad Norm: 3.7290
+Train Loss: 0.0461
+Val Loss: 0.0470, Val Macro F1: 0.7762
+Learning rate: 0.000100
+
+============================================================
+Epoch 7/50
+============================================================
+  Batch 0/6019, Loss: 0.0376, Grad Norm: 24.5397
+  Batch 100/6019, Loss: 0.0383, Grad Norm: 5.5558
+  Batch 200/6019, Loss: 0.0340, Grad Norm: 2.5722
+  Batch 300/6019, Loss: 0.0461, Grad Norm: 23.2945
+  Batch 400/6019, Loss: 0.0422, Grad Norm: 19.4820
+  Batch 500/6019, Loss: 0.0598, Grad Norm: 6.0835
+  Batch 600/6019, Loss: 0.0397, Grad Norm: 1.9953
+  Batch 700/6019, Loss: 0.0361, Grad Norm: 4.2957
+  Batch 800/6019, Loss: 0.0623, Grad Norm: 4.4611
+  Batch 900/6019, Loss: 0.0453, Grad Norm: 5.7368
+  Batch 1000/6019, Loss: 0.0388, Grad Norm: 7.9136
+  Batch 1100/6019, Loss: 0.0370, Grad Norm: 25.5663
+  Batch 1200/6019, Loss: 0.0388, Grad Norm: 2.3720
+  Batch 1300/6019, Loss: 0.0539, Grad Norm: 9.6514
+  Batch 1400/6019, Loss: 0.0398, Grad Norm: 1.8867
+  Batch 1500/6019, Loss: 0.0464, Grad Norm: 107.8191
+  Batch 1600/6019, Loss: 0.0484, Grad Norm: 21.1248
+  Batch 1700/6019, Loss: 0.0487, Grad Norm: 9.8902
+  Batch 1800/6019, Loss: 0.0480, Grad Norm: 4.9734
+  Batch 1900/6019, Loss: 0.0441, Grad Norm: 6.5434
+  Batch 2000/6019, Loss: 0.0320, Grad Norm: 4.4114
+  Batch 2100/6019, Loss: 0.0556, Grad Norm: 4.7591
+  Batch 2200/6019, Loss: 0.0345, Grad Norm: 12.8264
+  Batch 2300/6019, Loss: 0.0605, Grad Norm: 4.8261
+  Batch 2400/6019, Loss: 0.0479, Grad Norm: 121.1191
+  Batch 2500/6019, Loss: 0.0417, Grad Norm: 5.2397
+  Batch 2600/6019, Loss: 0.0553, Grad Norm: 3.2555
+  Batch 2700/6019, Loss: 0.0485, Grad Norm: 8.1808
+  Batch 2800/6019, Loss: 0.0464, Grad Norm: 3.1318
+  Batch 2900/6019, Loss: 0.0516, Grad Norm: 10.0129
+  Batch 3000/6019, Loss: 0.0447, Grad Norm: 6.1219
+  Batch 3100/6019, Loss: 0.0483, Grad Norm: 3.0275
+  Batch 3200/6019, Loss: 0.0687, Grad Norm: 5.6369
+  Batch 3300/6019, Loss: 0.0565, Grad Norm: 8.9001
+  Batch 3400/6019, Loss: 0.0569, Grad Norm: 5.0798
+  Batch 3500/6019, Loss: 0.0428, Grad Norm: 3.1822
+  Batch 3600/6019, Loss: 0.0525, Grad Norm: 25.9700
+  Batch 3700/6019, Loss: 0.1061, Grad Norm: 83.5236
+  Batch 3800/6019, Loss: 0.0394, Grad Norm: 3.1109
+  Batch 3900/6019, Loss: 0.0531, Grad Norm: 6.6630
+  Batch 4000/6019, Loss: 0.0578, Grad Norm: 3.9626
+  Batch 4100/6019, Loss: 0.0289, Grad Norm: 2.6921
+  Batch 4200/6019, Loss: 0.0394, Grad Norm: 4.6557
+  Batch 4300/6019, Loss: 0.0486, Grad Norm: 17.9484
+  Batch 4400/6019, Loss: 0.0738, Grad Norm: 135.3140
+  Batch 4500/6019, Loss: 0.0420, Grad Norm: 2.9876
+  Batch 4600/6019, Loss: 0.0449, Grad Norm: 4.0301
+  Batch 4700/6019, Loss: 0.0604, Grad Norm: 3.6229
+  Batch 4800/6019, Loss: 0.0444, Grad Norm: 3.3276
+  Batch 4900/6019, Loss: 0.0413, Grad Norm: 35.7297
+  Batch 5000/6019, Loss: 0.1017, Grad Norm: 41.0245
+  Batch 5100/6019, Loss: 0.0434, Grad Norm: 1.6486
+  Batch 5200/6019, Loss: 0.0494, Grad Norm: 16.7853
+  Batch 5300/6019, Loss: 0.0457, Grad Norm: 2.3291
+  Batch 5400/6019, Loss: 0.0413, Grad Norm: 1.4480
+  Batch 5500/6019, Loss: 0.0370, Grad Norm: 5.5312
+  Batch 5600/6019, Loss: 0.0607, Grad Norm: 10.4511
+  Batch 5700/6019, Loss: 0.0369, Grad Norm: 0.9789
+  Batch 5800/6019, Loss: 0.0430, Grad Norm: 20.6068
+  Batch 5900/6019, Loss: 0.0390, Grad Norm: 1.4712
+  Batch 6000/6019, Loss: 0.0511, Grad Norm: 2.8448
+Train Loss: 0.0471
+Val Loss: 0.0464, Val Macro F1: 0.7722
+Learning rate: 0.000100
+
+============================================================
+Epoch 8/50
+============================================================
+  Batch 0/6019, Loss: 0.1581, Grad Norm: 3.6615
+  Batch 100/6019, Loss: 0.0401, Grad Norm: 2.2076
+  Batch 200/6019, Loss: 0.0476, Grad Norm: 5.7483
+  Batch 300/6019, Loss: 0.0346, Grad Norm: 2.5886
+  Batch 400/6019, Loss: 0.0334, Grad Norm: 1.4299
+  Batch 500/6019, Loss: 0.0477, Grad Norm: 3.3207
+  Batch 600/6019, Loss: 0.0642, Grad Norm: 12.7634
+  Batch 700/6019, Loss: 0.0488, Grad Norm: 3.9755
+  Batch 800/6019, Loss: 0.0354, Grad Norm: 2.5897
+  Batch 900/6019, Loss: 0.0510, Grad Norm: 44.0004
+  Batch 1000/6019, Loss: 0.0502, Grad Norm: 18.0962
+  Batch 1100/6019, Loss: 0.0340, Grad Norm: 1.8931
+  Batch 1200/6019, Loss: 0.0475, Grad Norm: 10.5673
+  Batch 1300/6019, Loss: 0.0459, Grad Norm: 2.8277
+  Batch 1400/6019, Loss: 0.0363, Grad Norm: 1.7618
+  Batch 1500/6019, Loss: 0.0504, Grad Norm: 1.9432
+  Batch 1600/6019, Loss: 0.0425, Grad Norm: 1.6051
+  Batch 1700/6019, Loss: 0.0613, Grad Norm: 4.6928
+  Batch 1800/6019, Loss: 0.0290, Grad Norm: 3.9892
+  Batch 1900/6019, Loss: 0.0357, Grad Norm: 4.6998
+  Batch 2000/6019, Loss: 0.0505, Grad Norm: 5.7397
+  Batch 2100/6019, Loss: 0.0333, Grad Norm: 3.8970
+  Batch 2200/6019, Loss: 0.0456, Grad Norm: 1.4388
+  Batch 2300/6019, Loss: 0.0262, Grad Norm: 1.6581
+  Batch 2400/6019, Loss: 0.0596, Grad Norm: 5.5998
+  Batch 2500/6019, Loss: 0.0399, Grad Norm: 1.4953
+  Batch 2600/6019, Loss: 0.0385, Grad Norm: 1.8619
+  Batch 2700/6019, Loss: 0.0518, Grad Norm: 4.0952
+  Batch 2800/6019, Loss: 0.0383, Grad Norm: 4.8408
+  Batch 2900/6019, Loss: 0.0563, Grad Norm: 3.3725
+  Batch 3000/6019, Loss: 0.0335, Grad Norm: 2.3351
+  Batch 3100/6019, Loss: 0.0454, Grad Norm: 14.8337
+  Batch 3200/6019, Loss: 0.0453, Grad Norm: 1.2038
+  Batch 3300/6019, Loss: 0.0552, Grad Norm: 18.2541
+  Batch 3400/6019, Loss: 0.0463, Grad Norm: 1.3238
+  Batch 3500/6019, Loss: 0.0370, Grad Norm: 2.1459
+  Batch 3600/6019, Loss: 0.0460, Grad Norm: 5.5736
+  Batch 3700/6019, Loss: 0.0371, Grad Norm: 0.9159
+  Batch 3800/6019, Loss: 0.0416, Grad Norm: 1.5629
+  Batch 3900/6019, Loss: 0.0484, Grad Norm: 2.3787
+  Batch 4000/6019, Loss: 0.0615, Grad Norm: 1.5550
+  Batch 4100/6019, Loss: 0.0573, Grad Norm: 1.2491
+  Batch 4200/6019, Loss: 0.0607, Grad Norm: 2.8639
+  Batch 4300/6019, Loss: 0.0555, Grad Norm: 7.0647
+  Batch 4400/6019, Loss: 0.0525, Grad Norm: 0.9748
+  Batch 4500/6019, Loss: 0.0448, Grad Norm: 1.6454
+  Batch 4600/6019, Loss: 0.0671, Grad Norm: 10.2343
+  Batch 4700/6019, Loss: 0.0444, Grad Norm: 1.9776
+  Batch 4800/6019, Loss: 0.0416, Grad Norm: 9.3882
+  Batch 4900/6019, Loss: 0.0492, Grad Norm: 9.4105
+  Batch 5000/6019, Loss: 0.0725, Grad Norm: 4.6147
+  Batch 5100/6019, Loss: 0.0374, Grad Norm: 6.2552
+  Batch 5200/6019, Loss: 0.0508, Grad Norm: 5.9199
+  Batch 5300/6019, Loss: 0.0703, Grad Norm: 4.1728
+  Batch 5400/6019, Loss: 0.0460, Grad Norm: 12.3850
+  Batch 5500/6019, Loss: 0.0403, Grad Norm: 2.4073
+  Batch 5600/6019, Loss: 0.0303, Grad Norm: 2.3022
+  Batch 5700/6019, Loss: 0.0575, Grad Norm: 29.9108
+  Batch 5800/6019, Loss: 0.0378, Grad Norm: 88.0442
+  Batch 5900/6019, Loss: 0.0479, Grad Norm: 5.9169
+  Batch 6000/6019, Loss: 0.0665, Grad Norm: 4.1088
+Train Loss: 0.0458
+Val Loss: 0.0452, Val Macro F1: 0.7830
+Learning rate: 0.000100
+
+============================================================
+Epoch 9/50
+============================================================
+  Batch 0/6019, Loss: 0.0454, Grad Norm: 4.1275
+  Batch 100/6019, Loss: 0.0379, Grad Norm: 2.4804
+  Batch 200/6019, Loss: 0.0434, Grad Norm: 2.8225
+  Batch 300/6019, Loss: 0.0269, Grad Norm: 2.7813
+  Batch 400/6019, Loss: 0.0423, Grad Norm: 4.5019
+  Batch 500/6019, Loss: 0.0410, Grad Norm: 2.7967
+  Batch 600/6019, Loss: 0.0478, Grad Norm: 7.8657
+  Batch 700/6019, Loss: 0.0491, Grad Norm: 4.6545
+  Batch 800/6019, Loss: 0.0329, Grad Norm: 2.9981
+  Batch 900/6019, Loss: 0.0454, Grad Norm: 12.8841
+  Batch 1000/6019, Loss: 0.0391, Grad Norm: 4.1250
+  Batch 1100/6019, Loss: 0.0555, Grad Norm: 6.5491
+  Batch 1200/6019, Loss: 0.0406, Grad Norm: 15.5380
+  Batch 1300/6019, Loss: 0.0437, Grad Norm: 5.4924
+  Batch 1400/6019, Loss: 0.0709, Grad Norm: 6.1649
+  Batch 1500/6019, Loss: 0.0360, Grad Norm: 2.6859
+  Batch 1600/6019, Loss: 0.0426, Grad Norm: 3.6234
+  Batch 1700/6019, Loss: 0.0547, Grad Norm: 2.0451
+  Batch 1800/6019, Loss: 0.0624, Grad Norm: 6.1824
+  Batch 1900/6019, Loss: 0.0475, Grad Norm: 11.1759
+  Batch 2000/6019, Loss: 0.0412, Grad Norm: 12.1695
+  Batch 2100/6019, Loss: 0.0354, Grad Norm: 1.2087
+  Batch 2200/6019, Loss: 0.0404, Grad Norm: 2.6474
+  Batch 2300/6019, Loss: 0.0322, Grad Norm: 1.4547
+  Batch 2400/6019, Loss: 0.0457, Grad Norm: 1.3955
+  Batch 2500/6019, Loss: 0.0388, Grad Norm: 1.0129
+  Batch 2600/6019, Loss: 0.0418, Grad Norm: 1.7187
+  Batch 2700/6019, Loss: 0.0366, Grad Norm: 40.2955
+  Batch 2800/6019, Loss: 0.0351, Grad Norm: 2.0419
+  Batch 2900/6019, Loss: 0.0349, Grad Norm: 2.2077
+  Batch 3000/6019, Loss: 0.0353, Grad Norm: 3.2902
+  Batch 3100/6019, Loss: 0.0358, Grad Norm: 2.2119
+  Batch 3200/6019, Loss: 0.0418, Grad Norm: 1.7494
+  Batch 3300/6019, Loss: 0.0451, Grad Norm: 5.0673
+  Batch 3400/6019, Loss: 0.0514, Grad Norm: 11.3923
+  Batch 3500/6019, Loss: 0.0383, Grad Norm: 1.8968
+  Batch 3600/6019, Loss: 0.0377, Grad Norm: 1.9745
+  Batch 3700/6019, Loss: 0.0766, Grad Norm: 5.0849
+  Batch 3800/6019, Loss: 0.0423, Grad Norm: 35.6354
+  Batch 3900/6019, Loss: 0.0512, Grad Norm: 1.6989
+  Batch 4000/6019, Loss: 0.0703, Grad Norm: 37.1245
+  Batch 4100/6019, Loss: 0.0531, Grad Norm: 13.0671
+  Batch 4200/6019, Loss: 0.0473, Grad Norm: 1.8376
+  Batch 4300/6019, Loss: 0.0344, Grad Norm: 7.4718
+  Batch 4400/6019, Loss: 0.0550, Grad Norm: 1.7173
+  Batch 4500/6019, Loss: 0.0587, Grad Norm: 1.1254
+  Batch 4600/6019, Loss: 0.0371, Grad Norm: 0.8313
+  Batch 4700/6019, Loss: 0.0326, Grad Norm: 1.5777
+  Batch 4800/6019, Loss: 0.0478, Grad Norm: 147.9727
+  Batch 4900/6019, Loss: 0.0368, Grad Norm: 0.9531
+  Batch 5000/6019, Loss: 0.0340, Grad Norm: 2.5006
+  Batch 5100/6019, Loss: 0.0565, Grad Norm: 1.1338
+  Batch 5200/6019, Loss: 0.0641, Grad Norm: 502.0083
+  Batch 5300/6019, Loss: 0.0737, Grad Norm: 2.5777
+  Batch 5400/6019, Loss: 0.0364, Grad Norm: 3.4108
+  Batch 5500/6019, Loss: 0.0505, Grad Norm: 10.2016
+  Batch 5600/6019, Loss: 0.0292, Grad Norm: 1.1297
+  Batch 5700/6019, Loss: 0.0466, Grad Norm: 1.9317
+  Batch 5800/6019, Loss: 0.0418, Grad Norm: 1.3309
+  Batch 5900/6019, Loss: 0.0224, Grad Norm: 1.2337
+  Batch 6000/6019, Loss: 0.0511, Grad Norm: 1.0137
+Train Loss: 0.0455
+Val Loss: 0.0450, Val Macro F1: 0.7907
+Learning rate: 0.000050
+
+============================================================
+Epoch 10/50
+============================================================
+  Batch 0/6019, Loss: 0.0534, Grad Norm: 1.0726
+  Batch 100/6019, Loss: 0.0375, Grad Norm: 0.4224
+  Batch 200/6019, Loss: 0.0452, Grad Norm: 20.6337
+  Batch 300/6019, Loss: 0.0476, Grad Norm: 0.7948
+  Batch 400/6019, Loss: 0.0418, Grad Norm: 1.9905
+  Batch 500/6019, Loss: 0.0443, Grad Norm: 9.1631
+  Batch 600/6019, Loss: 0.0440, Grad Norm: 1.6015
+  Batch 700/6019, Loss: 0.0382, Grad Norm: 1.2445
+  Batch 800/6019, Loss: 0.0646, Grad Norm: 2.8382
+  Batch 900/6019, Loss: 0.0382, Grad Norm: 2.2243
+  Batch 1000/6019, Loss: 0.0357, Grad Norm: 1.3984
+  Batch 1100/6019, Loss: 0.0452, Grad Norm: 15.2803
+  Batch 1200/6019, Loss: 0.0425, Grad Norm: 2.3483
+  Batch 1300/6019, Loss: 0.0362, Grad Norm: 0.9152
+  Batch 1400/6019, Loss: 0.0522, Grad Norm: 7.9877
+  Batch 1500/6019, Loss: 0.0482, Grad Norm: 3.6298
+  Batch 1600/6019, Loss: 0.0458, Grad Norm: 2.2454
+  Batch 1700/6019, Loss: 0.0459, Grad Norm: 1.0882
+  Batch 1800/6019, Loss: 0.0378, Grad Norm: 1.6878
+  Batch 1900/6019, Loss: 0.0375, Grad Norm: 3.3522
+  Batch 2000/6019, Loss: 0.0426, Grad Norm: 1.1237
+  Batch 2100/6019, Loss: 0.0452, Grad Norm: 10.0724
+  Batch 2200/6019, Loss: 0.0539, Grad Norm: 5.3835
+  Batch 2300/6019, Loss: 0.0411, Grad Norm: 1.6490
+  Batch 2400/6019, Loss: 0.0423, Grad Norm: 1.6492
+  Batch 2500/6019, Loss: 0.0414, Grad Norm: 2.4249
+  Batch 2600/6019, Loss: 0.0520, Grad Norm: 3.1454
+  Batch 2700/6019, Loss: 0.0465, Grad Norm: 3.6887
+  Batch 2800/6019, Loss: 0.0386, Grad Norm: 1.0972
+  Batch 2900/6019, Loss: 0.0337, Grad Norm: 2.1428
+  Batch 3000/6019, Loss: 0.0237, Grad Norm: 2.1815
+  Batch 3100/6019, Loss: 0.0380, Grad Norm: 1.0513
+  Batch 3200/6019, Loss: 0.0466, Grad Norm: 0.8300
+  Batch 3300/6019, Loss: 0.0676, Grad Norm: 2.3422
+  Batch 3400/6019, Loss: 0.0377, Grad Norm: 0.8774
+  Batch 3500/6019, Loss: 0.0748, Grad Norm: 5.1341
+  Batch 3600/6019, Loss: 0.0400, Grad Norm: 5.5942
+  Batch 3700/6019, Loss: 0.0447, Grad Norm: 52.4041
+  Batch 3800/6019, Loss: 0.0442, Grad Norm: 5.6992
+  Batch 3900/6019, Loss: 0.0367, Grad Norm: 0.9302
+  Batch 4000/6019, Loss: 0.0388, Grad Norm: 1.2310
+  Batch 4100/6019, Loss: 0.0410, Grad Norm: 1.1420
+  Batch 4200/6019, Loss: 0.0437, Grad Norm: 2.1793
+  Batch 4300/6019, Loss: 0.0488, Grad Norm: 1.1317
+  Batch 4400/6019, Loss: 0.0514, Grad Norm: 3.9653
+  Batch 4500/6019, Loss: 0.0318, Grad Norm: 1.6212
+  Batch 4600/6019, Loss: 0.0452, Grad Norm: 1.4194
+  Batch 4700/6019, Loss: 0.0510, Grad Norm: 4.4600
+  Batch 4800/6019, Loss: 0.0425, Grad Norm: 10.8102
+  Batch 4900/6019, Loss: 0.0426, Grad Norm: 1.1389
+  Batch 5000/6019, Loss: 0.0387, Grad Norm: 1.8885
+  Batch 5100/6019, Loss: 0.0436, Grad Norm: 2.0357
+  Batch 5200/6019, Loss: 0.0330, Grad Norm: 1.7164
+  Batch 5300/6019, Loss: 0.0326, Grad Norm: 0.9971
+  Batch 5400/6019, Loss: 0.0311, Grad Norm: 0.4774
+  Batch 5500/6019, Loss: 0.0362, Grad Norm: 1.9597
+  Batch 5600/6019, Loss: 0.0320, Grad Norm: 1.2607
+  Batch 5700/6019, Loss: 0.0513, Grad Norm: 2.7725
+  Batch 5800/6019, Loss: 0.0427, Grad Norm: 0.7320
+  Batch 5900/6019, Loss: 0.0416, Grad Norm: 2.2110
+  Batch 6000/6019, Loss: 0.0712, Grad Norm: 11.5831
+Train Loss: 0.0429
+Val Loss: 0.0441, Val Macro F1: 0.7975
+Learning rate: 0.000050
+✓ Saved best model with Val F1: 0.7975
+✓ Saved checkpoint at epoch 10
+
+============================================================
+Epoch 11/50
+============================================================
+  Batch 0/6019, Loss: 0.0393, Grad Norm: 0.9903
+  Batch 100/6019, Loss: 0.0543, Grad Norm: 5.2042
+  Batch 200/6019, Loss: 0.0308, Grad Norm: 1.2871
+  Batch 300/6019, Loss: 0.0437, Grad Norm: 5.0222
+  Batch 400/6019, Loss: 0.0473, Grad Norm: 6.5801
+  Batch 500/6019, Loss: 0.0435, Grad Norm: 9.0961
+  Batch 600/6019, Loss: 0.0363, Grad Norm: 1.2627
+  Batch 700/6019, Loss: 0.0433, Grad Norm: 4.5219
+  Batch 800/6019, Loss: 0.0546, Grad Norm: 3.1276
+  Batch 900/6019, Loss: 0.0370, Grad Norm: 1.7018
+  Batch 1000/6019, Loss: 0.0372, Grad Norm: 5.5243
+  Batch 1100/6019, Loss: 0.0397, Grad Norm: 3.2006
+  Batch 1200/6019, Loss: 0.0435, Grad Norm: 1.1117
+  Batch 1300/6019, Loss: 0.0450, Grad Norm: 17.8742
+  Batch 1400/6019, Loss: 0.0342, Grad Norm: 1.3146
+  Batch 1500/6019, Loss: 0.0625, Grad Norm: 2.3615
+  Batch 1600/6019, Loss: 0.0470, Grad Norm: 1.6663
+  Batch 1700/6019, Loss: 0.0557, Grad Norm: 2.5920
+  Batch 1800/6019, Loss: 0.0423, Grad Norm: 3.1196
+  Batch 1900/6019, Loss: 0.0393, Grad Norm: 1.7773
+  Batch 2000/6019, Loss: 0.0618, Grad Norm: 10.4683
+  Batch 2100/6019, Loss: 0.0490, Grad Norm: 2.5349
+  Batch 2200/6019, Loss: 0.0361, Grad Norm: 2.1026
+  Batch 2300/6019, Loss: 0.0315, Grad Norm: 3.0902
+  Batch 2400/6019, Loss: 0.0442, Grad Norm: 1.4809
+  Batch 2500/6019, Loss: 0.0393, Grad Norm: 22.3930
+  Batch 2600/6019, Loss: 0.0406, Grad Norm: 1.7276
+  Batch 2700/6019, Loss: 0.0324, Grad Norm: 5.8079
+  Batch 2800/6019, Loss: 0.0489, Grad Norm: 4.9478
+  Batch 2900/6019, Loss: 0.0381, Grad Norm: 0.5688
+  Batch 3000/6019, Loss: 0.0435, Grad Norm: 3.0486
+  Batch 3100/6019, Loss: 0.0655, Grad Norm: 27.9689
+  Batch 3200/6019, Loss: 0.0753, Grad Norm: 3.3910
+  Batch 3300/6019, Loss: 0.0392, Grad Norm: 3.7649
+  Batch 3400/6019, Loss: 0.0566, Grad Norm: 2.0040
+  Batch 3500/6019, Loss: 0.0340, Grad Norm: 4.9229
+  Batch 3600/6019, Loss: 0.0355, Grad Norm: 1.3719
+  Batch 3700/6019, Loss: 0.0418, Grad Norm: 61.1689
+  Batch 3800/6019, Loss: 0.0330, Grad Norm: 1.5007
+  Batch 3900/6019, Loss: 0.0405, Grad Norm: 10.7707
+  Batch 4000/6019, Loss: 0.0386, Grad Norm: 56.0704
+  Batch 4100/6019, Loss: 0.0338, Grad Norm: 1.1787
+  Batch 4200/6019, Loss: 0.0359, Grad Norm: 1.6204
+  Batch 4300/6019, Loss: 0.0423, Grad Norm: 8.6675
+  Batch 4400/6019, Loss: 0.0396, Grad Norm: 9.4025
+  Batch 4500/6019, Loss: 0.0868, Grad Norm: 2.9765
+  Batch 4600/6019, Loss: 0.0362, Grad Norm: 2.5131
+  Batch 4700/6019, Loss: 0.0353, Grad Norm: 6.4755
+  Batch 4800/6019, Loss: 0.0656, Grad Norm: 7.9007
+  Batch 4900/6019, Loss: 0.0339, Grad Norm: 2.4294
+  Batch 5000/6019, Loss: 0.0424, Grad Norm: 1.3909
+  Batch 5100/6019, Loss: 0.0377, Grad Norm: 3.7127
+  Batch 5200/6019, Loss: 0.0340, Grad Norm: 2.0727
+  Batch 5300/6019, Loss: 0.0445, Grad Norm: 10.0585
+  Batch 5400/6019, Loss: 0.0507, Grad Norm: 1.9915
+  Batch 5500/6019, Loss: 0.0384, Grad Norm: 11.4430
+  Batch 5600/6019, Loss: 0.0324, Grad Norm: 1.5156
+  Batch 5700/6019, Loss: 0.0449, Grad Norm: 6.7705
+  Batch 5800/6019, Loss: 0.0440, Grad Norm: 8.4653
+  Batch 5900/6019, Loss: 0.0317, Grad Norm: 1.2306
+  Batch 6000/6019, Loss: 0.0354, Grad Norm: 3.7544
+Train Loss: 0.0427
+Val Loss: 0.0445, Val Macro F1: 0.7824
+Learning rate: 0.000050
+
+============================================================
+Epoch 12/50
+============================================================
+  Batch 0/6019, Loss: 0.0270, Grad Norm: 1.4589
+  Batch 100/6019, Loss: 0.0323, Grad Norm: 1.8803
+  Batch 200/6019, Loss: 0.0450, Grad Norm: 3.2184
+  Batch 300/6019, Loss: 0.0461, Grad Norm: 1.1077
+  Batch 400/6019, Loss: 0.0405, Grad Norm: 2.7953
+  Batch 500/6019, Loss: 0.0479, Grad Norm: 8.2516
+  Batch 600/6019, Loss: 0.0335, Grad Norm: 1.0590
+  Batch 700/6019, Loss: 0.0333, Grad Norm: 2.1806
+  Batch 800/6019, Loss: 0.0333, Grad Norm: 0.9163
+  Batch 900/6019, Loss: 0.0485, Grad Norm: 3.0477
+  Batch 1000/6019, Loss: 0.0475, Grad Norm: 2.1272
+  Batch 1100/6019, Loss: 0.0548, Grad Norm: 1.0524
+  Batch 1200/6019, Loss: 0.0313, Grad Norm: 0.5833
+  Batch 1300/6019, Loss: 0.0273, Grad Norm: 1.4919
+  Batch 1400/6019, Loss: 0.0556, Grad Norm: 1.5362
+  Batch 1500/6019, Loss: 0.0739, Grad Norm: 37.4877
+  Batch 1600/6019, Loss: 0.0379, Grad Norm: 0.9945
+  Batch 1700/6019, Loss: 0.0349, Grad Norm: 10.7244
+  Batch 1800/6019, Loss: 0.0409, Grad Norm: 1.5660
+  Batch 1900/6019, Loss: 0.0319, Grad Norm: 1.4344
+  Batch 2000/6019, Loss: 0.0357, Grad Norm: 1.4679
+  Batch 2100/6019, Loss: 0.0477, Grad Norm: 1.0930
+  Batch 2200/6019, Loss: 0.0418, Grad Norm: 2.9625
+  Batch 2300/6019, Loss: 0.0469, Grad Norm: 10.0920
+  Batch 2400/6019, Loss: 0.0380, Grad Norm: 3.1130
+  Batch 2500/6019, Loss: 0.0411, Grad Norm: 2.5582
+  Batch 2600/6019, Loss: 0.0384, Grad Norm: 2.6644
+  Batch 2700/6019, Loss: 0.0336, Grad Norm: 1.0132
+  Batch 2800/6019, Loss: 0.0535, Grad Norm: 2.5764
+  Batch 2900/6019, Loss: 0.0350, Grad Norm: 1.4607
+  Batch 3000/6019, Loss: 0.0344, Grad Norm: 1.0975
+  Batch 3100/6019, Loss: 0.0352, Grad Norm: 23.1654
+  Batch 3200/6019, Loss: 0.0442, Grad Norm: 8.7384
+  Batch 3300/6019, Loss: 0.0399, Grad Norm: 3.6284
+  Batch 3400/6019, Loss: 0.0390, Grad Norm: 5.1501
+  Batch 3500/6019, Loss: 0.0483, Grad Norm: 2.2115
+  Batch 3600/6019, Loss: 0.0350, Grad Norm: 1.2729
+  Batch 3700/6019, Loss: 0.0252, Grad Norm: 1.1535
+  Batch 3800/6019, Loss: 0.0508, Grad Norm: 11.6957
+  Batch 3900/6019, Loss: 0.0488, Grad Norm: 2.9220
+  Batch 4000/6019, Loss: 0.0400, Grad Norm: 2.7008
+  Batch 4100/6019, Loss: 0.0446, Grad Norm: 13.2422
+  Batch 4200/6019, Loss: 0.0356, Grad Norm: 2.9805
+  Batch 4300/6019, Loss: 0.0326, Grad Norm: 0.6806
+  Batch 4400/6019, Loss: 0.0262, Grad Norm: 1.7447
+  Batch 4500/6019, Loss: 0.0519, Grad Norm: 3.5576
+  Batch 4600/6019, Loss: 0.0718, Grad Norm: 2.0410
+  Batch 4700/6019, Loss: 0.0352, Grad Norm: 1.7851
+  Batch 4800/6019, Loss: 0.0936, Grad Norm: 2.3359
+  Batch 4900/6019, Loss: 0.0448, Grad Norm: 2.4159
+  Batch 5000/6019, Loss: 0.0313, Grad Norm: 1.4653
+  Batch 5100/6019, Loss: 0.0411, Grad Norm: 1.6774
+  Batch 5200/6019, Loss: 0.0516, Grad Norm: 1.1282
+  Batch 5300/6019, Loss: 0.0582, Grad Norm: 3.7408
+  Batch 5400/6019, Loss: 0.0319, Grad Norm: 0.5172
+  Batch 5500/6019, Loss: 0.0325, Grad Norm: 1.4902
+  Batch 5600/6019, Loss: 0.0393, Grad Norm: 1.7843
+  Batch 5700/6019, Loss: 0.0300, Grad Norm: 0.7457
+  Batch 5800/6019, Loss: 0.0385, Grad Norm: 3.1841
+  Batch 5900/6019, Loss: 0.0353, Grad Norm: 17.1811
+  Batch 6000/6019, Loss: 0.0233, Grad Norm: 0.9461
+Train Loss: 0.0422
+Val Loss: 0.0439, Val Macro F1: 0.7904
+Learning rate: 0.000050
+
+============================================================
+Epoch 13/50
+============================================================
+  Batch 0/6019, Loss: 0.0362, Grad Norm: 0.8433
+  Batch 100/6019, Loss: 0.0365, Grad Norm: 0.6506
+  Batch 200/6019, Loss: 0.0431, Grad Norm: 4.6560
+  Batch 300/6019, Loss: 0.0386, Grad Norm: 4.8213
+  Batch 400/6019, Loss: 0.0487, Grad Norm: 2.0302
+  Batch 500/6019, Loss: 0.0416, Grad Norm: 3.3778
+  Batch 600/6019, Loss: 0.0352, Grad Norm: 1.5957
+  Batch 700/6019, Loss: 0.0412, Grad Norm: 0.7543
+  Batch 800/6019, Loss: 0.0446, Grad Norm: 17.5764
+  Batch 900/6019, Loss: 0.0466, Grad Norm: 1.9980
+  Batch 1000/6019, Loss: 0.0410, Grad Norm: 1.8527
+  Batch 1100/6019, Loss: 0.0460, Grad Norm: 2.0449
+  Batch 1200/6019, Loss: 0.0413, Grad Norm: 1.3801
+  Batch 1300/6019, Loss: 0.0430, Grad Norm: 0.8938
+  Batch 1400/6019, Loss: 0.0577, Grad Norm: 1.4699
+  Batch 1500/6019, Loss: 0.0541, Grad Norm: 6.4268
+  Batch 1600/6019, Loss: 0.0276, Grad Norm: 0.9800
+  Batch 1700/6019, Loss: 0.0297, Grad Norm: 0.8588
+  Batch 1800/6019, Loss: 0.0432, Grad Norm: 0.7997
+  Batch 1900/6019, Loss: 0.0480, Grad Norm: 3.9241
+  Batch 2000/6019, Loss: 0.0330, Grad Norm: 1.9497
+  Batch 2100/6019, Loss: 0.0366, Grad Norm: 1.6699
+  Batch 2200/6019, Loss: 0.0379, Grad Norm: 2.7050
+  Batch 2300/6019, Loss: 0.0730, Grad Norm: 8.3590
+  Batch 2400/6019, Loss: 0.0437, Grad Norm: 2.2007
+  Batch 2500/6019, Loss: 0.0597, Grad Norm: 1.7348
+  Batch 2600/6019, Loss: 0.0513, Grad Norm: 1.3825
+  Batch 2700/6019, Loss: 0.0428, Grad Norm: 2.9187
+  Batch 2800/6019, Loss: 0.0459, Grad Norm: 4.8376
+  Batch 2900/6019, Loss: 0.0312, Grad Norm: 3.2719
+  Batch 3000/6019, Loss: 0.0419, Grad Norm: 1.3537
+  Batch 3100/6019, Loss: 0.0388, Grad Norm: 2.2671
+  Batch 3200/6019, Loss: 0.0276, Grad Norm: 1.5283
+  Batch 3300/6019, Loss: 0.0369, Grad Norm: 2.8369
+  Batch 3400/6019, Loss: 0.0317, Grad Norm: 0.7984
+  Batch 3500/6019, Loss: 0.0426, Grad Norm: 8.8598
+  Batch 3600/6019, Loss: 0.0425, Grad Norm: 0.4824
+  Batch 3700/6019, Loss: 0.0390, Grad Norm: 0.5739
+  Batch 3800/6019, Loss: 0.0320, Grad Norm: 1.2721
+  Batch 3900/6019, Loss: 0.0483, Grad Norm: 2.5732
+  Batch 4000/6019, Loss: 0.0404, Grad Norm: 1.1472
+  Batch 4100/6019, Loss: 0.0375, Grad Norm: 0.8544
+  Batch 4200/6019, Loss: 0.0389, Grad Norm: 1.9433
+  Batch 4300/6019, Loss: 0.0314, Grad Norm: 0.9592
+  Batch 4400/6019, Loss: 0.0377, Grad Norm: 2.3025
+  Batch 4500/6019, Loss: 0.0389, Grad Norm: 0.5646
+  Batch 4600/6019, Loss: 0.0508, Grad Norm: 2.3568
+  Batch 4700/6019, Loss: 0.0442, Grad Norm: 1.1094
+  Batch 4800/6019, Loss: 0.0248, Grad Norm: 24.6163
+  Batch 4900/6019, Loss: 0.0296, Grad Norm: 2.3284
+  Batch 5000/6019, Loss: 0.0576, Grad Norm: 2.9458
+  Batch 5100/6019, Loss: 0.0362, Grad Norm: 2.9265
+  Batch 5200/6019, Loss: 0.0353, Grad Norm: 0.9021
+  Batch 5300/6019, Loss: 0.0365, Grad Norm: 15.8965
+  Batch 5400/6019, Loss: 0.0380, Grad Norm: 2.9065
+  Batch 5500/6019, Loss: 0.0479, Grad Norm: 2.1465
+  Batch 5600/6019, Loss: 0.0270, Grad Norm: 2.8967
+  Batch 5700/6019, Loss: 0.0436, Grad Norm: 3.6487
+  Batch 5800/6019, Loss: 0.0412, Grad Norm: 1.9739
+  Batch 5900/6019, Loss: 0.0568, Grad Norm: 2.4537
+  Batch 6000/6019, Loss: 0.0505, Grad Norm: 3.9318
+Train Loss: 0.0415
+Val Loss: 0.0428, Val Macro F1: 0.8001
+Learning rate: 0.000050
+✓ Saved best model with Val F1: 0.8001
+
+============================================================
+Epoch 14/50
+============================================================
+  Batch 0/6019, Loss: 0.0413, Grad Norm: 1.3575
+  Batch 100/6019, Loss: 0.0309, Grad Norm: 4.7096
+  Batch 200/6019, Loss: 0.0422, Grad Norm: 0.9119
+  Batch 300/6019, Loss: 0.0384, Grad Norm: 1.0725
+  Batch 400/6019, Loss: 0.0426, Grad Norm: 3.1819
+  Batch 500/6019, Loss: 0.0647, Grad Norm: 4.7293
+  Batch 600/6019, Loss: 0.0521, Grad Norm: 4.2510
+  Batch 700/6019, Loss: 0.0357, Grad Norm: 3.7748
+  Batch 800/6019, Loss: 0.0632, Grad Norm: 20.0429
+  Batch 900/6019, Loss: 0.0501, Grad Norm: 3.0316
+  Batch 1000/6019, Loss: 0.0492, Grad Norm: 2.4551
+  Batch 1100/6019, Loss: 0.0327, Grad Norm: 1.7037
+  Batch 1200/6019, Loss: 0.0417, Grad Norm: 4.4592
+  Batch 1300/6019, Loss: 0.0555, Grad Norm: 2.1232
+  Batch 1400/6019, Loss: 0.0325, Grad Norm: 23.6672
+  Batch 1500/6019, Loss: 0.0716, Grad Norm: 10.4812
+  Batch 1600/6019, Loss: 0.0272, Grad Norm: 1.0528
+  Batch 1700/6019, Loss: 0.0637, Grad Norm: 13.4049
+  Batch 1800/6019, Loss: 0.0399, Grad Norm: 0.8043
+  Batch 1900/6019, Loss: 0.0528, Grad Norm: 36.5681
+  Batch 2000/6019, Loss: 0.0385, Grad Norm: 1.0958
+  Batch 2100/6019, Loss: 0.0485, Grad Norm: 3.7368
+  Batch 2200/6019, Loss: 0.0484, Grad Norm: 1.7475
+  Batch 2300/6019, Loss: 0.0431, Grad Norm: 14.5247
+  Batch 2400/6019, Loss: 0.0643, Grad Norm: 1.9227
+  Batch 2500/6019, Loss: 0.0485, Grad Norm: 1.6664
+  Batch 2600/6019, Loss: 0.0301, Grad Norm: 1.4647
+  Batch 2700/6019, Loss: 0.0429, Grad Norm: 1.6991
+  Batch 2800/6019, Loss: 0.0469, Grad Norm: 1.6358
+  Batch 2900/6019, Loss: 0.0306, Grad Norm: 0.6599
+  Batch 3000/6019, Loss: 0.0623, Grad Norm: 10.5661
+  Batch 3100/6019, Loss: 0.0573, Grad Norm: 1.8941
+  Batch 3200/6019, Loss: 0.0392, Grad Norm: 0.9407
+  Batch 3300/6019, Loss: 0.0444, Grad Norm: 12.2773
+  Batch 3400/6019, Loss: 0.0403, Grad Norm: 3.5301
+  Batch 3500/6019, Loss: 0.0400, Grad Norm: 1.8259
+  Batch 3600/6019, Loss: 0.0587, Grad Norm: 1.4838
+  Batch 3700/6019, Loss: 0.0368, Grad Norm: 1.7755
+  Batch 3800/6019, Loss: 0.0527, Grad Norm: 4.6642
+  Batch 3900/6019, Loss: 0.0374, Grad Norm: 2.2203
+  Batch 4000/6019, Loss: 0.0530, Grad Norm: 3.4007
+  Batch 4100/6019, Loss: 0.0383, Grad Norm: 5.0115
+  Batch 4200/6019, Loss: 0.0481, Grad Norm: 2.1221
+  Batch 4300/6019, Loss: 0.0454, Grad Norm: 3.7391
+  Batch 4400/6019, Loss: 0.0297, Grad Norm: 12.4616
+  Batch 4500/6019, Loss: 0.0502, Grad Norm: 6.1767
+  Batch 4600/6019, Loss: 0.0304, Grad Norm: 1.2175
+  Batch 4700/6019, Loss: 0.0333, Grad Norm: 2.5233
+  Batch 4800/6019, Loss: 0.0317, Grad Norm: 2.2107
+  Batch 4900/6019, Loss: 0.0289, Grad Norm: 0.7875
+  Batch 5000/6019, Loss: 0.0375, Grad Norm: 4.9265
+  Batch 5100/6019, Loss: 0.0284, Grad Norm: 1.4265
+  Batch 5200/6019, Loss: 0.0572, Grad Norm: 6.0290
+  Batch 5300/6019, Loss: 0.0408, Grad Norm: 2.3897
+  Batch 5400/6019, Loss: 0.0460, Grad Norm: 13.4240
+  Batch 5500/6019, Loss: 0.0334, Grad Norm: 1.0645
+  Batch 5600/6019, Loss: 0.0529, Grad Norm: 20.0689
+  Batch 5700/6019, Loss: 0.0369, Grad Norm: 1.9841
+  Batch 5800/6019, Loss: 0.0440, Grad Norm: 1.1168
+  Batch 5900/6019, Loss: 0.0441, Grad Norm: 1.8716
+  Batch 6000/6019, Loss: 0.0354, Grad Norm: 0.9393
+Train Loss: 0.0415
+Val Loss: 0.0429, Val Macro F1: 0.7871
+Learning rate: 0.000050
+
+============================================================
+Epoch 15/50
+============================================================
+  Batch 0/6019, Loss: 0.0555, Grad Norm: 3.2272
+  Batch 100/6019, Loss: 0.0324, Grad Norm: 9.4282
+  Batch 200/6019, Loss: 0.0448, Grad Norm: 0.9578
+  Batch 300/6019, Loss: 0.0240, Grad Norm: 0.8936
+  Batch 400/6019, Loss: 0.0331, Grad Norm: 1.2847
+  Batch 500/6019, Loss: 0.0445, Grad Norm: 2.8852
+  Batch 600/6019, Loss: 0.0375, Grad Norm: 2.9614
+  Batch 700/6019, Loss: 0.0471, Grad Norm: 1.4112
+  Batch 800/6019, Loss: 0.0437, Grad Norm: 8.1347
+  Batch 900/6019, Loss: 0.0380, Grad Norm: 0.9682
+  Batch 1000/6019, Loss: 0.0348, Grad Norm: 1.5621
+  Batch 1100/6019, Loss: 0.0381, Grad Norm: 0.8452
+  Batch 1200/6019, Loss: 0.0335, Grad Norm: 2.7585
+  Batch 1300/6019, Loss: 0.0331, Grad Norm: 1.9611
+  Batch 1400/6019, Loss: 0.0445, Grad Norm: 1.8566
+  Batch 1500/6019, Loss: 0.0413, Grad Norm: 0.9587
+  Batch 1600/6019, Loss: 0.0444, Grad Norm: 1.5091
+  Batch 1700/6019, Loss: 0.0703, Grad Norm: 17.1664
+  Batch 1800/6019, Loss: 0.0599, Grad Norm: 5.1768
+  Batch 1900/6019, Loss: 0.0305, Grad Norm: 1.1595
+  Batch 2000/6019, Loss: 0.0343, Grad Norm: 3.1708
+  Batch 2100/6019, Loss: 0.0506, Grad Norm: 2.1414
+  Batch 2200/6019, Loss: 0.0413, Grad Norm: 4.4109
+  Batch 2300/6019, Loss: 0.0502, Grad Norm: 4.4321
+  Batch 2400/6019, Loss: 0.0364, Grad Norm: 0.7915
+  Batch 2500/6019, Loss: 0.0394, Grad Norm: 2.5573
+  Batch 2600/6019, Loss: 0.0426, Grad Norm: 0.6743
+  Batch 2700/6019, Loss: 0.0331, Grad Norm: 1.0513
+  Batch 2800/6019, Loss: 0.0524, Grad Norm: 9.4740
+  Batch 2900/6019, Loss: 0.0403, Grad Norm: 2.3811
+  Batch 3000/6019, Loss: 0.0377, Grad Norm: 0.9536
+  Batch 3100/6019, Loss: 0.0312, Grad Norm: 3.8903
+  Batch 3200/6019, Loss: 0.0422, Grad Norm: 1.4021
+  Batch 3300/6019, Loss: 0.0375, Grad Norm: 6.8637
+  Batch 3400/6019, Loss: 0.0469, Grad Norm: 6.3449
+  Batch 3500/6019, Loss: 0.0313, Grad Norm: 2.4110
+  Batch 3600/6019, Loss: 0.0312, Grad Norm: 0.5911
+  Batch 3700/6019, Loss: 0.0427, Grad Norm: 2.4365
+  Batch 3800/6019, Loss: 0.0339, Grad Norm: 0.7442
+  Batch 3900/6019, Loss: 0.0425, Grad Norm: 4.6981
+  Batch 4000/6019, Loss: 0.0398, Grad Norm: 4.1445
+  Batch 4100/6019, Loss: 0.0311, Grad Norm: 0.7871
+  Batch 4200/6019, Loss: 0.0516, Grad Norm: 3.1690
+  Batch 4300/6019, Loss: 0.0331, Grad Norm: 3.7203
+  Batch 4400/6019, Loss: 0.0405, Grad Norm: 5.2593
+  Batch 4500/6019, Loss: 0.0358, Grad Norm: 1.7729
+  Batch 4600/6019, Loss: 0.0403, Grad Norm: 1.0534
+  Batch 4700/6019, Loss: 0.0347, Grad Norm: 4.3742
+  Batch 4800/6019, Loss: 0.0659, Grad Norm: 7.0779
+  Batch 4900/6019, Loss: 0.0412, Grad Norm: 1.6790
+  Batch 5000/6019, Loss: 0.0388, Grad Norm: 7.1947
+  Batch 5100/6019, Loss: 0.1325, Grad Norm: 8.8741
+  Batch 5200/6019, Loss: 0.0356, Grad Norm: 4.3248
+  Batch 5300/6019, Loss: 0.0509, Grad Norm: 1.7840
+  Batch 5400/6019, Loss: 0.0386, Grad Norm: 3.5718
+  Batch 5500/6019, Loss: 0.0367, Grad Norm: 1.8142
+  Batch 5600/6019, Loss: 0.0391, Grad Norm: 1.0741
+  Batch 5700/6019, Loss: 0.0216, Grad Norm: 3.2828
+  Batch 5800/6019, Loss: 0.0415, Grad Norm: 3.1748
+  Batch 5900/6019, Loss: 0.0323, Grad Norm: 3.8061
+  Batch 6000/6019, Loss: 0.0312, Grad Norm: 1.1587
+Train Loss: 0.0411
+Val Loss: 0.0438, Val Macro F1: 0.7992
+Learning rate: 0.000050
+✓ Saved checkpoint at epoch 15
+
+============================================================
+Epoch 16/50
+============================================================
+  Batch 0/6019, Loss: 0.0461, Grad Norm: 7.3560
+  Batch 100/6019, Loss: 0.0426, Grad Norm: 2.0868
+  Batch 200/6019, Loss: 0.0462, Grad Norm: 6.6922
+  Batch 300/6019, Loss: 0.0437, Grad Norm: 5.7986
+  Batch 400/6019, Loss: 0.0282, Grad Norm: 1.3505
+  Batch 500/6019, Loss: 0.0409, Grad Norm: 1.2921
+  Batch 600/6019, Loss: 0.0332, Grad Norm: 1.3002
+  Batch 700/6019, Loss: 0.0376, Grad Norm: 2.7042
+  Batch 800/6019, Loss: 0.0466, Grad Norm: 1.4707
+  Batch 900/6019, Loss: 0.0405, Grad Norm: 1.9231
+  Batch 1000/6019, Loss: 0.0379, Grad Norm: 4.3491
+  Batch 1100/6019, Loss: 0.0328, Grad Norm: 1.0558
+  Batch 1200/6019, Loss: 0.0356, Grad Norm: 2.3671
+  Batch 1300/6019, Loss: 0.0295, Grad Norm: 12.6583
+  Batch 1400/6019, Loss: 0.0337, Grad Norm: 2.2533
+  Batch 1500/6019, Loss: 0.0386, Grad Norm: 1.0340
+  Batch 1600/6019, Loss: 0.0305, Grad Norm: 1.6552
+  Batch 1700/6019, Loss: 0.0725, Grad Norm: 3.5929
+  Batch 1800/6019, Loss: 0.0433, Grad Norm: 2.7286
+  Batch 1900/6019, Loss: 0.0419, Grad Norm: 1.6892
+  Batch 2000/6019, Loss: 0.0481, Grad Norm: 2.7966
+  Batch 2100/6019, Loss: 0.0432, Grad Norm: 2.1585
+  Batch 2200/6019, Loss: 0.0262, Grad Norm: 0.6772
+  Batch 2300/6019, Loss: 0.0418, Grad Norm: 1.9679
+  Batch 2400/6019, Loss: 0.0798, Grad Norm: 8.3389
+  Batch 2500/6019, Loss: 0.0419, Grad Norm: 7.8269
+  Batch 2600/6019, Loss: 0.0322, Grad Norm: 1.3812
+  Batch 2700/6019, Loss: 0.0375, Grad Norm: 4.7655
+  Batch 2800/6019, Loss: 0.0433, Grad Norm: 1.9523
+  Batch 2900/6019, Loss: 0.0444, Grad Norm: 7.5506
+  Batch 3000/6019, Loss: 0.0437, Grad Norm: 1.8615
+  Batch 3100/6019, Loss: 0.0347, Grad Norm: 2.4270
+  Batch 3200/6019, Loss: 0.0353, Grad Norm: 1.6858
+  Batch 3300/6019, Loss: 0.0410, Grad Norm: 2.2639
+  Batch 3400/6019, Loss: 0.0396, Grad Norm: 1.1310
+  Batch 3500/6019, Loss: 0.0377, Grad Norm: 1.5772
+  Batch 3600/6019, Loss: 0.0505, Grad Norm: 3.6476
+  Batch 3700/6019, Loss: 0.0337, Grad Norm: 1.4922
+  Batch 3800/6019, Loss: 0.0407, Grad Norm: 5.6812
+  Batch 3900/6019, Loss: 0.0443, Grad Norm: 4.5438
+  Batch 4000/6019, Loss: 0.0347, Grad Norm: 1.3080
+  Batch 4100/6019, Loss: 0.0420, Grad Norm: 1.5010
+  Batch 4200/6019, Loss: 0.0373, Grad Norm: 1.2052
+  Batch 4300/6019, Loss: 0.0459, Grad Norm: 3.5861
+  Batch 4400/6019, Loss: 0.0339, Grad Norm: 3.9683
+  Batch 4500/6019, Loss: 0.0350, Grad Norm: 2.0363
+  Batch 4600/6019, Loss: 0.0486, Grad Norm: 2.0779
+  Batch 4700/6019, Loss: 0.0382, Grad Norm: 1.7290
+  Batch 4800/6019, Loss: 0.0414, Grad Norm: 12.6975
+  Batch 4900/6019, Loss: 0.0489, Grad Norm: 2.9313
+  Batch 5000/6019, Loss: 0.0277, Grad Norm: 2.2451
+  Batch 5100/6019, Loss: 0.0452, Grad Norm: 1.7054
+  Batch 5200/6019, Loss: 0.0495, Grad Norm: 4.0446
+  Batch 5300/6019, Loss: 0.0331, Grad Norm: 1.4238
+  Batch 5400/6019, Loss: 0.0296, Grad Norm: 3.0101
+  Batch 5500/6019, Loss: 0.0488, Grad Norm: 2.2792
+  Batch 5600/6019, Loss: 0.0327, Grad Norm: 1.3133
+  Batch 5700/6019, Loss: 0.0509, Grad Norm: 2.6274
+  Batch 5800/6019, Loss: 0.0384, Grad Norm: 3.3458
+  Batch 5900/6019, Loss: 0.0339, Grad Norm: 1.1140
+  Batch 6000/6019, Loss: 0.0379, Grad Norm: 2.8222
+Train Loss: 0.0409
+Val Loss: 0.0440, Val Macro F1: 0.7932
+Learning rate: 0.000050
+
+============================================================
+Epoch 17/50
+============================================================
+  Batch 0/6019, Loss: 0.0505, Grad Norm: 4.3123
+  Batch 100/6019, Loss: 0.0549, Grad Norm: 1.7043
+  Batch 200/6019, Loss: 0.0371, Grad Norm: 5.6063
+  Batch 300/6019, Loss: 0.0356, Grad Norm: 1.1284
+  Batch 400/6019, Loss: 0.0366, Grad Norm: 1.1318
+  Batch 500/6019, Loss: 0.0425, Grad Norm: 6.4405
+  Batch 600/6019, Loss: 0.0287, Grad Norm: 0.7209
+  Batch 700/6019, Loss: 0.0346, Grad Norm: 0.9744
+  Batch 800/6019, Loss: 0.0371, Grad Norm: 1.5545
+  Batch 900/6019, Loss: 0.0327, Grad Norm: 19.6528
+  Batch 1000/6019, Loss: 0.0350, Grad Norm: 3.4847
+  Batch 1100/6019, Loss: 0.0356, Grad Norm: 6.3777
+  Batch 1200/6019, Loss: 0.0990, Grad Norm: 4.7508
+  Batch 1300/6019, Loss: 0.0434, Grad Norm: 21.7381
+  Batch 1400/6019, Loss: 0.0288, Grad Norm: 1.3533
+  Batch 1500/6019, Loss: 0.0406, Grad Norm: 1.6837
+  Batch 1600/6019, Loss: 0.0579, Grad Norm: 3.8181
+  Batch 1700/6019, Loss: 0.0389, Grad Norm: 1.9484
+  Batch 1800/6019, Loss: 0.0401, Grad Norm: 2.5929
+  Batch 1900/6019, Loss: 0.0435, Grad Norm: 1.8044
+  Batch 2000/6019, Loss: 0.0324, Grad Norm: 1.2416
+  Batch 2100/6019, Loss: 0.0343, Grad Norm: 3.4573
+  Batch 2200/6019, Loss: 0.0448, Grad Norm: 2.0047
+  Batch 2300/6019, Loss: 0.0492, Grad Norm: 9.7219
+  Batch 2400/6019, Loss: 0.0322, Grad Norm: 3.0093
+  Batch 2500/6019, Loss: 0.0547, Grad Norm: 3.4929
+  Batch 2600/6019, Loss: 0.0400, Grad Norm: 2.0109
+  Batch 2700/6019, Loss: 0.0391, Grad Norm: 1.5182
+  Batch 2800/6019, Loss: 0.0397, Grad Norm: 1.2257
+  Batch 2900/6019, Loss: 0.0348, Grad Norm: 3.5747
+  Batch 3000/6019, Loss: 0.0750, Grad Norm: 13.7478
+  Batch 3100/6019, Loss: 0.0322, Grad Norm: 2.1261
+  Batch 3200/6019, Loss: 0.0574, Grad Norm: 18.7569
+  Batch 3300/6019, Loss: 0.0435, Grad Norm: 2.5602
+  Batch 3400/6019, Loss: 0.0639, Grad Norm: 25.3945
+  Batch 3500/6019, Loss: 0.0327, Grad Norm: 1.9757
+  Batch 3600/6019, Loss: 0.0322, Grad Norm: 0.9139
+  Batch 3700/6019, Loss: 0.0568, Grad Norm: 4.4313
+  Batch 3800/6019, Loss: 0.0360, Grad Norm: 9.0716
+  Batch 3900/6019, Loss: 0.0344, Grad Norm: 2.1196
+  Batch 4000/6019, Loss: 0.0355, Grad Norm: 2.3266
+  Batch 4100/6019, Loss: 0.0840, Grad Norm: 8.0263
+  Batch 4200/6019, Loss: 0.0488, Grad Norm: 4.1167
+  Batch 4300/6019, Loss: 0.0432, Grad Norm: 3.2113
+  Batch 4400/6019, Loss: 0.0351, Grad Norm: 1.6307
+  Batch 4500/6019, Loss: 0.0458, Grad Norm: 4.6673
+  Batch 4600/6019, Loss: 0.0276, Grad Norm: 0.9402
+  Batch 4700/6019, Loss: 0.0545, Grad Norm: 2.1915
+  Batch 4800/6019, Loss: 0.0485, Grad Norm: 1.8523
+  Batch 4900/6019, Loss: 0.0341, Grad Norm: 4.3860
+  Batch 5000/6019, Loss: 0.0480, Grad Norm: 1.4105
+  Batch 5100/6019, Loss: 0.0305, Grad Norm: 3.4172
+  Batch 5200/6019, Loss: 0.0399, Grad Norm: 3.0249
+  Batch 5300/6019, Loss: 0.0290, Grad Norm: 0.9928
+  Batch 5400/6019, Loss: 0.0328, Grad Norm: 0.8887
+  Batch 5500/6019, Loss: 0.0397, Grad Norm: 1.9440
+  Batch 5600/6019, Loss: 0.0407, Grad Norm: 2.3129
+  Batch 5700/6019, Loss: 0.0412, Grad Norm: 1.1374
+  Batch 5800/6019, Loss: 0.0356, Grad Norm: 1.0602
+  Batch 5900/6019, Loss: 0.0343, Grad Norm: 1.7554
+  Batch 6000/6019, Loss: 0.0329, Grad Norm: 1.2471
+Train Loss: 0.0410
+Val Loss: 0.0421, Val Macro F1: 0.8122
+Learning rate: 0.000050
+✓ Saved best model with Val F1: 0.8122
+
+============================================================
+Epoch 18/50
+============================================================
+  Batch 0/6019, Loss: 0.0297, Grad Norm: 2.8318
+  Batch 100/6019, Loss: 0.0463, Grad Norm: 1.7030
+  Batch 200/6019, Loss: 0.0313, Grad Norm: 1.2214
+  Batch 300/6019, Loss: 0.0381, Grad Norm: 2.0053
+  Batch 400/6019, Loss: 0.0323, Grad Norm: 10.6858
+  Batch 500/6019, Loss: 0.0379, Grad Norm: 2.1182
+  Batch 600/6019, Loss: 0.0340, Grad Norm: 5.0649
+  Batch 700/6019, Loss: 0.0331, Grad Norm: 0.9083
+  Batch 800/6019, Loss: 0.0400, Grad Norm: 1.3935
+  Batch 900/6019, Loss: 0.0293, Grad Norm: 1.5721
+  Batch 1000/6019, Loss: 0.0382, Grad Norm: 6.8170
+  Batch 1100/6019, Loss: 0.0353, Grad Norm: 2.6065
+  Batch 1200/6019, Loss: 0.0426, Grad Norm: 5.1051
+  Batch 1300/6019, Loss: 0.0443, Grad Norm: 0.8737
+  Batch 1400/6019, Loss: 0.0329, Grad Norm: 1.2407
+  Batch 1500/6019, Loss: 0.0502, Grad Norm: 5.5229
+  Batch 1600/6019, Loss: 0.0412, Grad Norm: 2.6340
+  Batch 1700/6019, Loss: 0.0291, Grad Norm: 0.5084
+  Batch 1800/6019, Loss: 0.0393, Grad Norm: 2.3662
+  Batch 1900/6019, Loss: 0.0524, Grad Norm: 1.2967
+  Batch 2000/6019, Loss: 0.0328, Grad Norm: 1.1767
+  Batch 2100/6019, Loss: 0.0332, Grad Norm: 1.5650
+  Batch 2200/6019, Loss: 0.0407, Grad Norm: 6.5057
+  Batch 2300/6019, Loss: 0.0414, Grad Norm: 2.7771
+  Batch 2400/6019, Loss: 0.0282, Grad Norm: 0.9844
+  Batch 2500/6019, Loss: 0.0454, Grad Norm: 3.8541
+  Batch 2600/6019, Loss: 0.0424, Grad Norm: 1.6124
+  Batch 2700/6019, Loss: 0.0338, Grad Norm: 1.8848
+  Batch 2800/6019, Loss: 0.0461, Grad Norm: 2.0813
+  Batch 2900/6019, Loss: 0.0397, Grad Norm: 7.7230
+  Batch 3000/6019, Loss: 0.0517, Grad Norm: 3.4905
+  Batch 3100/6019, Loss: 0.0469, Grad Norm: 11.3457
+  Batch 3200/6019, Loss: 0.0486, Grad Norm: 3.3574
+  Batch 3300/6019, Loss: 0.0361, Grad Norm: 1.0759
+  Batch 3400/6019, Loss: 0.0421, Grad Norm: 1.2404
+  Batch 3500/6019, Loss: 0.0414, Grad Norm: 6.1201
+  Batch 3600/6019, Loss: 0.0576, Grad Norm: 7.0872
+  Batch 3700/6019, Loss: 0.0383, Grad Norm: 2.3513
+  Batch 3800/6019, Loss: 0.0539, Grad Norm: 7.6487
+  Batch 3900/6019, Loss: 0.0406, Grad Norm: 11.8518
+  Batch 4000/6019, Loss: 0.0326, Grad Norm: 2.0882
+  Batch 4100/6019, Loss: 0.0391, Grad Norm: 1.1271
+  Batch 4200/6019, Loss: 0.0484, Grad Norm: 5.3089
+  Batch 4300/6019, Loss: 0.0305, Grad Norm: 6.7928
+  Batch 4400/6019, Loss: 0.0425, Grad Norm: 1.1779
+  Batch 4500/6019, Loss: 0.0392, Grad Norm: 1.0472
+  Batch 4600/6019, Loss: 0.0291, Grad Norm: 1.2870
+  Batch 4700/6019, Loss: 0.0273, Grad Norm: 1.3667
+  Batch 4800/6019, Loss: 0.0359, Grad Norm: 2.5911
+  Batch 4900/6019, Loss: 0.0525, Grad Norm: 3.2321
+  Batch 5000/6019, Loss: 0.0730, Grad Norm: 5.9211
+  Batch 5100/6019, Loss: 0.0401, Grad Norm: 2.7303
+  Batch 5200/6019, Loss: 0.0402, Grad Norm: 3.0922
+  Batch 5300/6019, Loss: 0.0359, Grad Norm: 1.1533
+  Batch 5400/6019, Loss: 0.0309, Grad Norm: 0.7243
+  Batch 5500/6019, Loss: 0.0413, Grad Norm: 1.2852
+  Batch 5600/6019, Loss: 0.0408, Grad Norm: 1.1339
+  Batch 5700/6019, Loss: 0.0393, Grad Norm: 3.4648
+  Batch 5800/6019, Loss: 0.0343, Grad Norm: 2.0638
+  Batch 5900/6019, Loss: 0.0310, Grad Norm: 0.5579
+  Batch 6000/6019, Loss: 0.0490, Grad Norm: 8.5708
+Train Loss: 0.0409
+Val Loss: 0.0422, Val Macro F1: 0.7983
+Learning rate: 0.000050
+
+============================================================
+Epoch 19/50
+============================================================
+  Batch 0/6019, Loss: 0.0359, Grad Norm: 6.7795
+  Batch 100/6019, Loss: 0.0358, Grad Norm: 1.0245
+  Batch 200/6019, Loss: 0.0440, Grad Norm: 2.4065
+  Batch 300/6019, Loss: 0.0336, Grad Norm: 0.6005
+  Batch 400/6019, Loss: 0.0450, Grad Norm: 2.0745
+  Batch 500/6019, Loss: 0.0771, Grad Norm: 3.8035
+  Batch 600/6019, Loss: 0.0309, Grad Norm: 1.2511
+  Batch 700/6019, Loss: 0.0349, Grad Norm: 0.9088
+  Batch 800/6019, Loss: 0.0313, Grad Norm: 0.5404
+  Batch 900/6019, Loss: 0.0463, Grad Norm: 5.0246
+  Batch 1000/6019, Loss: 0.0388, Grad Norm: 0.6114
+  Batch 1100/6019, Loss: 0.0525, Grad Norm: 13.3285
+  Batch 1200/6019, Loss: 0.0305, Grad Norm: 0.8652
+  Batch 1300/6019, Loss: 0.0511, Grad Norm: 1.6961
+  Batch 1400/6019, Loss: 0.0350, Grad Norm: 0.3945
+  Batch 1500/6019, Loss: 0.0566, Grad Norm: 5.8965
+  Batch 1600/6019, Loss: 0.0393, Grad Norm: 3.8596
+  Batch 1700/6019, Loss: 0.0390, Grad Norm: 7.2238
+  Batch 1800/6019, Loss: 0.0411, Grad Norm: 1.4397
+  Batch 1900/6019, Loss: 0.0370, Grad Norm: 3.5957
+  Batch 2000/6019, Loss: 0.0345, Grad Norm: 2.0918
+  Batch 2100/6019, Loss: 0.0421, Grad Norm: 4.8847
+  Batch 2200/6019, Loss: 0.0482, Grad Norm: 10.2942
+  Batch 2300/6019, Loss: 0.0349, Grad Norm: 7.8570
+  Batch 2400/6019, Loss: 0.0319, Grad Norm: 0.7409
+  Batch 2500/6019, Loss: 0.0312, Grad Norm: 9.8395
+  Batch 2600/6019, Loss: 0.0453, Grad Norm: 4.2500
+  Batch 2700/6019, Loss: 0.0403, Grad Norm: 0.9188
+  Batch 2800/6019, Loss: 0.0501, Grad Norm: 3.0697
+  Batch 2900/6019, Loss: 0.0584, Grad Norm: 1.6242
+  Batch 3000/6019, Loss: 0.0388, Grad Norm: 1.5628
+  Batch 3100/6019, Loss: 0.0430, Grad Norm: 8.2401
+  Batch 3200/6019, Loss: 0.0643, Grad Norm: 10.9798
+  Batch 3300/6019, Loss: 0.0300, Grad Norm: 1.1834
+  Batch 3400/6019, Loss: 0.0418, Grad Norm: 1.0081
+  Batch 3500/6019, Loss: 0.0350, Grad Norm: 1.5421
+  Batch 3600/6019, Loss: 0.0361, Grad Norm: 3.2279
+  Batch 3700/6019, Loss: 0.0595, Grad Norm: 4.1768
+  Batch 3800/6019, Loss: 0.0337, Grad Norm: 2.3660
+  Batch 3900/6019, Loss: 0.0344, Grad Norm: 1.8860
+  Batch 4000/6019, Loss: 0.0492, Grad Norm: 4.4451
+  Batch 4100/6019, Loss: 0.0462, Grad Norm: 2.1556
+  Batch 4200/6019, Loss: 0.0342, Grad Norm: 2.1857
+  Batch 4300/6019, Loss: 0.0409, Grad Norm: 9.1400
+  Batch 4400/6019, Loss: 0.0617, Grad Norm: 4.7294
+  Batch 4500/6019, Loss: 0.0434, Grad Norm: 5.9109
+  Batch 4600/6019, Loss: 0.0287, Grad Norm: 0.9199
+  Batch 4700/6019, Loss: 0.0804, Grad Norm: 14.3543
+  Batch 4800/6019, Loss: 0.0751, Grad Norm: 6.7846
+  Batch 4900/6019, Loss: 0.0349, Grad Norm: 2.3308
+  Batch 5000/6019, Loss: 0.0350, Grad Norm: 10.5083
+  Batch 5100/6019, Loss: 0.0312, Grad Norm: 1.9765
+  Batch 5200/6019, Loss: 0.0404, Grad Norm: 6.2025
+  Batch 5300/6019, Loss: 0.0370, Grad Norm: 1.6778
+  Batch 5400/6019, Loss: 0.0439, Grad Norm: 1.5396
+  Batch 5500/6019, Loss: 0.0385, Grad Norm: 4.8578
+  Batch 5600/6019, Loss: 0.0420, Grad Norm: 5.1200
+  Batch 5700/6019, Loss: 0.0347, Grad Norm: 1.8742
+  Batch 5800/6019, Loss: 0.0336, Grad Norm: 1.2798
+  Batch 5900/6019, Loss: 0.0389, Grad Norm: 3.3093
+  Batch 6000/6019, Loss: 0.0376, Grad Norm: 3.4861
+Train Loss: 0.0404
+Val Loss: 0.0428, Val Macro F1: 0.8005
+Learning rate: 0.000050
+
+============================================================
+Epoch 20/50
+============================================================
