@@ -1,7 +1,6 @@
 Using device: cuda
-GPU: NVIDIA A100-SXM4-80GB
-Resume mode: Will attempt to load from model/STM/Kanformer_corpora_categories/standard/ckpt/2026-01-16_22-29
-Checkpoint directory: model/STM/Kanformer_corpora_categories/standard/ckpt/2026-01-16_22-29
+GPU: Quadro RTX 8000
+Checkpoint directory: model/STM/Kanformer_enhanced_corpora_categories/standard/ckpt/2026-01-17_23-04
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
@@ -110,13 +109,26 @@ Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/ismir04_genre_STMall.
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy, shape: (34565, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SONYC_STMall.npy, shape: (10798, 2420)
 Total samples: 978378, Train: 770393, Val: 102010, Test: 105975
-Total parameters: 3,852,722
-Loading checkpoint from: model/STM/Kanformer_corpora_categories/standard/ckpt/2026-01-16_22-29/checkpoint_epoch_25.pt
+
+Class distribution:
+  Class 0:  497475 samples (weight: 0.0657)
+  Class 1:   80258 samples (weight: 0.4074)
+  Class 2:  101893 samples (weight: 0.3209)
+  Class 3:   53538 samples (weight: 0.6107)
+  Class 4:    9580 samples (weight: 3.4128)
+  Class 5:   27649 samples (weight: 1.1825)
+Total parameters: 3,862,492
 Traceback (most recent call last):
-  File "/vast/ac8888/MusicSpeech-STM/STMkanformer_model.py", line 873, in <module>
-    trainer.load_checkpoint(latest_ckpt)
-    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/vast/ac8888/MusicSpeech-STM/STMkanformer_model.py", line 650, in load_checkpoint
-    self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-KeyError: 'optimizer_state_dict'
+  File "/vast/ac8888/MusicSpeech-STM/STMkanformer_enhanced.py", line 804, in <module>
+    trainer = EnhancedKanformerTrainer(
+        model, train_loader, val_loader, test_loader, device,
+        class_weights=class_weights, lr=1e-4, weight_decay=1e-4
+    )
+  File "/vast/ac8888/MusicSpeech-STM/STMkanformer_enhanced.py", line 574, in __init__
+    self.scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.optimizer, mode='max', factor=0.5, patience=3, verbose=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verbose'
