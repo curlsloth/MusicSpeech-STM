@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=10
 #SBATCH --gres=gpu:1
 #SBATCH --mem=200GB
-#SBATCH --time=12:00:00
+#SBATCH --time=2-00:00:00
 #SBATCH --output=HPC_slurm/STM_conformer/STMasm-gpu_%A_%a.out
 #SBATCH --mail-user=ac8888@nyu.edu
 #SBATCH --mail-type=END
