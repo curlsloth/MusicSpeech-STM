@@ -124,3 +124,2060 @@ Starting Enhanced Kanformer v2 training for 50 epochs...
 ============================================================
 Epoch 1/50
 ============================================================
+  Batch 0/6019, Loss: 0.7875, Grad: 3.9300
+  Batch 100/6019, Loss: 0.1975, Grad: 1.6354
+  Batch 200/6019, Loss: 0.1679, Grad: 1.4608
+  Batch 300/6019, Loss: 0.2237, Grad: 1.4185
+  Batch 400/6019, Loss: 0.1230, Grad: 1.3274
+  Batch 500/6019, Loss: 0.1362, Grad: 0.9205
+  Batch 600/6019, Loss: 0.0944, Grad: 0.8453
+  Batch 700/6019, Loss: 0.1053, Grad: 1.0385
+  Batch 800/6019, Loss: 0.1058, Grad: 0.6847
+  Batch 900/6019, Loss: 0.0927, Grad: 0.4925
+  Batch 1000/6019, Loss: 0.1043, Grad: 0.8786
+  Batch 1100/6019, Loss: 0.0834, Grad: 0.9436
+  Batch 1200/6019, Loss: 0.0758, Grad: 0.6348
+  Batch 1300/6019, Loss: 0.0967, Grad: 1.1687
+  Batch 1400/6019, Loss: 0.0776, Grad: 0.5584
+  Batch 1500/6019, Loss: 0.1000, Grad: 1.1429
+  Batch 1600/6019, Loss: 0.0868, Grad: 1.1911
+  Batch 1700/6019, Loss: 0.0821, Grad: 0.6507
+  Batch 1800/6019, Loss: 0.0872, Grad: 0.9344
+  Batch 1900/6019, Loss: 0.0976, Grad: 1.5052
+  Batch 2000/6019, Loss: 0.1130, Grad: 0.9453
+  Batch 2100/6019, Loss: 0.0808, Grad: 0.7363
+  Batch 2200/6019, Loss: 0.1024, Grad: 1.0574
+  Batch 2300/6019, Loss: 0.0627, Grad: 0.6112
+  Batch 2400/6019, Loss: 0.0957, Grad: 1.4493
+  Batch 2500/6019, Loss: 0.0874, Grad: 0.9935
+  Batch 2600/6019, Loss: 0.0839, Grad: 0.7035
+  Batch 2700/6019, Loss: 0.0729, Grad: 0.7659
+  Batch 2800/6019, Loss: 0.0773, Grad: 0.6532
+  Batch 2900/6019, Loss: 0.1065, Grad: 1.5115
+  Batch 3000/6019, Loss: 0.1027, Grad: 0.9798
+  Batch 3100/6019, Loss: 0.0919, Grad: 0.8459
+  Batch 3200/6019, Loss: 0.0713, Grad: 0.6267
+  Batch 3300/6019, Loss: 0.0537, Grad: 0.5655
+  Batch 3400/6019, Loss: 0.0627, Grad: 0.5911
+  Batch 3500/6019, Loss: 0.1073, Grad: 0.8995
+  Batch 3600/6019, Loss: 0.0731, Grad: 0.5807
+  Batch 3700/6019, Loss: 0.0686, Grad: 1.2306
+  Batch 3800/6019, Loss: 0.0994, Grad: 0.9593
+  Batch 3900/6019, Loss: 0.0803, Grad: 1.3262
+  Batch 4000/6019, Loss: 0.0845, Grad: 1.3490
+  Batch 4100/6019, Loss: 0.0803, Grad: 0.7582
+  Batch 4200/6019, Loss: 0.0682, Grad: 2.3242
+  Batch 4300/6019, Loss: 0.0927, Grad: 0.8219
+  Batch 4400/6019, Loss: 0.0825, Grad: 0.8253
+  Batch 4500/6019, Loss: 0.0870, Grad: 1.5242
+  Batch 4600/6019, Loss: 0.0684, Grad: 1.0080
+  Batch 4700/6019, Loss: 0.0652, Grad: 1.1042
+  Batch 4800/6019, Loss: 0.0932, Grad: 0.9900
+  Batch 4900/6019, Loss: 0.0754, Grad: 0.9141
+  Batch 5000/6019, Loss: 0.0874, Grad: 0.8389
+  Batch 5100/6019, Loss: 0.0650, Grad: 1.7885
+  Batch 5200/6019, Loss: 0.0913, Grad: 2.6618
+  Batch 5300/6019, Loss: 0.0664, Grad: 0.7935
+  Batch 5400/6019, Loss: 0.0905, Grad: 4.4071
+  Batch 5500/6019, Loss: 0.1062, Grad: 2.5606
+  Batch 5600/6019, Loss: 0.0742, Grad: 1.7605
+  Batch 5700/6019, Loss: 0.0477, Grad: 0.6507
+  Batch 5800/6019, Loss: 0.0780, Grad: 5.7509
+  Batch 5900/6019, Loss: 0.0599, Grad: 1.1131
+  Batch 6000/6019, Loss: 0.0658, Grad: 1.9114
+Train Loss: 0.0975
+Val Loss: 0.0985, Val Macro F1: 0.8053
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9489
+  Class 1 (Tonal Speech    ): F1 = 0.6776
+  Class 2 (Vocal Music     ): F1 = 0.8211
+  Class 3 (Non-vocal Music ): F1 = 0.5744
+  Class 4 (Urban Env       ): F1 = 0.9263
+  Class 5 (Wildlife Env    ): F1 = 0.8834
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4512
+  Class 1→0 (tonal→non-tonal speech):  1984
+  Class 2→3 (vocal→non-vocal music):   1613
+  Class 3→2 (non-vocal→vocal music):   3273
+Learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8053
+
+============================================================
+Epoch 2/50
+============================================================
+  Batch 0/6019, Loss: 0.0715, Grad: 1.1338
+  Batch 100/6019, Loss: 0.0836, Grad: 1.1837
+  Batch 200/6019, Loss: 0.0750, Grad: 2.6212
+  Batch 300/6019, Loss: 0.0640, Grad: 7.9858
+  Batch 400/6019, Loss: 0.0743, Grad: 1.0856
+  Batch 500/6019, Loss: 0.0771, Grad: 4.5378
+  Batch 600/6019, Loss: 0.0588, Grad: 1.7077
+  Batch 700/6019, Loss: 0.0741, Grad: 7.1245
+  Batch 800/6019, Loss: 0.0731, Grad: 1.3102
+  Batch 900/6019, Loss: 0.0939, Grad: 3.5215
+  Batch 1000/6019, Loss: 0.0730, Grad: 1.0863
+  Batch 1100/6019, Loss: 0.0751, Grad: 1.2656
+  Batch 1200/6019, Loss: 0.0752, Grad: 4.0901
+  Batch 1300/6019, Loss: 0.0681, Grad: 3.1121
+  Batch 1400/6019, Loss: 0.0676, Grad: 1.4048
+  Batch 1500/6019, Loss: 0.0779, Grad: 0.9857
+  Batch 1600/6019, Loss: 0.0736, Grad: 1.1769
+  Batch 1700/6019, Loss: 0.0584, Grad: 0.8126
+  Batch 1800/6019, Loss: 0.0756, Grad: 1.2473
+  Batch 1900/6019, Loss: 0.0781, Grad: 3.1513
+  Batch 2000/6019, Loss: 0.0576, Grad: 0.7577
+  Batch 2100/6019, Loss: 0.0691, Grad: 1.2695
+  Batch 2200/6019, Loss: 0.0658, Grad: 0.8734
+  Batch 2300/6019, Loss: 0.0604, Grad: 0.9703
+  Batch 2400/6019, Loss: 0.0525, Grad: 3.5943
+  Batch 2500/6019, Loss: 0.0530, Grad: 1.9264
+  Batch 2600/6019, Loss: 0.0774, Grad: 3.0020
+  Batch 2700/6019, Loss: 0.0586, Grad: 1.4343
+  Batch 2800/6019, Loss: 0.0782, Grad: 11.6111
+  Batch 2900/6019, Loss: 0.0858, Grad: 4.7454
+  Batch 3000/6019, Loss: 0.0770, Grad: 2.3617
+  Batch 3100/6019, Loss: 0.0686, Grad: 8.1517
+  Batch 3200/6019, Loss: 0.0488, Grad: 1.2220
+  Batch 3300/6019, Loss: 0.0621, Grad: 2.3385
+  Batch 3400/6019, Loss: 0.0642, Grad: 3.1090
+  Batch 3500/6019, Loss: 0.0751, Grad: 3.7910
+  Batch 3600/6019, Loss: 0.0719, Grad: 14.4856
+  Batch 3700/6019, Loss: 0.0654, Grad: 2.9110
+  Batch 3800/6019, Loss: 0.0788, Grad: 3.2374
+  Batch 3900/6019, Loss: 0.0649, Grad: 12.2200
+  Batch 4000/6019, Loss: 0.0914, Grad: 13.3082
+  Batch 4100/6019, Loss: 0.0882, Grad: 8.8209
+  Batch 4200/6019, Loss: 0.0768, Grad: 1.0936
+  Batch 4300/6019, Loss: 0.0803, Grad: 1.3512
+  Batch 4400/6019, Loss: 0.0672, Grad: 1.7418
+  Batch 4500/6019, Loss: 0.0889, Grad: 3.7572
+  Batch 4600/6019, Loss: 0.0860, Grad: 3.3317
+  Batch 4700/6019, Loss: 0.1114, Grad: 6.8119
+  Batch 4800/6019, Loss: 0.0594, Grad: 3.1531
+  Batch 4900/6019, Loss: 0.0734, Grad: 1.4496
+  Batch 5000/6019, Loss: 0.0655, Grad: 1.3884
+  Batch 5100/6019, Loss: 0.0654, Grad: 4.6260
+  Batch 5200/6019, Loss: 0.0606, Grad: 1.5921
+  Batch 5300/6019, Loss: 0.0686, Grad: 15.5895
+  Batch 5400/6019, Loss: 0.0839, Grad: 4.2067
+  Batch 5500/6019, Loss: 0.1066, Grad: 7.1838
+  Batch 5600/6019, Loss: 0.0612, Grad: 1.4293
+  Batch 5700/6019, Loss: 0.0793, Grad: 3.9386
+  Batch 5800/6019, Loss: 0.0633, Grad: 1.7605
+  Batch 5900/6019, Loss: 0.0618, Grad: 1.6987
+  Batch 6000/6019, Loss: 0.0748, Grad: 7.0660
+Train Loss: 0.0760
+Val Loss: 0.0909, Val Macro F1: 0.8105
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9468
+  Class 1 (Tonal Speech    ): F1 = 0.6655
+  Class 2 (Vocal Music     ): F1 = 0.7961
+  Class 3 (Non-vocal Music ): F1 = 0.6299
+  Class 4 (Urban Env       ): F1 = 0.9398
+  Class 5 (Wildlife Env    ): F1 = 0.8850
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4754
+  Class 1→0 (tonal→non-tonal speech):  2045
+  Class 2→3 (vocal→non-vocal music):   3110
+  Class 3→2 (non-vocal→vocal music):   2099
+Learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8105
+
+============================================================
+Epoch 3/50
+============================================================
+  Batch 0/6019, Loss: 0.0720, Grad: 2.8780
+  Batch 100/6019, Loss: 0.0774, Grad: 1.3336
+  Batch 200/6019, Loss: 0.0722, Grad: 2.0782
+  Batch 300/6019, Loss: 0.0806, Grad: 2.9484
+  Batch 400/6019, Loss: 0.1002, Grad: 8.8589
+  Batch 500/6019, Loss: 0.0895, Grad: 2.0005
+  Batch 600/6019, Loss: 0.0714, Grad: 9.7357
+  Batch 700/6019, Loss: 0.0557, Grad: 1.4804
+  Batch 800/6019, Loss: 0.0636, Grad: 1.1240
+  Batch 900/6019, Loss: 0.0775, Grad: 1.5495
+  Batch 1000/6019, Loss: 0.1042, Grad: 3.1254
+  Batch 1100/6019, Loss: 0.0699, Grad: 3.9552
+  Batch 1200/6019, Loss: 0.0859, Grad: 1.3640
+  Batch 1300/6019, Loss: 0.0910, Grad: 1.8466
+  Batch 1400/6019, Loss: 0.0863, Grad: 11.7031
+  Batch 1500/6019, Loss: 0.0786, Grad: 18.7317
+  Batch 1600/6019, Loss: 0.0632, Grad: 2.3162
+  Batch 1700/6019, Loss: 0.0650, Grad: 7.5490
+  Batch 1800/6019, Loss: 0.0497, Grad: 14.1656
+  Batch 1900/6019, Loss: 0.0788, Grad: 1.5513
+  Batch 2000/6019, Loss: 0.0706, Grad: 4.5428
+  Batch 2100/6019, Loss: 0.0731, Grad: 12.6031
+  Batch 2200/6019, Loss: 0.0761, Grad: 2.9843
+  Batch 2300/6019, Loss: 0.0967, Grad: 4.1987
+  Batch 2400/6019, Loss: 0.1237, Grad: 3.4820
+  Batch 2500/6019, Loss: 0.0701, Grad: 2.5465
+  Batch 2600/6019, Loss: 0.0682, Grad: 3.3700
+  Batch 2700/6019, Loss: 0.0677, Grad: 5.5620
+  Batch 2800/6019, Loss: 0.0716, Grad: 4.5970
+  Batch 2900/6019, Loss: 0.0764, Grad: 4.3693
+  Batch 3000/6019, Loss: 0.0752, Grad: 6.4045
+  Batch 3100/6019, Loss: 0.0678, Grad: 4.1629
+  Batch 3200/6019, Loss: 0.1377, Grad: 6.5468
+  Batch 3300/6019, Loss: 0.0636, Grad: 3.4128
+  Batch 3400/6019, Loss: 0.0625, Grad: 4.1711
+  Batch 3500/6019, Loss: 0.1092, Grad: 3.0145
+  Batch 3600/6019, Loss: 0.0593, Grad: 5.0621
+  Batch 3700/6019, Loss: 0.0636, Grad: 4.7250
+  Batch 3800/6019, Loss: 0.0754, Grad: 1.6261
+  Batch 3900/6019, Loss: 0.0749, Grad: 5.2635
+  Batch 4000/6019, Loss: 0.0599, Grad: 1.8164
+  Batch 4100/6019, Loss: 0.0793, Grad: 5.7119
+  Batch 4200/6019, Loss: 0.0679, Grad: 20.5122
+  Batch 4300/6019, Loss: 0.0595, Grad: 5.8585
+  Batch 4400/6019, Loss: 0.0754, Grad: 143.5950
+  Batch 4500/6019, Loss: 0.0593, Grad: 3.9770
+  Batch 4600/6019, Loss: 0.0680, Grad: 2.3738
+  Batch 4700/6019, Loss: 0.0651, Grad: 2.5311
+  Batch 4800/6019, Loss: 0.0735, Grad: 1.9493
+  Batch 4900/6019, Loss: 0.0703, Grad: 10.7062
+  Batch 5000/6019, Loss: 0.1229, Grad: 10.8064
+  Batch 5100/6019, Loss: 0.0609, Grad: 2.7173
+  Batch 5200/6019, Loss: 0.0557, Grad: 3.3176
+  Batch 5300/6019, Loss: 0.0780, Grad: 3.5725
+  Batch 5400/6019, Loss: 0.0850, Grad: 7.8868
+  Batch 5500/6019, Loss: 0.0881, Grad: 2.9462
+  Batch 5600/6019, Loss: 0.0544, Grad: 1.2463
+  Batch 5700/6019, Loss: 0.0787, Grad: 1.7126
+  Batch 5800/6019, Loss: 0.0526, Grad: 1.8096
+  Batch 5900/6019, Loss: 0.0779, Grad: 2.0396
+  Batch 6000/6019, Loss: 0.0692, Grad: 2.1337
+Train Loss: 0.0736
+Val Loss: 0.1011, Val Macro F1: 0.7984
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9468
+  Class 1 (Tonal Speech    ): F1 = 0.6724
+  Class 2 (Vocal Music     ): F1 = 0.7724
+  Class 3 (Non-vocal Music ): F1 = 0.6374
+  Class 4 (Urban Env       ): F1 = 0.9110
+  Class 5 (Wildlife Env    ): F1 = 0.8505
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4946
+  Class 1→0 (tonal→non-tonal speech):  1842
+  Class 2→3 (vocal→non-vocal music):   3612
+  Class 3→2 (non-vocal→vocal music):   1672
+Learning rate: 0.000100
+
+============================================================
+Epoch 4/50
+============================================================
+  Batch 0/6019, Loss: 0.0551, Grad: 2.5032
+  Batch 100/6019, Loss: 0.0538, Grad: 2.1285
+  Batch 200/6019, Loss: 0.0568, Grad: 4.0094
+  Batch 300/6019, Loss: 0.0852, Grad: 2.6800
+  Batch 400/6019, Loss: 0.0812, Grad: 4.5734
+  Batch 500/6019, Loss: 0.0633, Grad: 1.5843
+  Batch 600/6019, Loss: 0.1122, Grad: 3.4357
+  Batch 700/6019, Loss: 0.0632, Grad: 2.5268
+  Batch 800/6019, Loss: 0.0621, Grad: 2.3213
+  Batch 900/6019, Loss: 0.0783, Grad: 3.1987
+  Batch 1000/6019, Loss: 0.0669, Grad: 3.2429
+  Batch 1100/6019, Loss: 0.0664, Grad: 3.2655
+  Batch 1200/6019, Loss: 0.0748, Grad: 1.4892
+  Batch 1300/6019, Loss: 0.0716, Grad: 2.5529
+  Batch 1400/6019, Loss: 0.0756, Grad: 2.7741
+  Batch 1500/6019, Loss: 0.0456, Grad: 1.9374
+  Batch 1600/6019, Loss: 0.0764, Grad: 2.1499
+  Batch 1700/6019, Loss: 0.0374, Grad: 2.9119
+  Batch 1800/6019, Loss: 0.0764, Grad: 4.9897
+  Batch 1900/6019, Loss: 0.0579, Grad: 6.9785
+  Batch 2000/6019, Loss: 0.1312, Grad: 5.4166
+  Batch 2100/6019, Loss: 0.0596, Grad: 1.8728
+  Batch 2200/6019, Loss: 0.0545, Grad: 0.9688
+  Batch 2300/6019, Loss: 0.0720, Grad: 5.4625
+  Batch 2400/6019, Loss: 0.0605, Grad: 1.6981
+  Batch 2500/6019, Loss: 0.0794, Grad: 2.5786
+  Batch 2600/6019, Loss: 0.0632, Grad: 26.5321
+  Batch 2700/6019, Loss: 0.0758, Grad: 6.4138
+  Batch 2800/6019, Loss: 0.0808, Grad: 5.9698
+  Batch 2900/6019, Loss: 0.0909, Grad: 2.6174
+  Batch 3000/6019, Loss: 0.0773, Grad: 7.2467
+  Batch 3100/6019, Loss: 0.0722, Grad: 4.3692
+  Batch 3200/6019, Loss: 0.0616, Grad: 3.0426
+  Batch 3300/6019, Loss: 0.0722, Grad: 6.9474
+  Batch 3400/6019, Loss: 0.0467, Grad: 0.8170
+  Batch 3500/6019, Loss: 0.0633, Grad: 5.2283
+  Batch 3600/6019, Loss: 0.0732, Grad: 3.5641
+  Batch 3700/6019, Loss: 0.1076, Grad: 4.4053
+  Batch 3800/6019, Loss: 0.0994, Grad: 9.8058
+  Batch 3900/6019, Loss: 0.0504, Grad: 1.1421
+  Batch 4000/6019, Loss: 0.0796, Grad: 4.3854
+  Batch 4100/6019, Loss: 0.0723, Grad: 1.8936
+  Batch 4200/6019, Loss: 0.0517, Grad: 6.8520
+  Batch 4300/6019, Loss: 0.0564, Grad: 1.3234
+  Batch 4400/6019, Loss: 0.0612, Grad: 5.9880
+  Batch 4500/6019, Loss: 0.0782, Grad: 9.8607
+  Batch 4600/6019, Loss: 0.0909, Grad: 16.0735
+  Batch 4700/6019, Loss: 0.0463, Grad: 11.4126
+  Batch 4800/6019, Loss: 0.0443, Grad: 3.0098
+  Batch 4900/6019, Loss: 0.0574, Grad: 1.0495
+  Batch 5000/6019, Loss: 0.0639, Grad: 1.5098
+  Batch 5100/6019, Loss: 0.0831, Grad: 2.2075
+  Batch 5200/6019, Loss: 0.0708, Grad: 7.5020
+  Batch 5300/6019, Loss: 0.0621, Grad: 1.7578
+  Batch 5400/6019, Loss: 0.0830, Grad: 2.3619
+  Batch 5500/6019, Loss: 0.0819, Grad: 7.0385
+  Batch 5600/6019, Loss: 0.0597, Grad: 1.2740
+  Batch 5700/6019, Loss: 0.0845, Grad: 2.9780
+  Batch 5800/6019, Loss: 0.0940, Grad: 2.9074
+  Batch 5900/6019, Loss: 0.0605, Grad: 2.8475
+  Batch 6000/6019, Loss: 0.0633, Grad: 1.6135
+Train Loss: 0.0717
+Val Loss: 0.1089, Val Macro F1: 0.7953
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9245
+  Class 1 (Tonal Speech    ): F1 = 0.6102
+  Class 2 (Vocal Music     ): F1 = 0.8102
+  Class 3 (Non-vocal Music ): F1 = 0.6143
+  Class 4 (Urban Env       ): F1 = 0.9389
+  Class 5 (Wildlife Env    ): F1 = 0.8740
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  7793
+  Class 1→0 (tonal→non-tonal speech):  1479
+  Class 2→3 (vocal→non-vocal music):   2190
+  Class 3→2 (non-vocal→vocal music):   2648
+Learning rate: 0.000100
+
+============================================================
+Epoch 5/50
+============================================================
+  Batch 0/6019, Loss: 0.0772, Grad: 2.3507
+  Batch 100/6019, Loss: 0.0769, Grad: 2.6931
+  Batch 200/6019, Loss: 0.0716, Grad: 2.5789
+  Batch 300/6019, Loss: 0.0477, Grad: 3.8231
+  Batch 400/6019, Loss: 0.1160, Grad: 5.8905
+  Batch 500/6019, Loss: 0.0705, Grad: 4.2284
+  Batch 600/6019, Loss: 0.0686, Grad: 2.0374
+  Batch 700/6019, Loss: 0.0771, Grad: 3.0349
+  Batch 800/6019, Loss: 0.0873, Grad: 4.5741
+  Batch 900/6019, Loss: 0.0905, Grad: 4.6310
+  Batch 1000/6019, Loss: 0.0590, Grad: 7.1090
+  Batch 1100/6019, Loss: 0.0552, Grad: 2.1327
+  Batch 1200/6019, Loss: 0.0676, Grad: 4.6906
+  Batch 1300/6019, Loss: 0.0705, Grad: 3.3839
+  Batch 1400/6019, Loss: 0.0658, Grad: 3.8946
+  Batch 1500/6019, Loss: 0.0887, Grad: 8.0233
+  Batch 1600/6019, Loss: 0.0547, Grad: 13.6327
+  Batch 1700/6019, Loss: 0.0548, Grad: 2.9875
+  Batch 1800/6019, Loss: 0.0716, Grad: 7.4642
+  Batch 1900/6019, Loss: 0.0689, Grad: 4.2743
+  Batch 2000/6019, Loss: 0.0678, Grad: 3.8701
+  Batch 2100/6019, Loss: 0.0566, Grad: 9.5948
+  Batch 2200/6019, Loss: 0.0662, Grad: 7.3464
+  Batch 2300/6019, Loss: 0.0621, Grad: 8.3934
+  Batch 2400/6019, Loss: 0.0461, Grad: 2.7463
+  Batch 2500/6019, Loss: 0.1000, Grad: 5.5600
+  Batch 2600/6019, Loss: 0.0800, Grad: 3.6430
+  Batch 2700/6019, Loss: 0.0585, Grad: 4.5255
+  Batch 2800/6019, Loss: 0.0887, Grad: 8.5134
+  Batch 2900/6019, Loss: 0.0671, Grad: 4.7252
+  Batch 3000/6019, Loss: 0.0648, Grad: 2.9462
+  Batch 3100/6019, Loss: 0.0859, Grad: 254.9647
+  Batch 3200/6019, Loss: 0.0776, Grad: 2.6475
+  Batch 3300/6019, Loss: 0.0657, Grad: 5.8500
+  Batch 3400/6019, Loss: 0.0630, Grad: 6.7376
+  Batch 3500/6019, Loss: 0.0713, Grad: 7.7436
+  Batch 3600/6019, Loss: 0.1116, Grad: 9.7216
+  Batch 3700/6019, Loss: 0.0602, Grad: 4.4135
+  Batch 3800/6019, Loss: 0.0576, Grad: 77.5836
+  Batch 3900/6019, Loss: 0.0698, Grad: 17.1454
+  Batch 4000/6019, Loss: 0.1058, Grad: 9.7106
+  Batch 4100/6019, Loss: 0.0790, Grad: 12.0332
+  Batch 4200/6019, Loss: 0.0602, Grad: 3.9217
+  Batch 4300/6019, Loss: 0.0653, Grad: 16.9196
+  Batch 4400/6019, Loss: 0.0675, Grad: 62.5094
+  Batch 4500/6019, Loss: 0.0873, Grad: 12.7411
+  Batch 4600/6019, Loss: 0.0695, Grad: 7.0008
+  Batch 4700/6019, Loss: 0.0607, Grad: 9.0086
+  Batch 4800/6019, Loss: 0.0752, Grad: 27.1424
+  Batch 4900/6019, Loss: 0.0515, Grad: 8.1268
+  Batch 5000/6019, Loss: 0.0898, Grad: 6.0427
+  Batch 5100/6019, Loss: 0.0596, Grad: 5.5472
+  Batch 5200/6019, Loss: 0.1050, Grad: 12.5902
+  Batch 5300/6019, Loss: 0.0573, Grad: 3.2726
+  Batch 5400/6019, Loss: 0.0802, Grad: 4.4181
+  Batch 5500/6019, Loss: 0.0841, Grad: 6.8346
+  Batch 5600/6019, Loss: 0.0462, Grad: 5.9946
+  Batch 5700/6019, Loss: 0.0940, Grad: 3.3302
+  Batch 5800/6019, Loss: 0.0641, Grad: 20.4885
+  Batch 5900/6019, Loss: 0.0720, Grad: 4.8493
+  Batch 6000/6019, Loss: 0.0719, Grad: 12.1092
+Train Loss: 0.0704
+Val Loss: 0.0845, Val Macro F1: 0.8222
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9561
+  Class 1 (Tonal Speech    ): F1 = 0.6986
+  Class 2 (Vocal Music     ): F1 = 0.8128
+  Class 3 (Non-vocal Music ): F1 = 0.6328
+  Class 4 (Urban Env       ): F1 = 0.9418
+  Class 5 (Wildlife Env    ): F1 = 0.8913
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  3374
+  Class 1→0 (tonal→non-tonal speech):  2284
+  Class 2→3 (vocal→non-vocal music):   2583
+  Class 3→2 (non-vocal→vocal music):   2367
+Learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8222
+
+============================================================
+Epoch 6/50
+============================================================
+  Batch 0/6019, Loss: 0.0953, Grad: 47.6249
+  Batch 100/6019, Loss: 0.0918, Grad: 13.1008
+  Batch 200/6019, Loss: 0.0732, Grad: 10.5536
+  Batch 300/6019, Loss: 0.0953, Grad: 8.1037
+  Batch 400/6019, Loss: 0.0614, Grad: 5.8048
+  Batch 500/6019, Loss: 0.1009, Grad: 28.7419
+  Batch 600/6019, Loss: 0.0585, Grad: 45.9257
+  Batch 700/6019, Loss: 0.0803, Grad: 6.5005
+  Batch 800/6019, Loss: 0.0525, Grad: 3.1498
+  Batch 900/6019, Loss: 0.0533, Grad: 4.4230
+  Batch 1000/6019, Loss: 0.0724, Grad: 4.4588
+  Batch 1100/6019, Loss: 0.0919, Grad: 18.1261
+  Batch 1200/6019, Loss: 0.0593, Grad: 4.5451
+  Batch 1300/6019, Loss: 0.0763, Grad: 3.8728
+  Batch 1400/6019, Loss: 0.0442, Grad: 6.8124
+  Batch 1500/6019, Loss: 0.0764, Grad: 2.7087
+  Batch 1600/6019, Loss: 0.0632, Grad: 35.6838
+  Batch 1700/6019, Loss: 0.0748, Grad: 3.6708
+  Batch 1800/6019, Loss: 0.0913, Grad: 4.6849
+  Batch 1900/6019, Loss: 0.0672, Grad: 7.9170
+  Batch 2000/6019, Loss: 0.0815, Grad: 3.2661
+  Batch 2100/6019, Loss: 0.0796, Grad: 10.5241
+  Batch 2200/6019, Loss: 0.0608, Grad: 2.0791
+  Batch 2300/6019, Loss: 0.0513, Grad: 3.2911
+  Batch 2400/6019, Loss: 0.0593, Grad: 2.6850
+  Batch 2500/6019, Loss: 0.0913, Grad: 2.1835
+  Batch 2600/6019, Loss: 0.0750, Grad: 24.2948
+  Batch 2700/6019, Loss: 0.0529, Grad: 7.0733
+  Batch 2800/6019, Loss: 0.1007, Grad: 2.6273
+  Batch 2900/6019, Loss: 0.0666, Grad: 5.4079
+  Batch 3000/6019, Loss: 0.1062, Grad: 5.9658
+  Batch 3100/6019, Loss: 0.0520, Grad: 3.3763
+  Batch 3200/6019, Loss: 0.0683, Grad: 4.0375
+  Batch 3300/6019, Loss: 0.0760, Grad: 2.1838
+  Batch 3400/6019, Loss: 0.0688, Grad: 1.8007
+  Batch 3500/6019, Loss: 0.0676, Grad: 18.8176
+  Batch 3600/6019, Loss: 0.0658, Grad: 3.7110
+  Batch 3700/6019, Loss: 0.0544, Grad: 1.8825
+  Batch 3800/6019, Loss: 0.0678, Grad: 3.8691
+  Batch 3900/6019, Loss: 0.0706, Grad: 4.7037
+  Batch 4000/6019, Loss: 0.0686, Grad: 2.4209
+  Batch 4100/6019, Loss: 0.0672, Grad: 10.0125
+  Batch 4200/6019, Loss: 0.0722, Grad: 5.4339
+  Batch 4300/6019, Loss: 0.0828, Grad: 2.8138
+  Batch 4400/6019, Loss: 0.0633, Grad: 2.0835
+  Batch 4500/6019, Loss: 0.0729, Grad: 17.6134
+  Batch 4600/6019, Loss: 0.0667, Grad: 3.4387
+  Batch 4700/6019, Loss: 0.0850, Grad: 4.7257
+  Batch 4800/6019, Loss: 0.0888, Grad: 4.0161
+  Batch 4900/6019, Loss: 0.0800, Grad: 5.4398
+  Batch 5000/6019, Loss: 0.0460, Grad: 8.9635
+  Batch 5100/6019, Loss: 0.0423, Grad: 1.5985
+  Batch 5200/6019, Loss: 0.0895, Grad: 9.0564
+  Batch 5300/6019, Loss: 0.0713, Grad: 3.4525
+  Batch 5400/6019, Loss: 0.0610, Grad: 2.7533
+  Batch 5500/6019, Loss: 0.0800, Grad: 11.0563
+  Batch 5600/6019, Loss: 0.0483, Grad: 3.0058
+  Batch 5700/6019, Loss: 0.0583, Grad: 2.2703
+  Batch 5800/6019, Loss: 0.0617, Grad: 2.4158
+  Batch 5900/6019, Loss: 0.0892, Grad: 5.0570
+  Batch 6000/6019, Loss: 0.0606, Grad: 4.0527
+Train Loss: 0.0712
+Val Loss: 0.0973, Val Macro F1: 0.8044
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9438
+  Class 1 (Tonal Speech    ): F1 = 0.6638
+  Class 2 (Vocal Music     ): F1 = 0.7641
+  Class 3 (Non-vocal Music ): F1 = 0.6430
+  Class 4 (Urban Env       ): F1 = 0.9186
+  Class 5 (Wildlife Env    ): F1 = 0.8934
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  5445
+  Class 1→0 (tonal→non-tonal speech):  1731
+  Class 2→3 (vocal→non-vocal music):   4248
+  Class 3→2 (non-vocal→vocal music):   1395
+Learning rate: 0.000100
+
+============================================================
+Epoch 7/50
+============================================================
+  Batch 0/6019, Loss: 0.0660, Grad: 2.3682
+  Batch 100/6019, Loss: 0.0477, Grad: 6.4682
+  Batch 200/6019, Loss: 0.0846, Grad: 13.6666
+  Batch 300/6019, Loss: 0.0713, Grad: 5.1638
+  Batch 400/6019, Loss: 0.0794, Grad: 3.4974
+  Batch 500/6019, Loss: 0.0797, Grad: 6.6134
+  Batch 600/6019, Loss: 0.0673, Grad: 2.5348
+  Batch 700/6019, Loss: 0.0712, Grad: 7.0225
+  Batch 800/6019, Loss: 0.0428, Grad: 1.3407
+  Batch 900/6019, Loss: 0.0565, Grad: 11.6585
+  Batch 1000/6019, Loss: 0.0602, Grad: 2.9162
+  Batch 1100/6019, Loss: 0.0632, Grad: 2.9055
+  Batch 1200/6019, Loss: 0.0555, Grad: 2.2507
+  Batch 1300/6019, Loss: 0.0476, Grad: 2.7487
+  Batch 1400/6019, Loss: 0.0621, Grad: 2.1172
+  Batch 1500/6019, Loss: 0.0660, Grad: 38.5921
+  Batch 1600/6019, Loss: 0.0741, Grad: 6.6961
+  Batch 1700/6019, Loss: 0.0872, Grad: 3.3009
+  Batch 1800/6019, Loss: 0.0488, Grad: 3.4943
+  Batch 1900/6019, Loss: 0.0759, Grad: 2.4472
+  Batch 2000/6019, Loss: 0.0408, Grad: 4.7809
+  Batch 2100/6019, Loss: 0.0701, Grad: 2.2619
+  Batch 2200/6019, Loss: 0.1115, Grad: 7.3702
+  Batch 2300/6019, Loss: 0.0680, Grad: 4.7143
+  Batch 2400/6019, Loss: 0.0661, Grad: 7.7988
+  Batch 2500/6019, Loss: 0.0653, Grad: 2.9627
+  Batch 2600/6019, Loss: 0.0671, Grad: 3.5054
+  Batch 2700/6019, Loss: 0.0679, Grad: 38.9871
+  Batch 2800/6019, Loss: 0.0674, Grad: 3.8369
+  Batch 2900/6019, Loss: 0.0634, Grad: 4.7916
+  Batch 3000/6019, Loss: 0.0542, Grad: 2.7333
+  Batch 3100/6019, Loss: 0.0597, Grad: 15.3211
+  Batch 3200/6019, Loss: 0.0873, Grad: 4.0962
+  Batch 3300/6019, Loss: 0.0680, Grad: 4.8246
+  Batch 3400/6019, Loss: 0.0636, Grad: 2.7494
+  Batch 3500/6019, Loss: 0.0762, Grad: 3.5183
+  Batch 3600/6019, Loss: 0.0675, Grad: 14.1218
+  Batch 3700/6019, Loss: 0.1104, Grad: 13.4725
+  Batch 3800/6019, Loss: 0.0488, Grad: 145.9800
+  Batch 3900/6019, Loss: 0.0810, Grad: 4.1389
+  Batch 4000/6019, Loss: 0.0604, Grad: 54.1901
+  Batch 4100/6019, Loss: 0.0774, Grad: 4.8123
+  Batch 4200/6019, Loss: 0.0656, Grad: 2.1756
+  Batch 4300/6019, Loss: 0.0903, Grad: 5.3691
+  Batch 4400/6019, Loss: 0.1209, Grad: 5.8257
+  Batch 4500/6019, Loss: 0.0721, Grad: 2.7409
+  Batch 4600/6019, Loss: 0.0745, Grad: 4.1005
+  Batch 4700/6019, Loss: 0.1035, Grad: 8.6689
+  Batch 4800/6019, Loss: 0.0501, Grad: 2.2966
+  Batch 4900/6019, Loss: 0.0749, Grad: 2.5133
+  Batch 5000/6019, Loss: 0.0553, Grad: 2.0611
+  Batch 5100/6019, Loss: 0.0641, Grad: 4.7654
+  Batch 5200/6019, Loss: 0.0653, Grad: 7.0856
+  Batch 5300/6019, Loss: 0.0479, Grad: 2.2496
+  Batch 5400/6019, Loss: 0.0839, Grad: 5.6416
+  Batch 5500/6019, Loss: 0.0876, Grad: 32.6039
+  Batch 5600/6019, Loss: 0.0635, Grad: 2.8041
+  Batch 5700/6019, Loss: 0.0834, Grad: 7.8589
+  Batch 5800/6019, Loss: 0.0715, Grad: 6.0107
+  Batch 5900/6019, Loss: 0.0753, Grad: 2.7894
+  Batch 6000/6019, Loss: 0.0553, Grad: 1.9717
+Train Loss: 0.0701
+Val Loss: 0.0829, Val Macro F1: 0.8166
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9577
+  Class 1 (Tonal Speech    ): F1 = 0.7146
+  Class 2 (Vocal Music     ): F1 = 0.7974
+  Class 3 (Non-vocal Music ): F1 = 0.6355
+  Class 4 (Urban Env       ): F1 = 0.9108
+  Class 5 (Wildlife Env    ): F1 = 0.8834
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  3397
+  Class 1→0 (tonal→non-tonal speech):  2059
+  Class 2→3 (vocal→non-vocal music):   3026
+  Class 3→2 (non-vocal→vocal music):   2066
+Learning rate: 0.000100
+
+============================================================
+Epoch 8/50
+============================================================
+  Batch 0/6019, Loss: 0.0642, Grad: 6.2584
+  Batch 100/6019, Loss: 0.0667, Grad: 11.8341
+  Batch 200/6019, Loss: 0.0478, Grad: 2.9168
+  Batch 300/6019, Loss: 0.0493, Grad: 3.6036
+  Batch 400/6019, Loss: 0.0568, Grad: 4.6685
+  Batch 500/6019, Loss: 0.0422, Grad: 3.0602
+  Batch 600/6019, Loss: 0.0629, Grad: 5.9304
+  Batch 700/6019, Loss: 0.0701, Grad: 5.6095
+  Batch 800/6019, Loss: 0.0700, Grad: 3.0163
+  Batch 900/6019, Loss: 0.0788, Grad: 3.4324
+  Batch 1000/6019, Loss: 0.0700, Grad: 4.9794
+  Batch 1100/6019, Loss: 0.0393, Grad: 23.3720
+  Batch 1200/6019, Loss: 0.0732, Grad: 12.0860
+  Batch 1300/6019, Loss: 0.0673, Grad: 2.9270
+  Batch 1400/6019, Loss: 0.0884, Grad: 11.6149
+  Batch 1500/6019, Loss: 0.0695, Grad: 5.8097
+  Batch 1600/6019, Loss: 0.1100, Grad: 7.5756
+  Batch 1700/6019, Loss: 0.0556, Grad: 2.1624
+  Batch 1800/6019, Loss: 0.0599, Grad: 3.2066
+  Batch 1900/6019, Loss: 0.0588, Grad: 2.1068
+  Batch 2000/6019, Loss: 0.0483, Grad: 8.0282
+  Batch 2100/6019, Loss: 0.1112, Grad: 7.3995
+  Batch 2200/6019, Loss: 0.0643, Grad: 3.0481
+  Batch 2300/6019, Loss: 0.0490, Grad: 3.9644
+  Batch 2400/6019, Loss: 0.0594, Grad: 1.8819
+  Batch 2500/6019, Loss: 0.0758, Grad: 8.5058
+  Batch 2600/6019, Loss: 0.0596, Grad: 2.0505
+  Batch 2700/6019, Loss: 0.0739, Grad: 10.6533
+  Batch 2800/6019, Loss: 0.0517, Grad: 2.0744
+  Batch 2900/6019, Loss: 0.0706, Grad: 2.8155
+  Batch 3000/6019, Loss: 0.0848, Grad: 3.8490
+  Batch 3100/6019, Loss: 0.0565, Grad: 2.8740
+  Batch 3200/6019, Loss: 0.0675, Grad: 4.3634
+  Batch 3300/6019, Loss: 0.0699, Grad: 10.1222
+  Batch 3400/6019, Loss: 0.0712, Grad: 17.8185
+  Batch 3500/6019, Loss: 0.0691, Grad: 22.0399
+  Batch 3600/6019, Loss: 0.0556, Grad: 3.6711
+  Batch 3700/6019, Loss: 0.0604, Grad: 2.2213
+  Batch 3800/6019, Loss: 0.0596, Grad: 7.4741
+  Batch 3900/6019, Loss: 0.0662, Grad: 2.8693
+  Batch 4000/6019, Loss: 0.0680, Grad: 10.1756
+  Batch 4100/6019, Loss: 0.0692, Grad: 4.1370
+  Batch 4200/6019, Loss: 0.0964, Grad: 4.7214
+  Batch 4300/6019, Loss: 0.0967, Grad: 3.9716
+  Batch 4400/6019, Loss: 0.0746, Grad: 3.9298
+  Batch 4500/6019, Loss: 0.0765, Grad: 2.7499
+  Batch 4600/6019, Loss: 0.0565, Grad: 3.3530
+  Batch 4700/6019, Loss: 0.0541, Grad: 3.7909
+  Batch 4800/6019, Loss: 0.0903, Grad: 4.5159
+  Batch 4900/6019, Loss: 0.0530, Grad: 2.4286
+  Batch 5000/6019, Loss: 0.0417, Grad: 6.4165
+  Batch 5100/6019, Loss: 0.0776, Grad: 2.6766
+  Batch 5200/6019, Loss: 0.0568, Grad: 2.1341
+  Batch 5300/6019, Loss: 0.0465, Grad: 2.0255
+  Batch 5400/6019, Loss: 0.0649, Grad: 1.4764
+  Batch 5500/6019, Loss: 0.0655, Grad: 7.3951
+  Batch 5600/6019, Loss: 0.1008, Grad: 5.0465
+  Batch 5700/6019, Loss: 0.0691, Grad: 8.3786
+  Batch 5800/6019, Loss: 0.0808, Grad: 8.5174
+  Batch 5900/6019, Loss: 0.0508, Grad: 4.9087
+  Batch 6000/6019, Loss: 0.0620, Grad: 12.0557
+Train Loss: 0.0695
+Val Loss: 0.0946, Val Macro F1: 0.8098
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9417
+  Class 1 (Tonal Speech    ): F1 = 0.6611
+  Class 2 (Vocal Music     ): F1 = 0.8045
+  Class 3 (Non-vocal Music ): F1 = 0.6325
+  Class 4 (Urban Env       ): F1 = 0.9242
+  Class 5 (Wildlife Env    ): F1 = 0.8949
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  5722
+  Class 1→0 (tonal→non-tonal speech):  1668
+  Class 2→3 (vocal→non-vocal music):   2794
+  Class 3→2 (non-vocal→vocal music):   2238
+Learning rate: 0.000100
+
+============================================================
+Epoch 9/50
+============================================================
+  Batch 0/6019, Loss: 0.0520, Grad: 3.7356
+  Batch 100/6019, Loss: 0.0542, Grad: 8.0939
+  Batch 200/6019, Loss: 0.0521, Grad: 7.4729
+  Batch 300/6019, Loss: 0.0450, Grad: 11.0088
+  Batch 400/6019, Loss: 0.0621, Grad: 10.7788
+  Batch 500/6019, Loss: 0.0667, Grad: 10.2231
+  Batch 600/6019, Loss: 0.0560, Grad: 7.3937
+  Batch 700/6019, Loss: 0.0748, Grad: 3.5604
+  Batch 800/6019, Loss: 0.0524, Grad: 2.5893
+  Batch 900/6019, Loss: 0.0666, Grad: 5.9696
+  Batch 1000/6019, Loss: 0.0596, Grad: 2.7408
+  Batch 1100/6019, Loss: 0.0571, Grad: 14.1035
+  Batch 1200/6019, Loss: 0.0626, Grad: 5.9131
+  Batch 1300/6019, Loss: 0.0837, Grad: 47.6593
+  Batch 1400/6019, Loss: 0.0679, Grad: 15.0677
+  Batch 1500/6019, Loss: 0.0520, Grad: 3.3393
+  Batch 1600/6019, Loss: 0.0778, Grad: 11.5324
+  Batch 1700/6019, Loss: 0.1059, Grad: 10.1150
+  Batch 1800/6019, Loss: 0.0950, Grad: 26.8752
+  Batch 1900/6019, Loss: 0.0503, Grad: 3.5002
+  Batch 2000/6019, Loss: 0.0648, Grad: 24.9772
+  Batch 2100/6019, Loss: 0.0525, Grad: 5.1712
+  Batch 2200/6019, Loss: 0.0527, Grad: 12.5786
+  Batch 2300/6019, Loss: 0.0676, Grad: 26.1422
+  Batch 2400/6019, Loss: 0.0602, Grad: 8.5964
+  Batch 2500/6019, Loss: 0.0776, Grad: 10.7936
+  Batch 2600/6019, Loss: 0.0975, Grad: 5.9748
+  Batch 2700/6019, Loss: 0.0849, Grad: 4.6350
+  Batch 2800/6019, Loss: 0.0895, Grad: 15.9974
+  Batch 2900/6019, Loss: 0.0687, Grad: 5.8949
+  Batch 3000/6019, Loss: 0.0420, Grad: 4.7465
+  Batch 3100/6019, Loss: 0.0604, Grad: 5.2940
+  Batch 3200/6019, Loss: 0.0783, Grad: 11.4699
+  Batch 3300/6019, Loss: 0.0720, Grad: 17.7568
+  Batch 3400/6019, Loss: 0.0766, Grad: 7.1516
+  Batch 3500/6019, Loss: 0.0811, Grad: 32.1557
+  Batch 3600/6019, Loss: 0.0689, Grad: 5.9785
+  Batch 3700/6019, Loss: 0.0620, Grad: 9.1692
+  Batch 3800/6019, Loss: 0.0658, Grad: 6.4828
+  Batch 3900/6019, Loss: 0.0533, Grad: 5.5579
+  Batch 4000/6019, Loss: 0.0667, Grad: 12.9612
+  Batch 4100/6019, Loss: 0.0534, Grad: 4.8859
+  Batch 4200/6019, Loss: 0.0912, Grad: 6.8532
+  Batch 4300/6019, Loss: 0.0720, Grad: 11.7034
+  Batch 4400/6019, Loss: 0.0650, Grad: 10.4676
+  Batch 4500/6019, Loss: 0.0629, Grad: 15.8190
+  Batch 4600/6019, Loss: 0.0743, Grad: 11.1804
+  Batch 4700/6019, Loss: 0.0949, Grad: 25.8134
+  Batch 4800/6019, Loss: 0.0745, Grad: 110.4862
+  Batch 4900/6019, Loss: 0.0884, Grad: 4.5333
+  Batch 5000/6019, Loss: 0.0768, Grad: 16.8208
+  Batch 5100/6019, Loss: 0.0865, Grad: 9.2898
+  Batch 5200/6019, Loss: 0.0631, Grad: 8.7931
+  Batch 5300/6019, Loss: 0.0702, Grad: 14.4654
+  Batch 5400/6019, Loss: 0.1011, Grad: 9.8119
+  Batch 5500/6019, Loss: 0.0621, Grad: 14.9160
+  Batch 5600/6019, Loss: 0.0539, Grad: 41.0341
+  Batch 5700/6019, Loss: 0.0596, Grad: 5.7023
+  Batch 5800/6019, Loss: 0.0607, Grad: 5.3649
+  Batch 5900/6019, Loss: 0.0674, Grad: 67.5458
+  Batch 6000/6019, Loss: 0.0439, Grad: 18.3440
+Train Loss: 0.0705
+Val Loss: 0.0960, Val Macro F1: 0.8061
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9452
+  Class 1 (Tonal Speech    ): F1 = 0.6660
+  Class 2 (Vocal Music     ): F1 = 0.7947
+  Class 3 (Non-vocal Music ): F1 = 0.6264
+  Class 4 (Urban Env       ): F1 = 0.9405
+  Class 5 (Wildlife Env    ): F1 = 0.8640
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  5005
+  Class 1→0 (tonal→non-tonal speech):  1928
+  Class 2→3 (vocal→non-vocal music):   2777
+  Class 3→2 (non-vocal→vocal music):   2253
+Learning rate: 0.000050
+
+============================================================
+Epoch 10/50
+============================================================
+  Batch 0/6019, Loss: 0.0672, Grad: 5.4480
+  Batch 100/6019, Loss: 0.0624, Grad: 13.0739
+  Batch 200/6019, Loss: 0.0677, Grad: 15.8266
+  Batch 300/6019, Loss: 0.0696, Grad: 3.0372
+  Batch 400/6019, Loss: 0.0782, Grad: 5.4647
+  Batch 500/6019, Loss: 0.0574, Grad: 4.8600
+  Batch 600/6019, Loss: 0.0454, Grad: 2.6374
+  Batch 700/6019, Loss: 0.0582, Grad: 48.7469
+  Batch 800/6019, Loss: 0.0659, Grad: 5.6797
+  Batch 900/6019, Loss: 0.0474, Grad: 2.4674
+  Batch 1000/6019, Loss: 0.0641, Grad: 4.6551
+  Batch 1100/6019, Loss: 0.0614, Grad: 2.5749
+  Batch 1200/6019, Loss: 0.0480, Grad: 14.9247
+  Batch 1300/6019, Loss: 0.0691, Grad: 6.5529
+  Batch 1400/6019, Loss: 0.0557, Grad: 6.7137
+  Batch 1500/6019, Loss: 0.0776, Grad: 13.4980
+  Batch 1600/6019, Loss: 0.0672, Grad: 9.0600
+  Batch 1700/6019, Loss: 0.0488, Grad: 6.8682
+  Batch 1800/6019, Loss: 0.0398, Grad: 1.9072
+  Batch 1900/6019, Loss: 0.0573, Grad: 4.0427
+  Batch 2000/6019, Loss: 0.0645, Grad: 8.5935
+  Batch 2100/6019, Loss: 0.0715, Grad: 7.7648
+  Batch 2200/6019, Loss: 0.0824, Grad: 8.3770
+  Batch 2300/6019, Loss: 0.0843, Grad: 10.2332
+  Batch 2400/6019, Loss: 0.0525, Grad: 5.3830
+  Batch 2500/6019, Loss: 0.0746, Grad: 7.0784
+  Batch 2600/6019, Loss: 0.0793, Grad: 16.3216
+  Batch 2700/6019, Loss: 0.0546, Grad: 9.8825
+  Batch 2800/6019, Loss: 0.0540, Grad: 14.7197
+  Batch 2900/6019, Loss: 0.0483, Grad: 113.4317
+  Batch 3000/6019, Loss: 0.0887, Grad: 9.3767
+  Batch 3100/6019, Loss: 0.0566, Grad: 6.3426
+  Batch 3200/6019, Loss: 0.0643, Grad: 7.1763
+  Batch 3300/6019, Loss: 0.0560, Grad: 15.4618
+  Batch 3400/6019, Loss: 0.0555, Grad: 5.7063
+  Batch 3500/6019, Loss: 0.0633, Grad: 6.7913
+  Batch 3600/6019, Loss: 0.0619, Grad: 17.1694
+  Batch 3700/6019, Loss: 0.0651, Grad: 5.5826
+  Batch 3800/6019, Loss: 0.0681, Grad: 5.0360
+  Batch 3900/6019, Loss: 0.0671, Grad: 15.0315
+  Batch 4000/6019, Loss: 0.0602, Grad: 6.0031
+  Batch 4100/6019, Loss: 0.0443, Grad: 2.4435
+  Batch 4200/6019, Loss: 0.0487, Grad: 8.6295
+  Batch 4300/6019, Loss: 0.0759, Grad: 23.7794
+  Batch 4400/6019, Loss: 0.0690, Grad: 9.0646
+  Batch 4500/6019, Loss: 0.0680, Grad: 10.5606
+  Batch 4600/6019, Loss: 0.0776, Grad: 5.8169
+  Batch 4700/6019, Loss: 0.0553, Grad: 3.9775
+  Batch 4800/6019, Loss: 0.0882, Grad: 19.6141
+  Batch 4900/6019, Loss: 0.0774, Grad: 5.5213
+  Batch 5000/6019, Loss: 0.0777, Grad: 13.7094
+  Batch 5100/6019, Loss: 0.0557, Grad: 2.7859
+  Batch 5200/6019, Loss: 0.0509, Grad: 5.8879
+  Batch 5300/6019, Loss: 0.0778, Grad: 10.3064
+  Batch 5400/6019, Loss: 0.0490, Grad: 6.0670
+  Batch 5500/6019, Loss: 0.0743, Grad: 4.8514
+  Batch 5600/6019, Loss: 0.0520, Grad: 2.9211
+  Batch 5700/6019, Loss: 0.0658, Grad: 4.8745
+  Batch 5800/6019, Loss: 0.0542, Grad: 5.7204
+  Batch 5900/6019, Loss: 0.0859, Grad: 30.2636
+  Batch 6000/6019, Loss: 0.0637, Grad: 4.1534
+Train Loss: 0.0675
+Val Loss: 0.0875, Val Macro F1: 0.8209
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9472
+  Class 1 (Tonal Speech    ): F1 = 0.6823
+  Class 2 (Vocal Music     ): F1 = 0.8045
+  Class 3 (Non-vocal Music ): F1 = 0.6464
+  Class 4 (Urban Env       ): F1 = 0.9388
+  Class 5 (Wildlife Env    ): F1 = 0.9062
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4981
+  Class 1→0 (tonal→non-tonal speech):  1701
+  Class 2→3 (vocal→non-vocal music):   2941
+  Class 3→2 (non-vocal→vocal music):   2054
+Learning rate: 0.000050
+
+============================================================
+Epoch 11/50
+============================================================
+  Batch 0/6019, Loss: 0.0559, Grad: 9.2840
+  Batch 100/6019, Loss: 0.0563, Grad: 4.1522
+  Batch 200/6019, Loss: 0.0598, Grad: 7.2442
+  Batch 300/6019, Loss: 0.0499, Grad: 19.9197
+  Batch 400/6019, Loss: 0.0784, Grad: 10.1073
+  Batch 500/6019, Loss: 0.0510, Grad: 1.8602
+  Batch 600/6019, Loss: 0.0791, Grad: 4.2524
+  Batch 700/6019, Loss: 0.0501, Grad: 3.3387
+  Batch 800/6019, Loss: 0.0529, Grad: 4.0877
+  Batch 900/6019, Loss: 0.0729, Grad: 5.7405
+  Batch 1000/6019, Loss: 0.0648, Grad: 3.5484
+  Batch 1100/6019, Loss: 0.0686, Grad: 6.0441
+  Batch 1200/6019, Loss: 0.0584, Grad: 17.0831
+  Batch 1300/6019, Loss: 0.0656, Grad: 2.8040
+  Batch 1400/6019, Loss: 0.0523, Grad: 4.2145
+  Batch 1500/6019, Loss: 0.0765, Grad: 37.6217
+  Batch 1600/6019, Loss: 0.0867, Grad: 12.0751
+  Batch 1700/6019, Loss: 0.0670, Grad: 3.3375
+  Batch 1800/6019, Loss: 0.0674, Grad: 186.9354
+  Batch 1900/6019, Loss: 0.0506, Grad: 5.9480
+  Batch 2000/6019, Loss: 0.0613, Grad: 6.1076
+  Batch 2100/6019, Loss: 0.0661, Grad: 5.4621
+  Batch 2200/6019, Loss: 0.0605, Grad: 3.4093
+  Batch 2300/6019, Loss: 0.1042, Grad: 6.0693
+  Batch 2400/6019, Loss: 0.0823, Grad: 39.7935
+  Batch 2500/6019, Loss: 0.0986, Grad: 131.8237
+  Batch 2600/6019, Loss: 0.0522, Grad: 5.9549
+  Batch 2700/6019, Loss: 0.0825, Grad: 19.3022
+  Batch 2800/6019, Loss: 0.0688, Grad: 41.1931
+  Batch 2900/6019, Loss: 0.0896, Grad: 5.8177
+  Batch 3000/6019, Loss: 0.0735, Grad: 6.1985
+  Batch 3100/6019, Loss: 0.0474, Grad: 1.8446
+  Batch 3200/6019, Loss: 0.0743, Grad: 6.9912
+  Batch 3300/6019, Loss: 0.0460, Grad: 3.9103
+  Batch 3400/6019, Loss: 0.0460, Grad: 5.5339
+  Batch 3500/6019, Loss: 0.0558, Grad: 3.3277
+  Batch 3600/6019, Loss: 0.0538, Grad: 3.0776
+  Batch 3700/6019, Loss: 0.0692, Grad: 8.0918
+  Batch 3800/6019, Loss: 0.0694, Grad: 4.5737
+  Batch 3900/6019, Loss: 0.0508, Grad: 8.2728
+  Batch 4000/6019, Loss: 0.0522, Grad: 7.6048
+  Batch 4100/6019, Loss: 0.0759, Grad: 7.8248
+  Batch 4200/6019, Loss: 0.0580, Grad: 4.4056
+  Batch 4300/6019, Loss: 0.0783, Grad: 12.5935
+  Batch 4400/6019, Loss: 0.0483, Grad: 3.5923
+  Batch 4500/6019, Loss: 0.0569, Grad: 4.7680
+  Batch 4600/6019, Loss: 0.0720, Grad: 13.5576
+  Batch 4700/6019, Loss: 0.0327, Grad: 6.0070
+  Batch 4800/6019, Loss: 0.0538, Grad: 6.1725
+  Batch 4900/6019, Loss: 0.0421, Grad: 3.5497
+  Batch 5000/6019, Loss: 0.0543, Grad: 5.3929
+  Batch 5100/6019, Loss: 0.0700, Grad: 62.4660
+  Batch 5200/6019, Loss: 0.0535, Grad: 2.8667
+  Batch 5300/6019, Loss: 0.0782, Grad: 10.5080
+  Batch 5400/6019, Loss: 0.0602, Grad: 8.7264
+  Batch 5500/6019, Loss: 0.0803, Grad: 25.0701
+  Batch 5600/6019, Loss: 0.0932, Grad: 9.2557
+  Batch 5700/6019, Loss: 0.0650, Grad: 38.2280
+  Batch 5800/6019, Loss: 0.0672, Grad: 4.0225
+  Batch 5900/6019, Loss: 0.0642, Grad: 35.8713
+  Batch 6000/6019, Loss: 0.0718, Grad: 8.1970
+Train Loss: 0.0663
+Val Loss: 0.0878, Val Macro F1: 0.8179
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9492
+  Class 1 (Tonal Speech    ): F1 = 0.6840
+  Class 2 (Vocal Music     ): F1 = 0.8203
+  Class 3 (Non-vocal Music ): F1 = 0.6226
+  Class 4 (Urban Env       ): F1 = 0.9352
+  Class 5 (Wildlife Env    ): F1 = 0.8964
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4761
+  Class 1→0 (tonal→non-tonal speech):  1767
+  Class 2→3 (vocal→non-vocal music):   2189
+  Class 3→2 (non-vocal→vocal music):   2616
+Learning rate: 0.000050
+
+============================================================
+Epoch 12/50
+============================================================
+  Batch 0/6019, Loss: 0.0526, Grad: 5.6643
+  Batch 100/6019, Loss: 0.0674, Grad: 3.7104
+  Batch 200/6019, Loss: 0.0714, Grad: 36.2459
+  Batch 300/6019, Loss: 0.0560, Grad: 9.0442
+  Batch 400/6019, Loss: 0.0550, Grad: 2.5916
+  Batch 500/6019, Loss: 0.1077, Grad: 22.4393
+  Batch 600/6019, Loss: 0.0754, Grad: 5.3967
+  Batch 700/6019, Loss: 0.0623, Grad: 15.2711
+  Batch 800/6019, Loss: 0.0671, Grad: 6.6146
+  Batch 900/6019, Loss: 0.0524, Grad: 2.0863
+  Batch 1000/6019, Loss: 0.0494, Grad: 3.7963
+  Batch 1100/6019, Loss: 0.0512, Grad: 6.5711
+  Batch 1200/6019, Loss: 0.0824, Grad: 6.0919
+  Batch 1300/6019, Loss: 0.1171, Grad: 10.0600
+  Batch 1400/6019, Loss: 0.0421, Grad: 13.7763
+  Batch 1500/6019, Loss: 0.0603, Grad: 3.8696
+  Batch 1600/6019, Loss: 0.0683, Grad: 7.4040
+  Batch 1700/6019, Loss: 0.0500, Grad: 5.8770
+  Batch 1800/6019, Loss: 0.0489, Grad: 12.8412
+  Batch 1900/6019, Loss: 0.0430, Grad: 26.7870
+  Batch 2000/6019, Loss: 0.0595, Grad: 558.4915
+  Batch 2100/6019, Loss: 0.0555, Grad: 8.2632
+  Batch 2200/6019, Loss: 0.0614, Grad: 9.4519
+  Batch 2300/6019, Loss: 0.0517, Grad: 13.2089
+  Batch 2400/6019, Loss: 0.0693, Grad: 14.8143
+  Batch 2500/6019, Loss: 0.0592, Grad: 5.7425
+  Batch 2600/6019, Loss: 0.0662, Grad: 14.2131
+  Batch 2700/6019, Loss: 0.0659, Grad: 7.6709
+  Batch 2800/6019, Loss: 0.0501, Grad: 6.0246
+  Batch 2900/6019, Loss: 0.0493, Grad: 10.4593
+  Batch 3000/6019, Loss: 0.0791, Grad: 4.2300
+  Batch 3100/6019, Loss: 0.0610, Grad: 9.3744
+  Batch 3200/6019, Loss: 0.0575, Grad: 6.3881
+  Batch 3300/6019, Loss: 0.0578, Grad: 36.8427
+  Batch 3400/6019, Loss: 0.0653, Grad: 31.8375
+  Batch 3500/6019, Loss: 0.0871, Grad: 17.0337
+  Batch 3600/6019, Loss: 0.0857, Grad: 10.2567
+  Batch 3700/6019, Loss: 0.0725, Grad: 18.1008
+  Batch 3800/6019, Loss: 0.0513, Grad: 25.4515
+  Batch 3900/6019, Loss: 0.0647, Grad: 8.4122
+  Batch 4000/6019, Loss: 0.0696, Grad: 29.4842
+  Batch 4100/6019, Loss: 0.0733, Grad: 48.3990
+  Batch 4200/6019, Loss: 0.0401, Grad: 3.1026
+  Batch 4300/6019, Loss: 0.0492, Grad: 18.2500
+  Batch 4400/6019, Loss: 0.0646, Grad: 7.5204
+  Batch 4500/6019, Loss: 0.0545, Grad: 27.5402
+  Batch 4600/6019, Loss: 0.0581, Grad: 7.6272
+  Batch 4700/6019, Loss: 0.0582, Grad: 8.1028
+  Batch 4800/6019, Loss: 0.0683, Grad: 12.8099
+  Batch 4900/6019, Loss: 0.0552, Grad: 13.7958
+  Batch 5000/6019, Loss: 0.1059, Grad: 30.2342
+  Batch 5100/6019, Loss: 0.0841, Grad: 151.6532
+  Batch 5200/6019, Loss: 0.0590, Grad: 8.7008
+  Batch 5300/6019, Loss: 0.0521, Grad: 13.8973
+  Batch 5400/6019, Loss: 0.0699, Grad: 10.5580
+  Batch 5500/6019, Loss: 0.0618, Grad: 7.3400
+  Batch 5600/6019, Loss: 0.0611, Grad: 15.6113
+  Batch 5700/6019, Loss: 0.0552, Grad: 10.0558
+  Batch 5800/6019, Loss: 0.0607, Grad: 186.0679
+  Batch 5900/6019, Loss: 0.0851, Grad: 10.8579
+  Batch 6000/6019, Loss: 0.0447, Grad: 16.9724
+Train Loss: 0.0658
+Val Loss: 0.0849, Val Macro F1: 0.8251
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9550
+  Class 1 (Tonal Speech    ): F1 = 0.7057
+  Class 2 (Vocal Music     ): F1 = 0.8045
+  Class 3 (Non-vocal Music ): F1 = 0.6362
+  Class 4 (Urban Env       ): F1 = 0.9475
+  Class 5 (Wildlife Env    ): F1 = 0.9017
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  3769
+  Class 1→0 (tonal→non-tonal speech):  1960
+  Class 2→3 (vocal→non-vocal music):   2896
+  Class 3→2 (non-vocal→vocal music):   2139
+Learning rate: 0.000050
+✓ Saved best model with Val F1: 0.8251
+
+============================================================
+Epoch 13/50
+============================================================
+  Batch 0/6019, Loss: 0.0700, Grad: 21.1238
+  Batch 100/6019, Loss: 0.0993, Grad: 427.4001
+  Batch 200/6019, Loss: 0.0853, Grad: 41.2312
+  Batch 300/6019, Loss: 0.0592, Grad: 13.1683
+  Batch 400/6019, Loss: 0.0543, Grad: 30.9037
+  Batch 500/6019, Loss: 0.0694, Grad: 22.6596
+  Batch 600/6019, Loss: 0.0633, Grad: 6.6850
+  Batch 700/6019, Loss: 0.0805, Grad: 20.1571
+  Batch 800/6019, Loss: 0.0729, Grad: 141.6554
+  Batch 900/6019, Loss: 0.0625, Grad: 29.4811
+  Batch 1000/6019, Loss: 0.0677, Grad: 23.0606
+  Batch 1100/6019, Loss: 0.0584, Grad: 178.4221
+  Batch 1200/6019, Loss: 0.0693, Grad: 19.4740
+  Batch 1300/6019, Loss: 0.0657, Grad: 10.1217
+  Batch 1400/6019, Loss: 0.0746, Grad: 8.0689
+  Batch 1500/6019, Loss: 0.0521, Grad: 55.6441
+  Batch 1600/6019, Loss: 0.0667, Grad: 4.6802
+  Batch 1700/6019, Loss: 0.0647, Grad: 36.3084
+  Batch 1800/6019, Loss: 0.0693, Grad: 7.1731
+  Batch 1900/6019, Loss: 0.0834, Grad: 6.0479
+  Batch 2000/6019, Loss: 0.0427, Grad: 7.9759
+  Batch 2100/6019, Loss: 0.0577, Grad: 27.9585
+  Batch 2200/6019, Loss: 0.0851, Grad: 16.0700
+  Batch 2300/6019, Loss: 0.0547, Grad: 9.1804
+  Batch 2400/6019, Loss: 0.0684, Grad: 16.6438
+  Batch 2500/6019, Loss: 0.0565, Grad: 5.8889
+  Batch 2600/6019, Loss: 0.0770, Grad: 22.3102
+  Batch 2700/6019, Loss: 0.0810, Grad: 5.9919
+  Batch 2800/6019, Loss: 0.0517, Grad: 7.0039
+  Batch 2900/6019, Loss: 0.0639, Grad: 26.0367
+  Batch 3000/6019, Loss: 0.0591, Grad: 19.5615
+  Batch 3100/6019, Loss: 0.0877, Grad: 39.0161
+  Batch 3200/6019, Loss: 0.0847, Grad: 56.1800
+  Batch 3300/6019, Loss: 0.0671, Grad: 13.9067
+  Batch 3400/6019, Loss: 0.0912, Grad: 12.3652
+  Batch 3500/6019, Loss: 0.0679, Grad: 11.1199
+  Batch 3600/6019, Loss: 0.0595, Grad: 117.9939
+  Batch 3700/6019, Loss: 0.0720, Grad: 5.7123
+  Batch 3800/6019, Loss: 0.0424, Grad: 5.5963
+  Batch 3900/6019, Loss: 0.0585, Grad: 6.0604
+  Batch 4000/6019, Loss: 0.0546, Grad: 3.5800
+  Batch 4100/6019, Loss: 0.0667, Grad: 10.4735
+  Batch 4200/6019, Loss: 0.0584, Grad: 10.2340
+  Batch 4300/6019, Loss: 0.0860, Grad: 20.4277
+  Batch 4400/6019, Loss: 0.0512, Grad: 23.3094
+  Batch 4500/6019, Loss: 0.0619, Grad: 12.5298
+  Batch 4600/6019, Loss: 0.0557, Grad: 5.1343
+  Batch 4700/6019, Loss: 0.0555, Grad: 9.6598
+  Batch 4800/6019, Loss: 0.0860, Grad: 86.7690
+  Batch 4900/6019, Loss: 0.0889, Grad: 56.1215
+  Batch 5000/6019, Loss: 0.0452, Grad: 12.0337
+  Batch 5100/6019, Loss: 0.0533, Grad: 7.0532
+  Batch 5200/6019, Loss: 0.0578, Grad: 15.1551
+  Batch 5300/6019, Loss: 0.0741, Grad: 6.7134
+  Batch 5400/6019, Loss: 0.0582, Grad: 4.8062
+  Batch 5500/6019, Loss: 0.0585, Grad: 35.4283
+  Batch 5600/6019, Loss: 0.0537, Grad: 9.4386
+  Batch 5700/6019, Loss: 0.0647, Grad: 24.1375
+  Batch 5800/6019, Loss: 0.0685, Grad: 10.4223
+  Batch 5900/6019, Loss: 0.0589, Grad: 8.8746
+  Batch 6000/6019, Loss: 0.0435, Grad: 7.6092
+Train Loss: 0.0663
+Val Loss: 0.0818, Val Macro F1: 0.8229
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9570
+  Class 1 (Tonal Speech    ): F1 = 0.7083
+  Class 2 (Vocal Music     ): F1 = 0.8149
+  Class 3 (Non-vocal Music ): F1 = 0.6270
+  Class 4 (Urban Env       ): F1 = 0.9360
+  Class 5 (Wildlife Env    ): F1 = 0.8943
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  3428
+  Class 1→0 (tonal→non-tonal speech):  2128
+  Class 2→3 (vocal→non-vocal music):   2386
+  Class 3→2 (non-vocal→vocal music):   2468
+Learning rate: 0.000050
+
+============================================================
+Epoch 14/50
+============================================================
+  Batch 0/6019, Loss: 0.0584, Grad: 4.6405
+  Batch 100/6019, Loss: 0.0614, Grad: 6.4150
+  Batch 200/6019, Loss: 0.0446, Grad: 3.7633
+  Batch 300/6019, Loss: 0.0664, Grad: 11.3066
+  Batch 400/6019, Loss: 0.0779, Grad: 6.5381
+  Batch 500/6019, Loss: 0.0607, Grad: 9.3524
+  Batch 600/6019, Loss: 0.0657, Grad: 8.8370
+  Batch 700/6019, Loss: 0.0606, Grad: 11.9899
+  Batch 800/6019, Loss: 0.0537, Grad: 14.6296
+  Batch 900/6019, Loss: 0.0769, Grad: 7.9625
+  Batch 1000/6019, Loss: 0.0528, Grad: 4.7237
+  Batch 1100/6019, Loss: 0.0479, Grad: 11.8960
+  Batch 1200/6019, Loss: 0.0729, Grad: 85.7429
+  Batch 1300/6019, Loss: 0.0895, Grad: 36.0772
+  Batch 1400/6019, Loss: 0.0519, Grad: 16.5157
+  Batch 1500/6019, Loss: 0.0764, Grad: 4.6680
+  Batch 1600/6019, Loss: 0.0530, Grad: 45.9340
+  Batch 1700/6019, Loss: 0.0531, Grad: 5.9822
+  Batch 1800/6019, Loss: 0.0573, Grad: 6.9433
+  Batch 1900/6019, Loss: 0.0674, Grad: 5.3080
+  Batch 2000/6019, Loss: 0.0566, Grad: 6.1592
+  Batch 2100/6019, Loss: 0.0718, Grad: 7.0421
+  Batch 2200/6019, Loss: 0.0441, Grad: 10.0224
+  Batch 2300/6019, Loss: 0.0607, Grad: 10.2104
+  Batch 2400/6019, Loss: 0.0714, Grad: 38.2554
+  Batch 2500/6019, Loss: 0.0839, Grad: 10.8250
+  Batch 2600/6019, Loss: 0.0611, Grad: 3.5282
+  Batch 2700/6019, Loss: 0.0793, Grad: 13.8907
+  Batch 2800/6019, Loss: 0.1027, Grad: 10.8060
+  Batch 2900/6019, Loss: 0.0535, Grad: 6.1902
+  Batch 3000/6019, Loss: 0.0750, Grad: 419.1931
+  Batch 3100/6019, Loss: 0.0513, Grad: 10.2350
+  Batch 3200/6019, Loss: 0.0519, Grad: 9.9328
+  Batch 3300/6019, Loss: 0.0524, Grad: 15.1960
+  Batch 3400/6019, Loss: 0.0692, Grad: 6.8798
+  Batch 3500/6019, Loss: 0.0539, Grad: 5.2290
+  Batch 3600/6019, Loss: 0.0434, Grad: 8.3195
+  Batch 3700/6019, Loss: 0.0547, Grad: 6.6856
+  Batch 3800/6019, Loss: 0.0757, Grad: 4.2974
+  Batch 3900/6019, Loss: 0.0773, Grad: 15.5810
+  Batch 4000/6019, Loss: 0.0490, Grad: 2.6726
+  Batch 4100/6019, Loss: 0.0761, Grad: 9.6635
+  Batch 4200/6019, Loss: 0.0575, Grad: 6.0787
+  Batch 4300/6019, Loss: 0.0632, Grad: 10.1920
+  Batch 4400/6019, Loss: 0.0445, Grad: 4.0412
+  Batch 4500/6019, Loss: 0.0658, Grad: 5.9613
+  Batch 4600/6019, Loss: 0.0701, Grad: 8.2913
+  Batch 4700/6019, Loss: 0.0635, Grad: 6.9960
+  Batch 4800/6019, Loss: 0.0508, Grad: 5.5687
+  Batch 4900/6019, Loss: 0.0819, Grad: 75.5604
+  Batch 5000/6019, Loss: 0.0448, Grad: 7.8211
+  Batch 5100/6019, Loss: 0.0515, Grad: 4.5424
+  Batch 5200/6019, Loss: 0.0693, Grad: 58.9117
+  Batch 5300/6019, Loss: 0.0735, Grad: 8.3183
+  Batch 5400/6019, Loss: 0.0757, Grad: 11.9558
+  Batch 5500/6019, Loss: 0.0607, Grad: 3.0846
+  Batch 5600/6019, Loss: 0.0585, Grad: 2.8197
+  Batch 5700/6019, Loss: 0.0582, Grad: 9.6007
+  Batch 5800/6019, Loss: 0.0696, Grad: 3.7320
+  Batch 5900/6019, Loss: 0.0747, Grad: 12.6175
+  Batch 6000/6019, Loss: 0.0743, Grad: 83.5130
+Train Loss: 0.0664
+Val Loss: 0.0918, Val Macro F1: 0.8118
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9475
+  Class 1 (Tonal Speech    ): F1 = 0.6801
+  Class 2 (Vocal Music     ): F1 = 0.7943
+  Class 3 (Non-vocal Music ): F1 = 0.6400
+  Class 4 (Urban Env       ): F1 = 0.9313
+  Class 5 (Wildlife Env    ): F1 = 0.8774
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  5003
+  Class 1→0 (tonal→non-tonal speech):  1694
+  Class 2→3 (vocal→non-vocal music):   3086
+  Class 3→2 (non-vocal→vocal music):   2003
+Learning rate: 0.000050
+
+============================================================
+Epoch 15/50
+============================================================
+  Batch 0/6019, Loss: 0.0445, Grad: 2.4578
+  Batch 100/6019, Loss: 0.0823, Grad: 52.1871
+  Batch 200/6019, Loss: 0.0622, Grad: 24.3056
+  Batch 300/6019, Loss: 0.0671, Grad: 16.2108
+  Batch 400/6019, Loss: 0.0831, Grad: 3.4788
+  Batch 500/6019, Loss: 0.0682, Grad: 6.4308
+  Batch 600/6019, Loss: 0.0867, Grad: 33.1016
+  Batch 700/6019, Loss: 0.0774, Grad: 6.9474
+  Batch 800/6019, Loss: 0.0761, Grad: 6.4478
+  Batch 900/6019, Loss: 0.0650, Grad: 7.4601
+  Batch 1000/6019, Loss: 0.1020, Grad: 11.0124
+  Batch 1100/6019, Loss: 0.0784, Grad: 8.1531
+  Batch 1200/6019, Loss: 0.0736, Grad: 7.6499
+  Batch 1300/6019, Loss: 0.0794, Grad: 6.6684
+  Batch 1400/6019, Loss: 0.0521, Grad: 6.4818
+  Batch 1500/6019, Loss: 0.0757, Grad: 22.8710
+  Batch 1600/6019, Loss: 0.0984, Grad: 19.6418
+  Batch 1700/6019, Loss: 0.0554, Grad: 15.7113
+  Batch 1800/6019, Loss: 0.0807, Grad: 11.7733
+  Batch 1900/6019, Loss: 0.0566, Grad: 12.2991
+  Batch 2000/6019, Loss: 0.0503, Grad: 30.4849
+  Batch 2100/6019, Loss: 0.0469, Grad: 2.4088
+  Batch 2200/6019, Loss: 0.0540, Grad: 14.2561
+  Batch 2300/6019, Loss: 0.0627, Grad: 13.6568
+  Batch 2400/6019, Loss: 0.0549, Grad: 12.0175
+  Batch 2500/6019, Loss: 0.0460, Grad: 11.9318
+  Batch 2600/6019, Loss: 0.0803, Grad: 14.8762
+  Batch 2700/6019, Loss: 0.0926, Grad: 9.0648
+  Batch 2800/6019, Loss: 0.0653, Grad: 16.8622
+  Batch 2900/6019, Loss: 0.0613, Grad: 8.6891
+  Batch 3000/6019, Loss: 0.0802, Grad: 15.3037
+  Batch 3100/6019, Loss: 0.0574, Grad: 25.5776
+  Batch 3200/6019, Loss: 0.0500, Grad: 20.4958
+  Batch 3300/6019, Loss: 0.0598, Grad: 25.8715
+  Batch 3400/6019, Loss: 0.0615, Grad: 28.3365
+  Batch 3500/6019, Loss: 0.0577, Grad: 12.1127
+  Batch 3600/6019, Loss: 0.0661, Grad: 5.5835
+  Batch 3700/6019, Loss: 0.0747, Grad: 3.3356
+  Batch 3800/6019, Loss: 0.0779, Grad: 32.8463
+  Batch 3900/6019, Loss: 0.0440, Grad: 3.4076
+  Batch 4000/6019, Loss: 0.0506, Grad: 8.5989
+  Batch 4100/6019, Loss: 0.0680, Grad: 171.3354
+  Batch 4200/6019, Loss: 0.0638, Grad: 5.4513
+  Batch 4300/6019, Loss: 0.0512, Grad: 7.5986
+  Batch 4400/6019, Loss: 0.0765, Grad: 13.6094
+  Batch 4500/6019, Loss: 0.0506, Grad: 3.7858
+  Batch 4600/6019, Loss: 0.0696, Grad: 17.7679
+  Batch 4700/6019, Loss: 0.0669, Grad: 21.6757
+  Batch 4800/6019, Loss: 0.0661, Grad: 32.3962
+  Batch 4900/6019, Loss: 0.0495, Grad: 5.1174
+  Batch 5000/6019, Loss: 0.0514, Grad: 4.4089
+  Batch 5100/6019, Loss: 0.0605, Grad: 2.5487
+  Batch 5200/6019, Loss: 0.0417, Grad: 4.6327
+  Batch 5300/6019, Loss: 0.1015, Grad: 608.1185
+  Batch 5400/6019, Loss: 0.0572, Grad: 9.9248
+  Batch 5500/6019, Loss: 0.0645, Grad: 3.4725
+  Batch 5600/6019, Loss: 0.0722, Grad: 15.1922
+  Batch 5700/6019, Loss: 0.0530, Grad: 6.9605
+  Batch 5800/6019, Loss: 0.0717, Grad: 327.2121
+  Batch 5900/6019, Loss: 0.0852, Grad: 28.1746
+  Batch 6000/6019, Loss: 0.1055, Grad: 8.8319
+Train Loss: 0.0660
+Val Loss: 0.0841, Val Macro F1: 0.8204
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9524
+  Class 1 (Tonal Speech    ): F1 = 0.6978
+  Class 2 (Vocal Music     ): F1 = 0.8104
+  Class 3 (Non-vocal Music ): F1 = 0.6392
+  Class 4 (Urban Env       ): F1 = 0.9294
+  Class 5 (Wildlife Env    ): F1 = 0.8932
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4315
+  Class 1→0 (tonal→non-tonal speech):  1759
+  Class 2→3 (vocal→non-vocal music):   2716
+  Class 3→2 (non-vocal→vocal music):   2230
+Learning rate: 0.000050
+
+============================================================
+Epoch 16/50
+============================================================
+  Batch 0/6019, Loss: 0.0590, Grad: 10.3982
+  Batch 100/6019, Loss: 0.0597, Grad: 36.7659
+  Batch 200/6019, Loss: 0.0431, Grad: 9.5626
+  Batch 300/6019, Loss: 0.0703, Grad: 6.4433
+  Batch 400/6019, Loss: 0.0831, Grad: 14.0038
+  Batch 500/6019, Loss: 0.0452, Grad: 8.1146
+  Batch 600/6019, Loss: 0.0515, Grad: 4.2197
+  Batch 700/6019, Loss: 0.0766, Grad: 42.9272
+  Batch 800/6019, Loss: 0.0892, Grad: 9.8399
+  Batch 900/6019, Loss: 0.0606, Grad: 17.2527
+  Batch 1000/6019, Loss: 0.0455, Grad: 7.4540
+  Batch 1100/6019, Loss: 0.0563, Grad: 17.0396
+  Batch 1200/6019, Loss: 0.0624, Grad: 9.2662
+  Batch 1300/6019, Loss: 0.0396, Grad: 5.2326
+  Batch 1400/6019, Loss: 0.0688, Grad: 4.2056
+  Batch 1500/6019, Loss: 0.0687, Grad: 256.0579
+  Batch 1600/6019, Loss: 0.0934, Grad: 5.0051
+  Batch 1700/6019, Loss: 0.0622, Grad: 4.8974
+  Batch 1800/6019, Loss: 0.0808, Grad: 3.7755
+  Batch 1900/6019, Loss: 0.0771, Grad: 6.2946
+  Batch 2000/6019, Loss: 0.0637, Grad: 6.3418
+  Batch 2100/6019, Loss: 0.0528, Grad: 29.2757
+  Batch 2200/6019, Loss: 0.1239, Grad: 6.3292
+  Batch 2300/6019, Loss: 0.0677, Grad: 11.8388
+  Batch 2400/6019, Loss: 0.0464, Grad: 2.9834
+  Batch 2500/6019, Loss: 0.0586, Grad: 8.7826
+  Batch 2600/6019, Loss: 0.0361, Grad: 3.9527
+  Batch 2700/6019, Loss: 0.0771, Grad: 13.3141
+  Batch 2800/6019, Loss: 0.0729, Grad: 9.6907
+  Batch 2900/6019, Loss: 0.0410, Grad: 4.5433
+  Batch 3000/6019, Loss: 0.0771, Grad: 8.6764
+  Batch 3100/6019, Loss: 0.0679, Grad: 7.8444
+  Batch 3200/6019, Loss: 0.0516, Grad: 8.0441
+  Batch 3300/6019, Loss: 0.0515, Grad: 5.2700
+  Batch 3400/6019, Loss: 0.0768, Grad: 12.2278
+  Batch 3500/6019, Loss: 0.0470, Grad: 11.1036
+  Batch 3600/6019, Loss: 0.0447, Grad: 6.4814
+  Batch 3700/6019, Loss: 0.0874, Grad: 11.7426
+  Batch 3800/6019, Loss: 0.0579, Grad: 15.6950
+  Batch 3900/6019, Loss: 0.0783, Grad: 66.2163
+  Batch 4000/6019, Loss: 0.0507, Grad: 4.8909
+  Batch 4100/6019, Loss: 0.0502, Grad: 6.8540
+  Batch 4200/6019, Loss: 0.0601, Grad: 5.0767
+  Batch 4300/6019, Loss: 0.0808, Grad: 11.3179
+  Batch 4400/6019, Loss: 0.0797, Grad: 5.8087
+  Batch 4500/6019, Loss: 0.1343, Grad: 19.7006
+  Batch 4600/6019, Loss: 0.0624, Grad: 6.7528
+  Batch 4700/6019, Loss: 0.0725, Grad: 18.4755
+  Batch 4800/6019, Loss: 0.0628, Grad: 23.1912
+  Batch 4900/6019, Loss: 0.0614, Grad: 285.1521
+  Batch 5000/6019, Loss: 0.0605, Grad: 6.6685
+  Batch 5100/6019, Loss: 0.0573, Grad: 2.9021
+  Batch 5200/6019, Loss: 0.0432, Grad: 6.3503
+  Batch 5300/6019, Loss: 0.0599, Grad: 8.6373
+  Batch 5400/6019, Loss: 0.0917, Grad: 6.3486
+  Batch 5500/6019, Loss: 0.0498, Grad: 40.7865
+  Batch 5600/6019, Loss: 0.0978, Grad: 16.3036
+  Batch 5700/6019, Loss: 0.0603, Grad: 19.0331
+  Batch 5800/6019, Loss: 0.0579, Grad: 40.5979
+  Batch 5900/6019, Loss: 0.0668, Grad: 8.6415
+  Batch 6000/6019, Loss: 0.0905, Grad: 34.2212
+Train Loss: 0.0660
+Val Loss: 0.0858, Val Macro F1: 0.8199
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9503
+  Class 1 (Tonal Speech    ): F1 = 0.6924
+  Class 2 (Vocal Music     ): F1 = 0.8191
+  Class 3 (Non-vocal Music ): F1 = 0.6179
+  Class 4 (Urban Env       ): F1 = 0.9332
+  Class 5 (Wildlife Env    ): F1 = 0.9066
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4680
+  Class 1→0 (tonal→non-tonal speech):  1678
+  Class 2→3 (vocal→non-vocal music):   2234
+  Class 3→2 (non-vocal→vocal music):   2667
+Learning rate: 0.000025
+
+============================================================
+Epoch 17/50
+============================================================
+  Batch 0/6019, Loss: 0.0475, Grad: 2.8887
+  Batch 100/6019, Loss: 0.0506, Grad: 43.5193
+  Batch 200/6019, Loss: 0.0978, Grad: 26.0961
+  Batch 300/6019, Loss: 0.0548, Grad: 5.1558
+  Batch 400/6019, Loss: 0.0693, Grad: 19.4924
+  Batch 500/6019, Loss: 0.0831, Grad: 13.5597
+  Batch 600/6019, Loss: 0.0656, Grad: 18.8440
+  Batch 700/6019, Loss: 0.0635, Grad: 28.6902
+  Batch 800/6019, Loss: 0.1002, Grad: 18.0784
+  Batch 900/6019, Loss: 0.0934, Grad: 16.3646
+  Batch 1000/6019, Loss: 0.0498, Grad: 19.1672
+  Batch 1100/6019, Loss: 0.0580, Grad: 9.5832
+  Batch 1200/6019, Loss: 0.0633, Grad: 27.9840
+  Batch 1300/6019, Loss: 0.0676, Grad: 8.8325
+  Batch 1400/6019, Loss: 0.0612, Grad: 8.2221
+  Batch 1500/6019, Loss: 0.0598, Grad: 10.4095
+  Batch 1600/6019, Loss: 0.0606, Grad: 19.0539
+  Batch 1700/6019, Loss: 0.0607, Grad: 6.9822
+  Batch 1800/6019, Loss: 0.0785, Grad: 9.9466
+  Batch 1900/6019, Loss: 0.0574, Grad: 9.3107
+  Batch 2000/6019, Loss: 0.0621, Grad: 3.7469
+  Batch 2100/6019, Loss: 0.0629, Grad: 7.8627
+  Batch 2200/6019, Loss: 0.0754, Grad: 4.1072
+  Batch 2300/6019, Loss: 0.0717, Grad: 56.3630
+  Batch 2400/6019, Loss: 0.0595, Grad: 587.2233
+  Batch 2500/6019, Loss: 0.0469, Grad: 2.8434
+  Batch 2600/6019, Loss: 0.0709, Grad: 6.0108
+  Batch 2700/6019, Loss: 0.0568, Grad: 4.9518
+  Batch 2800/6019, Loss: 0.0943, Grad: 11.1915
+  Batch 2900/6019, Loss: 0.0636, Grad: 13.0641
+  Batch 3000/6019, Loss: 0.0413, Grad: 2.9609
+  Batch 3100/6019, Loss: 0.0543, Grad: 4.6872
+  Batch 3200/6019, Loss: 0.0638, Grad: 4.0950
+  Batch 3300/6019, Loss: 0.0818, Grad: 12.9401
+  Batch 3400/6019, Loss: 0.0515, Grad: 16.5312
+  Batch 3500/6019, Loss: 0.0550, Grad: 4.8872
+  Batch 3600/6019, Loss: 0.0573, Grad: 36.5593
+  Batch 3700/6019, Loss: 0.0684, Grad: 14.1777
+  Batch 3800/6019, Loss: 0.0490, Grad: 5.5337
+  Batch 3900/6019, Loss: 0.0538, Grad: 10.7884
+  Batch 4000/6019, Loss: 0.0411, Grad: 3.8013
+  Batch 4100/6019, Loss: 0.0696, Grad: 13.1822
+  Batch 4200/6019, Loss: 0.0697, Grad: 60.4415
+  Batch 4300/6019, Loss: 0.0460, Grad: 6.1957
+  Batch 4400/6019, Loss: 0.0529, Grad: 15.3921
+  Batch 4500/6019, Loss: 0.1089, Grad: 40.0107
+  Batch 4600/6019, Loss: 0.0658, Grad: 20.0260
+  Batch 4700/6019, Loss: 0.0703, Grad: 19.3377
+  Batch 4800/6019, Loss: 0.0575, Grad: 3.3762
+  Batch 4900/6019, Loss: 0.0545, Grad: 19.1219
+  Batch 5000/6019, Loss: 0.0451, Grad: 11.4436
+  Batch 5100/6019, Loss: 0.0522, Grad: 7.3457
+  Batch 5200/6019, Loss: 0.0691, Grad: 8.7477
+  Batch 5300/6019, Loss: 0.0709, Grad: 15.1548
+  Batch 5400/6019, Loss: 0.0602, Grad: 5.9126
+  Batch 5500/6019, Loss: 0.0894, Grad: 9.1389
+  Batch 5600/6019, Loss: 0.0690, Grad: 7.9879
+  Batch 5700/6019, Loss: 0.0647, Grad: 55.4006
+  Batch 5800/6019, Loss: 0.0669, Grad: 28.0186
+  Batch 5900/6019, Loss: 0.0759, Grad: 11.1448
+  Batch 6000/6019, Loss: 0.0715, Grad: 30.8160
+Train Loss: 0.0643
+Val Loss: 0.0814, Val Macro F1: 0.8274
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9564
+  Class 1 (Tonal Speech    ): F1 = 0.7166
+  Class 2 (Vocal Music     ): F1 = 0.8159
+  Class 3 (Non-vocal Music ): F1 = 0.6367
+  Class 4 (Urban Env       ): F1 = 0.9321
+  Class 5 (Wildlife Env    ): F1 = 0.9068
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  3780
+  Class 1→0 (tonal→non-tonal speech):  1773
+  Class 2→3 (vocal→non-vocal music):   2489
+  Class 3→2 (non-vocal→vocal music):   2383
+Learning rate: 0.000025
+✓ Saved best model with Val F1: 0.8274
+
+============================================================
+Epoch 18/50
+============================================================
+  Batch 0/6019, Loss: 0.0603, Grad: 14.2412
+  Batch 100/6019, Loss: 0.0400, Grad: 5.6390
+  Batch 200/6019, Loss: 0.0611, Grad: 50.8760
+  Batch 300/6019, Loss: 0.0538, Grad: 46.4257
+  Batch 400/6019, Loss: 0.0491, Grad: 105.0291
+  Batch 500/6019, Loss: 0.0528, Grad: 5.7366
+  Batch 600/6019, Loss: 0.0780, Grad: 4.1770
+  Batch 700/6019, Loss: 0.0870, Grad: 16.1376
+  Batch 800/6019, Loss: 0.0598, Grad: 18.3270
+  Batch 900/6019, Loss: 0.0785, Grad: 41.4616
+  Batch 1000/6019, Loss: 0.0614, Grad: 12.6840
+  Batch 1100/6019, Loss: 0.0742, Grad: 19.9958
+  Batch 1200/6019, Loss: 0.0631, Grad: 408.1433
+  Batch 1300/6019, Loss: 0.0546, Grad: 17.4667
+  Batch 1400/6019, Loss: 0.1358, Grad: 11.8748
+  Batch 1500/6019, Loss: 0.0420, Grad: 21.7903
+  Batch 1600/6019, Loss: 0.0509, Grad: 10.6229
+  Batch 1700/6019, Loss: 0.0535, Grad: 4.8959
+  Batch 1800/6019, Loss: 0.0578, Grad: 6.2093
+  Batch 1900/6019, Loss: 0.0590, Grad: 10.7690
+  Batch 2000/6019, Loss: 0.0634, Grad: 16.0564
+  Batch 2100/6019, Loss: 0.0859, Grad: 12.8199
+  Batch 2200/6019, Loss: 0.0530, Grad: 38.5787
+  Batch 2300/6019, Loss: 0.0672, Grad: 5.2570
+  Batch 2400/6019, Loss: 0.0609, Grad: 165.9952
+  Batch 2500/6019, Loss: 0.0745, Grad: 152.6149
+  Batch 2600/6019, Loss: 0.0539, Grad: 6.3157
+  Batch 2700/6019, Loss: 0.0618, Grad: 11.3643
+  Batch 2800/6019, Loss: 0.0624, Grad: 20.4323
+  Batch 2900/6019, Loss: 0.0838, Grad: 31.4539
+  Batch 3000/6019, Loss: 0.0706, Grad: 17.3210
+  Batch 3100/6019, Loss: 0.0475, Grad: 3.3340
+  Batch 3200/6019, Loss: 0.0607, Grad: 15.1819
+  Batch 3300/6019, Loss: 0.0493, Grad: 18.6621
+  Batch 3400/6019, Loss: 0.0449, Grad: 16.0915
+  Batch 3500/6019, Loss: 0.0579, Grad: 10.5340
+  Batch 3600/6019, Loss: 0.0645, Grad: 12.9865
+  Batch 3700/6019, Loss: 0.0690, Grad: 17.3219
+  Batch 3800/6019, Loss: 0.0517, Grad: 5.1604
+  Batch 3900/6019, Loss: 0.0655, Grad: 6.5688
+  Batch 4000/6019, Loss: 0.0686, Grad: 18.6241
+  Batch 4100/6019, Loss: 0.0815, Grad: 13.3354
+  Batch 4200/6019, Loss: 0.0638, Grad: 8.7832
+  Batch 4300/6019, Loss: 0.0410, Grad: 32.0866
+  Batch 4400/6019, Loss: 0.0667, Grad: 7.8873
+  Batch 4500/6019, Loss: 0.0735, Grad: 14.6080
+  Batch 4600/6019, Loss: 0.0439, Grad: 4.9303
+  Batch 4700/6019, Loss: 0.0526, Grad: 8.6746
+  Batch 4800/6019, Loss: 0.0630, Grad: 12.8049
+  Batch 4900/6019, Loss: 0.0770, Grad: 170.0269
+  Batch 5000/6019, Loss: 0.0359, Grad: 3.8502
+  Batch 5100/6019, Loss: 0.0690, Grad: 7.1184
+  Batch 5200/6019, Loss: 0.0656, Grad: 32.8797
+  Batch 5300/6019, Loss: 0.0847, Grad: 23.8789
+  Batch 5400/6019, Loss: 0.0978, Grad: 43.6849
+  Batch 5500/6019, Loss: 0.0483, Grad: 47.5495
+  Batch 5600/6019, Loss: 0.0721, Grad: 360.8187
+  Batch 5700/6019, Loss: 0.0512, Grad: 4.8210
+  Batch 5800/6019, Loss: 0.0552, Grad: 6.8649
+  Batch 5900/6019, Loss: 0.0656, Grad: 25.3322
+  Batch 6000/6019, Loss: 0.0725, Grad: 51.2472
+Train Loss: 0.0636
+Val Loss: 0.0847, Val Macro F1: 0.8249
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9503
+  Class 1 (Tonal Speech    ): F1 = 0.6945
+  Class 2 (Vocal Music     ): F1 = 0.7956
+  Class 3 (Non-vocal Music ): F1 = 0.6550
+  Class 4 (Urban Env       ): F1 = 0.9408
+  Class 5 (Wildlife Env    ): F1 = 0.9133
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4684
+  Class 1→0 (tonal→non-tonal speech):  1648
+  Class 2→3 (vocal→non-vocal music):   3409
+  Class 3→2 (non-vocal→vocal music):   1731
+Learning rate: 0.000025
+
+============================================================
+Epoch 19/50
+============================================================
+  Batch 0/6019, Loss: 0.0715, Grad: 11.5848
+  Batch 100/6019, Loss: 0.0809, Grad: 23.7411
+  Batch 200/6019, Loss: 0.0611, Grad: 17.4100
+  Batch 300/6019, Loss: 0.0471, Grad: 7.9370
+  Batch 400/6019, Loss: 0.0905, Grad: 14.2695
+  Batch 500/6019, Loss: 0.0437, Grad: 8.3851
+  Batch 600/6019, Loss: 0.0514, Grad: 7.9294
+  Batch 700/6019, Loss: 0.0474, Grad: 125.9650
+  Batch 800/6019, Loss: 0.0818, Grad: 6.8015
+  Batch 900/6019, Loss: 0.0496, Grad: 4.8935
+  Batch 1000/6019, Loss: 0.0493, Grad: 11.4873
+  Batch 1100/6019, Loss: 0.0699, Grad: 17.2928
+  Batch 1200/6019, Loss: 0.0649, Grad: 25.2140
+  Batch 1300/6019, Loss: 0.0610, Grad: 5.9701
+  Batch 1400/6019, Loss: 0.0579, Grad: 8.3090
+  Batch 1500/6019, Loss: 0.1093, Grad: 10.1290
+  Batch 1600/6019, Loss: 0.0705, Grad: 30.3029
+  Batch 1700/6019, Loss: 0.0585, Grad: 11.9634
+  Batch 1800/6019, Loss: 0.1127, Grad: 23.7892
+  Batch 1900/6019, Loss: 0.0631, Grad: 27.9346
+  Batch 2000/6019, Loss: 0.0716, Grad: 13.1340
+  Batch 2100/6019, Loss: 0.0465, Grad: 12.2012
+  Batch 2200/6019, Loss: 0.0597, Grad: 11.1007
+  Batch 2300/6019, Loss: 0.0550, Grad: 18.3895
+  Batch 2400/6019, Loss: 0.0510, Grad: 20.8838
+  Batch 2500/6019, Loss: 0.0901, Grad: 53.6928
+  Batch 2600/6019, Loss: 0.0606, Grad: 45.2320
+  Batch 2700/6019, Loss: 0.0471, Grad: 11.8162
+  Batch 2800/6019, Loss: 0.0458, Grad: 4.2955
+  Batch 2900/6019, Loss: 0.0548, Grad: 111.3589
+  Batch 3000/6019, Loss: 0.0593, Grad: 6.5851
+  Batch 3100/6019, Loss: 0.1021, Grad: 11.2143
+  Batch 3200/6019, Loss: 0.0511, Grad: 9.3944
+  Batch 3300/6019, Loss: 0.0357, Grad: 2.6758
+  Batch 3400/6019, Loss: 0.0670, Grad: 11.0460
+  Batch 3500/6019, Loss: 0.0580, Grad: 13.3746
+  Batch 3600/6019, Loss: 0.0503, Grad: 25.2729
+  Batch 3700/6019, Loss: 0.0511, Grad: 4.1438
+  Batch 3800/6019, Loss: 0.0623, Grad: 17.9371
+  Batch 3900/6019, Loss: 0.0442, Grad: 6.3893
+  Batch 4000/6019, Loss: 0.0511, Grad: 6.1467
+  Batch 4100/6019, Loss: 0.0593, Grad: 15.9459
+  Batch 4200/6019, Loss: 0.0554, Grad: 11.4476
+  Batch 4300/6019, Loss: 0.0381, Grad: 9.2549
+  Batch 4400/6019, Loss: 0.0834, Grad: 718.1935
+  Batch 4500/6019, Loss: 0.0771, Grad: 11.7495
+  Batch 4600/6019, Loss: 0.0460, Grad: 8.6343
+  Batch 4700/6019, Loss: 0.0477, Grad: 13.2036
+  Batch 4800/6019, Loss: 0.0878, Grad: 9.2893
+  Batch 4900/6019, Loss: 0.0797, Grad: 40.3311
+  Batch 5000/6019, Loss: 0.0579, Grad: 30.6608
+  Batch 5100/6019, Loss: 0.0517, Grad: 8.0717
+  Batch 5200/6019, Loss: 0.0544, Grad: 8.8758
+  Batch 5300/6019, Loss: 0.0522, Grad: 11.3519
+  Batch 5400/6019, Loss: 0.0448, Grad: 15.4160
+  Batch 5500/6019, Loss: 0.0618, Grad: 49.1387
+  Batch 5600/6019, Loss: 0.0599, Grad: 5.4275
+  Batch 5700/6019, Loss: 0.0697, Grad: 40.1819
+  Batch 5800/6019, Loss: 0.0825, Grad: 19.9480
+  Batch 5900/6019, Loss: 0.0778, Grad: 10.7382
+  Batch 6000/6019, Loss: 0.0615, Grad: 8.5413
+Train Loss: 0.0634
+Val Loss: 0.0829, Val Macro F1: 0.8263
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9530
+  Class 1 (Tonal Speech    ): F1 = 0.7073
+  Class 2 (Vocal Music     ): F1 = 0.8158
+  Class 3 (Non-vocal Music ): F1 = 0.6353
+  Class 4 (Urban Env       ): F1 = 0.9441
+  Class 5 (Wildlife Env    ): F1 = 0.9023
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4357
+  Class 1→0 (tonal→non-tonal speech):  1636
+  Class 2→3 (vocal→non-vocal music):   2454
+  Class 3→2 (non-vocal→vocal music):   2376
+Learning rate: 0.000025
+
+============================================================
+Epoch 20/50
+============================================================
+  Batch 0/6019, Loss: 0.0471, Grad: 36.5581
+  Batch 100/6019, Loss: 0.0586, Grad: 15.1236
+  Batch 200/6019, Loss: 0.0471, Grad: 8.8668
+  Batch 300/6019, Loss: 0.0899, Grad: 10.5472
+  Batch 400/6019, Loss: 0.0568, Grad: 10.6290
+  Batch 500/6019, Loss: 0.0588, Grad: 4.7757
+  Batch 600/6019, Loss: 0.0525, Grad: 9.3128
+  Batch 700/6019, Loss: 0.0553, Grad: 296.3297
+  Batch 800/6019, Loss: 0.0615, Grad: 4.9203
+  Batch 900/6019, Loss: 0.0482, Grad: 18.5512
+  Batch 1000/6019, Loss: 0.0912, Grad: 37.3647
+  Batch 1100/6019, Loss: 0.0710, Grad: 10.5884
+  Batch 1200/6019, Loss: 0.0427, Grad: 3.2954
+  Batch 1300/6019, Loss: 0.0514, Grad: 3.5994
+  Batch 1400/6019, Loss: 0.0513, Grad: 10.1461
+  Batch 1500/6019, Loss: 0.0535, Grad: 39.7127
+  Batch 1600/6019, Loss: 0.0631, Grad: 6.0653
+  Batch 1700/6019, Loss: 0.0548, Grad: 6.2820
+  Batch 1800/6019, Loss: 0.0454, Grad: 6.6045
+  Batch 1900/6019, Loss: 0.0621, Grad: 8.5200
+  Batch 2000/6019, Loss: 0.0541, Grad: 6.4540
+  Batch 2100/6019, Loss: 0.0630, Grad: 7.9805
+  Batch 2200/6019, Loss: 0.0452, Grad: 21.8969
+  Batch 2300/6019, Loss: 0.0622, Grad: 19.9291
+  Batch 2400/6019, Loss: 0.0649, Grad: 4.9040
+  Batch 2500/6019, Loss: 0.0796, Grad: 18.6463
+  Batch 2600/6019, Loss: 0.0688, Grad: 104.8628
+  Batch 2700/6019, Loss: 0.0747, Grad: 18.7946
+  Batch 2800/6019, Loss: 0.0429, Grad: 6.4520
+  Batch 2900/6019, Loss: 0.0491, Grad: 7.2406
+  Batch 3000/6019, Loss: 0.0608, Grad: 14.2105
+  Batch 3100/6019, Loss: 0.0786, Grad: 16.3986
+  Batch 3200/6019, Loss: 0.0508, Grad: 9.8281
+  Batch 3300/6019, Loss: 0.0534, Grad: 17.5446
+  Batch 3400/6019, Loss: 0.0655, Grad: 14.8931
+  Batch 3500/6019, Loss: 0.0566, Grad: 14.1211
+  Batch 3600/6019, Loss: 0.0524, Grad: 7.4786
+  Batch 3700/6019, Loss: 0.0568, Grad: 8.3448
+  Batch 3800/6019, Loss: 0.0611, Grad: 5.8824
+  Batch 3900/6019, Loss: 0.0380, Grad: 7.7590
+  Batch 4000/6019, Loss: 0.0531, Grad: 6.1945
+  Batch 4100/6019, Loss: 0.0747, Grad: 22.5260
+  Batch 4200/6019, Loss: 0.0410, Grad: 22.8379
+  Batch 4300/6019, Loss: 0.0712, Grad: 11.4108
+  Batch 4400/6019, Loss: 0.0529, Grad: 7.9585
+  Batch 4500/6019, Loss: 0.0668, Grad: 38.1465
+  Batch 4600/6019, Loss: 0.0570, Grad: 4.5679
+  Batch 4700/6019, Loss: 0.0542, Grad: 7.4770
+  Batch 4800/6019, Loss: 0.1021, Grad: 32.3463
+  Batch 4900/6019, Loss: 0.0481, Grad: 13.5406
+  Batch 5000/6019, Loss: 0.0625, Grad: 6.4046
+  Batch 5100/6019, Loss: 0.0772, Grad: 37.3796
+  Batch 5200/6019, Loss: 0.0753, Grad: 15.3351
+  Batch 5300/6019, Loss: 0.0679, Grad: 6.5382
+  Batch 5400/6019, Loss: 0.0513, Grad: 8.7441
+  Batch 5500/6019, Loss: 0.0480, Grad: 4.4835
+  Batch 5600/6019, Loss: 0.0652, Grad: 6.2261
+  Batch 5700/6019, Loss: 0.0433, Grad: 2.8508
+  Batch 5800/6019, Loss: 0.0493, Grad: 14.8842
+  Batch 5900/6019, Loss: 0.0747, Grad: 24.4798
+  Batch 6000/6019, Loss: 0.0701, Grad: 19.7505
+Train Loss: 0.0632
+Val Loss: 0.0829, Val Macro F1: 0.8252
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9519
+  Class 1 (Tonal Speech    ): F1 = 0.7015
+  Class 2 (Vocal Music     ): F1 = 0.8208
+  Class 3 (Non-vocal Music ): F1 = 0.6336
+  Class 4 (Urban Env       ): F1 = 0.9412
+  Class 5 (Wildlife Env    ): F1 = 0.9020
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4599
+  Class 1→0 (tonal→non-tonal speech):  1587
+  Class 2→3 (vocal→non-vocal music):   2284
+  Class 3→2 (non-vocal→vocal music):   2476
+Learning rate: 0.000025
+
+============================================================
+Epoch 21/50
+============================================================
+  Batch 0/6019, Loss: 0.0619, Grad: 24.9238
+  Batch 100/6019, Loss: 0.0492, Grad: 78.2349
+  Batch 200/6019, Loss: 0.0585, Grad: 8.5063
+  Batch 300/6019, Loss: 0.0688, Grad: 62.6967
+  Batch 400/6019, Loss: 0.0646, Grad: 12.0721
+  Batch 500/6019, Loss: 0.0719, Grad: 157.6815
+  Batch 600/6019, Loss: 0.0348, Grad: 12.9131
+  Batch 700/6019, Loss: 0.0823, Grad: 14.7136
+  Batch 800/6019, Loss: 0.0889, Grad: 9.2866
+  Batch 900/6019, Loss: 0.0779, Grad: 61.2988
+  Batch 1000/6019, Loss: 0.0637, Grad: 59.2084
+  Batch 1100/6019, Loss: 0.0496, Grad: 4.7380
+  Batch 1200/6019, Loss: 0.0706, Grad: 15.2187
+  Batch 1300/6019, Loss: 0.0772, Grad: 30.3997
+  Batch 1400/6019, Loss: 0.0628, Grad: 7.9561
+  Batch 1500/6019, Loss: 0.0937, Grad: 106.9715
+  Batch 1600/6019, Loss: 0.0849, Grad: 33.6368
+  Batch 1700/6019, Loss: 0.0478, Grad: 7.1266
+  Batch 1800/6019, Loss: 0.0546, Grad: 6.0079
+  Batch 1900/6019, Loss: 0.0552, Grad: 18.3728
+  Batch 2000/6019, Loss: 0.0533, Grad: 19.9140
+  Batch 2100/6019, Loss: 0.0628, Grad: 10.0356
+  Batch 2200/6019, Loss: 0.0781, Grad: 10.4915
+  Batch 2300/6019, Loss: 0.0598, Grad: 162.2390
+  Batch 2400/6019, Loss: 0.0622, Grad: 5.5984
+  Batch 2500/6019, Loss: 0.0821, Grad: 42.8077
+  Batch 2600/6019, Loss: 0.0671, Grad: 13.1644
+  Batch 2700/6019, Loss: 0.0472, Grad: 38.3504
+  Batch 2800/6019, Loss: 0.1128, Grad: 31.4904
+  Batch 2900/6019, Loss: 0.0438, Grad: 5.6108
+  Batch 3000/6019, Loss: 0.0593, Grad: 7.0125
+  Batch 3100/6019, Loss: 0.0636, Grad: 5.7713
+  Batch 3200/6019, Loss: 0.0638, Grad: 14.8143
+  Batch 3300/6019, Loss: 0.0588, Grad: 4.1898
+  Batch 3400/6019, Loss: 0.0529, Grad: 14.8245
+  Batch 3500/6019, Loss: 0.0814, Grad: 50.6767
+  Batch 3600/6019, Loss: 0.0511, Grad: 21.1311
+  Batch 3700/6019, Loss: 0.0674, Grad: 8.9410
+  Batch 3800/6019, Loss: 0.0623, Grad: 12.3244
+  Batch 3900/6019, Loss: 0.0581, Grad: 6.0409
+  Batch 4000/6019, Loss: 0.0853, Grad: 37.3020
+  Batch 4100/6019, Loss: 0.0632, Grad: 9.8265
+  Batch 4200/6019, Loss: 0.0614, Grad: 30.9638
+  Batch 4300/6019, Loss: 0.0497, Grad: 14.6040
+  Batch 4400/6019, Loss: 0.0712, Grad: 10.3023
+  Batch 4500/6019, Loss: 0.0711, Grad: 19.2278
+  Batch 4600/6019, Loss: 0.0642, Grad: 11.3443
+  Batch 4700/6019, Loss: 0.0650, Grad: 335.6654
+  Batch 4800/6019, Loss: 0.0599, Grad: 8.1077
+  Batch 4900/6019, Loss: 0.0609, Grad: 6.9097
+  Batch 5000/6019, Loss: 0.0769, Grad: 30.3060
+  Batch 5100/6019, Loss: 0.0554, Grad: 7.3566
+  Batch 5200/6019, Loss: 0.0703, Grad: 12.4580
+  Batch 5300/6019, Loss: 0.0666, Grad: 19.7835
+  Batch 5400/6019, Loss: 0.0592, Grad: 25.2376
+  Batch 5500/6019, Loss: 0.0447, Grad: 8.9212
+  Batch 5600/6019, Loss: 0.0590, Grad: 1404.1439
+  Batch 5700/6019, Loss: 0.0668, Grad: 8.9308
+  Batch 5800/6019, Loss: 0.0363, Grad: 44.3077
+  Batch 5900/6019, Loss: 0.0966, Grad: 41.3768
+  Batch 6000/6019, Loss: 0.0798, Grad: 20.1011
+Train Loss: 0.0628
+Val Loss: 0.0813, Val Macro F1: 0.8284
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9557
+  Class 1 (Tonal Speech    ): F1 = 0.7131
+  Class 2 (Vocal Music     ): F1 = 0.8155
+  Class 3 (Non-vocal Music ): F1 = 0.6386
+  Class 4 (Urban Env       ): F1 = 0.9398
+  Class 5 (Wildlife Env    ): F1 = 0.9074
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  3884
+  Class 1→0 (tonal→non-tonal speech):  1790
+  Class 2→3 (vocal→non-vocal music):   2533
+  Class 3→2 (non-vocal→vocal music):   2320
+Learning rate: 0.000025
+✓ Saved best model with Val F1: 0.8284
+
+============================================================
+Epoch 22/50
+============================================================
+  Batch 0/6019, Loss: 0.0590, Grad: 10.7782
+  Batch 100/6019, Loss: 0.0715, Grad: 33.9183
+  Batch 200/6019, Loss: 0.0647, Grad: 5.3158
+  Batch 300/6019, Loss: 0.0413, Grad: 9.3735
+  Batch 400/6019, Loss: 0.0605, Grad: 25.5642
+  Batch 500/6019, Loss: 0.0753, Grad: 17.1113
+  Batch 600/6019, Loss: 0.0491, Grad: 12.3400
+  Batch 700/6019, Loss: 0.0851, Grad: 13.2343
+  Batch 800/6019, Loss: 0.0852, Grad: 11.5455
+  Batch 900/6019, Loss: 0.0931, Grad: 9.5813
+  Batch 1000/6019, Loss: 0.0364, Grad: 3.6372
+  Batch 1100/6019, Loss: 0.0620, Grad: 38.5369
+  Batch 1200/6019, Loss: 0.0533, Grad: 6.7166
+  Batch 1300/6019, Loss: 0.0558, Grad: 10.5683
+  Batch 1400/6019, Loss: 0.0578, Grad: 5.9740
+  Batch 1500/6019, Loss: 0.0491, Grad: 17.5562
+  Batch 1600/6019, Loss: 0.0573, Grad: 49.7187
+  Batch 1700/6019, Loss: 0.0733, Grad: 270.5670
+  Batch 1800/6019, Loss: 0.0719, Grad: 12.4147
+  Batch 1900/6019, Loss: 0.0537, Grad: 10.7129
+  Batch 2000/6019, Loss: 0.0696, Grad: 65.0126
+  Batch 2100/6019, Loss: 0.0515, Grad: 3.9068
+  Batch 2200/6019, Loss: 0.0475, Grad: 12.7402
+  Batch 2300/6019, Loss: 0.0532, Grad: 13.2275
+  Batch 2400/6019, Loss: 0.0753, Grad: 18.7510
+  Batch 2500/6019, Loss: 0.0759, Grad: 7.2621
+  Batch 2600/6019, Loss: 0.1029, Grad: 29.6872
+  Batch 2700/6019, Loss: 0.0533, Grad: 88.3901
+  Batch 2800/6019, Loss: 0.0526, Grad: 9.0492
+  Batch 2900/6019, Loss: 0.0722, Grad: 18.7767
+  Batch 3000/6019, Loss: 0.0501, Grad: 14.1275
+  Batch 3100/6019, Loss: 0.0701, Grad: 74.7727
+  Batch 3200/6019, Loss: 0.0650, Grad: 7.1568
+  Batch 3300/6019, Loss: 0.0747, Grad: 8.6045
+  Batch 3400/6019, Loss: 0.0688, Grad: 16.6777
+  Batch 3500/6019, Loss: 0.0635, Grad: 6.6815
+  Batch 3600/6019, Loss: 0.0818, Grad: 13.8787
+  Batch 3700/6019, Loss: 0.0542, Grad: 4.4540
+  Batch 3800/6019, Loss: 0.0652, Grad: 32.6881
+  Batch 3900/6019, Loss: 0.0668, Grad: 8.2964
+  Batch 4000/6019, Loss: 0.0570, Grad: 7.1727
+  Batch 4100/6019, Loss: 0.0571, Grad: 92.5983
+  Batch 4200/6019, Loss: 0.0549, Grad: 6.6336
+  Batch 4300/6019, Loss: 0.0698, Grad: 29.0323
+  Batch 4400/6019, Loss: 0.0744, Grad: 7.6019
+  Batch 4500/6019, Loss: 0.0526, Grad: 5.2280
+  Batch 4600/6019, Loss: 0.0717, Grad: 24.7186
+  Batch 4700/6019, Loss: 0.0655, Grad: 10.2385
+  Batch 4800/6019, Loss: 0.0688, Grad: 5.1654
+  Batch 4900/6019, Loss: 0.0814, Grad: 13.0580
+  Batch 5000/6019, Loss: 0.0470, Grad: 16.1981
+  Batch 5100/6019, Loss: 0.0547, Grad: 5.6802
+  Batch 5200/6019, Loss: 0.0827, Grad: 24.9419
+  Batch 5300/6019, Loss: 0.0470, Grad: 12.1499
+  Batch 5400/6019, Loss: 0.0668, Grad: 17.7244
+  Batch 5500/6019, Loss: 0.0541, Grad: 13.5071
+  Batch 5600/6019, Loss: 0.0654, Grad: 5.4419
+  Batch 5700/6019, Loss: 0.0620, Grad: 28.2646
+  Batch 5800/6019, Loss: 0.0633, Grad: 13.9705
+  Batch 5900/6019, Loss: 0.0748, Grad: 14.1185
+  Batch 6000/6019, Loss: 0.1160, Grad: 34.7413
+Train Loss: 0.0627
+Val Loss: 0.0844, Val Macro F1: 0.8218
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9499
+  Class 1 (Tonal Speech    ): F1 = 0.6941
+  Class 2 (Vocal Music     ): F1 = 0.8147
+  Class 3 (Non-vocal Music ): F1 = 0.6391
+  Class 4 (Urban Env       ): F1 = 0.9321
+  Class 5 (Wildlife Env    ): F1 = 0.9007
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4802
+  Class 1→0 (tonal→non-tonal speech):  1602
+  Class 2→3 (vocal→non-vocal music):   2543
+  Class 3→2 (non-vocal→vocal music):   2293
+Learning rate: 0.000025
+
+============================================================
+Epoch 23/50
+============================================================
+  Batch 0/6019, Loss: 0.0424, Grad: 21.7823
+  Batch 100/6019, Loss: 0.0708, Grad: 21.8077
+  Batch 200/6019, Loss: 0.0706, Grad: 4.0220
+  Batch 300/6019, Loss: 0.0644, Grad: 131.9919
+  Batch 400/6019, Loss: 0.0435, Grad: 10.1678
+  Batch 500/6019, Loss: 0.0612, Grad: 31.6986
+  Batch 600/6019, Loss: 0.0477, Grad: 40.7771
+  Batch 700/6019, Loss: 0.0348, Grad: 4.6327
+  Batch 800/6019, Loss: 0.0573, Grad: 12.7200
+  Batch 900/6019, Loss: 0.0638, Grad: 33.9677
+  Batch 1000/6019, Loss: 0.0745, Grad: 8.2279
+  Batch 1100/6019, Loss: 0.0675, Grad: 6.2178
+  Batch 1200/6019, Loss: 0.0675, Grad: 36.0388
+  Batch 1300/6019, Loss: 0.1146, Grad: 403.8525
+  Batch 1400/6019, Loss: 0.0606, Grad: 15.1881
+  Batch 1500/6019, Loss: 0.0516, Grad: 4.2783
+  Batch 1600/6019, Loss: 0.0633, Grad: 194.9095
+  Batch 1700/6019, Loss: 0.0442, Grad: 14.0236
+  Batch 1800/6019, Loss: 0.0732, Grad: 52.1887
+  Batch 1900/6019, Loss: 0.0502, Grad: 24.8609
+  Batch 2000/6019, Loss: 0.0749, Grad: 14.4572
+  Batch 2100/6019, Loss: 0.0525, Grad: 7.8782
+  Batch 2200/6019, Loss: 0.0913, Grad: 15.3092
+  Batch 2300/6019, Loss: 0.0754, Grad: 26.5136
+  Batch 2400/6019, Loss: 0.0479, Grad: 3.1340
+  Batch 2500/6019, Loss: 0.0823, Grad: 12.0962
+  Batch 2600/6019, Loss: 0.0772, Grad: 6.1391
+  Batch 2700/6019, Loss: 0.0438, Grad: 25.5314
+  Batch 2800/6019, Loss: 0.0608, Grad: 6.1827
+  Batch 2900/6019, Loss: 0.0499, Grad: 14.1415
+  Batch 3000/6019, Loss: 0.0651, Grad: 21.2896
+  Batch 3100/6019, Loss: 0.0629, Grad: 6.7835
+  Batch 3200/6019, Loss: 0.0704, Grad: 14.3203
+  Batch 3300/6019, Loss: 0.0498, Grad: 15.6409
+  Batch 3400/6019, Loss: 0.0511, Grad: 6.8511
+  Batch 3500/6019, Loss: 0.0603, Grad: 35.7567
+  Batch 3600/6019, Loss: 0.0593, Grad: 10.3364
+  Batch 3700/6019, Loss: 0.0560, Grad: 7.0860
+  Batch 3800/6019, Loss: 0.0641, Grad: 5.7069
+  Batch 3900/6019, Loss: 0.0616, Grad: 4.8579
+  Batch 4000/6019, Loss: 0.0624, Grad: 9.9673
+  Batch 4100/6019, Loss: 0.0763, Grad: 5.9868
+  Batch 4200/6019, Loss: 0.0693, Grad: 18.5362
+  Batch 4300/6019, Loss: 0.0789, Grad: 15.4063
+  Batch 4400/6019, Loss: 0.0522, Grad: 7.9101
+  Batch 4500/6019, Loss: 0.0938, Grad: 8.2351
+  Batch 4600/6019, Loss: 0.0481, Grad: 6.4129
+  Batch 4700/6019, Loss: 0.0659, Grad: 20.7272
+  Batch 4800/6019, Loss: 0.0636, Grad: 16.3255
+  Batch 4900/6019, Loss: 0.0780, Grad: 30.3160
+  Batch 5000/6019, Loss: 0.0687, Grad: 14.2105
+  Batch 5100/6019, Loss: 0.0547, Grad: 11.4750
+  Batch 5200/6019, Loss: 0.0696, Grad: 3.9494
+  Batch 5300/6019, Loss: 0.0445, Grad: 25.5800
+  Batch 5400/6019, Loss: 0.0570, Grad: 9.1636
+  Batch 5500/6019, Loss: 0.0669, Grad: 6.8149
+  Batch 5600/6019, Loss: 0.0650, Grad: 6.6207
+  Batch 5700/6019, Loss: 0.0598, Grad: 5.6390
+  Batch 5800/6019, Loss: 0.0744, Grad: 77.3099
+  Batch 5900/6019, Loss: 0.0943, Grad: 13.4249
+  Batch 6000/6019, Loss: 0.0644, Grad: 15.4832
+Train Loss: 0.0626
+Val Loss: 0.0790, Val Macro F1: 0.8303
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9565
+  Class 1 (Tonal Speech    ): F1 = 0.7125
+  Class 2 (Vocal Music     ): F1 = 0.8092
+  Class 3 (Non-vocal Music ): F1 = 0.6472
+  Class 4 (Urban Env       ): F1 = 0.9418
+  Class 5 (Wildlife Env    ): F1 = 0.9143
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  3711
+  Class 1→0 (tonal→non-tonal speech):  1903
+  Class 2→3 (vocal→non-vocal music):   2889
+  Class 3→2 (non-vocal→vocal music):   2079
+Learning rate: 0.000025
+✓ Saved best model with Val F1: 0.8303
+
+============================================================
+Epoch 24/50
+============================================================
+  Batch 0/6019, Loss: 0.0900, Grad: 21.8956
+  Batch 100/6019, Loss: 0.0632, Grad: 6.0255
+  Batch 200/6019, Loss: 0.0716, Grad: 10.1242
+  Batch 300/6019, Loss: 0.0771, Grad: 7.9599
+  Batch 400/6019, Loss: 0.0573, Grad: 6.0739
+  Batch 500/6019, Loss: 0.0809, Grad: 57.8489
+  Batch 600/6019, Loss: 0.0771, Grad: 236.6673
+  Batch 700/6019, Loss: 0.0633, Grad: 8.8557
+  Batch 800/6019, Loss: 0.0601, Grad: 10.1699
+  Batch 900/6019, Loss: 0.0406, Grad: 52.9171
+  Batch 1000/6019, Loss: 0.0687, Grad: 11.0554
+  Batch 1100/6019, Loss: 0.0532, Grad: 5.4872
+  Batch 1200/6019, Loss: 0.0750, Grad: 11.5241
+  Batch 1300/6019, Loss: 0.0564, Grad: 6.8333
+  Batch 1400/6019, Loss: 0.0584, Grad: 9.0360
+  Batch 1500/6019, Loss: 0.1225, Grad: 17.9916
+  Batch 1600/6019, Loss: 0.0844, Grad: 7.0328
+  Batch 1700/6019, Loss: 0.0610, Grad: 6.7015
+  Batch 1800/6019, Loss: 0.0456, Grad: 2.0670
+  Batch 1900/6019, Loss: 0.0601, Grad: 12.6482
+  Batch 2000/6019, Loss: 0.0375, Grad: 13.4741
+  Batch 2100/6019, Loss: 0.0521, Grad: 4.5807
+  Batch 2200/6019, Loss: 0.0874, Grad: 5.0482
+  Batch 2300/6019, Loss: 0.0523, Grad: 33.3813
+  Batch 2400/6019, Loss: 0.0519, Grad: 11.5689
+  Batch 2500/6019, Loss: 0.0583, Grad: 2.9618
+  Batch 2600/6019, Loss: 0.0860, Grad: 42.3457
+  Batch 2700/6019, Loss: 0.0562, Grad: 7.8772
+  Batch 2800/6019, Loss: 0.0836, Grad: 40.4306
+  Batch 2900/6019, Loss: 0.0560, Grad: 9.5759
+  Batch 3000/6019, Loss: 0.0556, Grad: 14.7444
+  Batch 3100/6019, Loss: 0.0757, Grad: 11.4068
+  Batch 3200/6019, Loss: 0.0419, Grad: 31.4145
+  Batch 3300/6019, Loss: 0.0765, Grad: 9.7051
+  Batch 3400/6019, Loss: 0.0540, Grad: 6.7017
+  Batch 3500/6019, Loss: 0.0643, Grad: 4.9775
+  Batch 3600/6019, Loss: 0.0633, Grad: 15.2822
+  Batch 3700/6019, Loss: 0.0674, Grad: 17.0308
+  Batch 3800/6019, Loss: 0.0738, Grad: 41.3191
+  Batch 3900/6019, Loss: 0.0595, Grad: 8.5318
+  Batch 4000/6019, Loss: 0.0619, Grad: 11.0939
+  Batch 4100/6019, Loss: 0.0622, Grad: 25.7384
+  Batch 4200/6019, Loss: 0.0623, Grad: 7.0242
+  Batch 4300/6019, Loss: 0.0612, Grad: 26.3842
+  Batch 4400/6019, Loss: 0.0622, Grad: 31.6063
+  Batch 4500/6019, Loss: 0.0656, Grad: 58.9021
+  Batch 4600/6019, Loss: 0.0515, Grad: 22.0557
+  Batch 4700/6019, Loss: 0.0697, Grad: 8.8035
+  Batch 4800/6019, Loss: 0.0444, Grad: 3.9661
+  Batch 4900/6019, Loss: 0.0544, Grad: 11.2132
+  Batch 5000/6019, Loss: 0.0688, Grad: 15.2812
+  Batch 5100/6019, Loss: 0.0729, Grad: 14.8495
+  Batch 5200/6019, Loss: 0.0559, Grad: 26.8022
+  Batch 5300/6019, Loss: 0.0623, Grad: 28.5169
+  Batch 5400/6019, Loss: 0.0601, Grad: 34.0166
+  Batch 5500/6019, Loss: 0.0734, Grad: 9.9931
+  Batch 5600/6019, Loss: 0.0397, Grad: 8.6735
+  Batch 5700/6019, Loss: 0.0349, Grad: 25.9164
+  Batch 5800/6019, Loss: 0.0519, Grad: 4.0252
+  Batch 5900/6019, Loss: 0.0454, Grad: 9.1075
+  Batch 6000/6019, Loss: 0.0826, Grad: 8.6177
+Train Loss: 0.0624
+Val Loss: 0.0836, Val Macro F1: 0.8256
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9534
+  Class 1 (Tonal Speech    ): F1 = 0.7047
+  Class 2 (Vocal Music     ): F1 = 0.7972
+  Class 3 (Non-vocal Music ): F1 = 0.6507
+  Class 4 (Urban Env       ): F1 = 0.9424
+  Class 5 (Wildlife Env    ): F1 = 0.9050
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4308
+  Class 1→0 (tonal→non-tonal speech):  1690
+  Class 2→3 (vocal→non-vocal music):   3333
+  Class 3→2 (non-vocal→vocal music):   1788
+Learning rate: 0.000025
+
+============================================================
+Epoch 25/50
+============================================================
+  Batch 0/6019, Loss: 0.0884, Grad: 24.1320
+  Batch 100/6019, Loss: 0.0880, Grad: 9.6500
+  Batch 200/6019, Loss: 0.0487, Grad: 7.8244
+  Batch 300/6019, Loss: 0.0631, Grad: 7.3438
+  Batch 400/6019, Loss: 0.1000, Grad: 20.7135
+  Batch 500/6019, Loss: 0.0529, Grad: 10.6885
+  Batch 600/6019, Loss: 0.0812, Grad: 234.8298
+  Batch 700/6019, Loss: 0.0458, Grad: 11.1319
+  Batch 800/6019, Loss: 0.0521, Grad: 5.2372
+  Batch 900/6019, Loss: 0.0635, Grad: 158.5561
+  Batch 1000/6019, Loss: 0.0691, Grad: 7.4613
+  Batch 1100/6019, Loss: 0.0406, Grad: 33.3260
+  Batch 1200/6019, Loss: 0.0531, Grad: 11.6472
+  Batch 1300/6019, Loss: 0.0561, Grad: 4.6541
+  Batch 1400/6019, Loss: 0.0629, Grad: 7.4549
+  Batch 1500/6019, Loss: 0.0623, Grad: 8.9888
+  Batch 1600/6019, Loss: 0.0704, Grad: 3.4366
+  Batch 1700/6019, Loss: 0.0734, Grad: 7.4948
+  Batch 1800/6019, Loss: 0.0623, Grad: 22.5988
+  Batch 1900/6019, Loss: 0.0439, Grad: 12.8239
+  Batch 2000/6019, Loss: 0.0636, Grad: 19.7999
+  Batch 2100/6019, Loss: 0.0539, Grad: 12.8396
+  Batch 2200/6019, Loss: 0.1054, Grad: 82.8177
+  Batch 2300/6019, Loss: 0.0570, Grad: 10.1225
+  Batch 2400/6019, Loss: 0.0539, Grad: 52.0377
+  Batch 2500/6019, Loss: 0.1046, Grad: 19.4550
+  Batch 2600/6019, Loss: 0.0511, Grad: 5.1011
+  Batch 2700/6019, Loss: 0.0543, Grad: 8.1480
+  Batch 2800/6019, Loss: 0.0537, Grad: 4.1421
+  Batch 2900/6019, Loss: 0.1103, Grad: 23.0557
+  Batch 3000/6019, Loss: 0.0538, Grad: 18.1419
+  Batch 3100/6019, Loss: 0.0542, Grad: 67.3561
+  Batch 3200/6019, Loss: 0.0493, Grad: 6.1117
+  Batch 3300/6019, Loss: 0.0489, Grad: 37.3054
+  Batch 3400/6019, Loss: 0.0857, Grad: 7.9431
+  Batch 3500/6019, Loss: 0.0526, Grad: 8.7377
+  Batch 3600/6019, Loss: 0.0652, Grad: 7.3580
+  Batch 3700/6019, Loss: 0.0469, Grad: 7.1151
+  Batch 3800/6019, Loss: 0.0510, Grad: 12.0359
+  Batch 3900/6019, Loss: 0.0443, Grad: 10.0086
+  Batch 4000/6019, Loss: 0.0601, Grad: 7.4725
+  Batch 4100/6019, Loss: 0.0527, Grad: 4.3893
+  Batch 4200/6019, Loss: 0.0424, Grad: 6.2562
+  Batch 4300/6019, Loss: 0.0473, Grad: 4.0104
+  Batch 4400/6019, Loss: 0.0539, Grad: 4.7097
+  Batch 4500/6019, Loss: 0.0648, Grad: 3.7294
+  Batch 4600/6019, Loss: 0.0531, Grad: 4.2170
+  Batch 4700/6019, Loss: 0.0926, Grad: 20.4299
+  Batch 4800/6019, Loss: 0.0584, Grad: 19.1075
+  Batch 4900/6019, Loss: 0.0563, Grad: 9.0130
+  Batch 5000/6019, Loss: 0.0686, Grad: 28.5042
+  Batch 5100/6019, Loss: 0.0640, Grad: 22.2344
+  Batch 5200/6019, Loss: 0.0463, Grad: 72.4140
+  Batch 5300/6019, Loss: 0.0775, Grad: 11.0940
+  Batch 5400/6019, Loss: 0.0537, Grad: 8.2627
+  Batch 5500/6019, Loss: 0.0727, Grad: 19.9753
+  Batch 5600/6019, Loss: 0.0690, Grad: 9.9782
+  Batch 5700/6019, Loss: 0.0582, Grad: 4.3875
+  Batch 5800/6019, Loss: 0.0564, Grad: 4.7981
+  Batch 5900/6019, Loss: 0.0454, Grad: 5.1741
+  Batch 6000/6019, Loss: 0.0391, Grad: 60.8891
+Train Loss: 0.0622
+Val Loss: 0.0816, Val Macro F1: 0.8267
+
+Per-Class F1 Scores:
+  Class 0 (Non-tonal Speech): F1 = 0.9521
+  Class 1 (Tonal Speech    ): F1 = 0.7036
+  Class 2 (Vocal Music     ): F1 = 0.8104
+  Class 3 (Non-vocal Music ): F1 = 0.6452
+  Class 4 (Urban Env       ): F1 = 0.9342
+  Class 5 (Wildlife Env    ): F1 = 0.9150
+
+Confusion between Similar Classes:
+  Class 0→1 (non-tonal→tonal speech):  4556
+  Class 1→0 (tonal→non-tonal speech):  1588
+  Class 2→3 (vocal→non-vocal music):   2856
+  Class 3→2 (non-vocal→vocal music):   2113
+Learning rate: 0.000025
+
+============================================================
+Epoch 26/50
+============================================================
