@@ -598,7 +598,7 @@ class EnhancedKanformerTrainer:
             return False
         
         print(f"Loading checkpoint from: {checkpoint_path}")
-        checkpoint = torch.load(checkpoint_path, map_location=self.device)
+        checkpoint = torch.load(checkpoint_path, map_location=self.device, weights_only=False)
         
         self.model.load_state_dict(checkpoint['model_state_dict'])
         
@@ -841,7 +841,7 @@ if __name__ == "__main__":
     
     # Test evaluation
     print(f"\n{'='*60}\nFINAL TEST EVALUATION\n{'='*60}")
-    checkpoint = torch.load(os.path.join(checkpoint_dir, 'best_model.pt'))
+    checkpoint = torch.load(os.path.join(checkpoint_dir, 'best_model.pt'), weights_only=False)
     model.load_state_dict(checkpoint['model_state_dict'])
     test_loss, test_f1, test_preds, test_targets, test_conf_matrix, test_per_class_f1 = trainer.evaluate(test_loader, return_confusion=True)
     
