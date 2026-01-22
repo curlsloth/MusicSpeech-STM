@@ -443,7 +443,7 @@ class EnhancedTrainerV3:
             return False
         
         print(f"Loading checkpoint from: {checkpoint_path}")
-        checkpoint = torch.load(checkpoint_path, map_location=self.device)
+        checkpoint = torch.load(checkpoint_path, map_location=self.device, weights_only=False)
         
         self.model.load_state_dict(checkpoint['model_state_dict'])
         
@@ -744,7 +744,7 @@ if __name__ == "__main__":
     print("Final evaluation on test set...")
     print("="*60)
     
-    checkpoint = torch.load(os.path.join(checkpoint_dir, 'best_model.pt'))
+    checkpoint = torch.load(os.path.join(checkpoint_dir, 'best_model.pt'), weights_only=False)
     model.load_state_dict(checkpoint['model_state_dict'])
     
     test_loss, test_f1, test_preds, test_targets, cm, per_class_f1 = trainer.evaluate(
