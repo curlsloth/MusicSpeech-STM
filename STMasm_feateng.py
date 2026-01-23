@@ -183,7 +183,7 @@ class ModifiedSTMDataPrep(stm_conformer.prepData_STM_Conformer):
 # ============================================================================
 
 class SpecAugment(nn.Module):
-    """SpecAugment-style augmentation for STM features"""
+    """SpecAugment-style augmentation for STM features (supports multi-channel)"""
     def __init__(self, freq_mask_param=4, time_mask_param=20, n_freq_masks=1, n_time_masks=2):
         super(SpecAugment, self).__init__()
         self.freq_mask_param = freq_mask_param
@@ -194,19 +194,31 @@ class SpecAugment(nn.Module):
     def forward(self, x):
         if not self.training:
             return x
+        
+        # Handle both 3D (batch, freq, time) and 4D (batch, channels, freq, time)
+        if x.dim() == 4:
+            batch, channels, freq, time = x.shape
+        else:
+            batch, freq, time = x.shape
+            channels = 1
+            x = x.unsqueeze(1)  # Add channel dimension
             
-        batch, freq, time = x.shape
         x = x.clone()
         
+        # Apply masking (same mask across all channels)
         for _ in range(self.n_freq_masks):
             f = np.random.randint(0, self.freq_mask_param)
             f0 = np.random.randint(0, max(1, freq - f))
-            x[:, f0:f0+f, :] = 0
+            x[:, :, f0:f0+f, :] = 0
         
         for _ in range(self.n_time_masks):
             t = np.random.randint(0, self.time_mask_param)
             t0 = np.random.randint(0, max(1, time - t))
-            x[:, :, t0:t0+t] = 0
+            x[:, :, :, t0:t0+t] = 0
+        
+        # Remove channel dimension if it was added
+        if channels == 1 and x.dim() == 4:
+            x = x.squeeze(1)
             
         return x
 
