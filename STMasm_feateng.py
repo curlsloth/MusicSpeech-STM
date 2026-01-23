@@ -49,7 +49,7 @@ def preprocess_stm_features(stm_2d):
     Parameters:
     -----------
     stm_2d : np.ndarray or torch.Tensor
-        Input STM features of shape (batch, freq, time) or (batch, time, freq)
+        Input STM features of shape (batch, time, freq)
         Expected: (batch, 121, 20) where:
         - 121 time bins = rate axis (-15 Hz to +15 Hz, 0.25 Hz resolution)
         - 20 freq bins = scale axis (0 to 7.09 cyc/oct)
@@ -57,8 +57,10 @@ def preprocess_stm_features(stm_2d):
     Returns:
     --------
     processed : torch.Tensor
-        Processed features of shape (batch, 121, 20)
-        Structure: [DC | Asymmetric(60) | Symmetric(60)]
+        Processed features of shape (batch, 61, 20, 2)
+        Structure: [rate(0-15Hz), scale, channels(sym/asym)]
+        - Channel 0: Symmetric map (averaged energy)
+        - Channel 1: Asymmetric map (directional, rescaled to [-1, 1])
     """
     is_numpy = isinstance(stm_2d, np.ndarray)
     if is_numpy:
@@ -70,7 +72,6 @@ def preprocess_stm_features(stm_2d):
     # Rate range: -15 Hz to +15 Hz, 121 bins, resolution = 0.25 Hz
     rate_min = -15.0
     rate_max = 15.0
-    rate_resolution = (rate_max - rate_min) / (n_time - 1)
     frequency_vector = torch.linspace(rate_min, rate_max, n_time, device=stm_2d.device)
     
     # Step 1: Apply 1/f normalization
@@ -79,34 +80,42 @@ def preprocess_stm_features(stm_2d):
     stm_normalized = stm_2d * abs_freq
     
     # Handle DC component (index 60, 0 Hz)
-    # After multiplication by 0, DC becomes 0. We'll preserve original DC for now.
     dc_index = n_time // 2  # Index 60
     stm_normalized[:, dc_index, :] = stm_2d[:, dc_index, :]  # Restore DC
     
     # Step 2: Symmetric/Asymmetric Decomposition
     # Separate negative and positive rates
-    # Negative: indices 0-59 (-15 Hz to -0.25 Hz)
-    # DC: index 60 (0 Hz)
-    # Positive: indices 61-120 (+0.25 Hz to +15 Hz)
-    
-    negative_chunk = stm_normalized[:, :dc_index, :]  # (batch, 60, 20)
-    positive_chunk = stm_normalized[:, dc_index+1:, :]  # (batch, 60, 20)
-    dc_component = stm_normalized[:, dc_index:dc_index+1, :]  # (batch, 1, 20)
+    negative_chunk = stm_normalized[:, :dc_index, :]  # (batch, 60, 20): -15 to -0.25 Hz
+    positive_chunk = stm_normalized[:, dc_index+1:, :]  # (batch, 60, 20): +0.25 to +15 Hz
+    dc_component = stm_normalized[:, dc_index:dc_index+1, :]  # (batch, 1, 20): 0 Hz
     
     # Flip negative chunk to align with positive
     # After flip: negative_flipped[0] aligns with positive[0] (both at 0.25 Hz magnitude)
     negative_flipped = torch.flip(negative_chunk, dims=[1])  # (batch, 60, 20)
     
-    # Compute symmetric and asymmetric maps
-    symmetric_map = torch.abs(positive_chunk) + torch.abs(negative_flipped)  # Energy
-    asymmetric_map = torch.abs(positive_chunk) - torch.abs(negative_flipped)  # Direction
+    # Step 3: Compute symmetric and asymmetric maps
+    # Symmetric: AVERAGE of absolute values (energy)
+    symmetric_map = (torch.abs(positive_chunk) + torch.abs(negative_flipped)) / 2.0
     
-    # Concatenate: [Asymmetric | DC | Symmetric]
-    # This creates a structure where:
-    # - First 60 bins: Asymmetric information (directional preference)
-    # - Middle bin (60): DC component
-    # - Last 60 bins: Symmetric information (total energy)
-    processed = torch.cat([asymmetric_map, dc_component, symmetric_map], dim=1)  # (batch, 121, 20)
+    # Asymmetric: DIFFERENCE of absolute values (direction)
+    asymmetric_map = torch.abs(positive_chunk) - torch.abs(negative_flipped)
+    
+    # Step 4: Rescale asymmetric map to [-1, 1] per sample
+    # Find max absolute value for each sample
+    max_abs_asym = torch.abs(asymmetric_map).reshape(batch_size, -1).max(dim=1, keepdim=True)[0]
+    max_abs_asym = max_abs_asym.unsqueeze(-1)  # (batch, 1, 1)
+    # Avoid division by zero
+    max_abs_asym = torch.clamp(max_abs_asym, min=1e-8)
+    # Rescale
+    asymmetric_map_rescaled = asymmetric_map / max_abs_asym
+    
+    # Step 5: Concatenate DC with both maps to form 0-15 Hz representation
+    # Prepend DC to create (batch, 61, 20) for each map
+    symmetric_with_dc = torch.cat([dc_component, symmetric_map], dim=1)  # (batch, 61, 20)
+    asymmetric_with_dc = torch.cat([dc_component, asymmetric_map_rescaled], dim=1)  # (batch, 61, 20)
+    
+    # Step 6: Stack into 2-channel tensor: (batch, 61, 20, 2)
+    processed = torch.stack([symmetric_with_dc, asymmetric_with_dc], dim=-1)
     
     return processed
 
@@ -126,12 +135,18 @@ class ModifiedSTMDataPrep(stm_conformer.prepData_STM_Conformer):
         print("\nApplying modified STM preprocessing...")
         print("  1. 1/f normalization on rate axis")
         print("  2. Symmetric/Asymmetric decomposition")
+        print("  3. Symmetric map: averaged energy (|P+| + |P-|)/2")
+        print("  4. Asymmetric map: directional difference, rescaled to [-1, 1]")
+        print("  5. Output: (61 freq, 20 scale, 2 channels)")
+        print("  6. Channel 0: Symmetric (averaged energy)")
+        print("  7. Channel 1: Asymmetric (rescaled direction)")
         
         STM_processed = preprocess_stm_features(STM_all_2d)
         
         # Normalize per sample (after preprocessing)
-        means = STM_processed.mean(dim=(1, 2), keepdim=True)
-        stds = STM_processed.std(dim=(1, 2), keepdim=True)
+        # Note: Now processing 4D tensor (batch, freq, time, channels)
+        means = STM_processed.mean(dim=(1, 2, 3), keepdim=True)
+        stds = STM_processed.std(dim=(1, 2, 3), keepdim=True)
         STM_processed = (STM_processed - means) / (stds + 1e-8)
         
         # Convert to tensors and split
@@ -152,9 +167,15 @@ class ModifiedSTMDataPrep(stm_conformer.prepData_STM_Conformer):
         print(f"Train dataset shape: {X_train.shape}")
         print(f"Val dataset shape: {X_val.shape}")
         print(f"Test dataset shape: {X_test.shape}")
-        print(f"Feature structure: [Asymmetric(60) | DC(1) | Symmetric(60)]")
+        print(f"Feature structure: (61 freq, 20 scale, 2 channels)")
+        print(f"  Channel 0: Symmetric (averaged energy)")
+        print(f"  Channel 1: Asymmetric (rescaled direction)")
         
-        return train_dataset, val_dataset, test_dataset, self.n_freq, self.n_time
+        # Update dimensions for model
+        n_freq_new = 61  # 0-15 Hz (DC + 60 positive rates)
+        n_time_new = 20  # Scale dimension
+        
+        return train_dataset, val_dataset, test_dataset, n_freq_new, n_time_new
 
 
 # ============================================================================
@@ -327,8 +348,9 @@ class ModifiedFeatureASMClassifier(nn.Module):
             n_freq_masks=1, n_time_masks=2
         )
         
+        # Updated input projection for 2-channel input
         self.input_proj = nn.Sequential(
-            nn.Conv2d(1, dim // 4, kernel_size=3, padding=1),
+            nn.Conv2d(2, dim // 4, kernel_size=3, padding=1),  # 2 input channels
             nn.BatchNorm2d(dim // 4),
             nn.GELU(),
             nn.Conv2d(dim // 4, dim, kernel_size=3, padding=1),
@@ -353,9 +375,13 @@ class ModifiedFeatureASMClassifier(nn.Module):
         self.classifier = nn.Linear(dim // 2, num_classes)
         
     def forward(self, x, return_features=False):
+        # x: (batch, freq, time, 2) -> need to reshape to (batch, 2, freq, time)
         batch_size = x.size(0)
+        
+        # Permute to (batch, channels, freq, time) for Conv2d
+        x = x.permute(0, 3, 1, 2)  # (batch, 2, freq, time)
+        
         x = self.spec_augment(x)
-        x = x.unsqueeze(1)
         x = self.input_proj(x)
         x = x.permute(0, 1, 3, 2)
         x = x.flatten(2).transpose(1, 2)
