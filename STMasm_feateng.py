@@ -44,23 +44,19 @@ spec.loader.exec_module(stm_conformer)
 
 def preprocess_stm_features(stm_2d):
     """
-    Apply 1/f normalization and symmetric/asymmetric decomposition to STM features.
+    Apply 1/f normalization and symmetric decomposition to STM features.
     
     Parameters:
     -----------
     stm_2d : np.ndarray or torch.Tensor
         Input STM features of shape (batch, time, freq)
-        Expected: (batch, 121, 20) where:
-        - 121 time bins = rate axis (-15 Hz to +15 Hz, 0.25 Hz resolution)
-        - 20 freq bins = scale axis (0 to 7.09 cyc/oct)
+        Expected: (batch, 121, 20)
     
     Returns:
     --------
     processed : torch.Tensor
-        Processed features of shape (batch, 61, 20, 2)
-        Structure: [rate(0-15Hz), scale, channels(sym/asym)]
-        - Channel 0: Symmetric map (averaged energy)
-        - Channel 1: Asymmetric map (directional difference, NOT rescaled)
+        Processed features of shape (batch, 61, 20)
+        Single-channel symmetric map (averaged energy)
     """
     is_numpy = isinstance(stm_2d, np.ndarray)
     if is_numpy:
@@ -68,14 +64,12 @@ def preprocess_stm_features(stm_2d):
     
     batch_size, n_time, n_freq = stm_2d.shape
     
-    # Generate frequency vector for rate axis (temporal modulation)
-    # Rate range: -15 Hz to +15 Hz, 121 bins, resolution = 0.25 Hz
+    # Generate frequency vector for rate axis
     rate_min = -15.0
     rate_max = 15.0
     frequency_vector = torch.linspace(rate_min, rate_max, n_time, device=stm_2d.device)
     
     # Step 1: Apply 1/f normalization
-    # Multiply each rate bin by its absolute frequency magnitude
     abs_freq = torch.abs(frequency_vector).unsqueeze(0).unsqueeze(-1)  # (1, 121, 1)
     stm_normalized = stm_2d * abs_freq
     
@@ -83,31 +77,19 @@ def preprocess_stm_features(stm_2d):
     dc_index = n_time // 2  # Index 60
     stm_normalized[:, dc_index, :] = stm_2d[:, dc_index, :]  # Restore DC
     
-    # Step 2: Symmetric/Asymmetric Decomposition
-    # Separate negative and positive rates
-    negative_chunk = stm_normalized[:, :dc_index, :]  # (batch, 60, 20): -15 to -0.25 Hz
-    positive_chunk = stm_normalized[:, dc_index+1:, :]  # (batch, 60, 20): +0.25 to +15 Hz
-    dc_component = stm_normalized[:, dc_index:dc_index+1, :]  # (batch, 1, 20): 0 Hz
+    # Step 2: Symmetric Decomposition (averaged energy only)
+    negative_chunk = stm_normalized[:, :dc_index, :]  # (batch, 60, 20)
+    positive_chunk = stm_normalized[:, dc_index+1:, :]  # (batch, 60, 20)
+    dc_component = stm_normalized[:, dc_index:dc_index+1, :]  # (batch, 1, 20)
     
     # Flip negative chunk to align with positive
-    # After flip: negative_flipped[0] aligns with positive[0] (both at 0.25 Hz magnitude)
     negative_flipped = torch.flip(negative_chunk, dims=[1])  # (batch, 60, 20)
     
-    # Step 3: Compute symmetric and asymmetric maps
-    # Symmetric: AVERAGE of absolute values (energy)
+    # Step 3: Compute symmetric map only (averaged energy)
     symmetric_map = (torch.abs(positive_chunk) + torch.abs(negative_flipped)) / 2.0
     
-    # Asymmetric: DIFFERENCE of absolute values (direction)
-    # NO RESCALING - keep raw differences
-    asymmetric_map = torch.abs(positive_chunk) - torch.abs(negative_flipped)
-    
-    # Step 4: Concatenate DC with both maps to form 0-15 Hz representation
-    # Prepend DC to create (batch, 61, 20) for each map
-    symmetric_with_dc = torch.cat([dc_component, symmetric_map], dim=1)  # (batch, 61, 20)
-    asymmetric_with_dc = torch.cat([dc_component, asymmetric_map], dim=1)  # (batch, 61, 20)
-    
-    # Step 5: Stack into 2-channel tensor: (batch, 61, 20, 2)
-    processed = torch.stack([symmetric_with_dc, asymmetric_with_dc], dim=-1)
+    # Step 4: Concatenate DC with symmetric map
+    processed = torch.cat([dc_component, symmetric_map], dim=1)  # (batch, 61, 20)
     
     return processed
 
@@ -126,19 +108,15 @@ class ModifiedSTMDataPrep(stm_conformer.prepData_STM_Conformer):
         # Apply modified preprocessing
         print("\nApplying modified STM preprocessing...")
         print("  1. 1/f normalization on rate axis")
-        print("  2. Symmetric/Asymmetric decomposition")
-        print("  3. Symmetric map: averaged energy (|P+| + |P-|)/2")
-        print("  4. Asymmetric map: raw directional difference (|P+| - |P-|)")
-        print("  5. Output: (61 freq, 20 scale, 2 channels)")
-        print("  6. Channel 0: Symmetric (averaged energy)")
-        print("  7. Channel 1: Asymmetric (raw direction, NOT rescaled)")
+        print("  2. Symmetric decomposition (averaged energy only)")
+        print("  3. Symmetric map: (|P+| + |P-|)/2")
+        print("  4. Output: (61 freq, 20 scale) - single channel")
         
         STM_processed = preprocess_stm_features(STM_all_2d)
         
-        # Normalize per sample (after preprocessing)
-        # Note: Now processing 4D tensor (batch, freq, time, channels)
-        means = STM_processed.mean(dim=(1, 2, 3), keepdim=True)
-        stds = STM_processed.std(dim=(1, 2, 3), keepdim=True)
+        # Normalize per sample
+        means = STM_processed.mean(dim=(1, 2), keepdim=True)
+        stds = STM_processed.std(dim=(1, 2), keepdim=True)
         STM_processed = (STM_processed - means) / (stds + 1e-8)
         
         # Convert to tensors and split
@@ -159,9 +137,7 @@ class ModifiedSTMDataPrep(stm_conformer.prepData_STM_Conformer):
         print(f"Train dataset shape: {X_train.shape}")
         print(f"Val dataset shape: {X_val.shape}")
         print(f"Test dataset shape: {X_test.shape}")
-        print(f"Feature structure: (61 freq, 20 scale, 2 channels)")
-        print(f"  Channel 0: Symmetric (averaged energy)")
-        print(f"  Channel 1: Asymmetric (raw direction, NOT rescaled)")
+        print(f"Feature structure: (61 freq, 20 scale) - single channel symmetric map")
         
         # Update dimensions for model
         n_freq_new = 61  # 0-15 Hz (DC + 60 positive rates)
@@ -175,7 +151,7 @@ class ModifiedSTMDataPrep(stm_conformer.prepData_STM_Conformer):
 # ============================================================================
 
 class SpecAugment(nn.Module):
-    """SpecAugment-style augmentation for STM features (supports multi-channel)"""
+    """SpecAugment-style augmentation for STM features"""
     def __init__(self, freq_mask_param=4, time_mask_param=20, n_freq_masks=1, n_time_masks=2):
         super(SpecAugment, self).__init__()
         self.freq_mask_param = freq_mask_param
@@ -186,31 +162,19 @@ class SpecAugment(nn.Module):
     def forward(self, x):
         if not self.training:
             return x
-        
-        # Handle both 3D (batch, freq, time) and 4D (batch, channels, freq, time)
-        if x.dim() == 4:
-            batch, channels, freq, time = x.shape
-        else:
-            batch, freq, time = x.shape
-            channels = 1
-            x = x.unsqueeze(1)  # Add channel dimension
             
+        batch, freq, time = x.shape
         x = x.clone()
         
-        # Apply masking (same mask across all channels)
         for _ in range(self.n_freq_masks):
             f = np.random.randint(0, self.freq_mask_param)
             f0 = np.random.randint(0, max(1, freq - f))
-            x[:, :, f0:f0+f, :] = 0
+            x[:, f0:f0+f, :] = 0
         
         for _ in range(self.n_time_masks):
             t = np.random.randint(0, self.time_mask_param)
             t0 = np.random.randint(0, max(1, time - t))
-            x[:, :, :, t0:t0+t] = 0
-        
-        # Remove channel dimension if it was added
-        if channels == 1 and x.dim() == 4:
-            x = x.squeeze(1)
+            x[:, :, t0:t0+t] = 0
             
         return x
 
@@ -338,9 +302,9 @@ class ASM_RH_Block(nn.Module):
 
 
 class ModifiedFeatureASMClassifier(nn.Module):
-    """ASM classifier for modified STM features"""
+    """ASM classifier for modified STM features (symmetric only)"""
     def __init__(self, time_steps, freq_steps, num_classes, 
-                 dim=128, num_blocks=4, shift_range=2, expansion_factor=2, dropout=0.1):
+                 dim=144, num_blocks=4, shift_range=2, expansion_factor=2, dropout=0.1):
         super(ModifiedFeatureASMClassifier, self).__init__()
         
         self.time_steps = time_steps
@@ -352,12 +316,12 @@ class ModifiedFeatureASMClassifier(nn.Module):
             n_freq_masks=1, n_time_masks=2
         )
         
-        # Updated input projection for 2-channel input
+        # Input projection for single-channel input (increased capacity)
         self.input_proj = nn.Sequential(
-            nn.Conv2d(2, dim // 4, kernel_size=3, padding=1),  # 2 input channels
-            nn.BatchNorm2d(dim // 4),
+            nn.Conv2d(1, dim // 3, kernel_size=3, padding=1),  # 1 input channel
+            nn.BatchNorm2d(dim // 3),
             nn.GELU(),
-            nn.Conv2d(dim // 4, dim, kernel_size=3, padding=1),
+            nn.Conv2d(dim // 3, dim, kernel_size=3, padding=1),
             nn.BatchNorm2d(dim),
             nn.GELU()
         )
@@ -379,11 +343,10 @@ class ModifiedFeatureASMClassifier(nn.Module):
         self.classifier = nn.Linear(dim // 2, num_classes)
         
     def forward(self, x, return_features=False):
-        # x: (batch, freq, time, 2) -> need to reshape to (batch, 2, freq, time)
+        # x: (batch, freq, time) -> add channel: (batch, 1, freq, time)
         batch_size = x.size(0)
         
-        # Permute to (batch, channels, freq, time) for Conv2d
-        x = x.permute(0, 3, 1, 2)  # (batch, 2, freq, time)
+        x = x.unsqueeze(1)  # (batch, 1, freq, time)
         
         x = self.spec_augment(x)
         x = self.input_proj(x)
@@ -792,7 +755,7 @@ if __name__ == "__main__":
         time_steps=n_time,
         freq_steps=n_freq,
         num_classes=num_classes,
-        dim=128,
+        dim=144,  # Increased from 128
         num_blocks=4,
         shift_range=2,
         expansion_factor=2,
