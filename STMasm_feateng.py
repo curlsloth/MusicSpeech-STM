@@ -60,7 +60,7 @@ def preprocess_stm_features(stm_2d):
         Processed features of shape (batch, 61, 20, 2)
         Structure: [rate(0-15Hz), scale, channels(sym/asym)]
         - Channel 0: Symmetric map (averaged energy)
-        - Channel 1: Asymmetric map (directional, rescaled to [-1, 1])
+        - Channel 1: Asymmetric map (directional difference, NOT rescaled)
     """
     is_numpy = isinstance(stm_2d, np.ndarray)
     if is_numpy:
@@ -98,23 +98,15 @@ def preprocess_stm_features(stm_2d):
     symmetric_map = (torch.abs(positive_chunk) + torch.abs(negative_flipped)) / 2.0
     
     # Asymmetric: DIFFERENCE of absolute values (direction)
+    # NO RESCALING - keep raw differences
     asymmetric_map = torch.abs(positive_chunk) - torch.abs(negative_flipped)
     
-    # Step 4: Rescale asymmetric map to [-1, 1] per sample
-    # Find max absolute value for each sample
-    max_abs_asym = torch.abs(asymmetric_map).reshape(batch_size, -1).max(dim=1, keepdim=True)[0]
-    max_abs_asym = max_abs_asym.unsqueeze(-1)  # (batch, 1, 1)
-    # Avoid division by zero
-    max_abs_asym = torch.clamp(max_abs_asym, min=1e-8)
-    # Rescale
-    asymmetric_map_rescaled = asymmetric_map / max_abs_asym
-    
-    # Step 5: Concatenate DC with both maps to form 0-15 Hz representation
+    # Step 4: Concatenate DC with both maps to form 0-15 Hz representation
     # Prepend DC to create (batch, 61, 20) for each map
     symmetric_with_dc = torch.cat([dc_component, symmetric_map], dim=1)  # (batch, 61, 20)
-    asymmetric_with_dc = torch.cat([dc_component, asymmetric_map_rescaled], dim=1)  # (batch, 61, 20)
+    asymmetric_with_dc = torch.cat([dc_component, asymmetric_map], dim=1)  # (batch, 61, 20)
     
-    # Step 6: Stack into 2-channel tensor: (batch, 61, 20, 2)
+    # Step 5: Stack into 2-channel tensor: (batch, 61, 20, 2)
     processed = torch.stack([symmetric_with_dc, asymmetric_with_dc], dim=-1)
     
     return processed
@@ -136,10 +128,10 @@ class ModifiedSTMDataPrep(stm_conformer.prepData_STM_Conformer):
         print("  1. 1/f normalization on rate axis")
         print("  2. Symmetric/Asymmetric decomposition")
         print("  3. Symmetric map: averaged energy (|P+| + |P-|)/2")
-        print("  4. Asymmetric map: directional difference, rescaled to [-1, 1]")
+        print("  4. Asymmetric map: raw directional difference (|P+| - |P-|)")
         print("  5. Output: (61 freq, 20 scale, 2 channels)")
         print("  6. Channel 0: Symmetric (averaged energy)")
-        print("  7. Channel 1: Asymmetric (rescaled direction)")
+        print("  7. Channel 1: Asymmetric (raw direction, NOT rescaled)")
         
         STM_processed = preprocess_stm_features(STM_all_2d)
         
@@ -169,7 +161,7 @@ class ModifiedSTMDataPrep(stm_conformer.prepData_STM_Conformer):
         print(f"Test dataset shape: {X_test.shape}")
         print(f"Feature structure: (61 freq, 20 scale, 2 channels)")
         print(f"  Channel 0: Symmetric (averaged energy)")
-        print(f"  Channel 1: Asymmetric (rescaled direction)")
+        print(f"  Channel 1: Asymmetric (raw direction, NOT rescaled)")
         
         # Update dimensions for model
         n_freq_new = 61  # 0-15 Hz (DC + 60 positive rates)
