@@ -59,32 +59,32 @@ def process_symmetric_stm(stm_data):
     """
     Process STM data to exploit up/down-sweep symmetry.
     
-    Input: (batch, freq=121, time)
-    Output: (batch, freq=61, time)
+    Input: (batch, freq_bands, mod_rates=121)
+    Output: (batch, freq_bands, mod_rates=61)
     
     Steps:
-    A. Separate negative rates [0:60] and positive rates [61:121]
-    B. Flip negative chunk to align frequencies
+    A. Separate negative rates [0:60] and positive rates [61:121] along modulation axis
+    B. Flip negative chunk to align modulation rates
     C. Average flipped negative and positive chunks
     D. Concatenate DC (index 60) at position 0
     
-    Frequency mapping:
+    Modulation rate mapping:
     - Original: -15 Hz (idx 0) ... 0 Hz (idx 60) ... +15 Hz (idx 120)
     - Output: 0 Hz (idx 0) ... +15 Hz (idx 60)
     """
-    # Step A: Separate chunks
-    negative_chunk = stm_data[:, 0:60, :]   # -15 Hz to -0.25 Hz
-    dc_component = stm_data[:, 60:61, :]    # 0 Hz
-    positive_chunk = stm_data[:, 61:121, :] # +0.25 Hz to +15 Hz
+    # Step A: Separate chunks along modulation rate dimension (last dim)
+    negative_chunk = stm_data[:, :, 0:60]   # -15 Hz to -0.25 Hz
+    dc_component = stm_data[:, :, 60:61]    # 0 Hz
+    positive_chunk = stm_data[:, :, 61:121] # +0.25 Hz to +15 Hz
     
-    # Step B: Flip negative chunk (reverse frequency axis)
-    negative_flipped = torch.flip(negative_chunk, dims=[1])
+    # Step B: Flip negative chunk (reverse modulation rate axis)
+    negative_flipped = torch.flip(negative_chunk, dims=[2])
     
     # Step C: Average aligned chunks
     averaged_chunk = (negative_flipped + positive_chunk) / 2.0
     
     # Step D: Concatenate DC at the beginning
-    output = torch.cat([dc_component, averaged_chunk], dim=1)
+    output = torch.cat([dc_component, averaged_chunk], dim=2)
     
     return output
 
@@ -727,17 +727,18 @@ if __name__ == "__main__":
     data_prep = prepData_STM_Conformer(ds_nontonal_speech=ds_nontonal_speech)
     train_dataset, val_dataset, test_dataset, n_freq_original, n_time = data_prep.prepare_datasets()
     
-    print(f"Original STM dimensions: Time={n_time}, Freq={n_freq_original}")
-    print(f"Applying symmetric STM processing...")
+    print(f"Original STM dimensions: Freq_bands={n_freq_original}, Mod_rates={n_time}")
+    print(f"Applying symmetric STM processing to modulation rate dimension...")
     
     # Apply symmetric processing to all datasets
     train_dataset = SymmetricSTMDataset(train_dataset)
     val_dataset = SymmetricSTMDataset(val_dataset)
     test_dataset = SymmetricSTMDataset(test_dataset)
     
-    # New frequency dimension after symmetric processing
-    n_freq = 61  # 0 Hz + 60 bins (0.25 Hz to 15 Hz)
-    print(f"Processed STM dimensions: Time={n_time}, Freq={n_freq}")
+    # New modulation rate dimension after symmetric processing
+    # Original: n_time=121 mod rates → New: 61 mod rates (DC + 60 positive rates)
+    n_time_processed = 61  # 0 Hz + 60 bins (0.25 Hz to 15 Hz)
+    print(f"Processed STM dimensions: Freq_bands={n_freq_original}, Mod_rates={n_time_processed}")
     
     # Extract labels for class weight computation
     train_labels = []
@@ -764,14 +765,14 @@ if __name__ == "__main__":
     print("Creating Enhanced ASM-RH v4 model...")
     print("="*60)
     print(f"Architecture changes from v3:")
-    print(f"  - Frequency dimension: 121 → {n_freq}")
+    print(f"  - Modulation rate dimension: 121 → {n_time_processed}")
     print(f"  - Model dimension: 128 → 160")
     print(f"  - Number of blocks: 4 → 6")
     
     num_classes = 6
     model = EnhancedASM_RH_Classifier(
-        time_steps=n_time,
-        freq_steps=n_freq,
+        time_steps=n_time_processed,  # Use processed mod rates (61)
+        freq_steps=n_freq_original,   # Use original freq bands (20)
         num_classes=num_classes,
         dim=160,          # Increased from 128
         num_blocks=6,     # Increased from 4

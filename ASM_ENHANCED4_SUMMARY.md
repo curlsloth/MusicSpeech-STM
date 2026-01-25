@@ -4,7 +4,7 @@
 
 Enhanced Audio Spectrogram Mixer v4 (ASM-RH v4) introduces **symmetric STM processing** to exploit the inherent symmetry between upward and downward frequency sweeps in spectro-temporal modulation (STM) representations. This reduces the input dimensionality while preserving critical information, allowing for increased model capacity.
 
-**Key Innovation**: Averaging symmetric modulation rates reduces frequency dimension from 121 to 61 bins while maintaining representational power.
+**Key Innovation**: Averaging symmetric modulation rates reduces modulation rate dimension from 121 to 61 bins while maintaining representational power.
 
 ---
 
@@ -14,33 +14,43 @@ Enhanced Audio Spectrogram Mixer v4 (ASM-RH v4) introduces **symmetric STM proce
 
 The core innovation in v4 is the pre-processing of STM features before model input:
 
+**Input Data Structure**: STM data has shape `(freq_bands=20, mod_rates=121)`
+- 20 frequency bands (spectral channels)
+- 121 modulation rate bins (−15 Hz to +15 Hz in 0.25 Hz steps)
+
 #### Step A: Separate Modulation Rates
-- **Negative rates (up-sweeps)**: Indices 0–59 (−15 Hz to −0.25 Hz)
-- **DC component**: Index 60 (0 Hz)
-- **Positive rates (down-sweeps)**: Indices 61–120 (+0.25 Hz to +15 Hz)
+Along the **modulation rate dimension** (axis 2):
+- **Negative rates (down-sweeps)**: Indices 0–59 (−15 Hz to −0.25 Hz)
+- **DC component**: Index 60 (0 Hz, no modulation)
+- **Positive rates (up-sweeps)**: Indices 61–120 (+0.25 Hz to +15 Hz)
 
 #### Step B: Align Chunks
-- Flip the negative chunk along the frequency axis
+- Flip the negative chunk along the **modulation rate axis**
 - Align index 0 of negative chunk with index 0 of positive chunk
 - Result: −0.25 Hz aligns with +0.25 Hz, up to ±15 Hz
 
 #### Step C: Average Aligned Chunks
 - Compute element-wise average: `(flipped_negative + positive) / 2`
-- Exploits the physical symmetry: up-sweeps and down-sweeps often contain redundant information
+- Exploits the physical symmetry: down-sweeps and up-sweeps often contain redundant information
+- Applied independently to each of the 20 frequency bands
 
 #### Step D: Concatenate DC
 - Prepend the DC component (0 Hz) at index 0
-- Final output: 61 frequency bins (0 Hz to +15 Hz)
+- **Final output**: `(freq_bands=20, mod_rates=61)` — 0 Hz + 60 positive rates
 
 ### Rationale
 
 **Physical Interpretation**: 
-- Spectro-temporal modulation captures how frequency content changes over time
-- Up-sweeps (negative rates) and down-sweeps (positive rates) are often symmetric
+- Spectro-temporal modulation captures how frequency content modulates over time
+- Negative rates (down-sweeps): spectral energy decreasing over time
+- Positive rates (up-sweeps): spectral energy increasing over time
+- Many sounds exhibit symmetry between up/down sweeps
 - Averaging reduces noise and redundancy while preserving discriminative features
 
 **Dimensionality Reduction**:
-- Input frequency dimension: 121 → 61 (50% reduction)
+- Input modulation rate dimension: 121 → 61 (50% reduction)
+- Frequency bands unchanged: 20 → 20
+- Overall input size: 2420 features → 1220 features (49.6% reduction)
 - Computational savings allow for deeper, wider models
 - Information loss is minimal due to symmetry exploitation
 
@@ -52,31 +62,33 @@ The core innovation in v4 is the pre-processing of STM features before model inp
 
 | Component | v3 | v4 | Change |
 |-----------|----|----|--------|
-| **Frequency bins** | 121 | 61 | 50% reduction via symmetric processing |
+| **Input shape** | (20, 121) | (20, 61) | Mod rates: 121 → 61 (50% reduction) |
+| **Frequency bands** | 20 | 20 | Unchanged |
+| **Modulation rates** | 121 | 61 | 50% reduction via symmetric processing |
 | **Model dimension** | 128 | 160 | +25% increase |
 | **Number of blocks** | 4 | 6 | +50% depth increase |
-| **Total parameters** | ~2.1M | ~3.8M | +81% capacity increase |
+| **Total parameters** | ~2.1M | ~2.0M | Similar (smaller input, larger model) |
 
 ### Architecture Details
 
 ```
-Input: (batch, 61, time)
+Input: (batch, freq_bands=20, mod_rates=61)
   ↓
 SpecAugment (freq_mask=4, time_mask=20)
   ↓
 Input Projection (Conv2d layers)
-  1x1 → dim/4=40 → dim=160
+  (20, 61) → dim/4=40 → dim=160
   ↓
 6x ASM-RH Blocks (each containing):
-  ├─ Enhanced2DPositionalEncoding
-  ├─ RollTimeMixing (shift_range=2)
-  ├─ HermitFFTMixing
-  ├─ TokenMixing
-  └─ ChannelMixing
+  ├─ Enhanced2DPositionalEncoding (mod_rate × freq_band)
+  ├─ RollTimeMixing (shift_range=2, along mod_rate axis)
+  ├─ HermitFFTMixing (frequency domain processing)
+  ├─ TokenMixing (seq_len = 20 × 61 = 1220)
+  └─ ChannelMixing (dim=160)
   ↓
 LayerNorm + AdaptiveAvgPool
   ↓
-Feature Extractor (dim → dim/2=80)
+Feature Extractor (dim=160 → dim/2=80)
   ↓
 Classifier (80 → 6 classes)
 ```
@@ -156,34 +168,51 @@ Based on v3 performance, we expect:
 
 ## Implementation Details
 
+### Important: Dimension Naming Convention
+
+**Data Representation**:
+- STM features have shape: `(freq_bands, mod_rates)` = `(20, 121)`
+- **freq_bands** (20): Spectral frequency bands (channels)
+- **mod_rates** (121): Modulation rates from −15 Hz to +15 Hz
+
+**Model Parameters** (historical naming from time-frequency spectrograms):
+- `time_steps` parameter → refers to **modulation rates** (121 → 61 after processing)
+- `freq_steps` parameter → refers to **frequency bands** (always 20)
+
+**Processing**:
+- Symmetric processing operates on the **modulation rate dimension**
+- Reduces mod_rates from 121 to 61, keeps freq_bands at 20
+- Final shape: `(20 freq_bands, 61 mod_rates)`
+
 ### SymmetricSTMDataset Class
 
 Wraps base dataset and applies symmetric processing on-the-fly:
 
 ```python
 def process_symmetric_stm(stm_data):
-    # Input: (batch, 121, time)
-    negative = stm_data[:, 0:60, :]    # Up-sweeps
-    dc = stm_data[:, 60:61, :]         # DC
-    positive = stm_data[:, 61:121, :]  # Down-sweeps
+    # Input: (batch, freq_bands=20, mod_rates=121)
+    negative = stm_data[:, :, 0:60]    # Down-sweeps (negative rates)
+    dc = stm_data[:, :, 60:61]         # DC (0 Hz)
+    positive = stm_data[:, :, 61:121]  # Up-sweeps (positive rates)
     
-    # Flip and average
-    negative_flipped = torch.flip(negative, dims=[1])
+    # Flip and average along modulation rate axis
+    negative_flipped = torch.flip(negative, dims=[2])
     averaged = (negative_flipped + positive) / 2.0
     
     # Concatenate DC at start
-    output = torch.cat([dc, averaged], dim=1)
-    # Output: (batch, 61, time)
+    output = torch.cat([dc, averaged], dim=2)
+    # Output: (batch, freq_bands=20, mod_rates=61)
     return output
 ```
 
 ### Dimensional Consistency
 
-All components updated for 61 frequency bins:
-- Input projection: Conv2d handles (batch, 1, time, 61)
-- Positional encoding: `freq_steps=61`
-- ASM-RH blocks: Reshaped to (batch, time, 61, dim)
-- SpecAugment: `freq_mask_param=4` scales appropriately
+All components updated for correct dimensions:
+- **Data shape after processing**: `(batch, 20 freq_bands, 61 mod_rates)`
+- **Input projection**: Conv2d handles `(batch, 1, 61 mod_rates, 20 freq_bands)` (transposed)
+- **Positional encoding**: `time_steps=61` (mod rates), `freq_steps=20` (freq bands)
+- **ASM-RH blocks**: Reshaped to `(batch, 61 mod_rates, 20 freq_bands, dim=160)`
+- **SpecAugment**: `freq_mask_param=4` (masks freq bands), `time_mask_param=20` (masks mod rates)
 
 ---
 
@@ -219,7 +248,8 @@ python STMasm_enhanced4.py 0 --resume model/STM/ASM_Enhanced4_corpora_categories
 
 | Metric | v1 | v2 | v3 | v4 (Expected) |
 |--------|----|----|----|----|
-| **Input Dim** | 121 freq | 121 freq | 121 freq | **61 freq** |
+| **Input Shape** | (20, 121) | (20, 121) | (20, 121) | **(20, 61)** |
+| **Input Features** | 2420 | 2420 | 2420 | **1220** |
 | **Model Dim** | 128 | 128 | 128 | **160** |
 | **Num Blocks** | 4 | 4 | 4 | **6** |
 | **Class Weights** | Inverse freq | Inverse freq | sqrt(inv freq) | sqrt(inv freq) |
@@ -241,19 +271,22 @@ python STMasm_enhanced4.py 0 --resume model/STM/ASM_Enhanced4_corpora_categories
 ### Why Symmetric Processing Works
 
 **Spectro-Temporal Modulation Theory**:
-- STM captures how spectral content modulates over time
-- Positive rates: Frequency increases over time (up-sweep)
-- Negative rates: Frequency decreases over time (down-sweep)
+- STM captures how spectral content modulates over time at different rates
+- **Positive modulation rates** (+0.25 to +15 Hz): Spectral energy increasing over time (up-sweep)
+- **Negative modulation rates** (−15 to −0.25 Hz): Spectral energy decreasing over time (down-sweep)
+- **DC (0 Hz)**: No temporal modulation, static spectral content
 
 **Symmetry Property**:
-- Many natural sounds exhibit symmetry in their modulation patterns
+- Many natural sounds exhibit symmetry between up/down modulation patterns
 - Example: Musical notes often have symmetric attack/decay envelopes
+- Speech formant transitions can be symmetric in certain contexts
 - Averaging exploits this symmetry while reducing noise
 
 **Information Theory**:
-- Redundancy between symmetric rates = mutual information
+- Redundancy between symmetric modulation rates = mutual information
 - Averaging removes redundancy, preserves discriminative features
 - Acts as a form of dimensionality reduction with domain knowledge
+- Each frequency band (20 total) is processed independently
 
 ### Potential Limitations
 
@@ -358,18 +391,20 @@ To validate design choices:
 python -c "
 from STMasm_enhanced4 import *
 data_prep = prepData_STM_Conformer(ds_nontonal_speech=False)
-train_ds, _, _, n_freq, n_time = data_prep.prepare_datasets()
+train_ds, _, _, n_freq_bands, n_mod_rates = data_prep.prepare_datasets()
+print(f'Before processing: freq_bands={n_freq_bands}, mod_rates={n_mod_rates}')
 train_ds = SymmetricSTMDataset(train_ds)
 sample, label = train_ds[0]
-print(f'Sample shape: {sample.shape}')  # Should be (61, time)
+print(f'After processing shape: {sample.shape}')  # Should be (20, 61)
 "
 
 # Verify model forward pass
 python -c "
 import torch
 from STMasm_enhanced4 import EnhancedASM_RH_Classifier
-model = EnhancedASM_RH_Classifier(time_steps=117, freq_steps=61, num_classes=6)
-x = torch.randn(2, 61, 117)
+# time_steps = mod_rates (61), freq_steps = freq_bands (20)
+model = EnhancedASM_RH_Classifier(time_steps=61, freq_steps=20, num_classes=6)
+x = torch.randn(2, 20, 61)  # (batch, freq_bands, mod_rates)
 out = model(x)
 print(f'Output shape: {out.shape}')  # Should be (2, 6)
 "
