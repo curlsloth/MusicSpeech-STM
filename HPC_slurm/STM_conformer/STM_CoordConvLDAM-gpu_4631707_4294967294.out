@@ -1,0 +1,616 @@
+Using device: cuda
+GPU: Quadro RTX 8000
+GPU Memory: 47.76 GB
+
+Mode 0: Standard training (full dataset)
+Checkpoint directory: model/STM/CoordConvLDAM_corpora_categories/standard/ckpt/2026-01-28_13-59
+
+============================================================
+Loading and preparing data...
+============================================================
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-hausa_STMall.npy, shape: (29002, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-lingala_STMall.npy, shape: (11219, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-yoruba_STMall.npy, shape: (6629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Buckeye_STMall.npy, shape: (255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/EUROM_STMall.npy, shape: (6623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_speech_STMall.npy, shape: (785, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/LibriSpeech_STMall.npy, shape: (27144, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-AR_STMall.npy, shape: (2505, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-ES_STMall.npy, shape: (2507, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-FR_STMall.npy, shape: (2498, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-TR_STMall.npy, shape: (2512, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ab_STMall.npy, shape: (7558, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ar_STMall.npy, shape: (8080, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ba_STMall.npy, shape: (7964, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-be_STMall.npy, shape: (8595, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bg_STMall.npy, shape: (7130, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bn_STMall.npy, shape: (8149, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-br_STMall.npy, shape: (1454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ca_STMall.npy, shape: (8237, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ckb_STMall.npy, shape: (7490, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cnh_STMall.npy, shape: (656, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cs_STMall.npy, shape: (8622, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cv_STMall.npy, shape: (8755, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cy_STMall.npy, shape: (7640, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-da_STMall.npy, shape: (3878, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-de_STMall.npy, shape: (8979, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-dv_STMall.npy, shape: (9113, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-el_STMall.npy, shape: (6422, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-en_STMall.npy, shape: (8607, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eo_STMall.npy, shape: (9327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-es_STMall.npy, shape: (8742, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-et_STMall.npy, shape: (9653, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eu_STMall.npy, shape: (7983, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fa_STMall.npy, shape: (8629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fi_STMall.npy, shape: (3982, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fr_STMall.npy, shape: (8912, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fy-NL_STMall.npy, shape: (6694, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ga-IE_STMall.npy, shape: (1323, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gl_STMall.npy, shape: (8623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gn_STMall.npy, shape: (1014, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hi_STMall.npy, shape: (5438, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hu_STMall.npy, shape: (8319, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hy-AM_STMall.npy, shape: (6980, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-id_STMall.npy, shape: (8468, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ig_STMall.npy, shape: (9, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-it_STMall.npy, shape: (9083, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ja_STMall.npy, shape: (8606, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ka_STMall.npy, shape: (9409, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kab_STMall.npy, shape: (7172, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kk_STMall.npy, shape: (867, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kmr_STMall.npy, shape: (6603, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ky_STMall.npy, shape: (7998, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lg_STMall.npy, shape: (8169, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lt_STMall.npy, shape: (9073, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ltg_STMall.npy, shape: (2299, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lv_STMall.npy, shape: (7666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mhr_STMall.npy, shape: (8336, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ml_STMall.npy, shape: (813, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mn_STMall.npy, shape: (5968, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mt_STMall.npy, shape: (3632, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nan-tw_STMall.npy, shape: (181, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nl_STMall.npy, shape: (8834, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-oc_STMall.npy, shape: (681, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-or_STMall.npy, shape: (1941, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pl_STMall.npy, shape: (8817, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pt_STMall.npy, shape: (8413, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ro_STMall.npy, shape: (6666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ru_STMall.npy, shape: (9260, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-rw_STMall.npy, shape: (9148, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sr_STMall.npy, shape: (391, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sv-SE_STMall.npy, shape: (8288, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sw_STMall.npy, shape: (9192, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ta_STMall.npy, shape: (9474, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-th_STMall.npy, shape: (8044, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tr_STMall.npy, shape: (7953, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tt_STMall.npy, shape: (7454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ug_STMall.npy, shape: (7899, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uk_STMall.npy, shape: (8819, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ur_STMall.npy, shape: (8970, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uz_STMall.npy, shape: (7911, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-vi_STMall.npy, shape: (1859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yo_STMall.npy, shape: (2511, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yue_STMall.npy, shape: (6156, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-CN_STMall.npy, shape: (8715, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-TW_STMall.npy, shape: (7286, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SpeechClarity_STMall.npy, shape: (555, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TAT-Vol2_STMall.npy, shape: (793, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TIMIT_STMall.npy, shape: (479, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TTS_Javanese_STMall.npy, shape: (3068, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/primewords_chinese_STMall.npy, shape: (47166, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/room_reader_STMall.npy, shape: (146, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/thchs30_STMall.npy, shape: (13327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/zeroth_korean_STMall.npy, shape: (22255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Albouy2020Science_STMall.npy, shape: (123, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/GarlandEncyclopedia_STMall.npy, shape: (296, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_song_STMall.npy, shape: (803, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/IRMAS_STMall.npy, shape: (2838, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MTG-Jamendo_STMall.npy, shape: (55699, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MagnaTagATune_STMall.npy, shape: (25859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/NHS2_STMall.npy, shape: (1007, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/fma_large_STMall.npy, shape: (106257, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/ismir04_genre_STMall.npy, shape: (2185, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy, shape: (34565, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SONYC_STMall.npy, shape: (10798, 2420)
+
+Dataset Statistics:
+Total samples: 978378
+Train samples: 770393
+Val samples: 102010
+Test samples: 105975
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
+
+Class Distribution (Training):
+  Class 0: 497475 samples (64.57%)
+  Class 1: 80258 samples (10.42%)
+  Class 2: 101893 samples (13.23%)
+  Class 3: 53538 samples (6.95%)
+  Class 4: 9580 samples (1.24%)
+  Class 5: 27649 samples (3.59%)
+
+PyTorch Dataset Shapes:
+Train: torch.Size([770393, 1, 20, 121])
+Val: torch.Size([102010, 1, 20, 121])
+Test: torch.Size([105975, 1, 20, 121])
+
+DataLoaders created with batch_size=256
+
+============================================================
+Creating CoordConv-ResNet18 model...
+============================================================
+Total parameters: 23,919,686
+Trainable parameters: 23,919,686
+
+Starting training for 50 epochs...
+DRW will start at epoch 40
+
+============================================================
+Epoch 1/50
+============================================================
+  Batch 0/3010, Loss: 9.0037, DRW: False
+  Batch 100/3010, Loss: 3.0746, DRW: False
+  Batch 200/3010, Loss: 3.0254, DRW: False
+  Batch 300/3010, Loss: 2.8459, DRW: False
+  Batch 400/3010, Loss: 2.7331, DRW: False
+  Batch 500/3010, Loss: 1.8879, DRW: False
+  Batch 600/3010, Loss: 3.7286, DRW: False
+  Batch 700/3010, Loss: 3.1819, DRW: False
+  Batch 800/3010, Loss: 2.0263, DRW: False
+  Batch 900/3010, Loss: 3.0521, DRW: False
+  Batch 1000/3010, Loss: 2.0708, DRW: False
+  Batch 1100/3010, Loss: 2.6460, DRW: False
+  Batch 1200/3010, Loss: 2.1933, DRW: False
+  Batch 1300/3010, Loss: 1.9530, DRW: False
+  Batch 1400/3010, Loss: 2.0426, DRW: False
+  Batch 1500/3010, Loss: 2.4111, DRW: False
+  Batch 1600/3010, Loss: 2.0409, DRW: False
+  Batch 1700/3010, Loss: 2.4596, DRW: False
+  Batch 1800/3010, Loss: 2.2308, DRW: False
+  Batch 1900/3010, Loss: 1.6696, DRW: False
+  Batch 2000/3010, Loss: 2.2811, DRW: False
+  Batch 2100/3010, Loss: 2.2533, DRW: False
+  Batch 2200/3010, Loss: 2.3425, DRW: False
+  Batch 2300/3010, Loss: 2.2071, DRW: False
+  Batch 2400/3010, Loss: 2.4387, DRW: False
+  Batch 2500/3010, Loss: 1.8479, DRW: False
+  Batch 2600/3010, Loss: 2.3637, DRW: False
+  Batch 2700/3010, Loss: 2.2314, DRW: False
+  Batch 2800/3010, Loss: 2.0225, DRW: False
+  Batch 2900/3010, Loss: 2.3434, DRW: False
+  Batch 3000/3010, Loss: 2.5097, DRW: False
+Train Loss: 2.3327
+Val Loss: 1.2233, Val Macro F1: 0.8068
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8068
+
+============================================================
+Epoch 2/50
+============================================================
+  Batch 0/3010, Loss: 2.4918, DRW: False
+  Batch 100/3010, Loss: 1.6587, DRW: False
+  Batch 200/3010, Loss: 1.9130, DRW: False
+  Batch 300/3010, Loss: 2.0822, DRW: False
+  Batch 400/3010, Loss: 2.1303, DRW: False
+  Batch 500/3010, Loss: 1.7787, DRW: False
+  Batch 600/3010, Loss: 2.7766, DRW: False
+  Batch 700/3010, Loss: 2.3391, DRW: False
+  Batch 800/3010, Loss: 1.5049, DRW: False
+  Batch 900/3010, Loss: 2.1715, DRW: False
+  Batch 1000/3010, Loss: 1.8931, DRW: False
+  Batch 1100/3010, Loss: 1.9592, DRW: False
+  Batch 1200/3010, Loss: 1.6586, DRW: False
+  Batch 1300/3010, Loss: 1.8156, DRW: False
+  Batch 1400/3010, Loss: 1.7584, DRW: False
+  Batch 1500/3010, Loss: 1.7866, DRW: False
+  Batch 1600/3010, Loss: 1.8281, DRW: False
+  Batch 1700/3010, Loss: 1.5497, DRW: False
+  Batch 1800/3010, Loss: 1.4093, DRW: False
+  Batch 1900/3010, Loss: 2.2354, DRW: False
+  Batch 2000/3010, Loss: 1.7553, DRW: False
+  Batch 2100/3010, Loss: 1.4840, DRW: False
+  Batch 2200/3010, Loss: 1.5840, DRW: False
+  Batch 2300/3010, Loss: 1.5419, DRW: False
+  Batch 2400/3010, Loss: 1.4182, DRW: False
+  Batch 2500/3010, Loss: 2.1322, DRW: False
+  Batch 2600/3010, Loss: 1.2217, DRW: False
+  Batch 2700/3010, Loss: 2.6537, DRW: False
+  Batch 2800/3010, Loss: 1.7353, DRW: False
+  Batch 2900/3010, Loss: 1.9446, DRW: False
+  Batch 3000/3010, Loss: 1.7814, DRW: False
+Train Loss: 1.8799
+Val Loss: 1.2533, Val Macro F1: 0.8090
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8090
+
+============================================================
+Epoch 3/50
+============================================================
+  Batch 0/3010, Loss: 1.6492, DRW: False
+  Batch 100/3010, Loss: 2.0085, DRW: False
+  Batch 200/3010, Loss: 1.5630, DRW: False
+  Batch 300/3010, Loss: 1.8360, DRW: False
+  Batch 400/3010, Loss: 1.6722, DRW: False
+  Batch 500/3010, Loss: 1.7577, DRW: False
+  Batch 600/3010, Loss: 1.8962, DRW: False
+  Batch 700/3010, Loss: 1.4135, DRW: False
+  Batch 800/3010, Loss: 1.3366, DRW: False
+  Batch 900/3010, Loss: 1.5456, DRW: False
+  Batch 1000/3010, Loss: 1.6249, DRW: False
+  Batch 1100/3010, Loss: 1.3755, DRW: False
+  Batch 1200/3010, Loss: 2.3519, DRW: False
+  Batch 1300/3010, Loss: 1.7911, DRW: False
+  Batch 1400/3010, Loss: 1.6867, DRW: False
+  Batch 1500/3010, Loss: 1.4838, DRW: False
+  Batch 1600/3010, Loss: 1.4844, DRW: False
+  Batch 1700/3010, Loss: 1.7264, DRW: False
+  Batch 1800/3010, Loss: 2.2922, DRW: False
+  Batch 1900/3010, Loss: 1.6895, DRW: False
+  Batch 2000/3010, Loss: 1.8086, DRW: False
+  Batch 2100/3010, Loss: 1.7501, DRW: False
+  Batch 2200/3010, Loss: 2.2330, DRW: False
+  Batch 2300/3010, Loss: 1.4268, DRW: False
+  Batch 2400/3010, Loss: 1.8098, DRW: False
+  Batch 2500/3010, Loss: 1.9127, DRW: False
+  Batch 2600/3010, Loss: 1.4127, DRW: False
+  Batch 2700/3010, Loss: 1.5044, DRW: False
+  Batch 2800/3010, Loss: 1.8035, DRW: False
+  Batch 2900/3010, Loss: 1.3726, DRW: False
+  Batch 3000/3010, Loss: 1.8322, DRW: False
+Train Loss: 1.7301
+Val Loss: 1.2025, Val Macro F1: 0.8183
+Current learning rate: 0.000099
+✓ Saved best model with Val F1: 0.8183
+
+============================================================
+Epoch 4/50
+============================================================
+  Batch 0/3010, Loss: 2.0871, DRW: False
+  Batch 100/3010, Loss: 1.8363, DRW: False
+  Batch 200/3010, Loss: 0.9442, DRW: False
+  Batch 300/3010, Loss: 1.2744, DRW: False
+  Batch 400/3010, Loss: 1.4899, DRW: False
+  Batch 500/3010, Loss: 1.6127, DRW: False
+  Batch 600/3010, Loss: 1.8663, DRW: False
+  Batch 700/3010, Loss: 1.5194, DRW: False
+  Batch 800/3010, Loss: 1.6444, DRW: False
+  Batch 900/3010, Loss: 1.7780, DRW: False
+  Batch 1000/3010, Loss: 1.1062, DRW: False
+  Batch 1100/3010, Loss: 1.5337, DRW: False
+  Batch 1200/3010, Loss: 2.0191, DRW: False
+  Batch 1300/3010, Loss: 1.6933, DRW: False
+  Batch 1400/3010, Loss: 1.1570, DRW: False
+  Batch 1500/3010, Loss: 1.5263, DRW: False
+  Batch 1600/3010, Loss: 1.6628, DRW: False
+  Batch 1700/3010, Loss: 1.3113, DRW: False
+  Batch 1800/3010, Loss: 1.7773, DRW: False
+  Batch 1900/3010, Loss: 1.6565, DRW: False
+  Batch 2000/3010, Loss: 1.4130, DRW: False
+  Batch 2100/3010, Loss: 1.3921, DRW: False
+  Batch 2200/3010, Loss: 1.9258, DRW: False
+  Batch 2300/3010, Loss: 1.9649, DRW: False
+  Batch 2400/3010, Loss: 1.9382, DRW: False
+  Batch 2500/3010, Loss: 1.7673, DRW: False
+  Batch 2600/3010, Loss: 1.3514, DRW: False
+  Batch 2700/3010, Loss: 2.0538, DRW: False
+  Batch 2800/3010, Loss: 1.9469, DRW: False
+  Batch 2900/3010, Loss: 1.5587, DRW: False
+  Batch 3000/3010, Loss: 1.7691, DRW: False
+Train Loss: 1.6324
+Val Loss: 1.2755, Val Macro F1: 0.8396
+Current learning rate: 0.000098
+✓ Saved best model with Val F1: 0.8396
+
+============================================================
+Epoch 5/50
+============================================================
+  Batch 0/3010, Loss: 1.2402, DRW: False
+  Batch 100/3010, Loss: 1.1707, DRW: False
+  Batch 200/3010, Loss: 1.0886, DRW: False
+  Batch 300/3010, Loss: 1.8121, DRW: False
+  Batch 400/3010, Loss: 1.7170, DRW: False
+  Batch 500/3010, Loss: 1.8450, DRW: False
+  Batch 600/3010, Loss: 1.5337, DRW: False
+  Batch 700/3010, Loss: 1.4317, DRW: False
+  Batch 800/3010, Loss: 1.8265, DRW: False
+  Batch 900/3010, Loss: 1.4713, DRW: False
+  Batch 1000/3010, Loss: 1.4139, DRW: False
+  Batch 1100/3010, Loss: 1.7807, DRW: False
+  Batch 1200/3010, Loss: 1.4346, DRW: False
+  Batch 1300/3010, Loss: 1.4367, DRW: False
+  Batch 1400/3010, Loss: 1.2631, DRW: False
+  Batch 1500/3010, Loss: 1.8623, DRW: False
+  Batch 1600/3010, Loss: 1.3263, DRW: False
+  Batch 1700/3010, Loss: 1.4850, DRW: False
+  Batch 1800/3010, Loss: 1.4040, DRW: False
+  Batch 1900/3010, Loss: 1.9894, DRW: False
+  Batch 2000/3010, Loss: 2.0137, DRW: False
+  Batch 2100/3010, Loss: 1.9219, DRW: False
+  Batch 2200/3010, Loss: 2.0524, DRW: False
+  Batch 2300/3010, Loss: 2.2095, DRW: False
+  Batch 2400/3010, Loss: 1.7799, DRW: False
+  Batch 2500/3010, Loss: 1.2778, DRW: False
+  Batch 2600/3010, Loss: 1.4254, DRW: False
+  Batch 2700/3010, Loss: 1.1900, DRW: False
+  Batch 2800/3010, Loss: 1.0336, DRW: False
+  Batch 2900/3010, Loss: 1.5940, DRW: False
+  Batch 3000/3010, Loss: 1.1940, DRW: False
+Train Loss: 1.5377
+Val Loss: 1.2434, Val Macro F1: 0.8414
+Current learning rate: 0.000098
+✓ Saved best model with Val F1: 0.8414
+
+============================================================
+Epoch 6/50
+============================================================
+  Batch 0/3010, Loss: 1.5752, DRW: False
+  Batch 100/3010, Loss: 1.7538, DRW: False
+  Batch 200/3010, Loss: 2.1123, DRW: False
+  Batch 300/3010, Loss: 1.0978, DRW: False
+  Batch 400/3010, Loss: 1.8458, DRW: False
+  Batch 500/3010, Loss: 1.3680, DRW: False
+  Batch 600/3010, Loss: 1.3927, DRW: False
+  Batch 700/3010, Loss: 1.3821, DRW: False
+  Batch 800/3010, Loss: 0.9888, DRW: False
+  Batch 900/3010, Loss: 1.4584, DRW: False
+  Batch 1000/3010, Loss: 1.4608, DRW: False
+  Batch 1100/3010, Loss: 1.2185, DRW: False
+  Batch 1200/3010, Loss: 1.3515, DRW: False
+  Batch 1300/3010, Loss: 1.7625, DRW: False
+  Batch 1400/3010, Loss: 1.0470, DRW: False
+  Batch 1500/3010, Loss: 1.8367, DRW: False
+  Batch 1600/3010, Loss: 1.3319, DRW: False
+  Batch 1700/3010, Loss: 1.2694, DRW: False
+  Batch 1800/3010, Loss: 1.5616, DRW: False
+  Batch 1900/3010, Loss: 1.7822, DRW: False
+  Batch 2000/3010, Loss: 1.2605, DRW: False
+  Batch 2100/3010, Loss: 1.3333, DRW: False
+  Batch 2200/3010, Loss: 0.9420, DRW: False
+  Batch 2300/3010, Loss: 1.2807, DRW: False
+  Batch 2400/3010, Loss: 1.2294, DRW: False
+  Batch 2500/3010, Loss: 1.6015, DRW: False
+  Batch 2600/3010, Loss: 1.4829, DRW: False
+  Batch 2700/3010, Loss: 1.2650, DRW: False
+  Batch 2800/3010, Loss: 1.5746, DRW: False
+  Batch 2900/3010, Loss: 1.9823, DRW: False
+  Batch 3000/3010, Loss: 2.1828, DRW: False
+Train Loss: 1.4536
+Val Loss: 1.2808, Val Macro F1: 0.8460
+Current learning rate: 0.000096
+✓ Saved best model with Val F1: 0.8460
+
+============================================================
+Epoch 7/50
+============================================================
+  Batch 0/3010, Loss: 1.2027, DRW: False
+  Batch 100/3010, Loss: 1.2900, DRW: False
+  Batch 200/3010, Loss: 1.3589, DRW: False
+  Batch 300/3010, Loss: 1.6904, DRW: False
+  Batch 400/3010, Loss: 1.3671, DRW: False
+  Batch 500/3010, Loss: 1.0479, DRW: False
+  Batch 600/3010, Loss: 1.4326, DRW: False
+  Batch 700/3010, Loss: 1.5189, DRW: False
+  Batch 800/3010, Loss: 1.1562, DRW: False
+  Batch 900/3010, Loss: 1.7851, DRW: False
+  Batch 1000/3010, Loss: 1.7812, DRW: False
+  Batch 1100/3010, Loss: 1.6157, DRW: False
+  Batch 1200/3010, Loss: 1.4211, DRW: False
+  Batch 1300/3010, Loss: 1.2239, DRW: False
+  Batch 1400/3010, Loss: 1.1979, DRW: False
+  Batch 1500/3010, Loss: 1.2361, DRW: False
+  Batch 1600/3010, Loss: 1.8297, DRW: False
+  Batch 1700/3010, Loss: 1.4610, DRW: False
+  Batch 1800/3010, Loss: 1.0425, DRW: False
+  Batch 1900/3010, Loss: 1.4821, DRW: False
+  Batch 2000/3010, Loss: 1.3254, DRW: False
+  Batch 2100/3010, Loss: 1.0913, DRW: False
+  Batch 2200/3010, Loss: 1.2050, DRW: False
+  Batch 2300/3010, Loss: 1.9953, DRW: False
+  Batch 2400/3010, Loss: 1.5679, DRW: False
+  Batch 2500/3010, Loss: 1.3764, DRW: False
+  Batch 2600/3010, Loss: 1.3183, DRW: False
+  Batch 2700/3010, Loss: 2.0565, DRW: False
+  Batch 2800/3010, Loss: 1.3865, DRW: False
+  Batch 2900/3010, Loss: 0.9720, DRW: False
+  Batch 3000/3010, Loss: 2.0697, DRW: False
+Train Loss: 1.3655
+Val Loss: 1.2172, Val Macro F1: 0.8453
+Current learning rate: 0.000095
+
+============================================================
+Epoch 8/50
+============================================================
+  Batch 0/3010, Loss: 1.1861, DRW: False
+  Batch 100/3010, Loss: 1.3208, DRW: False
+  Batch 200/3010, Loss: 1.3883, DRW: False
+  Batch 300/3010, Loss: 0.9413, DRW: False
+  Batch 400/3010, Loss: 1.2899, DRW: False
+  Batch 500/3010, Loss: 1.2390, DRW: False
+  Batch 600/3010, Loss: 1.7254, DRW: False
+  Batch 700/3010, Loss: 1.2699, DRW: False
+  Batch 800/3010, Loss: 1.3587, DRW: False
+  Batch 900/3010, Loss: 1.4952, DRW: False
+  Batch 1000/3010, Loss: 1.1890, DRW: False
+  Batch 1100/3010, Loss: 1.9532, DRW: False
+  Batch 1200/3010, Loss: 1.0810, DRW: False
+  Batch 1300/3010, Loss: 1.1510, DRW: False
+  Batch 1400/3010, Loss: 1.4072, DRW: False
+  Batch 1500/3010, Loss: 1.6807, DRW: False
+  Batch 1600/3010, Loss: 1.6856, DRW: False
+  Batch 1700/3010, Loss: 1.0640, DRW: False
+  Batch 1800/3010, Loss: 1.6087, DRW: False
+  Batch 1900/3010, Loss: 1.0207, DRW: False
+  Batch 2000/3010, Loss: 1.2076, DRW: False
+  Batch 2100/3010, Loss: 1.0080, DRW: False
+  Batch 2200/3010, Loss: 1.0718, DRW: False
+  Batch 2300/3010, Loss: 1.0240, DRW: False
+  Batch 2400/3010, Loss: 1.1144, DRW: False
+  Batch 2500/3010, Loss: 1.3035, DRW: False
+  Batch 2600/3010, Loss: 1.1345, DRW: False
+  Batch 2700/3010, Loss: 1.4797, DRW: False
+  Batch 2800/3010, Loss: 1.3596, DRW: False
+  Batch 2900/3010, Loss: 1.2524, DRW: False
+  Batch 3000/3010, Loss: 1.6613, DRW: False
+Train Loss: 1.2852
+Val Loss: 1.1998, Val Macro F1: 0.8482
+Current learning rate: 0.000094
+✓ Saved best model with Val F1: 0.8482
+
+============================================================
+Epoch 9/50
+============================================================
+  Batch 0/3010, Loss: 1.4870, DRW: False
+  Batch 100/3010, Loss: 1.0909, DRW: False
+  Batch 200/3010, Loss: 1.0629, DRW: False
+  Batch 300/3010, Loss: 1.5716, DRW: False
+  Batch 400/3010, Loss: 0.7536, DRW: False
+  Batch 500/3010, Loss: 1.1180, DRW: False
+  Batch 600/3010, Loss: 1.6873, DRW: False
+  Batch 700/3010, Loss: 1.6506, DRW: False
+  Batch 800/3010, Loss: 1.0231, DRW: False
+  Batch 900/3010, Loss: 1.2390, DRW: False
+  Batch 1000/3010, Loss: 1.3737, DRW: False
+  Batch 1100/3010, Loss: 1.4561, DRW: False
+  Batch 1200/3010, Loss: 1.5010, DRW: False
+  Batch 1300/3010, Loss: 0.9543, DRW: False
+  Batch 1400/3010, Loss: 1.1779, DRW: False
+  Batch 1500/3010, Loss: 1.1630, DRW: False
+  Batch 1600/3010, Loss: 1.5968, DRW: False
+  Batch 1700/3010, Loss: 0.9301, DRW: False
+  Batch 1800/3010, Loss: 0.8940, DRW: False
+  Batch 1900/3010, Loss: 1.3625, DRW: False
+  Batch 2000/3010, Loss: 0.9118, DRW: False
+  Batch 2100/3010, Loss: 1.7786, DRW: False
+  Batch 2200/3010, Loss: 1.1052, DRW: False
+  Batch 2300/3010, Loss: 1.0300, DRW: False
+  Batch 2400/3010, Loss: 0.5092, DRW: False
+  Batch 2500/3010, Loss: 1.4429, DRW: False
+  Batch 2600/3010, Loss: 1.0568, DRW: False
+  Batch 2700/3010, Loss: 1.3959, DRW: False
+  Batch 2800/3010, Loss: 1.5805, DRW: False
+  Batch 2900/3010, Loss: 0.8439, DRW: False
+  Batch 3000/3010, Loss: 1.3670, DRW: False
+Train Loss: 1.2077
+Val Loss: 1.1936, Val Macro F1: 0.8414
+Current learning rate: 0.000092
+
+============================================================
+Epoch 10/50
+============================================================
+  Batch 0/3010, Loss: 0.8460, DRW: False
+  Batch 100/3010, Loss: 1.2491, DRW: False
+  Batch 200/3010, Loss: 0.7047, DRW: False
+  Batch 300/3010, Loss: 1.0809, DRW: False
+  Batch 400/3010, Loss: 1.4402, DRW: False
+  Batch 500/3010, Loss: 0.9332, DRW: False
+  Batch 600/3010, Loss: 1.3105, DRW: False
+  Batch 700/3010, Loss: 1.0688, DRW: False
+  Batch 800/3010, Loss: 1.1966, DRW: False
+  Batch 900/3010, Loss: 1.0768, DRW: False
+  Batch 1000/3010, Loss: 1.2432, DRW: False
+  Batch 1100/3010, Loss: 1.1704, DRW: False
+  Batch 1200/3010, Loss: 1.0108, DRW: False
+  Batch 1300/3010, Loss: 0.9859, DRW: False
+  Batch 1400/3010, Loss: 1.4668, DRW: False
+  Batch 1500/3010, Loss: 1.2423, DRW: False
+  Batch 1600/3010, Loss: 0.8354, DRW: False
+  Batch 1700/3010, Loss: 0.7187, DRW: False
+  Batch 1800/3010, Loss: 0.8214, DRW: False
+  Batch 1900/3010, Loss: 1.3500, DRW: False
+  Batch 2000/3010, Loss: 1.2996, DRW: False
+  Batch 2100/3010, Loss: 1.0876, DRW: False
+  Batch 2200/3010, Loss: 0.9685, DRW: False
+  Batch 2300/3010, Loss: 1.2715, DRW: False
+  Batch 2400/3010, Loss: 0.9685, DRW: False
+  Batch 2500/3010, Loss: 1.4112, DRW: False
+  Batch 2600/3010, Loss: 1.0357, DRW: False
+  Batch 2700/3010, Loss: 1.1550, DRW: False
+  Batch 2800/3010, Loss: 1.6654, DRW: False
+  Batch 2900/3010, Loss: 0.3828, DRW: False
+  Batch 3000/3010, Loss: 1.2577, DRW: False
+Train Loss: 1.1337
+Val Loss: 1.1515, Val Macro F1: 0.8447
+Current learning rate: 0.000090
+
+============================================================
+Epoch 11/50
+============================================================
+  Batch 0/3010, Loss: 1.0377, DRW: False
+  Batch 100/3010, Loss: 1.1753, DRW: False
+  Batch 200/3010, Loss: 1.0226, DRW: False
+  Batch 300/3010, Loss: 1.0400, DRW: False
+  Batch 400/3010, Loss: 0.8607, DRW: False
+  Batch 500/3010, Loss: 0.8255, DRW: False
+  Batch 600/3010, Loss: 1.1678, DRW: False
+  Batch 700/3010, Loss: 1.0199, DRW: False
+  Batch 800/3010, Loss: 1.1729, DRW: False
+  Batch 900/3010, Loss: 1.2464, DRW: False
+  Batch 1000/3010, Loss: 1.0914, DRW: False
+  Batch 1100/3010, Loss: 0.9072, DRW: False
+  Batch 1200/3010, Loss: 1.0399, DRW: False
+  Batch 1300/3010, Loss: 1.7612, DRW: False
+  Batch 1400/3010, Loss: 0.7996, DRW: False
+  Batch 1500/3010, Loss: 1.4567, DRW: False
+  Batch 1600/3010, Loss: 0.7904, DRW: False
+  Batch 1700/3010, Loss: 0.8694, DRW: False
+  Batch 1800/3010, Loss: 0.9765, DRW: False
+  Batch 1900/3010, Loss: 0.9756, DRW: False
+  Batch 2000/3010, Loss: 1.1416, DRW: False
+  Batch 2100/3010, Loss: 1.1135, DRW: False
+  Batch 2200/3010, Loss: 1.0739, DRW: False
+  Batch 2300/3010, Loss: 0.9100, DRW: False
+  Batch 2400/3010, Loss: 1.0031, DRW: False
+  Batch 2500/3010, Loss: 1.1690, DRW: False
+  Batch 2600/3010, Loss: 0.7187, DRW: False
+  Batch 2700/3010, Loss: 0.9730, DRW: False
+  Batch 2800/3010, Loss: 1.3133, DRW: False
+  Batch 2900/3010, Loss: 0.9337, DRW: False
+  Batch 3000/3010, Loss: 0.7706, DRW: False
+Train Loss: 1.0575
+Val Loss: 1.1341, Val Macro F1: 0.8426
+Current learning rate: 0.000089
+
+============================================================
+Epoch 12/50
+============================================================
+  Batch 0/3010, Loss: 1.3863, DRW: False
+  Batch 100/3010, Loss: 0.7953, DRW: False
+  Batch 200/3010, Loss: 0.9984, DRW: False
+  Batch 300/3010, Loss: 0.9061, DRW: False
+  Batch 400/3010, Loss: 0.6090, DRW: False
+  Batch 500/3010, Loss: 1.2396, DRW: False
+  Batch 600/3010, Loss: 0.8334, DRW: False
+  Batch 700/3010, Loss: 0.7872, DRW: False
+  Batch 800/3010, Loss: 1.2056, DRW: False
+  Batch 900/3010, Loss: 1.1853, DRW: False
+  Batch 1000/3010, Loss: 0.9394, DRW: False
+  Batch 1100/3010, Loss: 1.2296, DRW: False
+  Batch 1200/3010, Loss: 0.7142, DRW: False
+  Batch 1300/3010, Loss: 0.6574, DRW: False
+  Batch 1400/3010, Loss: 1.2405, DRW: False
+  Batch 1500/3010, Loss: 1.1705, DRW: False
+  Batch 1600/3010, Loss: 0.6982, DRW: False
+  Batch 1700/3010, Loss: 1.3925, DRW: False
+  Batch 1800/3010, Loss: 0.9528, DRW: False
+  Batch 1900/3010, Loss: 1.0959, DRW: False
+  Batch 2000/3010, Loss: 0.8070, DRW: False
+  Batch 2100/3010, Loss: 1.1938, DRW: False
+  Batch 2200/3010, Loss: 0.8825, DRW: False
+  Batch 2300/3010, Loss: 1.5203, DRW: False
+  Batch 2400/3010, Loss: 0.8187, DRW: False
+  Batch 2500/3010, Loss: 0.8591, DRW: False
+  Batch 2600/3010, Loss: 0.9558, DRW: False
+  Batch 2700/3010, Loss: 0.9182, DRW: False
+  Batch 2800/3010, Loss: 1.1391, DRW: False
+  Batch 2900/3010, Loss: 1.0727, DRW: False
+  Batch 3000/3010, Loss: 0.9411, DRW: False
+Train Loss: 0.9865
+Val Loss: 1.1149, Val Macro F1: 0.8445
+Current learning rate: 0.000086
+
+============================================================
+Epoch 13/50
+============================================================
