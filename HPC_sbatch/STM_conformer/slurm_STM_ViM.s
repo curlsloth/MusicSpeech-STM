@@ -3,7 +3,7 @@
 #SBATCH --job-name=STM_ViM
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=10
-#SBATCH --gres=gpu:0
+#SBATCH --gres=gpu:1
 #SBATCH --mem=200GB
 #SBATCH --time=2-00:00:00
 #SBATCH --output=HPC_slurm/STM_conformer/STM_ViM-gpu_%A_%a.out
