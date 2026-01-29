@@ -1,20 +1,7 @@
-WARNING: mamba-ssm not installed. Install with:
-  pip install mamba-ssm causal-conv1d>=1.2.0
-
-Using placeholder Mamba implementation for structure demonstration.
-
-============================================================
-WARNING: Running with placeholder Mamba implementation!
-Install mamba-ssm for full functionality:
-  pip install mamba-ssm causal-conv1d>=1.2.0
-============================================================
-
 Using device: cuda
 GPU: Quadro RTX 8000
 GPU Memory: 47.76 GB
-
-Mode 0: Standard training (full dataset)
-Checkpoint directory: model/STM/ViM_corpora_categories/standard/ckpt/2026-01-28_16-32
+Checkpoint directory: model/STM/CoordConvLDAM2_corpora_categories/standard/ckpt/2026-01-28_23-40
 
 ============================================================
 Loading and preparing data...
@@ -132,31 +119,77 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Sequence length: 2420
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
 
 Class Distribution (Training):
-  Class 0: 497475 samples (64.57%)
-  Class 1: 80258 samples (10.42%)
-  Class 2: 101893 samples (13.23%)
-  Class 3: 53538 samples (6.95%)
-  Class 4: 9580 samples (1.24%)
-  Class 5: 27649 samples (3.59%)
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
 
 PyTorch Dataset Shapes:
-Train: torch.Size([770393, 2420])
-Val: torch.Size([102010, 2420])
-Test: torch.Size([105975, 2420])
+Train: torch.Size([770393, 1, 20, 121])
+Val: torch.Size([102010, 1, 20, 121])
+Test: torch.Size([105975, 1, 20, 121])
 
-DataLoaders created with batch_size=64
-
-============================================================
-Creating Vision Mamba model...
-============================================================
-Total parameters: 4,041,894
-Trainable parameters: 4,041,894
-
-Starting training for 50 epochs...
+DataLoaders created with batch_size=256
 
 ============================================================
-Epoch 1/50
+Creating Enhanced CoordConv-ResNet18 model...
+============================================================
+Total parameters: 23,902,406
+Trainable parameters: 23,902,406
+Improvements: Moderate dropout (0.3), block dropout (0.05), label smoothing (0.05)
+
+Starting training for 100 epochs...
+DRW will start at epoch 50
+Early stopping patience: 20 epochs
+
+============================================================
+Epoch 1/100
+============================================================
+  Batch 500/3010, Loss: 5.6011, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 4.1693, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 4.1067, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 3.9828, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 3.6136, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 3.8679, DRW: False, Mixup: True
+Train Loss: 4.9296
+Val Loss: 3.5258, Val Macro F1: 0.4902
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.4902
+
+============================================================
+Epoch 2/100
+============================================================
+  Batch 500/3010, Loss: 3.6720, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 3.0845, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 2.8316, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 2.4474, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 4.4371, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.4495, DRW: False, Mixup: True
+Train Loss: 3.2468
+Val Loss: 2.7393, Val Macro F1: 0.7076
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.7076
+
+============================================================
+Epoch 3/100
+============================================================
+  Batch 500/3010, Loss: 2.5181, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 4.9803, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 2.2668, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 2.6819, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 3.1989, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.9370, DRW: False, Mixup: True
+Train Loss: 2.9075
+Val Loss: 2.3802, Val Macro F1: 0.8026
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8026
+
+============================================================
+Epoch 4/100
 ============================================================

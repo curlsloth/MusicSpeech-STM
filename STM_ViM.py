@@ -6,7 +6,8 @@ Phase 2: The Modern Sequence Model
 
 This implementation follows the Audio Classification Model Improvement document:
 - Vision Mamba for linear-complexity global context
-- Bidirectional scanning of the full 2420-token STM sequence
+- Symmetric STM processing: exploits up/down-sweep symmetry (121 → 61 bins)
+- Bidirectional scanning of the 1220-token STM sequence (20×61)
 - Learnable positional embeddings (absolute position awareness)
 - Balanced Softmax loss for imbalanced data
 
@@ -14,10 +15,11 @@ Installation Requirements:
     pip install mamba-ssm causal-conv1d>=1.2.0
 
 Key Design Principles:
-1. Process FULL STM resolution (2420 tokens = 20×121 bins)
-2. Each bin becomes a token with learnable position embedding
-3. SSM provides O(L) complexity vs O(L²) for Transformers
-4. Bidirectional scanning captures non-causal dependencies
+1. Symmetric processing: Average negative and positive modulation rates (2× speedup)
+2. Reduced sequence: 1220 tokens (20 freq × 61 rates) instead of 2420
+3. Each bin becomes a token with learnable position embedding
+4. SSM provides O(L) complexity vs O(L²) for Transformers
+5. Bidirectional scanning captures non-causal dependencies
 """
 
 import os
@@ -34,6 +36,69 @@ from sklearn.metrics import f1_score, classification_report
 import torch.nn.functional as F
 
 warnings.filterwarnings('ignore')
+
+
+# ============================================================================
+# Symmetric STM Processing (from STMasm_enhanced5.py)
+# ============================================================================
+
+def process_symmetric_stm(stm_data):
+    """
+    Process STM data to exploit up/down-sweep symmetry.
+    
+    Input: (batch, freq_bands, mod_rates=121)
+    Output: (batch, freq_bands, mod_rates=61)
+    
+    Steps:
+    A. Separate negative rates [0:60] and positive rates [61:121] along modulation axis
+    B. Flip negative chunk to align modulation rates
+    C. Average flipped negative and positive chunks
+    D. Concatenate DC (index 60) at position 0
+    
+    Modulation rate mapping:
+    - Original: -15 Hz (idx 0) ... 0 Hz (idx 60) ... +15 Hz (idx 120)
+    - Output: 0 Hz (idx 0) ... +15 Hz (idx 60)
+    
+    Speed benefit: 2420 tokens → 1220 tokens = 2× faster (O(L) complexity)
+    """
+    # Step A: Separate chunks along modulation rate dimension (last dim)
+    negative_chunk = stm_data[:, :, 0:60]   # -15 Hz to -0.25 Hz
+    dc_component = stm_data[:, :, 60:61]    # 0 Hz
+    positive_chunk = stm_data[:, :, 61:121] # +0.25 Hz to +15 Hz
+    
+    # Step B: Flip negative chunk (reverse modulation rate axis)
+    negative_flipped = torch.flip(negative_chunk, dims=[2])
+    
+    # Step C: Average aligned chunks
+    averaged_chunk = (negative_flipped + positive_chunk) / 2.0
+    
+    # Step D: Concatenate DC at the beginning
+    output = torch.cat([dc_component, averaged_chunk], dim=2)
+    
+    return output
+
+
+class SymmetricSTMDataset(Dataset):
+    """Wrapper dataset that applies symmetric STM processing"""
+    def __init__(self, base_dataset):
+        self.base_dataset = base_dataset
+        
+    def __len__(self):
+        return len(self.base_dataset)
+    
+    def __getitem__(self, idx):
+        data, label = self.base_dataset[idx]
+        # data shape: (2420,) - flattened from (20, 121)
+        # Reshape to (20, 121) for symmetric processing
+        data = data.reshape(20, 121)
+        # Add batch dimension for processing
+        data = data.unsqueeze(0)  # (1, 20, 121)
+        data = process_symmetric_stm(data)
+        data = data.squeeze(0)    # (20, 61)
+        # Flatten for sequence processing
+        data = data.reshape(-1)   # (1220,)
+        return data, label
+
 
 # Try to import Mamba - provide helpful error if not available
 try:
@@ -53,16 +118,16 @@ except ImportError:
 class prepData_STM_Mamba:
     """
     Data preparation for Vision Mamba model.
-    Keeps STM features flattened as 2420-dimensional vectors (sequence of tokens).
+    Keeps STM features flattened as 1220-dimensional vectors (after symmetric processing).
     """
     def __init__(self, addAug=False, ds_nontonal_speech=False):
         self.addAug = addAug
         self.ds_nontonal_speech = ds_nontonal_speech
         
-        # STM dimensions
+        # STM dimensions (after symmetric processing)
         self.n_freq = 20
-        self.n_time = 121
-        self.seq_len = self.n_freq * self.n_time  # 2420
+        self.n_time = 61  # Reduced from 121 via symmetric processing
+        self.seq_len = self.n_freq * self.n_time  # 1220
         
     def corpora_list(self, addAug=False):
         """Generate list of all corpora"""
@@ -182,7 +247,7 @@ class prepData_STM_Mamba:
         test_ind = (data_split == 9).values
         
         # Compute class frequencies for Balanced Softmax
-        train_labels = target[train_ind].values
+        train_labels = target[train_ind].values.astype(np.int64)
         class_counts = np.bincount(train_labels, minlength=6)
         class_freq = class_counts / class_counts.sum()
         
@@ -209,13 +274,13 @@ class prepData_STM_Mamba:
         
         # Convert to PyTorch tensors (batch, seq_len)
         X_train = torch.FloatTensor(STM_all_norm[train_ind])
-        y_train = torch.LongTensor(target[train_ind])
+        y_train = torch.LongTensor(target[train_ind].astype(np.int64))
         
         X_val = torch.FloatTensor(STM_all_norm[val_ind])
-        y_val = torch.LongTensor(target[val_ind])
+        y_val = torch.LongTensor(target[val_ind].astype(np.int64))
         
         X_test = torch.FloatTensor(STM_all_norm[test_ind])
-        y_test = torch.LongTensor(target[test_ind])
+        y_test = torch.LongTensor(target[test_ind].astype(np.int64))
         
         # Create datasets
         train_dataset = TensorDataset(X_train, y_train)
@@ -328,8 +393,10 @@ class VisionMamba(nn.Module):
     3. Stack of Vim Blocks (bidirectional SSM)
     4. Global Average Pooling
     5. Classification Head
+    
+    Note: seq_len=1220 after symmetric STM processing (20 freq × 61 rates)
     """
-    def __init__(self, seq_len=2420, num_classes=6, d_model=192, depth=12,
+    def __init__(self, seq_len=1220, num_classes=6, d_model=192, depth=12,
                  d_state=16, d_conv=4, expand=2, drop_path_rate=0.1, dropout=0.1):
         super(VisionMamba, self).__init__()
         
@@ -373,7 +440,7 @@ class VisionMamba(nn.Module):
     def forward(self, x):
         """
         Args:
-            x: (batch, seq_len=2420)
+            x: (batch, seq_len=1220) - after symmetric STM processing
         Returns:
             logits: (batch, num_classes)
         """
@@ -633,8 +700,18 @@ if __name__ == "__main__":
     data_prep = prepData_STM_Mamba(ds_nontonal_speech=ds_nontonal_speech)
     train_dataset, val_dataset, test_dataset, class_freq = data_prep.prepare_datasets()
     
+    # Apply symmetric STM processing
+    print(f"\nApplying symmetric STM processing...")
+    print(f"Original: 20 freq × 121 rates = 2420 tokens")
+    print(f"After symmetric processing: 20 freq × 61 rates = 1220 tokens")
+    print(f"Speed improvement: 2× faster (O(L) complexity)")
+    
+    train_dataset = SymmetricSTMDataset(train_dataset)
+    val_dataset = SymmetricSTMDataset(val_dataset)
+    test_dataset = SymmetricSTMDataset(test_dataset)
+    
     # Create data loaders
-    batch_size = 64  # Smaller due to long sequences (2420 tokens)
+    batch_size = 64  # Smaller due to long sequences (1220 tokens)
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, 
                              num_workers=4, pin_memory=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False,
@@ -651,7 +728,7 @@ if __name__ == "__main__":
     
     num_classes = 6
     model = VisionMamba(
-        seq_len=2420,
+        seq_len=1220,  # After symmetric STM processing (20×61)
         num_classes=num_classes,
         d_model=192,       # Model dimension (Vim-Small config)
         depth=12,          # Number of Vim blocks

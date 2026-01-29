@@ -3,7 +3,7 @@ GPU: Quadro RTX 8000
 GPU Memory: 47.76 GB
 
 Mode 0: Standard training (full dataset)
-Checkpoint directory: model/STM/FTTransformer_corpora_categories/standard/ckpt/2026-01-28_16-31
+Checkpoint directory: model/STM/FTTransformer_corpora_categories/standard/ckpt/2026-01-28_20-22
 
 ============================================================
 Loading and preparing data...
@@ -121,7 +121,7 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Number of features: 2420
+Number of features: 1220
 
 Class Distribution (Training):
   Class 0: 497475 samples (64.57%)
@@ -136,13 +136,18 @@ Train: torch.Size([770393, 2420])
 Val: torch.Size([102010, 2420])
 Test: torch.Size([105975, 2420])
 
+Applying symmetric STM processing...
+Original: 20 freq × 121 rates = 2420 features
+After symmetric processing: 20 freq × 61 rates = 1220 features
+Speed improvement: 4× faster (O(L²) complexity)
+
 DataLoaders created with batch_size=32
 
 ============================================================
 Creating FT-Transformer model...
 ============================================================
-Total parameters: 2,562,342
-Trainable parameters: 2,562,342
+Total parameters: 2,331,942
+Trainable parameters: 2,331,942
 
 Starting training for 50 epochs...
 
