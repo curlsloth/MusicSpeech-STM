@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader, TensorDataset
 from sklearn.metrics import f1_score, classification_report
@@ -545,6 +546,8 @@ class Trainer:
         """Train for one epoch"""
         self.model.train()
         total_loss = 0.0
+        all_preds = []
+        all_targets = []
         
         for batch_idx, (data, target) in enumerate(self.train_loader):
             data, target = data.to(self.device), target.to(self.device)
@@ -560,8 +563,16 @@ class Trainer:
             self.optimizer.step()
             
             total_loss += loss.item()
+            
+            # Collect predictions for F1 score
+            preds = output.argmax(dim=1)
+            all_preds.extend(preds.cpu().numpy())
+            all_targets.extend(target.cpu().numpy())
         
-        return total_loss / len(self.train_loader)
+        avg_loss = total_loss / len(self.train_loader)
+        macro_f1 = f1_score(all_targets, all_preds, average='macro')
+        
+        return avg_loss, macro_f1
     
     def evaluate(self, data_loader):
         """Evaluate model"""

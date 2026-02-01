@@ -1,10 +1,9 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
-INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommended.
 Using device: cuda
 GPU: NVIDIA L40S
 Memory: 47.67 GB
-Checkpoint directory: model/STM/ViM2_corpora_categories/standard/ckpt/2026-01-31_23-00
+Checkpoint directory: model/STM/CoordConvLDAM3_corpora_categories/standard/ckpt/2026-02-01_00-17
 
 ============================================================
 Loading and preparing data...
@@ -122,37 +121,40 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Sequence length: 1220
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
 
 Class Distribution (Training):
-  Class 0: 497475 samples (64.57%)
-  Class 1: 80258 samples (10.42%)
-  Class 2: 101893 samples (13.23%)
-  Class 3: 53538 samples (6.95%)
-  Class 4: 9580 samples (1.24%)
-  Class 5: 27649 samples (3.59%)
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
 
 PyTorch Dataset Shapes:
-Train: torch.Size([770393, 2420])
-Val: torch.Size([102010, 2420])
-Test: torch.Size([105975, 2420])
+Train: torch.Size([770393, 1, 20, 121])
+Val: torch.Size([102010, 1, 20, 121])
+Test: torch.Size([105975, 1, 20, 121])
 
-Applying symmetric STM processing...
-Original: 20 freq × 121 rates = 2420 tokens
-After symmetric processing: 20 freq × 61 rates = 1220 tokens
-Speed improvement: 2× faster (O(L) complexity)
+Class-Balanced Sampler:
+  Batch size: 252
+  Samples per class per batch: 42
+  Total batches: 11844
 
-DataLoaders created with batch_size=64
+DataLoaders created with batch_size=252 (balanced sampling)
 
 ============================================================
-Creating Vision Mamba model (Lighter Variant)...
+Creating Enhanced CoordConv-ResNet18 model (V3)...
 ============================================================
-Total parameters: 1,981,894
-Trainable parameters: 1,981,894
-Model size reduction: ~4.0× smaller than baseline
+Total parameters: 23,919,686
+Trainable parameters: 23,919,686
+V3 Enhancements: Balanced sampling, Focal loss, Remix, Adaptive margins
 
+============================================================
 Starting training...
-Total epochs: 50
-Starting from epoch 1
-Train batches: 12038
-Val batches: 1594
+============================================================
+
+============================================================
+Epoch 1/120
+============================================================

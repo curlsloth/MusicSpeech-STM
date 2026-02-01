@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader, TensorDataset
 from sklearn.metrics import f1_score, classification_report
@@ -514,6 +515,8 @@ class Trainer:
         """Train for one epoch"""
         self.model.train()
         total_loss = 0.0
+        all_preds = []
+        all_targets = []
         
         for batch_idx, (data, target) in enumerate(self.train_loader):
             data, target = data.to(self.device), target.to(self.device)
@@ -529,8 +532,16 @@ class Trainer:
             self.optimizer.step()
             
             total_loss += loss.item()
+            
+            # Collect predictions for F1 score
+            preds = output.argmax(dim=1)
+            all_preds.extend(preds.cpu().numpy())
+            all_targets.extend(target.cpu().numpy())
         
-        return total_loss / len(self.train_loader)
+        avg_loss = total_loss / len(self.train_loader)
+        macro_f1 = f1_score(all_targets, all_preds, average='macro')
+        
+        return avg_loss, macro_f1
     
     def evaluate(self, data_loader):
         """Evaluate model"""
@@ -566,26 +577,23 @@ class Trainer:
         print(f"Loaded checkpoint from {checkpoint_path}")
     
     def train(self, num_epochs, checkpoint_dir):
-        """Full training loop"""
-        print("\nStarting training...")
-        print(f"Total epochs: {num_epochs}")
-        print(f"Train batches: {len(self.train_loader)}")
-        print(f"Val batches: {len(self.val_loader)}")
+        print(f"\nStarting training for {num_epochs} epochs...")
         
         for epoch in range(num_epochs):
             # Train
-            train_loss = self.train_epoch()
+            train_loss, train_f1 = self.train_epoch()
             
             # Validate
             val_loss, val_f1, _, _ = self.evaluate(self.val_loader)
             
-            # Update scheduler
+            # Update learning rate
             self.scheduler.step()
             
-            # Track metrics
-            self.train_losses.append(train_loss)
-            self.val_losses.append(val_loss)
-            self.val_f1s.append(val_f1)
+            # Print progress
+            print(f"Epoch {epoch+1}/{num_epochs}:")
+            print(f"  Train Loss: {train_loss:.4f}, Train F1: {train_f1:.4f}")
+            print(f"  Val Loss: {val_loss:.4f}, Val F1: {val_f1:.4f}")
+            print(f"  LR: {self.scheduler.get_last_lr()[0]:.6f}")
             
             # Save best model
             if val_f1 > self.best_val_f1:
@@ -594,17 +602,12 @@ class Trainer:
                     'epoch': epoch,
                     'model_state_dict': self.model.state_dict(),
                     'optimizer_state_dict': self.optimizer.state_dict(),
-                    'val_f1': val_f1,
+                    'best_val_f1': self.best_val_f1,
                 }
                 torch.save(checkpoint, os.path.join(checkpoint_dir, 'best_model.pt'))
+                print(f"  *** New best model saved! Val F1: {val_f1:.4f} ***")
             
-            # Print progress
-            if (epoch + 1) % 5 == 0 or epoch == 0:
-                print(f"Epoch {epoch+1}/{num_epochs} - "
-                      f"Train Loss: {train_loss:.4f}, "
-                      f"Val Loss: {val_loss:.4f}, "
-                      f"Val F1: {val_f1:.4f}, "
-                      f"Best F1: {self.best_val_f1:.4f}")
+            print()
         
         print(f"\nTraining complete! Best Val F1: {self.best_val_f1:.4f}")
 

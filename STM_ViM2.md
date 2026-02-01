@@ -7,6 +7,13 @@ This variant reduces model capacity to enable faster training cycles and establi
 
 **Key hypothesis**: STM features may be sufficiently discriminative that a lighter model can capture the essential patterns without the full depth/width of the baseline.
 
+**Status**: ✅ Script is fully functional and ready to run
+
+### Recent Fixes (Latest Update)
+
+1. **Added missing import**: Added `torch.nn.functional as F` for loss computation
+2. **Fixed `train_epoch`**: Now returns both loss and F1 score as expected by training loop
+
 ### Hyperparameter Changes from Baseline
 
 | Parameter | Baseline (ViM) | Variant 2 (ViM2) | Change |

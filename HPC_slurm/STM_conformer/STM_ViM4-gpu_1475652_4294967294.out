@@ -1,11 +1,10 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
+INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommended.
 Using device: cuda
 GPU: NVIDIA L40S
-GPU Memory: 47.67 GB
-
-Mode 0: Standard training (full dataset)
-Checkpoint directory: model/STM/ViM_corpora_categories/standard/ckpt/2026-01-31_23-00
+Memory: 47.67 GB
+Checkpoint directory: model/STM/ViM4_corpora_categories/standard/ckpt/2026-02-01_00-17
 
 ============================================================
 Loading and preparing data...
@@ -146,14 +145,10 @@ Speed improvement: 2× faster (O(L) complexity)
 DataLoaders created with batch_size=64
 
 ============================================================
-Creating Vision Mamba model...
+Creating Vision Mamba model (Wider Variant)...
 ============================================================
-Total parameters: 6,295,206
-Trainable parameters: 6,295,206
+Total parameters: 13,853,574
+Trainable parameters: 13,853,574
+Model size change: ~1.7× vs baseline (wider but slightly shallower)
 
 Starting training for 50 epochs...
-Starting from epoch 1
-
-============================================================
-Epoch 1/50
-============================================================

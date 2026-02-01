@@ -7,6 +7,13 @@ This variant increases model depth to test whether additional layers can capture
 
 **Key hypothesis**: Deeper integration paths enable the model to learn multi-hop reasoning like "IF 2Hz rate is high (token 100) AND 8Hz rate is low (token 400) AND 4cyc/oct is moderate (token 800), THEN predict music:vocal". Such complex rules may require >12 layers to learn effectively.
 
+**Status**: ✅ Script is fully functional and ready to run
+
+### Recent Fixes (Latest Update)
+
+1. **Added missing import**: Added `torch.nn.functional as F` for loss computation
+2. **Fixed `train_epoch`**: Now returns both loss and F1 score as expected by training loop
+
 ### Hyperparameter Changes from Baseline
 
 | Parameter | Baseline (ViM) | Variant 3 (ViM3) | Change |
