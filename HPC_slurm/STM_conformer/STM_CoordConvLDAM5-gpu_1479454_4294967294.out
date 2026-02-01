@@ -1,2 +1,382 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
+Using device: cuda
+GPU: NVIDIA L40S
+Memory: 47.67 GB
+Checkpoint directory: model/STM/CoordConvLDAM5_corpora_categories/standard/ckpt/2026-02-01_08-49
+
+============================================================
+Loading and preparing data...
+============================================================
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-hausa_STMall.npy, shape: (29002, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-lingala_STMall.npy, shape: (11219, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-yoruba_STMall.npy, shape: (6629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Buckeye_STMall.npy, shape: (255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/EUROM_STMall.npy, shape: (6623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_speech_STMall.npy, shape: (785, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/LibriSpeech_STMall.npy, shape: (27144, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-AR_STMall.npy, shape: (2505, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-ES_STMall.npy, shape: (2507, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-FR_STMall.npy, shape: (2498, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-TR_STMall.npy, shape: (2512, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ab_STMall.npy, shape: (7558, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ar_STMall.npy, shape: (8080, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ba_STMall.npy, shape: (7964, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-be_STMall.npy, shape: (8595, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bg_STMall.npy, shape: (7130, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bn_STMall.npy, shape: (8149, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-br_STMall.npy, shape: (1454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ca_STMall.npy, shape: (8237, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ckb_STMall.npy, shape: (7490, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cnh_STMall.npy, shape: (656, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cs_STMall.npy, shape: (8622, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cv_STMall.npy, shape: (8755, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cy_STMall.npy, shape: (7640, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-da_STMall.npy, shape: (3878, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-de_STMall.npy, shape: (8979, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-dv_STMall.npy, shape: (9113, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-el_STMall.npy, shape: (6422, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-en_STMall.npy, shape: (8607, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eo_STMall.npy, shape: (9327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-es_STMall.npy, shape: (8742, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-et_STMall.npy, shape: (9653, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eu_STMall.npy, shape: (7983, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fa_STMall.npy, shape: (8629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fi_STMall.npy, shape: (3982, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fr_STMall.npy, shape: (8912, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fy-NL_STMall.npy, shape: (6694, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ga-IE_STMall.npy, shape: (1323, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gl_STMall.npy, shape: (8623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gn_STMall.npy, shape: (1014, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hi_STMall.npy, shape: (5438, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hu_STMall.npy, shape: (8319, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hy-AM_STMall.npy, shape: (6980, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-id_STMall.npy, shape: (8468, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ig_STMall.npy, shape: (9, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-it_STMall.npy, shape: (9083, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ja_STMall.npy, shape: (8606, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ka_STMall.npy, shape: (9409, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kab_STMall.npy, shape: (7172, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kk_STMall.npy, shape: (867, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kmr_STMall.npy, shape: (6603, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ky_STMall.npy, shape: (7998, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lg_STMall.npy, shape: (8169, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lt_STMall.npy, shape: (9073, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ltg_STMall.npy, shape: (2299, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lv_STMall.npy, shape: (7666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mhr_STMall.npy, shape: (8336, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ml_STMall.npy, shape: (813, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mn_STMall.npy, shape: (5968, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mt_STMall.npy, shape: (3632, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nan-tw_STMall.npy, shape: (181, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nl_STMall.npy, shape: (8834, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-oc_STMall.npy, shape: (681, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-or_STMall.npy, shape: (1941, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pl_STMall.npy, shape: (8817, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pt_STMall.npy, shape: (8413, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ro_STMall.npy, shape: (6666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ru_STMall.npy, shape: (9260, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-rw_STMall.npy, shape: (9148, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sr_STMall.npy, shape: (391, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sv-SE_STMall.npy, shape: (8288, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sw_STMall.npy, shape: (9192, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ta_STMall.npy, shape: (9474, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-th_STMall.npy, shape: (8044, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tr_STMall.npy, shape: (7953, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tt_STMall.npy, shape: (7454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ug_STMall.npy, shape: (7899, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uk_STMall.npy, shape: (8819, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ur_STMall.npy, shape: (8970, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uz_STMall.npy, shape: (7911, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-vi_STMall.npy, shape: (1859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yo_STMall.npy, shape: (2511, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yue_STMall.npy, shape: (6156, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-CN_STMall.npy, shape: (8715, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-TW_STMall.npy, shape: (7286, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SpeechClarity_STMall.npy, shape: (555, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TAT-Vol2_STMall.npy, shape: (793, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TIMIT_STMall.npy, shape: (479, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TTS_Javanese_STMall.npy, shape: (3068, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/primewords_chinese_STMall.npy, shape: (47166, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/room_reader_STMall.npy, shape: (146, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/thchs30_STMall.npy, shape: (13327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/zeroth_korean_STMall.npy, shape: (22255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Albouy2020Science_STMall.npy, shape: (123, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/GarlandEncyclopedia_STMall.npy, shape: (296, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_song_STMall.npy, shape: (803, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/IRMAS_STMall.npy, shape: (2838, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MTG-Jamendo_STMall.npy, shape: (55699, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MagnaTagATune_STMall.npy, shape: (25859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/NHS2_STMall.npy, shape: (1007, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/fma_large_STMall.npy, shape: (106257, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/ismir04_genre_STMall.npy, shape: (2185, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy, shape: (34565, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SONYC_STMall.npy, shape: (10798, 2420)
+
+Dataset Statistics:
+Total samples: 978378
+Train samples: 770393
+Val samples: 102010
+Test samples: 105975
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
+
+Class Distribution (Training):
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
+
+PyTorch Dataset Shapes:
+Train: torch.Size([770393, 1, 20, 121])
+Val: torch.Size([102010, 1, 20, 121])
+Test: torch.Size([105975, 1, 20, 121])
+
+Class-Balanced Sampler:
+  Batch size: 252
+  Samples per class per batch: 42
+  Total batches: 11844
+
+DataLoaders created with batch_size=252 (balanced sampling)
+
+============================================================
+Creating Hybrid CoordConv-ResNet18 with Attention (V5)...
+============================================================
+Total parameters: 24,405,126
+Trainable parameters: 24,405,126
+V5 Features: Balanced sampling + LDAM + Focal + CA/SE + Multi-scale fusion
+
+============================================================
+Starting training...
+============================================================
+
+============================================================
+Epoch 1/120
+============================================================
+  Batch 0/11844, Loss: 5.3795, LDAM: 7.1517, Focal: 1.2445, DRW: False, Max_m: 0.3
+  Batch 500/11844, Loss: 1.8870, LDAM: 2.2739, Focal: 0.9841, DRW: False, Max_m: 0.3
+  Batch 1000/11844, Loss: 1.7684, LDAM: 2.1211, Focal: 0.9454, DRW: False, Max_m: 0.3
+  Batch 1500/11844, Loss: 1.8389, LDAM: 2.2176, Focal: 0.9551, DRW: False, Max_m: 0.3
+  Batch 2000/11844, Loss: 1.4490, LDAM: 1.6641, Focal: 0.9473, DRW: False, Max_m: 0.3
+  Batch 2500/11844, Loss: 1.5369, LDAM: 1.8045, Focal: 0.9127, DRW: False, Max_m: 0.3
+  Batch 3000/11844, Loss: 1.7451, LDAM: 2.0838, Focal: 0.9546, DRW: False, Max_m: 0.3
+  Batch 3500/11844, Loss: 1.4963, LDAM: 1.7229, Focal: 0.9675, DRW: False, Max_m: 0.3
+  Batch 4000/11844, Loss: 1.5719, LDAM: 1.8443, Focal: 0.9362, DRW: False, Max_m: 0.3
+  Batch 4500/11844, Loss: 1.4310, LDAM: 1.6456, Focal: 0.9303, DRW: False, Max_m: 0.3
+  Batch 5000/11844, Loss: 1.5409, LDAM: 1.7860, Focal: 0.9690, DRW: False, Max_m: 0.3
+  Batch 5500/11844, Loss: 1.4352, LDAM: 1.6483, Focal: 0.9380, DRW: False, Max_m: 0.3
+  Batch 6000/11844, Loss: 1.4654, LDAM: 1.7156, Focal: 0.8818, DRW: False, Max_m: 0.3
+  Batch 6500/11844, Loss: 4.4626, LDAM: 5.9033, Focal: 1.1009, DRW: False, Max_m: 0.3
+  Batch 7000/11844, Loss: 1.1711, LDAM: 1.2872, Focal: 0.9002, DRW: False, Max_m: 0.3
+  Batch 7500/11844, Loss: 1.6283, LDAM: 1.9172, Focal: 0.9541, DRW: False, Max_m: 0.3
+  Batch 8000/11844, Loss: 1.3092, LDAM: 1.4759, Focal: 0.9203, DRW: False, Max_m: 0.3
+  Batch 8500/11844, Loss: 1.9050, LDAM: 2.3091, Focal: 0.9621, DRW: False, Max_m: 0.3
+  Batch 9000/11844, Loss: 1.3233, LDAM: 1.4842, Focal: 0.9481, DRW: False, Max_m: 0.3
+  Batch 9500/11844, Loss: 1.2527, LDAM: 1.3871, Focal: 0.9391, DRW: False, Max_m: 0.3
+  Batch 10000/11844, Loss: 3.5552, LDAM: 4.6324, Focal: 1.0420, DRW: False, Max_m: 0.3
+  Batch 10500/11844, Loss: 3.3644, LDAM: 4.3504, Focal: 1.0636, DRW: False, Max_m: 0.3
+  Batch 11000/11844, Loss: 0.8165, LDAM: 0.7976, Focal: 0.8604, DRW: False, Max_m: 0.3
+  Batch 11500/11844, Loss: 1.1463, LDAM: 1.2433, Focal: 0.9200, DRW: False, Max_m: 0.3
+Train Loss: 1.9015 (LDAM: 2.3062, Focal: 0.9571)
+Val Loss: 1.6199, Val Macro F1: 0.7815
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.7815
+
+============================================================
+Epoch 2/120
+============================================================
+  Batch 0/11844, Loss: 1.6165, LDAM: 1.9034, Focal: 0.9473, DRW: False, Max_m: 0.3
+  Batch 500/11844, Loss: 1.3398, LDAM: 1.5145, Focal: 0.9323, DRW: False, Max_m: 0.3
+  Batch 1000/11844, Loss: 3.0239, LDAM: 3.8706, Focal: 1.0482, DRW: False, Max_m: 0.3
+  Batch 1500/11844, Loss: 0.9476, LDAM: 0.9629, Focal: 0.9119, DRW: False, Max_m: 0.3
+  Batch 2000/11844, Loss: 2.0899, LDAM: 2.5666, Focal: 0.9776, DRW: False, Max_m: 0.3
+  Batch 2500/11844, Loss: 0.9415, LDAM: 0.9554, Focal: 0.9091, DRW: False, Max_m: 0.3
+  Batch 3000/11844, Loss: 3.9851, LDAM: 5.2257, Focal: 1.0902, DRW: False, Max_m: 0.3
+  Batch 3500/11844, Loss: 1.0209, LDAM: 1.0722, Focal: 0.9013, DRW: False, Max_m: 0.3
+  Batch 4000/11844, Loss: 1.3168, LDAM: 1.4772, Focal: 0.9425, DRW: False, Max_m: 0.3
+  Batch 4500/11844, Loss: 1.2873, LDAM: 1.4391, Focal: 0.9330, DRW: False, Max_m: 0.3
+  Batch 5000/11844, Loss: 0.7934, LDAM: 0.7560, Focal: 0.8807, DRW: False, Max_m: 0.3
+  Batch 5500/11844, Loss: 0.9565, LDAM: 0.9816, Focal: 0.8979, DRW: False, Max_m: 0.3
+  Batch 6000/11844, Loss: 1.1209, LDAM: 1.2015, Focal: 0.9330, DRW: False, Max_m: 0.3
+  Batch 6500/11844, Loss: 0.9534, LDAM: 0.9702, Focal: 0.9144, DRW: False, Max_m: 0.3
+  Batch 7000/11844, Loss: 1.1381, LDAM: 1.2264, Focal: 0.9321, DRW: False, Max_m: 0.3
+  Batch 7500/11844, Loss: 3.7867, LDAM: 4.9570, Focal: 1.0562, DRW: False, Max_m: 0.3
+  Batch 8000/11844, Loss: 0.9683, LDAM: 0.9834, Focal: 0.9330, DRW: False, Max_m: 0.3
+  Batch 8500/11844, Loss: 4.5110, LDAM: 5.9828, Focal: 1.0768, DRW: False, Max_m: 0.3
+  Batch 9000/11844, Loss: 1.2515, LDAM: 1.3880, Focal: 0.9330, DRW: False, Max_m: 0.3
+  Batch 9500/11844, Loss: 4.5602, LDAM: 6.0435, Focal: 1.0992, DRW: False, Max_m: 0.3
+  Batch 10000/11844, Loss: 0.9991, LDAM: 1.0252, Focal: 0.9382, DRW: False, Max_m: 0.3
+  Batch 10500/11844, Loss: 1.0666, LDAM: 1.1317, Focal: 0.9146, DRW: False, Max_m: 0.3
+  Batch 11000/11844, Loss: 0.9812, LDAM: 1.0010, Focal: 0.9351, DRW: False, Max_m: 0.3
+  Batch 11500/11844, Loss: 0.8512, LDAM: 0.8239, Focal: 0.9150, DRW: False, Max_m: 0.3
+Train Loss: 1.5879 (LDAM: 1.8631, Focal: 0.9460)
+Val Loss: 1.6185, Val Macro F1: 0.8065
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8065
+
+============================================================
+Epoch 3/120
+============================================================
+  Batch 0/11844, Loss: 1.2522, LDAM: 1.3935, Focal: 0.9224, DRW: False, Max_m: 0.3
+  Batch 500/11844, Loss: 0.8029, LDAM: 0.7568, Focal: 0.9106, DRW: False, Max_m: 0.3
+  Batch 1000/11844, Loss: 0.7598, LDAM: 0.7186, Focal: 0.8560, DRW: False, Max_m: 0.3
+  Batch 1500/11844, Loss: 0.7998, LDAM: 0.7465, Focal: 0.9243, DRW: False, Max_m: 0.3
+  Batch 2000/11844, Loss: 0.8676, LDAM: 0.8424, Focal: 0.9266, DRW: False, Max_m: 0.3
+  Batch 2500/11844, Loss: 0.9350, LDAM: 0.9369, Focal: 0.9308, DRW: False, Max_m: 0.3
+  Batch 3000/11844, Loss: 0.9985, LDAM: 1.0300, Focal: 0.9249, DRW: False, Max_m: 0.3
+  Batch 3500/11844, Loss: 0.8305, LDAM: 0.7883, Focal: 0.9291, DRW: False, Max_m: 0.3
+  Batch 4000/11844, Loss: 0.8360, LDAM: 0.8005, Focal: 0.9190, DRW: False, Max_m: 0.3
+  Batch 4500/11844, Loss: 0.9431, LDAM: 0.9558, Focal: 0.9136, DRW: False, Max_m: 0.3
+  Batch 5000/11844, Loss: 1.4420, LDAM: 1.6529, Focal: 0.9498, DRW: False, Max_m: 0.3
+  Batch 5500/11844, Loss: 0.8341, LDAM: 0.7977, Focal: 0.9192, DRW: False, Max_m: 0.3
+  Batch 6000/11844, Loss: 0.9188, LDAM: 0.9161, Focal: 0.9251, DRW: False, Max_m: 0.3
+  Batch 6500/11844, Loss: 0.9395, LDAM: 0.9475, Focal: 0.9208, DRW: False, Max_m: 0.3
+  Batch 7000/11844, Loss: 0.9821, LDAM: 1.0081, Focal: 0.9216, DRW: False, Max_m: 0.3
+  Batch 7500/11844, Loss: 0.8804, LDAM: 0.8609, Focal: 0.9259, DRW: False, Max_m: 0.3
+  Batch 8000/11844, Loss: 4.2192, LDAM: 5.5616, Focal: 1.0868, DRW: False, Max_m: 0.3
+  Batch 8500/11844, Loss: 0.9297, LDAM: 0.9347, Focal: 0.9182, DRW: False, Max_m: 0.3
+  Batch 9000/11844, Loss: 0.7115, LDAM: 0.6264, Focal: 0.9100, DRW: False, Max_m: 0.3
+  Batch 9500/11844, Loss: 0.7954, LDAM: 0.7418, Focal: 0.9203, DRW: False, Max_m: 0.3
+  Batch 10000/11844, Loss: 0.7592, LDAM: 0.7002, Focal: 0.8968, DRW: False, Max_m: 0.3
+  Batch 10500/11844, Loss: 3.8364, LDAM: 5.0178, Focal: 1.0798, DRW: False, Max_m: 0.3
+  Batch 11000/11844, Loss: 0.9136, LDAM: 0.9078, Focal: 0.9270, DRW: False, Max_m: 0.3
+  Batch 11500/11844, Loss: 0.8395, LDAM: 0.8006, Focal: 0.9304, DRW: False, Max_m: 0.3
+Train Loss: 1.3813 (LDAM: 1.5706, Focal: 0.9395)
+Val Loss: 1.5976, Val Macro F1: 0.8101
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8101
+
+============================================================
+Epoch 4/120
+============================================================
+  Batch 0/11844, Loss: 0.6101, LDAM: 0.4860, Focal: 0.8994, DRW: False, Max_m: 0.3
+  Batch 500/11844, Loss: 3.1155, LDAM: 4.0159, Focal: 1.0146, DRW: False, Max_m: 0.3
+  Batch 1000/11844, Loss: 0.8656, LDAM: 0.8398, Focal: 0.9257, DRW: False, Max_m: 0.3
+  Batch 1500/11844, Loss: 0.7001, LDAM: 0.6087, Focal: 0.9135, DRW: False, Max_m: 0.3
+  Batch 2000/11844, Loss: 0.6862, LDAM: 0.5952, Focal: 0.8985, DRW: False, Max_m: 0.3
+  Batch 2500/11844, Loss: 0.7276, LDAM: 0.6545, Focal: 0.8981, DRW: False, Max_m: 0.3
+  Batch 3000/11844, Loss: 0.6794, LDAM: 0.5739, Focal: 0.9257, DRW: False, Max_m: 0.3
+  Batch 3500/11844, Loss: 3.5429, LDAM: 4.6031, Focal: 1.0689, DRW: False, Max_m: 0.3
+  Batch 4000/11844, Loss: 1.6609, LDAM: 1.9574, Focal: 0.9692, DRW: False, Max_m: 0.3
+  Batch 4500/11844, Loss: 0.7650, LDAM: 0.7010, Focal: 0.9143, DRW: False, Max_m: 0.3
+  Batch 5000/11844, Loss: 0.8105, LDAM: 0.7642, Focal: 0.9184, DRW: False, Max_m: 0.3
+  Batch 5500/11844, Loss: 3.8203, LDAM: 4.9997, Focal: 1.0683, DRW: False, Max_m: 0.3
+  Batch 6000/11844, Loss: 0.7438, LDAM: 0.6737, Focal: 0.9075, DRW: False, Max_m: 0.3
+  Batch 6500/11844, Loss: 0.8079, LDAM: 0.7606, Focal: 0.9183, DRW: False, Max_m: 0.3
+  Batch 7000/11844, Loss: 0.6403, LDAM: 0.5253, Focal: 0.9086, DRW: False, Max_m: 0.3
+  Batch 7500/11844, Loss: 0.7393, LDAM: 0.6653, Focal: 0.9119, DRW: False, Max_m: 0.3
+  Batch 8000/11844, Loss: 2.2273, LDAM: 2.7511, Focal: 1.0052, DRW: False, Max_m: 0.3
+  Batch 8500/11844, Loss: 0.6930, LDAM: 0.5991, Focal: 0.9122, DRW: False, Max_m: 0.3
+  Batch 9000/11844, Loss: 0.6972, LDAM: 0.6089, Focal: 0.9031, DRW: False, Max_m: 0.3
+  Batch 9500/11844, Loss: 0.6842, LDAM: 0.5939, Focal: 0.8948, DRW: False, Max_m: 0.3
+  Batch 10000/11844, Loss: 1.4383, LDAM: 1.6595, Focal: 0.9223, DRW: False, Max_m: 0.3
+  Batch 10500/11844, Loss: 0.7407, LDAM: 0.6761, Focal: 0.8914, DRW: False, Max_m: 0.3
+  Batch 11000/11844, Loss: 0.7064, LDAM: 0.6178, Focal: 0.9131, DRW: False, Max_m: 0.3
+  Batch 11500/11844, Loss: 0.6928, LDAM: 0.5998, Focal: 0.9099, DRW: False, Max_m: 0.3
+Train Loss: 1.2443 (LDAM: 1.3773, Focal: 0.9339)
+Val Loss: 1.6019, Val Macro F1: 0.7984
+Current learning rate: 0.000100
+
+============================================================
+Epoch 5/120
+============================================================
+  Batch 0/11844, Loss: 0.7370, LDAM: 0.6748, Focal: 0.8821, DRW: False, Max_m: 0.3
+  Batch 500/11844, Loss: 0.6723, LDAM: 0.5681, Focal: 0.9154, DRW: False, Max_m: 0.3
+  Batch 1000/11844, Loss: 0.7161, LDAM: 0.6309, Focal: 0.9148, DRW: False, Max_m: 0.3
+  Batch 1500/11844, Loss: 0.6597, LDAM: 0.5462, Focal: 0.9246, DRW: False, Max_m: 0.3
+  Batch 2000/11844, Loss: 3.6383, LDAM: 4.7371, Focal: 1.0746, DRW: False, Max_m: 0.3
+  Batch 2500/11844, Loss: 0.6117, LDAM: 0.4903, Focal: 0.8949, DRW: False, Max_m: 0.3
+  Batch 3000/11844, Loss: 0.6528, LDAM: 0.5392, Focal: 0.9178, DRW: False, Max_m: 0.3
+  Batch 3500/11844, Loss: 0.5481, LDAM: 0.4082, Focal: 0.8743, DRW: False, Max_m: 0.3
+  Batch 4000/11844, Loss: 0.4987, LDAM: 0.3216, Focal: 0.9119, DRW: False, Max_m: 0.3
+  Batch 4500/11844, Loss: 0.7083, LDAM: 0.6252, Focal: 0.9023, DRW: False, Max_m: 0.3
+  Batch 5000/11844, Loss: 0.6999, LDAM: 0.6115, Focal: 0.9060, DRW: False, Max_m: 0.3
+  Batch 5500/11844, Loss: 4.3926, LDAM: 5.8043, Focal: 1.0987, DRW: False, Max_m: 0.3
+  Batch 6000/11844, Loss: 0.5746, LDAM: 0.4342, Focal: 0.9022, DRW: False, Max_m: 0.3
+  Batch 6500/11844, Loss: 0.7125, LDAM: 0.6212, Focal: 0.9257, DRW: False, Max_m: 0.3
+  Batch 7000/11844, Loss: 4.0641, LDAM: 5.3400, Focal: 1.0870, DRW: False, Max_m: 0.3
+  Batch 7500/11844, Loss: 1.8120, LDAM: 2.1734, Focal: 0.9689, DRW: False, Max_m: 0.3
+  Batch 8000/11844, Loss: 0.5396, LDAM: 0.3802, Focal: 0.9115, DRW: False, Max_m: 0.3
+  Batch 8500/11844, Loss: 0.6548, LDAM: 0.5437, Focal: 0.9141, DRW: False, Max_m: 0.3
+  Batch 9000/11844, Loss: 0.6804, LDAM: 0.5806, Focal: 0.9134, DRW: False, Max_m: 0.3
+  Batch 9500/11844, Loss: 0.6812, LDAM: 0.5790, Focal: 0.9197, DRW: False, Max_m: 0.3
+  Batch 10000/11844, Loss: 0.5780, LDAM: 0.4419, Focal: 0.8954, DRW: False, Max_m: 0.3
+  Batch 10500/11844, Loss: 3.2341, LDAM: 4.1818, Focal: 1.0230, DRW: False, Max_m: 0.3
+  Batch 11000/11844, Loss: 0.5829, LDAM: 0.4478, Focal: 0.8981, DRW: False, Max_m: 0.3
+  Batch 11500/11844, Loss: 0.5623, LDAM: 0.4119, Focal: 0.9132, DRW: False, Max_m: 0.3
+Train Loss: 1.1989 (LDAM: 1.3131, Focal: 0.9324)
+Val Loss: 1.5762, Val Macro F1: 0.8189
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8189
+
+============================================================
+Epoch 6/120
+============================================================
+  Batch 0/11844, Loss: 0.5422, LDAM: 0.3891, Focal: 0.8993, DRW: False, Max_m: 0.3
+  Batch 500/11844, Loss: 0.6441, LDAM: 0.5293, Focal: 0.9120, DRW: False, Max_m: 0.3
+  Batch 1000/11844, Loss: 0.8310, LDAM: 0.7967, Focal: 0.9112, DRW: False, Max_m: 0.3
+  Batch 1500/11844, Loss: 0.5681, LDAM: 0.4256, Focal: 0.9007, DRW: False, Max_m: 0.3
+  Batch 2000/11844, Loss: 0.4968, LDAM: 0.3212, Focal: 0.9066, DRW: False, Max_m: 0.3
+  Batch 2500/11844, Loss: 0.6225, LDAM: 0.4965, Focal: 0.9164, DRW: False, Max_m: 0.3
+  Batch 3000/11844, Loss: 0.6117, LDAM: 0.4959, Focal: 0.8821, DRW: False, Max_m: 0.3
+  Batch 3500/11844, Loss: 0.6180, LDAM: 0.5134, Focal: 0.8623, DRW: False, Max_m: 0.3
+  Batch 4000/11844, Loss: 0.5944, LDAM: 0.4550, Focal: 0.9197, DRW: False, Max_m: 0.3
+  Batch 4500/11844, Loss: 0.6496, LDAM: 0.5393, Focal: 0.9069, DRW: False, Max_m: 0.3
+  Batch 5000/11844, Loss: 0.5836, LDAM: 0.4428, Focal: 0.9121, DRW: False, Max_m: 0.3
+  Batch 5500/11844, Loss: 0.6438, LDAM: 0.5286, Focal: 0.9124, DRW: False, Max_m: 0.3
+  Batch 6000/11844, Loss: 1.9179, LDAM: 2.3186, Focal: 0.9830, DRW: False, Max_m: 0.3
+  Batch 6500/11844, Loss: 0.5333, LDAM: 0.3697, Focal: 0.9150, DRW: False, Max_m: 0.3
+  Batch 7000/11844, Loss: 0.5239, LDAM: 0.3650, Focal: 0.8945, DRW: False, Max_m: 0.3
+  Batch 7500/11844, Loss: 1.1738, LDAM: 1.2783, Focal: 0.9299, DRW: False, Max_m: 0.3
+  Batch 8000/11844, Loss: 0.5709, LDAM: 0.4234, Focal: 0.9152, DRW: False, Max_m: 0.3
+  Batch 8500/11844, Loss: 0.5264, LDAM: 0.3640, Focal: 0.9052, DRW: False, Max_m: 0.3
+  Batch 9000/11844, Loss: 0.6182, LDAM: 0.4897, Focal: 0.9181, DRW: False, Max_m: 0.3
+  Batch 9500/11844, Loss: 0.7533, LDAM: 0.6967, Focal: 0.8853, DRW: False, Max_m: 0.3
+  Batch 10000/11844, Loss: 0.5553, LDAM: 0.4093, Focal: 0.8959, DRW: False, Max_m: 0.3
+  Batch 10500/11844, Loss: 0.5259, LDAM: 0.3675, Focal: 0.8954, DRW: False, Max_m: 0.3
+  Batch 11000/11844, Loss: 1.5573, LDAM: 1.8122, Focal: 0.9628, DRW: False, Max_m: 0.3
+  Batch 11500/11844, Loss: 0.5210, LDAM: 0.3585, Focal: 0.9002, DRW: False, Max_m: 0.3
+Train Loss: 1.1749 (LDAM: 1.2792, Focal: 0.9316)
+Val Loss: 1.5959, Val Macro F1: 0.8169
+Current learning rate: 0.000100
+
+============================================================
+Epoch 7/120
+============================================================
+  Batch 0/11844, Loss: 0.6053, LDAM: 0.4787, Focal: 0.9006, DRW: False, Max_m: 0.3
+  Batch 500/11844, Loss: 0.7494, LDAM: 0.6921, Focal: 0.8831, DRW: False, Max_m: 0.3
+  Batch 1000/11844, Loss: 0.5052, LDAM: 0.3348, Focal: 0.9028, DRW: False, Max_m: 0.3
+  Batch 1500/11844, Loss: 3.6916, LDAM: 4.8115, Focal: 1.0786, DRW: False, Max_m: 0.3
+  Batch 2000/11844, Loss: 0.5988, LDAM: 0.4692, Focal: 0.9010, DRW: False, Max_m: 0.3
+  Batch 2500/11844, Loss: 0.6226, LDAM: 0.5023, Focal: 0.9032, DRW: False, Max_m: 0.3
+  Batch 3000/11844, Loss: 3.9318, LDAM: 5.1688, Focal: 1.0455, DRW: False, Max_m: 0.3
+  Batch 3500/11844, Loss: 0.4992, LDAM: 0.3247, Focal: 0.9065, DRW: False, Max_m: 0.3
+  Batch 4000/11844, Loss: 0.5316, LDAM: 0.3730, Focal: 0.9016, DRW: False, Max_m: 0.3
+  Batch 4500/11844, Loss: 0.5228, LDAM: 0.3580, Focal: 0.9073, DRW: False, Max_m: 0.3
+  Batch 5000/11844, Loss: 0.5487, LDAM: 0.3950, Focal: 0.9073, DRW: False, Max_m: 0.3
+  Batch 5500/11844, Loss: 0.5419, LDAM: 0.3845, Focal: 0.9091, DRW: False, Max_m: 0.3
+  Batch 6000/11844, Loss: 2.2707, LDAM: 2.8147, Focal: 1.0013, DRW: False, Max_m: 0.3
+  Batch 6500/11844, Loss: 0.5645, LDAM: 0.4207, Focal: 0.9000, DRW: False, Max_m: 0.3
+  Batch 7000/11844, Loss: 0.6082, LDAM: 0.4806, Focal: 0.9059, DRW: False, Max_m: 0.3
+  Batch 7500/11844, Loss: 0.5775, LDAM: 0.4342, Focal: 0.9117, DRW: False, Max_m: 0.3
+  Batch 8000/11844, Loss: 4.3261, LDAM: 5.7099, Focal: 1.0974, DRW: False, Max_m: 0.3
+  Batch 8500/11844, Loss: 0.6157, LDAM: 0.4904, Focal: 0.9080, DRW: False, Max_m: 0.3
+  Batch 9000/11844, Loss: 2.3918, LDAM: 2.9863, Focal: 1.0046, DRW: False, Max_m: 0.3
+  Batch 9500/11844, Loss: 0.5766, LDAM: 0.4342, Focal: 0.9088, DRW: False, Max_m: 0.3
+  Batch 10000/11844, Loss: 0.4920, LDAM: 0.3154, Focal: 0.9041, DRW: False, Max_m: 0.3
+  Batch 10500/11844, Loss: 1.4180, LDAM: 1.6191, Focal: 0.9488, DRW: False, Max_m: 0.3
+  Batch 11000/11844, Loss: 4.4005, LDAM: 5.8183, Focal: 1.0923, DRW: False, Max_m: 0.3
+  Batch 11500/11844, Loss: 0.7801, LDAM: 0.7387, Focal: 0.8767, DRW: False, Max_m: 0.3
+Train Loss: 1.1339 (LDAM: 1.2214, Focal: 0.9297)
+Val Loss: 1.5856, Val Macro F1: 0.8202
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8202
+
+============================================================
+Epoch 8/120
+============================================================

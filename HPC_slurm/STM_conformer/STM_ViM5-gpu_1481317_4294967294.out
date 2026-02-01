@@ -1,9 +1,10 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
+INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommended.
 Using device: cuda
 GPU: NVIDIA L40S
 Memory: 47.67 GB
-Checkpoint directory: model/STM/ViM5_corpora_categories/standard/ckpt/2026-02-01_00-14
+Checkpoint directory: model/STM/ViM5_corpora_categories/standard/ckpt/2026-02-01_12-14
 
 ============================================================
 Loading and preparing data...
@@ -154,9 +155,4 @@ Starting training...
 Total epochs: 50
 Train batches: 6019
 Val batches: 797
-Traceback (most recent call last):
-  File "/scratch/ac8888/MusicSpeech-STM/STM_ViM5.py", line 738, in <module>
-    trainer.train(num_epochs=num_epochs, checkpoint_dir=checkpoint_dir)
-  File "/scratch/ac8888/MusicSpeech-STM/STM_ViM5.py", line 613, in train
-    print(f"Epoch {epoch+1}/{num_epochs} - "
-TypeError: unsupported format string passed to tuple.__format__
+Epoch 1/50 - Train Loss: 0.4757, Val Loss: 0.3675, Val F1: 0.6993, Best F1: 0.6993

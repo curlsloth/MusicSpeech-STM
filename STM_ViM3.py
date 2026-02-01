@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-STM Classification with Vision Mamba (Vim) - Variant 3: Deeper Model
+STM Classification with Vision Mamba (Vim) - Variant 3: Enhanced Memory Model
 Phase 2: The Modern Sequence Model
 
-This is a deeper variant optimized for capturing complex long-range dependencies:
+This variant optimizes SSM state capacity for better long-range dependency modeling:
 - Same model dimension: d_model=192 (baseline)
-- More layers: depth=16 (vs 12 in baseline)
-- Larger SSM state: d_state=20 (vs 16 in baseline)
-- Increased dropout: drop_path_rate=0.15 (vs 0.1 for regularization)
+- Same depth: depth=12 (baseline) - reverted from 16 for computational efficiency
+- Larger SSM state: d_state=20 (vs 16 in baseline) - ENHANCED for better memory
+- Baseline dropout: drop_path_rate=0.1 (same as baseline)
 - Same batch size: 64
-- Expected training time: ~40-45 min/epoch (vs 30-35 min for baseline)
-- Total parameters: ~10.5M (vs ~8M in baseline)
+- Expected training time: ~30-35 min/epoch (similar to baseline)
+- Total parameters: ~7.5M (similar to baseline ~8M)
 
-Goal: Test whether additional depth can capture more complex modulation patterns
+Goal: Test whether enhanced SSM state memory improves long-range pattern capture
+Note: Depth reduced from initial 16→12 to avoid extreme computational cost
 """
 
 import os
@@ -361,29 +362,29 @@ class VimBlock(nn.Module):
 
 
 # ============================================================================
-# Vision Mamba Model - Deeper Variant
+# Vision Mamba Model - Enhanced Memory Variant
 # ============================================================================
 
 class VisionMamba(nn.Module):
     """
-    Vision Mamba for STM Classification - Deeper Variant
+    Vision Mamba for STM Classification - Enhanced Memory Variant
     
     Architecture:
     1. Patch Embedding (1x1 patches = each bin is a token)
     2. Positional Embedding (learnable, absolute positions)
-    3. Stack of Vim Blocks (bidirectional SSM) - INCREASED TO 16 LAYERS
+    3. Stack of Vim Blocks (bidirectional SSM) - 12 LAYERS (baseline depth)
     4. Global Average Pooling
     5. Classification Head
     
     Changes from baseline:
     - d_model: 192 (same as baseline)
-    - depth: 16 (vs 12) - INCREASED for more integration
-    - d_state: 20 (vs 16) - INCREASED for more memory
-    - drop_path_rate: 0.15 (vs 0.1) - INCREASED for regularization
-    - Total params: ~10.5M (vs ~8M)
+    - depth: 12 (same as baseline) - for computational efficiency
+    - d_state: 20 (vs 16) - ENHANCED for better long-range memory
+    - drop_path_rate: 0.1 (same as baseline)
+    - Total params: ~7.5M (similar to baseline ~8M)
     """
-    def __init__(self, seq_len=1220, num_classes=6, d_model=192, depth=16,
-                 d_state=20, d_conv=4, expand=2, drop_path_rate=0.15, dropout=0.1):
+    def __init__(self, seq_len=1220, num_classes=6, d_model=192, depth=12,
+                 d_state=20, d_conv=4, expand=2, drop_path_rate=0.1, dropout=0.1):
         super(VisionMamba, self).__init__()
         
         self.seq_len = seq_len
@@ -609,7 +610,7 @@ class Trainer:
         
         for epoch in range(self.start_epoch, num_epochs):
             # Train
-            train_loss = self.train_epoch()
+            train_loss, train_f1 = self.train_epoch()
             
             # Validate
             val_loss, val_f1, _, _ = self.evaluate(self.val_loader)
@@ -759,7 +760,7 @@ if __name__ == "__main__":
     
     # Create model
     print("\n" + "="*60)
-    print("Creating Vision Mamba model (Deeper Variant)...")
+    print("Creating Vision Mamba model (Enhanced Memory Variant)...")
     print("="*60)
     
     num_classes = 6
@@ -767,11 +768,11 @@ if __name__ == "__main__":
         seq_len=1220,       # After symmetric STM processing (20×61)
         num_classes=num_classes,
         d_model=192,        # Same as baseline
-        depth=16,           # INCREASED from 12
-        d_state=20,         # INCREASED from 16
+        depth=12,           # Same as baseline (reverted from 16 for efficiency)
+        d_state=20,         # ENHANCED from 16 for better memory
         d_conv=4,           # Same as baseline
         expand=2,           # Same as baseline
-        drop_path_rate=0.15,# INCREASED from 0.1 for regularization
+        drop_path_rate=0.1, # Same as baseline
         dropout=0.1
     )
     
@@ -780,7 +781,7 @@ if __name__ == "__main__":
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"Total parameters: {total_params:,}")
     print(f"Trainable parameters: {trainable_params:,}")
-    print(f"Model size increase: ~{total_params / 8000000:.1f}× larger than baseline")
+    print(f"Enhanced SSM state (d_state=20 vs baseline 16) with similar parameter count")
     
     # Create trainer
     trainer = Trainer(

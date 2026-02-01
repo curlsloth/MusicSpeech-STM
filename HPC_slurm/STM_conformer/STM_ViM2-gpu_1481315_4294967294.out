@@ -3,7 +3,7 @@ INFO:    Using fakeroot command combined with root-mapped namespace
 Using device: cuda
 GPU: NVIDIA L40S
 Memory: 47.67 GB
-Checkpoint directory: model/STM/ViM2_corpora_categories/standard/ckpt/2026-02-01_08-22
+Checkpoint directory: model/STM/ViM2_corpora_categories/standard/ckpt/2026-02-01_12-14
 
 ============================================================
 Loading and preparing data...
@@ -155,9 +155,4 @@ Total epochs: 50
 Starting from epoch 1
 Train batches: 12038
 Val batches: 1594
-Traceback (most recent call last):
-  File "/scratch/ac8888/MusicSpeech-STM/STM_ViM2.py", line 814, in <module>
-    trainer.train(num_epochs=num_epochs, checkpoint_dir=checkpoint_dir)
-  File "/scratch/ac8888/MusicSpeech-STM/STM_ViM2.py", line 661, in train
-    print(f"Epoch {epoch+1}/{num_epochs} - Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, Val F1: {val_f1:.4f}, Best F1: {self.best_val_f1:.4f}")
-TypeError: unsupported format string passed to tuple.__format__
+Epoch 1/50 - Train Loss: 0.4316, Val Loss: 0.3455, Val F1: 0.7400, Best F1: 0.7400

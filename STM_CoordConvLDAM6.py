@@ -265,10 +265,12 @@ class DropBlock2d(nn.Module):
         Compute gamma parameter for mask sampling.
         gamma adjusts the sampling probability to account for block expansion.
         """
+        if self.block_size == 0:
+            return 0.0
         return self.drop_prob / (self.block_size ** 2)
     
     def forward(self, x):
-        if not self.training or self.drop_prob == 0:
+        if not self.training or self.drop_prob == 0 or self.block_size == 0:
             return x
         
         # Compute gamma

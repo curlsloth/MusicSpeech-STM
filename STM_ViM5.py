@@ -584,7 +584,7 @@ class Trainer:
         
         for epoch in range(num_epochs):
             # Train
-            train_loss = self.train_epoch()
+            train_loss, train_f1 = self.train_epoch()
             
             # Validate
             val_loss, val_f1, _, _ = self.evaluate(self.val_loader)
