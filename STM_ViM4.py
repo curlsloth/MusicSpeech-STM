@@ -164,12 +164,10 @@ class prepData_STM_Mamba:
             'ismir04_genre', 'MTG-Jamendo', 'HiltonMoser2022_song', 'NHS2', 'MagnaTagATune'
         ]
         
-        corpus_env_list = ['SONYC']
-        
         if addAug:
-            corpus_env_list.append('SONYC-AUG')
+            corpus_env_list = ['SONYC', 'MacaulayLibrary', 'SONYC_augmented']
         else:
-            pass
+            corpus_env_list = ['SONYC', 'MacaulayLibrary']
         
         corpus_speech_list.sort()
         corpus_music_list.sort()
@@ -184,11 +182,12 @@ class prepData_STM_Mamba:
         
         STM_all = None
         for corp in corpus_list_all:
-            stm_feat = np.load(root_folder + 'STM_output/' + corp + '.npy')
+            filename = root_folder + 'STM_output/corpSTMnpy/' + corp.replace('/', '-') + '_STMall.npy'
             if STM_all is None:
-                STM_all = stm_feat
+                STM_all = np.load(filename)
             else:
-                STM_all = np.concatenate((STM_all, stm_feat), axis=0)
+                STM_all = np.vstack((STM_all, np.load(filename)))
+            print(f"Loaded: {filename}, shape: {np.load(filename).shape}")
         
         # Load metadata
         speech_corp_df1 = pd.read_csv(root_folder + 'train_test_split/speech1_10folds_speakerGroupFold.csv', index_col=0)
@@ -200,13 +199,12 @@ class prepData_STM_Mamba:
         
         # Handle augmented data
         if self.addAug:
-            all_corp_df_aug = all_corp_df[all_corp_df['corpus'] == 'SONYC'].copy()
-            all_corp_df = pd.concat([all_corp_df, all_corp_df_aug], ignore_index=True)
+            SONYC_aug_len = np.load(root_folder + 'STM_output/corpSTMnpy/SONYC_augmented_STMall.npy').shape[0]
+            target = pd.concat([all_corp_df['corpus_type'], pd.Series(['env: urban'] * SONYC_aug_len)], ignore_index=True)
+            data_split = pd.concat([all_corp_df['10fold_labels'], pd.Series([1] * SONYC_aug_len)], ignore_index=True)
         else:
-            pass
-        
-        data_split = all_corp_df['fold']
-        target = all_corp_df['cat_label']
+            target = all_corp_df['corpus_type'].copy()
+            data_split = all_corp_df['10fold_labels'].copy()
         
         # Map categories
         target.replace({
@@ -220,20 +218,22 @@ class prepData_STM_Mamba:
         
         # Downsample non-tonal speech if requested
         if self.ds_nontonal_speech:
-            idx_nontonal = target == 0
-            idx_nontonal_indices = np.where(idx_nontonal)[0]
-            np.random.seed(42)
-            keep_indices = np.random.choice(idx_nontonal_indices, size=int(len(idx_nontonal_indices) * 0.5), replace=False)
+            num_samples = 100000
+            indices_target_0 = target.index[target == 0].to_numpy()
             
-            idx_other = target != 0
-            idx_other_indices = np.where(idx_other)[0]
+            if len(indices_target_0) < num_samples:
+                raise ValueError(f"Not enough rows with target == 0 to sample {num_samples} rows.")
             
-            all_keep_indices = np.concatenate([keep_indices, idx_other_indices])
-            all_keep_indices.sort()
+            np.random.seed(23)
+            sampled_indices = np.random.choice(indices_target_0, size=num_samples, replace=False)
             
-            STM_all = STM_all[all_keep_indices]
-            target = target.iloc[all_keep_indices].reset_index(drop=True)
-            data_split = data_split.iloc[all_keep_indices].reset_index(drop=True)
+            mask = np.ones(len(target), dtype=bool)
+            mask[indices_target_0] = False
+            mask[sampled_indices] = True
+            
+            STM_all = STM_all[mask, :]
+            data_split = data_split[mask].reset_index(drop=True)
+            target = target[mask].reset_index(drop=True)
         
         # Split data
         train_ind = (data_split < 8).values
@@ -253,7 +253,7 @@ class prepData_STM_Mamba:
         print(f"Sequence length: {self.seq_len}")
         print(f"\nClass Distribution (Training):")
         for i, count in enumerate(class_counts):
-            print(f"  Class {i}: {count} samples ({class_freq[i]:.2%})")
+            print(f"  Class {i}: {count} samples ({100*count/len(train_labels):.2f}%)")
         
         return STM_all, target.values, train_ind, val_ind, test_ind, class_freq
     
@@ -508,6 +508,7 @@ class Trainer:
         self.train_losses = []
         self.val_losses = []
         self.val_f1s = []
+        self.start_epoch = 0
         
     def train_epoch(self):
         """Train for one epoch"""
@@ -555,6 +556,14 @@ class Trainer:
         macro_f1 = f1_score(all_targets, all_preds, average='macro')
         
         return avg_loss, macro_f1, np.array(all_preds), np.array(all_targets)
+    
+    def load_checkpoint(self, checkpoint_path):
+        """Load a checkpoint"""
+        checkpoint = torch.load(checkpoint_path)
+        self.model.load_state_dict(checkpoint['model_state_dict'])
+        self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        self.start_epoch = checkpoint['epoch']
+        print(f"Loaded checkpoint from {checkpoint_path}")
     
     def train(self, num_epochs, checkpoint_dir):
         """Full training loop"""

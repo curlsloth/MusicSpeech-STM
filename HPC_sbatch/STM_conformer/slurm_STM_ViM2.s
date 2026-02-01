@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name=STM_ViM2
+#SBATCH --account=torch_pr_578_general
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=10
 #SBATCH --gres=gpu:1
@@ -14,5 +15,5 @@ module purge
 
 # singularity exec $(for sqf in /scratch/ac8888/vast/sqfs/*.sqf; do echo "--overlay ${sqf}"; done) /scratch/work/public/singularity/ubuntu-24.04.3.sif /bin/bash
 
-STM_singularity/run-MusicSpeech-STMhpc_mambaGPU.bash python STM_ViM2.py 0
+STM_singularity/run-MusicSpeech-STMhpc_mamba_torch.bash python3 STM_ViM2.py 0
 # Run this: sbatch HPC_sbatch/STM_conformer/slurm_STM_ViM2.s

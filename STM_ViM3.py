@@ -164,12 +164,10 @@ class prepData_STM_Mamba:
             'ismir04_genre', 'MTG-Jamendo', 'HiltonMoser2022_song', 'NHS2', 'MagnaTagATune'
         ]
         
-        corpus_env_list = ['SONYC']
-        
         if addAug:
-            corpus_env_list.append('SONYC-AUG')
+            corpus_env_list = ['SONYC', 'MacaulayLibrary', 'SONYC_augmented']
         else:
-            pass
+            corpus_env_list = ['SONYC', 'MacaulayLibrary']
         
         corpus_speech_list.sort()
         corpus_music_list.sort()
@@ -184,11 +182,12 @@ class prepData_STM_Mamba:
         
         STM_all = None
         for corp in corpus_list_all:
-            stm_feat = np.load(root_folder + 'STM_output/' + corp + '.npy')
+            filename = root_folder + 'STM_output/corpSTMnpy/' + corp.replace('/', '-') + '_STMall.npy'
             if STM_all is None:
-                STM_all = stm_feat
+                STM_all = np.load(filename)
             else:
-                STM_all = np.concatenate((STM_all, stm_feat), axis=0)
+                STM_all = np.vstack((STM_all, np.load(filename)))
+            print(f"Loaded: {filename}, shape: {np.load(filename).shape}")
         
         # Load metadata
         speech_corp_df1 = pd.read_csv(root_folder + 'train_test_split/speech1_10folds_speakerGroupFold.csv', index_col=0)
@@ -200,13 +199,12 @@ class prepData_STM_Mamba:
         
         # Handle augmented data
         if self.addAug:
-            all_corp_df_aug = all_corp_df[all_corp_df['corpus'] == 'SONYC'].copy()
-            all_corp_df = pd.concat([all_corp_df, all_corp_df_aug], ignore_index=True)
+            SONYC_aug_len = np.load(root_folder + 'STM_output/corpSTMnpy/SONYC_augmented_STMall.npy').shape[0]
+            target = pd.concat([all_corp_df['corpus_type'], pd.Series(['env: urban'] * SONYC_aug_len)], ignore_index=True)
+            data_split = pd.concat([all_corp_df['10fold_labels'], pd.Series([1] * SONYC_aug_len)], ignore_index=True)
         else:
-            pass
-        
-        data_split = all_corp_df['fold']
-        target = all_corp_df['cat_label']
+            target = all_corp_df['corpus_type'].copy()
+            data_split = all_corp_df['10fold_labels'].copy()
         
         # Map categories
         target.replace({
@@ -220,20 +218,22 @@ class prepData_STM_Mamba:
         
         # Downsample non-tonal speech if requested
         if self.ds_nontonal_speech:
-            idx_nontonal = target == 0
-            idx_nontonal_indices = np.where(idx_nontonal)[0]
-            np.random.seed(42)
-            keep_indices = np.random.choice(idx_nontonal_indices, size=int(len(idx_nontonal_indices) * 0.5), replace=False)
+            num_samples = 100000
+            indices_target_0 = target.index[target == 0].to_numpy()
             
-            idx_other = target != 0
-            idx_other_indices = np.where(idx_other)[0]
+            if len(indices_target_0) < num_samples:
+                raise ValueError(f"Not enough rows with target == 0 to sample {num_samples} rows.")
             
-            all_keep_indices = np.concatenate([keep_indices, idx_other_indices])
-            all_keep_indices.sort()
+            np.random.seed(23)
+            sampled_indices = np.random.choice(indices_target_0, size=num_samples, replace=False)
             
-            STM_all = STM_all[all_keep_indices]
-            target = target.iloc[all_keep_indices].reset_index(drop=True)
-            data_split = data_split.iloc[all_keep_indices].reset_index(drop=True)
+            mask = np.ones(len(target), dtype=bool)
+            mask[indices_target_0] = False
+            mask[sampled_indices] = True
+            
+            STM_all = STM_all[mask, :]
+            data_split = data_split[mask].reset_index(drop=True)
+            target = target[mask].reset_index(drop=True)
         
         # Split data
         train_ind = (data_split < 8).values
@@ -253,7 +253,7 @@ class prepData_STM_Mamba:
         print(f"Sequence length: {self.seq_len}")
         print(f"\nClass Distribution (Training):")
         for i, count in enumerate(class_counts):
-            print(f"  Class {i}: {count} samples ({class_freq[i]:.2%})")
+            print(f"  Class {i}: {count} samples ({100*count/len(train_labels):.2f}%)")
         
         return STM_all, target.values, train_ind, val_ind, test_ind, class_freq
     
@@ -504,9 +504,42 @@ class Trainer:
         
         # Tracking
         self.best_val_f1 = 0.0
+        self.start_epoch = 0
         self.train_losses = []
         self.val_losses = []
         self.val_f1s = []
+        
+    def load_checkpoint(self, checkpoint_path):
+        """Load checkpoint to resume training"""
+        if not os.path.exists(checkpoint_path):
+            print(f"Checkpoint not found: {checkpoint_path}")
+            return False
+        
+        print(f"Loading checkpoint from: {checkpoint_path}")
+        checkpoint = torch.load(checkpoint_path, map_location=self.device)
+        
+        self.model.load_state_dict(checkpoint['model_state_dict'])
+        
+        if 'optimizer_state_dict' in checkpoint:
+            self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+            print("✓ Loaded optimizer state")
+        
+        if 'scheduler_state_dict' in checkpoint:
+            self.scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
+            print("✓ Loaded scheduler state")
+        
+        self.start_epoch = checkpoint['epoch'] + 1
+        self.best_val_f1 = checkpoint.get('val_f1', 0.0)
+        
+        if 'train_losses' in checkpoint:
+            self.train_losses = checkpoint['train_losses']
+        if 'val_losses' in checkpoint:
+            self.val_losses = checkpoint['val_losses']
+        if 'val_f1s' in checkpoint:
+            self.val_f1s = checkpoint['val_f1s']
+        
+        print(f"✓ Resumed from epoch {self.start_epoch}, Best Val F1: {self.best_val_f1:.4f}")
+        return True
         
     def train_epoch(self):
         """Train for one epoch"""
@@ -559,10 +592,11 @@ class Trainer:
         """Full training loop"""
         print("\nStarting training...")
         print(f"Total epochs: {num_epochs}")
+        print(f"Starting from epoch {self.start_epoch + 1}")
         print(f"Train batches: {len(self.train_loader)}")
         print(f"Val batches: {len(self.val_loader)}")
         
-        for epoch in range(num_epochs):
+        for epoch in range(self.start_epoch, num_epochs):
             # Train
             train_loss = self.train_epoch()
             
@@ -572,11 +606,6 @@ class Trainer:
             # Update scheduler
             self.scheduler.step()
             
-            # Track metrics
-            self.train_losses.append(train_loss)
-            self.val_losses.append(val_loss)
-            self.val_f1s.append(val_f1)
-            
             # Save best model
             if val_f1 > self.best_val_f1:
                 self.best_val_f1 = val_f1
@@ -584,9 +613,39 @@ class Trainer:
                     'epoch': epoch,
                     'model_state_dict': self.model.state_dict(),
                     'optimizer_state_dict': self.optimizer.state_dict(),
+                    'scheduler_state_dict': self.scheduler.state_dict(),
                     'val_f1': val_f1,
+                    'train_losses': self.train_losses,
+                    'val_losses': self.val_losses,
+                    'val_f1s': self.val_f1s,
                 }
                 torch.save(checkpoint, os.path.join(checkpoint_dir, 'best_model.pt'))
+            
+            # Save periodic checkpoints
+            if (epoch + 1) % 5 == 0:
+                torch.save({
+                    'epoch': epoch,
+                    'model_state_dict': self.model.state_dict(),
+                    'optimizer_state_dict': self.optimizer.state_dict(),
+                    'scheduler_state_dict': self.scheduler.state_dict(),
+                    'val_f1': val_f1,
+                    'train_losses': self.train_losses,
+                    'val_losses': self.val_losses,
+                    'val_f1s': self.val_f1s,
+                }, os.path.join(checkpoint_dir, f'checkpoint_epoch_{epoch+1}.pt'))
+                print(f"✓ Saved checkpoint at epoch {epoch+1}")
+            
+            # Always save latest
+            torch.save({
+                'epoch': epoch,
+                'model_state_dict': self.model.state_dict(),
+                'optimizer_state_dict': self.optimizer.state_dict(),
+                'scheduler_state_dict': self.scheduler.state_dict(),
+                'val_f1': val_f1,
+                'train_losses': self.train_losses,
+                'val_losses': self.val_losses,
+                'val_f1s': self.val_f1s,
+            }, os.path.join(checkpoint_dir, 'latest_checkpoint.pt'))
             
             # Print progress
             if (epoch + 1) % 5 == 0 or epoch == 0:
@@ -623,12 +682,22 @@ if __name__ == "__main__":
     
     # Parse command line arguments
     if len(sys.argv) < 2:
-        print("Usage: python STM_ViM3.py <mode>")
+        print("Usage: python STM_ViM3.py <mode> [--resume <checkpoint_dir>]")
         print("  mode 0: standard (no downsampling)")
         print("  mode 1: downsample non-tonal speech")
+        print("Options:")
+        print("  --resume <checkpoint_dir>: Resume from checkpoint directory")
         sys.exit(1)
     
     mode = int(sys.argv[1])
+    
+    # Check for resume flag
+    resume_dir = None
+    if '--resume' in sys.argv:
+        resume_idx = sys.argv.index('--resume')
+        if resume_idx + 1 < len(sys.argv):
+            resume_dir = sys.argv[resume_idx + 1]
+            print(f"Resume mode: Will attempt to load from {resume_dir}")
     
     # Set parameters based on mode
     if mode == 0:
@@ -642,10 +711,15 @@ if __name__ == "__main__":
         sys.exit(1)
     
     # Create directory
-    time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
-    checkpoint_dir = os.path.join(directory, "ckpt", time_stamp)
-    os.makedirs(checkpoint_dir, exist_ok=True)
-    print(f"Checkpoint directory: {checkpoint_dir}")
+    if resume_dir:
+        checkpoint_dir = resume_dir
+        if not os.path.exists(checkpoint_dir):
+            print(f"Error: Checkpoint directory does not exist: {checkpoint_dir}")
+            sys.exit(1)
+    else:
+        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+        checkpoint_dir = os.path.join(directory, "ckpt", time_stamp)
+        os.makedirs(checkpoint_dir, exist_ok=True)
     
     # Prepare data
     print("\n" + "="*60)
@@ -712,6 +786,21 @@ if __name__ == "__main__":
         lr=1e-4,
         weight_decay=1e-4
     )
+    
+    # Resume from checkpoint if specified
+    if resume_dir:
+        latest_ckpt = os.path.join(checkpoint_dir, 'latest_checkpoint.pt')
+        if os.path.exists(latest_ckpt):
+            trainer.load_checkpoint(latest_ckpt)
+        else:
+            ckpt_files = [f for f in os.listdir(checkpoint_dir) if f.startswith('checkpoint_epoch_')]
+            if ckpt_files:
+                epochs = [int(f.split('_')[-1].replace('.pt', '')) for f in ckpt_files]
+                latest_epoch = max(epochs)
+                latest_ckpt = os.path.join(checkpoint_dir, f'checkpoint_epoch_{latest_epoch}.pt')
+                trainer.load_checkpoint(latest_ckpt)
+            else:
+                print("Warning: No checkpoint found to resume from, starting fresh")
     
     # Train model
     num_epochs = 50
