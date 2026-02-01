@@ -1,3 +1,581 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
 INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommended.
+Using device: cuda
+GPU: NVIDIA L40S
+Memory: 47.67 GB
+Checkpoint directory: model/STM/CoordConvLDAM4_corpora_categories/standard/ckpt/2026-02-01_00-17
+
+============================================================
+Loading and preparing data...
+============================================================
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-hausa_STMall.npy, shape: (29002, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-lingala_STMall.npy, shape: (11219, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-yoruba_STMall.npy, shape: (6629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Buckeye_STMall.npy, shape: (255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/EUROM_STMall.npy, shape: (6623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_speech_STMall.npy, shape: (785, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/LibriSpeech_STMall.npy, shape: (27144, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-AR_STMall.npy, shape: (2505, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-ES_STMall.npy, shape: (2507, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-FR_STMall.npy, shape: (2498, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-TR_STMall.npy, shape: (2512, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ab_STMall.npy, shape: (7558, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ar_STMall.npy, shape: (8080, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ba_STMall.npy, shape: (7964, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-be_STMall.npy, shape: (8595, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bg_STMall.npy, shape: (7130, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bn_STMall.npy, shape: (8149, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-br_STMall.npy, shape: (1454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ca_STMall.npy, shape: (8237, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ckb_STMall.npy, shape: (7490, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cnh_STMall.npy, shape: (656, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cs_STMall.npy, shape: (8622, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cv_STMall.npy, shape: (8755, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cy_STMall.npy, shape: (7640, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-da_STMall.npy, shape: (3878, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-de_STMall.npy, shape: (8979, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-dv_STMall.npy, shape: (9113, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-el_STMall.npy, shape: (6422, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-en_STMall.npy, shape: (8607, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eo_STMall.npy, shape: (9327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-es_STMall.npy, shape: (8742, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-et_STMall.npy, shape: (9653, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eu_STMall.npy, shape: (7983, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fa_STMall.npy, shape: (8629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fi_STMall.npy, shape: (3982, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fr_STMall.npy, shape: (8912, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fy-NL_STMall.npy, shape: (6694, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ga-IE_STMall.npy, shape: (1323, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gl_STMall.npy, shape: (8623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gn_STMall.npy, shape: (1014, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hi_STMall.npy, shape: (5438, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hu_STMall.npy, shape: (8319, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hy-AM_STMall.npy, shape: (6980, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-id_STMall.npy, shape: (8468, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ig_STMall.npy, shape: (9, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-it_STMall.npy, shape: (9083, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ja_STMall.npy, shape: (8606, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ka_STMall.npy, shape: (9409, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kab_STMall.npy, shape: (7172, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kk_STMall.npy, shape: (867, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kmr_STMall.npy, shape: (6603, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ky_STMall.npy, shape: (7998, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lg_STMall.npy, shape: (8169, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lt_STMall.npy, shape: (9073, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ltg_STMall.npy, shape: (2299, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lv_STMall.npy, shape: (7666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mhr_STMall.npy, shape: (8336, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ml_STMall.npy, shape: (813, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mn_STMall.npy, shape: (5968, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mt_STMall.npy, shape: (3632, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nan-tw_STMall.npy, shape: (181, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nl_STMall.npy, shape: (8834, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-oc_STMall.npy, shape: (681, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-or_STMall.npy, shape: (1941, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pl_STMall.npy, shape: (8817, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pt_STMall.npy, shape: (8413, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ro_STMall.npy, shape: (6666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ru_STMall.npy, shape: (9260, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-rw_STMall.npy, shape: (9148, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sr_STMall.npy, shape: (391, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sv-SE_STMall.npy, shape: (8288, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sw_STMall.npy, shape: (9192, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ta_STMall.npy, shape: (9474, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-th_STMall.npy, shape: (8044, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tr_STMall.npy, shape: (7953, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tt_STMall.npy, shape: (7454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ug_STMall.npy, shape: (7899, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uk_STMall.npy, shape: (8819, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ur_STMall.npy, shape: (8970, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uz_STMall.npy, shape: (7911, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-vi_STMall.npy, shape: (1859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yo_STMall.npy, shape: (2511, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yue_STMall.npy, shape: (6156, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-CN_STMall.npy, shape: (8715, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-TW_STMall.npy, shape: (7286, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SpeechClarity_STMall.npy, shape: (555, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TAT-Vol2_STMall.npy, shape: (793, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TIMIT_STMall.npy, shape: (479, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TTS_Javanese_STMall.npy, shape: (3068, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/primewords_chinese_STMall.npy, shape: (47166, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/room_reader_STMall.npy, shape: (146, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/thchs30_STMall.npy, shape: (13327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/zeroth_korean_STMall.npy, shape: (22255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Albouy2020Science_STMall.npy, shape: (123, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/GarlandEncyclopedia_STMall.npy, shape: (296, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_song_STMall.npy, shape: (803, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/IRMAS_STMall.npy, shape: (2838, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MTG-Jamendo_STMall.npy, shape: (55699, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MagnaTagATune_STMall.npy, shape: (25859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/NHS2_STMall.npy, shape: (1007, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/fma_large_STMall.npy, shape: (106257, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/ismir04_genre_STMall.npy, shape: (2185, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy, shape: (34565, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SONYC_STMall.npy, shape: (10798, 2420)
+
+Dataset Statistics:
+Total samples: 978378
+Train samples: 770393
+Val samples: 102010
+Test samples: 105975
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
+
+Class Distribution (Training):
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
+
+PyTorch Dataset Shapes:
+Train: torch.Size([770393, 1, 20, 121])
+Val: torch.Size([102010, 1, 20, 121])
+Test: torch.Size([105975, 1, 20, 121])
+
+DataLoaders created with batch_size=256
+
+============================================================
+Creating CoordConv-ResNet18 with Attention (V4)...
+============================================================
+Total parameters: 24,405,126
+Trainable parameters: 24,405,126
+V4 Enhancements: CA (early layers), SE (late layers), Multi-scale fusion
+
+============================================================
+Starting training...
+============================================================
+
+============================================================
+Epoch 1/100
+============================================================
+  Batch 0/3010, Loss: 7.9246, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 3.9978, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.8974, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 2.3223, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 2.2245, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 2.1239, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.0824, DRW: False, Mixup: True
+Train Loss: 2.6901
+Val Loss: 1.5637, Val Macro F1: 0.8050
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8050
+
+============================================================
+Epoch 2/100
+============================================================
+  Batch 0/3010, Loss: 1.9624, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 2.5591, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.8534, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.7692, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.6110, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.7232, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.0596, DRW: False, Mixup: True
+Train Loss: 2.3090
+Val Loss: 1.5476, Val Macro F1: 0.8236
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8236
+
+============================================================
+Epoch 3/100
+============================================================
+  Batch 0/3010, Loss: 1.9959, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.8641, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 2.2840, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 4.5640, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 4.2121, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.8493, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.0777, DRW: False, Mixup: True
+Train Loss: 2.1600
+Val Loss: 1.5439, Val Macro F1: 0.8286
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8286
+
+============================================================
+Epoch 4/100
+============================================================
+  Batch 0/3010, Loss: 2.4114, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.4994, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.6022, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.8542, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 4.0787, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 2.1891, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 4.4225, DRW: False, Mixup: True
+Train Loss: 2.0647
+Val Loss: 1.5601, Val Macro F1: 0.8200
+Current learning rate: 0.000100
+
+============================================================
+Epoch 5/100
+============================================================
+  Batch 0/3010, Loss: 1.6730, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.8281, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.6754, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.7348, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.3900, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 3.1318, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.0704, DRW: False, Mixup: True
+Train Loss: 2.0108
+Val Loss: 1.5382, Val Macro F1: 0.8281
+Current learning rate: 0.000100
+
+============================================================
+Epoch 6/100
+============================================================
+  Batch 0/3010, Loss: 0.9032, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.8268, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.6969, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.2686, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 4.6322, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.6232, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.7212, DRW: False, Mixup: True
+Train Loss: 1.9476
+Val Loss: 1.5403, Val Macro F1: 0.8356
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8356
+
+============================================================
+Epoch 7/100
+============================================================
+  Batch 0/3010, Loss: 1.7713, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.0621, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.3706, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.7015, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.8330, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.4197, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.5382, DRW: False, Mixup: True
+Train Loss: 1.8554
+Val Loss: 1.5430, Val Macro F1: 0.8506
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8506
+
+============================================================
+Epoch 8/100
+============================================================
+  Batch 0/3010, Loss: 1.9014, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.3186, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.3772, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.6669, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.6138, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.4656, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.3087, DRW: False, Mixup: True
+Train Loss: 1.8220
+Val Loss: 1.5371, Val Macro F1: 0.8508
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8508
+
+============================================================
+Epoch 9/100
+============================================================
+  Batch 0/3010, Loss: 5.2008, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 3.3945, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.7380, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.6093, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.5343, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.2189, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.2917, DRW: False, Mixup: True
+Train Loss: 1.7648
+Val Loss: 1.5447, Val Macro F1: 0.8464
+Current learning rate: 0.000100
+
+============================================================
+Epoch 10/100
+============================================================
+  Batch 0/3010, Loss: 3.7809, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.2352, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.7069, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 2.9595, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.0484, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.7650, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.1210, DRW: False, Mixup: True
+Train Loss: 1.7052
+Val Loss: 1.5418, Val Macro F1: 0.8395
+Current learning rate: 0.000100
+
+============================================================
+Epoch 11/100
+============================================================
+  Batch 0/3010, Loss: 1.0928, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.4286, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.6622, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.1236, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 4.2206, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.2704, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.5525, DRW: False, Mixup: True
+Train Loss: 1.6153
+Val Loss: 1.5315, Val Macro F1: 0.8476
+Current learning rate: 0.000100
+
+============================================================
+Epoch 12/100
+============================================================
+  Batch 0/3010, Loss: 1.2133, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 2.9381, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.3646, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.3883, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.5113, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.0341, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.0344, DRW: False, Mixup: True
+Train Loss: 1.6025
+Val Loss: 1.5378, Val Macro F1: 0.8425
+Current learning rate: 0.000100
+
+============================================================
+Epoch 13/100
+============================================================
+  Batch 0/3010, Loss: 1.3175, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 4.6893, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.3016, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.0158, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.0124, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.1762, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.0942, DRW: False, Mixup: True
+Train Loss: 1.5135
+Val Loss: 1.5333, Val Macro F1: 0.8467
+Current learning rate: 0.000100
+
+============================================================
+Epoch 14/100
+============================================================
+  Batch 0/3010, Loss: 1.1697, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.8122, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.9894, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.2524, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.9780, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 4.7766, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.2364, DRW: False, Mixup: True
+Train Loss: 1.4648
+Val Loss: 1.5314, Val Macro F1: 0.8448
+Current learning rate: 0.000100
+
+============================================================
+Epoch 15/100
+============================================================
+  Batch 0/3010, Loss: 0.7682, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.0156, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 2.0072, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 2.6565, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.1928, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.9114, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 0.9473, DRW: False, Mixup: True
+Train Loss: 1.4033
+Val Loss: 1.5296, Val Macro F1: 0.8462
+Current learning rate: 0.000100
+
+============================================================
+Epoch 16/100
+============================================================
+  Batch 0/3010, Loss: 1.6682, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.1241, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.9069, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.4811, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.2204, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 3.6350, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.0985, DRW: False, Mixup: True
+Train Loss: 1.3808
+Val Loss: 1.5314, Val Macro F1: 0.8447
+Current learning rate: 0.000050
+
+============================================================
+Epoch 17/100
+============================================================
+  Batch 0/3010, Loss: 1.3754, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.5950, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.6968, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.0584, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.9384, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.2442, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.0410, DRW: False, Mixup: True
+Train Loss: 1.2284
+Val Loss: 1.5291, Val Macro F1: 0.8451
+Current learning rate: 0.000050
+
+============================================================
+Epoch 18/100
+============================================================
+  Batch 0/3010, Loss: 0.8713, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 3.5532, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.8709, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 2.2461, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.8830, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.9914, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 0.6825, DRW: False, Mixup: True
+Train Loss: 1.1762
+Val Loss: 1.5333, Val Macro F1: 0.8450
+Current learning rate: 0.000050
+
+============================================================
+Epoch 19/100
+============================================================
+  Batch 0/3010, Loss: 3.0341, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.6586, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.1088, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 0.6229, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.8104, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.8714, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 4.3975, DRW: False, Mixup: True
+Train Loss: 1.1726
+Val Loss: 1.5312, Val Macro F1: 0.8487
+Current learning rate: 0.000050
+
+============================================================
+Epoch 20/100
+============================================================
+  Batch 0/3010, Loss: 3.9770, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.6151, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.9753, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 0.6233, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.7918, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.6862, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.4325, DRW: False, Mixup: True
+Train Loss: 1.1800
+Val Loss: 1.5343, Val Macro F1: 0.8426
+Current learning rate: 0.000050
+
+============================================================
+Epoch 21/100
+============================================================
+  Batch 0/3010, Loss: 0.9943, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.5701, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.8245, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 0.5429, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.5615, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.9978, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 0.3787, DRW: False, Mixup: True
+Train Loss: 1.1319
+Val Loss: 1.5323, Val Macro F1: 0.8401
+Current learning rate: 0.000050
+
+============================================================
+Epoch 22/100
+============================================================
+  Batch 0/3010, Loss: 1.1350, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.6990, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.6444, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 0.6362, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.7622, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.7787, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 0.4766, DRW: False, Mixup: True
+Train Loss: 1.1040
+Val Loss: 1.5277, Val Macro F1: 0.8395
+Current learning rate: 0.000050
+
+============================================================
+Epoch 23/100
+============================================================
+  Batch 0/3010, Loss: 1.5090, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.8260, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.5411, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 0.7404, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.5038, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.5097, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 0.7748, DRW: False, Mixup: True
+Train Loss: 1.0560
+Val Loss: 1.5297, Val Macro F1: 0.8424
+Current learning rate: 0.000050
+
+============================================================
+Epoch 24/100
+============================================================
+  Batch 0/3010, Loss: 0.6703, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.4336, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.7360, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 0.7846, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.7572, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 3.2029, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 0.6641, DRW: False, Mixup: True
+Train Loss: 1.0479
+Val Loss: 1.5330, Val Macro F1: 0.8416
+Current learning rate: 0.000025
+
+============================================================
+Epoch 25/100
+============================================================
+  Batch 0/3010, Loss: 4.4666, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.6433, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.4245, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 0.4398, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.5542, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.8015, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 0.6884, DRW: False, Mixup: True
+Train Loss: 0.9934
+Val Loss: 1.5312, Val Macro F1: 0.8378
+Current learning rate: 0.000025
+
+============================================================
+Epoch 26/100
+============================================================
+  Batch 0/3010, Loss: 1.3041, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 2.8901, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.5478, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 0.4853, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.4021, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.5543, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 3.5091, DRW: False, Mixup: True
+Train Loss: 0.9407
+Val Loss: 1.5308, Val Macro F1: 0.8432
+Current learning rate: 0.000025
+
+============================================================
+Epoch 27/100
+============================================================
+  Batch 0/3010, Loss: 0.5968, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.3839, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.8397, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 0.4106, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.4859, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.6642, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 0.5911, DRW: False, Mixup: True
+Train Loss: 0.9551
+Val Loss: 1.5287, Val Macro F1: 0.8403
+Current learning rate: 0.000025
+
+============================================================
+Epoch 28/100
+============================================================
+  Batch 0/3010, Loss: 0.5524, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 0.7060, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 0.4077, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 2.3106, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 0.4861, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 0.6139, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.3788, DRW: False, Mixup: True
+Train Loss: 0.9764
+Val Loss: 1.5331, Val Macro F1: 0.8413
+Current learning rate: 0.000025
+
+Early stopping triggered after 28 epochs
+
+============================================================
+Training completed! Best Val F1: 0.8508
+============================================================
+
+============================================================
+Evaluating on test set...
+============================================================
+Test Loss: 1.5372
+Test Macro F1: 0.8631
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+speech:non-tonal       0.94      0.98      0.96     70117
+    speech:tonal       0.90      0.71      0.79     13495
+     music:vocal       0.84      0.82      0.83     12165
+ music:non-vocal       0.68      0.71      0.69      6018
+       env:urban       0.93      0.99      0.96       769
+    env:wildlife       0.95      0.93      0.94      3411
+
+        accuracy                           0.91    105975
+       macro avg       0.87      0.86      0.86    105975
+    weighted avg       0.91      0.91      0.91    105975
+
+
+============================================================
+Done!
+============================================================

@@ -156,3 +156,9 @@ Total epochs: 50
 Starting from epoch 1
 Train batches: 12038
 Val batches: 1594
+Traceback (most recent call last):
+  File "/scratch/ac8888/MusicSpeech-STM/STM_ViM2.py", line 818, in <module>
+    trainer.train(num_epochs=num_epochs, checkpoint_dir=checkpoint_dir)
+  File "/scratch/ac8888/MusicSpeech-STM/STM_ViM2.py", line 661, in train
+    print(f"Epoch {epoch+1}/{num_epochs} - "
+TypeError: unsupported format string passed to tuple.__format__

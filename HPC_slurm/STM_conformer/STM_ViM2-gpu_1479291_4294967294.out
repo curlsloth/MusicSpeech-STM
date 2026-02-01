@@ -1,10 +1,9 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
-INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommended.
 Using device: cuda
 GPU: NVIDIA L40S
 Memory: 47.67 GB
-Checkpoint directory: model/STM/ViM4_corpora_categories/standard/ckpt/2026-02-01_00-17
+Checkpoint directory: model/STM/ViM2_corpora_categories/standard/ckpt/2026-02-01_08-22
 
 ============================================================
 Loading and preparing data...
@@ -145,28 +144,20 @@ Speed improvement: 2× faster (O(L) complexity)
 DataLoaders created with batch_size=64
 
 ============================================================
-Creating Vision Mamba model (Wider Variant)...
+Creating Vision Mamba model (Lighter Variant)...
 ============================================================
-Total parameters: 13,853,574
-Trainable parameters: 13,853,574
-Model size change: ~1.7× vs baseline (wider but slightly shallower)
+Total parameters: 1,981,894
+Trainable parameters: 1,981,894
+Model size reduction: ~4.0× smaller than baseline
 
-Starting training for 50 epochs...
-Epoch 1/50:
-  Train Loss: 0.3811, Train F1: 0.7033
-  Val Loss: 0.3281, Val F1: 0.7120
-  LR: 0.000100
-  *** New best model saved! Val F1: 0.7120 ***
-
-Epoch 2/50:
-  Train Loss: 0.2884, Train F1: 0.7951
-  Val Loss: 0.2753, Val F1: 0.7748
-  LR: 0.000100
-  *** New best model saved! Val F1: 0.7748 ***
-
-Epoch 3/50:
-  Train Loss: 0.2661, Train F1: 0.8111
-  Val Loss: 0.2719, Val F1: 0.7864
-  LR: 0.000099
-  *** New best model saved! Val F1: 0.7864 ***
-
+Starting training...
+Total epochs: 50
+Starting from epoch 1
+Train batches: 12038
+Val batches: 1594
+Traceback (most recent call last):
+  File "/scratch/ac8888/MusicSpeech-STM/STM_ViM2.py", line 814, in <module>
+    trainer.train(num_epochs=num_epochs, checkpoint_dir=checkpoint_dir)
+  File "/scratch/ac8888/MusicSpeech-STM/STM_ViM2.py", line 661, in train
+    print(f"Epoch {epoch+1}/{num_epochs} - Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, Val F1: {val_f1:.4f}, Best F1: {self.best_val_f1:.4f}")
+TypeError: unsupported format string passed to tuple.__format__

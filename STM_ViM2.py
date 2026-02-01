@@ -658,11 +658,7 @@ class Trainer:
             
             # Print progress
             if (epoch + 1) % 5 == 0 or epoch == 0:
-                print(f"Epoch {epoch+1}/{num_epochs} - "
-                      f"Train Loss: {train_loss:.4f}, "
-                      f"Val Loss: {val_loss:.4f}, "
-                      f"Val F1: {val_f1:.4f}, "
-                      f"Best F1: {self.best_val_f1:.4f}")
+                print(f"Epoch {epoch+1}/{num_epochs} - Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, Val F1: {val_f1:.4f}, Best F1: {self.best_val_f1:.4f}")
         
         print(f"\nTraining complete! Best Val F1: {self.best_val_f1:.4f}")
 
