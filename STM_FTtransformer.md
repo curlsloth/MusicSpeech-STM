@@ -7,8 +7,8 @@ FT-Transformer treats STM features as **tabular data** - continuous variables th
 
 **NEW: Symmetric STM Processing** - Following STMasm_enhanced5.py, we exploit the up/down-sweep symmetry of modulation spectra:
 - **Input**: 20 freq × 121 rates = 2420 features
-- **After symmetric processing**: 20 freq × 61 rates = **1210 features**
-- **Speed gain**: **4× faster** (O(L²) means 1210²/2420² ≈ 0.25× operations)
+- **After symmetric processing**: 20 freq × 61 rates = **1220 features**
+- **Speed gain**: **4× faster** (O(L²) means 1220²/2420² ≈ 0.25× operations)
 - **Memory**: Attention matrices are 4× smaller
 
 This enables practical training times (~10-15 minutes per epoch vs >1 hour).
@@ -19,7 +19,7 @@ This enables practical training times (~10-15 minutes per epoch vs >1 hour).
 
 STM features resemble structured data:
 - **Row**: One audio sample
-- **Columns**: 1210 features (modulation bins after symmetric processing)
+- **Columns**: 1220 features (modulation bins after symmetric processing)
 - **Values**: Continuous energy values
 
 Unlike images (where neighboring pixels are spatially related) or sequences (where tokens have temporal order), STM bins can be viewed as **independent measurements** that happen to have a 2D layout.
@@ -50,7 +50,7 @@ This immediately mixes all features! The model loses track of "which feature con
 **FT-Transformer solution**:
 ```python
 # Each feature gets a unique learnable embedding
-feature_embeddings: (2420, d_model)
+feature_embeddings: (1220, d_model)
 
 # Project feature value
 value_proj = Linear(feature_value)  # (1,) → (d_model,)
@@ -94,13 +94,13 @@ output = attention_weights @ V
 #### 3. Architecture Flow
 
 ```
-Input: (batch, 1210) - flat feature vector after symmetric processing
+Input: (batch, 1220) - flat feature vector after symmetric processing
 
 ↓ Feature Tokenizer
-Tokens: (batch, 1210, d_model=192)
+Tokens: (batch, 1220, d_model=192)
 
 ↓ Add CLS token (optional)
-(batch, 1211, d_model)
+(batch, 1221, d_model)
 
 ↓ Transformer Block 1
   ├─ Multi-head attention (8 heads)
@@ -122,7 +122,7 @@ Tokens: (batch, 1210, d_model=192)
 Output: (batch, 6) - class logits
 ```
 
-**Attention matrix size**: (batch, 8 heads, 1211, 1211) ≈ 1.47M elements
+**Attention matrix size**: (batch, 8 heads, 1221, 1221) ≈ 1.49M elements
 - Original (2421 tokens): 5.86M elements
 - **4× memory reduction!**
 
@@ -184,19 +184,19 @@ use_gradient_checkpointing: True  # CRITICAL for memory management
 ```
 
 **Rationale**:
-- `n_features=1210`: Reduced from 2420 via symmetric processing
+- `n_features=1220`: Reduced from 2420 via symmetric processing
 - `d_model=192`: Each feature gets a rich 192-dim representation
 - `n_heads=8`: 8 different attention patterns to capture diverse correlations
 - `depth=6`: Moderately deep (vs 12 in Vim) - tabular data needs less depth
 - `d_ff=512`: Standard 2-3× expansion in FFN
-- **`use_gradient_checkpointing=True`**: Still needed despite 1210 tokens
+- **`use_gradient_checkpointing=True`**: Still needed despite 1220 tokens
 
 **Parameter count**: ~5M (efficient for tabular data)
 
-**⚠️ Memory Note**: Even with 1210 tokens, attention matrices are large (~1.5M per layer). Gradient checkpointing remains essential.
+**⚠️ Memory Note**: Even with 1220 tokens, attention matrices are large (~1.5M per layer). Gradient checkpointing remains essential.
 
 **Speed improvement with symmetric processing**:
-- Attention operations: 1210² vs 2420² = **4× faster**
+- Attention operations: 1220² vs 2420² = **4× faster**
 - Per epoch: ~10-15 min (vs >60 min without symmetric processing)
 - 50 epochs: ~8-12 hours (vs >50 hours)
 
@@ -209,12 +209,12 @@ Optimizer: AdamW
 
 Scheduler: CosineAnnealingLR
 
-Batch size: 32 (REDUCED from 128 to prevent OOM)
+Batch size: 64 (optimized for 1220 tokens)
 
 Loss: Balanced Softmax
 ```
 
-**Batch size rationale**: O(L²) attention creates (batch × heads × 2421²) tensor. Batch=32 keeps memory <45GB on A100.
+**Batch size rationale**: O(L²) attention creates (batch × heads × 1221²) tensor. With 1220 features (not 2420), batch=64 is safe on 48GB GPUs.
 
 ### Expected Performance
 
@@ -225,7 +225,7 @@ Loss: Balanced Softmax
    - Attention weights are interpretable (see which bins matter)
 
 2. **No PCA needed**:
-   - Processes all 2420 features directly
+   - Processes all 1220 features after symmetric processing
    - Feature Tokenizer acts as learned dimensionality reduction
 
 3. **Flexible**:
@@ -236,7 +236,7 @@ Loss: Balanced Softmax
 
 1. **O(L²) complexity** (mitigated by symmetric processing):
    - Original: 2420² ≈ 5.86M attention operations per layer
-   - Symmetric: 1210² ≈ 1.46M attention operations per layer
+   - Symmetric: 1220² ≈ 1.49M attention operations per layer
    - **4× speedup** makes training practical
 
 2. **May underutilize topology**:
@@ -288,13 +288,13 @@ with torch.no_grad():
 attn_weights = attentions[0]  # (batch, n_heads, n_features+1, n_features+1)
 
 # Example: Which features does CLS attend to for "Speech" samples?
-cls_attention = attn_weights[speech_indices, :, 0, 1:]  # (n_speech, n_heads, 2420)
+cls_attention = attn_weights[speech_indices, :, 0, 1:]  # (n_speech, n_heads, 1220)
 
 # Average across heads and samples
-avg_attention = cls_attention.mean(dim=(0, 1))  # (2420,)
+avg_attention = cls_attention.mean(dim=(0, 1))  # (1220,)
 
-# Reshape to 2D
-attn_map = avg_attention.reshape(20, 121)
+# Reshape to 2D (after symmetric processing: 20 freq x 61 rates)
+attn_map = avg_attention.reshape(20, 61)
 
 # Visualize
 plt.imshow(attn_map, cmap='hot')
@@ -318,21 +318,25 @@ input.requires_grad = True
 output = model(input)
 output[:, class_idx].sum().backward()
 
-importance = input.grad.abs().mean(dim=0)  # (2420,)
+importance = input.grad.abs().mean(dim=0)  # (1220,)
 ```
 
 #### 2. Attention Rollout
 
 Combine attention across layers:
 ```python
-attn_rollout = torch.eye(2421)
+attn_rollout = torch.eye(1221)
 for layer in range(6):
-    attn = attention_weights[layer]  # (n_heads, 2421, 2421)
+    attn = attention_weights[layer]  # (n_heads, 1221, 1221)
     attn = attn.mean(dim=0)  # Average heads
     attn_rollout = attn @ attn_rollout
 
 # Final CLS attention to each feature
-final_attention = attn_rollout[0, 1:]  # (2420,)
+final_attention = attn_rollout[0, 1:]  # (1220,)
+    attn = attn.mean(dim=0)  # Average heads
+    attn_rollout = attn @ attn_rollout
+
+# Final CLS attention to each feature
 ```
 
 #### 3. Attention Gating
@@ -353,6 +357,10 @@ model/STM/FTTransformer_corpora_categories/
 │   └── ckpt/
 │       └── YYYY-MM-DD_HH-MM/
 │           ├── best_model.pt
+│           ├── latest_checkpoint.pt
+│           ├── checkpoint_epoch_5.pt
+│           ├── checkpoint_epoch_10.pt
+│           ├── ...
 │           ├── test_predictions.npy
 │           └── test_targets.npy
 └── downsample/
@@ -367,12 +375,22 @@ python STM_FTtransformer.py 0
 
 # Downsampled (with symmetric processing)
 python STM_FTtransformer.py 1
+
+# Resume training from a checkpoint directory
+python STM_FTtransformer.py 0 --resume model/STM/FTTransformer_corpora_categories/standard/ckpt/2026-02-01_10-30
+
+# Resume will automatically load from latest_checkpoint.pt or the most recent checkpoint_epoch_*.pt
 ```
 
 **Expected training time** (with symmetric processing):
 - Per epoch: ~10-15 minutes (vs >60 min without)
 - 50 epochs: ~8-12 hours (vs >50 hours)
 - **Practical for same-day experimentation**
+
+**Checkpoint strategy**:
+- `best_model.pt`: Model with highest validation F1 score
+- `latest_checkpoint.pt`: Most recent epoch (updated every epoch) - use for resume
+- `checkpoint_epoch_N.pt`: Saved every 5 epochs for backup
 
 ### Troubleshooting
 
@@ -381,8 +399,8 @@ python STM_FTtransformer.py 1
 The FT-Transformer has O(L²) attention complexity. With symmetric processing, this is much improved:
 
 **Memory usage per batch** (after symmetric processing):
-- Attention matrix size: (batch_size, n_heads, 1211, 1211)
-- With batch=32, heads=8: **~6GB per layer** (vs 24GB without symmetric processing)
+- Attention matrix size: (batch_size, n_heads, 1221, 1221)
+- With batch=64, heads=8: **~4.7GB per layer** (vs 19GB without symmetric processing)
 - 6 layers total = manageable on 48GB GPUs
 
 **Solutions already implemented**:
@@ -390,14 +408,14 @@ The FT-Transformer has O(L²) attention complexity. With symmetric processing, t
 1. **Symmetric STM processing** (CRITICAL):
    ```python
    # Automatically applied in data loading
-   # 2420 features → 1210 features
+   # 2420 features → 1220 features
    # Memory: 4× reduction
    # Speed: 4× faster
    ```
 
-2. **Reduced batch size**:
+2. **Optimized batch size**:
    ```python
-   batch_size = 32  # Balanced for 1210 tokens
+   batch_size = 64  # Optimized for 1220 tokens
    ```
 
 3. **Gradient checkpointing**:
@@ -424,13 +442,13 @@ The FT-Transformer has O(L²) attention complexity. With symmetric processing, t
 
 **Memory usage breakdown** (WITH symmetric processing):
 ```
-Component                    Memory (batch=32, fp32)
+Component                    Memory (batch=64, fp32)
 --------------------------------------------------
-Input features (32×1210)     ~155 KB
+Input features (64×1220)     ~312 KB
 Feature embeddings           ~900 KB
-Attention matrices (6 layers) ~5.3 GB  (vs 21GB without symmetric!)
+Attention matrices (6 layers) ~4.7 GB  (vs 19GB without symmetric!)
 Gradients (2x model size)    ~10 GB
-Total estimated:             ~16 GB (fits in 48GB GPU comfortably)
+Total estimated:             ~15 GB (fits in 48GB GPU comfortably)
 ```
 
 #### Slow Training
@@ -475,7 +493,7 @@ From the document (Section 6.1):
 > "The FT-Transformer offers a middle ground between the MLP and the Transformer. It assigns a learnable embedding to each *feature*... It applies attention *between features*. The model learns which modulation bins typically co-occur for specific classes... Why it beats MLP: MLPs multiply all features by a weight matrix in the first layer, mixing them immediately. FT-Transformer allows features to remain distinct and interact dynamically via attention before being mixed."
 
 This implementation realizes that principle:
-1. ✅ Per-feature embeddings (2420 unique vectors)
+1. ✅ Per-feature embeddings (1220 unique vectors)
 2. ✅ Feature-wise attention (discovers correlations)
 3. ✅ Dynamic mixing (attention is input-dependent)
 4. ✅ No spatial assumptions (works for any feature layout)
@@ -506,7 +524,7 @@ This implementation realizes that principle:
 | 3 | FT-Transformer | Per-feature embeddings + attention | O(L²) | Feature correlations |
 
 All three:
-- ✅ No PCA (preserve full 2420 dimensions)
+- ✅ No PCA (preserve full features: 2420 or 1220 after symmetric processing)
 - ✅ Address class imbalance (LDAM or Balanced Softmax)
 - ✅ Respect position semantics (CoordConv / Embeddings / Embeddings)
 - ✅ Capture global context (to varying degrees)

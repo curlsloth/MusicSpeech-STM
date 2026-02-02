@@ -3,8 +3,10 @@ INFO:    Using fakeroot command combined with root-mapped namespace
 INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommended.
 Using device: cuda
 GPU: NVIDIA L40S
-Memory: 47.67 GB
-Checkpoint directory: model/STM/ViM5_corpora_categories/standard/ckpt/2026-02-01_12-14
+GPU Memory: 47.67 GB
+
+Mode 0: Standard training (full dataset)
+Checkpoint directory: model/STM/FTTransformer_corpora_categories/standard/ckpt/2026-02-01_13-15
 
 ============================================================
 Loading and preparing data...
@@ -122,7 +124,7 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Sequence length: 1220
+Number of features: 1220
 
 Class Distribution (Training):
   Class 0: 497475 samples (64.57%)
@@ -132,33 +134,287 @@ Class Distribution (Training):
   Class 4: 9580 samples (1.24%)
   Class 5: 27649 samples (3.59%)
 
+Original STM shape: (978378, 2420)
+After symmetric processing: (978378, 20, 61)
+After flattening: (978378, 1220)
+
 PyTorch Dataset Shapes:
-Train: torch.Size([770393, 2420])
-Val: torch.Size([102010, 2420])
-Test: torch.Size([105975, 2420])
+Train: torch.Size([770393, 1220])
+Val: torch.Size([102010, 1220])
+Test: torch.Size([105975, 1220])
 
-Applying symmetric STM processing...
-Original: 20 freq × 121 rates = 2420 tokens
-After symmetric processing: 20 freq × 61 rates = 1220 tokens
-Speed improvement: 2× faster (O(L) complexity)
+Symmetric processing applied: 20 freq × 61 rates = 1220 features
+Speed improvement vs original (2420): 4× faster (O(L²) complexity)
 
-DataLoaders created with batch_size=128
+DataLoaders created with batch_size=64
 
 ============================================================
-Creating Vision Mamba model (Compact/Minimal Variant)...
+Creating FT-Transformer model...
 ============================================================
-Total parameters: 886,230
-Trainable parameters: 886,230
-Model size reduction: ~9.0× smaller than baseline
+Total parameters: 2,331,942
+Trainable parameters: 2,331,942
 
-Starting training...
-Total epochs: 50
-Train batches: 6019
-Val batches: 797
-Epoch 1/50 - Train Loss: 0.4757, Val Loss: 0.3675, Val F1: 0.6993, Best F1: 0.6993
-Epoch 5/50 - Train Loss: 0.2824, Val Loss: 0.2817, Val F1: 0.7940, Best F1: 0.7940
-Epoch 10/50 - Train Loss: 0.2468, Val Loss: 0.2548, Val F1: 0.7836, Best F1: 0.7976
-Epoch 15/50 - Train Loss: 0.2250, Val Loss: 0.2518, Val F1: 0.7953, Best F1: 0.7986
-Epoch 20/50 - Train Loss: 0.2070, Val Loss: 0.2476, Val F1: 0.8122, Best F1: 0.8144
-Epoch 25/50 - Train Loss: 0.1868, Val Loss: 0.2595, Val F1: 0.8103, Best F1: 0.8144
-Epoch 30/50 - Train Loss: 0.1637, Val Loss: 0.2842, Val F1: 0.7971, Best F1: 0.8144
+Starting training for 50 epochs...
+Starting from epoch 1
+
+============================================================
+Epoch 1/50
+============================================================
+  Batch 0/12038, Loss: 1.0405
+  Batch 100/12038, Loss: 0.7817
+  Batch 200/12038, Loss: 0.6153
+  Batch 300/12038, Loss: 0.6268
+  Batch 400/12038, Loss: 0.5917
+  Batch 500/12038, Loss: 0.6828
+  Batch 600/12038, Loss: 0.4705
+  Batch 700/12038, Loss: 0.5172
+  Batch 800/12038, Loss: 0.5325
+  Batch 900/12038, Loss: 0.5063
+  Batch 1000/12038, Loss: 0.5077
+  Batch 1100/12038, Loss: 0.7911
+  Batch 1200/12038, Loss: 0.6085
+  Batch 1300/12038, Loss: 0.5453
+  Batch 1400/12038, Loss: 0.4942
+  Batch 1500/12038, Loss: 0.5717
+  Batch 1600/12038, Loss: 0.6580
+  Batch 1700/12038, Loss: 0.7226
+  Batch 1800/12038, Loss: 0.3961
+  Batch 1900/12038, Loss: 0.3754
+  Batch 2000/12038, Loss: 0.6193
+  Batch 2100/12038, Loss: 0.4436
+  Batch 2200/12038, Loss: 0.5666
+  Batch 2300/12038, Loss: 0.5562
+  Batch 2400/12038, Loss: 0.6420
+  Batch 2500/12038, Loss: 0.4644
+  Batch 2600/12038, Loss: 0.5223
+  Batch 2700/12038, Loss: 0.4523
+  Batch 2800/12038, Loss: 0.6010
+  Batch 2900/12038, Loss: 0.4576
+  Batch 3000/12038, Loss: 0.5771
+  Batch 3100/12038, Loss: 0.4120
+  Batch 3200/12038, Loss: 0.4951
+  Batch 3300/12038, Loss: 0.5383
+  Batch 3400/12038, Loss: 0.5380
+  Batch 3500/12038, Loss: 0.5035
+  Batch 3600/12038, Loss: 0.4279
+  Batch 3700/12038, Loss: 0.4063
+  Batch 3800/12038, Loss: 0.4609
+  Batch 3900/12038, Loss: 0.3961
+  Batch 4000/12038, Loss: 0.3979
+  Batch 4100/12038, Loss: 0.6427
+  Batch 4200/12038, Loss: 0.5342
+  Batch 4300/12038, Loss: 0.5571
+  Batch 4400/12038, Loss: 0.4895
+  Batch 4500/12038, Loss: 0.5522
+  Batch 4600/12038, Loss: 0.5028
+  Batch 4700/12038, Loss: 0.3596
+  Batch 4800/12038, Loss: 0.5106
+  Batch 4900/12038, Loss: 0.4921
+  Batch 5000/12038, Loss: 0.6178
+  Batch 5100/12038, Loss: 0.3770
+  Batch 5200/12038, Loss: 0.4042
+  Batch 5300/12038, Loss: 0.4943
+  Batch 5400/12038, Loss: 0.3630
+  Batch 5500/12038, Loss: 0.3894
+  Batch 5600/12038, Loss: 0.5365
+  Batch 5700/12038, Loss: 0.4657
+  Batch 5800/12038, Loss: 0.3754
+  Batch 5900/12038, Loss: 0.2942
+  Batch 6000/12038, Loss: 0.3404
+  Batch 6100/12038, Loss: 0.4393
+  Batch 6200/12038, Loss: 0.4634
+  Batch 6300/12038, Loss: 0.4173
+  Batch 6400/12038, Loss: 0.4464
+  Batch 6500/12038, Loss: 0.5021
+  Batch 6600/12038, Loss: 0.4315
+  Batch 6700/12038, Loss: 0.4685
+  Batch 6800/12038, Loss: 0.4251
+  Batch 6900/12038, Loss: 0.3984
+  Batch 7000/12038, Loss: 0.4049
+  Batch 7100/12038, Loss: 0.3838
+  Batch 7200/12038, Loss: 0.4622
+  Batch 7300/12038, Loss: 0.3353
+  Batch 7400/12038, Loss: 0.2722
+  Batch 7500/12038, Loss: 0.4068
+  Batch 7600/12038, Loss: 0.4071
+  Batch 7700/12038, Loss: 0.2556
+  Batch 7800/12038, Loss: 0.3698
+  Batch 7900/12038, Loss: 0.3467
+  Batch 8000/12038, Loss: 0.3199
+  Batch 8100/12038, Loss: 0.4353
+  Batch 8200/12038, Loss: 0.5086
+  Batch 8300/12038, Loss: 0.4819
+  Batch 8400/12038, Loss: 0.4131
+  Batch 8500/12038, Loss: 0.2537
+  Batch 8600/12038, Loss: 0.4053
+  Batch 8700/12038, Loss: 0.4201
+  Batch 8800/12038, Loss: 0.3814
+  Batch 8900/12038, Loss: 0.3855
+  Batch 9000/12038, Loss: 0.3015
+  Batch 9100/12038, Loss: 0.3542
+  Batch 9200/12038, Loss: 0.4072
+  Batch 9300/12038, Loss: 0.5542
+  Batch 9400/12038, Loss: 0.3971
+  Batch 9500/12038, Loss: 0.4292
+  Batch 9600/12038, Loss: 0.4792
+  Batch 9700/12038, Loss: 0.6068
+  Batch 9800/12038, Loss: 0.3059
+  Batch 9900/12038, Loss: 0.5097
+  Batch 10000/12038, Loss: 0.3369
+  Batch 10100/12038, Loss: 0.5550
+  Batch 10200/12038, Loss: 0.3555
+  Batch 10300/12038, Loss: 0.3571
+  Batch 10400/12038, Loss: 0.4051
+  Batch 10500/12038, Loss: 0.3612
+  Batch 10600/12038, Loss: 0.3024
+  Batch 10700/12038, Loss: 0.3749
+  Batch 10800/12038, Loss: 0.4964
+  Batch 10900/12038, Loss: 0.5981
+  Batch 11000/12038, Loss: 0.3321
+  Batch 11100/12038, Loss: 0.3403
+  Batch 11200/12038, Loss: 0.6068
+  Batch 11300/12038, Loss: 0.2881
+  Batch 11400/12038, Loss: 0.3462
+  Batch 11500/12038, Loss: 0.3796
+  Batch 11600/12038, Loss: 0.4326
+  Batch 11700/12038, Loss: 0.5466
+  Batch 11800/12038, Loss: 0.3542
+  Batch 11900/12038, Loss: 0.3723
+  Batch 12000/12038, Loss: 0.3572
+Train Loss: 0.4694
+Val Loss: 0.6039, Val Macro F1: 0.5102
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.5102
+
+============================================================
+Epoch 2/50
+============================================================
+  Batch 0/12038, Loss: 0.3574
+  Batch 100/12038, Loss: 0.2965
+  Batch 200/12038, Loss: 0.2382
+  Batch 300/12038, Loss: 0.3822
+  Batch 400/12038, Loss: 0.4431
+  Batch 500/12038, Loss: 0.3997
+  Batch 600/12038, Loss: 0.5993
+  Batch 700/12038, Loss: 0.4449
+  Batch 800/12038, Loss: 0.4669
+  Batch 900/12038, Loss: 0.2694
+  Batch 1000/12038, Loss: 0.4117
+  Batch 1100/12038, Loss: 0.4306
+  Batch 1200/12038, Loss: 0.3445
+  Batch 1300/12038, Loss: 0.2777
+  Batch 1400/12038, Loss: 0.3577
+  Batch 1500/12038, Loss: 0.4963
+  Batch 1600/12038, Loss: 0.2900
+  Batch 1700/12038, Loss: 0.3871
+  Batch 1800/12038, Loss: 0.2603
+  Batch 1900/12038, Loss: 0.5139
+  Batch 2000/12038, Loss: 0.4305
+  Batch 2100/12038, Loss: 0.5624
+  Batch 2200/12038, Loss: 0.4489
+  Batch 2300/12038, Loss: 0.4885
+  Batch 2400/12038, Loss: 0.4271
+  Batch 2500/12038, Loss: 0.3523
+  Batch 2600/12038, Loss: 0.2771
+  Batch 2700/12038, Loss: 0.2302
+  Batch 2800/12038, Loss: 0.2969
+  Batch 2900/12038, Loss: 0.2976
+  Batch 3000/12038, Loss: 0.2467
+  Batch 3100/12038, Loss: 0.3655
+  Batch 3200/12038, Loss: 0.4705
+  Batch 3300/12038, Loss: 0.3700
+  Batch 3400/12038, Loss: 0.5561
+  Batch 3500/12038, Loss: 0.1991
+  Batch 3600/12038, Loss: 0.3010
+  Batch 3700/12038, Loss: 0.3310
+  Batch 3800/12038, Loss: 0.4099
+  Batch 3900/12038, Loss: 0.4940
+  Batch 4000/12038, Loss: 0.4355
+  Batch 4100/12038, Loss: 0.3856
+  Batch 4200/12038, Loss: 0.2935
+  Batch 4300/12038, Loss: 0.3577
+  Batch 4400/12038, Loss: 0.4751
+  Batch 4500/12038, Loss: 0.3855
+  Batch 4600/12038, Loss: 0.3567
+  Batch 4700/12038, Loss: 0.3279
+  Batch 4800/12038, Loss: 0.3691
+  Batch 4900/12038, Loss: 0.3313
+  Batch 5000/12038, Loss: 0.4327
+  Batch 5100/12038, Loss: 0.3502
+  Batch 5200/12038, Loss: 0.5595
+  Batch 5300/12038, Loss: 0.3710
+  Batch 5400/12038, Loss: 0.4102
+  Batch 5500/12038, Loss: 0.4035
+  Batch 5600/12038, Loss: 0.3235
+  Batch 5700/12038, Loss: 0.4988
+  Batch 5800/12038, Loss: 0.4441
+  Batch 5900/12038, Loss: 0.6264
+  Batch 6000/12038, Loss: 0.2986
+  Batch 6100/12038, Loss: 0.4329
+  Batch 6200/12038, Loss: 0.3940
+  Batch 6300/12038, Loss: 0.2870
+  Batch 6400/12038, Loss: 0.4473
+  Batch 6500/12038, Loss: 0.2831
+  Batch 6600/12038, Loss: 0.3965
+  Batch 6700/12038, Loss: 0.4526
+  Batch 6800/12038, Loss: 0.2840
+  Batch 6900/12038, Loss: 0.4191
+  Batch 7000/12038, Loss: 0.3185
+  Batch 7100/12038, Loss: 0.5184
+  Batch 7200/12038, Loss: 0.4197
+  Batch 7300/12038, Loss: 0.3802
+  Batch 7400/12038, Loss: 0.4630
+  Batch 7500/12038, Loss: 0.3321
+  Batch 7600/12038, Loss: 0.4364
+  Batch 7700/12038, Loss: 0.5596
+  Batch 7800/12038, Loss: 0.3231
+  Batch 7900/12038, Loss: 0.3277
+  Batch 8000/12038, Loss: 0.3690
+  Batch 8100/12038, Loss: 0.1920
+  Batch 8200/12038, Loss: 0.3059
+  Batch 8300/12038, Loss: 0.3061
+  Batch 8400/12038, Loss: 0.3206
+  Batch 8500/12038, Loss: 0.2732
+  Batch 8600/12038, Loss: 0.5233
+  Batch 8700/12038, Loss: 0.4223
+  Batch 8800/12038, Loss: 0.4457
+  Batch 8900/12038, Loss: 0.4117
+  Batch 9000/12038, Loss: 0.3130
+  Batch 9100/12038, Loss: 0.4054
+  Batch 9200/12038, Loss: 0.2586
+  Batch 9300/12038, Loss: 0.2415
+  Batch 9400/12038, Loss: 0.3439
+  Batch 9500/12038, Loss: 0.4598
+  Batch 9600/12038, Loss: 0.3582
+  Batch 9700/12038, Loss: 0.4771
+  Batch 9800/12038, Loss: 0.4183
+  Batch 9900/12038, Loss: 0.2630
+  Batch 10000/12038, Loss: 0.3702
+  Batch 10100/12038, Loss: 0.3183
+  Batch 10200/12038, Loss: 0.3664
+  Batch 10300/12038, Loss: 0.3505
+  Batch 10400/12038, Loss: 0.4864
+  Batch 10500/12038, Loss: 0.4202
+  Batch 10600/12038, Loss: 0.3265
+  Batch 10700/12038, Loss: 0.1776
+  Batch 10800/12038, Loss: 0.3267
+  Batch 10900/12038, Loss: 0.3818
+  Batch 11000/12038, Loss: 0.3481
+  Batch 11100/12038, Loss: 0.4247
+  Batch 11200/12038, Loss: 0.2665
+  Batch 11300/12038, Loss: 0.2439
+  Batch 11400/12038, Loss: 0.2455
+  Batch 11500/12038, Loss: 0.2954
+  Batch 11600/12038, Loss: 0.2588
+  Batch 11700/12038, Loss: 0.3690
+  Batch 11800/12038, Loss: 0.3891
+  Batch 11900/12038, Loss: 0.2714
+  Batch 12000/12038, Loss: 0.3121
+Train Loss: 0.3737
+Val Loss: 0.5290, Val Macro F1: 0.5754
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.5754
+
+============================================================
+Epoch 3/50
+============================================================

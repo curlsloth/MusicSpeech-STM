@@ -1,2 +1,985 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
+Using device: cuda
+GPU: NVIDIA L40S
+Memory: 47.67 GB
+Checkpoint directory: model/STM/CoordConvLDAM6_corpora_categories/standard/ckpt/2026-02-01_12-11
+
+============================================================
+Loading and preparing data...
+============================================================
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-hausa_STMall.npy, shape: (29002, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-lingala_STMall.npy, shape: (11219, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-yoruba_STMall.npy, shape: (6629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Buckeye_STMall.npy, shape: (255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/EUROM_STMall.npy, shape: (6623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_speech_STMall.npy, shape: (785, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/LibriSpeech_STMall.npy, shape: (27144, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-AR_STMall.npy, shape: (2505, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-ES_STMall.npy, shape: (2507, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-FR_STMall.npy, shape: (2498, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-TR_STMall.npy, shape: (2512, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ab_STMall.npy, shape: (7558, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ar_STMall.npy, shape: (8080, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ba_STMall.npy, shape: (7964, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-be_STMall.npy, shape: (8595, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bg_STMall.npy, shape: (7130, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bn_STMall.npy, shape: (8149, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-br_STMall.npy, shape: (1454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ca_STMall.npy, shape: (8237, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ckb_STMall.npy, shape: (7490, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cnh_STMall.npy, shape: (656, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cs_STMall.npy, shape: (8622, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cv_STMall.npy, shape: (8755, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cy_STMall.npy, shape: (7640, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-da_STMall.npy, shape: (3878, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-de_STMall.npy, shape: (8979, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-dv_STMall.npy, shape: (9113, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-el_STMall.npy, shape: (6422, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-en_STMall.npy, shape: (8607, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eo_STMall.npy, shape: (9327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-es_STMall.npy, shape: (8742, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-et_STMall.npy, shape: (9653, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eu_STMall.npy, shape: (7983, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fa_STMall.npy, shape: (8629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fi_STMall.npy, shape: (3982, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fr_STMall.npy, shape: (8912, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fy-NL_STMall.npy, shape: (6694, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ga-IE_STMall.npy, shape: (1323, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gl_STMall.npy, shape: (8623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gn_STMall.npy, shape: (1014, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hi_STMall.npy, shape: (5438, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hu_STMall.npy, shape: (8319, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hy-AM_STMall.npy, shape: (6980, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-id_STMall.npy, shape: (8468, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ig_STMall.npy, shape: (9, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-it_STMall.npy, shape: (9083, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ja_STMall.npy, shape: (8606, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ka_STMall.npy, shape: (9409, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kab_STMall.npy, shape: (7172, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kk_STMall.npy, shape: (867, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kmr_STMall.npy, shape: (6603, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ky_STMall.npy, shape: (7998, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lg_STMall.npy, shape: (8169, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lt_STMall.npy, shape: (9073, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ltg_STMall.npy, shape: (2299, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lv_STMall.npy, shape: (7666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mhr_STMall.npy, shape: (8336, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ml_STMall.npy, shape: (813, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mn_STMall.npy, shape: (5968, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mt_STMall.npy, shape: (3632, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nan-tw_STMall.npy, shape: (181, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nl_STMall.npy, shape: (8834, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-oc_STMall.npy, shape: (681, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-or_STMall.npy, shape: (1941, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pl_STMall.npy, shape: (8817, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pt_STMall.npy, shape: (8413, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ro_STMall.npy, shape: (6666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ru_STMall.npy, shape: (9260, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-rw_STMall.npy, shape: (9148, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sr_STMall.npy, shape: (391, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sv-SE_STMall.npy, shape: (8288, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sw_STMall.npy, shape: (9192, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ta_STMall.npy, shape: (9474, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-th_STMall.npy, shape: (8044, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tr_STMall.npy, shape: (7953, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tt_STMall.npy, shape: (7454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ug_STMall.npy, shape: (7899, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uk_STMall.npy, shape: (8819, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ur_STMall.npy, shape: (8970, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uz_STMall.npy, shape: (7911, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-vi_STMall.npy, shape: (1859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yo_STMall.npy, shape: (2511, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yue_STMall.npy, shape: (6156, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-CN_STMall.npy, shape: (8715, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-TW_STMall.npy, shape: (7286, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SpeechClarity_STMall.npy, shape: (555, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TAT-Vol2_STMall.npy, shape: (793, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TIMIT_STMall.npy, shape: (479, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TTS_Javanese_STMall.npy, shape: (3068, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/primewords_chinese_STMall.npy, shape: (47166, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/room_reader_STMall.npy, shape: (146, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/thchs30_STMall.npy, shape: (13327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/zeroth_korean_STMall.npy, shape: (22255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Albouy2020Science_STMall.npy, shape: (123, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/GarlandEncyclopedia_STMall.npy, shape: (296, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_song_STMall.npy, shape: (803, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/IRMAS_STMall.npy, shape: (2838, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MTG-Jamendo_STMall.npy, shape: (55699, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MagnaTagATune_STMall.npy, shape: (25859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/NHS2_STMall.npy, shape: (1007, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/fma_large_STMall.npy, shape: (106257, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/ismir04_genre_STMall.npy, shape: (2185, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy, shape: (34565, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SONYC_STMall.npy, shape: (10798, 2420)
+
+Dataset Statistics:
+Total samples: 978378
+Train samples: 770393
+Val samples: 102010
+Test samples: 105975
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
+
+Class Distribution (Training):
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
+
+PyTorch Dataset Shapes:
+Train: torch.Size([770393, 1, 20, 121])
+Val: torch.Size([102010, 1, 20, 121])
+Test: torch.Size([105975, 1, 20, 121])
+
+DataLoaders created with batch_size=256
+
+============================================================
+Creating CoordConv-ResNet18 with V6 Regularization...
+============================================================
+Total parameters: 24,405,126
+Trainable parameters: 24,405,126
+
+V6 Enhancements:
+  - DropBlock: Spatial dropout (progressive ramp 0→0.15)
+  - Stochastic Depth: Random skip connections (0.0→0.20)
+  - CutMix: Region-based augmentation (80% probability)
+  - CosineAnnealingLR: Smooth learning rate decay
+  - Extended training: 150 epochs
+  - Higher weight decay: 5e-4
+
+============================================================
+Starting training with V6 enhancements...
+============================================================
+
+============================================================
+Epoch 1/150
+============================================================
+  Batch 0/3010, Loss: 8.1451, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 3.3853, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 2.5128, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 4.2368, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 2.9743, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 2.8814, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 4.7487, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.8416
+Val Loss: 1.5674, Val Macro F1: 0.7879
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.7879
+
+============================================================
+Epoch 2/150
+============================================================
+  Batch 0/3010, Loss: 4.5612, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 2.3069, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 2.0756, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 3.9236, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 2.1777, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.7029, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 3.6186, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.6267
+Val Loss: 1.5724, Val Macro F1: 0.7861
+Current learning rate: 0.000100
+
+============================================================
+Epoch 3/150
+============================================================
+  Batch 0/3010, Loss: 4.3889, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 4.8859, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 1.8524, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 2.2697, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 4.0615, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 3.6444, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 2.1307, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.5055
+Val Loss: 1.5617, Val Macro F1: 0.8199
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8199
+
+============================================================
+Epoch 4/150
+============================================================
+  Batch 0/3010, Loss: 2.5782, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 3.7613, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 4.7026, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 3.6003, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 3.6141, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.4856, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 4.6396, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.4400
+Val Loss: 1.5676, Val Macro F1: 0.8200
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8200
+
+============================================================
+Epoch 5/150
+============================================================
+  Batch 0/3010, Loss: 3.7769, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 3.3495, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 4.3697, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 3.6735, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 5.2330, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.3552, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 3.0533, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.4266
+Val Loss: 1.5680, Val Macro F1: 0.8265
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8265
+
+============================================================
+Epoch 6/150
+============================================================
+  Batch 0/3010, Loss: 4.6309, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 4.0554, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 3.3221, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 2.1430, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 5.0382, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 3.8923, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 4.6207, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.3504
+Val Loss: 1.5579, Val Macro F1: 0.8283
+Current learning rate: 0.000100
+✓ Saved best model with Val F1: 0.8283
+
+============================================================
+Epoch 7/150
+============================================================
+  Batch 0/3010, Loss: 3.6542, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 1.5343, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 5.4079, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 3.4679, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 4.1363, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.3990, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 4.1066, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.3561
+Val Loss: 1.5582, Val Macro F1: 0.8326
+Current learning rate: 0.000099
+✓ Saved best model with Val F1: 0.8326
+
+============================================================
+Epoch 8/150
+============================================================
+  Batch 0/3010, Loss: 1.6307, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 1.5089, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 1.3547, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 2.2309, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 3.2364, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 2.8819, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 1.4806, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.2967
+Val Loss: 1.5611, Val Macro F1: 0.8255
+Current learning rate: 0.000099
+
+============================================================
+Epoch 9/150
+============================================================
+  Batch 0/3010, Loss: 4.3989, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 1.7559, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 3.4255, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 3.1775, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 4.2174, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.7028, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 4.5751, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.2854
+Val Loss: 1.5674, Val Macro F1: 0.8261
+Current learning rate: 0.000099
+
+============================================================
+Epoch 10/150
+============================================================
+  Batch 0/3010, Loss: 3.3651, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 4.6453, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 2.2923, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 2.5102, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 4.5468, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 1.4540, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 4.6409, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.2906
+Val Loss: 1.5574, Val Macro F1: 0.8379
+Current learning rate: 0.000099
+✓ Saved best model with Val F1: 0.8379
+
+============================================================
+Epoch 11/150
+============================================================
+  Batch 0/3010, Loss: 3.9282, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 2.8619, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 4.3245, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 4.5215, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 4.2202, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 2.7242, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 3.2589, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.2404
+Val Loss: 1.5513, Val Macro F1: 0.8388
+Current learning rate: 0.000099
+✓ Saved best model with Val F1: 0.8388
+
+============================================================
+Epoch 12/150
+============================================================
+  Batch 0/3010, Loss: 2.2734, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 3.9867, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 3.6473, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 1.8814, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 4.3987, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.1724, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 2.4885, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.2239
+Val Loss: 1.5634, Val Macro F1: 0.8368
+Current learning rate: 0.000098
+
+============================================================
+Epoch 13/150
+============================================================
+  Batch 0/3010, Loss: 1.1396, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 3.5614, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 4.3393, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 4.6132, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 1.3321, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.5524, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 1.8844, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.2188
+Val Loss: 1.5479, Val Macro F1: 0.8392
+Current learning rate: 0.000098
+✓ Saved best model with Val F1: 0.8392
+
+============================================================
+Epoch 14/150
+============================================================
+  Batch 0/3010, Loss: 4.2210, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 4.1219, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 3.8786, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 2.2878, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 2.8953, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 1.3739, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 3.0157, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.2005
+Val Loss: 1.5486, Val Macro F1: 0.8382
+Current learning rate: 0.000098
+
+============================================================
+Epoch 15/150
+============================================================
+  Batch 0/3010, Loss: 3.9289, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 4.2927, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 1.6595, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 3.8831, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 4.5009, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.7360, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 3.2749, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.1662
+Val Loss: 1.5516, Val Macro F1: 0.8424
+Current learning rate: 0.000098
+✓ Saved best model with Val F1: 0.8424
+
+============================================================
+Epoch 16/150
+============================================================
+  Batch 0/3010, Loss: 3.7058, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 4.3286, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 3.9122, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 3.2298, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 4.3374, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 3.8687, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 2.0079, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.1322
+Val Loss: 1.5507, Val Macro F1: 0.8310
+Current learning rate: 0.000097
+
+============================================================
+Epoch 17/150
+============================================================
+  Batch 0/3010, Loss: 1.8860, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 3.5340, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 1.0492, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 2.3594, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 2.6143, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.2175, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 2.0021, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.1239
+Val Loss: 1.5479, Val Macro F1: 0.8465
+Current learning rate: 0.000097
+✓ Saved best model with Val F1: 0.8465
+
+============================================================
+Epoch 18/150
+============================================================
+  Batch 0/3010, Loss: 1.4431, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 3.6745, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 4.5008, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 1.5068, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 1.3598, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 4.0649, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 4.6038, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.1188
+Val Loss: 1.5530, Val Macro F1: 0.8401
+Current learning rate: 0.000097
+
+============================================================
+Epoch 19/150
+============================================================
+  Batch 0/3010, Loss: 4.3047, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 4.9811, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 4.3876, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 4.5160, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 1.0621, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 1.5528, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 4.1104, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.0959
+Val Loss: 1.5438, Val Macro F1: 0.8416
+Current learning rate: 0.000096
+
+============================================================
+Epoch 20/150
+============================================================
+  Batch 0/3010, Loss: 3.0204, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 500/3010, Loss: 1.1918, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1000/3010, Loss: 1.8246, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 1500/3010, Loss: 3.8128, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2000/3010, Loss: 1.5548, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 2500/3010, Loss: 2.7665, DRW: False, CutMix: True, DropBlock: 0.000
+  Batch 3000/3010, Loss: 3.8333, DRW: False, CutMix: True, DropBlock: 0.000
+Train Loss: 3.0689
+Val Loss: 1.5432, Val Macro F1: 0.8434
+Current learning rate: 0.000096
+
+============================================================
+Epoch 21/150
+============================================================
+  Batch 0/3010, Loss: 4.8260, DRW: False, CutMix: True, DropBlock: 0.004
+  Batch 500/3010, Loss: 3.1576, DRW: False, CutMix: True, DropBlock: 0.004
+  Batch 1000/3010, Loss: 4.6559, DRW: False, CutMix: True, DropBlock: 0.004
+  Batch 1500/3010, Loss: 2.6401, DRW: False, CutMix: True, DropBlock: 0.004
+  Batch 2000/3010, Loss: 1.9061, DRW: False, CutMix: True, DropBlock: 0.004
+  Batch 2500/3010, Loss: 1.7533, DRW: False, CutMix: True, DropBlock: 0.004
+  Batch 3000/3010, Loss: 4.0832, DRW: False, CutMix: True, DropBlock: 0.004
+Train Loss: 3.1064
+Val Loss: 1.5493, Val Macro F1: 0.8381
+Current learning rate: 0.000095
+
+============================================================
+Epoch 22/150
+============================================================
+  Batch 0/3010, Loss: 4.5814, DRW: False, CutMix: True, DropBlock: 0.007
+  Batch 500/3010, Loss: 4.2003, DRW: False, CutMix: True, DropBlock: 0.007
+  Batch 1000/3010, Loss: 4.1730, DRW: False, CutMix: True, DropBlock: 0.007
+  Batch 1500/3010, Loss: 1.6685, DRW: False, CutMix: True, DropBlock: 0.007
+  Batch 2000/3010, Loss: 3.8048, DRW: False, CutMix: True, DropBlock: 0.007
+  Batch 2500/3010, Loss: 2.5618, DRW: False, CutMix: True, DropBlock: 0.007
+  Batch 3000/3010, Loss: 2.9394, DRW: False, CutMix: True, DropBlock: 0.007
+Train Loss: 3.0497
+Val Loss: 1.5458, Val Macro F1: 0.8361
+Current learning rate: 0.000095
+
+============================================================
+Epoch 23/150
+============================================================
+  Batch 0/3010, Loss: 4.4204, DRW: False, CutMix: True, DropBlock: 0.011
+  Batch 500/3010, Loss: 4.4237, DRW: False, CutMix: True, DropBlock: 0.011
+  Batch 1000/3010, Loss: 3.7481, DRW: False, CutMix: True, DropBlock: 0.011
+  Batch 1500/3010, Loss: 3.5187, DRW: False, CutMix: True, DropBlock: 0.011
+  Batch 2000/3010, Loss: 3.0894, DRW: False, CutMix: True, DropBlock: 0.011
+  Batch 2500/3010, Loss: 2.2428, DRW: False, CutMix: True, DropBlock: 0.011
+  Batch 3000/3010, Loss: 3.4366, DRW: False, CutMix: True, DropBlock: 0.011
+Train Loss: 3.0201
+Val Loss: 1.5422, Val Macro F1: 0.8396
+Current learning rate: 0.000094
+
+============================================================
+Epoch 24/150
+============================================================
+  Batch 0/3010, Loss: 2.9950, DRW: False, CutMix: True, DropBlock: 0.015
+  Batch 500/3010, Loss: 4.9042, DRW: False, CutMix: True, DropBlock: 0.015
+  Batch 1000/3010, Loss: 1.6482, DRW: False, CutMix: True, DropBlock: 0.015
+  Batch 1500/3010, Loss: 4.6773, DRW: False, CutMix: True, DropBlock: 0.015
+  Batch 2000/3010, Loss: 4.9286, DRW: False, CutMix: True, DropBlock: 0.015
+  Batch 2500/3010, Loss: 1.4573, DRW: False, CutMix: True, DropBlock: 0.015
+  Batch 3000/3010, Loss: 3.6622, DRW: False, CutMix: True, DropBlock: 0.015
+Train Loss: 3.0068
+Val Loss: 1.5434, Val Macro F1: 0.8445
+Current learning rate: 0.000094
+
+============================================================
+Epoch 25/150
+============================================================
+  Batch 0/3010, Loss: 4.3610, DRW: False, CutMix: True, DropBlock: 0.019
+  Batch 500/3010, Loss: 2.2806, DRW: False, CutMix: True, DropBlock: 0.019
+  Batch 1000/3010, Loss: 4.3571, DRW: False, CutMix: True, DropBlock: 0.019
+  Batch 1500/3010, Loss: 3.2341, DRW: False, CutMix: True, DropBlock: 0.019
+  Batch 2000/3010, Loss: 3.8817, DRW: False, CutMix: True, DropBlock: 0.019
+  Batch 2500/3010, Loss: 4.4278, DRW: False, CutMix: True, DropBlock: 0.019
+  Batch 3000/3010, Loss: 3.3220, DRW: False, CutMix: True, DropBlock: 0.019
+Train Loss: 2.9964
+Val Loss: 1.5402, Val Macro F1: 0.8457
+Current learning rate: 0.000093
+
+============================================================
+Epoch 26/150
+============================================================
+  Batch 0/3010, Loss: 4.3380, DRW: False, CutMix: True, DropBlock: 0.022
+  Batch 500/3010, Loss: 2.9752, DRW: False, CutMix: True, DropBlock: 0.022
+  Batch 1000/3010, Loss: 3.8551, DRW: False, CutMix: True, DropBlock: 0.022
+  Batch 1500/3010, Loss: 2.4387, DRW: False, CutMix: True, DropBlock: 0.022
+  Batch 2000/3010, Loss: 2.7327, DRW: False, CutMix: True, DropBlock: 0.022
+  Batch 2500/3010, Loss: 3.9396, DRW: False, CutMix: True, DropBlock: 0.022
+  Batch 3000/3010, Loss: 3.5082, DRW: False, CutMix: True, DropBlock: 0.022
+Train Loss: 3.0046
+Val Loss: 1.5386, Val Macro F1: 0.8504
+Current learning rate: 0.000093
+✓ Saved best model with Val F1: 0.8504
+
+============================================================
+Epoch 27/150
+============================================================
+  Batch 0/3010, Loss: 1.0134, DRW: False, CutMix: True, DropBlock: 0.026
+  Batch 500/3010, Loss: 1.8010, DRW: False, CutMix: True, DropBlock: 0.026
+  Batch 1000/3010, Loss: 4.2723, DRW: False, CutMix: True, DropBlock: 0.026
+  Batch 1500/3010, Loss: 3.6437, DRW: False, CutMix: True, DropBlock: 0.026
+  Batch 2000/3010, Loss: 1.1205, DRW: False, CutMix: True, DropBlock: 0.026
+  Batch 2500/3010, Loss: 4.3221, DRW: False, CutMix: True, DropBlock: 0.026
+  Batch 3000/3010, Loss: 3.6894, DRW: False, CutMix: True, DropBlock: 0.026
+Train Loss: 2.9715
+Val Loss: 1.5431, Val Macro F1: 0.8453
+Current learning rate: 0.000092
+
+============================================================
+Epoch 28/150
+============================================================
+  Batch 0/3010, Loss: 4.1439, DRW: False, CutMix: True, DropBlock: 0.030
+  Batch 500/3010, Loss: 2.0431, DRW: False, CutMix: True, DropBlock: 0.030
+  Batch 1000/3010, Loss: 1.8726, DRW: False, CutMix: True, DropBlock: 0.030
+  Batch 1500/3010, Loss: 4.2339, DRW: False, CutMix: True, DropBlock: 0.030
+  Batch 2000/3010, Loss: 4.4699, DRW: False, CutMix: True, DropBlock: 0.030
+  Batch 2500/3010, Loss: 4.7205, DRW: False, CutMix: True, DropBlock: 0.030
+  Batch 3000/3010, Loss: 4.6578, DRW: False, CutMix: True, DropBlock: 0.030
+Train Loss: 2.9948
+Val Loss: 1.5403, Val Macro F1: 0.8359
+Current learning rate: 0.000092
+
+============================================================
+Epoch 29/150
+============================================================
+  Batch 0/3010, Loss: 1.0920, DRW: False, CutMix: True, DropBlock: 0.034
+  Batch 500/3010, Loss: 1.2056, DRW: False, CutMix: True, DropBlock: 0.034
+  Batch 1000/3010, Loss: 1.0764, DRW: False, CutMix: True, DropBlock: 0.034
+  Batch 1500/3010, Loss: 2.6011, DRW: False, CutMix: True, DropBlock: 0.034
+  Batch 2000/3010, Loss: 1.6410, DRW: False, CutMix: True, DropBlock: 0.034
+  Batch 2500/3010, Loss: 2.7883, DRW: False, CutMix: True, DropBlock: 0.034
+  Batch 3000/3010, Loss: 0.7429, DRW: False, CutMix: True, DropBlock: 0.034
+Train Loss: 2.9629
+Val Loss: 1.5416, Val Macro F1: 0.8430
+Current learning rate: 0.000091
+
+============================================================
+Epoch 30/150
+============================================================
+  Batch 0/3010, Loss: 2.3942, DRW: False, CutMix: True, DropBlock: 0.037
+  Batch 500/3010, Loss: 1.2389, DRW: False, CutMix: True, DropBlock: 0.037
+  Batch 1000/3010, Loss: 4.2465, DRW: False, CutMix: True, DropBlock: 0.037
+  Batch 1500/3010, Loss: 1.2593, DRW: False, CutMix: True, DropBlock: 0.037
+  Batch 2000/3010, Loss: 4.5827, DRW: False, CutMix: True, DropBlock: 0.037
+  Batch 2500/3010, Loss: 1.2063, DRW: False, CutMix: True, DropBlock: 0.037
+  Batch 3000/3010, Loss: 1.6072, DRW: False, CutMix: True, DropBlock: 0.037
+Train Loss: 2.9389
+Val Loss: 1.5408, Val Macro F1: 0.8411
+Current learning rate: 0.000091
+
+============================================================
+Epoch 31/150
+============================================================
+  Batch 0/3010, Loss: 3.4355, DRW: False, CutMix: True, DropBlock: 0.041
+  Batch 500/3010, Loss: 1.2140, DRW: False, CutMix: True, DropBlock: 0.041
+  Batch 1000/3010, Loss: 0.9603, DRW: False, CutMix: True, DropBlock: 0.041
+  Batch 1500/3010, Loss: 1.0909, DRW: False, CutMix: True, DropBlock: 0.041
+  Batch 2000/3010, Loss: 1.5434, DRW: False, CutMix: True, DropBlock: 0.041
+  Batch 2500/3010, Loss: 3.9445, DRW: False, CutMix: True, DropBlock: 0.041
+  Batch 3000/3010, Loss: 1.1925, DRW: False, CutMix: True, DropBlock: 0.041
+Train Loss: 2.9066
+Val Loss: 1.5385, Val Macro F1: 0.8439
+Current learning rate: 0.000090
+
+============================================================
+Epoch 32/150
+============================================================
+  Batch 0/3010, Loss: 3.5872, DRW: False, CutMix: True, DropBlock: 0.045
+  Batch 500/3010, Loss: 4.4172, DRW: False, CutMix: True, DropBlock: 0.045
+  Batch 1000/3010, Loss: 1.6941, DRW: False, CutMix: True, DropBlock: 0.045
+  Batch 1500/3010, Loss: 1.0838, DRW: False, CutMix: True, DropBlock: 0.045
+  Batch 2000/3010, Loss: 2.1774, DRW: False, CutMix: True, DropBlock: 0.045
+  Batch 2500/3010, Loss: 4.0743, DRW: False, CutMix: True, DropBlock: 0.045
+  Batch 3000/3010, Loss: 1.4833, DRW: False, CutMix: True, DropBlock: 0.045
+Train Loss: 2.9457
+Val Loss: 1.5363, Val Macro F1: 0.8412
+Current learning rate: 0.000089
+
+============================================================
+Epoch 33/150
+============================================================
+  Batch 0/3010, Loss: 2.5795, DRW: False, CutMix: True, DropBlock: 0.049
+  Batch 500/3010, Loss: 4.3274, DRW: False, CutMix: True, DropBlock: 0.049
+  Batch 1000/3010, Loss: 3.5754, DRW: False, CutMix: True, DropBlock: 0.049
+  Batch 1500/3010, Loss: 3.6090, DRW: False, CutMix: True, DropBlock: 0.049
+  Batch 2000/3010, Loss: 3.7015, DRW: False, CutMix: True, DropBlock: 0.049
+  Batch 2500/3010, Loss: 1.0082, DRW: False, CutMix: True, DropBlock: 0.049
+  Batch 3000/3010, Loss: 1.3767, DRW: False, CutMix: True, DropBlock: 0.049
+Train Loss: 2.9363
+Val Loss: 1.5414, Val Macro F1: 0.8460
+Current learning rate: 0.000089
+
+============================================================
+Epoch 34/150
+============================================================
+  Batch 0/3010, Loss: 3.3429, DRW: False, CutMix: True, DropBlock: 0.053
+  Batch 500/3010, Loss: 0.8171, DRW: False, CutMix: True, DropBlock: 0.053
+  Batch 1000/3010, Loss: 3.9240, DRW: False, CutMix: True, DropBlock: 0.053
+  Batch 1500/3010, Loss: 3.7536, DRW: False, CutMix: True, DropBlock: 0.053
+  Batch 2000/3010, Loss: 3.8086, DRW: False, CutMix: True, DropBlock: 0.053
+  Batch 2500/3010, Loss: 4.3155, DRW: False, CutMix: True, DropBlock: 0.053
+  Batch 3000/3010, Loss: 1.8113, DRW: False, CutMix: True, DropBlock: 0.053
+Train Loss: 2.8510
+Val Loss: 1.5412, Val Macro F1: 0.8464
+Current learning rate: 0.000088
+
+============================================================
+Epoch 35/150
+============================================================
+  Batch 0/3010, Loss: 4.2176, DRW: False, CutMix: True, DropBlock: 0.056
+  Batch 500/3010, Loss: 4.2726, DRW: False, CutMix: True, DropBlock: 0.056
+  Batch 1000/3010, Loss: 4.7095, DRW: False, CutMix: True, DropBlock: 0.056
+  Batch 1500/3010, Loss: 3.0805, DRW: False, CutMix: True, DropBlock: 0.056
+  Batch 2000/3010, Loss: 0.8093, DRW: False, CutMix: True, DropBlock: 0.056
+  Batch 2500/3010, Loss: 4.3549, DRW: False, CutMix: True, DropBlock: 0.056
+  Batch 3000/3010, Loss: 1.3028, DRW: False, CutMix: True, DropBlock: 0.056
+Train Loss: 2.9097
+Val Loss: 1.5420, Val Macro F1: 0.8420
+Current learning rate: 0.000087
+
+============================================================
+Epoch 36/150
+============================================================
+  Batch 0/3010, Loss: 1.1411, DRW: False, CutMix: True, DropBlock: 0.060
+  Batch 500/3010, Loss: 4.2857, DRW: False, CutMix: True, DropBlock: 0.060
+  Batch 1000/3010, Loss: 1.5309, DRW: False, CutMix: True, DropBlock: 0.060
+  Batch 1500/3010, Loss: 0.9506, DRW: False, CutMix: True, DropBlock: 0.060
+  Batch 2000/3010, Loss: 2.6666, DRW: False, CutMix: True, DropBlock: 0.060
+  Batch 2500/3010, Loss: 2.4966, DRW: False, CutMix: True, DropBlock: 0.060
+  Batch 3000/3010, Loss: 3.9843, DRW: False, CutMix: True, DropBlock: 0.060
+Train Loss: 2.8726
+Val Loss: 1.5351, Val Macro F1: 0.8473
+Current learning rate: 0.000087
+
+============================================================
+Epoch 37/150
+============================================================
+  Batch 0/3010, Loss: 0.9238, DRW: False, CutMix: True, DropBlock: 0.064
+  Batch 500/3010, Loss: 2.4810, DRW: False, CutMix: True, DropBlock: 0.064
+  Batch 1000/3010, Loss: 1.6811, DRW: False, CutMix: True, DropBlock: 0.064
+  Batch 1500/3010, Loss: 0.7290, DRW: False, CutMix: True, DropBlock: 0.064
+  Batch 2000/3010, Loss: 2.2976, DRW: False, CutMix: True, DropBlock: 0.064
+  Batch 2500/3010, Loss: 3.1529, DRW: False, CutMix: True, DropBlock: 0.064
+  Batch 3000/3010, Loss: 2.5451, DRW: False, CutMix: True, DropBlock: 0.064
+Train Loss: 2.9125
+Val Loss: 1.5409, Val Macro F1: 0.8496
+Current learning rate: 0.000086
+
+============================================================
+Epoch 38/150
+============================================================
+  Batch 0/3010, Loss: 3.1332, DRW: False, CutMix: True, DropBlock: 0.067
+  Batch 500/3010, Loss: 1.2213, DRW: False, CutMix: True, DropBlock: 0.067
+  Batch 1000/3010, Loss: 3.5100, DRW: False, CutMix: True, DropBlock: 0.067
+  Batch 1500/3010, Loss: 3.9387, DRW: False, CutMix: True, DropBlock: 0.067
+  Batch 2000/3010, Loss: 0.7278, DRW: False, CutMix: True, DropBlock: 0.067
+  Batch 2500/3010, Loss: 2.7670, DRW: False, CutMix: True, DropBlock: 0.067
+  Batch 3000/3010, Loss: 3.6937, DRW: False, CutMix: True, DropBlock: 0.067
+Train Loss: 2.8782
+Val Loss: 1.5389, Val Macro F1: 0.8428
+Current learning rate: 0.000085
+
+============================================================
+Epoch 39/150
+============================================================
+  Batch 0/3010, Loss: 2.7253, DRW: False, CutMix: True, DropBlock: 0.071
+  Batch 500/3010, Loss: 2.7838, DRW: False, CutMix: True, DropBlock: 0.071
+  Batch 1000/3010, Loss: 4.3263, DRW: False, CutMix: True, DropBlock: 0.071
+  Batch 1500/3010, Loss: 3.6162, DRW: False, CutMix: True, DropBlock: 0.071
+  Batch 2000/3010, Loss: 4.4224, DRW: False, CutMix: True, DropBlock: 0.071
+  Batch 2500/3010, Loss: 0.9341, DRW: False, CutMix: True, DropBlock: 0.071
+  Batch 3000/3010, Loss: 4.1096, DRW: False, CutMix: True, DropBlock: 0.071
+Train Loss: 2.8240
+Val Loss: 1.5401, Val Macro F1: 0.8439
+Current learning rate: 0.000084
+
+============================================================
+Epoch 40/150
+============================================================
+  Batch 0/3010, Loss: 2.7135, DRW: False, CutMix: True, DropBlock: 0.075
+  Batch 500/3010, Loss: 2.9535, DRW: False, CutMix: True, DropBlock: 0.075
+  Batch 1000/3010, Loss: 0.6825, DRW: False, CutMix: True, DropBlock: 0.075
+  Batch 1500/3010, Loss: 0.7909, DRW: False, CutMix: True, DropBlock: 0.075
+  Batch 2000/3010, Loss: 1.2750, DRW: False, CutMix: True, DropBlock: 0.075
+  Batch 2500/3010, Loss: 4.4007, DRW: False, CutMix: True, DropBlock: 0.075
+  Batch 3000/3010, Loss: 1.7150, DRW: False, CutMix: True, DropBlock: 0.075
+Train Loss: 2.8041
+Val Loss: 1.5392, Val Macro F1: 0.8428
+Current learning rate: 0.000084
+
+============================================================
+Epoch 41/150
+============================================================
+  Batch 0/3010, Loss: 2.4247, DRW: False, CutMix: True, DropBlock: 0.079
+  Batch 500/3010, Loss: 1.0083, DRW: False, CutMix: True, DropBlock: 0.079
+  Batch 1000/3010, Loss: 3.0184, DRW: False, CutMix: True, DropBlock: 0.079
+  Batch 1500/3010, Loss: 3.2341, DRW: False, CutMix: True, DropBlock: 0.079
+  Batch 2000/3010, Loss: 2.8853, DRW: False, CutMix: True, DropBlock: 0.079
+  Batch 2500/3010, Loss: 4.6071, DRW: False, CutMix: True, DropBlock: 0.079
+  Batch 3000/3010, Loss: 2.1518, DRW: False, CutMix: True, DropBlock: 0.079
+Train Loss: 2.8427
+Val Loss: 1.5394, Val Macro F1: 0.8413
+Current learning rate: 0.000083
+
+============================================================
+Epoch 42/150
+============================================================
+  Batch 0/3010, Loss: 4.2832, DRW: False, CutMix: True, DropBlock: 0.082
+  Batch 500/3010, Loss: 4.7421, DRW: False, CutMix: True, DropBlock: 0.082
+  Batch 1000/3010, Loss: 4.2936, DRW: False, CutMix: True, DropBlock: 0.082
+  Batch 1500/3010, Loss: 4.2502, DRW: False, CutMix: True, DropBlock: 0.082
+  Batch 2000/3010, Loss: 4.4595, DRW: False, CutMix: True, DropBlock: 0.082
+  Batch 2500/3010, Loss: 4.7431, DRW: False, CutMix: True, DropBlock: 0.082
+  Batch 3000/3010, Loss: 4.3876, DRW: False, CutMix: True, DropBlock: 0.082
+Train Loss: 2.8433
+Val Loss: 1.5372, Val Macro F1: 0.8465
+Current learning rate: 0.000082
+
+============================================================
+Epoch 43/150
+============================================================
+  Batch 0/3010, Loss: 3.7365, DRW: False, CutMix: True, DropBlock: 0.086
+  Batch 500/3010, Loss: 4.4959, DRW: False, CutMix: True, DropBlock: 0.086
+  Batch 1000/3010, Loss: 4.7356, DRW: False, CutMix: True, DropBlock: 0.086
+  Batch 1500/3010, Loss: 3.4627, DRW: False, CutMix: True, DropBlock: 0.086
+  Batch 2000/3010, Loss: 4.7488, DRW: False, CutMix: True, DropBlock: 0.086
+  Batch 2500/3010, Loss: 4.5525, DRW: False, CutMix: True, DropBlock: 0.086
+  Batch 3000/3010, Loss: 0.9410, DRW: False, CutMix: True, DropBlock: 0.086
+Train Loss: 2.8036
+Val Loss: 1.5398, Val Macro F1: 0.8364
+Current learning rate: 0.000081
+
+============================================================
+Epoch 44/150
+============================================================
+  Batch 0/3010, Loss: 4.5801, DRW: False, CutMix: True, DropBlock: 0.090
+  Batch 500/3010, Loss: 1.9197, DRW: False, CutMix: True, DropBlock: 0.090
+  Batch 1000/3010, Loss: 3.7605, DRW: False, CutMix: True, DropBlock: 0.090
+  Batch 1500/3010, Loss: 1.2025, DRW: False, CutMix: True, DropBlock: 0.090
+  Batch 2000/3010, Loss: 3.1225, DRW: False, CutMix: True, DropBlock: 0.090
+  Batch 2500/3010, Loss: 3.6447, DRW: False, CutMix: True, DropBlock: 0.090
+  Batch 3000/3010, Loss: 3.7606, DRW: False, CutMix: True, DropBlock: 0.090
+Train Loss: 2.7816
+Val Loss: 1.5415, Val Macro F1: 0.8346
+Current learning rate: 0.000080
+
+============================================================
+Epoch 45/150
+============================================================
+  Batch 0/3010, Loss: 4.6611, DRW: False, CutMix: True, DropBlock: 0.094
+  Batch 500/3010, Loss: 2.8132, DRW: False, CutMix: True, DropBlock: 0.094
+  Batch 1000/3010, Loss: 3.3822, DRW: False, CutMix: True, DropBlock: 0.094
+  Batch 1500/3010, Loss: 4.3220, DRW: False, CutMix: True, DropBlock: 0.094
+  Batch 2000/3010, Loss: 1.5010, DRW: False, CutMix: True, DropBlock: 0.094
+  Batch 2500/3010, Loss: 3.0116, DRW: False, CutMix: True, DropBlock: 0.094
+  Batch 3000/3010, Loss: 4.1330, DRW: False, CutMix: True, DropBlock: 0.094
+Train Loss: 2.8012
+Val Loss: 1.5400, Val Macro F1: 0.8408
+Current learning rate: 0.000080
+
+============================================================
+Epoch 46/150
+============================================================
+  Batch 0/3010, Loss: 1.7535, DRW: False, CutMix: True, DropBlock: 0.098
+  Batch 500/3010, Loss: 1.8657, DRW: False, CutMix: True, DropBlock: 0.098
+  Batch 1000/3010, Loss: 4.2788, DRW: False, CutMix: True, DropBlock: 0.098
+  Batch 1500/3010, Loss: 1.7156, DRW: False, CutMix: True, DropBlock: 0.098
+  Batch 2000/3010, Loss: 4.4776, DRW: False, CutMix: True, DropBlock: 0.098
+  Batch 2500/3010, Loss: 3.7035, DRW: False, CutMix: True, DropBlock: 0.098
+  Batch 3000/3010, Loss: 2.0239, DRW: False, CutMix: True, DropBlock: 0.098
+Train Loss: 2.7818
+Val Loss: 1.5386, Val Macro F1: 0.8360
+Current learning rate: 0.000079
+
+============================================================
+Epoch 47/150
+============================================================
+  Batch 0/3010, Loss: 2.4919, DRW: False, CutMix: True, DropBlock: 0.101
+  Batch 500/3010, Loss: 3.1815, DRW: False, CutMix: True, DropBlock: 0.101
+  Batch 1000/3010, Loss: 2.2346, DRW: False, CutMix: True, DropBlock: 0.101
+  Batch 1500/3010, Loss: 1.3114, DRW: False, CutMix: True, DropBlock: 0.101
+  Batch 2000/3010, Loss: 3.0207, DRW: False, CutMix: True, DropBlock: 0.101
+  Batch 2500/3010, Loss: 1.8603, DRW: False, CutMix: True, DropBlock: 0.101
+  Batch 3000/3010, Loss: 0.6342, DRW: False, CutMix: True, DropBlock: 0.101
+Train Loss: 2.7834
+Val Loss: 1.5382, Val Macro F1: 0.8421
+Current learning rate: 0.000078
+
+============================================================
+Epoch 48/150
+============================================================
+  Batch 0/3010, Loss: 2.3008, DRW: False, CutMix: True, DropBlock: 0.105
+  Batch 500/3010, Loss: 0.5763, DRW: False, CutMix: True, DropBlock: 0.105
+  Batch 1000/3010, Loss: 0.6899, DRW: False, CutMix: True, DropBlock: 0.105
+  Batch 1500/3010, Loss: 1.8262, DRW: False, CutMix: True, DropBlock: 0.105
+  Batch 2000/3010, Loss: 0.7098, DRW: False, CutMix: True, DropBlock: 0.105
+  Batch 2500/3010, Loss: 2.6163, DRW: False, CutMix: True, DropBlock: 0.105
+  Batch 3000/3010, Loss: 4.3224, DRW: False, CutMix: True, DropBlock: 0.105
+Train Loss: 2.7700
+Val Loss: 1.5430, Val Macro F1: 0.8404
+Current learning rate: 0.000077
+
+============================================================
+Epoch 49/150
+============================================================
+  Batch 0/3010, Loss: 4.0702, DRW: False, CutMix: True, DropBlock: 0.109
+  Batch 500/3010, Loss: 4.3255, DRW: False, CutMix: True, DropBlock: 0.109
+  Batch 1000/3010, Loss: 0.8254, DRW: False, CutMix: True, DropBlock: 0.109
+  Batch 1500/3010, Loss: 1.0844, DRW: False, CutMix: True, DropBlock: 0.109
+  Batch 2000/3010, Loss: 3.4050, DRW: False, CutMix: True, DropBlock: 0.109
+  Batch 2500/3010, Loss: 2.8918, DRW: False, CutMix: True, DropBlock: 0.109
+  Batch 3000/3010, Loss: 4.0657, DRW: False, CutMix: True, DropBlock: 0.109
+Train Loss: 2.7851
+Val Loss: 1.5395, Val Macro F1: 0.8436
+Current learning rate: 0.000076
+
+============================================================
+Epoch 50/150
+============================================================
+  Batch 0/3010, Loss: 4.3773, DRW: False, CutMix: True, DropBlock: 0.113
+  Batch 500/3010, Loss: 1.9166, DRW: False, CutMix: True, DropBlock: 0.113
+  Batch 1000/3010, Loss: 3.9054, DRW: False, CutMix: True, DropBlock: 0.113
+  Batch 1500/3010, Loss: 4.2921, DRW: False, CutMix: True, DropBlock: 0.113
+  Batch 2000/3010, Loss: 3.0528, DRW: False, CutMix: True, DropBlock: 0.113
+  Batch 2500/3010, Loss: 2.6571, DRW: False, CutMix: True, DropBlock: 0.113
+  Batch 3000/3010, Loss: 4.0596, DRW: False, CutMix: True, DropBlock: 0.113
+Train Loss: 2.7634
+Val Loss: 1.5379, Val Macro F1: 0.8435
+Current learning rate: 0.000075
+
+============================================================
+Epoch 51/150
+============================================================
+  Batch 0/3010, Loss: 0.9962, DRW: False, CutMix: True, DropBlock: 0.116
+  Batch 500/3010, Loss: 3.9955, DRW: False, CutMix: True, DropBlock: 0.116
+  Batch 1000/3010, Loss: 3.5420, DRW: False, CutMix: True, DropBlock: 0.116
+  Batch 1500/3010, Loss: 0.8706, DRW: False, CutMix: True, DropBlock: 0.116
+  Batch 2000/3010, Loss: 3.3430, DRW: False, CutMix: True, DropBlock: 0.116
+  Batch 2500/3010, Loss: 1.9279, DRW: False, CutMix: True, DropBlock: 0.116
+  Batch 3000/3010, Loss: 4.7062, DRW: False, CutMix: True, DropBlock: 0.116
+Train Loss: 2.7627
+Val Loss: 1.5433, Val Macro F1: 0.8424
+Current learning rate: 0.000074
+
+============================================================
+Epoch 52/150
+============================================================
+  Batch 0/3010, Loss: 4.4580, DRW: False, CutMix: True, DropBlock: 0.120
+  Batch 500/3010, Loss: 2.9435, DRW: False, CutMix: True, DropBlock: 0.120
+  Batch 1000/3010, Loss: 1.2655, DRW: False, CutMix: True, DropBlock: 0.120
+  Batch 1500/3010, Loss: 0.6858, DRW: False, CutMix: True, DropBlock: 0.120
+  Batch 2000/3010, Loss: 2.3324, DRW: False, CutMix: True, DropBlock: 0.120
+  Batch 2500/3010, Loss: 3.6525, DRW: False, CutMix: True, DropBlock: 0.120
+  Batch 3000/3010, Loss: 3.1842, DRW: False, CutMix: True, DropBlock: 0.120
+Train Loss: 2.7321
+Val Loss: 1.5371, Val Macro F1: 0.8404
+Current learning rate: 0.000073
+
+============================================================
+Epoch 53/150
+============================================================
+  Batch 0/3010, Loss: 3.4422, DRW: False, CutMix: True, DropBlock: 0.124
+  Batch 500/3010, Loss: 2.5503, DRW: False, CutMix: True, DropBlock: 0.124
+  Batch 1000/3010, Loss: 1.7036, DRW: False, CutMix: True, DropBlock: 0.124
+  Batch 1500/3010, Loss: 1.7137, DRW: False, CutMix: True, DropBlock: 0.124
+  Batch 2000/3010, Loss: 0.7684, DRW: False, CutMix: True, DropBlock: 0.124
+  Batch 2500/3010, Loss: 0.8263, DRW: False, CutMix: True, DropBlock: 0.124
+  Batch 3000/3010, Loss: 1.3945, DRW: False, CutMix: True, DropBlock: 0.124
+Train Loss: 2.7235
+Val Loss: 1.5389, Val Macro F1: 0.8422
+Current learning rate: 0.000073
+
+============================================================
+Epoch 54/150
+============================================================
+  Batch 0/3010, Loss: 3.3103, DRW: False, CutMix: True, DropBlock: 0.128
+  Batch 500/3010, Loss: 3.6697, DRW: False, CutMix: True, DropBlock: 0.128
+  Batch 1000/3010, Loss: 4.1745, DRW: False, CutMix: True, DropBlock: 0.128
+  Batch 1500/3010, Loss: 0.6389, DRW: False, CutMix: True, DropBlock: 0.128
+  Batch 2000/3010, Loss: 0.5394, DRW: False, CutMix: True, DropBlock: 0.128
+  Batch 2500/3010, Loss: 4.5906, DRW: False, CutMix: True, DropBlock: 0.128
+  Batch 3000/3010, Loss: 0.7973, DRW: False, CutMix: True, DropBlock: 0.128
+Train Loss: 2.7069
+Val Loss: 1.5361, Val Macro F1: 0.8406
+Current learning rate: 0.000072
+
+============================================================
+Epoch 55/150
+============================================================
+  Batch 0/3010, Loss: 1.4814, DRW: False, CutMix: True, DropBlock: 0.131
+  Batch 500/3010, Loss: 4.2586, DRW: False, CutMix: True, DropBlock: 0.131
+  Batch 1000/3010, Loss: 3.8927, DRW: False, CutMix: True, DropBlock: 0.131
+  Batch 1500/3010, Loss: 4.4023, DRW: False, CutMix: True, DropBlock: 0.131
+  Batch 2000/3010, Loss: 4.5996, DRW: False, CutMix: True, DropBlock: 0.131
+  Batch 2500/3010, Loss: 0.4680, DRW: False, CutMix: True, DropBlock: 0.131
+  Batch 3000/3010, Loss: 3.9445, DRW: False, CutMix: True, DropBlock: 0.131
+Train Loss: 2.7291
+Val Loss: 1.5380, Val Macro F1: 0.8398
+Current learning rate: 0.000071
+
+============================================================
+Epoch 56/150
+============================================================
+  Batch 0/3010, Loss: 4.4563, DRW: False, CutMix: True, DropBlock: 0.135
+  Batch 500/3010, Loss: 1.0647, DRW: False, CutMix: True, DropBlock: 0.135
+  Batch 1000/3010, Loss: 4.7561, DRW: False, CutMix: True, DropBlock: 0.135
+  Batch 1500/3010, Loss: 4.2284, DRW: False, CutMix: True, DropBlock: 0.135
+  Batch 2000/3010, Loss: 0.5366, DRW: False, CutMix: True, DropBlock: 0.135
+  Batch 2500/3010, Loss: 3.0482, DRW: False, CutMix: True, DropBlock: 0.135
+  Batch 3000/3010, Loss: 3.0043, DRW: False, CutMix: True, DropBlock: 0.135
+Train Loss: 2.7419
+Val Loss: 1.5367, Val Macro F1: 0.8432
+Current learning rate: 0.000070
+
+Early stopping triggered after 56 epochs
+
+============================================================
+Training completed! Best Val F1: 0.8504
+============================================================
+
+============================================================
+Evaluating on test set...
+============================================================
+Test Loss: 1.5385
+Test Macro F1: 0.8615
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+speech:non-tonal       0.95      0.98      0.96     70117
+    speech:tonal       0.90      0.72      0.80     13495
+     music:vocal       0.82      0.84      0.83     12165
+ music:non-vocal       0.69      0.64      0.67      6018
+       env:urban       0.92      0.99      0.95       769
+    env:wildlife       0.96      0.95      0.95      3411
+
+        accuracy                           0.91    105975
+       macro avg       0.87      0.86      0.86    105975
+    weighted avg       0.91      0.91      0.91    105975
+
+
+============================================================
+Done!
+============================================================

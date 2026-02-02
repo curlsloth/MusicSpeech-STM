@@ -83,26 +83,7 @@ def process_symmetric_stm(stm_data):
     return output
 
 
-class SymmetricSTMDataset(Dataset):
-    """Wrapper dataset that applies symmetric STM processing"""
-    def __init__(self, base_dataset):
-        self.base_dataset = base_dataset
-        
-    def __len__(self):
-        return len(self.base_dataset)
-    
-    def __getitem__(self, idx):
-        data, label = self.base_dataset[idx]
-        # data shape: (2420,) - flattened from (20, 121)
-        # Reshape to (20, 121) for symmetric processing
-        data = data.reshape(20, 121)
-        # Add batch dimension for processing
-        data = data.unsqueeze(0)  # (1, 20, 121)
-        data = process_symmetric_stm(data)
-        data = data.squeeze(0)    # (20, 61)
-        # Flatten for tabular processing
-        data = data.reshape(-1)   # (1220,)
-        return data, label
+# Symmetric processing now applied during data preparation (removed wrapper class)
 
 
 # ============================================================================
@@ -256,15 +237,30 @@ class prepData_STM_FTTransformer:
         return STM_all, target.values, train_ind, val_ind, test_ind, class_freq
     
     def prepare_datasets(self):
-        """Prepare PyTorch datasets - keep flattened for tabular processing"""
+        """Prepare PyTorch datasets - apply symmetric processing, then flatten for tabular processing"""
         STM_all, target, train_ind, val_ind, test_ind, class_freq = self.load_data()
+        
+        # Reshape from (n_samples, 2420) to (n_samples, 20, 121) for symmetric processing
+        print(f"\nOriginal STM shape: {STM_all.shape}")
+        n_samples = STM_all.shape[0]
+        STM_all = STM_all.reshape(n_samples, 20, 121)
+        
+        # Apply symmetric STM processing: (n_samples, 20, 121) -> (n_samples, 20, 61)
+        STM_all_tensor = torch.FloatTensor(STM_all)
+        STM_all_symmetric = process_symmetric_stm(STM_all_tensor)  # (n_samples, 20, 61)
+        STM_all = STM_all_symmetric.numpy()
+        print(f"After symmetric processing: {STM_all.shape}")
+        
+        # Flatten to (n_samples, 1220) for tabular processing
+        STM_all = STM_all.reshape(n_samples, -1)
+        print(f"After flattening: {STM_all.shape}")
         
         # Normalize per sample
         means = STM_all.mean(axis=1, keepdims=True)
         stds = STM_all.std(axis=1, keepdims=True)
         STM_all_norm = (STM_all - means) / (stds + 1e-8)
         
-        # Convert to PyTorch tensors (batch, n_features)
+        # Convert to PyTorch tensors (batch, n_features=1220)
         X_train = torch.FloatTensor(STM_all_norm[train_ind])
         y_train = torch.LongTensor(target[train_ind])
         
@@ -323,7 +319,7 @@ class FeatureTokenizer(nn.Module):
     def forward(self, x):
         """
         Args:
-            x: (batch, n_features=1220) - after symmetric STM processing
+            x: (batch, n_features=1220) - after symmetric STM processing (20×61)
         Returns:
             tokens: (batch, n_features, d_model)
         """
@@ -434,18 +430,18 @@ class FTTransformer(nn.Module):
     def forward(self, x):
         """
         Args:
-            x: (batch, n_features=1210) - after symmetric STM processing
+            x: (batch, n_features=1220) - after symmetric STM processing (20×61)
         Returns:
             logits: (batch, num_classes)
         """
-        # Feature tokenization: (batch, 2420) -> (batch, 2420, d_model)
+        # Feature tokenization: (batch, 1220) -> (batch, 1220, d_model)
         x = self.tokenizer(x)
         
         # Add CLS token
         if self.use_cls:
             batch_size = x.size(0)
             cls_tokens = self.cls_token.expand(batch_size, -1, -1)
-            x = torch.cat([cls_tokens, x], dim=1)  # (batch, 2421, d_model)
+            x = torch.cat([cls_tokens, x], dim=1)  # (batch, 1221, d_model)
         
         # Apply Transformer blocks with optional gradient checkpointing
         if self.use_gradient_checkpointing and self.training:
@@ -511,9 +507,42 @@ class Trainer:
         
         # Tracking
         self.best_val_f1 = 0.0
+        self.start_epoch = 0
         self.train_losses = []
         self.val_losses = []
         self.val_f1_scores = []
+    
+    def load_checkpoint(self, checkpoint_path):
+        """Load checkpoint to resume training"""
+        if not os.path.exists(checkpoint_path):
+            print(f"Checkpoint not found: {checkpoint_path}")
+            return False
+        
+        print(f"Loading checkpoint from: {checkpoint_path}")
+        checkpoint = torch.load(checkpoint_path, map_location=self.device)
+        
+        self.model.load_state_dict(checkpoint['model_state_dict'])
+        
+        if 'optimizer_state_dict' in checkpoint:
+            self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+            print("✓ Loaded optimizer state")
+        
+        if 'scheduler_state_dict' in checkpoint:
+            self.scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
+            print("✓ Loaded scheduler state")
+        
+        self.start_epoch = checkpoint['epoch'] + 1
+        self.best_val_f1 = checkpoint.get('val_f1', 0.0)
+        
+        if 'train_losses' in checkpoint:
+            self.train_losses = checkpoint['train_losses']
+        if 'val_losses' in checkpoint:
+            self.val_losses = checkpoint['val_losses']
+        if 'val_f1_scores' in checkpoint:
+            self.val_f1_scores = checkpoint['val_f1_scores']
+        
+        print(f"✓ Resumed from epoch {self.start_epoch}, Best Val F1: {self.best_val_f1:.4f}")
+        return True
         
     def train_epoch(self):
         """Train for one epoch"""
@@ -573,8 +602,9 @@ class Trainer:
     def train(self, num_epochs, checkpoint_dir):
         """Full training loop"""
         print(f"\nStarting training for {num_epochs} epochs...")
+        print(f"Starting from epoch {self.start_epoch + 1}")
         
-        for epoch in range(num_epochs):
+        for epoch in range(self.start_epoch, num_epochs):
             print(f"\n{'='*60}")
             print(f"Epoch {epoch+1}/{num_epochs}")
             print(f"{'='*60}")
@@ -604,19 +634,41 @@ class Trainer:
                     'epoch': epoch,
                     'model_state_dict': self.model.state_dict(),
                     'optimizer_state_dict': self.optimizer.state_dict(),
+                    'scheduler_state_dict': self.scheduler.state_dict(),
                     'val_f1': val_f1,
+                    'train_losses': self.train_losses,
+                    'val_losses': self.val_losses,
+                    'val_f1_scores': self.val_f1_scores,
                 }, checkpoint_path)
                 print(f"✓ Saved best model with Val F1: {val_f1:.4f}")
             
-            # Save checkpoint every 10 epochs
-            if (epoch + 1) % 10 == 0:
+            # Save periodic checkpoints (every 5 epochs)
+            if (epoch + 1) % 5 == 0:
                 checkpoint_path = os.path.join(checkpoint_dir, f'checkpoint_epoch_{epoch+1}.pt')
                 torch.save({
                     'epoch': epoch,
                     'model_state_dict': self.model.state_dict(),
                     'optimizer_state_dict': self.optimizer.state_dict(),
+                    'scheduler_state_dict': self.scheduler.state_dict(),
                     'val_f1': val_f1,
+                    'train_losses': self.train_losses,
+                    'val_losses': self.val_losses,
+                    'val_f1_scores': self.val_f1_scores,
                 }, checkpoint_path)
+                print(f"✓ Saved checkpoint at epoch {epoch+1}")
+            
+            # Always save latest checkpoint for resume
+            latest_checkpoint_path = os.path.join(checkpoint_dir, 'latest_checkpoint.pt')
+            torch.save({
+                'epoch': epoch,
+                'model_state_dict': self.model.state_dict(),
+                'optimizer_state_dict': self.optimizer.state_dict(),
+                'scheduler_state_dict': self.scheduler.state_dict(),
+                'val_f1': val_f1,
+                'train_losses': self.train_losses,
+                'val_losses': self.val_losses,
+                'val_f1_scores': self.val_f1_scores,
+            }, latest_checkpoint_path)
         
         print(f"\n{'='*60}")
         print(f"Training completed! Best Val F1: {self.best_val_f1:.4f}")
@@ -639,11 +691,21 @@ if __name__ == "__main__":
     
     # Parse command line arguments
     if len(sys.argv) < 2:
-        print("Usage: python STM_FTtransformer.py <mode>")
+        print("Usage: python STM_FTtransformer.py <mode> [--resume <checkpoint_dir>]")
         print("Modes:")
         print("  0: Standard training")
         print("  1: Downsample non-tonal speech")
+        print("Options:")
+        print("  --resume <checkpoint_dir>: Resume from checkpoint directory")
         sys.exit(1)
+    
+    # Check for resume flag
+    resume_dir = None
+    if '--resume' in sys.argv:
+        resume_idx = sys.argv.index('--resume')
+        if resume_idx + 1 < len(sys.argv):
+            resume_dir = sys.argv[resume_idx + 1]
+            print(f"Resume mode: Will attempt to load from {resume_dir}")
     
     mode = int(sys.argv[1])
     
@@ -661,9 +723,16 @@ if __name__ == "__main__":
         sys.exit(1)
     
     # Create directory
-    time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
-    checkpoint_dir = os.path.join(directory, "ckpt", time_stamp)
-    os.makedirs(checkpoint_dir, exist_ok=True)
+    if resume_dir:
+        checkpoint_dir = resume_dir
+        if not os.path.exists(checkpoint_dir):
+            print(f"Error: Checkpoint directory does not exist: {checkpoint_dir}")
+            sys.exit(1)
+    else:
+        time_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+        checkpoint_dir = os.path.join(directory, "ckpt", time_stamp)
+        os.makedirs(checkpoint_dir, exist_ok=True)
+    
     print(f"Checkpoint directory: {checkpoint_dir}")
     
     # Prepare data
@@ -674,19 +743,14 @@ if __name__ == "__main__":
     data_prep = prepData_STM_FTTransformer(ds_nontonal_speech=ds_nontonal_speech)
     train_dataset, val_dataset, test_dataset, class_freq = data_prep.prepare_datasets()
     
-    # Apply symmetric STM processing
-    print(f"\nApplying symmetric STM processing...")
-    print(f"Original: 20 freq × 121 rates = 2420 features")
-    print(f"After symmetric processing: 20 freq × 61 rates = 1220 features")
-    print(f"Speed improvement: 4× faster (O(L²) complexity)")
-    
-    train_dataset = SymmetricSTMDataset(train_dataset)
-    val_dataset = SymmetricSTMDataset(val_dataset)
-    test_dataset = SymmetricSTMDataset(test_dataset)
+    # Symmetric STM processing already applied during data preparation
+    # Data is now (n_samples, 1220) instead of (n_samples, 2420)
+    print(f"\nSymmetric processing applied: 20 freq × 61 rates = 1220 features")
+    print(f"Speed improvement vs original (2420): 4× faster (O(L²) complexity)")
     
     # Create data loaders
-    # Reduced batch size to prevent OOM with O(L^2) attention on 1210 tokens
-    batch_size = 32  # Reduced from 128, but 1210 tokens much faster than 2420
+    # Batch size optimized for 1220 tokens with O(L^2) attention
+    batch_size = 64  # Can increase from 32 since we're actually using 1220 tokens now
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, 
                              num_workers=4, pin_memory=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False,
@@ -730,6 +794,22 @@ if __name__ == "__main__":
         lr=1e-4,
         weight_decay=1e-5
     )
+    
+    # Resume from checkpoint if specified
+    if resume_dir:
+        latest_ckpt = os.path.join(checkpoint_dir, 'latest_checkpoint.pt')
+        if os.path.exists(latest_ckpt):
+            trainer.load_checkpoint(latest_ckpt)
+        else:
+            # Try to find the most recent epoch checkpoint
+            ckpt_files = [f for f in os.listdir(checkpoint_dir) if f.startswith('checkpoint_epoch_')]
+            if ckpt_files:
+                epochs = [int(f.split('_')[-1].replace('.pt', '')) for f in ckpt_files]
+                latest_epoch = max(epochs)
+                latest_ckpt = os.path.join(checkpoint_dir, f'checkpoint_epoch_{latest_epoch}.pt')
+                trainer.load_checkpoint(latest_ckpt)
+            else:
+                print("Warning: No checkpoint found to resume from, starting fresh")
     
     # Train model
     num_epochs = 50
