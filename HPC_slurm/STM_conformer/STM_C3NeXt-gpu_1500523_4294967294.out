@@ -2,8 +2,8 @@ INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
 Using device: cuda
 GPU: NVIDIA L40S
-Memory: 47.67 GB
-Checkpoint directory: model/STM/ViM2_corpora_categories/standard/ckpt/2026-02-01_12-14
+GPU Memory: 47.67 GB
+Checkpoint directory: model/STM/C3NeXt_corpora_categories/standard/ckpt/2026-02-01_21-43
 
 ============================================================
 Loading and preparing data...
@@ -121,46 +121,73 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Sequence length: 1220
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
 
 Class Distribution (Training):
-  Class 0: 497475 samples (64.57%)
-  Class 1: 80258 samples (10.42%)
-  Class 2: 101893 samples (13.23%)
-  Class 3: 53538 samples (6.95%)
-  Class 4: 9580 samples (1.24%)
-  Class 5: 27649 samples (3.59%)
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
 
 PyTorch Dataset Shapes:
-Train: torch.Size([770393, 2420])
-Val: torch.Size([102010, 2420])
-Test: torch.Size([105975, 2420])
+Train: torch.Size([770393, 1, 20, 121])
+Val: torch.Size([102010, 1, 20, 121])
+Test: torch.Size([105975, 1, 20, 121])
 
-Applying symmetric STM processing...
-Original: 20 freq × 121 rates = 2420 tokens
-After symmetric processing: 20 freq × 61 rates = 1220 tokens
-Speed improvement: 2× faster (O(L) complexity)
-
-DataLoaders created with batch_size=64
+DataLoaders created with batch_size=256
 
 ============================================================
-Creating Vision Mamba model (Lighter Variant)...
+Creating C3NeXt (CoordConv + ConvNeXt)...
 ============================================================
-Total parameters: 1,981,894
-Trainable parameters: 1,981,894
-Model size reduction: ~4.0× smaller than baseline
+Total parameters: 27,824,742
+Trainable parameters: 27,824,742
+Architecture: ConvNeXt-Tiny with CoordConv stem
+Blocks: 18 ConvNeXt blocks [3, 3, 9, 3]
+Channels: [96, 192, 384, 768]
 
-Starting training...
-Total epochs: 50
+============================================================
+Starting Training...
+============================================================
+Total epochs: 100
 Starting from epoch 1
-Train batches: 12038
-Val batches: 1594
-Epoch 1/50 - Train Loss: 0.4316, Val Loss: 0.3455, Val F1: 0.7400, Best F1: 0.7400
-✓ Saved checkpoint at epoch 5
-Epoch 5/50 - Train Loss: 0.2627, Val Loss: 0.2666, Val F1: 0.7949, Best F1: 0.7949
-✓ Saved checkpoint at epoch 10
-Epoch 10/50 - Train Loss: 0.2248, Val Loss: 0.2625, Val F1: 0.8145, Best F1: 0.8145
-✓ Saved checkpoint at epoch 15
-Epoch 15/50 - Train Loss: 0.1937, Val Loss: 0.2536, Val F1: 0.8100, Best F1: 0.8145
-✓ Saved checkpoint at epoch 20
-Epoch 20/50 - Train Loss: 0.1531, Val Loss: 0.3176, Val F1: 0.8103, Best F1: 0.8176
+Traceback (most recent call last):
+  File "/scratch/ac8888/MusicSpeech-STM/STM_C3NeXt.py", line 891, in <module>
+    trainer.train(num_epochs=num_epochs, checkpoint_dir=checkpoint_dir)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/ac8888/MusicSpeech-STM/STM_C3NeXt.py", line 680, in train
+    train_loss = self.train_epoch(epoch, num_epochs, use_drw=use_drw, use_mixup=True)
+  File "/scratch/ac8888/MusicSpeech-STM/STM_C3NeXt.py", line 622, in train_epoch
+    outputs = self.model(data)
+  File "/ext3/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/scratch/ac8888/MusicSpeech-STM/STM_C3NeXt.py", line 416, in forward
+    x = self.stages[i](x)
+  File "/ext3/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/ext3/miniconda3/lib/python3.13/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/ext3/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/scratch/ac8888/MusicSpeech-STM/STM_C3NeXt.py", line 331, in forward
+    x = self.norm(x)
+  File "/ext3/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/ext3/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/scratch/ac8888/MusicSpeech-STM/STM_C3NeXt.py", line 277, in forward
+    x = self.weight[:, None, None] * x + self.bias[:, None, None]
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+RuntimeError: The size of tensor a (96) must match the size of tensor b (5) at non-singleton dimension 1

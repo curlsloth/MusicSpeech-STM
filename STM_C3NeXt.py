@@ -120,14 +120,15 @@ class prepData_STM_CoordConv:
         
         # Handle augmented data
         if self.addAug:
-            df_FSDnoisy18k = pd.read_csv(root_folder + 'train_test_split/FSDnoisy18k_10folds_speakerGroupFold.csv', index_col=0)
-            df_FSD50K = pd.read_csv(root_folder + 'train_test_split/FSD50K_10folds_speakerGroupFold.csv', index_col=0)
-            all_corp_df = pd.concat([all_corp_df, df_FSDnoisy18k, df_FSD50K], ignore_index=True)
+            SONYC_aug_STM = np.load(root_folder + 'STM_output/corpSTMnpy/SONYC_augmented_STMall.npy')
+            STM_all = np.concatenate((STM_all, SONYC_aug_STM), axis=0)
+            SONYC_aug_len = SONYC_aug_STM.shape[0]
+            print(f"Loaded: {root_folder}STM_output/corpSTMnpy/SONYC_augmented_STMall.npy, shape: {SONYC_aug_STM.shape}")
+            target = pd.concat([all_corp_df['corpus_type'], pd.Series(['env: urban'] * SONYC_aug_len)], ignore_index=True)
+            data_split = pd.concat([all_corp_df['10fold_labels'], pd.Series([1] * SONYC_aug_len)], ignore_index=True)
         else:
-            all_corp_df = all_corp_df
-        
-        target = all_corp_df['categories']
-        data_split = all_corp_df['speakerGroupFold']
+            target = all_corp_df['corpus_type'].copy()
+            data_split = all_corp_df['10fold_labels'].copy()
         
         # Map categories (6 classes)
         target.replace({
@@ -142,22 +143,19 @@ class prepData_STM_CoordConv:
         # Downsample non-tonal speech if requested
         if self.ds_nontonal_speech:
             nontonal_ind = (target == 0).values
-            other_ind = (target != 0).values
-            
-            nontonal_sample_size = int(nontonal_ind.sum() * 0.5)
-            nontonal_sample_ind = np.random.choice(
-                np.where(nontonal_ind)[0], 
-                size=nontonal_sample_size, 
-                replace=False
-            )
-            
-            keep_ind = np.zeros(len(target), dtype=bool)
-            keep_ind[nontonal_sample_ind] = True
-            keep_ind[other_ind] = True
-            
-            STM_all = STM_all[keep_ind]
-            target = target[keep_ind].reset_index(drop=True)
-            data_split = data_split[keep_ind].reset_index(drop=True)
+            nontonal_n = nontonal_ind.sum()
+            target_n = 100000
+            if nontonal_n > target_n:
+                nontonal_indices = np.where(nontonal_ind)[0]
+                keep_indices = np.random.choice(nontonal_indices, target_n, replace=False)
+                drop_indices = np.setdiff1d(nontonal_indices, keep_indices)
+                
+                keep_mask = np.ones(len(STM_all), dtype=bool)
+                keep_mask[drop_indices] = False
+                
+                STM_all = STM_all[keep_mask]
+                target = target[keep_mask].reset_index(drop=True)
+                data_split = data_split[keep_mask].reset_index(drop=True)
         
         # Split data
         train_ind = (data_split < 8).values
@@ -177,7 +175,7 @@ class prepData_STM_CoordConv:
         print(f"Expected 2D shape: ({self.n_freq}, {self.n_time})")
         print(f"\nClass Distribution (Training):")
         for i, count in enumerate(class_counts):
-            print(f"  Class {i}: {count} samples")
+            print(f"  Class {i}: {count:6d} samples ({100*count/class_counts.sum():.1f}%)")
         
         return STM_all, target.values, train_ind, val_ind, test_ind, class_counts
     
@@ -273,10 +271,14 @@ class LayerNorm(nn.Module):
         if self.data_format == "channels_last":
             return F.layer_norm(x, self.normalized_shape, self.weight, self.bias, self.eps)
         elif self.data_format == "channels_first":
-            u = x.mean(1, keepdim=True)
-            s = (x - u).pow(2).mean(1, keepdim=True)
+            # Normalize over spatial dimensions (H, W) for each channel
+            # Input: (B, C, H, W)
+            # Mean and std over H, W dimensions for each channel separately
+            u = x.mean(dim=(2, 3), keepdim=True)  # (B, C, 1, 1)
+            s = (x - u).pow(2).mean(dim=(2, 3), keepdim=True)  # (B, C, 1, 1)
             x = (x - u) / torch.sqrt(s + self.eps)
-            x = self.weight[:, None, None] * x + self.bias[:, None, None]
+            # Apply per-channel affine transform
+            x = self.weight.view(1, -1, 1, 1) * x + self.bias.view(1, -1, 1, 1)
             return x
 
 
@@ -544,7 +546,6 @@ class Trainer:
             mode='max',
             factor=0.5,
             patience=10,
-            verbose=True,
             min_lr=1e-6
         )
         
