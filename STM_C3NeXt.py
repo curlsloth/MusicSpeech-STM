@@ -317,7 +317,7 @@ class ConvNeXtBlock(nn.Module):
     def __init__(self, dim, drop_path=0., layer_scale_init_value=1e-6):
         super().__init__()
         self.dwconv = nn.Conv2d(dim, dim, kernel_size=7, padding=3, groups=dim)  # Depthwise
-        self.norm = LayerNorm(dim, eps=1e-6)
+        self.norm = LayerNorm(dim, eps=1e-6, data_format="channels_last")
         self.pwconv1 = nn.Linear(dim, 4 * dim)  # Pointwise/1×1 conv, expansion
         self.act = nn.GELU()
         self.pwconv2 = nn.Linear(4 * dim, dim)  # Pointwise/1×1 conv, projection
@@ -353,19 +353,17 @@ class C3NeXt(nn.Module):
     CoordConv-ConvNeXt for STM Classification
     
     Architecture:
-    - Stem: CoordConv 4×4, stride 4 (downsample 20×121 -> 5×31)
+    - Stem: CoordConv 4×4, stride 4 (downsample 20×121 -> 5×30)
     - Stage 1: 3 ConvNeXt blocks (channels=96)
-    - Downsample 1: LayerNorm + Conv 2×2, stride 2 (5×31 -> 3×16)
-    - Stage 2: 3 ConvNeXt blocks (channels=192)
-    - Downsample 2: LayerNorm + Conv 2×2, stride 2 (3×16 -> 2×8)
-    - Stage 3: 9 ConvNeXt blocks (channels=384)
-    - Downsample 3: LayerNorm + Conv 2×2, stride 2 (2×8 -> 1×4)
-    - Stage 4: 3 ConvNeXt blocks (channels=768)
+    - Downsample 1: LayerNorm + Conv 2×2, stride 2 (5×30 -> 2×15)
+    - Stage 2: 9 ConvNeXt blocks (channels=192)
+    - Downsample 2: LayerNorm + Conv 2×2, stride 2 (2×15 -> 1×7)
+    - Stage 3: 6 ConvNeXt blocks (channels=384)
     - Head: Global average pooling + LayerNorm + Linear
     
-    Total: 18 ConvNeXt blocks (similar depth to ResNet-18)
+    Total: 18 ConvNeXt blocks (3 stages: [3, 9, 6])
     """
-    def __init__(self, num_classes=6, depths=[3, 3, 9, 3], dims=[96, 192, 384, 768],
+    def __init__(self, num_classes=6, depths=[3, 9, 6], dims=[96, 192, 384],
                  drop_path_rate=0.1, layer_scale_init_value=1e-6, head_dropout=0.3):
         super().__init__()
         
@@ -375,12 +373,12 @@ class C3NeXt(nn.Module):
             LayerNorm(dims[0], eps=1e-6, data_format="channels_first")
         )
         
-        # Build 4 stages
+        # Build 3 stages
         self.stages = nn.ModuleList()
         dp_rates = [x.item() for x in torch.linspace(0, drop_path_rate, sum(depths))]
         cur = 0
         
-        for i in range(4):
+        for i in range(3):
             stage = nn.Sequential(
                 *[ConvNeXtBlock(dim=dims[i], drop_path=dp_rates[cur + j], 
                                 layer_scale_init_value=layer_scale_init_value) 
@@ -391,7 +389,7 @@ class C3NeXt(nn.Module):
         
         # Downsampling layers between stages
         self.downsample_layers = nn.ModuleList()
-        for i in range(3):
+        for i in range(2):
             downsample_layer = nn.Sequential(
                 LayerNorm(dims[i], eps=1e-6, data_format="channels_first"),
                 nn.Conv2d(dims[i], dims[i+1], kernel_size=2, stride=2),
@@ -415,10 +413,10 @@ class C3NeXt(nn.Module):
         # Stem
         x = self.stem(x)
         
-        # 4 stages with downsampling
-        for i in range(4):
+        # 3 stages with downsampling
+        for i in range(3):
             x = self.stages[i](x)
-            if i < 3:
+            if i < 2:
                 x = self.downsample_layers[i](x)
         
         # Global average pooling
@@ -847,8 +845,8 @@ if __name__ == "__main__":
     num_classes = 6
     model = C3NeXt(
         num_classes=num_classes,
-        depths=[3, 3, 9, 3],
-        dims=[96, 192, 384, 768],
+        depths=[3, 9, 6],
+        dims=[96, 192, 384],
         drop_path_rate=0.1,
         layer_scale_init_value=1e-6,
         head_dropout=0.3
@@ -859,9 +857,9 @@ if __name__ == "__main__":
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"Total parameters: {total_params:,}")
     print(f"Trainable parameters: {trainable_params:,}")
-    print(f"Architecture: ConvNeXt-Tiny with CoordConv stem")
-    print(f"Blocks: 18 ConvNeXt blocks [3, 3, 9, 3]")
-    print(f"Channels: [96, 192, 384, 768]")
+    print(f"Architecture: C3NeXt (CoordConv + ConvNeXt) - 3 stage")
+    print(f"Blocks: 18 ConvNeXt blocks [3, 9, 6]")
+    print(f"Channels: [96, 192, 384]")
     
     # Create trainer
     trainer = Trainer(
