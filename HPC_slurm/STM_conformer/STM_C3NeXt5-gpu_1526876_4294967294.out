@@ -538,3 +538,1223 @@ No improvement. Patience: 1/25
 
 Epoch 30/120
 ============================================================
+  Batch 500/3010, Loss: 4.4046, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 4.6196, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 3.6129, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.2233, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.0985, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.4101, DRW: False, CutMix: True
+Train Loss: 3.5473
+Val Loss: 1.5449, Val Macro F1: 0.7680
+Current learning rate: 0.000086
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_30.pt
+*** New best model saved! Val F1: 0.7680 ***
+
+Epoch 31/120
+============================================================
+  Batch 500/3010, Loss: 5.1442, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.7124, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.6096, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.6563, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 5.5607, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.4023, DRW: False, CutMix: True
+Train Loss: 3.5407
+Val Loss: 1.5468, Val Macro F1: 0.7755
+Current learning rate: 0.000086
+*** New best model saved! Val F1: 0.7755 ***
+
+Epoch 32/120
+============================================================
+  Batch 500/3010, Loss: 2.2939, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.6678, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.6417, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.9673, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.1177, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.6350, DRW: False, CutMix: True
+Train Loss: 3.5353
+Val Loss: 1.5402, Val Macro F1: 0.7717
+Current learning rate: 0.000085
+No improvement. Patience: 1/25
+
+Epoch 33/120
+============================================================
+  Batch 500/3010, Loss: 2.6156, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.5503, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.6586, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.5921, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.5427, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 5.0914, DRW: False, CutMix: True
+Train Loss: 3.4981
+Val Loss: 1.5496, Val Macro F1: 0.7775
+Current learning rate: 0.000084
+*** New best model saved! Val F1: 0.7775 ***
+
+Epoch 34/120
+============================================================
+  Batch 500/3010, Loss: 3.1871, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.5474, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 3.1918, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.1637, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.0251, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.5726, DRW: False, CutMix: True
+Train Loss: 3.4992
+Val Loss: 1.5367, Val Macro F1: 0.7726
+Current learning rate: 0.000083
+No improvement. Patience: 1/25
+
+Epoch 35/120
+============================================================
+  Batch 500/3010, Loss: 4.3048, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.2775, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.0953, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.0660, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.2254, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.8609, DRW: False, CutMix: True
+Train Loss: 3.5465
+Val Loss: 1.5231, Val Macro F1: 0.7622
+Current learning rate: 0.000082
+No improvement. Patience: 2/25
+
+Epoch 36/120
+============================================================
+  Batch 500/3010, Loss: 5.1172, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.4782, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.1927, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.3375, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.3787, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.0374, DRW: False, CutMix: True
+Train Loss: 3.4658
+Val Loss: 1.5443, Val Macro F1: 0.7895
+Current learning rate: 0.000081
+*** New best model saved! Val F1: 0.7895 ***
+
+Epoch 37/120
+============================================================
+  Batch 500/3010, Loss: 2.2717, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.9709, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.2298, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.7699, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.5890, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.7692, DRW: False, CutMix: True
+Train Loss: 3.4771
+Val Loss: 1.5381, Val Macro F1: 0.7779
+Current learning rate: 0.000080
+No improvement. Patience: 1/25
+
+Epoch 38/120
+============================================================
+  Batch 500/3010, Loss: 3.4944, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.8710, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.8995, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.3205, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.0878, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.8310, DRW: False, CutMix: True
+Train Loss: 3.4733
+Val Loss: 1.5399, Val Macro F1: 0.7858
+Current learning rate: 0.000079
+No improvement. Patience: 2/25
+
+Epoch 39/120
+============================================================
+  Batch 500/3010, Loss: 2.0833, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.2627, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.6606, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.5438, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.3404, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.9404, DRW: False, CutMix: True
+Train Loss: 3.4722
+Val Loss: 1.5313, Val Macro F1: 0.7800
+Current learning rate: 0.000077
+No improvement. Patience: 3/25
+
+Epoch 40/120
+============================================================
+  Batch 500/3010, Loss: 5.6007, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.2320, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.8403, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.8636, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.6104, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.3786, DRW: False, CutMix: True
+Train Loss: 3.4646
+Val Loss: 1.5345, Val Macro F1: 0.7858
+Current learning rate: 0.000076
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_40.pt
+No improvement. Patience: 4/25
+
+Epoch 41/120
+============================================================
+  Batch 500/3010, Loss: 2.6739, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.8150, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.0591, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.4895, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.6227, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.2099, DRW: False, CutMix: True
+Train Loss: 3.4064
+Val Loss: 1.5308, Val Macro F1: 0.7863
+Current learning rate: 0.000075
+No improvement. Patience: 5/25
+
+Epoch 42/120
+============================================================
+  Batch 500/3010, Loss: 2.3395, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.9783, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.3030, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.7409, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.4420, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.6181, DRW: False, CutMix: True
+Train Loss: 3.4363
+Val Loss: 1.5318, Val Macro F1: 0.7864
+Current learning rate: 0.000074
+No improvement. Patience: 6/25
+
+Epoch 43/120
+============================================================
+  Batch 500/3010, Loss: 4.7702, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.1144, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.7110, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.0127, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.8725, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.3506, DRW: False, CutMix: True
+Train Loss: 3.4018
+Val Loss: 1.5367, Val Macro F1: 0.7786
+Current learning rate: 0.000073
+No improvement. Patience: 7/25
+
+Epoch 44/120
+============================================================
+  Batch 500/3010, Loss: 2.6647, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 4.7908, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.2174, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.3929, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.6077, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.8722, DRW: False, CutMix: True
+Train Loss: 3.3589
+Val Loss: 1.5336, Val Macro F1: 0.7916
+Current learning rate: 0.000072
+*** New best model saved! Val F1: 0.7916 ***
+
+Epoch 45/120
+============================================================
+  Batch 500/3010, Loss: 1.8723, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.7159, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.6476, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.0216, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.1170, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 5.4238, DRW: False, CutMix: True
+Train Loss: 3.4078
+Val Loss: 1.5324, Val Macro F1: 0.7912
+Current learning rate: 0.000071
+No improvement. Patience: 1/25
+
+Epoch 46/120
+============================================================
+  Batch 500/3010, Loss: 4.4563, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.2511, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.0056, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.3903, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 5.5196, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.6058, DRW: False, CutMix: True
+Train Loss: 3.3772
+Val Loss: 1.5324, Val Macro F1: 0.7734
+Current learning rate: 0.000069
+No improvement. Patience: 2/25
+
+Epoch 47/120
+============================================================
+  Batch 500/3010, Loss: 1.8535, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.4030, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.4683, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.6542, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 5.3493, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.5513, DRW: False, CutMix: True
+Train Loss: 3.3847
+Val Loss: 1.5367, Val Macro F1: 0.7873
+Current learning rate: 0.000068
+No improvement. Patience: 3/25
+
+Epoch 48/120
+============================================================
+  Batch 500/3010, Loss: 4.5359, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.7137, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.7832, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.8275, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.2639, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.9838, DRW: False, CutMix: True
+Train Loss: 3.4013
+Val Loss: 1.5384, Val Macro F1: 0.7902
+Current learning rate: 0.000067
+No improvement. Patience: 4/25
+
+Epoch 49/120
+============================================================
+  Batch 500/3010, Loss: 2.1577, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.5966, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.4764, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.6132, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.8252, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.4000, DRW: False, CutMix: True
+Train Loss: 3.3917
+Val Loss: 1.5315, Val Macro F1: 0.7898
+Current learning rate: 0.000066
+No improvement. Patience: 5/25
+
+Epoch 50/120
+============================================================
+  Batch 500/3010, Loss: 0.5798, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.9194, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3469, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3998, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3130, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3736, DRW: True, CutMix: True
+Train Loss: 0.6376
+Val Loss: 0.3234, Val Macro F1: 0.7868
+Current learning rate: 0.000065
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_50.pt
+No improvement. Patience: 6/25
+
+Epoch 51/120
+============================================================
+  Batch 500/3010, Loss: 0.8121, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.3156, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.5066, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3494, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2803, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3373, DRW: True, CutMix: True
+Train Loss: 0.5169
+Val Loss: 0.3025, Val Macro F1: 0.7945
+Current learning rate: 0.000063
+*** New best model saved! Val F1: 0.7945 ***
+
+Epoch 52/120
+============================================================
+  Batch 500/3010, Loss: 0.2926, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.4816, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.4156, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3026, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3339, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3564, DRW: True, CutMix: True
+Train Loss: 0.5060
+Val Loss: 0.2949, Val Macro F1: 0.7947
+Current learning rate: 0.000062
+*** New best model saved! Val F1: 0.7947 ***
+
+Epoch 53/120
+============================================================
+  Batch 500/3010, Loss: 0.2817, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.3146, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.5751, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3461, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3128, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2899, DRW: True, CutMix: True
+Train Loss: 0.4986
+Val Loss: 0.2885, Val Macro F1: 0.7924
+Current learning rate: 0.000061
+No improvement. Patience: 1/25
+
+Epoch 54/120
+============================================================
+  Batch 500/3010, Loss: 0.7604, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.3182, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3297, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.7831, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3916, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.4301, DRW: True, CutMix: True
+Train Loss: 0.4922
+Val Loss: 0.2931, Val Macro F1: 0.8032
+Current learning rate: 0.000060
+*** New best model saved! Val F1: 0.8032 ***
+
+Epoch 55/120
+============================================================
+  Batch 500/3010, Loss: 0.5559, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.3004, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3143, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.8260, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3174, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2956, DRW: True, CutMix: True
+Train Loss: 0.4908
+Val Loss: 0.2878, Val Macro F1: 0.7912
+Current learning rate: 0.000058
+No improvement. Patience: 1/25
+
+Epoch 56/120
+============================================================
+  Batch 500/3010, Loss: 0.2901, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2757, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2925, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.8120, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.6527, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.4680, DRW: True, CutMix: True
+Train Loss: 0.4867
+Val Loss: 0.2819, Val Macro F1: 0.8088
+Current learning rate: 0.000057
+*** New best model saved! Val F1: 0.8088 ***
+
+Epoch 57/120
+============================================================
+  Batch 500/3010, Loss: 0.3586, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6787, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.4364, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3385, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.8931, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3201, DRW: True, CutMix: True
+Train Loss: 0.4800
+Val Loss: 0.2798, Val Macro F1: 0.8044
+Current learning rate: 0.000056
+No improvement. Patience: 1/25
+
+Epoch 58/120
+============================================================
+  Batch 500/3010, Loss: 0.3438, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6410, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6275, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6859, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.7465, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2905, DRW: True, CutMix: True
+Train Loss: 0.4833
+Val Loss: 0.2799, Val Macro F1: 0.8010
+Current learning rate: 0.000054
+No improvement. Patience: 2/25
+
+Epoch 59/120
+============================================================
+  Batch 500/3010, Loss: 0.6706, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.5319, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6144, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6803, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3440, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3255, DRW: True, CutMix: True
+Train Loss: 0.4758
+Val Loss: 0.2762, Val Macro F1: 0.8063
+Current learning rate: 0.000053
+No improvement. Patience: 3/25
+
+Epoch 60/120
+============================================================
+  Batch 500/3010, Loss: 0.2861, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7216, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2842, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2950, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.7276, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.7694, DRW: True, CutMix: True
+Train Loss: 0.4781
+Val Loss: 0.2738, Val Macro F1: 0.7998
+Current learning rate: 0.000052
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_60.pt
+No improvement. Patience: 4/25
+
+Epoch 61/120
+============================================================
+  Batch 500/3010, Loss: 0.2512, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2524, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.7297, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2580, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2100, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2588, DRW: True, CutMix: True
+Train Loss: 0.4734
+Val Loss: 0.2701, Val Macro F1: 0.8046
+Current learning rate: 0.000051
+No improvement. Patience: 5/25
+
+Epoch 62/120
+============================================================
+  Batch 500/3010, Loss: 0.2641, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.5029, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.1858, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.7883, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3347, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.8898, DRW: True, CutMix: True
+Train Loss: 0.4679
+Val Loss: 0.2734, Val Macro F1: 0.8079
+Current learning rate: 0.000049
+No improvement. Patience: 6/25
+
+Epoch 63/120
+============================================================
+  Batch 500/3010, Loss: 0.6175, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7052, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3041, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2549, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3013, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3245, DRW: True, CutMix: True
+Train Loss: 0.4683
+Val Loss: 0.2937, Val Macro F1: 0.8097
+Current learning rate: 0.000048
+*** New best model saved! Val F1: 0.8097 ***
+
+Epoch 64/120
+============================================================
+  Batch 500/3010, Loss: 0.7082, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7473, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.7928, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6543, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2759, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3435, DRW: True, CutMix: True
+Train Loss: 0.4731
+Val Loss: 0.2675, Val Macro F1: 0.8138
+Current learning rate: 0.000047
+*** New best model saved! Val F1: 0.8138 ***
+
+Epoch 65/120
+============================================================
+  Batch 500/3010, Loss: 0.6222, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.5974, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2665, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2929, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2486, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2812, DRW: True, CutMix: True
+Train Loss: 0.4725
+Val Loss: 0.2643, Val Macro F1: 0.8127
+Current learning rate: 0.000045
+No improvement. Patience: 1/25
+
+Epoch 66/120
+============================================================
+  Batch 500/3010, Loss: 0.3186, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.4542, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2431, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2514, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.5567, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3482, DRW: True, CutMix: True
+Train Loss: 0.4628
+Val Loss: 0.2639, Val Macro F1: 0.8153
+Current learning rate: 0.000044
+*** New best model saved! Val F1: 0.8153 ***
+
+Epoch 67/120
+============================================================
+  Batch 500/3010, Loss: 0.7790, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2994, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2555, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2865, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2582, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2450, DRW: True, CutMix: True
+Train Loss: 0.4632
+Val Loss: 0.2650, Val Macro F1: 0.8090
+Current learning rate: 0.000043
+No improvement. Patience: 1/25
+
+Epoch 68/120
+============================================================
+  Batch 500/3010, Loss: 0.6609, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6023, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2799, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.7566, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.5733, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2559, DRW: True, CutMix: True
+Train Loss: 0.4742
+Val Loss: 0.2632, Val Macro F1: 0.8069
+Current learning rate: 0.000041
+No improvement. Patience: 2/25
+
+Epoch 69/120
+============================================================
+  Batch 500/3010, Loss: 0.2945, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.3338, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6958, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2937, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2412, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.7361, DRW: True, CutMix: True
+Train Loss: 0.4640
+Val Loss: 0.2647, Val Macro F1: 0.8109
+Current learning rate: 0.000040
+No improvement. Patience: 3/25
+
+Epoch 70/120
+============================================================
+  Batch 500/3010, Loss: 0.8489, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2867, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2486, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2259, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2717, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.8337, DRW: True, CutMix: True
+Train Loss: 0.4591
+Val Loss: 0.2636, Val Macro F1: 0.8119
+Current learning rate: 0.000039
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_70.pt
+No improvement. Patience: 4/25
+
+Epoch 71/120
+============================================================
+  Batch 500/3010, Loss: 0.2915, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7210, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.7133, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3035, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.5615, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.7740, DRW: True, CutMix: True
+Train Loss: 0.4637
+Val Loss: 0.2606, Val Macro F1: 0.8087
+Current learning rate: 0.000038
+No improvement. Patience: 5/25
+
+Epoch 72/120
+============================================================
+  Batch 500/3010, Loss: 0.5223, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2818, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2605, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3182, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2361, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3329, DRW: True, CutMix: True
+Train Loss: 0.4569
+Val Loss: 0.2599, Val Macro F1: 0.8109
+Current learning rate: 0.000036
+No improvement. Patience: 6/25
+
+Epoch 73/120
+============================================================
+  Batch 500/3010, Loss: 0.2714, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2535, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.7569, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6878, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.4826, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2702, DRW: True, CutMix: True
+Train Loss: 0.4506
+Val Loss: 0.2575, Val Macro F1: 0.8158
+Current learning rate: 0.000035
+*** New best model saved! Val F1: 0.8158 ***
+
+Epoch 74/120
+============================================================
+  Batch 500/3010, Loss: 0.2239, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2265, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.7338, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3293, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.8197, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.8869, DRW: True, CutMix: True
+Train Loss: 0.4562
+Val Loss: 0.2631, Val Macro F1: 0.8151
+Current learning rate: 0.000034
+No improvement. Patience: 1/25
+
+Epoch 75/120
+============================================================
+  Batch 500/3010, Loss: 0.2288, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7108, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3470, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.5283, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.6360, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.5427, DRW: True, CutMix: True
+Train Loss: 0.4570
+Val Loss: 0.2614, Val Macro F1: 0.8107
+Current learning rate: 0.000033
+No improvement. Patience: 2/25
+
+Epoch 76/120
+============================================================
+  Batch 500/3010, Loss: 0.6851, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6757, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2711, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2205, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.6117, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.6486, DRW: True, CutMix: True
+Train Loss: 0.4527
+Val Loss: 0.2558, Val Macro F1: 0.8175
+Current learning rate: 0.000032
+*** New best model saved! Val F1: 0.8175 ***
+
+Epoch 77/120
+============================================================
+  Batch 500/3010, Loss: 0.4772, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6950, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2797, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.8097, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.7209, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2792, DRW: True, CutMix: True
+Train Loss: 0.4551
+Val Loss: 0.2538, Val Macro F1: 0.8110
+Current learning rate: 0.000030
+No improvement. Patience: 1/25
+
+Epoch 78/120
+============================================================
+  Batch 500/3010, Loss: 0.2638, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2895, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2959, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.7592, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2316, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2293, DRW: True, CutMix: True
+Train Loss: 0.4564
+Val Loss: 0.2552, Val Macro F1: 0.8136
+Current learning rate: 0.000029
+No improvement. Patience: 2/25
+
+Epoch 79/120
+============================================================
+  Batch 500/3010, Loss: 0.2602, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2926, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6991, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6541, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2673, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2511, DRW: True, CutMix: True
+Train Loss: 0.4516
+Val Loss: 0.2543, Val Macro F1: 0.8169
+Current learning rate: 0.000028
+No improvement. Patience: 3/25
+
+Epoch 80/120
+============================================================
+  Batch 500/3010, Loss: 0.2590, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.4481, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3050, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2977, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.5894, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2357, DRW: True, CutMix: True
+Train Loss: 0.4473
+Val Loss: 0.2522, Val Macro F1: 0.8165
+Current learning rate: 0.000027
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_80.pt
+No improvement. Patience: 4/25
+
+Epoch 81/120
+============================================================
+  Batch 500/3010, Loss: 0.1898, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7012, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.7627, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2433, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.4778, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2520, DRW: True, CutMix: True
+Train Loss: 0.4525
+Val Loss: 0.2548, Val Macro F1: 0.8137
+Current learning rate: 0.000026
+No improvement. Patience: 5/25
+
+Epoch 82/120
+============================================================
+  Batch 500/3010, Loss: 0.7259, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.3579, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.7374, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.8347, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.7773, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3125, DRW: True, CutMix: True
+Train Loss: 0.4551
+Val Loss: 0.2554, Val Macro F1: 0.8150
+Current learning rate: 0.000025
+No improvement. Patience: 6/25
+
+Epoch 83/120
+============================================================
+  Batch 500/3010, Loss: 0.7237, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2438, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2327, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2338, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2351, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3030, DRW: True, CutMix: True
+Train Loss: 0.4484
+Val Loss: 0.2501, Val Macro F1: 0.8156
+Current learning rate: 0.000024
+No improvement. Patience: 7/25
+
+Epoch 84/120
+============================================================
+  Batch 500/3010, Loss: 0.2382, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2892, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6247, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3349, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2417, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3362, DRW: True, CutMix: True
+Train Loss: 0.4390
+Val Loss: 0.2491, Val Macro F1: 0.8182
+Current learning rate: 0.000022
+*** New best model saved! Val F1: 0.8182 ***
+
+Epoch 85/120
+============================================================
+  Batch 500/3010, Loss: 0.7667, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6982, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6591, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6912, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3186, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2091, DRW: True, CutMix: True
+Train Loss: 0.4454
+Val Loss: 0.2529, Val Macro F1: 0.8184
+Current learning rate: 0.000021
+*** New best model saved! Val F1: 0.8184 ***
+
+Epoch 86/120
+============================================================
+  Batch 500/3010, Loss: 0.3047, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.5782, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2663, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2782, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.7273, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2283, DRW: True, CutMix: True
+Train Loss: 0.4560
+Val Loss: 0.2513, Val Macro F1: 0.8181
+Current learning rate: 0.000020
+No improvement. Patience: 1/25
+
+Epoch 87/120
+============================================================
+  Batch 500/3010, Loss: 0.6473, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7648, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2312, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.5390, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.7762, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.5447, DRW: True, CutMix: True
+Train Loss: 0.4438
+Val Loss: 0.2514, Val Macro F1: 0.8227
+Current learning rate: 0.000019
+*** New best model saved! Val F1: 0.8227 ***
+
+Epoch 88/120
+============================================================
+  Batch 500/3010, Loss: 0.2488, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6539, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6140, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2576, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.8023, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.7356, DRW: True, CutMix: True
+Train Loss: 0.4469
+Val Loss: 0.2494, Val Macro F1: 0.8163
+Current learning rate: 0.000018
+No improvement. Patience: 1/25
+
+Epoch 89/120
+============================================================
+  Batch 500/3010, Loss: 0.7606, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2306, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3420, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.5789, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3566, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2561, DRW: True, CutMix: True
+Train Loss: 0.4475
+Val Loss: 0.2488, Val Macro F1: 0.8192
+Current learning rate: 0.000017
+No improvement. Patience: 2/25
+
+Epoch 90/120
+============================================================
+  Batch 500/3010, Loss: 0.5860, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2713, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.5947, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2830, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2628, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2635, DRW: True, CutMix: True
+Train Loss: 0.4476
+Val Loss: 0.2481, Val Macro F1: 0.8232
+Current learning rate: 0.000016
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_90.pt
+*** New best model saved! Val F1: 0.8232 ***
+
+Epoch 91/120
+============================================================
+  Batch 500/3010, Loss: 0.6049, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2261, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.1967, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2310, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2954, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2852, DRW: True, CutMix: True
+Train Loss: 0.4473
+Val Loss: 0.2486, Val Macro F1: 0.8213
+Current learning rate: 0.000015
+No improvement. Patience: 1/25
+
+Epoch 92/120
+============================================================
+  Batch 500/3010, Loss: 0.2641, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6522, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3550, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.8096, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2170, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2516, DRW: True, CutMix: True
+Train Loss: 0.4449
+Val Loss: 0.2484, Val Macro F1: 0.8218
+Current learning rate: 0.000015
+No improvement. Patience: 2/25
+
+Epoch 93/120
+============================================================
+  Batch 500/3010, Loss: 0.7004, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6409, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.7058, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2366, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.6269, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2325, DRW: True, CutMix: True
+Train Loss: 0.4396
+Val Loss: 0.2464, Val Macro F1: 0.8244
+Current learning rate: 0.000014
+*** New best model saved! Val F1: 0.8244 ***
+
+Epoch 94/120
+============================================================
+  Batch 500/3010, Loss: 0.7582, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.1770, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2784, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2299, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2162, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.6765, DRW: True, CutMix: True
+Train Loss: 0.4320
+Val Loss: 0.2476, Val Macro F1: 0.8154
+Current learning rate: 0.000013
+No improvement. Patience: 1/25
+
+Epoch 95/120
+============================================================
+  Batch 500/3010, Loss: 0.7125, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2486, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6443, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2405, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2808, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.7327, DRW: True, CutMix: True
+Train Loss: 0.4391
+Val Loss: 0.2479, Val Macro F1: 0.8208
+Current learning rate: 0.000012
+No improvement. Patience: 2/25
+
+Epoch 96/120
+============================================================
+  Batch 500/3010, Loss: 0.4250, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2804, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.5587, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.5710, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2474, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2723, DRW: True, CutMix: True
+Train Loss: 0.4435
+Val Loss: 0.2487, Val Macro F1: 0.8201
+Current learning rate: 0.000011
+No improvement. Patience: 3/25
+
+Epoch 97/120
+============================================================
+  Batch 500/3010, Loss: 0.2251, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7545, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6257, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6630, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3007, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2201, DRW: True, CutMix: True
+Train Loss: 0.4479
+Val Loss: 0.2506, Val Macro F1: 0.8179
+Current learning rate: 0.000010
+No improvement. Patience: 4/25
+
+Epoch 98/120
+============================================================
+  Batch 500/3010, Loss: 0.8198, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.8177, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6855, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2632, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2334, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2343, DRW: True, CutMix: True
+Train Loss: 0.4407
+Val Loss: 0.2484, Val Macro F1: 0.8194
+Current learning rate: 0.000010
+No improvement. Patience: 5/25
+
+Epoch 99/120
+============================================================
+  Batch 500/3010, Loss: 0.2433, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7357, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2441, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6521, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.5929, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.6992, DRW: True, CutMix: True
+Train Loss: 0.4476
+Val Loss: 0.2472, Val Macro F1: 0.8237
+Current learning rate: 0.000009
+No improvement. Patience: 6/25
+
+Epoch 100/120
+============================================================
+  Batch 500/3010, Loss: 0.2343, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2714, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2497, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6204, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.8091, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.8403, DRW: True, CutMix: True
+Train Loss: 0.4388
+Val Loss: 0.2466, Val Macro F1: 0.8225
+Current learning rate: 0.000008
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_100.pt
+No improvement. Patience: 7/25
+
+Epoch 101/120
+============================================================
+  Batch 500/3010, Loss: 0.2188, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2601, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2531, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6841, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2074, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3003, DRW: True, CutMix: True
+Train Loss: 0.4408
+Val Loss: 0.2477, Val Macro F1: 0.8199
+Current learning rate: 0.000008
+No improvement. Patience: 8/25
+
+Epoch 102/120
+============================================================
+  Batch 500/3010, Loss: 0.2530, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.5307, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2885, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6545, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2386, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2291, DRW: True, CutMix: True
+Train Loss: 0.4375
+Val Loss: 0.2469, Val Macro F1: 0.8242
+Current learning rate: 0.000007
+No improvement. Patience: 9/25
+
+Epoch 103/120
+============================================================
+  Batch 500/3010, Loss: 0.5957, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2430, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3880, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3633, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2670, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2388, DRW: True, CutMix: True
+Train Loss: 0.4436
+Val Loss: 0.2460, Val Macro F1: 0.8201
+Current learning rate: 0.000006
+No improvement. Patience: 10/25
+
+Epoch 104/120
+============================================================
+  Batch 500/3010, Loss: 0.6964, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2315, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.3697, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2201, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2404, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.5493, DRW: True, CutMix: True
+Train Loss: 0.4402
+Val Loss: 0.2486, Val Macro F1: 0.8203
+Current learning rate: 0.000006
+No improvement. Patience: 11/25
+
+Epoch 105/120
+============================================================
+  Batch 500/3010, Loss: 0.2635, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2763, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6267, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.5759, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.8148, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.7743, DRW: True, CutMix: True
+Train Loss: 0.4469
+Val Loss: 0.2496, Val Macro F1: 0.8180
+Current learning rate: 0.000005
+No improvement. Patience: 12/25
+
+Epoch 106/120
+============================================================
+  Batch 500/3010, Loss: 0.2394, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6755, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6455, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6709, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2324, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.8213, DRW: True, CutMix: True
+Train Loss: 0.4391
+Val Loss: 0.2486, Val Macro F1: 0.8169
+Current learning rate: 0.000005
+No improvement. Patience: 13/25
+
+Epoch 107/120
+============================================================
+  Batch 500/3010, Loss: 0.2468, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6555, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2434, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2407, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.1989, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2783, DRW: True, CutMix: True
+Train Loss: 0.4371
+Val Loss: 0.2466, Val Macro F1: 0.8195
+Current learning rate: 0.000004
+No improvement. Patience: 14/25
+
+Epoch 108/120
+============================================================
+  Batch 500/3010, Loss: 0.5727, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2129, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6467, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.8248, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.4924, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2497, DRW: True, CutMix: True
+Train Loss: 0.4405
+Val Loss: 0.2457, Val Macro F1: 0.8234
+Current learning rate: 0.000004
+No improvement. Patience: 15/25
+
+Epoch 109/120
+============================================================
+  Batch 500/3010, Loss: 0.7125, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.5528, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2865, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6872, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.6686, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.6381, DRW: True, CutMix: True
+Train Loss: 0.4417
+Val Loss: 0.2466, Val Macro F1: 0.8229
+Current learning rate: 0.000003
+No improvement. Patience: 16/25
+
+Epoch 110/120
+============================================================
+  Batch 500/3010, Loss: 0.6334, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.4431, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2278, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2386, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.6871, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.7619, DRW: True, CutMix: True
+Train Loss: 0.4409
+Val Loss: 0.2470, Val Macro F1: 0.8216
+Current learning rate: 0.000003
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_110.pt
+No improvement. Patience: 17/25
+
+Epoch 111/120
+============================================================
+  Batch 500/3010, Loss: 0.7317, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.5751, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6003, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6015, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2396, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2449, DRW: True, CutMix: True
+Train Loss: 0.4339
+Val Loss: 0.2445, Val Macro F1: 0.8212
+Current learning rate: 0.000003
+No improvement. Patience: 18/25
+
+Epoch 112/120
+============================================================
+  Batch 500/3010, Loss: 0.2282, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7174, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6468, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.7278, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.3120, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2804, DRW: True, CutMix: True
+Train Loss: 0.4420
+Val Loss: 0.2433, Val Macro F1: 0.8233
+Current learning rate: 0.000002
+No improvement. Patience: 19/25
+
+Epoch 113/120
+============================================================
+  Batch 500/3010, Loss: 0.2328, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6854, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.1923, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.4705, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2293, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2321, DRW: True, CutMix: True
+Train Loss: 0.4395
+Val Loss: 0.2453, Val Macro F1: 0.8213
+Current learning rate: 0.000002
+No improvement. Patience: 20/25
+
+Epoch 114/120
+============================================================
+  Batch 500/3010, Loss: 0.2452, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6986, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2019, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.5779, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2969, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2154, DRW: True, CutMix: True
+Train Loss: 0.4404
+Val Loss: 0.2448, Val Macro F1: 0.8265
+Current learning rate: 0.000002
+*** New best model saved! Val F1: 0.8265 ***
+
+Epoch 115/120
+============================================================
+  Batch 500/3010, Loss: 0.2797, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2307, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6464, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.3387, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2402, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.4816, DRW: True, CutMix: True
+Train Loss: 0.4389
+Val Loss: 0.2457, Val Macro F1: 0.8218
+Current learning rate: 0.000002
+No improvement. Patience: 1/25
+
+Epoch 116/120
+============================================================
+  Batch 500/3010, Loss: 0.2793, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.3768, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2849, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2312, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2770, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2435, DRW: True, CutMix: True
+Train Loss: 0.4311
+Val Loss: 0.2454, Val Macro F1: 0.8246
+Current learning rate: 0.000001
+No improvement. Patience: 2/25
+
+Epoch 117/120
+============================================================
+  Batch 500/3010, Loss: 0.6135, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.2395, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.1966, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.4192, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2836, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.7966, DRW: True, CutMix: True
+Train Loss: 0.4382
+Val Loss: 0.2459, Val Macro F1: 0.8239
+Current learning rate: 0.000001
+No improvement. Patience: 3/25
+
+Epoch 118/120
+============================================================
+  Batch 500/3010, Loss: 0.6869, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.6850, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.7931, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.6768, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.2394, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2317, DRW: True, CutMix: True
+Train Loss: 0.4427
+Val Loss: 0.2464, Val Macro F1: 0.8238
+Current learning rate: 0.000001
+No improvement. Patience: 4/25
+
+Epoch 119/120
+============================================================
+  Batch 500/3010, Loss: 0.6837, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7286, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.2375, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.5837, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.8251, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.2556, DRW: True, CutMix: True
+Train Loss: 0.4378
+Val Loss: 0.2449, Val Macro F1: 0.8255
+Current learning rate: 0.000001
+No improvement. Patience: 5/25
+
+Epoch 120/120
+============================================================
+  Batch 500/3010, Loss: 0.4755, DRW: True, CutMix: True
+  Batch 1000/3010, Loss: 0.7385, DRW: True, CutMix: True
+  Batch 1500/3010, Loss: 0.6546, DRW: True, CutMix: True
+  Batch 2000/3010, Loss: 0.2149, DRW: True, CutMix: True
+  Batch 2500/3010, Loss: 0.5676, DRW: True, CutMix: True
+  Batch 3000/3010, Loss: 0.3221, DRW: True, CutMix: True
+Train Loss: 0.4394
+Val Loss: 0.2455, Val Macro F1: 0.8220
+Current learning rate: 0.000001
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_120.pt
+No improvement. Patience: 6/25
+
+============================================================
+Training completed!
+Best validation F1: 0.8265
+============================================================
+
+============================================================
+Evaluating on test set...
+============================================================
+Test Loss: 0.2537
+Test Macro F1: 0.8400
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+speech:non-tonal       0.93      0.99      0.96     70117
+    speech:tonal       0.91      0.63      0.74     13495
+     music:vocal       0.80      0.86      0.83     12165
+ music:non-vocal       0.70      0.60      0.65      6018
+       env:urban       0.92      0.97      0.94       769
+    env:wildlife       0.92      0.92      0.92      3411
+
+        accuracy                           0.90    105975
+       macro avg       0.86      0.83      0.84    105975
+    weighted avg       0.90      0.90      0.90    105975
+
+
+============================================================
+Done!
+============================================================

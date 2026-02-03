@@ -15,5 +15,5 @@ module purge
 
 # singularity exec $(for sqf in /scratch/ac8888/vast/sqfs/*.sqf; do echo "--overlay ${sqf}"; done) /scratch/work/public/singularity/ubuntu-24.04.3.sif /bin/bash
 
-STM_singularity/run-MusicSpeech-STMhpc_mamba_torch.bash python3 STM_ViM.py 0
+STM_singularity/run-MusicSpeech-STMhpc_mamba_torch.bash python3 STM_ViM.py 0 --resume model/STM/ViM_corpora_categories/standard/ckpt/2026-02-01_00-21
 # Run this: sbatch HPC_sbatch/STM_conformer/slurm_STM_ViM.s
