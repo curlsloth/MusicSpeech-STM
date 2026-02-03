@@ -164,3 +164,42 @@ Epoch 10/50 - Train Loss: 0.2248, Val Loss: 0.2625, Val F1: 0.8145, Best F1: 0.8
 Epoch 15/50 - Train Loss: 0.1937, Val Loss: 0.2536, Val F1: 0.8100, Best F1: 0.8145
 ✓ Saved checkpoint at epoch 20
 Epoch 20/50 - Train Loss: 0.1531, Val Loss: 0.3176, Val F1: 0.8103, Best F1: 0.8176
+✓ Saved checkpoint at epoch 25
+Epoch 25/50 - Train Loss: 0.1067, Val Loss: 0.4275, Val F1: 0.8133, Best F1: 0.8176
+✓ Saved checkpoint at epoch 30
+Epoch 30/50 - Train Loss: 0.0689, Val Loss: 0.5935, Val F1: 0.8159, Best F1: 0.8176
+✓ Saved checkpoint at epoch 35
+Epoch 35/50 - Train Loss: 0.0411, Val Loss: 0.8522, Val F1: 0.8131, Best F1: 0.8176
+✓ Saved checkpoint at epoch 40
+Epoch 40/50 - Train Loss: 0.0234, Val Loss: 1.1119, Val F1: 0.8085, Best F1: 0.8176
+✓ Saved checkpoint at epoch 45
+Epoch 45/50 - Train Loss: 0.0137, Val Loss: 1.2668, Val F1: 0.8110, Best F1: 0.8176
+✓ Saved checkpoint at epoch 50
+Epoch 50/50 - Train Loss: 0.0107, Val Loss: 1.3067, Val F1: 0.8102, Best F1: 0.8176
+
+Training complete! Best Val F1: 0.8176
+
+============================================================
+Evaluating on test set...
+============================================================
+Test Loss: 0.3114
+Test Macro F1: 0.8380
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+speech:non-tonal       0.94      0.94      0.94     70117
+    speech:tonal       0.69      0.68      0.68     13495
+     music:vocal       0.87      0.77      0.82     12165
+ music:non-vocal       0.64      0.76      0.70      6018
+       env:urban       0.94      0.97      0.95       769
+    env:wildlife       0.91      0.97      0.94      3411
+
+        accuracy                           0.88    105975
+       macro avg       0.83      0.85      0.84    105975
+    weighted avg       0.88      0.88      0.88    105975
+
+
+============================================================
+Done!
+============================================================

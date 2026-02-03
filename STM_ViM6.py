@@ -663,10 +663,10 @@ if __name__ == "__main__":
     # Set parameters based on mode
     if mode == 0:
         ds_nontonal_speech = False
-        directory = 'model/STM/ViM5_corpora_categories/standard'
+        directory = 'model/STM/ViM6_corpora_categories/standard'
     elif mode == 1:
         ds_nontonal_speech = True
-        directory = 'model/STM/ViM5_corpora_categories/downsample'
+        directory = 'model/STM/ViM6_corpora_categories/downsample'
     else:
         print("Invalid mode. Use 0 or 1.")
         sys.exit(1)

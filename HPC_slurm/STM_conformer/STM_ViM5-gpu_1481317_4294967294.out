@@ -165,3 +165,31 @@ Epoch 30/50 - Train Loss: 0.1637, Val Loss: 0.2842, Val F1: 0.7971, Best F1: 0.8
 Epoch 35/50 - Train Loss: 0.1406, Val Loss: 0.3278, Val F1: 0.8063, Best F1: 0.8144
 Epoch 40/50 - Train Loss: 0.1218, Val Loss: 0.3583, Val F1: 0.8075, Best F1: 0.8144
 Epoch 45/50 - Train Loss: 0.1109, Val Loss: 0.3880, Val F1: 0.8079, Best F1: 0.8144
+Epoch 50/50 - Train Loss: 0.1071, Val Loss: 0.4000, Val F1: 0.8054, Best F1: 0.8144
+
+Training complete! Best Val F1: 0.8144
+
+============================================================
+Evaluating on test set...
+============================================================
+Test Loss: 0.2736
+Test Macro F1: 0.8374
+
+Classification Report:
+                  precision    recall  f1-score   support
+
+speech:non-tonal       0.95      0.92      0.94     70117
+    speech:tonal       0.67      0.75      0.71     13495
+     music:vocal       0.85      0.81      0.83     12165
+ music:non-vocal       0.67      0.71      0.69      6018
+       env:urban       0.90      0.99      0.95       769
+    env:wildlife       0.88      0.96      0.92      3411
+
+        accuracy                           0.88    105975
+       macro avg       0.82      0.86      0.84    105975
+    weighted avg       0.88      0.88      0.88    105975
+
+
+============================================================
+Done!
+============================================================
