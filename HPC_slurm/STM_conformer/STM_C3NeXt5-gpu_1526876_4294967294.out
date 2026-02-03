@@ -1,0 +1,540 @@
+INFO:    User not listed in /etc/subuid, trying root-mapped namespace
+INFO:    Using fakeroot command combined with root-mapped namespace
+Using device: cuda
+GPU: NVIDIA L40S
+GPU Memory: 47.67 GB
+Checkpoint directory: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58
+
+============================================================
+Loading and preparing data...
+============================================================
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-hausa_STMall.npy, shape: (29002, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-lingala_STMall.npy, shape: (11219, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-yoruba_STMall.npy, shape: (6629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Buckeye_STMall.npy, shape: (255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/EUROM_STMall.npy, shape: (6623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_speech_STMall.npy, shape: (785, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/LibriSpeech_STMall.npy, shape: (27144, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-AR_STMall.npy, shape: (2505, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-ES_STMall.npy, shape: (2507, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-FR_STMall.npy, shape: (2498, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-TR_STMall.npy, shape: (2512, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ab_STMall.npy, shape: (7558, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ar_STMall.npy, shape: (8080, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ba_STMall.npy, shape: (7964, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-be_STMall.npy, shape: (8595, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bg_STMall.npy, shape: (7130, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bn_STMall.npy, shape: (8149, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-br_STMall.npy, shape: (1454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ca_STMall.npy, shape: (8237, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ckb_STMall.npy, shape: (7490, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cnh_STMall.npy, shape: (656, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cs_STMall.npy, shape: (8622, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cv_STMall.npy, shape: (8755, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cy_STMall.npy, shape: (7640, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-da_STMall.npy, shape: (3878, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-de_STMall.npy, shape: (8979, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-dv_STMall.npy, shape: (9113, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-el_STMall.npy, shape: (6422, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-en_STMall.npy, shape: (8607, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eo_STMall.npy, shape: (9327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-es_STMall.npy, shape: (8742, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-et_STMall.npy, shape: (9653, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eu_STMall.npy, shape: (7983, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fa_STMall.npy, shape: (8629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fi_STMall.npy, shape: (3982, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fr_STMall.npy, shape: (8912, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fy-NL_STMall.npy, shape: (6694, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ga-IE_STMall.npy, shape: (1323, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gl_STMall.npy, shape: (8623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gn_STMall.npy, shape: (1014, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hi_STMall.npy, shape: (5438, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hu_STMall.npy, shape: (8319, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hy-AM_STMall.npy, shape: (6980, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-id_STMall.npy, shape: (8468, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ig_STMall.npy, shape: (9, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-it_STMall.npy, shape: (9083, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ja_STMall.npy, shape: (8606, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ka_STMall.npy, shape: (9409, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kab_STMall.npy, shape: (7172, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kk_STMall.npy, shape: (867, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kmr_STMall.npy, shape: (6603, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ky_STMall.npy, shape: (7998, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lg_STMall.npy, shape: (8169, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lt_STMall.npy, shape: (9073, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ltg_STMall.npy, shape: (2299, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lv_STMall.npy, shape: (7666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mhr_STMall.npy, shape: (8336, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ml_STMall.npy, shape: (813, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mn_STMall.npy, shape: (5968, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mt_STMall.npy, shape: (3632, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nan-tw_STMall.npy, shape: (181, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nl_STMall.npy, shape: (8834, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-oc_STMall.npy, shape: (681, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-or_STMall.npy, shape: (1941, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pl_STMall.npy, shape: (8817, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pt_STMall.npy, shape: (8413, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ro_STMall.npy, shape: (6666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ru_STMall.npy, shape: (9260, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-rw_STMall.npy, shape: (9148, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sr_STMall.npy, shape: (391, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sv-SE_STMall.npy, shape: (8288, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sw_STMall.npy, shape: (9192, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ta_STMall.npy, shape: (9474, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-th_STMall.npy, shape: (8044, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tr_STMall.npy, shape: (7953, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tt_STMall.npy, shape: (7454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ug_STMall.npy, shape: (7899, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uk_STMall.npy, shape: (8819, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ur_STMall.npy, shape: (8970, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uz_STMall.npy, shape: (7911, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-vi_STMall.npy, shape: (1859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yo_STMall.npy, shape: (2511, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yue_STMall.npy, shape: (6156, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-CN_STMall.npy, shape: (8715, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-TW_STMall.npy, shape: (7286, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SpeechClarity_STMall.npy, shape: (555, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TAT-Vol2_STMall.npy, shape: (793, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TIMIT_STMall.npy, shape: (479, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TTS_Javanese_STMall.npy, shape: (3068, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/primewords_chinese_STMall.npy, shape: (47166, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/room_reader_STMall.npy, shape: (146, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/thchs30_STMall.npy, shape: (13327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/zeroth_korean_STMall.npy, shape: (22255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Albouy2020Science_STMall.npy, shape: (123, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/GarlandEncyclopedia_STMall.npy, shape: (296, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_song_STMall.npy, shape: (803, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/IRMAS_STMall.npy, shape: (2838, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MTG-Jamendo_STMall.npy, shape: (55699, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MagnaTagATune_STMall.npy, shape: (25859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/NHS2_STMall.npy, shape: (1007, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/fma_large_STMall.npy, shape: (106257, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/ismir04_genre_STMall.npy, shape: (2185, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy, shape: (34565, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SONYC_STMall.npy, shape: (10798, 2420)
+
+Dataset Statistics:
+Total samples: 978378
+Train samples: 770393
+Val samples: 102010
+Test samples: 105975
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
+
+Class Distribution (Training):
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
+
+PyTorch Dataset Shapes:
+Train: torch.Size([770393, 1, 20, 121])
+Val: torch.Size([102010, 1, 20, 121])
+Test: torch.Size([105975, 1, 20, 121])
+
+DataLoaders created with batch_size=256
+
+============================================================
+Creating C3NeXt5 (SE + Advanced Regularization)...
+============================================================
+Total parameters: 11,203,686
+Trainable parameters: 11,203,686
+Architecture: C3NeXt5 - SE + DropBlock + CutMix
+Blocks: 18 ConvNeXt blocks [3, 9, 6] + 18 SE modules
+Channels: [96, 192, 384]
+DropBlock: prob=0.1, block_size=3
+
+============================================================
+Starting Training...
+============================================================
+Total epochs: 120
+Starting from epoch 1
+Architecture: C3NeXt5 (SE + DropBlock + CutMix)
+Regularization: DropBlock, Stochastic Depth, CutMix
+
+Epoch 1/120
+============================================================
+  Batch 500/3010, Loss: 6.0207, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.7335, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 6.2510, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 6.1629, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 6.3610, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 5.9440, DRW: False, CutMix: True
+Train Loss: 6.0787
+Val Loss: 1.6672, Val Macro F1: 0.1329
+Current learning rate: 0.000100
+*** New best model saved! Val F1: 0.1329 ***
+
+Epoch 2/120
+============================================================
+  Batch 500/3010, Loss: 5.0338, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.3122, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.4077, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.5975, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.8282, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.8038, DRW: False, CutMix: True
+Train Loss: 5.1865
+Val Loss: 1.6158, Val Macro F1: 0.2727
+Current learning rate: 0.000100
+*** New best model saved! Val F1: 0.2727 ***
+
+Epoch 3/120
+============================================================
+  Batch 500/3010, Loss: 5.3341, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.2901, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.0558, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.8646, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.7181, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.4887, DRW: False, CutMix: True
+Train Loss: 4.7680
+Val Loss: 1.6079, Val Macro F1: 0.2719
+Current learning rate: 0.000100
+No improvement. Patience: 1/25
+
+Epoch 4/120
+============================================================
+  Batch 500/3010, Loss: 5.2710, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 4.7371, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.2793, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.6416, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.9939, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.8434, DRW: False, CutMix: True
+Train Loss: 4.7263
+Val Loss: 1.6085, Val Macro F1: 0.2751
+Current learning rate: 0.000100
+*** New best model saved! Val F1: 0.2751 ***
+
+Epoch 5/120
+============================================================
+  Batch 500/3010, Loss: 5.2529, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.8772, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.1350, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.4879, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.0678, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 5.8138, DRW: False, CutMix: True
+Train Loss: 4.6465
+Val Loss: 1.6040, Val Macro F1: 0.3230
+Current learning rate: 0.000100
+*** New best model saved! Val F1: 0.3230 ***
+
+Epoch 6/120
+============================================================
+  Batch 500/3010, Loss: 4.6527, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 4.2784, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 3.9398, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.6672, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.9718, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.3508, DRW: False, CutMix: True
+Train Loss: 4.4592
+Val Loss: 1.5801, Val Macro F1: 0.4095
+Current learning rate: 0.000100
+*** New best model saved! Val F1: 0.4095 ***
+
+Epoch 7/120
+============================================================
+  Batch 500/3010, Loss: 4.4290, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 4.1845, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 3.9484, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.9203, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.3106, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 5.5591, DRW: False, CutMix: True
+Train Loss: 4.3221
+Val Loss: 1.5745, Val Macro F1: 0.4184
+Current learning rate: 0.000099
+*** New best model saved! Val F1: 0.4184 ***
+
+Epoch 8/120
+============================================================
+  Batch 500/3010, Loss: 3.2665, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.2878, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.0318, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.7984, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 5.1195, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.3631, DRW: False, CutMix: True
+Train Loss: 4.2756
+Val Loss: 1.5640, Val Macro F1: 0.5440
+Current learning rate: 0.000099
+*** New best model saved! Val F1: 0.5440 ***
+
+Epoch 9/120
+============================================================
+  Batch 500/3010, Loss: 2.9330, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.6357, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.6905, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.9453, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.4395, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 6.6031, DRW: False, CutMix: True
+Train Loss: 4.1182
+Val Loss: 1.5486, Val Macro F1: 0.6390
+Current learning rate: 0.000099
+*** New best model saved! Val F1: 0.6390 ***
+
+Epoch 10/120
+============================================================
+  Batch 500/3010, Loss: 2.9173, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.2446, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 3.0659, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.3120, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.5966, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.8841, DRW: False, CutMix: True
+Train Loss: 4.0732
+Val Loss: 1.5887, Val Macro F1: 0.4576
+Current learning rate: 0.000099
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_10.pt
+No improvement. Patience: 1/25
+
+Epoch 11/120
+============================================================
+  Batch 500/3010, Loss: 3.9058, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.1958, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 3.1580, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.8259, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.6685, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 5.1208, DRW: False, CutMix: True
+Train Loss: 3.9988
+Val Loss: 1.5543, Val Macro F1: 0.6665
+Current learning rate: 0.000098
+*** New best model saved! Val F1: 0.6665 ***
+
+Epoch 12/120
+============================================================
+  Batch 500/3010, Loss: 5.3030, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.9331, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.0273, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.8605, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 5.4465, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.1724, DRW: False, CutMix: True
+Train Loss: 3.9182
+Val Loss: 1.5369, Val Macro F1: 0.6826
+Current learning rate: 0.000098
+*** New best model saved! Val F1: 0.6826 ***
+
+Epoch 13/120
+============================================================
+  Batch 500/3010, Loss: 2.8319, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.1082, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.8907, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.6622, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.0994, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.3515, DRW: False, CutMix: True
+Train Loss: 3.8783
+Val Loss: 1.5565, Val Macro F1: 0.7133
+Current learning rate: 0.000098
+*** New best model saved! Val F1: 0.7133 ***
+
+Epoch 14/120
+============================================================
+  Batch 500/3010, Loss: 2.8499, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.3829, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.7421, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.7401, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.1663, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.1088, DRW: False, CutMix: True
+Train Loss: 3.8631
+Val Loss: 1.5435, Val Macro F1: 0.7237
+Current learning rate: 0.000097
+*** New best model saved! Val F1: 0.7237 ***
+
+Epoch 15/120
+============================================================
+  Batch 500/3010, Loss: 2.7406, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.0781, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.8147, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.3500, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 5.4004, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.8951, DRW: False, CutMix: True
+Train Loss: 3.7950
+Val Loss: 1.5552, Val Macro F1: 0.7075
+Current learning rate: 0.000097
+No improvement. Patience: 1/25
+
+Epoch 16/120
+============================================================
+  Batch 500/3010, Loss: 5.4328, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.8800, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.1871, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.8697, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.7188, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.1154, DRW: False, CutMix: True
+Train Loss: 3.7830
+Val Loss: 1.5419, Val Macro F1: 0.7013
+Current learning rate: 0.000096
+No improvement. Patience: 2/25
+
+Epoch 17/120
+============================================================
+  Batch 500/3010, Loss: 2.7898, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.1974, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 3.1658, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.9104, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.6417, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.0570, DRW: False, CutMix: True
+Train Loss: 3.7526
+Val Loss: 1.5349, Val Macro F1: 0.7338
+Current learning rate: 0.000096
+*** New best model saved! Val F1: 0.7338 ***
+
+Epoch 18/120
+============================================================
+  Batch 500/3010, Loss: 5.1943, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.8640, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 3.8845, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.8004, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.4618, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.0229, DRW: False, CutMix: True
+Train Loss: 3.7372
+Val Loss: 1.5582, Val Macro F1: 0.7421
+Current learning rate: 0.000095
+*** New best model saved! Val F1: 0.7421 ***
+
+Epoch 19/120
+============================================================
+  Batch 500/3010, Loss: 3.0213, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.3162, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.9665, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.3003, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.7036, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.8809, DRW: False, CutMix: True
+Train Loss: 3.7159
+Val Loss: 1.5501, Val Macro F1: 0.7348
+Current learning rate: 0.000095
+No improvement. Patience: 1/25
+
+Epoch 20/120
+============================================================
+  Batch 500/3010, Loss: 2.9349, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.0754, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.3989, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.4430, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.1626, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.2184, DRW: False, CutMix: True
+Train Loss: 3.7128
+Val Loss: 1.5517, Val Macro F1: 0.7305
+Current learning rate: 0.000094
+Checkpoint saved: model/STM/C3NeXt5_corpora_categories/standard/ckpt/2026-02-02_21-58/checkpoint_epoch_20.pt
+No improvement. Patience: 2/25
+
+Epoch 21/120
+============================================================
+  Batch 500/3010, Loss: 2.5306, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 4.7479, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.5552, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 3.3330, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.8277, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.7927, DRW: False, CutMix: True
+Train Loss: 3.8299
+Val Loss: 1.5411, Val Macro F1: 0.7506
+Current learning rate: 0.000093
+*** New best model saved! Val F1: 0.7506 ***
+
+Epoch 22/120
+============================================================
+  Batch 500/3010, Loss: 2.8666, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.0920, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.5406, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 4.8427, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 5.1838, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 5.0496, DRW: False, CutMix: True
+Train Loss: 3.6963
+Val Loss: 1.5372, Val Macro F1: 0.7398
+Current learning rate: 0.000093
+No improvement. Patience: 1/25
+
+Epoch 23/120
+============================================================
+  Batch 500/3010, Loss: 2.6191, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.8801, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.4768, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.4451, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.7994, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.2696, DRW: False, CutMix: True
+Train Loss: 3.6515
+Val Loss: 1.5353, Val Macro F1: 0.7492
+Current learning rate: 0.000092
+No improvement. Patience: 2/25
+
+Epoch 24/120
+============================================================
+  Batch 500/3010, Loss: 2.9031, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 4.3106, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.1787, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.6603, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.3171, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.0233, DRW: False, CutMix: True
+Train Loss: 3.6315
+Val Loss: 1.5377, Val Macro F1: 0.7446
+Current learning rate: 0.000091
+No improvement. Patience: 3/25
+
+Epoch 25/120
+============================================================
+  Batch 500/3010, Loss: 4.9570, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.3434, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.1447, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.7248, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 3.2210, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.3229, DRW: False, CutMix: True
+Train Loss: 3.6579
+Val Loss: 1.5302, Val Macro F1: 0.7388
+Current learning rate: 0.000091
+No improvement. Patience: 4/25
+
+Epoch 26/120
+============================================================
+  Batch 500/3010, Loss: 2.5338, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 2.0709, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 5.4601, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.0187, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 5.8680, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 5.6971, DRW: False, CutMix: True
+Train Loss: 3.5979
+Val Loss: 1.5383, Val Macro F1: 0.7588
+Current learning rate: 0.000090
+*** New best model saved! Val F1: 0.7588 ***
+
+Epoch 27/120
+============================================================
+  Batch 500/3010, Loss: 4.6347, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 4.7993, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.4162, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.6732, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 4.7453, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 3.3299, DRW: False, CutMix: True
+Train Loss: 3.6339
+Val Loss: 1.5389, Val Macro F1: 0.7412
+Current learning rate: 0.000089
+No improvement. Patience: 1/25
+
+Epoch 28/120
+============================================================
+  Batch 500/3010, Loss: 2.3399, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 5.4085, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 2.5237, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 2.6461, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 5.5146, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 2.6397, DRW: False, CutMix: True
+Train Loss: 3.5527
+Val Loss: 1.5282, Val Macro F1: 0.7588
+Current learning rate: 0.000088
+*** New best model saved! Val F1: 0.7588 ***
+
+Epoch 29/120
+============================================================
+  Batch 500/3010, Loss: 4.1232, DRW: False, CutMix: True
+  Batch 1000/3010, Loss: 3.0599, DRW: False, CutMix: True
+  Batch 1500/3010, Loss: 4.7182, DRW: False, CutMix: True
+  Batch 2000/3010, Loss: 5.1275, DRW: False, CutMix: True
+  Batch 2500/3010, Loss: 2.5312, DRW: False, CutMix: True
+  Batch 3000/3010, Loss: 4.3657, DRW: False, CutMix: True
+Train Loss: 3.5754
+Val Loss: 1.5524, Val Macro F1: 0.7551
+Current learning rate: 0.000087
+No improvement. Patience: 1/25
+
+Epoch 30/120
+============================================================
