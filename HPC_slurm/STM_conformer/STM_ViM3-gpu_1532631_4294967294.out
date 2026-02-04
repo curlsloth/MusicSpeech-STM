@@ -4,6 +4,7 @@ INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommen
 Using device: cuda
 GPU: NVIDIA L40S
 Memory: 47.67 GB
+Resume mode: Will attempt to load from model/STM/ViM3_corpora_categories/standard/ckpt/2026-02-01_12-33
 
 ============================================================
 Loading and preparing data...
@@ -149,23 +150,16 @@ Creating Vision Mamba model (Enhanced Memory Variant)...
 Total parameters: 6,405,798
 Trainable parameters: 6,405,798
 Enhanced SSM state (d_state=20 vs baseline 16) with similar parameter count
+Loading checkpoint from: model/STM/ViM3_corpora_categories/standard/ckpt/2026-02-01_12-33/latest_checkpoint.pt
+✓ Loaded optimizer state
+✓ Loaded scheduler state
+✓ Resumed from epoch 30, Best Val F1: 0.8138
 
 Starting training...
 Total epochs: 50
-Starting from epoch 1
+Starting from epoch 31
 Train batches: 12038
 Val batches: 1594
-Epoch 1/50 - Train Loss: 0.3985, Val Loss: 0.3118, Val F1: 0.7600, Best F1: 0.7600
-✓ Saved checkpoint at epoch 5
-Epoch 5/50 - Train Loss: 0.2527, Val Loss: 0.2599, Val F1: 0.8035, Best F1: 0.8035
-✓ Saved checkpoint at epoch 10
-Epoch 10/50 - Train Loss: 0.2128, Val Loss: 0.2628, Val F1: 0.8039, Best F1: 0.8201
-✓ Saved checkpoint at epoch 15
-Epoch 15/50 - Train Loss: 0.1646, Val Loss: 0.2877, Val F1: 0.8080, Best F1: 0.8239
-✓ Saved checkpoint at epoch 20
-Epoch 20/50 - Train Loss: 0.1033, Val Loss: 0.4141, Val F1: 0.8131, Best F1: 0.8239
-✓ Saved checkpoint at epoch 25
-Epoch 25/50 - Train Loss: 0.0620, Val Loss: 0.6534, Val F1: 0.8127, Best F1: 0.8239
-✓ Saved checkpoint at epoch 30
-Epoch 30/50 - Train Loss: 0.0317, Val Loss: 0.9085, Val F1: 0.8138, Best F1: 0.8239
-[2026-02-03T12:32:33.067] error: *** JOB 1481449 ON gl028 CANCELLED AT 2026-02-03T12:32:33 DUE TO TIME LIMIT ***
+✓ Saved checkpoint at epoch 35
+Epoch 35/50 - Train Loss: 0.0137, Val Loss: 1.3135, Val F1: 0.8116, Best F1: 0.8157
+[2026-02-03T22:04:26.415] error: *** JOB 1532631 ON gl028 CANCELLED AT 2026-02-03T22:04:26 DUE to SIGNAL Terminated ***

@@ -3152,3 +3152,97 @@ Current learning rate: 0.000002
 ============================================================
 Epoch 97/120
 ============================================================
+  Batch 0/11844, Loss: 0.8219, LDAM: 0.8733, Focal: 0.7020, DRW: True, Max_m: 0.7
+  Batch 500/11844, Loss: 0.4091, LDAM: 0.2910, Focal: 0.6847, DRW: True, Max_m: 0.7
+  Batch 1000/11844, Loss: 0.4107, LDAM: 0.2935, Focal: 0.6842, DRW: True, Max_m: 0.7
+  Batch 1500/11844, Loss: 0.4786, LDAM: 0.3893, Focal: 0.6870, DRW: True, Max_m: 0.7
+  Batch 2000/11844, Loss: 0.4103, LDAM: 0.2924, Focal: 0.6855, DRW: True, Max_m: 0.7
+  Batch 2500/11844, Loss: 0.4124, LDAM: 0.2941, Focal: 0.6885, DRW: True, Max_m: 0.7
+  Batch 3000/11844, Loss: 8.3772, LDAM: 11.5712, Focal: 0.9244, DRW: True, Max_m: 0.7
+  Batch 3500/11844, Loss: 0.4063, LDAM: 0.2868, Focal: 0.6849, DRW: True, Max_m: 0.7
+  Batch 4000/11844, Loss: 0.4076, LDAM: 0.2886, Focal: 0.6854, DRW: True, Max_m: 0.7
+  Batch 4500/11844, Loss: 4.3013, LDAM: 5.8148, Focal: 0.7698, DRW: True, Max_m: 0.7
+  Batch 5000/11844, Loss: 7.4225, LDAM: 10.2272, Focal: 0.8781, DRW: True, Max_m: 0.7
+  Batch 5500/11844, Loss: 0.4079, LDAM: 0.2894, Focal: 0.6844, DRW: True, Max_m: 0.7
+  Batch 6000/11844, Loss: 3.6877, LDAM: 4.9488, Focal: 0.7453, DRW: True, Max_m: 0.7
+  Batch 6500/11844, Loss: 0.4059, LDAM: 0.2869, Focal: 0.6836, DRW: True, Max_m: 0.7
+  Batch 7000/11844, Loss: 0.4194, LDAM: 0.3054, Focal: 0.6856, DRW: True, Max_m: 0.7
+  Batch 7500/11844, Loss: 0.4083, LDAM: 0.2894, Focal: 0.6859, DRW: True, Max_m: 0.7
+  Batch 8000/11844, Loss: 0.4104, LDAM: 0.2940, Focal: 0.6822, DRW: True, Max_m: 0.7
+  Batch 8500/11844, Loss: 8.8381, LDAM: 12.2031, Focal: 0.9864, DRW: True, Max_m: 0.7
+  Batch 9000/11844, Loss: 0.4741, LDAM: 0.3812, Focal: 0.6907, DRW: True, Max_m: 0.7
+  Batch 9500/11844, Loss: 0.4091, LDAM: 0.2908, Focal: 0.6851, DRW: True, Max_m: 0.7
+  Batch 10000/11844, Loss: 1.4041, LDAM: 1.7290, Focal: 0.6459, DRW: True, Max_m: 0.7
+  Batch 10500/11844, Loss: 0.4098, LDAM: 0.2917, Focal: 0.6854, DRW: True, Max_m: 0.7
+  Batch 11000/11844, Loss: 0.4093, LDAM: 0.2912, Focal: 0.6848, DRW: True, Max_m: 0.7
+  Batch 11500/11844, Loss: 0.4064, LDAM: 0.2863, Focal: 0.6866, DRW: True, Max_m: 0.7
+Train Loss: 1.6331 (LDAM: 2.0259, Focal: 0.7164)
+Val Loss: 1.4730, Val Macro F1: 0.8333
+Current learning rate: 0.000002
+
+============================================================
+Epoch 98/120
+============================================================
+  Batch 0/11844, Loss: 0.4083, LDAM: 0.2890, Focal: 0.6864, DRW: True, Max_m: 0.7
+  Batch 500/11844, Loss: 0.4772, LDAM: 0.3876, Focal: 0.6863, DRW: True, Max_m: 0.7
+  Batch 1000/11844, Loss: 0.4083, LDAM: 0.2905, Focal: 0.6830, DRW: True, Max_m: 0.7
+  Batch 1500/11844, Loss: 0.4104, LDAM: 0.2922, Focal: 0.6863, DRW: True, Max_m: 0.7
+  Batch 2000/11844, Loss: 2.4181, LDAM: 3.1566, Focal: 0.6949, DRW: True, Max_m: 0.7
+  Batch 2500/11844, Loss: 4.2580, LDAM: 5.7574, Focal: 0.7594, DRW: True, Max_m: 0.7
+  Batch 3000/11844, Loss: 1.9437, LDAM: 2.4895, Focal: 0.6702, DRW: True, Max_m: 0.7
+  Batch 3500/11844, Loss: 0.4080, LDAM: 0.2901, Focal: 0.6830, DRW: True, Max_m: 0.7
+  Batch 4000/11844, Loss: 0.4128, LDAM: 0.2961, Focal: 0.6852, DRW: True, Max_m: 0.7
+  Batch 4500/11844, Loss: 0.4110, LDAM: 0.2930, Focal: 0.6863, DRW: True, Max_m: 0.7
+  Batch 5000/11844, Loss: 0.4078, LDAM: 0.2871, Focal: 0.6895, DRW: True, Max_m: 0.7
+  Batch 5500/11844, Loss: 0.4155, LDAM: 0.2995, Focal: 0.6862, DRW: True, Max_m: 0.7
+  Batch 6000/11844, Loss: 1.4778, LDAM: 1.7930, Focal: 0.7423, DRW: True, Max_m: 0.7
+  Batch 6500/11844, Loss: 0.4113, LDAM: 0.2940, Focal: 0.6849, DRW: True, Max_m: 0.7
+  Batch 7000/11844, Loss: 0.4133, LDAM: 0.2965, Focal: 0.6859, DRW: True, Max_m: 0.7
+  Batch 7500/11844, Loss: 0.4123, LDAM: 0.2964, Focal: 0.6828, DRW: True, Max_m: 0.7
+  Batch 8000/11844, Loss: 0.4169, LDAM: 0.3013, Focal: 0.6867, DRW: True, Max_m: 0.7
+  Batch 8500/11844, Loss: 0.4095, LDAM: 0.2905, Focal: 0.6870, DRW: True, Max_m: 0.7
+  Batch 9000/11844, Loss: 0.4096, LDAM: 0.2909, Focal: 0.6864, DRW: True, Max_m: 0.7
+  Batch 9500/11844, Loss: 0.4724, LDAM: 0.3797, Focal: 0.6886, DRW: True, Max_m: 0.7
+  Batch 10000/11844, Loss: 0.7816, LDAM: 0.8523, Focal: 0.6164, DRW: True, Max_m: 0.7
+  Batch 10500/11844, Loss: 0.4083, LDAM: 0.2887, Focal: 0.6871, DRW: True, Max_m: 0.7
+  Batch 11000/11844, Loss: 0.4104, LDAM: 0.2916, Focal: 0.6876, DRW: True, Max_m: 0.7
+  Batch 11500/11844, Loss: 0.4067, LDAM: 0.2867, Focal: 0.6866, DRW: True, Max_m: 0.7
+Train Loss: 1.5791 (LDAM: 1.9497, Focal: 0.7145)
+Val Loss: 1.4546, Val Macro F1: 0.8384
+Current learning rate: 0.000002
+
+============================================================
+Epoch 99/120
+============================================================
+  Batch 0/11844, Loss: 0.4112, LDAM: 0.2938, Focal: 0.6852, DRW: True, Max_m: 0.7
+  Batch 500/11844, Loss: 0.4682, LDAM: 0.3731, Focal: 0.6902, DRW: True, Max_m: 0.7
+  Batch 1000/11844, Loss: 7.6195, LDAM: 10.5038, Focal: 0.8894, DRW: True, Max_m: 0.7
+  Batch 1500/11844, Loss: 0.4094, LDAM: 0.2919, Focal: 0.6835, DRW: True, Max_m: 0.7
+  Batch 2000/11844, Loss: 0.3788, LDAM: 0.2897, Focal: 0.5869, DRW: True, Max_m: 0.7
+  Batch 2500/11844, Loss: 0.4183, LDAM: 0.3051, Focal: 0.6826, DRW: True, Max_m: 0.7
+  Batch 3000/11844, Loss: 0.4134, LDAM: 0.2970, Focal: 0.6850, DRW: True, Max_m: 0.7
+  Batch 3500/11844, Loss: 0.4924, LDAM: 0.4083, Focal: 0.6886, DRW: True, Max_m: 0.7
+  Batch 4000/11844, Loss: 4.7808, LDAM: 6.4668, Focal: 0.8466, DRW: True, Max_m: 0.7
+  Batch 4500/11844, Loss: 1.3871, LDAM: 1.6650, Focal: 0.7387, DRW: True, Max_m: 0.7
+  Batch 5000/11844, Loss: 0.4067, LDAM: 0.2870, Focal: 0.6858, DRW: True, Max_m: 0.7
+  Batch 5500/11844, Loss: 0.8942, LDAM: 1.0166, Focal: 0.6087, DRW: True, Max_m: 0.7
+  Batch 6000/11844, Loss: 0.7118, LDAM: 0.7577, Focal: 0.6047, DRW: True, Max_m: 0.7
+  Batch 6500/11844, Loss: 4.7030, LDAM: 6.3573, Focal: 0.8431, DRW: True, Max_m: 0.7
+  Batch 7000/11844, Loss: 9.2479, LDAM: 12.7928, Focal: 0.9764, DRW: True, Max_m: 0.7
+  Batch 7500/11844, Loss: 0.4905, LDAM: 0.4034, Focal: 0.6938, DRW: True, Max_m: 0.7
+  Batch 8000/11844, Loss: 0.4120, LDAM: 0.2951, Focal: 0.6848, DRW: True, Max_m: 0.7
+  Batch 8500/11844, Loss: 0.4096, LDAM: 0.2910, Focal: 0.6862, DRW: True, Max_m: 0.7
+  Batch 9000/11844, Loss: 0.4075, LDAM: 0.2889, Focal: 0.6844, DRW: True, Max_m: 0.7
+  Batch 9500/11844, Loss: 0.4103, LDAM: 0.2942, Focal: 0.6814, DRW: True, Max_m: 0.7
+  Batch 10000/11844, Loss: 2.0330, LDAM: 2.5759, Focal: 0.7664, DRW: True, Max_m: 0.7
+  Batch 10500/11844, Loss: 0.3854, LDAM: 0.2952, Focal: 0.5959, DRW: True, Max_m: 0.7
+  Batch 11000/11844, Loss: 4.8541, LDAM: 6.5704, Focal: 0.8494, DRW: True, Max_m: 0.7
+  Batch 11500/11844, Loss: 3.6931, LDAM: 4.9603, Focal: 0.7363, DRW: True, Max_m: 0.7
+Train Loss: 1.5892 (LDAM: 1.9638, Focal: 0.7151)
+Val Loss: 1.4539, Val Macro F1: 0.8389
+Current learning rate: 0.000002
+
+============================================================
+Epoch 100/120
+============================================================
+[2026-02-03T08:48:40.072] error: *** JOB 1479454 ON gl068 CANCELLED AT 2026-02-03T08:48:40 DUE TO TIME LIMIT ***
