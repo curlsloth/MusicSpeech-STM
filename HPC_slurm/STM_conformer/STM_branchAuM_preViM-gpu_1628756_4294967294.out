@@ -1,9 +1,11 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
+WARNING: timm not installed. Install with: pip install timm
 Using device: cuda
 GPU: NVIDIA L40S
-CUDA Version: 12.8
-Checkpoint directory: model/STM/Asym-Mixer-KAN_full_20260204_163236
+CUDA version: 12.8
+✓ Using pretrained ViM from: Vim/vim_s_midclstok_ft_81p6acc.pth
+Checkpoint directory: checkpoints/STM_branchAuM_preViM_mode0_20260205_171948
 
 ================================================================================
 Loading and preparing data...
@@ -121,139 +123,60 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Input shape (before asymmetric processing): (20, 121)
-Output shape (after asymmetric processing): (2, 20, 61)
+Original feature dim: 2420
+After asymmetric processing: 2440 tokens
 
 Class Distribution (Training):
-  speech:non-tonal: 497475 (64.57%)
-  speech:tonal: 80258 (10.42%)
-  music:vocal: 101893 (13.23%)
-  music:non-vocal: 53538 (6.95%)
-  env:urban: 9580 (1.24%)
-  env:wildlife: 27649 (3.59%)
-
-PyTorch Dataset Shapes (before asymmetric processing):
-Train: torch.Size([770393, 2420])
-Val: torch.Size([102010, 2420])
-Test: torch.Size([105975, 2420])
+  Class 0: 497475 samples (0.6457)
+  Class 1: 80258 samples (0.1042)
+  Class 2: 101893 samples (0.1323)
+  Class 3: 53538 samples (0.0695)
+  Class 4: 9580 samples (0.0124)
+  Class 5: 27649 samples (0.0359)
 
 Applying asymmetric 2-channel STM processing...
 Original: 20 freq × 121 rates = 2420 features
 After processing: 2 channels × 20 freq × 61 rates
-  Channel 0: S_up (upward frequency sweeps, flipped)
+  Channel 0: S_up (upward frequency sweeps)
   Channel 1: S_down (downward frequency sweeps)
+After spatial adapter: 3 channels × 224 × 224 (ViM input)
 
-DataLoaders created with batch_size=128
-
-================================================================================
-Creating Asym-Mixer-KAN model...
-================================================================================
-Total parameters: 57,089,462
-Trainable parameters: 57,089,462
+DataLoaders created with batch_size=8
 
 ================================================================================
-Starting Training
+Creating STM_branchAuM_preViM model...
+================================================================================
+Loading pretrained ViM weights from Vim/vim_s_midclstok_ft_81p6acc.pth
+  ✗ Failed to load pretrained weights: Weights only load failed. This file can still be loaded, to do so you have two options, [1mdo those steps only if you trust the source of the checkpoint[0m. 
+	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
+	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
+	WeightsUnpickler error: Unsupported global: GLOBAL argparse.Namespace was not an allowed global by default. Please use `torch.serialization.add_safe_globals([argparse.Namespace])` or the `torch.serialization.safe_globals([argparse.Namespace])` context manager to allowlist this global if you trust this class/function.
+
+Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
+  → Training from scratch
+Total parameters: 54,804,690
+Trainable parameters: 54,804,690
+Branch point: Layer 4
+
+Architecture:
+  1. Spatial Adapter: (2,20,61) → (3,224,224)
+  2. Pretrained ViM: vim_small with 4×4 patches (3,136 tokens)
+  3. Hierarchical branching:
+     - Early blocks (0-3): Feature extraction
+     - Coarse classifier: 3 super-classes
+     - Deep blocks (4-23): Fine-grained with guidance
+     - Fine classifier: 6 classes
+
+Progressive Unfreezing Schedule:
+  - Epochs 0-9: Freeze blocks 0-3
+  - Epochs 10-29: Unfreeze blocks 2-3
+  - Epochs 30+: Unfreeze all
+
+================================================================================
+Starting training for 50 epochs
 ================================================================================
 
-Epoch [1/50] - 12481.91s - LR: 0.000976
-  Train Loss: 8.5239
-  Val Loss: 1.4368
-  Val Macro F1: 0.5805
-  Val Per-Class F1:
-    speech:non-tonal: 0.9406
-    speech:tonal: 0.3515
-    music:vocal: 0.7742
-    music:non-vocal: 0.2760
-    env:urban: 0.4872
-    env:wildlife: 0.6537
-  *** New best model saved! (F1: 0.5805) ***
 
-Epoch [2/50] - 12498.02s - LR: 0.000905
-  Train Loss: 7.5870
-  Val Loss: 1.3612
-  Val Macro F1: 0.6772
-  Val Per-Class F1:
-    speech:non-tonal: 0.9182
-    speech:tonal: 0.5097
-    music:vocal: 0.7800
-    music:non-vocal: 0.4064
-    env:urban: 0.7263
-    env:wildlife: 0.7230
-  *** New best model saved! (F1: 0.6772) ***
-
-Epoch [3/50] - 12478.58s - LR: 0.000794
-  Train Loss: 7.1462
-  Val Loss: 1.4129
-  Val Macro F1: 0.6948
-  Val Per-Class F1:
-    speech:non-tonal: 0.9497
-    speech:tonal: 0.5036
-    music:vocal: 0.7908
-    music:non-vocal: 0.4050
-    env:urban: 0.7692
-    env:wildlife: 0.7504
-  *** New best model saved! (F1: 0.6948) ***
-
-Epoch [4/50] - 12496.38s - LR: 0.000655
-  Train Loss: 6.9562
-  Val Loss: 1.3947
-  Val Macro F1: 0.7163
-  Val Per-Class F1:
-    speech:non-tonal: 0.9506
-    speech:tonal: 0.5256
-    music:vocal: 0.7681
-    music:non-vocal: 0.5458
-    env:urban: 0.7431
-    env:wildlife: 0.7646
-  *** New best model saved! (F1: 0.7163) ***
-
-Epoch [5/50] - 12481.84s - LR: 0.000501
-  Train Loss: 6.7348
-  Val Loss: 1.3924
-  Val Macro F1: 0.7368
-  Val Per-Class F1:
-    speech:non-tonal: 0.9443
-    speech:tonal: 0.5785
-    music:vocal: 0.7983
-    music:non-vocal: 0.4712
-    env:urban: 0.8397
-    env:wildlife: 0.7889
-  *** New best model saved! (F1: 0.7368) ***
-
-Epoch [6/50] - 12478.28s - LR: 0.000346
-  Train Loss: 6.6784
-  Val Loss: 1.3602
-  Val Macro F1: 0.7277
-  Val Per-Class F1:
-    speech:non-tonal: 0.9480
-    speech:tonal: 0.5878
-    music:vocal: 0.8030
-    music:non-vocal: 0.4265
-    env:urban: 0.8162
-    env:wildlife: 0.7846
-
-Epoch [7/50] - 12478.11s - LR: 0.000207
-  Train Loss: 6.5642
-  Val Loss: 1.4012
-  Val Macro F1: 0.7474
-  Val Per-Class F1:
-    speech:non-tonal: 0.9522
-    speech:tonal: 0.5736
-    music:vocal: 0.8078
-    music:non-vocal: 0.4670
-    env:urban: 0.8728
-    env:wildlife: 0.8107
-  *** New best model saved! (F1: 0.7474) ***
-
-Epoch [8/50] - 12479.81s - LR: 0.000096
-  Train Loss: 6.3781
-  Val Loss: 1.3914
-  Val Macro F1: 0.7494
-  Val Per-Class F1:
-    speech:non-tonal: 0.9491
-    speech:tonal: 0.5908
-    music:vocal: 0.8100
-    music:non-vocal: 0.4302
-    env:urban: 0.8945
-    env:wildlife: 0.8217
-  *** New best model saved! (F1: 0.7494) ***
+================================================================================
+Epoch 0: Freezing backbone blocks 0-3
+================================================================================

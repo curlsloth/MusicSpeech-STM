@@ -18,6 +18,12 @@ Key Features:
 7. LDAM loss with Deferred Reweighting (DRW)
 8. 2D CutMix augmentation (adapted for spatial domain)
 
+Memory Optimizations (Phase 1 - for 3,136-token sequences):
+- Batch size: 8 (reduced from 32)
+- Gradient accumulation: 4 steps (effective batch size = 32)
+- Gradient checkpointing: Enabled in VimBackbone
+- PyTorch memory: PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
 Target: 0.90-0.93 Macro F1 Score
 
 Installation Requirements:
@@ -31,6 +37,7 @@ import warnings
 from datetime import datetime
 
 import numpy as np
+import pandas as pd
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -318,9 +325,37 @@ class VimBackbone(nn.Module):
         
         self.norm = nn.LayerNorm(d_model)
         
+        # Enable gradient checkpointing for memory efficiency
+        self.use_checkpoint = True
+        
         # Load pretrained weights if provided
         if pretrained_path and os.path.exists(pretrained_path):
             self.load_pretrained_weights(pretrained_path)
+    
+    def forward(self, x):
+        """Forward pass with optional gradient checkpointing"""
+        # x: (B, C, H, W)
+        B = x.shape[0]
+        
+        # Patch embedding
+        x = self.patch_embed(x)  # (B, d_model, H//patch_size, W//patch_size)
+        x = x.flatten(2).transpose(1, 2)  # (B, num_patches, d_model)
+        
+        # Add positional embedding
+        x = x + self.pos_embed
+        
+        # Apply Mamba blocks with gradient checkpointing if enabled
+        if self.use_checkpoint and self.training:
+            from torch.utils.checkpoint import checkpoint
+            for block in self.blocks:
+                x = checkpoint(block, x, use_reentrant=False)
+        else:
+            for block in self.blocks:
+                x = block(x)
+        
+        x = self.norm(x)
+        
+        return x
     
     def load_pretrained_weights(self, pretrained_path):
         """
@@ -606,7 +641,7 @@ class LDAMLoss(nn.Module):
         self.class_freq = class_freq
         
     def forward(self, x, target, epoch=0, drw_start_epoch=40):
-        batch_m = self.m_list[target].to(x.device)
+        batch_m = self.m_list[target.cpu()].to(x.device)
         batch_m = batch_m.view(-1, 1)
         x_m = x - batch_m * self.s
         
@@ -696,114 +731,163 @@ class prepData_STM_branchAuM_preViM:
         self.ds_nontonal_speech = ds_nontonal_speech
         
     def corpora_list(self, addAug=False):
-        """Returns list of corpus names (same as original)"""
-        corpora = {
-            'speech': [
-                'articulation_index', 'buckeye', 'bu_radio', 'cslu_22', 'cslu_kids',
-                'librispeech', 'LDC2017S14', 'MozillaCommonVoice', 'TIMIT', 
-                'vctk', 'vystadial_2013', 'CHAINS', 'IViE', 'LC', 'NCCFRspeech',
-                'speech_accent_archive', 'tedlium_release1', 'cslu_spoltech_vietnamese',
-                'AESRC2020', 'daps', 'aesrc2020', 'CIEMPIESS', 'gos', 'heroico',
-                'russian_single', 'santa_barbara', 'sottovoce', 'tunisian',
-                'MLS_french', 'MLS_german', 'MLS_polish', 'MLS_portuguese', 'MLS_spanish',
-                'L2_arctic', 'TC_STAR_Spanish_Castillian', 'TC_STAR_Spanish_EuroparlV7',
-                'SPA-DAPS', 'RIR_speech'
-            ],
-            'speech_ch': [
-                'aishell', 'aidatatang', 'magicdata', 'primewords', 'stcmds', 'thchs'
-            ],
-            'speech_tonal': [
-                'global_phone_Vietnamese', 'iban', 'javanese', 'sundanese', 'TC_STAR_Mandarin'
-            ],
-            'speech_biling': [
-                'L2_arctic', 'TC_STAR_Spanish_Castillian', 'TC_STAR_Spanish_EuroparlV7',
-                'SPA-DAPS', 'RIR_speech'
-            ],
-            'music': [
-                'bach10', 'fma_large', 'fma_medium', 'fma_small',
-                'gtzan', 'IRMAS', 'medleydb', 'MTG_Jamendo'
-            ],
-            'music_song': [
-                'ccmixter', 'dsd100', 'medleydb_plus', 'MIR-ST500',
-                'musdb18', 'rwc_popular'
-            ],
-            'env': [
-                'TUT', 'UrbanSound8k', 'Xeno_Canto'
-            ]
-        }
+        """Generate list of all corpora"""
+        corpus_speech_list = ['BibleTTS/akuapem-twi',
+            'BibleTTS/asante-twi', 'BibleTTS/ewe', 'BibleTTS/hausa',
+            'BibleTTS/lingala', 'BibleTTS/yoruba', 'Buckeye', 'EUROM',
+            'HiltonMoser2022_speech', 'LibriSpeech',
+            'MediaSpeech/AR', 'MediaSpeech/ES', 'MediaSpeech/FR', 'MediaSpeech/TR',
+            'MozillaCommonVoice/ab', 'MozillaCommonVoice/ar', 'MozillaCommonVoice/ba',
+            'MozillaCommonVoice/be', 'MozillaCommonVoice/bg', 'MozillaCommonVoice/bn',
+            'MozillaCommonVoice/br', 'MozillaCommonVoice/ca', 'MozillaCommonVoice/ckb',
+            'MozillaCommonVoice/cnh', 'MozillaCommonVoice/cs', 'MozillaCommonVoice/cv',
+            'MozillaCommonVoice/cy', 'MozillaCommonVoice/da', 'MozillaCommonVoice/de',
+            'MozillaCommonVoice/dv', 'MozillaCommonVoice/el', 'MozillaCommonVoice/en',
+            'MozillaCommonVoice/eo', 'MozillaCommonVoice/es', 'MozillaCommonVoice/et',
+            'MozillaCommonVoice/eu', 'MozillaCommonVoice/fa', 'MozillaCommonVoice/fi',
+            'MozillaCommonVoice/fr', 'MozillaCommonVoice/fy-NL', 'MozillaCommonVoice/ga-IE',
+            'MozillaCommonVoice/gl', 'MozillaCommonVoice/gn', 'MozillaCommonVoice/hi',
+            'MozillaCommonVoice/hu', 'MozillaCommonVoice/hy-AM', 'MozillaCommonVoice/id',
+            'MozillaCommonVoice/ig', 'MozillaCommonVoice/it', 'MozillaCommonVoice/ja',
+            'MozillaCommonVoice/ka', 'MozillaCommonVoice/kab', 'MozillaCommonVoice/kk',
+            'MozillaCommonVoice/kmr', 'MozillaCommonVoice/ky', 'MozillaCommonVoice/lg',
+            'MozillaCommonVoice/lt', 'MozillaCommonVoice/ltg', 'MozillaCommonVoice/lv',
+            'MozillaCommonVoice/mhr', 'MozillaCommonVoice/ml', 'MozillaCommonVoice/mn',
+            'MozillaCommonVoice/mt', 'MozillaCommonVoice/nan-tw', 'MozillaCommonVoice/nl',
+            'MozillaCommonVoice/oc', 'MozillaCommonVoice/or', 'MozillaCommonVoice/pl',
+            'MozillaCommonVoice/pt', 'MozillaCommonVoice/ro', 'MozillaCommonVoice/ru',
+            'MozillaCommonVoice/rw', 'MozillaCommonVoice/sr', 'MozillaCommonVoice/sv-SE',
+            'MozillaCommonVoice/sw', 'MozillaCommonVoice/ta', 'MozillaCommonVoice/th',
+            'MozillaCommonVoice/tr', 'MozillaCommonVoice/tt', 'MozillaCommonVoice/ug',
+            'MozillaCommonVoice/uk', 'MozillaCommonVoice/ur', 'MozillaCommonVoice/uz',
+            'MozillaCommonVoice/vi', 'MozillaCommonVoice/yo', 'MozillaCommonVoice/yue',
+            'MozillaCommonVoice/zh-CN', 'MozillaCommonVoice/zh-TW',
+            'primewords_chinese', 'room_reader', 'SpeechClarity', 'TAT-Vol2',
+            'thchs30', 'TIMIT', 'TTS_Javanese', 'zeroth_korean'
+        ]
         
-        all_corpora = []
-        for category in corpora.values():
-            all_corpora.extend(category)
+        corpus_music_list = [
+            'IRMAS', 'Albouy2020Science', 'GarlandEncyclopedia', 'fma_large',
+            'ismir04_genre', 'MTG-Jamendo', 'HiltonMoser2022_song', 'NHS2', 'MagnaTagATune'
+        ]
         
-        return all_corpora
+        if addAug:
+            corpus_env_list = ['SONYC', 'MacaulayLibrary', 'SONYC_augmented']
+        else:
+            corpus_env_list = ['SONYC', 'MacaulayLibrary']
+        
+        corpus_speech_list.sort()
+        corpus_music_list.sort()
+        corpus_env_list.sort()
+        
+        return corpus_speech_list + corpus_music_list + corpus_env_list
     
     def load_data(self):
-        """Load STM features and labels"""
-        print("Loading data...")
+        """Load and preprocess STM data"""
+        corpus_list_all = self.corpora_list(self.addAug)
+        root_folder = '/vast-ac8888/MusicSpeech-STM/'
         
-        # Load STM features
-        STM_all = np.load('/scratch/ac8888/MusicSpeech-STM/data/STM_all_20bin_121bin.npy')
-        labels = np.load('/scratch/ac8888/MusicSpeech-STM/data/labels_all.npy')
-        kfold_labels = np.load('/scratch/ac8888/MusicSpeech-STM/data/kfold_labels_all.npy')
+        STM_all = None
+        for corp in corpus_list_all:
+            filename = root_folder + 'STM_output/corpSTMnpy/' + corp.replace('/', '-') + '_STMall.npy'
+            if STM_all is None:
+                STM_all = np.load(filename)
+            else:
+                STM_all = np.vstack((STM_all, np.load(filename)))
+            print(f"Loaded: {filename}, shape: {np.load(filename).shape}")
         
-        print(f"  ✓ STM features: {STM_all.shape}")
-        print(f"  ✓ Labels: {labels.shape}")
-        print(f"  ✓ K-fold labels: {kfold_labels.shape}")
+        # Load metadata
+        speech_corp_df1 = pd.read_csv(root_folder + 'train_test_split/speech1_10folds_speakerGroupFold.csv', index_col=0)
+        speech_corp_df2 = pd.read_csv(root_folder + 'train_test_split/speech2_10folds_speakerGroupFold.csv', index_col=0)
+        music_corp_df = pd.read_csv(root_folder + 'train_test_split/music_10folds_speakerGroupFold.csv', index_col=0)
+        df_SONYC = pd.read_csv(root_folder + 'train_test_split/env_10folds_speakerGroupFold.csv', index_col=0)
         
-        # Normalize per sample
-        mean = STM_all.mean(axis=1, keepdims=True)
-        std = STM_all.std(axis=1, keepdims=True)
-        STM_normalized = (STM_all - mean) / (std + 1e-8)
+        all_corp_df = pd.concat([speech_corp_df1, speech_corp_df2, music_corp_df, df_SONYC], ignore_index=True)
         
-        return STM_normalized, labels, kfold_labels
-    
-    def prepare_datasets(self):
-        """Prepare train/val/test datasets with class frequencies"""
-        STM_all, labels, kfold_labels = self.load_data()
+        # Handle augmented data
+        if self.addAug:
+            SONYC_aug_len = np.load(root_folder + 'STM_output/corpSTMnpy/SONYC_augmented_STMall.npy').shape[0]
+            target = pd.concat([all_corp_df['corpus_type'], pd.Series(['env: urban'] * SONYC_aug_len)], ignore_index=True)
+            data_split = pd.concat([all_corp_df['10fold_labels'], pd.Series([1] * SONYC_aug_len)], ignore_index=True)
+        else:
+            target = all_corp_df['corpus_type'].copy()
+            data_split = all_corp_df['10fold_labels'].copy()
         
-        # Split by k-fold
-        train_mask = kfold_labels < 8
-        val_mask = kfold_labels == 8
-        test_mask = kfold_labels == 9
+        # Map categories
+        target.replace({
+            'speech: non-tonal': 0,
+            'speech: tonal': 1,
+            'music: vocal': 2,
+            'music: non-vocal': 3,
+            'env: urban': 4,
+            'env: wildlife': 5,
+        }, inplace=True)
         
         # Downsample non-tonal speech if requested
         if self.ds_nontonal_speech:
-            nontonal_mask = (labels == 0) & train_mask
-            nontonal_indices = np.where(nontonal_mask)[0]
-            keep_indices = np.random.choice(nontonal_indices, 
-                                          size=len(nontonal_indices) // 2, 
-                                          replace=False)
-            train_mask = train_mask.copy()
-            train_mask[nontonal_indices] = False
-            train_mask[keep_indices] = True
+            num_samples = 100000
+            indices_target_0 = target.index[target == 0].to_numpy()
+            
+            if len(indices_target_0) < num_samples:
+                print(f"Warning: Only {len(indices_target_0)} non-tonal speech samples available")
+            
+            np.random.seed(23)
+            sampled_indices = np.random.choice(indices_target_0, size=min(num_samples, len(indices_target_0)), replace=False)
+            
+            mask = np.ones(len(target), dtype=bool)
+            mask[indices_target_0] = False
+            mask[sampled_indices] = True
+            
+            STM_all = STM_all[mask, :]
+            data_split = data_split[mask].reset_index(drop=True)
+            target = target[mask].reset_index(drop=True)
         
-        # Create datasets
-        X_train = torch.FloatTensor(STM_all[train_mask])
-        y_train = torch.LongTensor(labels[train_mask])
+        # Split data
+        train_ind = (data_split < 8).values
+        val_ind = (data_split == 8).values
+        test_ind = (data_split == 9).values
         
-        X_val = torch.FloatTensor(STM_all[val_mask])
-        y_val = torch.LongTensor(labels[val_mask])
+        # Compute class frequencies for LDAM
+        train_labels = target[train_ind].values.astype(np.int64)
+        class_counts = np.bincount(train_labels, minlength=6)
+        class_freq = class_counts / class_counts.sum()
         
-        X_test = torch.FloatTensor(STM_all[test_mask])
-        y_test = torch.LongTensor(labels[test_mask])
+        print(f"\nDataset Statistics:")
+        print(f"Total samples: {len(STM_all)}")
+        print(f"Train samples: {sum(train_ind)}")
+        print(f"Val samples: {sum(val_ind)}")
+        print(f"Test samples: {sum(test_ind)}")
+        print(f"Original feature dim: {STM_all.shape[1]}")
+        print(f"After asymmetric processing: 2440 tokens")
+        print(f"\nClass Distribution (Training):")
+        for i, count in enumerate(class_counts):
+            print(f"  Class {i}: {count} samples ({class_freq[i]:.4f})")
         
+        return STM_all, target, train_ind, val_ind, test_ind, class_freq
+    
+    def prepare_datasets(self):
+        """Prepare PyTorch datasets"""
+        STM_all, target, train_ind, val_ind, test_ind, class_freq = self.load_data()
+        
+        # Normalize per sample (preserve relative patterns)
+        means = STM_all.mean(axis=1, keepdims=True)
+        stds = STM_all.std(axis=1, keepdims=True)
+        STM_all_norm = (STM_all - means) / (stds + 1e-8)
+        
+        # Convert to PyTorch tensors
+        X_train = torch.FloatTensor(STM_all_norm[train_ind])
+        y_train = torch.LongTensor(target[train_ind].values)
+        
+        X_val = torch.FloatTensor(STM_all_norm[val_ind])
+        y_val = torch.LongTensor(target[val_ind].values)
+        
+        X_test = torch.FloatTensor(STM_all_norm[test_ind])
+        y_test = torch.LongTensor(target[test_ind].values)
+        
+        # Create datasets (before asymmetric processing)
         train_dataset = TensorDataset(X_train, y_train)
         val_dataset = TensorDataset(X_val, y_val)
         test_dataset = TensorDataset(X_test, y_test)
-        
-        # Compute class frequencies for LDAM
-        unique, counts = np.unique(y_train.numpy(), return_counts=True)
-        class_freq = np.zeros(6)
-        class_freq[unique] = counts
-        
-        print(f"\nDataset sizes:")
-        print(f"  Train: {len(train_dataset)}")
-        print(f"  Val: {len(val_dataset)}")
-        print(f"  Test: {len(test_dataset)}")
-        print(f"\nClass distribution (train):")
-        for i, (cls, freq) in enumerate(zip(unique, counts)):
-            print(f"  Class {cls}: {freq} ({freq/len(train_dataset)*100:.1f}%)")
         
         return train_dataset, val_dataset, test_dataset, class_freq
 
@@ -817,12 +901,13 @@ class Trainer:
     def __init__(self, model, train_loader, val_loader, test_loader, 
                  device, class_freq, lr=1e-3, weight_decay=1e-4, 
                  cutmix_prob=0.5, cutmix_alpha=1.0, drw_start_epoch=40,
-                 coarse_loss_weight=0.3):
+                 coarse_loss_weight=0.3, accumulation_steps=4):
         self.model = model.to(device)
         self.train_loader = train_loader
         self.val_loader = val_loader
         self.test_loader = test_loader
         self.device = device
+        self.accumulation_steps = accumulation_steps  # Gradient accumulation
         
         # Loss functions
         self.criterion_fine = LDAMLoss(class_freq, max_m=0.5, s=30)
@@ -894,6 +979,9 @@ class Trainer:
         # Apply progressive unfreezing
         self.apply_unfreezing(epoch)
         
+        # Zero gradients at start of epoch
+        self.optimizer.zero_grad()
+        
         total_loss = 0.0
         all_preds = []
         all_targets = []
@@ -903,10 +991,9 @@ class Trainer:
             
             # Apply CutMix augmentation (in spatial domain after adapter)
             if np.random.rand() < self.cutmix_prob:
-                # Apply asymmetric processing first
-                data_asym = process_asymmetric_stm(data.view(-1, 20, 121))
+                # Data is already asymmetric processed: (batch, 2, 20, 61)
                 # Apply spatial adapter
-                data_spatial = self.model.spatial_adapter(data_asym)
+                data_spatial = self.model.spatial_adapter(data)
                 # Apply CutMix in spatial domain
                 data_mixed, target_a, target_b, lam = cutmix_2d(data_spatial, target, self.cutmix_alpha)
                 
@@ -968,13 +1055,16 @@ class Trainer:
                 all_preds.extend(preds.cpu().numpy())
                 all_targets.extend(target.cpu().numpy())
             
-            # Backward
-            self.optimizer.zero_grad()
+            # Backward with gradient accumulation
+            loss = loss / self.accumulation_steps  # Scale loss
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
-            self.optimizer.step()
             
-            total_loss += loss.item()
+            if (batch_idx + 1) % self.accumulation_steps == 0:
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
+                self.optimizer.step()
+                self.optimizer.zero_grad()
+            
+            total_loss += loss.item() * self.accumulation_steps  # Unscale for logging
         
         avg_loss = total_loss / len(self.train_loader)
         train_f1 = f1_score(all_targets, all_preds, average='macro')
@@ -1079,8 +1169,21 @@ if __name__ == "__main__":
     # Parse command line arguments
     if len(sys.argv) < 2:
         print("Usage: python STM_branchAuM_preViM.py <mode> [--pretrained_path <path>]")
-        print("  mode 0: Full dataset")
-        print("  mode 1: Downsampled non-tonal speech")
+        print("")
+        print("Arguments:")
+        print("  mode: Dataset mode")
+        print("    0 = Full dataset")
+        print("    1 = Downsampled non-tonal speech")
+        print("")
+        print("  --pretrained_path <path>: Path to pretrained vim_small weights (optional)")
+        print("    If not provided, model will train from scratch (not recommended)")
+        print("")
+        print("Examples:")
+        print("  # With pretrained weights (recommended):")
+        print("  python STM_branchAuM_preViM.py 0 --pretrained_path /path/to/vim_small.pth")
+        print("")
+        print("  # Without pretrained weights (training from scratch):")
+        print("  python STM_branchAuM_preViM.py 0")
         sys.exit(1)
     
     mode = int(sys.argv[1])
@@ -1091,7 +1194,14 @@ if __name__ == "__main__":
         idx = sys.argv.index('--pretrained_path')
         if idx + 1 < len(sys.argv):
             pretrained_vim_path = sys.argv[idx + 1]
-            print(f"Using pretrained ViM from: {pretrained_vim_path}")
+            print(f"✓ Using pretrained ViM from: {pretrained_vim_path}")
+        else:
+            print("ERROR: --pretrained_path specified but no path provided!")
+            sys.exit(1)
+    else:
+        print("⚠ WARNING: No pretrained path provided. Training from scratch.")
+        print("  Recommended: Download vim_small and use --pretrained_path")
+        print("  Example: python STM_branchAuM_preViM.py 0 --pretrained_path /path/to/vim_small.pth")
     
     # Set parameters based on mode
     if mode == 0:
@@ -1130,7 +1240,7 @@ if __name__ == "__main__":
     test_dataset = AsymmetricSTMDataset(test_dataset)
     
     # Create data loaders
-    batch_size = 32  # Smaller batch for memory efficiency
+    batch_size = 8  # Reduced from 32 to handle 3,136-token sequences
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, 
                              num_workers=4, pin_memory=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False,
@@ -1186,7 +1296,8 @@ if __name__ == "__main__":
         cutmix_prob=0.5,
         cutmix_alpha=1.0,
         drw_start_epoch=40,
-        coarse_loss_weight=0.3
+        coarse_loss_weight=0.3,
+        accumulation_steps=4  # Gradient accumulation (effective batch_size = 8*4 = 32)
     )
     
     # Train model

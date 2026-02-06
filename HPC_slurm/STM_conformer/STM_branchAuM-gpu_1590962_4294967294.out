@@ -170,3 +170,79 @@ Epoch [1/50] - 14287.12s - LR: 0.000976
     env:urban: 0.7843
     env:wildlife: 0.8287
   *** New best model saved! (F1: 0.7391) ***
+
+Epoch [2/50] - 14313.86s - LR: 0.000905
+  Train Loss: 2.7467 (Coarse: 1.3909, Fine: 3.3278)
+  Val Loss: 1.4755
+  Val Macro F1: 0.7549
+  Val Per-Class F1:
+    speech:non-tonal: 0.9562
+    speech:tonal: 0.5877
+    music:vocal: 0.7870
+    music:non-vocal: 0.5805
+    env:urban: 0.7989
+    env:wildlife: 0.8190
+  *** New best model saved! (F1: 0.7549) ***
+
+Epoch [3/50] - 14325.90s - LR: 0.000794
+  Train Loss: 2.6028 (Coarse: 1.3158, Fine: 3.1544)
+  Val Loss: 1.4506
+  Val Macro F1: 0.7678
+  Val Per-Class F1:
+    speech:non-tonal: 0.9596
+    speech:tonal: 0.5889
+    music:vocal: 0.7466
+    music:non-vocal: 0.6007
+    env:urban: 0.8517
+    env:wildlife: 0.8591
+  *** New best model saved! (F1: 0.7678) ***
+
+Epoch [4/50] - 14336.03s - LR: 0.000655
+  Train Loss: 2.5195 (Coarse: 1.2867, Fine: 3.0479)
+  Val Loss: 1.4475
+  Val Macro F1: 0.7939
+  Val Per-Class F1:
+    speech:non-tonal: 0.9619
+    speech:tonal: 0.6822
+    music:vocal: 0.8214
+    music:non-vocal: 0.5277
+    env:urban: 0.8999
+    env:wildlife: 0.8701
+  *** New best model saved! (F1: 0.7939) ***
+
+Epoch [5/50] - 14329.88s - LR: 0.000501
+  Train Loss: 2.4597 (Coarse: 1.2642, Fine: 2.9720)
+  Val Loss: 1.4559
+  Val Macro F1: 0.8064
+  Val Per-Class F1:
+    speech:non-tonal: 0.9642
+    speech:tonal: 0.6998
+    music:vocal: 0.8193
+    music:non-vocal: 0.5690
+    env:urban: 0.9215
+    env:wildlife: 0.8648
+  *** New best model saved! (F1: 0.8064) ***
+
+Epoch [6/50] - 14293.47s - LR: 0.000346
+  Train Loss: 2.3940 (Coarse: 1.2340, Fine: 2.8911)
+  Val Loss: 1.4253
+  Val Macro F1: 0.8057
+  Val Per-Class F1:
+    speech:non-tonal: 0.9606
+    speech:tonal: 0.6940
+    music:vocal: 0.8107
+    music:non-vocal: 0.5964
+    env:urban: 0.8992
+    env:wildlife: 0.8735
+
+Epoch [7/50] - 14335.61s - LR: 0.000207
+  Train Loss: 2.3323 (Coarse: 1.1997, Fine: 2.8178)
+  Val Loss: 1.4280
+  Val Macro F1: 0.7991
+  Val Per-Class F1:
+    speech:non-tonal: 0.9656
+    speech:tonal: 0.6840
+    music:vocal: 0.8276
+    music:non-vocal: 0.5199
+    env:urban: 0.9240
+    env:wildlife: 0.8735

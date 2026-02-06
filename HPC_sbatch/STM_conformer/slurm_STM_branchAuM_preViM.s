@@ -13,5 +13,8 @@
 
 module purge
 
-STM_singularity/run-MusicSpeech-STMhpc_mambaTimm_torch.bash python3 STM_branchAuM_preViM.py 0 Vim/vim_s_midclstok_ft_81p6acc.pth
+# Enable PyTorch memory optimization to reduce fragmentation
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
+STM_singularity/run-MusicSpeech-STMhpc_mamba_torch.bash python3 STM_branchAuM_preViM.py 0 --pretrained_path Vim/vim_s_midclstok_ft_81p6acc.pth
 # Run this: sbatch HPC_sbatch/STM_conformer/slurm_STM_branchAuM_preViM.s
