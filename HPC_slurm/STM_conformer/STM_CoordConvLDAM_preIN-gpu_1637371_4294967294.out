@@ -1,6 +1,0 @@
-INFO:    User not listed in /etc/subuid, trying root-mapped namespace
-INFO:    Using fakeroot command combined with root-mapped namespace
-Traceback (most recent call last):
-  File "/scratch/ac8888/MusicSpeech-STM/STM_CoordConvLDAM_preIN.py", line 32, in <module>
-    from torchvision.models import ResNet18_Weights
-ImportError: cannot import name 'ResNet18_Weights' from 'torchvision.models' (/ext3/miniconda3/lib/python3.13/site-packages/torchvision/models/__init__.py)

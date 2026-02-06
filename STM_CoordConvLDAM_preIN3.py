@@ -2,19 +2,26 @@
 # -*- coding: utf-8 -*-
 """
 STM Classification with ImageNet-Pretrained ResNet and LDAM Loss
-Phase 2.0: Resolution-Aware Transfer Learning
+Phase 3: Integration of V2 Proven Dynamics with V2.1 Architecture
 
-Key Innovations:
-1. Difference Map Preprocessing: 2-channel input (Symmetric + Asymmetric)
-2. ImageNet-pretrained ResNet-18 backbone (texture bias for STM ripples)
-3. Modified stem: 4-channel CoordConv (2 STM + 2 Coord), stride-1, no maxpool
-4. Weight cloning: Preserve pretrained filters while adapting to STM topology
-5. LDAM-DRW training: Proven long-tail handling strategy
+Key Innovations (V3 = V2.1 Architecture + V2 Training):
+1. Attention Mechanisms: CA (layer1-2) + SE (layer3-4) for adaptive features
+2. Block Dropout: 0.05 in residual blocks to reduce overfitting
+3. Discriminative Learning Rates: Pretrained layers learn slower (0.1x-0.5x)
+4. Moderate Regularization (V2 proven): Head dropout 0.3, weight decay 2e-4, mixup α=0.3
+5. V2 LDAM Loss: Cleaner label smoothing implementation
 
-Theoretical Foundation:
-- ImageNet CNNs exhibit texture bias → ideal for STM "ripple" patterns
-- Difference Map exposes frequency sweep asymmetry (tonal vs. non-tonal)
-- Resolution preservation: Avoids vanishing 20-bin spectral dimension
+Preserved from V2.1:
+1. ImageNet-pretrained ResNet-18 backbone (texture bias for STM ripples)
+2. Modified stem: 4-channel CoordConv (2 STM + 2 Coord), stride-1, no maxpool
+3. Weight cloning: Preserve pretrained filters while adapting to STM topology
+4. LDAM-DRW training: Proven long-tail handling strategy
+5. Difference Map Preprocessing: 2-channel input (Symmetric + Asymmetric)
+
+Rationale: V2 achieved 0.86 F1 without pretraining. V3 combines V2's proven
+training dynamics with V2.1's architectural advantages (ImageNet + attention).
+
+Target: 0.875-0.89 Macro F1 (V2's stability + V2.1's pretrained advantages)
 """
 
 import os
@@ -278,12 +285,157 @@ class CoordConv2d(nn.Module):
 
 
 # ============================================================================
-# Pretrained ResNet-18 with STM-Specific Adaptations
+# Attention Mechanisms (from V4)
+# ============================================================================
+
+class CoordinateAttention(nn.Module):
+    """
+    Coordinate Attention from "Coordinate Attention for Efficient Mobile Network Design"
+    (Hou et al., CVPR 2021)
+    
+    Captures position-aware attention by pooling along each spatial axis separately.
+    Better than SE for spatial data like STM features.
+    """
+    def __init__(self, in_channels, reduction=16):
+        super(CoordinateAttention, self).__init__()
+        self.pool_h = nn.AdaptiveAvgPool2d((None, 1))
+        self.pool_w = nn.AdaptiveAvgPool2d((1, None))
+        
+        hidden_channels = max(8, in_channels // reduction)
+        
+        self.conv1 = nn.Conv2d(in_channels, hidden_channels, 1, bias=False)
+        self.bn1 = nn.BatchNorm2d(hidden_channels)
+        self.act = nn.ReLU(inplace=True)
+        
+        self.conv_h = nn.Conv2d(hidden_channels, in_channels, 1, bias=False)
+        self.conv_w = nn.Conv2d(hidden_channels, in_channels, 1, bias=False)
+    
+    def forward(self, x):
+        b, c, h, w = x.size()
+        
+        # Pool along each axis
+        x_h = self.pool_h(x)  # (b, c, h, 1)
+        x_w = self.pool_w(x).permute(0, 1, 3, 2)  # (b, c, w, 1)
+        
+        # Concatenate
+        y = torch.cat([x_h, x_w], dim=2)  # (b, c, h+w, 1)
+        
+        # Shared transform
+        y = self.conv1(y)
+        y = self.bn1(y)
+        y = self.act(y)
+        
+        # Split and generate attention
+        x_h, x_w = torch.split(y, [h, w], dim=2)
+        x_w = x_w.permute(0, 1, 3, 2)
+        
+        a_h = self.conv_h(x_h).sigmoid()  # (b, c, h, 1)
+        a_w = self.conv_w(x_w).sigmoid()  # (b, c, 1, w)
+        
+        # Apply attention
+        out = x * a_h * a_w
+        
+        return out
+
+
+class SqueezeExcitation(nn.Module):
+    """
+    Squeeze-and-Excitation from "Squeeze-and-Excitation Networks"
+    (Hu et al., CVPR 2018)
+    
+    Channel-wise attention mechanism.
+    """
+    def __init__(self, in_channels, reduction=16):
+        super(SqueezeExcitation, self).__init__()
+        hidden_channels = max(1, in_channels // reduction)
+        
+        self.fc1 = nn.Linear(in_channels, hidden_channels, bias=False)
+        self.fc2 = nn.Linear(hidden_channels, in_channels, bias=False)
+        self.relu = nn.ReLU(inplace=True)
+        self.sigmoid = nn.Sigmoid()
+    
+    def forward(self, x):
+        b, c, _, _ = x.size()
+        
+        # Squeeze: Global average pooling
+        y = F.adaptive_avg_pool2d(x, 1).view(b, c)
+        
+        # Excitation: Two FC layers
+        y = self.fc1(y)
+        y = self.relu(y)
+        y = self.fc2(y)
+        y = self.sigmoid(y)
+        
+        # Rescale
+        y = y.view(b, c, 1, 1)
+        
+        return x * y
+
+
+# ============================================================================
+# BasicBlock with Attention and Dropout
+# ============================================================================
+
+class BasicBlockWithAttention(nn.Module):
+    """
+    ResNet BasicBlock with optional attention and dropout.
+    Used to add attention to pretrained ResNet layers.
+    """
+    expansion = 1
+    
+    def __init__(self, block, attention_type='CA', dropout=0.05):
+        """
+        Wraps an existing BasicBlock and adds attention + dropout.
+        
+        Args:
+            block: Existing nn.Module (BasicBlock from pretrained ResNet)
+            attention_type: 'CA' (Coordinate Attention), 'SE' (Squeeze-Excitation), or None
+            dropout: Dropout probability for regularization
+        """
+        super(BasicBlockWithAttention, self).__init__()
+        self.block = block
+        self.dropout = nn.Dropout2d(dropout) if dropout > 0 else None
+        
+        # Get number of output channels from the block
+        # Assuming block has conv2 as the last conv layer
+        out_channels = block.conv2.out_channels
+        
+        # Add attention
+        if attention_type == 'CA':
+            self.attention = CoordinateAttention(out_channels)
+        elif attention_type == 'SE':
+            self.attention = SqueezeExcitation(out_channels)
+        else:
+            self.attention = None
+    
+    def forward(self, x):
+        # Original block forward
+        out = self.block(x)
+        
+        # Apply attention before final activation
+        if self.attention is not None:
+            out = self.attention(out)
+        
+        # Apply dropout
+        if self.dropout is not None:
+            out = self.dropout(out)
+        
+        return out
+
+
+# ============================================================================
+# Pretrained ResNet-18 with STM-Specific Adaptations + Attention
 # ============================================================================
 
 class PretrainedSTMResNet18(nn.Module):
     """
     ImageNet-pretrained ResNet-18 adapted for STM classification.
+    
+    V3 Enhancements (V2 dynamics + V2.1 architecture):
+    1. Attention: CA for layer1-2 (spatial), SE for layer3-4 (channel)
+    2. Block Dropout: 0.05 in all blocks to reduce overfitting
+    3. Head Dropout: 0.3 (V2 proven - preserves pretrained features better)
+    4. Weight Decay: 2e-4 (V2 proven - moderate regularization)
     
     Key Modifications:
     1. Stem: 4-channel CoordConv (2 STM channels + 2 coordinate channels)
@@ -293,9 +445,9 @@ class PretrainedSTMResNet18(nn.Module):
     
     Architecture Flow:
     Input (B, 2, 20, 121) → CoordConv+Coords (B, 4, 20, 121) → 
-    ResNet Layers → Global Pool → FC → (B, num_classes)
+    Layer1 (CA) → Layer2 (CA) → Layer3 (SE) → Layer4 (SE) → Pool → FC
     """
-    def __init__(self, num_classes=6, dropout=0.3, use_pretrained=True):
+    def __init__(self, num_classes=6, dropout=0.3, block_dropout=0.05, use_pretrained=True):
         super(PretrainedSTMResNet18, self).__init__()
         
         # Load pretrained ResNet-18 with error handling
@@ -372,11 +524,30 @@ class PretrainedSTMResNet18(nn.Module):
         # Replace with identity to preserve spatial resolution
         self.maxpool = nn.Identity()
         
-        # Copy ResNet blocks (layer1-4)
-        self.layer1 = pretrained_model.layer1
-        self.layer2 = pretrained_model.layer2
-        self.layer3 = pretrained_model.layer3
-        self.layer4 = pretrained_model.layer4
+        # Copy ResNet blocks and add attention
+        # Layer1: 2 BasicBlocks, add CA (position-aware, early stage)
+        self.layer1 = nn.Sequential(
+            *[BasicBlockWithAttention(block, attention_type='CA', dropout=block_dropout) 
+              for block in pretrained_model.layer1]
+        )
+        
+        # Layer2: 2 BasicBlocks, add CA (position still important)
+        self.layer2 = nn.Sequential(
+            *[BasicBlockWithAttention(block, attention_type='CA', dropout=block_dropout) 
+              for block in pretrained_model.layer2]
+        )
+        
+        # Layer3: 2 BasicBlocks, add SE (channel selection, semantic features)
+        self.layer3 = nn.Sequential(
+            *[BasicBlockWithAttention(block, attention_type='SE', dropout=block_dropout) 
+              for block in pretrained_model.layer3]
+        )
+        
+        # Layer4: 2 BasicBlocks, add SE (channel selection, abstract features)
+        self.layer4 = nn.Sequential(
+            *[BasicBlockWithAttention(block, attention_type='SE', dropout=block_dropout) 
+              for block in pretrained_model.layer4]
+        )
         
         # Adaptive global pooling (preserves coordinate information better than GAP)
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
@@ -390,10 +561,21 @@ class PretrainedSTMResNet18(nn.Module):
         nn.init.constant_(self.fc.bias, 0)
         
         if weights_loaded:
-            print(f"✓ Created STM-adapted ResNet-18 with ImageNet pretrained weights ({num_classes} classes)")
+            print(f"✓ Created STM-adapted ResNet-18 V2.1 with ImageNet pretrained weights ({num_classes} classes)")
         else:
-            print(f"✓ Created STM-adapted ResNet-18 with random initialization ({num_classes} classes)")
+            print(f"✓ Created STM-adapted ResNet-18 V2.1 with random initialization ({num_classes} classes)")
             print(f"  Note: Training from scratch may require more epochs to converge")
+        
+        # Print architecture summary
+        total_params = sum(p.numel() for p in self.parameters())
+        trainable_params = sum(p.numel() for p in self.parameters() if p.requires_grad)
+        print(f"Total parameters: {total_params:,}")
+        print(f"Trainable parameters: {trainable_params:,}")
+        print(f"\nV2.1 Enhancements:")
+        print(f"  • Attention: CA (layer1-2), SE (layer3-4)")
+        print(f"  • Block dropout: {block_dropout}")
+        print(f"  • Head dropout: {dropout}")
+        print(f"  • Ready for discriminative learning rates")
     
     def forward(self, x, return_features=False):
         # x shape: (B, 2, 20, 121)
@@ -750,59 +932,73 @@ class CoordConvResNet18_Attention(nn.Module):
 
 class LDAMLoss(nn.Module):
     """
-    LDAM Loss with label smoothing
+    Label-Distribution-Aware Margin Loss with Label Smoothing
+    
+    From "Learning Imbalanced Datasets with Label-Distribution-Aware Margin Loss"
+    (Cao et al., NeurIPS 2019)
+    
+    V3: Uses V2's cleaner label smoothing implementation
     """
     def __init__(self, cls_num_list, max_m=0.5, weight=None, s=30, label_smooth=0.05):
         super(LDAMLoss, self).__init__()
         m_list = 1.0 / np.sqrt(np.sqrt(cls_num_list))
         m_list = m_list * (max_m / np.max(m_list))
-        self.m_list = torch.FloatTensor(m_list)
+        m_list = torch.FloatTensor(m_list)
+        self.m_list = m_list
         self.s = s
         self.weight = weight
         self.label_smooth = label_smooth
         
     def forward(self, x, target):
-        batch_size = x.size(0)
-        m_list = self.m_list.to(x.device)
+        # Create index for margin application
+        index = torch.zeros_like(x, dtype=torch.uint8)
+        index.scatter_(1, target.data.view(-1, 1), 1)
         
-        # Get margins for each sample
-        batch_m = m_list[target]
+        # Compute per-sample margins
+        index_float = index.type(torch.FloatTensor).to(x.device)
+        batch_m = torch.matmul(self.m_list[None, :].to(x.device), 
+                              index_float.transpose(0, 1))
+        batch_m = batch_m.view((-1, 1))
+        x_m = x - batch_m
+    
+        # Apply margins only to correct class
+        output = torch.where(index, x_m, x)
         
-        # Create one-hot encoding
-        one_hot = torch.zeros_like(x)
-        one_hot.scatter_(1, target.view(-1, 1), 1)
-        
-        # Apply label smoothing
+        # Apply label smoothing (V2 implementation)
         if self.label_smooth > 0:
-            num_classes = x.size(1)
-            one_hot = one_hot * (1 - self.label_smooth) + self.label_smooth / num_classes
-        
-        # Apply margins
-        x_m = x - one_hot * batch_m.view(-1, 1)
-        
-        # Compute loss
-        output = self.s * x_m
-        
-        if self.label_smooth > 0:
-            # Use soft labels
-            log_probs = F.log_softmax(output, dim=1)
-            loss = -(one_hot * log_probs).sum(dim=1).mean()
+            n_classes = x.size(1)
+            log_probs = F.log_softmax(self.s * output, dim=1)
+            
+            # Smooth labels: true class gets (1-ε), others get ε/(K-1)
+            with torch.no_grad():
+                true_dist = torch.zeros_like(log_probs)
+                true_dist.fill_(self.label_smooth / (n_classes - 1))
+                true_dist.scatter_(1, target.data.unsqueeze(1), 
+                                 1.0 - self.label_smooth)
+            
+            loss = torch.mean(torch.sum(-true_dist * log_probs, dim=1))
         else:
-            loss = F.cross_entropy(output, target, weight=self.weight)
+            loss = F.cross_entropy(self.s * output, target, weight=self.weight)
         
         return loss
 
 
 # ============================================================================
-# Trainer (Same as V2)
+# Trainer (V3: V2.1 Architecture + V2 Training Dynamics)
 # ============================================================================
 
 class Trainer:
     """
-    Trainer with V2 dynamics: LDAM, DRW, Mixup, ReduceLROnPlateau, Early Stopping
+    Trainer with V3 enhancements: Discriminative LR + V2 proven dynamics
+    
+    V2 Proven Settings Integrated:
+    - Weight decay: 2e-4 (moderate, preserves pretrained features)
+    - Mixup alpha: 0.3 (effective augmentation)
+    - Head dropout: 0.3 (via model parameter)
+    - V2 LDAM implementation (cleaner label smoothing)
     """
     def __init__(self, model, train_loader, val_loader, test_loader, 
-                 device, class_counts, lr=1e-4, weight_decay=2e-4):
+                 device, class_counts, lr=1e-4, weight_decay=5e-4):
         self.model = model.to(device)
         self.train_loader = train_loader
         self.val_loader = val_loader
@@ -810,8 +1006,101 @@ class Trainer:
         self.device = device
         self.class_counts = class_counts
         
-        # Optimizer
-        self.optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
+        # Discriminative Learning Rates
+        # Collect parameters carefully to avoid overlap
+        
+        # Get all parameter IDs to track what's been assigned
+        stem_params = []
+        layer1_params = []
+        layer2_params = []
+        layer3_params = []
+        layer4_params = []
+        attention_params = []
+        head_params = []
+        bn_params = []
+        
+        # Stem (conv1 only, bn1 handled separately)
+        stem_params = list(model.conv1.conv.parameters())
+        
+        # BatchNorm1 (stem)
+        bn_params.extend(list(model.bn1.parameters()))
+        
+        # Layers: separate conv parameters from attention and batchnorm
+        for block in model.layer1:
+            # Get conv parameters (excluding bn and attention)
+            for name, param in block.block.named_parameters():
+                if 'bn' not in name:  # Exclude batchnorm
+                    layer1_params.append(param)
+                else:
+                    bn_params.append(param)
+            # Get attention parameters
+            if block.attention is not None:
+                attention_params.extend(list(block.attention.parameters()))
+        
+        for block in model.layer2:
+            for name, param in block.block.named_parameters():
+                if 'bn' not in name:
+                    layer2_params.append(param)
+                else:
+                    bn_params.append(param)
+            if block.attention is not None:
+                attention_params.extend(list(block.attention.parameters()))
+        
+        for block in model.layer3:
+            for name, param in block.block.named_parameters():
+                if 'bn' not in name:
+                    layer3_params.append(param)
+                else:
+                    bn_params.append(param)
+            if block.attention is not None:
+                attention_params.extend(list(block.attention.parameters()))
+        
+        for block in model.layer4:
+            for name, param in block.block.named_parameters():
+                if 'bn' not in name:
+                    layer4_params.append(param)
+                else:
+                    bn_params.append(param)
+            if block.attention is not None:
+                attention_params.extend(list(block.attention.parameters()))
+        
+        # Head (fc and dropout)
+        head_params = list(model.fc.parameters())
+        # Note: Dropout has no parameters
+        
+        # Create parameter groups (no overlaps now)
+        param_groups = [
+            # Stem + Layer1: 0.1x (heavily pretrained, minimal adaptation)
+            {'params': stem_params + layer1_params,
+             'lr': lr * 0.1, 'name': 'stem_layer1'},
+            
+            # Layer2-3: 0.5x (pretrained, moderate adaptation)
+            {'params': layer2_params + layer3_params,
+             'lr': lr * 0.5, 'name': 'layer2_layer3'},
+            
+            # Layer4: 1.0x (pretrained backbone, full adaptation)
+            {'params': layer4_params,
+             'lr': lr * 1.0, 'name': 'layer4'},
+            
+            # Head: 1.0x (new classifier)
+            {'params': head_params,
+             'lr': lr * 1.0, 'name': 'head'},
+            
+            # Attention modules: 1.0x (newly initialized, need full LR)
+            {'params': attention_params,
+             'lr': lr * 1.0, 'name': 'attention'},
+            
+            # BatchNorm layers: 1.0x (always adapt to new data distribution)
+            {'params': bn_params,
+             'lr': lr * 1.0, 'name': 'batchnorm'}
+        ]
+        
+        # Optimizer with parameter groups
+        self.optimizer = torch.optim.AdamW(param_groups, weight_decay=weight_decay)
+        
+        print(f"\nDiscriminative Learning Rates:")
+        for group in self.optimizer.param_groups:
+            print(f"  {group['name']:20s}: LR = {group['lr']:.6f} ({len(group['params'])} params)")
         
         # Scheduler: ReduceLROnPlateau
         self.scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
@@ -845,7 +1134,7 @@ class Trainer:
         for batch_idx, (data, target) in enumerate(self.train_loader):
             data, target = data.to(self.device), target.to(self.device)
             
-            # Apply Mixup with 30% probability
+            # Apply Mixup with 30% probability (V2 proven alpha=0.3)
             if use_mixup and np.random.rand() < 0.3:
                 mixed_data, target_a, target_b, lam = mixup_data(data, target, alpha=0.3)
                 
@@ -974,7 +1263,7 @@ if __name__ == "__main__":
     
     # Parse command line arguments
     if len(sys.argv) < 2:
-        print("Usage: python STM_CoordConvLDAM4.py <mode>")
+        print("Usage: python STM_CoordConvLDAM_preIN2.py <mode>")
         print("  mode 0: standard (full dataset)")
         print("  mode 1: downsample non-tonal speech to 100k")
         sys.exit(1)
@@ -984,10 +1273,10 @@ if __name__ == "__main__":
     # Set parameters based on mode
     if mode == 0:
         ds_nontonal_speech = False
-        directory = "model/STM/CoordConvLDAM_preIN_corpora_categories/standard"
+        directory = "model/STM/CoordConvLDAM_preIN2_corpora_categories/standard"
     elif mode == 1:
         ds_nontonal_speech = True
-        directory = "model/STM/CoordConvLDAM_preIN_corpora_categories/downsample"
+        directory = "model/STM/CoordConvLDAM_preIN2_corpora_categories/downsample"
     else:
         print("Invalid mode. Use 0 or 1.")
         sys.exit(1)
@@ -1019,24 +1308,21 @@ if __name__ == "__main__":
     
     # Create model
     print("\n" + "="*60)
-    print("Creating ImageNet-Pretrained ResNet-18 for STM (V5)...")
+    print("Creating ImageNet-Pretrained ResNet-18 for STM (V2.1)...")
     print("="*60)
     
     num_classes = 6
-    model = PretrainedSTMResNet18(num_classes=num_classes, dropout=0.3)
+    model = PretrainedSTMResNet18(num_classes=num_classes, dropout=0.4, block_dropout=0.05)
     
-    # Print model info
-    total_params = sum(p.numel() for p in model.parameters())
-    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"Total parameters: {total_params:,}")
-    print(f"Trainable parameters: {trainable_params:,}")
-    print(f"\nV5 Innovations:")
-    print(f"  • Difference Map: 2-channel input (Symmetric + Asymmetric)")
-    print(f"  • ImageNet Pretraining: Texture-optimized filters")
-    print(f"  • Resolution-Aware Stem: Stride-1, no maxpool")
-    print(f"  • Weight Cloning: Preserved pretrained knowledge")
+    # Model info is printed in __init__
+    print(f"\nV2.1 Training Configuration:")
+    print(f"  \u2022 Discriminative LR: Stem/L1 (0.1x), L2-3 (0.5x), L4/Head (1.0x)")
+    print(f"  \u2022 Weight decay: 5e-4 (increased from 2e-4)")
+    print(f"  \u2022 Mixup alpha: 0.4 (increased from 0.3)")
+    print(f"  \u2022 LDAM + DRW: Enabled (epoch 50+)")
+    print(f"  \u2022 Early stopping: 20 epochs patience")
     
-    # Create trainer
+    # Create trainer with V2 proven hyperparameters
     trainer = Trainer(
         model=model,
         train_loader=train_loader,
@@ -1045,7 +1331,7 @@ if __name__ == "__main__":
         device=device,
         class_counts=class_counts,
         lr=1e-4,
-        weight_decay=2e-4
+        weight_decay=2e-4  # V2 proven value for transfer learning
     )
     
     # Train model

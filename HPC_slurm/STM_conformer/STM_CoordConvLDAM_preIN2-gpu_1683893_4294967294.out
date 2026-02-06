@@ -2,12 +2,12 @@ INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
 Using device: cuda
 GPU: NVIDIA L40S
-CUDA Version: 12.8
-Checkpoint directory: model/STM/Asym-Mixer-KAN_full_20260204_163236
+Memory: 47.67 GB
+Checkpoint directory: model/STM/CoordConvLDAM_preIN2_corpora_categories/standard/ckpt/2026-02-06_17-26
 
-================================================================================
+============================================================
 Loading and preparing data...
-================================================================================
+============================================================
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
@@ -121,202 +121,134 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Input shape (before asymmetric processing): (20, 121)
-Output shape (after asymmetric processing): (2, 20, 61)
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
 
 Class Distribution (Training):
-  speech:non-tonal: 497475 (64.57%)
-  speech:tonal: 80258 (10.42%)
-  music:vocal: 101893 (13.23%)
-  music:non-vocal: 53538 (6.95%)
-  env:urban: 9580 (1.24%)
-  env:wildlife: 27649 (3.59%)
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
 
-PyTorch Dataset Shapes (before asymmetric processing):
-Train: torch.Size([770393, 2420])
-Val: torch.Size([102010, 2420])
-Test: torch.Size([105975, 2420])
+PyTorch Dataset Shapes (2-channel Difference Map):
+Train: torch.Size([770393, 2, 20, 121])
+Val: torch.Size([102010, 2, 20, 121])
+Test: torch.Size([105975, 2, 20, 121])
+Channel 0: Symmetric component (texture)
+Channel 1: Asymmetric component (frequency sweep direction)
 
-Applying asymmetric 2-channel STM processing...
-Original: 20 freq × 121 rates = 2420 features
-After processing: 2 channels × 20 freq × 61 rates
-  Channel 0: S_up (upward frequency sweeps, flipped)
-  Channel 1: S_down (downward frequency sweeps)
+DataLoaders created with batch_size=256
 
-DataLoaders created with batch_size=128
+============================================================
+Creating ImageNet-Pretrained ResNet-18 for STM (V2.1)...
+============================================================
+Loading ImageNet-pretrained ResNet-18...
+✓ Successfully loaded ImageNet pretrained weights
+✓ Cloned ImageNet weights to 4-channel CoordConv stem
+✓ Created STM-adapted ResNet-18 V2.1 with ImageNet pretrained weights (6 classes)
+Total parameters: 11,273,926
+Trainable parameters: 11,273,926
 
-================================================================================
-Creating Asym-Mixer-KAN model...
-================================================================================
-Total parameters: 57,089,462
-Trainable parameters: 57,089,462
+V2.1 Enhancements:
+  • Attention: CA (layer1-2), SE (layer3-4)
+  • Block dropout: 0.05
+  • Head dropout: 0.4
+  • Ready for discriminative learning rates
 
-================================================================================
-Starting Training
-================================================================================
+V2.1 Training Configuration:
+  • Discriminative LR: Stem/L1 (0.1x), L2-3 (0.5x), L4/Head (1.0x)
+  • Weight decay: 5e-4 (increased from 2e-4)
+  • Mixup alpha: 0.4 (increased from 0.3)
+  • LDAM + DRW: Enabled (epoch 50+)
+  • Early stopping: 20 epochs patience
 
-Epoch [1/50] - 12481.91s - LR: 0.000976
-  Train Loss: 8.5239
-  Val Loss: 1.4368
-  Val Macro F1: 0.5805
-  Val Per-Class F1:
-    speech:non-tonal: 0.9406
-    speech:tonal: 0.3515
-    music:vocal: 0.7742
-    music:non-vocal: 0.2760
-    env:urban: 0.4872
-    env:wildlife: 0.6537
-  *** New best model saved! (F1: 0.5805) ***
+Discriminative Learning Rates:
+  stem_layer1         : LR = 0.000010 (5 params)
+  layer2_layer3       : LR = 0.000050 (14 params)
+  layer4              : LR = 0.000100 (7 params)
+  head                : LR = 0.000100 (2 params)
+  attention           : LR = 0.000100 (28 params)
+  batchnorm           : LR = 0.000100 (34 params)
 
-Epoch [2/50] - 12498.02s - LR: 0.000905
-  Train Loss: 7.5870
-  Val Loss: 1.3612
-  Val Macro F1: 0.6772
-  Val Per-Class F1:
-    speech:non-tonal: 0.9182
-    speech:tonal: 0.5097
-    music:vocal: 0.7800
-    music:non-vocal: 0.4064
-    env:urban: 0.7263
-    env:wildlife: 0.7230
-  *** New best model saved! (F1: 0.6772) ***
+============================================================
+Starting training...
+============================================================
 
-Epoch [3/50] - 12478.58s - LR: 0.000794
-  Train Loss: 7.1462
-  Val Loss: 1.4129
-  Val Macro F1: 0.6948
-  Val Per-Class F1:
-    speech:non-tonal: 0.9497
-    speech:tonal: 0.5036
-    music:vocal: 0.7908
-    music:non-vocal: 0.4050
-    env:urban: 0.7692
-    env:wildlife: 0.7504
-  *** New best model saved! (F1: 0.6948) ***
+============================================================
+Epoch 1/100
+============================================================
+  Batch 0/3010, Loss: 9.8298, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 3.3633, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 3.0968, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.9565, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 3.8640, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.9431, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 3.6072, DRW: False, Mixup: True
+Train Loss: 3.0629
+Val Loss: 1.5443, Val Macro F1: 0.7671
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.7671
 
-Epoch [4/50] - 12496.38s - LR: 0.000655
-  Train Loss: 6.9562
-  Val Loss: 1.3947
-  Val Macro F1: 0.7163
-  Val Per-Class F1:
-    speech:non-tonal: 0.9506
-    speech:tonal: 0.5256
-    music:vocal: 0.7681
-    music:non-vocal: 0.5458
-    env:urban: 0.7431
-    env:wildlife: 0.7646
-  *** New best model saved! (F1: 0.7163) ***
+============================================================
+Epoch 2/100
+============================================================
+  Batch 0/3010, Loss: 2.1585, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.8684, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 2.0447, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 2.2202, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 4.3706, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 4.5060, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 1.6987, DRW: False, Mixup: True
+Train Loss: 2.5133
+Val Loss: 1.5388, Val Macro F1: 0.8009
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.8009
 
-Epoch [5/50] - 12481.84s - LR: 0.000501
-  Train Loss: 6.7348
-  Val Loss: 1.3924
-  Val Macro F1: 0.7368
-  Val Per-Class F1:
-    speech:non-tonal: 0.9443
-    speech:tonal: 0.5785
-    music:vocal: 0.7983
-    music:non-vocal: 0.4712
-    env:urban: 0.8397
-    env:wildlife: 0.7889
-  *** New best model saved! (F1: 0.7368) ***
+============================================================
+Epoch 3/100
+============================================================
+  Batch 0/3010, Loss: 2.1980, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 1.9631, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.8652, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.8277, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 1.6175, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 2.2378, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.0022, DRW: False, Mixup: True
+Train Loss: 2.3922
+Val Loss: 1.5416, Val Macro F1: 0.7996
+Current learning rate: 0.000010
 
-Epoch [6/50] - 12478.28s - LR: 0.000346
-  Train Loss: 6.6784
-  Val Loss: 1.3602
-  Val Macro F1: 0.7277
-  Val Per-Class F1:
-    speech:non-tonal: 0.9480
-    speech:tonal: 0.5878
-    music:vocal: 0.8030
-    music:non-vocal: 0.4265
-    env:urban: 0.8162
-    env:wildlife: 0.7846
+============================================================
+Epoch 4/100
+============================================================
+  Batch 0/3010, Loss: 2.2082, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 3.1786, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.8565, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.4609, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 2.0347, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 1.8961, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.1160, DRW: False, Mixup: True
+Train Loss: 2.2930
+Val Loss: 1.5399, Val Macro F1: 0.8272
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.8272
 
-Epoch [7/50] - 12478.11s - LR: 0.000207
-  Train Loss: 6.5642
-  Val Loss: 1.4012
-  Val Macro F1: 0.7474
-  Val Per-Class F1:
-    speech:non-tonal: 0.9522
-    speech:tonal: 0.5736
-    music:vocal: 0.8078
-    music:non-vocal: 0.4670
-    env:urban: 0.8728
-    env:wildlife: 0.8107
-  *** New best model saved! (F1: 0.7474) ***
+============================================================
+Epoch 5/100
+============================================================
+  Batch 0/3010, Loss: 3.5844, DRW: False, Mixup: True
+  Batch 500/3010, Loss: 2.8554, DRW: False, Mixup: True
+  Batch 1000/3010, Loss: 1.8130, DRW: False, Mixup: True
+  Batch 1500/3010, Loss: 1.8181, DRW: False, Mixup: True
+  Batch 2000/3010, Loss: 2.0119, DRW: False, Mixup: True
+  Batch 2500/3010, Loss: 2.1562, DRW: False, Mixup: True
+  Batch 3000/3010, Loss: 2.0613, DRW: False, Mixup: True
+Train Loss: 2.2542
+Val Loss: 1.5297, Val Macro F1: 0.8216
+Current learning rate: 0.000010
 
-Epoch [8/50] - 12479.81s - LR: 0.000096
-  Train Loss: 6.3781
-  Val Loss: 1.3914
-  Val Macro F1: 0.7494
-  Val Per-Class F1:
-    speech:non-tonal: 0.9491
-    speech:tonal: 0.5908
-    music:vocal: 0.8100
-    music:non-vocal: 0.4302
-    env:urban: 0.8945
-    env:wildlife: 0.8217
-  *** New best model saved! (F1: 0.7494) ***
-
-Epoch [9/50] - 12482.26s - LR: 0.000025
-  Train Loss: 6.3366
-  Val Loss: 1.3912
-  Val Macro F1: 0.7545
-  Val Per-Class F1:
-    speech:non-tonal: 0.9475
-    speech:tonal: 0.5975
-    music:vocal: 0.8115
-    music:non-vocal: 0.4681
-    env:urban: 0.8837
-    env:wildlife: 0.8190
-  *** New best model saved! (F1: 0.7545) ***
-
-Epoch [10/50] - 12479.85s - LR: 0.001000
-  Train Loss: 6.3306
-  Val Loss: 1.3951
-  Val Macro F1: 0.7549
-  Val Per-Class F1:
-    speech:non-tonal: 0.9479
-    speech:tonal: 0.6001
-    music:vocal: 0.8104
-    music:non-vocal: 0.4583
-    env:urban: 0.9023
-    env:wildlife: 0.8100
-  *** New best model saved! (F1: 0.7549) ***
-
-Epoch [11/50] - 12479.94s - LR: 0.000994
-  Train Loss: 6.7355
-  Val Loss: 1.3773
-  Val Macro F1: 0.7169
-  Val Per-Class F1:
-    speech:non-tonal: 0.9453
-    speech:tonal: 0.5872
-    music:vocal: 0.8046
-    music:non-vocal: 0.4136
-    env:urban: 0.7645
-    env:wildlife: 0.7860
-
-Epoch [12/50] - 12480.24s - LR: 0.000976
-  Train Loss: 6.6807
-  Val Loss: 1.3632
-  Val Macro F1: 0.7369
-  Val Per-Class F1:
-    speech:non-tonal: 0.9513
-    speech:tonal: 0.5186
-    music:vocal: 0.7998
-    music:non-vocal: 0.4820
-    env:urban: 0.8595
-    env:wildlife: 0.8101
-
-Epoch [13/50] - 12481.34s - LR: 0.000946
-  Train Loss: 6.6713
-  Val Loss: 1.3710
-  Val Macro F1: 0.7345
-  Val Per-Class F1:
-    speech:non-tonal: 0.9522
-    speech:tonal: 0.5493
-    music:vocal: 0.8030
-    music:non-vocal: 0.4468
-    env:urban: 0.8487
-    env:wildlife: 0.8071
-[2026-02-06T16:32:12.076] error: *** JOB 1588515 ON gl056 CANCELLED AT 2026-02-06T16:32:12 DUE TO TIME LIMIT ***
+============================================================
+Epoch 6/100
+============================================================
