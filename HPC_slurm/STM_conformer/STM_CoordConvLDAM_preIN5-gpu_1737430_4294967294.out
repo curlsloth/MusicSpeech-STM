@@ -1,15 +1,13 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
-WARNING: timm not installed. Install with: pip install timm
 Using device: cuda
 GPU: NVIDIA L40S
-CUDA version: 12.8
-✓ Using pretrained ViM from: Vim/vim_s_midclstok_ft_81p6acc.pth
-Checkpoint directory: checkpoints/STM_branchAuM_preViM_mode0_20260205_171948
+Memory: 47.67 GB
+Checkpoint directory: model/STM/CoordConvLDAM_preIN5_corpora_categories/standard/ckpt/2026-02-07_08-32
 
-================================================================================
+============================================================
 Loading and preparing data...
-================================================================================
+============================================================
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
@@ -123,74 +121,76 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Original feature dim: 2420
-After asymmetric processing: 2440 tokens
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
 
 Class Distribution (Training):
-  Class 0: 497475 samples (0.6457)
-  Class 1: 80258 samples (0.1042)
-  Class 2: 101893 samples (0.1323)
-  Class 3: 53538 samples (0.0695)
-  Class 4: 9580 samples (0.0124)
-  Class 5: 27649 samples (0.0359)
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
 
-Applying asymmetric 2-channel STM processing...
-Original: 20 freq × 121 rates = 2420 features
-After processing: 2 channels × 20 freq × 61 rates
-  Channel 0: S_up (upward frequency sweeps)
-  Channel 1: S_down (downward frequency sweeps)
-After spatial adapter: 3 channels × 224 × 224 (ViM input)
+PyTorch Dataset Shapes (2-channel Difference Map):
+Train: torch.Size([770393, 2, 20, 121])
+Val: torch.Size([102010, 2, 20, 121])
+Test: torch.Size([105975, 2, 20, 121])
+Channel 0: Symmetric component (texture)
+Channel 1: Asymmetric component (frequency sweep direction)
 
-DataLoaders created with batch_size=8
+Class-Balanced Sampling (V5 Enhancement):
+  Original class distribution:
+    Class 0: 497,475 samples, weight=0.000002
+    Class 1: 80,258 samples, weight=0.000012
+    Class 2: 101,893 samples, weight=0.000010
+    Class 3: 53,538 samples, weight=0.000019
+    Class 4: 9,580 samples, weight=0.000104
+    Class 5: 27,649 samples, weight=0.000036
+  Effect: Minority classes sampled ~51.9x more often
 
-================================================================================
-Creating STM_branchAuM_preViM model...
-================================================================================
-Loading pretrained ViM weights from Vim/vim_s_midclstok_ft_81p6acc.pth
-  ✗ Failed to load pretrained weights: Weights only load failed. This file can still be loaded, to do so you have two options, [1mdo those steps only if you trust the source of the checkpoint[0m. 
-	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
-	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
-	WeightsUnpickler error: Unsupported global: GLOBAL argparse.Namespace was not an allowed global by default. Please use `torch.serialization.add_safe_globals([argparse.Namespace])` or the `torch.serialization.safe_globals([argparse.Namespace])` context manager to allowlist this global if you trust this class/function.
+DataLoaders created with batch_size=256
+  Train: WeightedRandomSampler (class-balanced)
+  Val/Test: Sequential (no sampling)
 
-Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
-  → Training from scratch
-Total parameters: 54,804,690
-Trainable parameters: 54,804,690
-Branch point: Layer 4
+============================================================
+Creating ImageNet-Pretrained ResNet-18 for STM (V5)...
+============================================================
+Loading ImageNet-pretrained ResNet-18...
+✓ Successfully loaded ImageNet pretrained weights
+✓ Cloned ImageNet weights to 4-channel CoordConv stem
+✓ Created STM-adapted ResNet-18 V2.1 with ImageNet pretrained weights (6 classes)
+Total parameters: 11,273,926
+Trainable parameters: 11,273,926
 
-Architecture:
-  1. Spatial Adapter: (2,20,61) → (3,224,224)
-  2. Pretrained ViM: vim_small with 4×4 patches (3,136 tokens)
-  3. Hierarchical branching:
-     - Early blocks (0-3): Feature extraction
-     - Coarse classifier: 3 super-classes
-     - Deep blocks (4-23): Fine-grained with guidance
-     - Fine classifier: 6 classes
+V2.1 Enhancements:
+  • Attention: CA (layer1-2), SE (layer3-4)
+  • Block dropout: 0.05
+  • Head dropout: 0.3
+  • Ready for discriminative learning rates
 
-Progressive Unfreezing Schedule:
-  - Epochs 0-9: Freeze blocks 0-3
-  - Epochs 10-29: Unfreeze blocks 2-3
-  - Epochs 30+: Unfreeze all
+V5 Training Configuration:
+  • Earlier DRW: Activated at epoch 31 (vs V3's epoch 51)
+  • Class-Balanced Sampling: WeightedRandomSampler
+  • SpecAugment: Time mask (10 bins), Freq mask (3 bins)
+  • Discriminative LR: Stem/L1 (0.1x), L2-3 (0.5x), L4/Head (1.0x)
+  • Weight decay: 2e-4 (V2 proven)
+  • Mixup alpha: 0.3 (30% probability)
+  • Head dropout: 0.3
+  • Early stopping: 20 epochs patience
 
-================================================================================
-Starting training for 50 epochs
-================================================================================
+Discriminative Learning Rates:
+  stem_layer1         : LR = 0.000010 (5 params)
+  layer2_layer3       : LR = 0.000050 (14 params)
+  layer4              : LR = 0.000100 (7 params)
+  head                : LR = 0.000100 (2 params)
+  attention           : LR = 0.000100 (28 params)
+  batchnorm           : LR = 0.000100 (34 params)
 
+============================================================
+Starting training...
+============================================================
 
-================================================================================
-Epoch 0: Freezing backbone blocks 0-3
-================================================================================
-Epoch 1/50
-  Train Loss: 3.0370 | Train F1: 0.6591
-  Val Loss: 0.6479 | Val F1: 0.7367
-  Val F1 per class: [0.95634467 0.60431256 0.81563213 0.4547605  0.75589226 0.83338205]
-  LR: 0.000098 (backbone), 0.000976 (new)
-  ✓ Saved best model (Val F1: 0.7367)
-
-Epoch 2/50
-  Train Loss: 2.6644 | Train F1: 0.7381
-  Val Loss: 0.6010 | Val F1: 0.7732
-  Val F1 per class: [0.95790089 0.67365883 0.82030964 0.40926396 0.89928789 0.87865199]
-  LR: 0.000091 (backbone), 0.000905 (new)
-  ✓ Saved best model (Val F1: 0.7732)
-
+============================================================
+Epoch 1/100
+============================================================

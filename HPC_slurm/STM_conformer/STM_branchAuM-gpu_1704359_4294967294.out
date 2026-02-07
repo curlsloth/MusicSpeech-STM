@@ -1,13 +1,14 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
 Using device: cuda
-GPU: NVIDIA H200
-Memory: 150.11 GB
-Checkpoint directory: model/STM/CoordConvLDAM_preIN2_corpora_categories/standard/ckpt/2026-02-06_13-43
+GPU: NVIDIA L40S
+CUDA Version: 12.8
+Resume mode: Loading from model/STM/STM_branchAuM_full_20260204_180948
+Checkpoint directory: model/STM/STM_branchAuM_full_20260204_180948
 
-============================================================
+================================================================================
 Loading and preparing data...
-============================================================
+================================================================================
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
@@ -121,68 +122,65 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Feature dimension (flattened): 2420
-Expected 2D shape: (20, 121)
+Original feature dim: 2420
+After asymmetric processing: 2440 tokens
 
 Class Distribution (Training):
-  Class 0: 497475 samples (64.6%)
-  Class 1:  80258 samples (10.4%)
-  Class 2: 101893 samples (13.2%)
-  Class 3:  53538 samples (6.9%)
-  Class 4:   9580 samples (1.2%)
-  Class 5:  27649 samples (3.6%)
+  Class 0: 497475 samples (0.6457)
+  Class 1: 80258 samples (0.1042)
+  Class 2: 101893 samples (0.1323)
+  Class 3: 53538 samples (0.0695)
+  Class 4: 9580 samples (0.0124)
+  Class 5: 27649 samples (0.0359)
 
-PyTorch Dataset Shapes (2-channel Difference Map):
-Train: torch.Size([770393, 2, 20, 121])
-Val: torch.Size([102010, 2, 20, 121])
-Test: torch.Size([105975, 2, 20, 121])
-Channel 0: Symmetric component (texture)
-Channel 1: Asymmetric component (frequency sweep direction)
+Applying asymmetric 2-channel STM processing...
+Original: 20 freq × 121 rates = 2420 features
+After processing: 2 channels × 20 freq × 61 rates → 2440 tokens
+  Channel 0: S_up (upward frequency sweeps, flipped)
+  Channel 1: S_down (downward frequency sweeps)
+  Flattened for sequence processing by Mamba
 
-DataLoaders created with batch_size=256
+DataLoaders created with batch_size=64
 
-============================================================
-Creating ImageNet-Pretrained ResNet-18 for STM (V2.1)...
-============================================================
-Loading ImageNet-pretrained ResNet-18...
-✓ Successfully loaded ImageNet pretrained weights
-✓ Cloned ImageNet weights to 4-channel CoordConv stem
-✓ Created STM-adapted ResNet-18 V2.1 with ImageNet pretrained weights (6 classes)
-Total parameters: 11,273,926
-Trainable parameters: 11,273,926
+================================================================================
+Creating STM_branchAuM model...
+================================================================================
+Total parameters: 12,782,473
+Trainable parameters: 12,782,473
+Branch point: Layer 4
+Hierarchical structure:
+  - Early blocks (1-4): Feature extraction
+  - Coarse classifier: 3 super-classes (Speech/Music/Environment)
+  - Deep blocks (5-12): Fine-grained refinement with guidance
+  - Fine classifier: 6 fine-grained classes
+Loading checkpoint from model/STM/STM_branchAuM_full_20260204_180948/best_model.pt
+Resumed from epoch 10
+Best validation F1: 0.8224
 
-V2.1 Enhancements:
-  • Attention: CA (layer1-2), SE (layer3-4)
-  • Block dropout: 0.05
-  • Head dropout: 0.4
-  • Ready for discriminative learning rates
+================================================================================
+Starting Training - Hierarchical STM_branchAuM
+================================================================================
 
-V2.1 Training Configuration:
-  • Discriminative LR: Stem/L1 (0.1x), L2-3 (0.5x), L4/Head (1.0x)
-  • Weight decay: 5e-4 (increased from 2e-4)
-  • Mixup alpha: 0.4 (increased from 0.3)
-  • LDAM + DRW: Enabled (epoch 50+)
-  • Early stopping: 20 epochs patience
-Traceback (most recent call last):
-  File "/scratch/ac8888/MusicSpeech-STM/STM_CoordConvLDAM_preIN2.py", line 1251, in <module>
-    trainer = Trainer(
-        model=model,
-    ...<6 lines>...
-        weight_decay=5e-4  # Increased from 2e-4
-    )
-  File "/scratch/ac8888/MusicSpeech-STM/STM_CoordConvLDAM_preIN2.py", line 1024, in __init__
-    self.optimizer = torch.optim.AdamW(param_groups, weight_decay=weight_decay)
-                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.local/lib/python3.13/site-packages/torch/optim/adamw.py", line 100, in __init__
-    super().__init__(params, defaults)
-    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "/root/.local/lib/python3.13/site-packages/torch/optim/optimizer.py", line 377, in __init__
-    self.add_param_group(cast(dict, param_group))
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.local/lib/python3.13/site-packages/torch/_compile.py", line 32, in inner
-    return disable_fn(*args, **kwargs)
-  File "/root/.local/lib/python3.13/site-packages/torch/_dynamo/eval_frame.py", line 745, in _fn
-    return fn(*args, **kwargs)
-  File "/root/.local/lib/python3.13/site-packages/torch/optim/optimizer.py", line 1096, in add_param_group
-    raise ValueError("some parameters appear in more than one parameter group")
-ValueError: some parameters appear in more than one parameter group
+Epoch [11/50] - 13926.41s - LR: 0.000994
+  Train Loss: 2.4307 (Coarse: 1.2507, Fine: 2.9364)
+  Val Loss: 1.4483
+  Val Macro F1: 0.7912
+  Val Per-Class F1:
+    speech:non-tonal: 0.9658
+    speech:tonal: 0.6899
+    music:vocal: 0.8266
+    music:non-vocal: 0.5086
+    env:urban: 0.8884
+    env:wildlife: 0.8676
+
+Epoch [12/50] - 13910.42s - LR: 0.000976
+  Train Loss: 2.4080 (Coarse: 1.2388, Fine: 2.9091)
+  Val Loss: 1.4418
+  Val Macro F1: 0.8108
+  Val Per-Class F1:
+    speech:non-tonal: 0.9633
+    speech:tonal: 0.7049
+    music:vocal: 0.8024
+    music:non-vocal: 0.6090
+    env:urban: 0.9104
+    env:wildlife: 0.8746
