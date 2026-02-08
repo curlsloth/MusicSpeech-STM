@@ -1,11 +1,12 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
+INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommended.
 WARNING: timm not installed. Install with: pip install timm
 Using device: cuda
 GPU: NVIDIA L40S
 CUDA version: 12.8
 ✓ Using pretrained ViM from: Vim/vim_s_midclstok_ft_81p6acc.pth
-Checkpoint directory: checkpoints/STM_branchAuM_preViM_mode0_20260205_171948
+Checkpoint directory: model/STM/branchAuM_preViM_corpora_categories/standard/ckpt/20260207_154959
 
 ================================================================================
 Loading and preparing data...
@@ -141,7 +142,7 @@ After processing: 2 channels × 20 freq × 61 rates
   Channel 1: S_down (downward frequency sweeps)
 After spatial adapter: 3 channels × 224 × 224 (ViM input)
 
-DataLoaders created with batch_size=8
+DataLoaders created with batch_size=32
 
 ================================================================================
 Creating STM_branchAuM_preViM model...
@@ -154,13 +155,15 @@ Loading pretrained ViM weights from Vim/vim_s_midclstok_ft_81p6acc.pth
 
 Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
   → Training from scratch
-Total parameters: 54,804,690
-Trainable parameters: 54,804,690
+Total parameters: 53,893,842
+Trainable parameters: 53,893,842
 Branch point: Layer 4
 
-Architecture:
-  1. Spatial Adapter: (2,20,61) → (3,224,224)
-  2. Pretrained ViM: vim_small with 4×4 patches (3,136 tokens)
+Architecture (Speed-Optimized):
+  1. Spatial Adapter: (2,20,61) → (3,224,224) [Bilinear + Conv2D]
+  2. Pretrained ViM: vim_small with 16×16 patches (196 tokens)
+     - 16× fewer tokens than 4×4 patches
+     - Matches standard ViM config (no interpolation)
   3. Hierarchical branching:
      - Early blocks (0-3): Feature extraction
      - Coarse classifier: 3 super-classes
@@ -172,6 +175,8 @@ Progressive Unfreezing Schedule:
   - Epochs 10-29: Unfreeze blocks 2-3
   - Epochs 30+: Unfreeze all
 
+Expected Speedup: ~15-20× over 4×4 patch version
+
 ================================================================================
 Starting training for 50 epochs
 ================================================================================
@@ -181,16 +186,99 @@ Starting training for 50 epochs
 Epoch 0: Freezing backbone blocks 0-3
 ================================================================================
 Epoch 1/50
-  Train Loss: 3.0370 | Train F1: 0.6591
-  Val Loss: 0.6479 | Val F1: 0.7367
-  Val F1 per class: [0.95634467 0.60431256 0.81563213 0.4547605  0.75589226 0.83338205]
+  Train Loss: 3.1411 | Train F1: 0.6747
+  Val Loss: 0.6692 | Val F1: 0.7753
+  Val F1 per class: [0.95714234 0.6283824  0.78081705 0.58771174 0.85851781 0.8394285 ]
   LR: 0.000098 (backbone), 0.000976 (new)
-  ✓ Saved best model (Val F1: 0.7367)
+  ✓ Saved best model (Val F1: 0.7753)
 
 Epoch 2/50
-  Train Loss: 2.6644 | Train F1: 0.7381
-  Val Loss: 0.6010 | Val F1: 0.7732
-  Val F1 per class: [0.95790089 0.67365883 0.82030964 0.40926396 0.89928789 0.87865199]
+  Train Loss: 2.8107 | Train F1: 0.7365
+  Val Loss: 0.6641 | Val F1: 0.7762
+  Val F1 per class: [0.96132144 0.64048594 0.82235616 0.45422711 0.91317671 0.86581343]
   LR: 0.000091 (backbone), 0.000905 (new)
-  ✓ Saved best model (Val F1: 0.7732)
+  ✓ Saved best model (Val F1: 0.7762)
+
+Epoch 3/50
+  Train Loss: 2.6853 | Train F1: 0.7569
+  Val Loss: 0.6483 | Val F1: 0.8117
+  Val F1 per class: [0.96482477 0.68835341 0.81965927 0.57560818 0.93432203 0.88752556]
+  LR: 0.000080 (backbone), 0.000794 (new)
+  ✓ Saved best model (Val F1: 0.8117)
+
+Epoch 4/50
+  Train Loss: 2.5975 | Train F1: 0.7663
+  Val Loss: 0.5680 | Val F1: 0.8280
+  Val F1 per class: [0.96877165 0.74476415 0.79671502 0.63533683 0.92403746 0.89811011]
+  LR: 0.000066 (backbone), 0.000655 (new)
+  ✓ Saved best model (Val F1: 0.8280)
+
+Epoch 5/50
+  Train Loss: 2.5205 | Train F1: 0.7789
+  Val Loss: 0.5402 | Val F1: 0.8335
+  Val F1 per class: [0.96802373 0.75169048 0.80312982 0.63715242 0.93630573 0.90458691]
+  LR: 0.000051 (backbone), 0.000501 (new)
+  ✓ Saved best model (Val F1: 0.8335)
+
+Epoch 6/50
+  Train Loss: 2.4592 | Train F1: 0.7884
+  Val Loss: 0.5953 | Val F1: 0.8338
+  Val F1 per class: [0.96697685 0.75348048 0.80105774 0.64408595 0.93514644 0.90188062]
+  LR: 0.000035 (backbone), 0.000346 (new)
+  ✓ Saved best model (Val F1: 0.8338)
+
+Epoch 7/50
+  Train Loss: 2.3948 | Train F1: 0.7970
+  Val Loss: 0.5865 | Val F1: 0.8389
+  Val F1 per class: [0.97101386 0.75093416 0.8303934  0.60960961 0.95605573 0.91556911]
+  LR: 0.000021 (backbone), 0.000207 (new)
+  ✓ Saved best model (Val F1: 0.8389)
+
+Epoch 8/50
+  Train Loss: 2.3278 | Train F1: 0.8057
+  Val Loss: 0.5904 | Val F1: 0.8408
+  Val F1 per class: [0.9699472  0.7622619  0.82630577 0.62309799 0.95095949 0.91234735]
+  LR: 0.000010 (backbone), 0.000096 (new)
+  ✓ Saved best model (Val F1: 0.8408)
+
+Epoch 9/50
+  Train Loss: 2.2704 | Train F1: 0.8151
+  Val Loss: 0.5840 | Val F1: 0.8442
+  Val F1 per class: [0.97188421 0.76642245 0.82822232 0.62691549 0.95410886 0.91741619]
+  LR: 0.000003 (backbone), 0.000025 (new)
+  ✓ Saved best model (Val F1: 0.8442)
+
+Epoch 10/50
+  Train Loss: 2.2225 | Train F1: 0.8211
+  Val Loss: 0.6006 | Val F1: 0.8438
+  Val F1 per class: [0.97124563 0.7699508  0.83189569 0.61450051 0.95493562 0.92008758]
+  LR: 0.000100 (backbone), 0.001000 (new)
+
+
+================================================================================
+Epoch 10: Freezing backbone blocks 0-1
+================================================================================
+Epoch 11/50
+  Train Loss: 2.4994 | Train F1: 0.7826
+  Val Loss: 0.7125 | Val F1: 0.8107
+  Val F1 per class: [0.96346975 0.73171274 0.83165908 0.50109347 0.93403141 0.902379  ]
+  LR: 0.000099 (backbone), 0.000994 (new)
+
+Epoch 12/50
+  Train Loss: 2.5144 | Train F1: 0.7796
+  Val Loss: 0.5785 | Val F1: 0.8260
+  Val F1 per class: [0.96976209 0.73953278 0.80860008 0.6121177  0.91504606 0.91064314]
+  LR: 0.000098 (backbone), 0.000976 (new)
+
+Epoch 13/50
+  Train Loss: 2.4881 | Train F1: 0.7834
+  Val Loss: 0.6321 | Val F1: 0.8216
+  Val F1 per class: [0.96685739 0.73700506 0.82926035 0.57036473 0.92450879 0.90162831]
+  LR: 0.000095 (backbone), 0.000946 (new)
+
+Epoch 14/50
+  Train Loss: 2.4673 | Train F1: 0.7857
+  Val Loss: 0.5893 | Val F1: 0.8242
+  Val F1 per class: [0.96868573 0.72240271 0.81849504 0.62166778 0.91880781 0.89484369]
+  LR: 0.000091 (backbone), 0.000905 (new)
 

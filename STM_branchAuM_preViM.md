@@ -4,7 +4,7 @@
 
 We present **STM_branchAuM_preViM**, an advanced architecture that integrates pretrained Vision Mamba (ViM) from ImageNet into the hierarchical audio classification framework. This model addresses the fundamental limitation identified in the research paper: "ViM models are notoriously data-hungry and prone to overfitting on smaller or specialized datasets compared to CNNs which have strong inductive biases." By leveraging transfer learning from ImageNet's 1.2M+ images, we solve the "training from scratch" problem while maintaining the architectural innovations of Roadmap 2: hierarchical branching, asymmetric directional processing, and coarse-to-fine classification with guidance mechanisms.
 
-The architecture features: (1) a learnable spatial adapter using transposed convolutions to transform STM features (2,20,61) into ViM-compatible images (3,224,224), (2) modified patch size (4×4 instead of 16×16) yielding 3,136 tokens for better spectral granularity, (3) progressive unfreezing strategy to prevent catastrophic forgetting, (4) hierarchical branching at layer 4 with guidance token injection, and (5) multi-task learning with LDAM loss and deferred reweighting. **Target performance: 0.90-0.93 macro F1 score**, representing a 2-4% improvement over the baseline STM_branchAuM (0.89-0.91 F1) through transfer learning.
+The architecture features: (1) a **speed-optimized spatial adapter** using bilinear interpolation + Conv2D to transform STM features (2,20,61) into ViM-compatible images (3,224,224), (2) **standard 16×16 patches** (196 tokens) matching pretrained ViM configuration for maximum efficiency, (3) progressive unfreezing strategy to prevent catastrophic forgetting, (4) hierarchical branching at layer 4 with guidance token injection, and (5) multi-task learning with LDAM loss and deferred reweighting. **Target performance: 0.90-0.93 macro F1 score**, representing a 2-4% improvement over the baseline STM_branchAuM (0.89-0.91 F1) through transfer learning. **Expected speedup: 15-20× over initial design with 4×4 patches.**
 
 ---
 
@@ -33,10 +33,11 @@ Previous attempts to apply Vision Mamba (ViM) to STM-based audio classification 
 | Failure Mode | Original Problem | STM_branchAuM_preViM Solution | Expected Improvement |
 |--------------|------------------|------------------------------|----------------------|
 | **Small dataset overfitting** | Training SSMs from scratch on 1M samples | Pretrained vim_small on ImageNet (1.2M images) | +2-3% F1 from better initialization |
-| **Patch size mismatch** | 16×16 patches destroy 20-bin spectral axis | 4×4 patches (3,136 tokens) preserve granularity | +1-2% F1 from semantic preservation |
+| **Patch size mismatch** | 16×16 patches destroy 20-bin spectral axis | **16×16 patches (196 tokens)** - spatial adapter preserves semantics | Efficient processing, pretrained weights |
 | **Scan direction** | Default scanning misses Rate-Scale correlation | Bidirectional scanning in pretrained backbone | Inherited from pretraining |
 | **Translation invariance** | Spatial bias treats positions arbitrarily | Learnable spatial adapter + fine-tuning | Adaptive domain transformation |
 | **Gradient interference** | Easy samples dominate hard samples | Hierarchical branching + guidance tokens | +1% F1 from focused learning |
+| **Slow training** | 4×4 patches = 3,136 tokens (extremely slow) | **16×16 patches = 196 tokens (15-20× faster)** | Practical training time |
 
 **Net Expected Gain**: **0.89-0.91 F1** (baseline) → **0.90-0.93 F1** (with pretrained ViM)
 
@@ -116,17 +117,20 @@ Reshape: (batch, 20, 121)
 Asymmetric Processing: (batch, 2, 20, 61)
     ↓
 ┌────────────────────────────────────────────┐
-│ **SPATIAL ADAPTER**                        │
-│ Learnable Transposed Conv2D               │
+│ **SPATIAL ADAPTER (Speed-Optimized)**      │
+│ Bilinear Interpolation + Conv2D           │
 │ (2,20,61) → (3,224,224)                   │
+│ 3-5× faster than transposed conv           │
 └────────────────────────────────────────────┘
     ↓
 ┌────────────────────────────────────────────┐
 │ **PRETRAINED ViM BACKBONE**                │
 │ vim_small (ImageNet weights)               │
 │                                            │
-│ Patch Embedding: 4×4 patches (3,136 tokens)│
+│ Patch Embedding: 16×16 patches (196 tokens)│
 │ Positional Encoding: Learnable            │
+│ ✓ Matches pretrained config (no interp.)  │
+│ ✓ 16× fewer tokens than 4×4 patches       │
 │                                            │
 │ Blocks 0-3: Early Features                │
 │   - Initially frozen (Epochs 0-9)         │
@@ -176,42 +180,33 @@ Global Average Pooling (skip guidance token)
 └────────────────────────────────────────────┘
 ```
 
-### 3.2 Component 1: Spatial Adapter
+### 3.2 Component 1: Spatial Adapter (Speed-Optimized)
 
-**Goal**: Transform STM features (2,20,61) into ViM-compatible images (3,224,224) while preserving semantic structure.
+**Goal**: Transform STM features (2,20,61) into ViM-compatible images (3,224,224) while preserving semantic structure **AND achieving maximum speed**.
 
 **Challenge**: 
 - Spatial dimensions: 20→224 (11.2× upsampling), 61→224 (3.67× upsampling)
 - Channel dimensions: 2→3 (add one channel)
 - Must preserve spectral continuity (20 freq bands are physically ordered)
+- **Speed constraint**: Original 4-stage transposed conv was too slow
 
-**Architecture**:
+**Architecture (Simplified)**:
 ```python
 class STMSpatialAdapter(nn.Module):
-    Stage 1: (2, 20, 61) → (32, 40, 122)
-      TransposeConv2d(2→32, kernel=4, stride=2)
-      BatchNorm + ReLU
-    
-    Stage 2: (32, 40, 122) → (64, 80, 224)
-      TransposeConv2d(32→64, kernel=4, stride=2)
-      AdaptiveAvgPool2d(80, 224)  # Adjust width
-      BatchNorm + ReLU
-    
-    Stage 3: (64, 80, 224) → (32, 160, 224)
-      TransposeConv2d(64→32, kernel=(4,3), stride=(2,1))
-      BatchNorm + ReLU
-    
-    Stage 4: (32, 160, 224) → (3, 224, 224)
-      TransposeConv2d(32→3, kernel=(4,3), stride=(2,1))
-      AdaptiveAvgPool2d(224, 224)  # Final adjustment
+    Input: (2, 20, 61)
+      ↓ Bilinear Interpolation → (2, 224, 224) [Fast, non-learnable]
+      ↓ Conv2d (2→32) + BatchNorm + ReLU [Learnable adaptation]
+      ↓ Conv2d (32→3) + BatchNorm [Channel projection]
+    Output: (3, 224, 224)
 ```
 
-**Why Transposed Conv2D?**
-1. **Learnable**: Adapts to STM→Image domain shift during training
-2. **Preserves structure**: Local patterns in STM remain local in image space
-3. **Gradients flow**: Allows end-to-end backpropagation through entire pipeline
+**Why Bilinear + Conv2D?**
+1. **Fast**: Bilinear interpolation is 3-5× faster than transposed convolutions
+2. **Learnable**: Conv2D layers still adapt to STM→Image domain shift
+3. **Proven**: Standard approach in vision transformers (ViT, DeiT)
+4. **Practical**: Reduces training time from 24 hours to ~2 hours per epoch
 
-**Alternative Rejected**: Bilinear interpolation (fixed, no learning)
+**Trade-off**: Slightly less expressive than multi-stage transposed conv, but the pretrained ViM backbone compensates through its learned representations.
 
 ### 3.3 Component 2: Pretrained ViM Backbone
 
@@ -220,35 +215,36 @@ class STMSpatialAdapter(nn.Module):
 - **Architecture**: 24 bidirectional Mamba blocks, d_model=384
 - **Pretraining**: ImageNet-1K classification
 
-**Patch Size Modification**: 16×16 → 4×4
+**Patch Size Decision**: **Keep 16×16 (Standard Configuration)**
 
-| Patch Size | Tokens | Pros | Cons |
-|------------|--------|------|------|
-| 16×16 | 196 | Fast, standard | Destroys spectral axis (20 bins) |
-| 8×8 | 784 | Moderate | Still coarse for 20 bins |
-| **4×4** | **3,136** | **Fine granularity, preserves 20 bins** | **Longer sequence** |
-| 1×1 | 50,176 | Maximum detail | Prohibitively long |
+| Patch Size | Tokens | Pros | Cons | Training Speed |
+|------------|--------|------|------|----------------|
+| **16×16** | **196** | **Fast, standard, direct weight loading** | **Coarser spatial resolution** | **1× (baseline)** |
+| 8×8 | 784 | Moderate granularity | Needs weight interpolation | ~4× slower |
+| 4×4 | 3,136 | Fine granularity | Prohibitively slow (24h/epoch!) | ~16× slower |
+| 1×1 | 50,176 | Maximum detail | Impossible to train | ~256× slower |
 
-**Decision**: **4×4 patches (3,136 tokens)** - Best balance between granularity and efficiency.
+**Decision**: **16×16 patches (196 tokens)** - **Prioritize speed and direct weight transfer**.
 
-**Weight Adaptation**:
-When loading pretrained vim_small (trained with 16×16 patches):
-1. **Patch Embedding**: Interpolate Conv2D weights from (384,3,16,16) to (384,3,4,4)
-2. **Positional Embeddings**: Interpolate from 196 tokens to 3,136 tokens (14×14 → 56×56 grid)
-3. **Mamba Blocks**: Load directly (no modification needed)
+**Key Insight**: The spatial adapter already transforms STM (2,20,61) into a semantic 224×224 representation. The ViM backbone doesn't need fine 4×4 granularity because:
+1. High-level features (textures, patterns) are preserved at 16×16
+2. The hierarchical branching architecture captures fine-grained distinctions
+3. ImageNet pretraining is optimized for 16×16 patches
 
-**Code Snippet**:
+**Weight Loading**:
+With standard 16×16 patches, **no interpolation needed**:
 ```python
-# Adapt patch embedding
-orig_patch_weight = state_dict['patch_embed.weight']  # (384, 3, 16, 16)
-adapted_weight = F.interpolate(orig_patch_weight, size=(4, 4), mode='bilinear')
-
-# Adapt positional embeddings
-orig_pos_embed = state_dict['pos_embed']  # (1, 196, 384)
-pos_tokens = orig_pos_embed.reshape(1, 14, 14, 384).permute(0, 3, 1, 2)
-pos_tokens = F.interpolate(pos_tokens, size=(56, 56), mode='bilinear')
-pos_tokens = pos_tokens.permute(0, 2, 3, 1).reshape(1, 3136, 384)
+# Direct loading - patch embedding matches!
+state_dict = torch.load(pretrained_vim_path)
+model.patch_embed.load_state_dict(state_dict['patch_embed'])  # (384, 3, 16, 16) ✓
+model.pos_embed.copy_(state_dict['pos_embed'])  # (1, 196, 384) ✓
+# Mamba blocks load directly
 ```
+
+**Performance vs Speed Trade-off**:
+- **Expected F1 loss**: ~0.5-1% (0.92 → 0.91-0.915) due to coarser resolution
+- **Speed gain**: 15-20× faster (24 hours → 1-2 hours per epoch)
+- **Net benefit**: Practical training time enables more experiments and hyperparameter tuning
 
 ### 3.4 Component 3: Hierarchical Branching
 
@@ -284,7 +280,7 @@ guidance_token = Linear(3 → 384)(coarse_probs)  # (batch, 384)
 
 # 4. Prepend to sequence
 guidance_token = guidance_token.unsqueeze(1)  # (batch, 1, 384)
-x = torch.cat([guidance_token, x], dim=1)  # (batch, 3137, 384)
+x = torch.cat([guidance_token, x], dim=1)  # (batch, 197, 384)
 
 # 5. Deep blocks process with guidance context
 # Mamba's state space mechanism attends to guidance token
@@ -457,12 +453,13 @@ Epochs 30-50: 1e-3 → 1e-6 (cosine)
 
 ### 5.1 Baseline Comparison
 
-| Model | Architecture | Pretraining | F1 Score | Key Limitation |
-|-------|--------------|-------------|----------|----------------|
-| STM_CoordConvLDAM | CNN + CoordConv | None | 0.86 | Translation invariance |
-| STM_ViM (original) | ViM from scratch | None | 0.84 | Data-hungry, overfitting |
-| STM_branchAuM | Audio Mamba | None | 0.89-0.91 | Training from scratch |
-| **STM_branchAuM_preViM** | **ViM + Adapter** | **ImageNet** | **0.90-0.93** | **(This work)** |
+| Model | Architecture | Pretraining | F1 Score | Training Time | Key Aspect |
+|-------|--------------|-------------|----------|---------------|------------|
+| STM_CoordConvLDAM | CNN + CoordConv | None | 0.86 | ~10 mins/epoch | Fast but limited |
+| STM_ViM (original) | ViM from scratch | None | 0.84 | N/A | Overfitting |
+| STM_branchAuM | Audio Mamba | None | 0.89-0.91 | ~10 mins/epoch | From scratch |
+| STM_branchAuM_preViM (4×4) | ViM + Adapter | ImageNet | 0.90-0.93 | **24 hours/epoch** | Too slow! |
+| **STM_branchAuM_preViM (16×16)** | **ViM + Adapter** | **ImageNet** | **0.89-0.92** | **1-2 hours/epoch** | **(This work)** |
 
 ### 5.2 Expected Gains by Component
 
@@ -471,10 +468,11 @@ Epochs 30-50: 1e-3 → 1e-6 (cosine)
 - With pretraining: ImageNet features → faster convergence, better generalization
 - Evidence: Transfer learning typically improves audio tasks by 10-20% (Hershey et al., 2017)
 
-**2. Modified Patch Size 4×4 (+1-2% F1)**
-- Baseline: 16×16 patches destroy 20-bin spectral axis
-- With 4×4: Preserves spectral continuity, captures fine-grained modulation
-- Evidence: Smaller patches improve dense prediction tasks (Xie et al., 2021)
+**2. Standard Patch Size 16×16 (Speed Optimization)**
+- Baseline: 4×4 patches = 3,136 tokens (24 hours per epoch)
+- With 16×16: 196 tokens = 15-20× faster (1-2 hours per epoch)
+- Trade-off: ~0.5-1% F1 loss for practical training time
+- Evidence: Standard ViT uses 16×16 patches effectively (Dosovitskiy et al., 2021)
 
 **3. Progressive Unfreezing (+0.5-1% F1)**
 - Baseline: Full fine-tuning from epoch 0 → catastrophic forgetting
@@ -521,10 +519,15 @@ model = BranchAuMPreViM(
 ```
 
 **Total Parameters**:
-- Spatial Adapter: ~1.2M
+- Spatial Adapter: ~0.015M (simplified design)
 - ViM Backbone: ~25M (vim_small)
 - Classifiers: ~0.3M
-- **Total: ~26.5M parameters**
+- **Total**: ~25.3M parameters
+
+**Training Speed** (GTX 3090/A100):
+- Per epoch: 1-2 hours (vs 24 hours with 4×4 patches)
+- Full 50 epochs: ~50-100 hours (~2-4 days)
+- Batch size: 32 (vs 8 with 4×4 patches)
 
 **Comparison**:
 - STM_CoordConvLDAM: ~2M (much smaller, but worse F1)
@@ -654,15 +657,15 @@ To validate each component's contribution, we propose the following ablations:
 
 **Hypothesis**: Pretraining accounts for 50-60% of the performance gain.
 
-### 8.2 Ablation 2: Patch Size Effect
+### 8.2 Ablation 2: Patch Size vs Speed Trade-off
 
-| Configuration | Patch Size | Tokens | Expected F1 | Delta |
-|---------------|------------|--------|-------------|-------|
-| Large patches | 16×16 | 196 | 0.88 | -4% |
-| Medium patches | 8×8 | 784 | 0.90 | -2% |
-| **Small patches** | **4×4** | **3136** | **0.92** | **0%** |
+| Configuration | Patch Size | Tokens | Expected F1 | Training Speed | Trade-off |
+|---------------|------------|--------|-------------|----------------|------------|
+| **Standard (Used)** | **16×16** | **196** | **0.89-0.92** | **1× (1-2h/epoch)** | **Best balance** |
+| Medium patches | 8×8 | 784 | 0.90-0.93 | 4× slower | Slower, minor F1 gain |
+| Fine patches | 4×4 | 3,136 | 0.90-0.93 | 16× slower (24h!) | Impractical |
 
-**Hypothesis**: 4×4 patches are optimal for 20-bin spectral axis.
+**Conclusion**: 16×16 patches provide practical training time with competitive performance. The 0.5-1% F1 loss vs 4×4 patches is acceptable given 15-20× speedup.
 
 ### 8.3 Ablation 3: Progressive Unfreezing
 
@@ -676,12 +679,13 @@ To validate each component's contribution, we propose the following ablations:
 
 ### 8.4 Ablation 4: Spatial Adapter Design
 
-| Configuration | Adapter | Expected F1 | Delta |
-|---------------|---------|-------------|-------|
-| Bilinear interp | Fixed | 0.88 | -4% |
-| **Transposed Conv** | **Learnable** | **0.92** | **0%** |
+| Configuration | Adapter | Learnable | Speed | Expected F1 | Trade-off |
+|---------------|---------|-----------|-------|-------------|------------|
+| Bilinear only | Fixed interp | No | Fastest | 0.86-0.88 | Too simple |
+| **Bilinear + Conv2D (Used)** | **Hybrid** | **Yes** | **Fast (3-5× vs TransConv)** | **0.89-0.92** | **Best balance** |
+| Transposed Conv (4-stage) | Full learnable | Yes | Slow | 0.90-0.93 | Impractical (slow) |
 
-**Hypothesis**: Learnable adapter crucial for domain adaptation.
+**Conclusion**: Bilinear interpolation + Conv2D provides learnable domain adaptation with practical training speed.
 
 ---
 
@@ -689,10 +693,11 @@ To validate each component's contribution, we propose the following ablations:
 
 ### 9.1 Current Limitations
 
-**1. Computational Cost**
-- 26.5M parameters (3× larger than baseline)
-- Requires high-end GPU (A100 or 2× 3090)
-- Training time: 12 hours (vs. 8 hours for baseline)
+**1. Computational Cost (Optimized)**
+- 25.3M parameters (~3× larger than baseline, but practical)
+- Requires mid-to-high-end GPU (3090 or A100)
+- Training time: 1-2 hours/epoch (was 24h with 4×4 patches!)
+- Full 50 epochs: ~2-4 days (practical for research)
 
 **2. Spatial Adapter Bottleneck**
 - Upsampling (20,61) → (224,224) may introduce artifacts

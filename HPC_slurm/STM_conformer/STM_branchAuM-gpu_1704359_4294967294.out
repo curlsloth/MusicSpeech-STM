@@ -196,3 +196,63 @@ Epoch [13/50] - 13909.22s - LR: 0.000946
     music:non-vocal: 0.5857
     env:urban: 0.9244
     env:wildlife: 0.8739
+
+Epoch [14/50] - 13925.87s - LR: 0.000905
+  Train Loss: 2.3778 (Coarse: 1.2356, Fine: 2.8672)
+  Val Loss: 1.4305
+  Val Macro F1: 0.8109
+  Val Per-Class F1:
+    speech:non-tonal: 0.9654
+    speech:tonal: 0.6864
+    music:vocal: 0.8145
+    music:non-vocal: 0.5932
+    env:urban: 0.9190
+    env:wildlife: 0.8867
+
+Epoch [15/50] - 13887.25s - LR: 0.000854
+  Train Loss: 2.3403 (Coarse: 1.2137, Fine: 2.8231)
+  Val Loss: 1.4009
+  Val Macro F1: 0.8030
+  Val Per-Class F1:
+    speech:non-tonal: 0.9649
+    speech:tonal: 0.6948
+    music:vocal: 0.8112
+    music:non-vocal: 0.5971
+    env:urban: 0.8985
+    env:wildlife: 0.8518
+
+Epoch [16/50] - 13745.86s - LR: 0.000794
+  Train Loss: 2.3447 (Coarse: 1.2308, Fine: 2.8220)
+  Val Loss: 1.4136
+  Val Macro F1: 0.8173
+  Val Per-Class F1:
+    speech:non-tonal: 0.9679
+    speech:tonal: 0.7213
+    music:vocal: 0.8198
+    music:non-vocal: 0.5787
+    env:urban: 0.9329
+    env:wildlife: 0.8833
+
+Epoch [17/50] - 13742.75s - LR: 0.000727
+  Train Loss: 2.2846 (Coarse: 1.1833, Fine: 2.7566)
+  Val Loss: 1.3876
+  Val Macro F1: 0.8212
+  Val Per-Class F1:
+    speech:non-tonal: 0.9658
+    speech:tonal: 0.7330
+    music:vocal: 0.8202
+    music:non-vocal: 0.5997
+    env:urban: 0.9163
+    env:wildlife: 0.8925
+
+Epoch [18/50] - 13742.41s - LR: 0.000655
+  Train Loss: 2.2872 (Coarse: 1.2007, Fine: 2.7529)
+  Val Loss: 1.3999
+  Val Macro F1: 0.8148
+  Val Per-Class F1:
+    speech:non-tonal: 0.9670
+    speech:tonal: 0.7193
+    music:vocal: 0.8298
+    music:non-vocal: 0.5572
+    env:urban: 0.9188
+    env:wildlife: 0.8968

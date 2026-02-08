@@ -1,0 +1,1270 @@
+INFO:    User not listed in /etc/subuid, trying root-mapped namespace
+INFO:    Using fakeroot command combined with root-mapped namespace
+Using device: cuda
+GPU: NVIDIA L40S
+Memory: 47.67 GB
+Checkpoint directory: model/STM/CoordConvLDAM_preIN7_corpora_categories/standard/ckpt/2026-02-08_00-09
+
+============================================================
+Loading and preparing data...
+============================================================
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-hausa_STMall.npy, shape: (29002, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-lingala_STMall.npy, shape: (11219, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-yoruba_STMall.npy, shape: (6629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Buckeye_STMall.npy, shape: (255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/EUROM_STMall.npy, shape: (6623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_speech_STMall.npy, shape: (785, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/LibriSpeech_STMall.npy, shape: (27144, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-AR_STMall.npy, shape: (2505, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-ES_STMall.npy, shape: (2507, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-FR_STMall.npy, shape: (2498, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MediaSpeech-TR_STMall.npy, shape: (2512, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ab_STMall.npy, shape: (7558, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ar_STMall.npy, shape: (8080, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ba_STMall.npy, shape: (7964, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-be_STMall.npy, shape: (8595, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bg_STMall.npy, shape: (7130, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-bn_STMall.npy, shape: (8149, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-br_STMall.npy, shape: (1454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ca_STMall.npy, shape: (8237, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ckb_STMall.npy, shape: (7490, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cnh_STMall.npy, shape: (656, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cs_STMall.npy, shape: (8622, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cv_STMall.npy, shape: (8755, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-cy_STMall.npy, shape: (7640, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-da_STMall.npy, shape: (3878, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-de_STMall.npy, shape: (8979, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-dv_STMall.npy, shape: (9113, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-el_STMall.npy, shape: (6422, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-en_STMall.npy, shape: (8607, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eo_STMall.npy, shape: (9327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-es_STMall.npy, shape: (8742, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-et_STMall.npy, shape: (9653, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-eu_STMall.npy, shape: (7983, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fa_STMall.npy, shape: (8629, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fi_STMall.npy, shape: (3982, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fr_STMall.npy, shape: (8912, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-fy-NL_STMall.npy, shape: (6694, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ga-IE_STMall.npy, shape: (1323, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gl_STMall.npy, shape: (8623, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-gn_STMall.npy, shape: (1014, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hi_STMall.npy, shape: (5438, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hu_STMall.npy, shape: (8319, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-hy-AM_STMall.npy, shape: (6980, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-id_STMall.npy, shape: (8468, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ig_STMall.npy, shape: (9, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-it_STMall.npy, shape: (9083, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ja_STMall.npy, shape: (8606, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ka_STMall.npy, shape: (9409, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kab_STMall.npy, shape: (7172, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kk_STMall.npy, shape: (867, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-kmr_STMall.npy, shape: (6603, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ky_STMall.npy, shape: (7998, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lg_STMall.npy, shape: (8169, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lt_STMall.npy, shape: (9073, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ltg_STMall.npy, shape: (2299, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-lv_STMall.npy, shape: (7666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mhr_STMall.npy, shape: (8336, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ml_STMall.npy, shape: (813, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mn_STMall.npy, shape: (5968, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-mt_STMall.npy, shape: (3632, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nan-tw_STMall.npy, shape: (181, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-nl_STMall.npy, shape: (8834, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-oc_STMall.npy, shape: (681, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-or_STMall.npy, shape: (1941, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pl_STMall.npy, shape: (8817, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-pt_STMall.npy, shape: (8413, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ro_STMall.npy, shape: (6666, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ru_STMall.npy, shape: (9260, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-rw_STMall.npy, shape: (9148, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sr_STMall.npy, shape: (391, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sv-SE_STMall.npy, shape: (8288, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-sw_STMall.npy, shape: (9192, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ta_STMall.npy, shape: (9474, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-th_STMall.npy, shape: (8044, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tr_STMall.npy, shape: (7953, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-tt_STMall.npy, shape: (7454, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ug_STMall.npy, shape: (7899, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uk_STMall.npy, shape: (8819, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-ur_STMall.npy, shape: (8970, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-uz_STMall.npy, shape: (7911, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-vi_STMall.npy, shape: (1859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yo_STMall.npy, shape: (2511, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-yue_STMall.npy, shape: (6156, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-CN_STMall.npy, shape: (8715, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MozillaCommonVoice-zh-TW_STMall.npy, shape: (7286, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SpeechClarity_STMall.npy, shape: (555, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TAT-Vol2_STMall.npy, shape: (793, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TIMIT_STMall.npy, shape: (479, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/TTS_Javanese_STMall.npy, shape: (3068, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/primewords_chinese_STMall.npy, shape: (47166, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/room_reader_STMall.npy, shape: (146, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/thchs30_STMall.npy, shape: (13327, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/zeroth_korean_STMall.npy, shape: (22255, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/Albouy2020Science_STMall.npy, shape: (123, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/GarlandEncyclopedia_STMall.npy, shape: (296, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/HiltonMoser2022_song_STMall.npy, shape: (803, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/IRMAS_STMall.npy, shape: (2838, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MTG-Jamendo_STMall.npy, shape: (55699, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MagnaTagATune_STMall.npy, shape: (25859, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/NHS2_STMall.npy, shape: (1007, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/fma_large_STMall.npy, shape: (106257, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/ismir04_genre_STMall.npy, shape: (2185, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/MacaulayLibrary_STMall.npy, shape: (34565, 2420)
+Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/SONYC_STMall.npy, shape: (10798, 2420)
+
+Dataset Statistics:
+Total samples: 978378
+Train samples: 770393
+Val samples: 102010
+Test samples: 105975
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
+
+Class Distribution (Training):
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
+
+PyTorch Dataset Shapes (2-channel Difference Map):
+Train: torch.Size([770393, 2, 20, 121])
+Val: torch.Size([102010, 2, 20, 121])
+Test: torch.Size([105975, 2, 20, 121])
+Channel 0: Symmetric component (texture)
+Channel 1: Asymmetric component (frequency sweep direction)
+
+Class-Balanced Sampling (V7 - Sole Rebalancing Mechanism):
+  Original class distribution:
+    Class 0: 497,475 samples, weight=0.000002
+    Class 1: 80,258 samples, weight=0.000012
+    Class 2: 101,893 samples, weight=0.000010
+    Class 3: 53,538 samples, weight=0.000019
+    Class 4: 9,580 samples, weight=0.000104
+    Class 5: 27,649 samples, weight=0.000036
+  Effect: Minority classes sampled ~51.9x more often
+
+DataLoaders created with batch_size=256
+  Train: WeightedRandomSampler (class-balanced)
+  Val/Test: Sequential (no sampling)
+
+============================================================
+Creating ImageNet-Pretrained ResNet-18 for STM (V7)...
+============================================================
+Loading ImageNet-pretrained ResNet-18...
+✓ Successfully loaded ImageNet pretrained weights
+✓ Cloned ImageNet weights to 4-channel CoordConv stem
+✓ Created STM-adapted ResNet-18 V2.1 with ImageNet pretrained weights (6 classes)
+Total parameters: 11,273,926
+Trainable parameters: 11,273,926
+
+V2.1 Enhancements:
+  • Attention: CA (layer1-2), SE (layer3-4)
+  • Block dropout: 0.05
+  • Head dropout: 0.3
+  • Ready for discriminative learning rates
+
+V7 Training Configuration:
+  • DRW: DISABLED (drw_start_epoch=999)
+  • Class-Balanced Sampling: WeightedRandomSampler (sole rebalancing)
+  • SpecAugment: 30% prob, Time mask (6 bins), Freq mask (2 bins)
+  • Discriminative LR: Stem/L1 (0.1x), L2-3 (0.5x), L4/Head (1.0x)
+  • Weight decay: 2e-4 (V2 proven)
+  • Mixup alpha: 0.3 (30% probability)
+  • Head dropout: 0.3
+  • Early stopping: 20 epochs patience
+
+Discriminative Learning Rates:
+  stem_layer1         : LR = 0.000010 (5 params)
+  layer2_layer3       : LR = 0.000050 (14 params)
+  layer4              : LR = 0.000100 (7 params)
+  head                : LR = 0.000100 (2 params)
+  attention           : LR = 0.000100 (28 params)
+  batchnorm           : LR = 0.000100 (34 params)
+
+============================================================
+Starting training...
+============================================================
+
+============================================================
+Epoch 1/100
+============================================================
+  Batch 0/3010, Loss: 14.5208, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 5.0332, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 4.4329, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 3.6895, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 3.3835, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 3.5144, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.7989, DRW: False, SpecAug: True
+Train Loss: 4.7665
+Val Loss: 1.5614, Val Macro F1: 0.7726
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.7726
+
+============================================================
+Epoch 2/100
+============================================================
+  Batch 0/3010, Loss: 8.6001, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 4.2257, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 3.0690, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 3.2367, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 4.3626, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 3.1602, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.5162, DRW: False, SpecAug: True
+Train Loss: 3.7718
+Val Loss: 1.5501, Val Macro F1: 0.7722
+Current learning rate: 0.000010
+
+============================================================
+Epoch 3/100
+============================================================
+  Batch 0/3010, Loss: 3.0400, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 3.0617, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 3.8907, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.6247, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 3.2005, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.1061, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.8061, DRW: False, SpecAug: True
+Train Loss: 3.5754
+Val Loss: 1.5518, Val Macro F1: 0.8023
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.8023
+
+============================================================
+Epoch 4/100
+============================================================
+  Batch 0/3010, Loss: 4.2519, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.3322, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 3.0956, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 3.2789, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 3.3007, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 8.2035, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.3662, DRW: False, SpecAug: True
+Train Loss: 3.4335
+Val Loss: 1.5519, Val Macro F1: 0.7932
+Current learning rate: 0.000010
+
+============================================================
+Epoch 5/100
+============================================================
+  Batch 0/3010, Loss: 7.1176, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.6648, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.7282, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.2306, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.9196, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.0184, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.6215, DRW: False, SpecAug: True
+Train Loss: 3.3440
+Val Loss: 1.5581, Val Macro F1: 0.8209
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.8209
+
+============================================================
+Epoch 6/100
+============================================================
+  Batch 0/3010, Loss: 2.9367, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 3.4771, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.7884, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.5005, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.4823, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 3.3577, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 8.1403, DRW: False, SpecAug: True
+Train Loss: 3.2545
+Val Loss: 1.5526, Val Macro F1: 0.8073
+Current learning rate: 0.000010
+
+============================================================
+Epoch 7/100
+============================================================
+  Batch 0/3010, Loss: 2.7907, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.4792, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.0366, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.2109, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 3.2193, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 3.0002, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 3.4720, DRW: False, SpecAug: True
+Train Loss: 3.2033
+Val Loss: 1.5403, Val Macro F1: 0.8246
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.8246
+
+============================================================
+Epoch 8/100
+============================================================
+  Batch 0/3010, Loss: 8.8395, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.9179, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.5468, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.2409, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.1652, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.7295, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 3.1020, DRW: False, SpecAug: True
+Train Loss: 3.1611
+Val Loss: 1.5500, Val Macro F1: 0.8217
+Current learning rate: 0.000010
+
+============================================================
+Epoch 9/100
+============================================================
+  Batch 0/3010, Loss: 2.8687, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.3637, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.7503, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.6773, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.4399, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.1761, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.8059, DRW: False, SpecAug: True
+Train Loss: 3.1276
+Val Loss: 1.5582, Val Macro F1: 0.8139
+Current learning rate: 0.000010
+
+============================================================
+Epoch 10/100
+============================================================
+  Batch 0/3010, Loss: 2.9650, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.1101, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.9422, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.4941, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.4651, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 3.1732, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.8165, DRW: False, SpecAug: True
+Train Loss: 3.0232
+Val Loss: 1.5377, Val Macro F1: 0.8243
+Current learning rate: 0.000010
+
+============================================================
+Epoch 11/100
+============================================================
+  Batch 0/3010, Loss: 2.4488, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.3137, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.1173, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.8779, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 3.6379, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.6419, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.7469, DRW: False, SpecAug: True
+Train Loss: 3.0394
+Val Loss: 1.5521, Val Macro F1: 0.8241
+Current learning rate: 0.000010
+
+============================================================
+Epoch 12/100
+============================================================
+  Batch 0/3010, Loss: 2.9547, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.6576, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.1513, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.8838, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.4132, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.1715, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.6305, DRW: False, SpecAug: True
+Train Loss: 2.9707
+Val Loss: 1.5480, Val Macro F1: 0.8208
+Current learning rate: 0.000010
+
+============================================================
+Epoch 13/100
+============================================================
+  Batch 0/3010, Loss: 2.1409, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.7315, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.6752, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 6.4984, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.6552, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.8197, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.2061, DRW: False, SpecAug: True
+Train Loss: 2.9037
+Val Loss: 1.5465, Val Macro F1: 0.8189
+Current learning rate: 0.000010
+
+============================================================
+Epoch 14/100
+============================================================
+  Batch 0/3010, Loss: 1.6042, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.5213, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.5011, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.4582, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.6936, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.5646, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.3777, DRW: False, SpecAug: True
+Train Loss: 2.9337
+Val Loss: 1.5529, Val Macro F1: 0.8171
+Current learning rate: 0.000010
+
+============================================================
+Epoch 15/100
+============================================================
+  Batch 0/3010, Loss: 2.1937, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.4557, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.0295, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.1592, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.9401, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.2824, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 3.1425, DRW: False, SpecAug: True
+Train Loss: 2.8403
+Val Loss: 1.5552, Val Macro F1: 0.8139
+Current learning rate: 0.000005
+
+============================================================
+Epoch 16/100
+============================================================
+  Batch 0/3010, Loss: 7.8047, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 8.1303, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.7321, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.0771, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.1147, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.5783, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.8778, DRW: False, SpecAug: True
+Train Loss: 2.7341
+Val Loss: 1.5535, Val Macro F1: 0.8225
+Current learning rate: 0.000005
+
+============================================================
+Epoch 17/100
+============================================================
+  Batch 0/3010, Loss: 2.0418, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.4204, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.1018, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.0080, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.3148, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.3289, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.8778, DRW: False, SpecAug: True
+Train Loss: 2.7086
+Val Loss: 1.5501, Val Macro F1: 0.8255
+Current learning rate: 0.000005
+✓ Saved best model with Val F1: 0.8255
+
+============================================================
+Epoch 18/100
+============================================================
+  Batch 0/3010, Loss: 2.0847, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.6722, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 7.6789, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.2353, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 4.8953, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 9.0027, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 7.0984, DRW: False, SpecAug: True
+Train Loss: 2.6864
+Val Loss: 1.5416, Val Macro F1: 0.8328
+Current learning rate: 0.000005
+✓ Saved best model with Val F1: 0.8328
+
+============================================================
+Epoch 19/100
+============================================================
+  Batch 0/3010, Loss: 2.8781, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.7421, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.9391, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.1823, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.6090, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.5710, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.0658, DRW: False, SpecAug: True
+Train Loss: 2.6249
+Val Loss: 1.5373, Val Macro F1: 0.8313
+Current learning rate: 0.000005
+
+============================================================
+Epoch 20/100
+============================================================
+  Batch 0/3010, Loss: 2.0694, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.5563, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.1527, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.5901, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.4575, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.5710, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.7819, DRW: False, SpecAug: True
+Train Loss: 2.6664
+Val Loss: 1.5560, Val Macro F1: 0.8323
+Current learning rate: 0.000005
+
+============================================================
+Epoch 21/100
+============================================================
+  Batch 0/3010, Loss: 1.6557, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.8467, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.8689, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.7419, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.6772, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.7696, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.4878, DRW: False, SpecAug: True
+Train Loss: 2.5395
+Val Loss: 1.5450, Val Macro F1: 0.8274
+Current learning rate: 0.000005
+
+============================================================
+Epoch 22/100
+============================================================
+  Batch 0/3010, Loss: 2.3836, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.5682, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 4.2428, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.4270, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.0792, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.4521, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.8436, DRW: False, SpecAug: True
+Train Loss: 2.5480
+Val Loss: 1.5585, Val Macro F1: 0.8268
+Current learning rate: 0.000005
+
+============================================================
+Epoch 23/100
+============================================================
+  Batch 0/3010, Loss: 1.0133, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.2665, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.6844, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.8885, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.4060, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.8708, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.4864, DRW: False, SpecAug: True
+Train Loss: 2.5223
+Val Loss: 1.5501, Val Macro F1: 0.8245
+Current learning rate: 0.000005
+
+============================================================
+Epoch 24/100
+============================================================
+  Batch 0/3010, Loss: 1.9606, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.2149, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 7.6476, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.6174, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.9672, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.7475, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 3.1480, DRW: False, SpecAug: True
+Train Loss: 2.4780
+Val Loss: 1.5553, Val Macro F1: 0.8286
+Current learning rate: 0.000005
+
+============================================================
+Epoch 25/100
+============================================================
+  Batch 0/3010, Loss: 2.0344, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.4841, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 5.8606, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 8.9195, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.8499, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.2666, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.9621, DRW: False, SpecAug: True
+Train Loss: 2.4521
+Val Loss: 1.5462, Val Macro F1: 0.8283
+Current learning rate: 0.000005
+
+============================================================
+Epoch 26/100
+============================================================
+  Batch 0/3010, Loss: 2.2269, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.7364, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 7.7041, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 6.3529, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.7760, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.8549, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.5163, DRW: False, SpecAug: True
+Train Loss: 2.4784
+Val Loss: 1.5624, Val Macro F1: 0.8235
+Current learning rate: 0.000003
+
+============================================================
+Epoch 27/100
+============================================================
+  Batch 0/3010, Loss: 2.7771, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.3281, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.9718, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.4360, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.6217, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.9256, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.4497, DRW: False, SpecAug: True
+Train Loss: 2.4086
+Val Loss: 1.5437, Val Macro F1: 0.8330
+Current learning rate: 0.000003
+✓ Saved best model with Val F1: 0.8330
+
+============================================================
+Epoch 28/100
+============================================================
+  Batch 0/3010, Loss: 1.4963, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.6337, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 8.7400, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.3318, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 4.0268, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.1741, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.2499, DRW: False, SpecAug: True
+Train Loss: 2.3482
+Val Loss: 1.5434, Val Macro F1: 0.8364
+Current learning rate: 0.000003
+✓ Saved best model with Val F1: 0.8364
+
+============================================================
+Epoch 29/100
+============================================================
+  Batch 0/3010, Loss: 2.0069, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.9416, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.1307, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.4983, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.3765, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.0502, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.0264, DRW: False, SpecAug: True
+Train Loss: 2.2625
+Val Loss: 1.5521, Val Macro F1: 0.8334
+Current learning rate: 0.000003
+
+============================================================
+Epoch 30/100
+============================================================
+  Batch 0/3010, Loss: 6.8978, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 5.2991, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 4.4600, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.6710, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.2671, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.1743, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.4096, DRW: False, SpecAug: True
+Train Loss: 2.3471
+Val Loss: 1.5512, Val Macro F1: 0.8329
+Current learning rate: 0.000003
+
+============================================================
+Epoch 31/100
+============================================================
+  Batch 0/3010, Loss: 1.3936, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.3473, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.5263, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 6.2279, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 8.2101, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.5503, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.0374, DRW: False, SpecAug: True
+Train Loss: 2.2964
+Val Loss: 1.5415, Val Macro F1: 0.8311
+Current learning rate: 0.000003
+
+============================================================
+Epoch 32/100
+============================================================
+  Batch 0/3010, Loss: 2.0180, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.0477, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 0.7918, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 8.8359, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 7.6036, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 4.5070, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.2734, DRW: False, SpecAug: True
+Train Loss: 2.3207
+Val Loss: 1.5640, Val Macro F1: 0.8261
+Current learning rate: 0.000003
+
+============================================================
+Epoch 33/100
+============================================================
+  Batch 0/3010, Loss: 1.4025, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.4370, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 3.5725, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.3957, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.9389, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 3.1607, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.5373, DRW: False, SpecAug: True
+Train Loss: 2.2554
+Val Loss: 1.5584, Val Macro F1: 0.8286
+Current learning rate: 0.000003
+
+============================================================
+Epoch 34/100
+============================================================
+  Batch 0/3010, Loss: 1.5398, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.4138, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.2450, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.7765, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.8733, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.1183, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 3.6912, DRW: False, SpecAug: True
+Train Loss: 2.2321
+Val Loss: 1.5465, Val Macro F1: 0.8295
+Current learning rate: 0.000003
+
+============================================================
+Epoch 35/100
+============================================================
+  Batch 0/3010, Loss: 1.1781, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.1249, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.0161, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.4067, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 9.1429, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.8315, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 7.3514, DRW: False, SpecAug: True
+Train Loss: 2.2812
+Val Loss: 1.5546, Val Macro F1: 0.8286
+Current learning rate: 0.000003
+
+============================================================
+Epoch 36/100
+============================================================
+  Batch 0/3010, Loss: 3.8364, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.1724, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.5127, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.1223, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.6473, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.3407, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.2990, DRW: False, SpecAug: True
+Train Loss: 2.2311
+Val Loss: 1.5468, Val Macro F1: 0.8273
+Current learning rate: 0.000001
+
+============================================================
+Epoch 37/100
+============================================================
+  Batch 0/3010, Loss: 1.1968, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.0316, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 9.1176, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.2927, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 0.9953, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 3.1785, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.9094, DRW: False, SpecAug: True
+Train Loss: 2.1979
+Val Loss: 1.5500, Val Macro F1: 0.8329
+Current learning rate: 0.000001
+
+============================================================
+Epoch 38/100
+============================================================
+  Batch 0/3010, Loss: 1.0782, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.1330, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.6567, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.0252, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 4.1776, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 3.0930, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.9389, DRW: False, SpecAug: True
+Train Loss: 2.1913
+Val Loss: 1.5467, Val Macro F1: 0.8296
+Current learning rate: 0.000001
+
+============================================================
+Epoch 39/100
+============================================================
+  Batch 0/3010, Loss: 2.4764, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.0015, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.0572, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.1625, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.0972, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.1048, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.4887, DRW: False, SpecAug: True
+Train Loss: 2.1984
+Val Loss: 1.5421, Val Macro F1: 0.8310
+Current learning rate: 0.000001
+
+============================================================
+Epoch 40/100
+============================================================
+  Batch 0/3010, Loss: 1.1795, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.4654, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.3460, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 3.6538, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.9738, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.3834, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.0618, DRW: False, SpecAug: True
+Train Loss: 2.1300
+Val Loss: 1.5433, Val Macro F1: 0.8330
+Current learning rate: 0.000001
+
+============================================================
+Epoch 41/100
+============================================================
+  Batch 0/3010, Loss: 1.5064, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.8332, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.3555, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 3.4268, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.8177, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 0.7963, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.4179, DRW: False, SpecAug: True
+Train Loss: 2.1350
+Val Loss: 1.5487, Val Macro F1: 0.8338
+Current learning rate: 0.000001
+
+============================================================
+Epoch 42/100
+============================================================
+  Batch 0/3010, Loss: 0.8244, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.9676, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.3513, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.9832, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.9176, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.1807, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.6400, DRW: False, SpecAug: True
+Train Loss: 2.0866
+Val Loss: 1.5539, Val Macro F1: 0.8326
+Current learning rate: 0.000001
+
+============================================================
+Epoch 43/100
+============================================================
+  Batch 0/3010, Loss: 4.8769, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.4235, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.3812, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 8.9044, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.1163, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.7580, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.8341, DRW: False, SpecAug: True
+Train Loss: 2.1334
+Val Loss: 1.5445, Val Macro F1: 0.8325
+Current learning rate: 0.000001
+
+============================================================
+Epoch 44/100
+============================================================
+  Batch 0/3010, Loss: 1.6979, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.3731, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 8.6357, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.8185, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.0877, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 4.6635, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.5838, DRW: False, SpecAug: True
+Train Loss: 2.0698
+Val Loss: 1.5369, Val Macro F1: 0.8369
+Current learning rate: 0.000001
+✓ Saved best model with Val F1: 0.8369
+
+============================================================
+Epoch 45/100
+============================================================
+  Batch 0/3010, Loss: 0.9116, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.2617, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 4.4905, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.1470, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.3360, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.2448, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.0771, DRW: False, SpecAug: True
+Train Loss: 2.1020
+Val Loss: 1.5480, Val Macro F1: 0.8309
+Current learning rate: 0.000001
+
+============================================================
+Epoch 46/100
+============================================================
+  Batch 0/3010, Loss: 2.1517, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.2356, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.1036, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.6185, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.8117, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 0.8936, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.0853, DRW: False, SpecAug: True
+Train Loss: 2.1010
+Val Loss: 1.5540, Val Macro F1: 0.8331
+Current learning rate: 0.000001
+
+============================================================
+Epoch 47/100
+============================================================
+  Batch 0/3010, Loss: 1.7938, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.0688, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 0.9809, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.2696, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.0310, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.2950, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.2868, DRW: False, SpecAug: True
+Train Loss: 2.0798
+Val Loss: 1.5601, Val Macro F1: 0.8332
+Current learning rate: 0.000001
+
+============================================================
+Epoch 48/100
+============================================================
+  Batch 0/3010, Loss: 4.2979, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.9416, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.0488, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.1952, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.8351, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.6105, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.9883, DRW: False, SpecAug: True
+Train Loss: 2.0725
+Val Loss: 1.5433, Val Macro F1: 0.8328
+Current learning rate: 0.000001
+
+============================================================
+Epoch 49/100
+============================================================
+  Batch 0/3010, Loss: 1.3314, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.7995, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.0582, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.6314, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.2757, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.1855, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.3794, DRW: False, SpecAug: True
+Train Loss: 2.1010
+Val Loss: 1.5489, Val Macro F1: 0.8338
+Current learning rate: 0.000001
+
+============================================================
+Epoch 50/100
+============================================================
+  Batch 0/3010, Loss: 0.9175, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.2487, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.4887, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.8620, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.5397, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.3199, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.3524, DRW: False, SpecAug: True
+Train Loss: 2.1623
+Val Loss: 1.5456, Val Macro F1: 0.8346
+Current learning rate: 0.000001
+
+============================================================
+Epoch 51/100
+============================================================
+  Batch 0/3010, Loss: 0.9894, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.7392, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.1161, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.2192, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.0498, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 0.6462, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.0204, DRW: False, SpecAug: True
+Train Loss: 2.0663
+Val Loss: 1.5590, Val Macro F1: 0.8333
+Current learning rate: 0.000001
+
+============================================================
+Epoch 52/100
+============================================================
+  Batch 0/3010, Loss: 1.2376, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.9508, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 6.7259, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.2484, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 0.8760, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.7662, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.9542, DRW: False, SpecAug: True
+Train Loss: 2.0455
+Val Loss: 1.5466, Val Macro F1: 0.8331
+Current learning rate: 0.000001
+
+============================================================
+Epoch 53/100
+============================================================
+  Batch 0/3010, Loss: 1.6211, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.6880, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 0.8075, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.7077, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 0.9646, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.5225, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.7871, DRW: False, SpecAug: True
+Train Loss: 2.0339
+Val Loss: 1.5427, Val Macro F1: 0.8341
+Current learning rate: 0.000001
+
+============================================================
+Epoch 54/100
+============================================================
+  Batch 0/3010, Loss: 1.1234, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.1391, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.8166, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.6342, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 5.5446, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.3805, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 2.2046, DRW: False, SpecAug: True
+Train Loss: 2.0212
+Val Loss: 1.5392, Val Macro F1: 0.8353
+Current learning rate: 0.000001
+
+============================================================
+Epoch 55/100
+============================================================
+  Batch 0/3010, Loss: 1.0877, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 6.8865, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.7376, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.9596, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.0376, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 6.2533, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 6.8464, DRW: False, SpecAug: True
+Train Loss: 2.0517
+Val Loss: 1.5532, Val Macro F1: 0.8317
+Current learning rate: 0.000001
+
+============================================================
+Epoch 56/100
+============================================================
+  Batch 0/3010, Loss: 0.7344, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.6473, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 0.8694, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 6.2207, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.0321, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.2804, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.1746, DRW: False, SpecAug: True
+Train Loss: 1.9855
+Val Loss: 1.5425, Val Macro F1: 0.8359
+Current learning rate: 0.000001
+
+============================================================
+Epoch 57/100
+============================================================
+  Batch 0/3010, Loss: 1.4137, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.8949, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.1337, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.1317, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.0679, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.4047, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.0741, DRW: False, SpecAug: True
+Train Loss: 2.0816
+Val Loss: 1.5556, Val Macro F1: 0.8327
+Current learning rate: 0.000001
+
+============================================================
+Epoch 58/100
+============================================================
+  Batch 0/3010, Loss: 6.0563, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.0019, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.0714, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.6651, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.0332, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.2352, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.9389, DRW: False, SpecAug: True
+Train Loss: 1.9866
+Val Loss: 1.5425, Val Macro F1: 0.8327
+Current learning rate: 0.000001
+
+============================================================
+Epoch 59/100
+============================================================
+  Batch 0/3010, Loss: 1.2837, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 6.0251, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.7473, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.2950, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.1202, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.3075, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 6.7126, DRW: False, SpecAug: True
+Train Loss: 1.9297
+Val Loss: 1.5523, Val Macro F1: 0.8349
+Current learning rate: 0.000001
+
+============================================================
+Epoch 60/100
+============================================================
+  Batch 0/3010, Loss: 1.8797, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.5566, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.6149, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.0181, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.1083, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 4.0539, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 8.5795, DRW: False, SpecAug: True
+Train Loss: 2.0197
+Val Loss: 1.5541, Val Macro F1: 0.8356
+Current learning rate: 0.000001
+
+============================================================
+Epoch 61/100
+============================================================
+  Batch 0/3010, Loss: 2.1604, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.5152, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.0741, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.1769, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 0.8261, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 0.8592, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 3.5045, DRW: False, SpecAug: True
+Train Loss: 1.9631
+Val Loss: 1.5392, Val Macro F1: 0.8376
+Current learning rate: 0.000001
+✓ Saved best model with Val F1: 0.8376
+
+============================================================
+Epoch 62/100
+============================================================
+  Batch 0/3010, Loss: 0.9852, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.8349, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 8.4522, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.0667, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 0.6397, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.1590, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.3305, DRW: False, SpecAug: True
+Train Loss: 1.9938
+Val Loss: 1.5502, Val Macro F1: 0.8347
+Current learning rate: 0.000001
+
+============================================================
+Epoch 63/100
+============================================================
+  Batch 0/3010, Loss: 3.1741, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.9063, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.0179, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.6764, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 0.8702, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.2757, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.3207, DRW: False, SpecAug: True
+Train Loss: 1.9612
+Val Loss: 1.5365, Val Macro F1: 0.8369
+Current learning rate: 0.000001
+
+============================================================
+Epoch 64/100
+============================================================
+  Batch 0/3010, Loss: 1.4475, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 8.3044, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.0813, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.3382, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 0.8095, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.1921, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.9498, DRW: False, SpecAug: True
+Train Loss: 1.9558
+Val Loss: 1.5620, Val Macro F1: 0.8314
+Current learning rate: 0.000001
+
+============================================================
+Epoch 65/100
+============================================================
+  Batch 0/3010, Loss: 6.2828, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.2456, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.0243, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.9885, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.0373, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 0.8553, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.1882, DRW: False, SpecAug: True
+Train Loss: 1.9921
+Val Loss: 1.5445, Val Macro F1: 0.8350
+Current learning rate: 0.000001
+
+============================================================
+Epoch 66/100
+============================================================
+  Batch 0/3010, Loss: 8.3994, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.0564, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 3.4597, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 2.0896, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.8900, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.2097, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.6739, DRW: False, SpecAug: True
+Train Loss: 1.9454
+Val Loss: 1.5527, Val Macro F1: 0.8345
+Current learning rate: 0.000001
+
+============================================================
+Epoch 67/100
+============================================================
+  Batch 0/3010, Loss: 0.6947, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 2.1142, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 2.0457, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.1412, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.3994, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.0541, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.7600, DRW: False, SpecAug: True
+Train Loss: 1.9781
+Val Loss: 1.5418, Val Macro F1: 0.8366
+Current learning rate: 0.000001
+
+============================================================
+Epoch 68/100
+============================================================
+  Batch 0/3010, Loss: 1.2779, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 8.7779, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.7087, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.9907, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.0482, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 0.9409, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.7622, DRW: False, SpecAug: True
+Train Loss: 2.0036
+Val Loss: 1.5549, Val Macro F1: 0.8344
+Current learning rate: 0.000001
+
+============================================================
+Epoch 69/100
+============================================================
+  Batch 0/3010, Loss: 1.3226, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.0855, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.1943, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.9119, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.4143, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.6249, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.7278, DRW: False, SpecAug: True
+Train Loss: 1.9440
+Val Loss: 1.5496, Val Macro F1: 0.8368
+Current learning rate: 0.000001
+
+============================================================
+Epoch 70/100
+============================================================
+  Batch 0/3010, Loss: 0.9903, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 7.0565, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 0.9839, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 3.6889, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 2.2880, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.5067, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.1477, DRW: False, SpecAug: True
+Train Loss: 1.9994
+Val Loss: 1.5464, Val Macro F1: 0.8372
+Current learning rate: 0.000001
+
+============================================================
+Epoch 71/100
+============================================================
+  Batch 0/3010, Loss: 6.6136, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.9150, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.2491, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.2418, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 0.9630, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 8.9860, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.8981, DRW: False, SpecAug: True
+Train Loss: 1.9826
+Val Loss: 1.5456, Val Macro F1: 0.8361
+Current learning rate: 0.000001
+
+============================================================
+Epoch 72/100
+============================================================
+  Batch 0/3010, Loss: 0.8865, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.8608, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.0522, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.8369, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.4241, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.0937, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.0259, DRW: False, SpecAug: True
+Train Loss: 1.9485
+Val Loss: 1.5488, Val Macro F1: 0.8341
+Current learning rate: 0.000001
+
+============================================================
+Epoch 73/100
+============================================================
+  Batch 0/3010, Loss: 2.3467, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.9021, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.0037, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.9260, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.0384, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 0.9308, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.9382, DRW: False, SpecAug: True
+Train Loss: 1.9725
+Val Loss: 1.5464, Val Macro F1: 0.8361
+Current learning rate: 0.000001
+
+============================================================
+Epoch 74/100
+============================================================
+  Batch 0/3010, Loss: 1.5114, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 1.9893, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.7706, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.7569, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.8061, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 2.6724, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.6719, DRW: False, SpecAug: True
+Train Loss: 1.9228
+Val Loss: 1.5447, Val Macro F1: 0.8363
+Current learning rate: 0.000001
+
+============================================================
+Epoch 75/100
+============================================================
+  Batch 0/3010, Loss: 1.0343, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.9884, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 0.8777, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 0.9908, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 0.6806, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.9824, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 0.8630, DRW: False, SpecAug: True
+Train Loss: 1.9742
+Val Loss: 1.5368, Val Macro F1: 0.8367
+Current learning rate: 0.000001
+
+============================================================
+Epoch 76/100
+============================================================
+  Batch 0/3010, Loss: 4.0114, DRW: False, SpecAug: True
+  Batch 500/3010, Loss: 0.9920, DRW: False, SpecAug: True
+  Batch 1000/3010, Loss: 1.9238, DRW: False, SpecAug: True
+  Batch 1500/3010, Loss: 1.6357, DRW: False, SpecAug: True
+  Batch 2000/3010, Loss: 1.0550, DRW: False, SpecAug: True
+  Batch 2500/3010, Loss: 1.8066, DRW: False, SpecAug: True
+  Batch 3000/3010, Loss: 1.4930, DRW: False, SpecAug: True
+Train Loss: 1.9858
+Val Loss: 1.5485, Val Macro F1: 0.8355
+Current learning rate: 0.000001
+
+============================================================
+Epoch 77/100
+============================================================
