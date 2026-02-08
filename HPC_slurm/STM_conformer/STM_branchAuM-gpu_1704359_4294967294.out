@@ -256,3 +256,16 @@ Epoch [18/50] - 13742.41s - LR: 0.000655
     music:non-vocal: 0.5572
     env:urban: 0.9188
     env:wildlife: 0.8968
+
+Epoch [19/50] - 13730.90s - LR: 0.000579
+  Train Loss: 2.2419 (Coarse: 1.1671, Fine: 2.7025)
+  Val Loss: 1.4195
+  Val Macro F1: 0.8236
+  Val Per-Class F1:
+    speech:non-tonal: 0.9672
+    speech:tonal: 0.7215
+    music:vocal: 0.8236
+    music:non-vocal: 0.6034
+    env:urban: 0.9229
+    env:wildlife: 0.9031
+  *** New best model saved! (F1: 0.8236) ***
