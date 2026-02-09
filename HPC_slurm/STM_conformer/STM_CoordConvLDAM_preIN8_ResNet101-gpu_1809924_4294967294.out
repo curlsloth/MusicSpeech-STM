@@ -1,14 +1,15 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
+INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommended.
+Downloading: "https://download.pytorch.org/models/resnet101-cd907fc2.pth" to /root/.cache/torch/hub/checkpoints/resnet101-cd907fc2.pth
 Using device: cuda
 GPU: NVIDIA L40S
-CUDA Version: 12.8
-Resume mode: Loading from model/STM/STM_branchAuM_full_20260204_180948
-Checkpoint directory: model/STM/STM_branchAuM_full_20260204_180948
+Memory: 47.67 GB
+Checkpoint directory: model/STM/CoordConvLDAM_preIN8_ResNet101_corpora_categories/standard/ckpt/2026-02-08_20-58
 
-================================================================================
+============================================================
 Loading and preparing data...
-================================================================================
+============================================================
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
@@ -122,188 +123,86 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Original feature dim: 2420
-After asymmetric processing: 2440 tokens
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
 
 Class Distribution (Training):
-  Class 0: 497475 samples (0.6457)
-  Class 1: 80258 samples (0.1042)
-  Class 2: 101893 samples (0.1323)
-  Class 3: 53538 samples (0.0695)
-  Class 4: 9580 samples (0.0124)
-  Class 5: 27649 samples (0.0359)
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
 
-Applying asymmetric 2-channel STM processing...
-Original: 20 freq × 121 rates = 2420 features
-After processing: 2 channels × 20 freq × 61 rates → 2440 tokens
-  Channel 0: S_up (upward frequency sweeps, flipped)
-  Channel 1: S_down (downward frequency sweeps)
-  Flattened for sequence processing by Mamba
+PyTorch Dataset Shapes (2-channel Difference Map):
+Train: torch.Size([770393, 2, 20, 121])
+Val: torch.Size([102010, 2, 20, 121])
+Test: torch.Size([105975, 2, 20, 121])
+Channel 0: Symmetric component (texture)
+Channel 1: Asymmetric component (frequency sweep direction)
 
-DataLoaders created with batch_size=64
+DataLoaders created with batch_size=128
 
-================================================================================
-Creating STM_branchAuM model...
-================================================================================
-Total parameters: 12,782,473
-Trainable parameters: 12,782,473
-Branch point: Layer 4
-Hierarchical structure:
-  - Early blocks (1-4): Feature extraction
-  - Coarse classifier: 3 super-classes (Speech/Music/Environment)
-  - Deep blocks (5-12): Fine-grained refinement with guidance
-  - Fine classifier: 6 fine-grained classes
-Loading checkpoint from model/STM/STM_branchAuM_full_20260204_180948/best_model.pt
-Resumed from epoch 10
-Best validation F1: 0.8224
+============================================================
+Creating ImageNet-Pretrained ResNet-101 for STM (V2.8-R101)...
+============================================================
+Loading ImageNet-pretrained ResNet-101...
+  0%|          | 0.00/171M [00:00<?, ?B/s]  8%|▊         | 13.6M/171M [00:00<00:01, 142MB/s] 16%|█▌        | 27.2M/171M [00:00<00:01, 128MB/s] 23%|██▎       | 39.6M/171M [00:00<00:01, 96.8MB/s] 29%|██▉       | 49.6M/171M [00:00<00:01, 98.5MB/s] 38%|███▊      | 64.1M/171M [00:00<00:00, 115MB/s]  44%|████▍     | 75.6M/171M [00:00<00:01, 75.2MB/s] 50%|████▉     | 84.6M/171M [00:01<00:01, 72.1MB/s] 58%|█████▊    | 98.1M/171M [00:01<00:00, 87.5MB/s] 63%|██████▎   | 108M/171M [00:01<00:00, 84.4MB/s]  69%|██████▊   | 117M/171M [00:01<00:00, 76.6MB/s] 77%|███████▋  | 131M/171M [00:01<00:00, 83.4MB/s] 86%|████████▋ | 148M/171M [00:01<00:00, 86.5MB/s] 96%|█████████▌| 164M/171M [00:01<00:00, 83.5MB/s]100%|██████████| 171M/171M [00:02<00:00, 88.5MB/s]
+✓ Successfully loaded ImageNet pretrained weights (V2)
+✓ Cloned ImageNet weights to 4-channel CoordConv stem
+✓ Created STM-adapted ResNet-101 V2.8-R101 with ImageNet pretrained weights (6 classes)
+Total parameters: 54,681,062
+Trainable parameters: 54,681,062
 
-================================================================================
-Starting Training - Hierarchical STM_branchAuM
-================================================================================
+V2.8-R101 Configuration:
+  • Backbone: ResNet-101 (Bottleneck blocks)
+  • Three-Scale Fusion: layer2 (512ch) + layer3 (1024ch) + layer4 (2048ch)
+  • Fusion output: 3584 → 2048 channels
+  • Feature dimension: 2048 (for Center Loss)
+  • Hybrid Loss: LDAM + Focal Loss (70%/30%)
+  • Earlier DRW: Epoch 30
+  • Attention: CA (layer1-2), SE (layer3-4)
+  • Block dropout: 0.05
+  • Head dropout: 0.4
+  • Layer freezing support (first 10 epochs)
+  • STM augmentation: SpecAugment-style masking + axis shifts
 
-Epoch [11/50] - 13926.41s - LR: 0.000994
-  Train Loss: 2.4307 (Coarse: 1.2507, Fine: 2.9364)
-  Val Loss: 1.4483
-  Val Macro F1: 0.7912
-  Val Per-Class F1:
-    speech:non-tonal: 0.9658
-    speech:tonal: 0.6899
-    music:vocal: 0.8266
-    music:non-vocal: 0.5086
-    env:urban: 0.8884
-    env:wildlife: 0.8676
+V2.8-R101 Training Configuration:
+  • Backbone: ResNet-101 (Bottleneck blocks)
+  • Three-Scale Fusion: layer2 (512ch) + layer3 (1024ch) + layer4 (2048ch)
+  • Discriminative LR: Stem/L1 (0.1x), L2-3 (0.5x), L4/Head (1.0x)
+  • Layer Freezing: layer1-2 frozen for first 10 epochs
+  • STM Augmentation: SpecAugment-style masking + axis shifts
+  • Weight decay: 5e-4
+  • Mixup alpha: 0.4
+  • LDAM + DRW: Enabled (epoch 30+)
+  • Center Loss: λ=0.1, feat_dim=2048
+  • Early stopping: 20 epochs patience
 
-Epoch [12/50] - 13910.42s - LR: 0.000976
-  Train Loss: 2.4080 (Coarse: 1.2388, Fine: 2.9091)
-  Val Loss: 1.4418
-  Val Macro F1: 0.8108
-  Val Per-Class F1:
-    speech:non-tonal: 0.9633
-    speech:tonal: 0.7049
-    music:vocal: 0.8024
-    music:non-vocal: 0.6090
-    env:urban: 0.9104
-    env:wildlife: 0.8746
+Discriminative Learning Rates:
+  stem_layer1         : LR = 0.000010 (13 params)
+  layer2_layer3       : LR = 0.000050 (87 params)
+  layer4              : LR = 0.000100 (12 params)
+  multi_scale_fusion  : LR = 0.000100 (3 params)
+  head                : LR = 0.000100 (2 params)
+  attention           : LR = 0.000100 (87 params)
+  batchnorm           : LR = 0.000100 (200 params)
 
-Epoch [13/50] - 13909.22s - LR: 0.000946
-  Train Loss: 2.3649 (Coarse: 1.2067, Fine: 2.8613)
-  Val Loss: 1.4382
-  Val Macro F1: 0.8092
-  Val Per-Class F1:
-    speech:non-tonal: 0.9654
-    speech:tonal: 0.6902
-    music:vocal: 0.8156
-    music:non-vocal: 0.5857
-    env:urban: 0.9244
-    env:wildlife: 0.8739
+Hybrid Loss initialized: 70% LDAM + 30% Focal (gamma=2.0)
 
-Epoch [14/50] - 13925.87s - LR: 0.000905
-  Train Loss: 2.3778 (Coarse: 1.2356, Fine: 2.8672)
-  Val Loss: 1.4305
-  Val Macro F1: 0.8109
-  Val Per-Class F1:
-    speech:non-tonal: 0.9654
-    speech:tonal: 0.6864
-    music:vocal: 0.8145
-    music:non-vocal: 0.5932
-    env:urban: 0.9190
-    env:wildlife: 0.8867
+Center Loss initialized:
+  • Classes: 6
+  • Feature dimension: 2048
 
-Epoch [15/50] - 13887.25s - LR: 0.000854
-  Train Loss: 2.3403 (Coarse: 1.2137, Fine: 2.8231)
-  Val Loss: 1.4009
-  Val Macro F1: 0.8030
-  Val Per-Class F1:
-    speech:non-tonal: 0.9649
-    speech:tonal: 0.6948
-    music:vocal: 0.8112
-    music:non-vocal: 0.5971
-    env:urban: 0.8985
-    env:wildlife: 0.8518
+Center Loss weight: 0.1
+✓ Frozen: conv1, bn1, layer1, layer2
 
-Epoch [16/50] - 13745.86s - LR: 0.000794
-  Train Loss: 2.3447 (Coarse: 1.2308, Fine: 2.8220)
-  Val Loss: 1.4136
-  Val Macro F1: 0.8173
-  Val Per-Class F1:
-    speech:non-tonal: 0.9679
-    speech:tonal: 0.7213
-    music:vocal: 0.8198
-    music:non-vocal: 0.5787
-    env:urban: 0.9329
-    env:wildlife: 0.8833
+→ Layer1-2 frozen for first 10 epochs
 
-Epoch [17/50] - 13742.75s - LR: 0.000727
-  Train Loss: 2.2846 (Coarse: 1.1833, Fine: 2.7566)
-  Val Loss: 1.3876
-  Val Macro F1: 0.8212
-  Val Per-Class F1:
-    speech:non-tonal: 0.9658
-    speech:tonal: 0.7330
-    music:vocal: 0.8202
-    music:non-vocal: 0.5997
-    env:urban: 0.9163
-    env:wildlife: 0.8925
+============================================================
+Starting training...
+============================================================
 
-Epoch [18/50] - 13742.41s - LR: 0.000655
-  Train Loss: 2.2872 (Coarse: 1.2007, Fine: 2.7529)
-  Val Loss: 1.3999
-  Val Macro F1: 0.8148
-  Val Per-Class F1:
-    speech:non-tonal: 0.9670
-    speech:tonal: 0.7193
-    music:vocal: 0.8298
-    music:non-vocal: 0.5572
-    env:urban: 0.9188
-    env:wildlife: 0.8968
-
-Epoch [19/50] - 13730.90s - LR: 0.000579
-  Train Loss: 2.2419 (Coarse: 1.1671, Fine: 2.7025)
-  Val Loss: 1.4195
-  Val Macro F1: 0.8236
-  Val Per-Class F1:
-    speech:non-tonal: 0.9672
-    speech:tonal: 0.7215
-    music:vocal: 0.8236
-    music:non-vocal: 0.6034
-    env:urban: 0.9229
-    env:wildlife: 0.9031
-  *** New best model saved! (F1: 0.8236) ***
-
-Epoch [20/50] - 13737.81s - LR: 0.000501
-  Train Loss: 2.2175 (Coarse: 1.1536, Fine: 2.6734)
-  Val Loss: 1.4006
-  Val Macro F1: 0.8209
-  Val Per-Class F1:
-    speech:non-tonal: 0.9675
-    speech:tonal: 0.7203
-    music:vocal: 0.8297
-    music:non-vocal: 0.5868
-    env:urban: 0.9244
-    env:wildlife: 0.8968
-
-Epoch [21/50] - 13742.26s - LR: 0.000422
-  Train Loss: 2.1949 (Coarse: 1.1514, Fine: 2.6421)
-  Val Loss: 1.4049
-  Val Macro F1: 0.8307
-  Val Per-Class F1:
-    speech:non-tonal: 0.9669
-    speech:tonal: 0.7395
-    music:vocal: 0.8268
-    music:non-vocal: 0.6149
-    env:urban: 0.9281
-    env:wildlife: 0.9079
-  *** New best model saved! (F1: 0.8307) ***
-
-Epoch [22/50] - 13739.97s - LR: 0.000346
-  Train Loss: 2.1884 (Coarse: 1.1594, Fine: 2.6294)
-  Val Loss: 1.4091
-  Val Macro F1: 0.8264
-  Val Per-Class F1:
-    speech:non-tonal: 0.9682
-    speech:tonal: 0.7264
-    music:vocal: 0.8243
-    music:non-vocal: 0.6066
-    env:urban: 0.9335
-    env:wildlife: 0.8995
-[2026-02-08T21:14:16.066] error: *** JOB 1704359 ON gl030 CANCELLED AT 2026-02-08T21:14:16 DUE TO TIME LIMIT ***
+============================================================
+Epoch 1/100
+============================================================
