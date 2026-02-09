@@ -1,16 +1,14 @@
 INFO:    User not listed in /etc/subuid, trying root-mapped namespace
 INFO:    Using fakeroot command combined with root-mapped namespace
-INFO:    FUSE2FS (3): Warning: Mounting unchecked fs, running e2fsck is recommended.
-WARNING: timm not installed. Install with: pip install timm
+Using cache found in /root/.cache/torch/hub/facebookresearch_dino_main
 Using device: cuda
 GPU: NVIDIA L40S
-CUDA version: 12.8
-✓ Using pretrained ViM from: Vim/vim_s_midclstok_ft_81p6acc.pth
-Checkpoint directory: model/STM/branchAuM_preViM_corpora_categories/standard/ckpt/20260207_154959
+Memory: 47.67 GB
+Checkpoint directory: model/STM/CoordConvLDAM_preIN8_DINO_corpora_categories/standard/ckpt/2026-02-08_22-41
 
-================================================================================
+============================================================
 Loading and preparing data...
-================================================================================
+============================================================
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-akuapem-twi_STMall.npy, shape: (23592, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-asante-twi_STMall.npy, shape: (20768, 2420)
 Loaded: /vast-ac8888/MusicSpeech-STM/STM_output/corpSTMnpy/BibleTTS-ewe_STMall.npy, shape: (22138, 2420)
@@ -124,240 +122,103 @@ Total samples: 978378
 Train samples: 770393
 Val samples: 102010
 Test samples: 105975
-Original feature dim: 2420
-After asymmetric processing: 2440 tokens
+Feature dimension (flattened): 2420
+Expected 2D shape: (20, 121)
 
 Class Distribution (Training):
-  Class 0: 497475 samples (0.6457)
-  Class 1: 80258 samples (0.1042)
-  Class 2: 101893 samples (0.1323)
-  Class 3: 53538 samples (0.0695)
-  Class 4: 9580 samples (0.0124)
-  Class 5: 27649 samples (0.0359)
+  Class 0: 497475 samples (64.6%)
+  Class 1:  80258 samples (10.4%)
+  Class 2: 101893 samples (13.2%)
+  Class 3:  53538 samples (6.9%)
+  Class 4:   9580 samples (1.2%)
+  Class 5:  27649 samples (3.6%)
 
-Applying asymmetric 2-channel STM processing...
-Original: 20 freq × 121 rates = 2420 features
-After processing: 2 channels × 20 freq × 61 rates
-  Channel 0: S_up (upward frequency sweeps)
-  Channel 1: S_down (downward frequency sweeps)
-After spatial adapter: 3 channels × 224 × 224 (ViM input)
+PyTorch Dataset Shapes (2-channel Difference Map):
+Train: torch.Size([770393, 2, 20, 121])
+Val: torch.Size([102010, 2, 20, 121])
+Test: torch.Size([105975, 2, 20, 121])
+Channel 0: Symmetric component (texture)
+Channel 1: Asymmetric component (frequency sweep direction)
 
-DataLoaders created with batch_size=32
+DataLoaders created with batch_size=64
 
-================================================================================
-Creating STM_branchAuM_preViM model...
-================================================================================
-Loading pretrained ViM weights from Vim/vim_s_midclstok_ft_81p6acc.pth
-  ✗ Failed to load pretrained weights: Weights only load failed. This file can still be loaded, to do so you have two options, [1mdo those steps only if you trust the source of the checkpoint[0m. 
-	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
-	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
-	WeightsUnpickler error: Unsupported global: GLOBAL argparse.Namespace was not an allowed global by default. Please use `torch.serialization.add_safe_globals([argparse.Namespace])` or the `torch.serialization.safe_globals([argparse.Namespace])` context manager to allowlist this global if you trust this class/function.
+============================================================
+Creating Self-Supervised DINO ViT-Small for STM (V2.8-DINO)...
+============================================================
+Loading self-supervised DINO ViT-Small...
+✓ Successfully loaded DINO ViT-Small pretrained weights
+✓ Interpolated position embeddings for STM input size
+✓ Created STM-adapted DINO ViT-Small with pretrained weights (6 classes)
+Total parameters: 21,825,422
+Trainable parameters: 21,825,422
 
-Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.
-  → Training from scratch
-Total parameters: 53,893,842
-Trainable parameters: 53,893,842
-Branch point: Layer 4
+V2.8-DINO Architecture:
+  • Backbone: DINO ViT-Small (384-dim, 6 heads, 12 blocks)
+  • Patch size: 4×4
+  • Num patches: 155 (5×31)
+  • Multi-Scale Fusion: blocks 4, 8, 12 → 1152 → 384
+  • Feature dimension: 384
+  • Head dropout: 0.4
+  • Layer freezing support (first 10 epochs)
 
-Architecture (Speed-Optimized):
-  1. Spatial Adapter: (2,20,61) → (3,224,224) [Bilinear + Conv2D]
-  2. Pretrained ViM: vim_small with 16×16 patches (196 tokens)
-     - 16× fewer tokens than 4×4 patches
-     - Matches standard ViM config (no interpolation)
-  3. Hierarchical branching:
-     - Early blocks (0-3): Feature extraction
-     - Coarse classifier: 3 super-classes
-     - Deep blocks (4-23): Fine-grained with guidance
-     - Fine classifier: 6 classes
+V2.8-DINO Training Configuration:
+  • Multi-Scale Fusion: blocks 4, 8, 12 → 1152 → 384
+  • Discriminative LR: Embed/Early (0.1x), Late (0.5x), Head (1.0x)
+  • Layer Freezing: patch_embed + blocks 0-5 frozen for first 10 epochs
+  • STM Augmentation: SpecAugment-style masking + axis shifts
+  • Weight decay: 5e-4
+  • Mixup alpha: 0.4
+  • LDAM + DRW: Enabled (epoch 30+)
+  • Early stopping: 20 epochs patience
 
-Progressive Unfreezing Schedule:
-  - Epochs 0-9: Freeze blocks 0-3
-  - Epochs 10-29: Unfreeze blocks 2-3
-  - Epochs 30+: Unfreeze all
+Discriminative Learning Rates:
+  embed_early_blocks  : LR = 0.000010 (77 params)
+  late_blocks         : LR = 0.000050 (72 params)
+  norm                : LR = 0.000100 (2 params)
+  multi_scale_fusion  : LR = 0.000100 (4 params)
+  head                : LR = 0.000100 (2 params)
 
-Expected Speedup: ~15-20× over 4×4 patch version
+Hybrid Loss initialized: 70% LDAM + 30% Focal (gamma=2.0)
 
-================================================================================
-Starting training for 50 epochs
-================================================================================
+Center Loss initialized:
+  • Classes: 6
+  • Feature dimension: 384
 
+Center Loss weight: 0.1
+✓ Frozen: coord_conv, patch_embed, transformer blocks 0-5
 
-================================================================================
-Epoch 0: Freezing backbone blocks 0-3
-================================================================================
-Epoch 1/50
-  Train Loss: 3.1411 | Train F1: 0.6747
-  Val Loss: 0.6692 | Val F1: 0.7753
-  Val F1 per class: [0.95714234 0.6283824  0.78081705 0.58771174 0.85851781 0.8394285 ]
-  LR: 0.000098 (backbone), 0.000976 (new)
-  ✓ Saved best model (Val F1: 0.7753)
+→ Patch embed + blocks 0-5 frozen for first 10 epochs
 
-Epoch 2/50
-  Train Loss: 2.8107 | Train F1: 0.7365
-  Val Loss: 0.6641 | Val F1: 0.7762
-  Val F1 per class: [0.96132144 0.64048594 0.82235616 0.45422711 0.91317671 0.86581343]
-  LR: 0.000091 (backbone), 0.000905 (new)
-  ✓ Saved best model (Val F1: 0.7762)
+============================================================
+Starting training...
+============================================================
 
-Epoch 3/50
-  Train Loss: 2.6853 | Train F1: 0.7569
-  Val Loss: 0.6483 | Val F1: 0.8117
-  Val F1 per class: [0.96482477 0.68835341 0.81965927 0.57560818 0.93432203 0.88752556]
-  LR: 0.000080 (backbone), 0.000794 (new)
-  ✓ Saved best model (Val F1: 0.8117)
-
-Epoch 4/50
-  Train Loss: 2.5975 | Train F1: 0.7663
-  Val Loss: 0.5680 | Val F1: 0.8280
-  Val F1 per class: [0.96877165 0.74476415 0.79671502 0.63533683 0.92403746 0.89811011]
-  LR: 0.000066 (backbone), 0.000655 (new)
-  ✓ Saved best model (Val F1: 0.8280)
-
-Epoch 5/50
-  Train Loss: 2.5205 | Train F1: 0.7789
-  Val Loss: 0.5402 | Val F1: 0.8335
-  Val F1 per class: [0.96802373 0.75169048 0.80312982 0.63715242 0.93630573 0.90458691]
-  LR: 0.000051 (backbone), 0.000501 (new)
-  ✓ Saved best model (Val F1: 0.8335)
-
-Epoch 6/50
-  Train Loss: 2.4592 | Train F1: 0.7884
-  Val Loss: 0.5953 | Val F1: 0.8338
-  Val F1 per class: [0.96697685 0.75348048 0.80105774 0.64408595 0.93514644 0.90188062]
-  LR: 0.000035 (backbone), 0.000346 (new)
-  ✓ Saved best model (Val F1: 0.8338)
-
-Epoch 7/50
-  Train Loss: 2.3948 | Train F1: 0.7970
-  Val Loss: 0.5865 | Val F1: 0.8389
-  Val F1 per class: [0.97101386 0.75093416 0.8303934  0.60960961 0.95605573 0.91556911]
-  LR: 0.000021 (backbone), 0.000207 (new)
-  ✓ Saved best model (Val F1: 0.8389)
-
-Epoch 8/50
-  Train Loss: 2.3278 | Train F1: 0.8057
-  Val Loss: 0.5904 | Val F1: 0.8408
-  Val F1 per class: [0.9699472  0.7622619  0.82630577 0.62309799 0.95095949 0.91234735]
-  LR: 0.000010 (backbone), 0.000096 (new)
-  ✓ Saved best model (Val F1: 0.8408)
-
-Epoch 9/50
-  Train Loss: 2.2704 | Train F1: 0.8151
-  Val Loss: 0.5840 | Val F1: 0.8442
-  Val F1 per class: [0.97188421 0.76642245 0.82822232 0.62691549 0.95410886 0.91741619]
-  LR: 0.000003 (backbone), 0.000025 (new)
-  ✓ Saved best model (Val F1: 0.8442)
-
-Epoch 10/50
-  Train Loss: 2.2225 | Train F1: 0.8211
-  Val Loss: 0.6006 | Val F1: 0.8438
-  Val F1 per class: [0.97124563 0.7699508  0.83189569 0.61450051 0.95493562 0.92008758]
-  LR: 0.000100 (backbone), 0.001000 (new)
-
-
-================================================================================
-Epoch 10: Freezing backbone blocks 0-1
-================================================================================
-Epoch 11/50
-  Train Loss: 2.4994 | Train F1: 0.7826
-  Val Loss: 0.7125 | Val F1: 0.8107
-  Val F1 per class: [0.96346975 0.73171274 0.83165908 0.50109347 0.93403141 0.902379  ]
-  LR: 0.000099 (backbone), 0.000994 (new)
-
-Epoch 12/50
-  Train Loss: 2.5144 | Train F1: 0.7796
-  Val Loss: 0.5785 | Val F1: 0.8260
-  Val F1 per class: [0.96976209 0.73953278 0.80860008 0.6121177  0.91504606 0.91064314]
-  LR: 0.000098 (backbone), 0.000976 (new)
-
-Epoch 13/50
-  Train Loss: 2.4881 | Train F1: 0.7834
-  Val Loss: 0.6321 | Val F1: 0.8216
-  Val F1 per class: [0.96685739 0.73700506 0.82926035 0.57036473 0.92450879 0.90162831]
-  LR: 0.000095 (backbone), 0.000946 (new)
-
-Epoch 14/50
-  Train Loss: 2.4673 | Train F1: 0.7857
-  Val Loss: 0.5893 | Val F1: 0.8242
-  Val F1 per class: [0.96868573 0.72240271 0.81849504 0.62166778 0.91880781 0.89484369]
-  LR: 0.000091 (backbone), 0.000905 (new)
-
-Epoch 15/50
-  Train Loss: 2.4413 | Train F1: 0.7903
-  Val Loss: 0.5560 | Val F1: 0.8278
-  Val F1 per class: [0.97015913 0.74503778 0.83167604 0.58220035 0.92768595 0.91025992]
-  LR: 0.000086 (backbone), 0.000854 (new)
-
-Epoch 16/50
-  Train Loss: 2.3984 | Train F1: 0.7976
-  Val Loss: 0.5767 | Val F1: 0.8254
-  Val F1 per class: [0.96964249 0.75179481 0.83326355 0.56172081 0.93929712 0.89652417]
-  LR: 0.000080 (backbone), 0.000794 (new)
-
-Epoch 17/50
-  Train Loss: 2.3809 | Train F1: 0.7995
-  Val Loss: 0.6155 | Val F1: 0.8289
-  Val F1 per class: [0.96755802 0.73064781 0.83326815 0.58090724 0.94805195 0.91297752]
-  LR: 0.000073 (backbone), 0.000727 (new)
-
-Epoch 18/50
-  Train Loss: 2.3381 | Train F1: 0.8057
-  Val Loss: 0.6317 | Val F1: 0.8308
-  Val F1 per class: [0.96846969 0.75915534 0.83325846 0.55571202 0.95474138 0.91330263]
-  LR: 0.000066 (backbone), 0.000655 (new)
-
-Epoch 19/50
-  Train Loss: 2.3194 | Train F1: 0.8084
-  Val Loss: 0.6245 | Val F1: 0.8307
-  Val F1 per class: [0.96929462 0.73688975 0.82816189 0.59653645 0.93710692 0.91592374]
-  LR: 0.000058 (backbone), 0.000579 (new)
-
-Epoch 20/50
-  Train Loss: 2.2777 | Train F1: 0.8131
-  Val Loss: 0.5939 | Val F1: 0.8417
-  Val F1 per class: [0.96957574 0.76567312 0.83429616 0.59351003 0.96199783 0.92501047]
-  LR: 0.000051 (backbone), 0.000501 (new)
-
-Epoch 21/50
-  Train Loss: 2.2430 | Train F1: 0.8186
-  Val Loss: 0.6343 | Val F1: 0.8345
-  Val F1 per class: [0.97055471 0.75807935 0.8325128  0.58495915 0.93920335 0.92171508]
-  LR: 0.000043 (backbone), 0.000422 (new)
-
-Epoch 22/50
-  Train Loss: 2.1759 | Train F1: 0.8292
-  Val Loss: 0.6245 | Val F1: 0.8402
-  Val F1 per class: [0.97081788 0.77207392 0.83179944 0.59578294 0.95299145 0.91760861]
-  LR: 0.000035 (backbone), 0.000346 (new)
-
-Epoch 23/50
-  Train Loss: 2.1287 | Train F1: 0.8364
-  Val Loss: 0.6461 | Val F1: 0.8461
-  Val F1 per class: [0.9707124  0.76654138 0.82417433 0.6209991  0.9673913  0.92692469]
-  LR: 0.000028 (backbone), 0.000274 (new)
-  ✓ Saved best model (Val F1: 0.8461)
-
-Epoch 24/50
-  Train Loss: 2.0982 | Train F1: 0.8405
-  Val Loss: 0.6631 | Val F1: 0.8438
-  Val F1 per class: [0.97125945 0.76535972 0.82523023 0.61557289 0.96017223 0.92508951]
-  LR: 0.000021 (backbone), 0.000207 (new)
-
-Epoch 25/50
-  Train Loss: 2.0543 | Train F1: 0.8461
-  Val Loss: 0.6402 | Val F1: 0.8414
-  Val F1 per class: [0.9702423  0.76882754 0.82868686 0.60771402 0.94580234 0.92734626]
-  LR: 0.000015 (backbone), 0.000147 (new)
-
-Epoch 26/50
-  Train Loss: 2.0211 | Train F1: 0.8521
-  Val Loss: 0.6769 | Val F1: 0.8373
-  Val F1 per class: [0.96906471 0.76581022 0.82695243 0.59266378 0.94680851 0.92252747]
-  LR: 0.000010 (backbone), 0.000096 (new)
-
-Epoch 27/50
-  Train Loss: 1.9737 | Train F1: 0.8579
-  Val Loss: 0.6862 | Val F1: 0.8395
-  Val F1 per class: [0.96984684 0.76730069 0.82690774 0.59588282 0.94904459 0.92823366]
-  LR: 0.000006 (backbone), 0.000055 (new)
-
+============================================================
+Epoch 1/100
+============================================================
+  Batch 0/12038, Loss: 36.1438 (cls: 8.4009, center: 277.4296), DRW: False, Mixup: True
+  Batch 500/12038, Loss: 2.9233 (cls: 2.7936, center: 1.2975), DRW: False, Mixup: True
+  Batch 1000/12038, Loss: 3.2447 (cls: 3.1079, center: 1.3674), DRW: False, Mixup: True
+  Batch 1500/12038, Loss: 2.0064 (cls: 1.9331, center: 0.7339), DRW: False, Mixup: True
+  Batch 2000/12038, Loss: 3.4102 (cls: 3.3579, center: 0.5229), DRW: False, Mixup: True
+  Batch 2500/12038, Loss: 2.2634 (cls: 2.2215, center: 0.4186), DRW: False, Mixup: True
+  Batch 3000/12038, Loss: 3.0764 (cls: 2.9560, center: 1.2038), DRW: False, Mixup: True
+  Batch 3500/12038, Loss: 2.4087 (cls: 2.3850, center: 0.2366), DRW: False, Mixup: True
+  Batch 4000/12038, Loss: 4.3538 (cls: 4.3130, center: 0.4084), DRW: False, Mixup: True
+  Batch 4500/12038, Loss: 3.7681 (cls: 3.7339, center: 0.3417), DRW: False, Mixup: True
+  Batch 5000/12038, Loss: 2.4826 (cls: 2.4643, center: 0.1830), DRW: False, Mixup: True
+  Batch 5500/12038, Loss: 2.5237 (cls: 2.5030, center: 0.2071), DRW: False, Mixup: True
+  Batch 6000/12038, Loss: 4.2239 (cls: 4.1714, center: 0.5251), DRW: False, Mixup: True
+  Batch 6500/12038, Loss: 2.3692 (cls: 2.3348, center: 0.3444), DRW: False, Mixup: True
+  Batch 7000/12038, Loss: 2.4172 (cls: 2.3674, center: 0.4975), DRW: False, Mixup: True
+  Batch 7500/12038, Loss: 1.9149 (cls: 1.8974, center: 0.1747), DRW: False, Mixup: True
+  Batch 8000/12038, Loss: 2.5868 (cls: 2.5728, center: 0.1400), DRW: False, Mixup: True
+  Batch 8500/12038, Loss: 2.6133 (cls: 2.6027, center: 0.1059), DRW: False, Mixup: True
+  Batch 9000/12038, Loss: 1.7963 (cls: 1.7831, center: 0.1321), DRW: False, Mixup: True
+  Batch 9500/12038, Loss: 2.7618 (cls: 2.7462, center: 0.1560), DRW: False, Mixup: True
+  Batch 10000/12038, Loss: 2.6105 (cls: 2.6004, center: 0.1008), DRW: False, Mixup: True
+  Batch 10500/12038, Loss: 1.7242 (cls: 1.7151, center: 0.0908), DRW: False, Mixup: True
+  Batch 11000/12038, Loss: 2.0761 (cls: 2.0713, center: 0.0487), DRW: False, Mixup: True
+  Batch 11500/12038, Loss: 1.8465 (cls: 1.8146, center: 0.3190), DRW: False, Mixup: True
+  Batch 12000/12038, Loss: 3.1946 (cls: 3.1881, center: 0.0649), DRW: False, Mixup: True
+Train Loss: 2.6764

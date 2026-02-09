@@ -227,3 +227,87 @@ Current learning rate: 0.000010
 ============================================================
 Epoch 2/100
 ============================================================
+  Batch 0/6019, Loss: 2.9452 (cls: 2.9373, center: 0.0788), DRW: False, Mixup: True
+  Batch 500/6019, Loss: 3.2798 (cls: 3.2757, center: 0.0404), DRW: False, Mixup: True
+  Batch 1000/6019, Loss: 3.0560 (cls: 3.0495, center: 0.0651), DRW: False, Mixup: True
+  Batch 1500/6019, Loss: 3.3055 (cls: 3.2996, center: 0.0592), DRW: False, Mixup: True
+  Batch 2000/6019, Loss: 2.6913 (cls: 2.6863, center: 0.0499), DRW: False, Mixup: True
+  Batch 2500/6019, Loss: 2.7748 (cls: 2.7628, center: 0.1193), DRW: False, Mixup: True
+  Batch 3000/6019, Loss: 2.9810 (cls: 2.9778, center: 0.0319), DRW: False, Mixup: True
+  Batch 3500/6019, Loss: 3.5617 (cls: 3.5577, center: 0.0404), DRW: False, Mixup: True
+  Batch 4000/6019, Loss: 3.3819 (cls: 3.3793, center: 0.0264), DRW: False, Mixup: True
+  Batch 4500/6019, Loss: 3.0770 (cls: 3.0744, center: 0.0265), DRW: False, Mixup: True
+  Batch 5000/6019, Loss: 2.3591 (cls: 2.3566, center: 0.0249), DRW: False, Mixup: True
+  Batch 5500/6019, Loss: 3.0050 (cls: 3.0021, center: 0.0292), DRW: False, Mixup: True
+  Batch 6000/6019, Loss: 3.1411 (cls: 3.1383, center: 0.0279), DRW: False, Mixup: True
+Train Loss: 3.0376
+Val Loss: 1.5635, Val Macro F1: 0.5921
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.5921
+
+============================================================
+Epoch 3/100
+============================================================
+  Batch 0/6019, Loss: 2.7928 (cls: 2.7832, center: 0.0966), DRW: False, Mixup: True
+  Batch 500/6019, Loss: 2.2345 (cls: 2.2317, center: 0.0280), DRW: False, Mixup: True
+  Batch 1000/6019, Loss: 2.9896 (cls: 2.9871, center: 0.0250), DRW: False, Mixup: True
+  Batch 1500/6019, Loss: 2.3463 (cls: 2.3431, center: 0.0328), DRW: False, Mixup: True
+  Batch 2000/6019, Loss: 2.6442 (cls: 2.6412, center: 0.0296), DRW: False, Mixup: True
+  Batch 2500/6019, Loss: 2.3058 (cls: 2.3031, center: 0.0265), DRW: False, Mixup: True
+  Batch 3000/6019, Loss: 2.7149 (cls: 2.7127, center: 0.0228), DRW: False, Mixup: True
+  Batch 3500/6019, Loss: 2.3242 (cls: 2.3222, center: 0.0198), DRW: False, Mixup: True
+  Batch 4000/6019, Loss: 2.1268 (cls: 2.1242, center: 0.0258), DRW: False, Mixup: True
+  Batch 4500/6019, Loss: 3.3763 (cls: 3.3733, center: 0.0298), DRW: False, Mixup: True
+  Batch 5000/6019, Loss: 2.8981 (cls: 2.8958, center: 0.0229), DRW: False, Mixup: True
+  Batch 5500/6019, Loss: 2.8418 (cls: 2.8395, center: 0.0235), DRW: False, Mixup: True
+  Batch 6000/6019, Loss: 2.5918 (cls: 2.5896, center: 0.0219), DRW: False, Mixup: True
+Train Loss: 2.9633
+Val Loss: 1.5653, Val Macro F1: 0.6214
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.6214
+
+============================================================
+Epoch 4/100
+============================================================
+  Batch 0/6019, Loss: 3.1316 (cls: 3.1263, center: 0.0530), DRW: False, Mixup: True
+  Batch 500/6019, Loss: 2.5015 (cls: 2.4997, center: 0.0180), DRW: False, Mixup: True
+  Batch 1000/6019, Loss: 2.4355 (cls: 2.4333, center: 0.0219), DRW: False, Mixup: True
+  Batch 1500/6019, Loss: 2.9196 (cls: 2.9178, center: 0.0182), DRW: False, Mixup: True
+  Batch 2000/6019, Loss: 3.1330 (cls: 3.1313, center: 0.0177), DRW: False, Mixup: True
+  Batch 2500/6019, Loss: 3.9352 (cls: 3.9323, center: 0.0286), DRW: False, Mixup: True
+  Batch 3000/6019, Loss: 3.6353 (cls: 3.6330, center: 0.0228), DRW: False, Mixup: True
+  Batch 3500/6019, Loss: 3.4475 (cls: 3.4454, center: 0.0204), DRW: False, Mixup: True
+  Batch 4000/6019, Loss: 3.0854 (cls: 3.0810, center: 0.0434), DRW: False, Mixup: True
+  Batch 4500/6019, Loss: 3.0855 (cls: 3.0837, center: 0.0176), DRW: False, Mixup: True
+  Batch 5000/6019, Loss: 2.5066 (cls: 2.5039, center: 0.0271), DRW: False, Mixup: True
+  Batch 5500/6019, Loss: 2.7445 (cls: 2.7424, center: 0.0211), DRW: False, Mixup: True
+  Batch 6000/6019, Loss: 3.1091 (cls: 3.1073, center: 0.0177), DRW: False, Mixup: True
+Train Loss: 2.9110
+Val Loss: 1.5535, Val Macro F1: 0.6351
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.6351
+
+============================================================
+Epoch 5/100
+============================================================
+  Batch 0/6019, Loss: 3.6219 (cls: 3.6201, center: 0.0185), DRW: False, Mixup: True
+  Batch 500/6019, Loss: 2.3855 (cls: 2.3837, center: 0.0182), DRW: False, Mixup: True
+  Batch 1000/6019, Loss: 3.2770 (cls: 3.2753, center: 0.0168), DRW: False, Mixup: True
+  Batch 1500/6019, Loss: 3.6263 (cls: 3.6249, center: 0.0137), DRW: False, Mixup: True
+  Batch 2000/6019, Loss: 3.0965 (cls: 3.0912, center: 0.0521), DRW: False, Mixup: True
+  Batch 2500/6019, Loss: 2.5696 (cls: 2.5663, center: 0.0334), DRW: False, Mixup: True
+  Batch 3000/6019, Loss: 2.3970 (cls: 2.3956, center: 0.0140), DRW: False, Mixup: True
+  Batch 3500/6019, Loss: 2.8343 (cls: 2.8298, center: 0.0444), DRW: False, Mixup: True
+  Batch 4000/6019, Loss: 2.2788 (cls: 2.2769, center: 0.0191), DRW: False, Mixup: True
+  Batch 4500/6019, Loss: 2.9367 (cls: 2.9339, center: 0.0279), DRW: False, Mixup: True
+  Batch 5000/6019, Loss: 2.4366 (cls: 2.4341, center: 0.0255), DRW: False, Mixup: True
+  Batch 5500/6019, Loss: 3.0921 (cls: 3.0907, center: 0.0141), DRW: False, Mixup: True
+  Batch 6000/6019, Loss: 2.9473 (cls: 2.9463, center: 0.0096), DRW: False, Mixup: True
+Train Loss: 2.8785
+Val Loss: 1.5553, Val Macro F1: 0.6424
+Current learning rate: 0.000010
+✓ Saved best model with Val F1: 0.6424
+
+============================================================
+Epoch 6/100
+============================================================
