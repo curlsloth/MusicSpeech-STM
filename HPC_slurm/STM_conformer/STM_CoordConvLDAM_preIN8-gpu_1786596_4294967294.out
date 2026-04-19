@@ -1435,3 +1435,150 @@ Current learning rate: 0.000001
 ============================================================
 Epoch 87/100
 ============================================================
+  Batch 0/3010, Loss: 0.9346 (cls: 0.9342, center: 0.0035), DRW: True, Mixup: True
+  Batch 500/3010, Loss: 0.9689 (cls: 0.9686, center: 0.0035), DRW: True, Mixup: True
+  Batch 1000/3010, Loss: 0.9779 (cls: 0.9775, center: 0.0035), DRW: True, Mixup: True
+  Batch 1500/3010, Loss: 1.1352 (cls: 1.1347, center: 0.0044), DRW: True, Mixup: True
+  Batch 2000/3010, Loss: 3.1125 (cls: 3.1120, center: 0.0048), DRW: True, Mixup: True
+  Batch 2500/3010, Loss: 3.4417 (cls: 3.4411, center: 0.0055), DRW: True, Mixup: True
+  Batch 3000/3010, Loss: 1.3404 (cls: 1.3400, center: 0.0032), DRW: True, Mixup: True
+Train Loss: 1.3753
+Val Loss: 1.5278, Val Macro F1: 0.8553
+Current learning rate: 0.000001
+
+============================================================
+Epoch 88/100
+============================================================
+  Batch 0/3010, Loss: 0.9605 (cls: 0.9601, center: 0.0033), DRW: True, Mixup: True
+  Batch 500/3010, Loss: 1.2206 (cls: 1.2202, center: 0.0034), DRW: True, Mixup: True
+  Batch 1000/3010, Loss: 1.2196 (cls: 1.2192, center: 0.0038), DRW: True, Mixup: True
+  Batch 1500/3010, Loss: 1.1715 (cls: 1.1711, center: 0.0033), DRW: True, Mixup: True
+  Batch 2000/3010, Loss: 1.0675 (cls: 1.0672, center: 0.0032), DRW: True, Mixup: True
+  Batch 2500/3010, Loss: 0.8613 (cls: 0.8610, center: 0.0025), DRW: True, Mixup: True
+  Batch 3000/3010, Loss: 0.9383 (cls: 0.9380, center: 0.0029), DRW: True, Mixup: True
+Train Loss: 1.3476
+Val Loss: 1.5239, Val Macro F1: 0.8542
+Current learning rate: 0.000001
+
+Early stopping triggered after 88 epochs
+
+============================================================
+Training completed! Best Val F1: 0.8559
+============================================================
+
+============================================================
+Evaluating on test set...
+============================================================
+Test Loss: 1.5204
+Test Macro F1: 0.8672
+
+Classification Report (No TTA):
+                  precision    recall  f1-score   support
+
+speech:non-tonal       0.95      0.98      0.96     70117
+    speech:tonal       0.90      0.72      0.80     13495
+     music:vocal       0.83      0.85      0.84     12165
+ music:non-vocal       0.70      0.64      0.67      6018
+       env:urban       0.95      0.99      0.97       769
+    env:wildlife       0.96      0.96      0.96      3411
+
+        accuracy                           0.91    105975
+       macro avg       0.88      0.86      0.87    105975
+    weighted avg       0.91      0.91      0.91    105975
+
+
+============================================================
+TTA Evaluation (5 augmentations)...
+============================================================
+
+TTA Configuration:
+  Number of augmentations: 5
+    - original
+    - time_flip
+    - freq_shift_+2
+    - freq_shift_-2
+    - time_shift_+5
+  Processing batch 0/414...
+  Processing batch 50/414...
+  Processing batch 100/414...
+  Processing batch 150/414...
+  Processing batch 200/414...
+  Processing batch 250/414...
+  Processing batch 300/414...
+  Processing batch 350/414...
+  Processing batch 400/414...
+
+TTA Test Macro F1: 0.8675
+Improvement over No-TTA: 0.03%
+
+Classification Report (With TTA):
+                  precision    recall  f1-score   support
+
+speech:non-tonal       0.94      0.99      0.97     70117
+    speech:tonal       0.93      0.70      0.80     13495
+     music:vocal       0.83      0.86      0.84     12165
+ music:non-vocal       0.71      0.63      0.67      6018
+       env:urban       0.94      0.99      0.97       769
+    env:wildlife       0.95      0.97      0.96      3411
+
+        accuracy                           0.92    105975
+       macro avg       0.89      0.86      0.87    105975
+    weighted avg       0.92      0.92      0.91    105975
+
+
+============================================================
+Generating Confusion Matrix...
+============================================================
+
+Confusion Matrix (rows=true, cols=predicted):
+                  speech:n  speech:t  music:vo  music:no  env:urba  env:wild
+speech:non-tonal     69368       703        13         8         0        25
+    speech:tonal      4074      9418         1         2         0         0
+     music:vocal        52         2     10514      1495         4        98
+ music:non-vocal         9         1      2161      3813         6        28
+       env:urban         0         0         1         0       761         7
+    env:wildlife        19         6        39        17        36      3294
+
+Per-Class Confusion Analysis:
+
+  speech:non-tonal:
+    True Positives: 69368, False Negatives: 749, False Positives: 4154
+    Most confused AS: speech:tonal (703 samples)
+    Most misclassified FROM: speech:tonal (4074 samples)
+
+  speech:tonal:
+    True Positives: 9418, False Negatives: 4077, False Positives: 712
+    Most confused AS: speech:non-tonal (4074 samples)
+    Most misclassified FROM: speech:non-tonal (703 samples)
+
+  music:vocal:
+    True Positives: 10514, False Negatives: 1651, False Positives: 2215
+    Most confused AS: music:non-vocal (1495 samples)
+    Most misclassified FROM: music:non-vocal (2161 samples)
+
+  music:non-vocal:
+    True Positives: 3813, False Negatives: 2205, False Positives: 1522
+    Most confused AS: music:vocal (2161 samples)
+    Most misclassified FROM: music:vocal (1495 samples)
+
+  env:urban:
+    True Positives: 761, False Negatives: 8, False Positives: 46
+    Most confused AS: env:wildlife (7 samples)
+    Most misclassified FROM: env:wildlife (36 samples)
+
+  env:wildlife:
+    True Positives: 3294, False Negatives: 117, False Positives: 158
+    Most confused AS: music:vocal (39 samples)
+    Most misclassified FROM: music:vocal (98 samples)
+
+Confusion matrix saved to: model/STM/CoordConvLDAM_preIN8_corpora_categories/standard/ckpt/2026-02-08_10-42/confusion_matrix.png
+
+============================================================
+SUMMARY (V2.8 with Center Loss)
+============================================================
+  Test F1 (No TTA):   0.8672
+  Test F1 (With TTA): 0.8675
+  TTA Improvement:    +0.03%
+============================================================
+Done!
+============================================================
